@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: 2533b195-d357-4056-b0e0-8698971bc3b0
 ms.technology: entity-framework-core
 uid: core/saving/disconnected-entities
-ms.openlocfilehash: b9d9662ce277e4f7b3d6f997a5117a0592f59fa3
-ms.sourcegitcommit: c72d85805db0aa95f980514a18381fdc5e17c786
+ms.openlocfilehash: 0ea02876b9594d54c971a7b70fcf7ce591e56ba0
+ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="disconnected-entities"></a>Отключенные сущности
 
@@ -19,7 +19,7 @@ ms.lasthandoff: 12/01/2017
 Тем не менее иногда сущности, в запросах с помощью одного контекста экземпляра, а затем сохраняется с помощью другого экземпляра. Это часто происходит в «отключенной» сценарии, такие как веб-приложения, где сущности запроса, отправляются на клиент, изменены, отправляются обратно на сервер в запросе и сохраняются. В этом случае контекст второго экземпляра знает, являются ли новые сущности (должен быть установлен) или в существующие (должны быть обновлены).
 
 > [!TIP]  
-> Можно просмотреть в этой статье [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Disconnected/) на GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Disconnected/) из репозитория GitHub.
 
 ## <a name="identifying-new-entities"></a>Определение новых сущностей
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 12/01/2017
 
 Удаление может быть непростой задачей, для обработки с момента часто отсутствия сущности означает, он должен быть удален. Для решения этой проблемы можно использовать «мягкие удалений» таким образом, что объект помечен как удаленный вместо фактического удаления. Удаляет, а затем становится таким же, как обновления. Обратимых удалений можно реализовать с помощью [запрос фильтры](xref:core/querying/filters).
 
-Значение true, удаления общий шаблон является использование расширение шаблона запроса для выполнения, возможности по существу graph сумм. Например:
+Значение true, удаления общий шаблон является использование расширение шаблона запроса для выполнения, возможности по существу graph сумм. Пример:
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#InsertUpdateOrDeleteGraphWithFind)]
 
