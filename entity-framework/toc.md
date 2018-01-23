@@ -39,7 +39,7 @@
 #### [Максимальная длина](core/modeling/max-length.md)
 #### [Токены параллелизма](core/modeling/concurrency.md)
 #### [Свойства тени](core/modeling/shadow-properties.md)
-#### [Связи](core/modeling/relationships.md)
+#### [Отношения](core/modeling/relationships.md)
 #### [Индексы](core/modeling/indexes.md)
 #### [Альтернативные ключи](core/modeling/alternate-keys.md)
 #### [Наследование](core/modeling/inheritance.md)
@@ -55,7 +55,7 @@
 ##### [Последовательности](core/modeling/relational/sequences.md)
 ##### [Значения по умолчанию](core/modeling/relational/default-values.md)
 ##### [Индексы](core/modeling/relational/indexes.md)
-##### [Foreign Key Constraints](core/modeling/relational/fk-constraints.md)
+##### [Ограничения внешнего ключа](core/modeling/relational/fk-constraints.md)
 ##### [Альтернативные ключи (ограничения уникальности)](core/modeling/relational/unique-constraints.md)
 ##### [Наследование (реляционная база данных )](core/modeling/relational/inheritance.md)
 
@@ -82,7 +82,7 @@
 ### [Поддерживаемые реализации .NET](core/platforms/index.md)
 
 ### [Поставщики баз данных](core/providers/index.md)
-#### [Microsoft SQL Server](core/providers/sql-server/index.md)
+#### [Microsoft SQL Server](core/providers/sql-server/index.md)
 ##### [Таблицы, оптимизированные для памяти](core/providers/sql-server/memory-optimized-tables.md)
 #### [SQLite](core/providers/sqlite/index.md)
 ##### [Ограничения SQLite](core/providers/sqlite/limitations.md)
@@ -129,6 +129,7 @@
 #### [Microsoft.EntityFrameworkCore.AutoHistory](core/extensions/autohistory.md)
 #### [Microsoft.EntityFrameworkCore.DynamicLinq](core/extensions/dynamiclinq.md)
 #### [Microsoft.EntityFrameworkCore.UnitOfWork](core/extensions/unitofwork.md)
+#### [NeinLinq.EntityFrameworkCore](core/extensions/neinlinq.md)
 
 ### Прочее
 #### [Строки подключения](core/miscellaneous/connection-strings.md)
