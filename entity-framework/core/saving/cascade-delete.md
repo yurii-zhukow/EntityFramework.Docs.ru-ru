@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: ee8e14ec-2158-4c9c-96b5-118715e2ed9e
 ms.technology: entity-framework-core
 uid: core/saving/cascade-delete
-ms.openlocfilehash: a9481fe851cc264ab3eaecad052c2e683ae57a44
-ms.sourcegitcommit: 5367516f063cb42804ec92c31cdf76322554f2b5
-ms.translationtype: HT
+ms.openlocfilehash: e1cb194d7c7472af59eb44fe2a084fa16c40c186
+ms.sourcegitcommit: 3b21a7fdeddc7b3c70d9b7777b72bef61f59216c
+ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="cascade-delete"></a>Каскадное удаление
 
@@ -35,10 +35,10 @@ EF Core реализует несколько разных delete поведен
 
 | Имя поведения | Влияет на зависимые потомки в памяти | Влияет на зависимые потомки в базе данных
 |-|-|-
-| **CASCADE** | Сущности будут удалены. | Сущности будут удалены.
+| **Cascade** | Сущности будут удалены. | Сущности будут удалены.
 | **ClientSetNull** (по умолчанию) | Свойства внешнего ключа устанавливаются в значение null | Нет
 | **SetNull** | Свойства внешнего ключа устанавливаются в значение null | Свойства внешнего ключа устанавливаются в значение null
-| **Ограничения** | Нет | Нет
+| **Restrict** | Нет | Нет
 
 Необходимые связи (допускающий внешний ключ) — _не_ можно сохранить значение null, значение внешнего ключа, что приводит к следующему:
 
@@ -47,7 +47,7 @@ EF Core реализует несколько разных delete поведен
 | **CASCADE** (по умолчанию) | Сущности будут удалены. | Сущности будут удалены.
 | **ClientSetNull** | Вызывает метод SaveChanges | Нет
 | **SetNull** | Вызывает метод SaveChanges | Вызывает метод SaveChanges
-| **Ограничения** | Нет | Нет
+| **Restrict** | Нет | Нет
 
 В таблицах выше *нет* может привести к нарушению ограничения. Например если основной и дочерней сущностью удаляется, но никакие действия не выполняются, чтобы изменить внешний ключ зависимые потомки, затем базу данных скорее всего вызовет на SaveChanges из-за нарушения ограничения внешнего.
 
@@ -67,7 +67,7 @@ EF Core реализует несколько разных delete поведен
 
 ## <a name="entity-deletion-examples"></a>Примеры удаления сущности
 
-В следующем примере кода является частью [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/CascadeDelete/) , можно загрузить выполнения. В образце показано, что происходит для каждого вида поведения удаления для связи с обязательными и необязательными, при удалении родительской сущности.
+В следующем примере кода является частью [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/CascadeDelete/) можно загрузить и запустить. В образце показано, что происходит для каждого вида поведения удаления для связи с обязательными и необязательными, при удалении родительской сущности.
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/CascadeDelete/Sample.cs#DeleteBehaviorVariations)]
 
