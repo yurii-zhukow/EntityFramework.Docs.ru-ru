@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: 3c88427c-20c6-42ec-a736-22d3eccd5071
 ms.technology: entity-framework-core
 uid: core/get-started/index
-ms.openlocfilehash: 6f5bc101379961dd52cfc6354c47a952849a0b83
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 6bd9d9cc7dfc08261df2e066071632d9ecdfb548
+ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="getting-started-with-entity-framework-core"></a>Начало работы с Entity Framework Core
 
@@ -20,7 +20,7 @@ ms.lasthandoff: 10/27/2017
 
 ## <a name="step-by-step-tutorials"></a>Пошаговые учебники
 
-Эти учебники базового уровня не требуют знакомства с Entity Framework Core или определенной средой IDE. Они содержат пошаговую процедуру создания простого приложения, которое запрашивает и сохраняет данные из базы данных. Мы предоставили учебники для начала работы с различными операционными системами и типами приложений.
+Эти вводные руководства не требуют знакомства с Entity Framework Core или определенным IDE. Они содержат пошаговую процедуру создания простого приложения, которое запрашивает и сохраняет данные из базы данных. Мы предоставили учебники для начала работы с различными операционными системами и типами приложений.
 
 Entity Framework Core позволяет создать модель на основе существующей базы данных или базу данных на основе модели. Доступны учебники, демонстрирующие оба этих подхода.
 
