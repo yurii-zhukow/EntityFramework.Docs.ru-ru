@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: 9a7c5488-aaf4-4b40-b1ff-f435ff30f6ec
 ms.technology: entity-framework-core
 uid: core/modeling/relational/inheritance
-ms.openlocfilehash: 55286adf08a6a1c3286b7059d747a62e1feffd22
-ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
+ms.openlocfilehash: 22eed0002b5903d3cfd18a7e4af0fcd2d46a5c4c
+ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="inheritance-relational-database"></a>Наследование (реляционной базы данных)
 
@@ -85,4 +85,52 @@ public class RssBlog : Blog
 {
     public string RssUrl { get; set; }
 }
+```
+
+## <a name="configuring-the-discriminator-property"></a>Настройка свойства дискриминатора
+
+В приведенных выше примерах дискриминатора создается как [затемнять свойство](xref:core/modeling/shadow-properties) на это базовая сущность иерархии. Так как это свойство в модели, его можно настроить так же, как и другие свойства. Например, чтобы задать максимальной длины, если используется значение по умолчанию, по соглашению дискриминатора:
+
+```C#
+modelBuilder.Entity<Blog>()
+    .Property("Discriminator")
+    .HasMaxLength(200);
+```
+
+Дискриминатора также может быть сопоставлен Фактическое свойство CLR в сущности. Пример:
+```C#
+class MyContext : DbContext
+{
+    public DbSet<Blog> Blogs { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Blog>()
+            .HasDiscriminator<string>("BlogType");
+    }
+}
+
+public class Blog
+{
+    public int BlogId { get; set; }
+    public string Url { get; set; }
+    public string BlogType { get; set; }
+}
+
+public class RssBlog : Blog
+{
+    public string RssUrl { get; set; }
+}
+```
+
+Объединение эти две вещи существует возможность сопоставления дискриминатора свойством реального и настройте его:
+```C#
+modelBuilder.Entity<Blog>(b =>
+{
+    b.HasDiscriminator<string>("BlogType");
+
+    b.Property(e => e.BlogType)
+        .HasMaxLength(200)
+        .HasColumnName("blog_type");
+});
 ```
