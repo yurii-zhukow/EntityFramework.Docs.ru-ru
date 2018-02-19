@@ -8,11 +8,11 @@ ms.topic: get-started-article
 ms.assetid: e153627f-f132-4c11-b13c-6c9a607addce
 ms.technology: entity-framework-core
 uid: core/get-started/aspnetcore/new-db
-ms.openlocfilehash: 7e7ecaff29e9830bf3bcf742e6a5d54e1ced24de
-ms.sourcegitcommit: 860ec5d047342fbc4063a0de881c9861cc1f8813
+ms.openlocfilehash: f6ed19d3c5d2ae8d1f5756558e50c1f0dddd2f07
+ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/05/2017
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-a-new-database"></a>Начало работы с EF Core в ASP.NET Core с новой базой данных
 
@@ -20,8 +20,8 @@ ms.lasthandoff: 11/05/2017
 
 Для работы с этим руководством вам потребуется следующее:
 * [Visual Studio 2017 15.3](https://www.visualstudio.com/downloads/) с такими рабочими нагрузками:
-  * **ASP.NET и веб-разработка** в разделе **Интернет и облако**;
-  * **кроссплатформенная разработка .NET Core** (в разделе **Другие наборы инструментов**);
+  * **ASP.NET и веб-разработка** в разделе **Интернет и облако**)
+  * **Кроссплатформенная разработка .NET Core** (в разделе **Другие наборы инструментов**)
 * [пакет SDK для .NET Core 2.0](https://www.microsoft.com/net/download/core).
 
 > [!TIP]  
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/05/2017
 * В меню слева выберите **Установленные > Шаблоны > Visual C# -> .NET Core**.
 * Выберите **Новое веб-приложение ASP.NET Core**.
 * Введите имя проекта **EFGetStarted.AspNetCore.NewDb** и щелкните **ОК**.
-* В диалоговом окне **Создание веб-приложения ASP.NET Core** сделайте следующее:
+* В диалоговом окне **Создание веб-приложения ASP.NET Core** сделайте следующее.
   * Убедитесь, что в раскрывающихся списках выбраны варианты **.NET Core** и **ASP.NET Core 2.0**.
   * Выберите **Web Application (Model-View-Controller)** (Веб-приложение "модель — представление — контроллер").
   * Убедитесь, что для параметра **Проверка подлинности** задано значение **Без проверки подлинности**.
@@ -47,15 +47,15 @@ ms.lasthandoff: 11/05/2017
 
 * Последовательно выберите пункты **Средства > Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
 
-* Выполните `Install-Package Microsoft.EntityFrameworkCore.SqlServer`.
+* Запуск `Install-Package Microsoft.EntityFrameworkCore.SqlServer`
 
 Нам понадобятся некоторые средства платформы Entity Framework, чтобы создать базу данных из модели EF Core. Поэтому мы установим пакет средств:
 
-* Выполните `Install-Package Microsoft.EntityFrameworkCore.Tools`.
+* Запуск `Install-Package Microsoft.EntityFrameworkCore.Tools`
 
 Позднее мы применим средства формирования шаблонов для ASP.NET Core, чтобы создать контроллеры и представления. Поэтому мы установим этот пакет разработки:
 
-* Выполните `Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design`.
+* Запуск `Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design`
 
 ## <a name="create-the-model"></a>Создание модели
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/05/2017
 
   Последовательно выберите пункты **Средства -> Диспетчер пакетов NuGet -> Консоль диспетчера пакетов**.
 * Запустите `Add-Migration InitialCreate`, чтобы сформировать шаблон миграции для создания начального набора таблиц для модели. Если появляется сообщение об ошибке `The term 'add-migration' is not recognized as the name of a cmdlet`, закройте и снова откройте Visual Studio.
-* Запустите `Update-Database`, чтобы применить созданные миграции к базе данных. Эта команда создает базу данных и применяет к ней миграции.
+* Запустите `Update-Database`, чтобы применить созданную миграцию к базе данных. Эта команда создает базу данных и применяет к ней миграции.
 
 ## <a name="create-a-controller"></a>Создание контроллера
 
@@ -121,9 +121,9 @@ ms.lasthandoff: 11/05/2017
 * Перейдите к папке `/Blogs`.
 * С помощью ссылки создания внесите в блог несколько записей. Проверьте также работу ссылок для просмотра и удаления.
 
-![image](_static/create.png)
+![изображение](_static/create.png)
 
-![image](_static/index-new-db.png)
+![изображение](_static/index-new-db.png)
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
