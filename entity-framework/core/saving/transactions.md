@@ -6,18 +6,18 @@ ms.date: 10/27/2016
 ms.assetid: d3e6515b-8181-482c-a790-c4a6778748c1
 ms.technology: entity-framework-core
 uid: core/saving/transactions
-ms.openlocfilehash: a2f890c0af1e83cbcc1d40d68540ff7132a9bafd
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 2dda7b7d58ae058fc2aa89fe16fbf46adc8c6bdc
+ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="using-transactions"></a>Использование транзакций
 
 Транзакции позволяют несколько операций базы данных для обработки атомарным образом. Если транзакция будет зафиксирована, все операции успешно применены к базе данных. Если откат транзакции ни одна из операций применяются к базе данных.
 
 > [!TIP]  
-> Можно просмотреть в этой статье [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Transactions/) на GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Transactions/) из репозитория GitHub.
 
 ## <a name="default-transaction-behavior"></a>По умолчанию поведение транзакции
 
@@ -74,19 +74,9 @@ ms.lasthandoff: 10/27/2017
 Самый простой способ разрешить `DbConnection` извне, в том, — чтобы прекратить использование `DbContext.OnConfiguring` метод, чтобы настроить контекст и извне создать `DbContextOptions` и передавать их в контексте конструктора.
 
 > [!TIP]  
-> `DbContextOptionsBuilder`API-интерфейс, который использовался в `DbContext.OnConfiguring` Чтобы настроить контекст, теперь необходимо использовать его для создания внешнего `DbContextOptions`.
+> `DbContextOptionsBuilder` API-интерфейс, который использовался в `DbContext.OnConfiguring` Чтобы настроить контекст, теперь необходимо использовать его для создания внешнего `DbContextOptions`.
 
-<!-- [!code-csharp[Main](samples/core/Saving/Saving/Transactions/SharingTransaction/Sample.cs?highlight=3,4,5)] -->
-``` csharp
-    public class BloggingContext : DbContext
-    {
-        public BloggingContext(DbContextOptions<BloggingContext> options)
-            : base(options)
-        { }
-
-        public DbSet<Blog> Blogs { get; set; }
-    }
-```
+[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/SharingTransaction/Sample.cs?name=Context&highlight=3,4,5)]
 
 Альтернативным вариантом является для продолжения использования `DbContext.OnConfiguring`, но принимает `DbConnection` , сохраняется, а затем использовать в `DbContext.OnConfiguring`.
 
@@ -113,41 +103,7 @@ public class BloggingContext : DbContext
 
 Теперь можно создать несколько экземпляров контекст, в которых одно соединение. Затем с помощью `DbContext.Database.UseTransaction(DbTransaction)` API для прикрепления обоих контекстов в той же транзакции.
 
-<!-- [!code-csharp[Main](samples/core/Saving/Saving/Transactions/SharingTransaction/Sample.cs?highlight=1,2,3,7,16,23,24,25)] -->
-``` csharp
-        var options = new DbContextOptionsBuilder<BloggingContext>()
-            .UseSqlServer(new SqlConnection(connectionString))
-            .Options;
-
-        using (var context1 = new BloggingContext(options))
-        {
-            using (var transaction = context1.Database.BeginTransaction())
-            {
-                try
-                {
-                    context1.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/dotnet" });
-                    context1.SaveChanges();
-
-                    using (var context2 = new BloggingContext(options))
-                    {
-                        context2.Database.UseTransaction(transaction.GetDbTransaction());
-
-                        var blogs = context2.Blogs
-                            .OrderBy(b => b.Url)
-                            .ToList();
-                    }
-
-                    // Commit transaction if all commands succeed, transaction will auto-rollback
-                    // when disposed if either commands fails
-                    transaction.Commit();
-                }
-                catch (Exception)
-                {
-                    // TODO: Handle failure
-                }
-            }
-        }
-```
+[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/SharingTransaction/Sample.cs?name=Transaction&highlight=1,2,3,7,16,23,24,25)]
 
 ## <a name="using-external-dbtransactions-relational-databases-only"></a>С помощью внешних DbTransactions (только реляционных баз данных)
 
@@ -155,39 +111,26 @@ public class BloggingContext : DbContext
 
 Приведенный ниже показано, как выполнить операцию ADO.NET SqlClient Entity Framework Core операции в одной транзакции.
 
-<!-- [!code-csharp[Main](samples/core/Saving/Saving/Transactions/ExternalDbTransaction/Sample.cs?highlight=4,10,21,26,27,28)] -->
-``` csharp
-        var connection = new SqlConnection(connectionString);
-        connection.Open();
+[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/ExternalDbTransaction/Sample.cs?name=Transaction&highlight=4,10,21,26,27,28)]
 
-        using (var transaction = connection.BeginTransaction())
-        {
-            try
-            {
-                // Run raw ADO.NET command in the transaction
-                var command = connection.CreateCommand();
-                command.Transaction = transaction;
-                command.CommandText = "DELETE FROM dbo.Blogs";
-                command.ExecuteNonQuery();
+## <a name="using-systemtransactions"></a>Использование System.Transactions
 
-                // Run an EF Core command in the transaction
-                var options = new DbContextOptionsBuilder<BloggingContext>()
-                    .UseSqlServer(connection)
-                    .Options;
+> [!NOTE]  
+> Этот компонент впервые появился в EF Core 2.1.
 
-                using (var context = new BloggingContext(options))
-                {
-                    context.Database.UseTransaction(transaction);
-                    context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/dotnet" });
-                    context.SaveChanges();
-                }
+Можно использовать внешней транзакции, если необходимо управлять с большей областью действия.
 
-                // Commit transaction if all commands succeed, transaction will auto-rollback
-                // when disposed if either commands fails
-                transaction.Commit();
-            }
-            catch (System.Exception)
-            {
-                // TODO: Handle failure
-            }
-```
+[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/AmbientTransaction/Sample.cs?name=Transaction&highlight=1,24,25,26)]
+
+Можно также прикрепить в явной транзакции.
+
+[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/CommitableTransaction/Sample.cs?name=Transaction&highlight=1,13,26,27,28)]
+
+### <a name="limitations-of-systemtransactions"></a>Ограничения System.Transactions  
+
+1. EF Core зависит от поставщиков базы данных, чтобы обеспечить поддержку System.Transactions. Несмотря на то, что поддержка довольно часто поставщиков ADO.NET для .NET Framework, API-Интерфейс только недавно добавлено .NET Core и поэтому поддержки не является быть настолько распространена. Если поставщик не реализует поддержку System.Transactions, можно будет полностью обрабатывается вызовы этих интерфейсов API. SqlClient для .NET Core, она поддерживается с версии 2.1. SqlClient 2.0 .NET Core будет вызывать исключение из попробуйте использовать функцию. 
+
+   > [!IMPORTANT]  
+   > Рекомендуется проверить, что API правильно работает с поставщиком перед полагаться на него для управления транзакциями. Вы, рекомендуется связаться программы обслуживания поставщика базы данных, если это не так. 
+
+2. Начиная с версии 2.1, реализация System.Transactions в .NET Core отсутствует поддержка распределенных транзакций, поэтому нельзя использовать `TransactionScope` или `CommitableTransaction`для координации транзакций через несколько диспетчеров ресурсов. 
