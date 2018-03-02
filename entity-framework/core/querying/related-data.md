@@ -6,18 +6,18 @@ ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 ms.technology: entity-framework-core
 uid: core/querying/related-data
-ms.openlocfilehash: ec69bb128890a1e0b72fe77014f37747585bb5a5
-ms.sourcegitcommit: 3b21a7fdeddc7b3c70d9b7777b72bef61f59216c
+ms.openlocfilehash: dadc6235c3879ae27ad5c99988a5e594872045df
+ms.sourcegitcommit: 4b7d3d3e258b0d9cb778bb45a9f4a33c0792e38e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="loading-related-data"></a>Загрузка связанных данных
 
 Entity Framework Core позволяет использовать свойства навигации в модели для загрузки связанных сущностей. Существует три общих шаблонов O/надежный обмен Сообщениями, используемые для загрузки связанных данных.
 * **Безотложная загрузка** означает, что данные загружены из базы данных как часть исходного запроса.
 * **Явная загрузка** означает, что связанные данные явно загружен из базы данных в дальнейшем.
-* **Отложенная загрузка** означает, что связанные прозрачно загрузки данных из базы данных при доступе к свойству навигации. Отложенная загрузка не возможно при EF Core.
+* **Отложенная загрузка** означает, что связанные прозрачно загрузки данных из базы данных при доступе к свойству навигации.
 
 > [!TIP]  
 > Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) из репозитория GitHub.
@@ -57,6 +57,61 @@ Entity Framework Core позволяет использовать свойств
 
 [!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#MultipleLeafIncludes)]
 
+### <a name="include-on-derived-types"></a>Включить для производных типов
+
+Могут включать связанные данные из определен только для производного типа с помощью переходов `Include` и `ThenInclude`. 
+
+Рассмотрим следующую модель:
+
+```Csharp
+    public class SchoolContext : DbContext
+    {
+        public DbSet<Person> People { get; set; }
+        public DbSet<School> Schools { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<School>().HasMany(s => s.Students).WithOne(s => s.School);
+        }
+    }
+
+    public class Person
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class Student : Person
+    {
+        public School School { get; set; }
+    }
+
+    public class School
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public List<Student> Students { get; set; }
+    }
+```
+
+Содержимое `School` навигации всех людей, имеющих студенты могут загружаться заранее с помощью нескольких шаблонов:
+
+- Использование функции cast
+```Csharp
+context.People.Include(person => ((Student)person).School).ToList()
+```
+
+- с помощью `as` оператор
+```Csharp
+context.People.Include(person => (person as Student).School).ToList()
+```
+
+- с помощью перегрузки `Include` , принимающий параметр типа `string`
+```Csharp
+context.People.Include("Student").ToList()
+```
+
 ### <a name="ignored-includes"></a>Учитывается включает
 
 Если изменить запрос, чтобы он больше не возвращает экземпляры типа сущности, запрос начинающийся с, операторы include игнорируются.
@@ -94,13 +149,174 @@ Entity Framework Core позволяет использовать свойств
 
 ## <a name="lazy-loading"></a>«Неспешная» загрузка
 
-Отложенная загрузка ядром EF еще не поддерживается. Можно просмотреть [отложенную загрузку элемента в невыполненной работой](https://github.com/aspnet/EntityFramework/issues/3797) для отслеживания этой функции.
+> [!NOTE]  
+> Эта функция появилась в EF Core 2.1.
+
+Это самый простой способ использовать отложенную загрузку установить [Microsoft.EntityFramworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) пакет и его включение на вызов `UseLazyLoadingProxies`. Пример:
+```Csharp
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder
+        .UseLazyLoadingProxies()
+        .UseSqlServer(myConnectionString);
+```
+Или, при использовании AddDbContext:
+```Csharp
+    .AddDbContext<BloggingContext>(
+        b => b.UseLazyLoadingProxies()
+              .UseSqlServer(myConnectionString));
+```
+EF Core затем необходимо включить отложенную загрузку для любого свойства навигации, который может быть переопределен--,, оно должно быть `virtual` и класса, который может быть унаследован. Например, в следующие сущности `Post.Blog` и `Blog.Posts` свойства навигации будут отложенной загрузки.
+```Csharp
+public class Blog
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public virtual ICollection<Post> Posts { get; set; }
+}
+
+public class Post
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Content { get; set; }
+
+    public virtual Blog Blog { get; set; }
+}
+```
+### <a name="lazy-loading-without-proxies"></a>Lazy Загрузка без прокси-серверов
+
+Загрузка Lazy прокси-серверы работают, внедряя `ILazyLoader` служба в сущности, как описано в [конструкторов типа сущности](../modeling/constructors.md). Пример:
+```Csharp
+public class Blog
+{
+    private ICollection<Post> _posts;
+
+    public Blog()
+    {
+    }
+
+    private Blog(ILazyLoader lazyLoader)
+    {
+        LazyLoader = lazyLoader;
+    }
+
+    private ILazyLoader LazyLoader { get; set; }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public ICollection<Post> Posts
+    {
+        get => LazyLoader?.Load(this, ref _posts);
+        set => _posts = value;
+    }
+}
+
+public class Post
+{
+    private Blog _blog;
+
+    public Post()
+    {
+    }
+
+    private Post(ILazyLoader lazyLoader)
+    {
+        LazyLoader = lazyLoader;
+    }
+
+    private ILazyLoader LazyLoader { get; set; }
+
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Content { get; set; }
+
+    public Blog Blog
+    {
+        get => LazyLoader?.Load(this, ref _blog);
+        set => _blog = value;
+    }
+}
+```
+Это не требует типы наследуется из сущности или свойства навигации должен быть виртуальным и позволяет экземпляры сущности, созданные с `new` для отложенной загрузки один раз присоединены к контексту. Однако он требует ссылку на `ILazyLoader` службы, которая связывает типы сущностей в EF основной сборке. Чтобы избежать этой базовой EF позволяет `ILazyLoader.Load` метод встретившаяся в качестве делегата. Пример:
+```Csharp
+public class Blog
+{
+    private ICollection<Post> _posts;
+
+    public Blog()
+    {
+    }
+
+    private Blog(Action<object, string> lazyLoader)
+    {
+        LazyLoader = lazyLoader;
+    }
+
+    private Action<object, string> LazyLoader { get; set; }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public ICollection<Post> Posts
+    {
+        get => LazyLoader?.Load(this, ref _posts);
+        set => _posts = value;
+    }
+}
+
+public class Post
+{
+    private Blog _blog;
+
+    public Post()
+    {
+    }
+
+    private Post(Action<object, string> lazyLoader)
+    {
+        LazyLoader = lazyLoader;
+    }
+
+    private Action<object, string> LazyLoader { get; set; }
+
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Content { get; set; }
+
+    public Blog Blog
+    {
+        get => LazyLoader?.Load(this, ref _blog);
+        set => _blog = value;
+    }
+}
+```
+Приведенный выше использует `Load` метод расширения, чтобы сделать немного очистки с помощью делегата:
+```Csharp
+public static class PocoLoadingExtensions
+{
+    public static TRelated Load<TRelated>(
+        this Action<object, string> loader,
+        object entity,
+        ref TRelated navigationField,
+        [CallerMemberName] string navigationName = null)
+        where TRelated : class
+    {
+        loader?.Invoke(entity, navigationName);
+
+        return navigationField;
+    }
+}
+```
+> [!NOTE]  
+> «LazyLoader» должна вызываться параметра конструктора делегата отложенную загрузку. Конфигурация, чтобы использовать другое имя, это планируется в будущих выпусках.
 
 ## <a name="related-data-and-serialization"></a>Связанные данные и сериализации
 
 Поскольку свойства навигации автоматически исправить вверх будет EF Core, можно получить с циклами в граф объекта. Например загрузка блог и он не связан приведет к записи в блоге объект, который ссылается на коллекцию записей. Каждый из этих записей будет ссылкой на блога.
 
-Некоторые платформы сериализации не допускают такие циклы. Например Json.NET вызовет следующее исключение, если цикл встречено.
+Некоторые платформы сериализации не допускают такие циклы. Например Json.NET вызовет следующее исключение при обнаружении цикла.
 
 > Newtonsoft.Json.JsonSerializationException: Self ссылается обнаружен для свойства «Блог» с типом «MyApplication.Models.Blog» цикл.
 
