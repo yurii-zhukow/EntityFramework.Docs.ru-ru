@@ -1,33 +1,61 @@
 ---
-title: "Обработка параллелизма - EF Core"
+title: "Обработка конфликтов параллелизма - EF Core"
 author: rowanmiller
 ms.author: divega
-ms.date: 10/27/2016
-ms.assetid: bce0539d-b0cd-457d-be71-f7ca16f3baea
+ms.date: 03/03/2018
 ms.technology: entity-framework-core
 uid: core/saving/concurrency
-ms.openlocfilehash: bbd3e154c1b27b16c7d8f8fbf9ed51df0849795c
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 288d9c6fced5ebbaa2c366248c68547502c3698e
+ms.sourcegitcommit: 8f3be0a2a394253efb653388ec66bda964e5ee1b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="handling-concurrency"></a>Обработка параллелизма
+# <a name="handling-concurrency-conflicts"></a>Обработка конфликтов параллелизма
 
-Если свойство настроено как маркер параллелизма затем EF будет проверять, что ни один другой пользователь изменил это значение в базе данных при сохранении изменений в этой записи.
+> [!NOTE]
+> Этой странице документах как параллелизма работает в ядре EF и способов обработки конфликтов параллелизма в приложении. В разделе [маркеры параллелизма](xref:core/modeling/concurrency) подробные сведения о настройке маркеры параллелизма в модели.
 
-> [!TIP]  
-> Можно просмотреть в этой статье [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Concurrency/) на GitHub.
+> [!TIP]
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Concurrency/) из репозитория GitHub.
 
-## <a name="how-concurrency-handling-works-in-ef-core"></a>Как работает обработки параллелизма в EF Core
+_Параллелизм баз данных_ относится к ситуации, в которых несколько процессов или пользователям доступ, или изменить те же данные в базе данных в то же время. _Управление параллелизмом_ ссылается на определенные механизмами для обеспечения согласованности данных при наличии параллельных изменений.
 
-Подробное описание того, как работает обработки параллелизма в Entity Framework Core см. в разделе [маркеры параллелизма](../modeling/concurrency.md).
+Реализует основные EF _управления оптимистичным параллелизмом_, означающего, что оно позволит несколько процессов и пользователей изменять независимо друг от друга без необходимости проведения синхронизации или блокировки. В идеальном случае эти изменения не будут конфликтовать друг с другом и поэтому сможет завершиться успешно. В худшем случае двух или более процессов попытается установить конфликтующих изменений, и только один из них должны выполняться успешно.
+
+## <a name="how-concurrency-control-works-in-ef-core"></a>Как работает управление параллелизмом в EF Core
+
+Свойства, настроенные как маркеры параллелизма используются для реализации управления оптимистичным параллелизмом: каждый раз, когда выполняется операция обновления или удаления во время `SaveChanges`, маркер параллелизма для базы данных сравнивается с исходным значение, считываемых EF Core.
+
+- Если значения совпадают, операция может завершиться.
+- Если значения не совпадают, EF Core предполагается, что другой пользователь выполнил конфликтует с операцией и прерывает текущую транзакцию.
+
+Ситуации, когда другой пользователь выполнил операцию, которая конфликтует с текущей операцией называется _конфликт параллелизма_.
+
+Поставщики базы данных — за реализацию сравнения значений маркера параллелизма.
+
+В реляционных базах данных EF Core включает проверку для значения маркера параллелизма в `WHERE` предложение любого `UPDATE` или `DELETE` инструкции. После выполнения инструкций, EF Core считывает число строк, которые были затронуты.
+
+Если не задействована, обнаруживается конфликт параллелизма и вызывает EF Core `DbUpdateConcurrencyException`.
+
+Например, следует настроить `LastName` на `Person` быть маркера параллелизма. Все операции обновления на пользователя будет включать проверка параллелизма в `WHERE` предложения:
+
+``` sql
+UPDATE [Person] SET [FirstName] = @p1
+WHERE [PersonId] = @p0 AND [LastName] = @p2;
+```
 
 ## <a name="resolving-concurrency-conflicts"></a>Разрешение конфликтов параллелизма
 
-Разрешение конфликтов параллелизма предполагает с помощью алгоритма для слияния ожидающие изменения от имени текущего пользователя с изменениями, внесенными в базе данных. Точный подход будет отличаться в зависимости от приложения, но наиболее распространенный подход заключается в том, для отображения пользователю значений и их определить правильные значения, хранимые в базе данных.
+Продолжение предыдущего примера, если один пользователь пытается сохранить некоторые изменения в `Person`, но уже была изменена другим пользователем `LastName` будет вызвано исключение.
 
-**Существует три набора значений, который помогает разрешить конфликт параллелизма.**
+На этом этапе приложение может просто информировать пользователей о том, что обновление не выполнена из-за конфликтующих изменений и перейти. Однако она может возникнуть необходимость запрашивать пользователя Убедитесь, что эта запись по-прежнему представляет фактический неизменность и повторите операцию.
+
+Этот процесс является примером _разрешение конфликтов параллелизма_.
+
+Разрешение конфликтов параллелизма включает в себя объединение ожидающие обработки изменения из текущего `DbContext` со значениями в базе данных. Объединить какие значения будут зависеть от приложения и могут быть перенаправлены вводимыми пользователем.
+
+**Существуют три набора значений, который помогает разрешить конфликт параллелизма.**
 
 * **Текущие значения** — это значения, при попытке приложения записать в базу данных.
 
@@ -35,106 +63,13 @@ ms.lasthandoff: 10/27/2017
 
 * **Базы данных значения** являются значения, которые хранятся в базе данных.
 
-Для обработки конфликтов параллелизма, перехватывать `DbUpdateConcurrencyException` во время `SaveChanges()`, используйте `DbUpdateConcurrencyException.Entries` подготовить новый набор изменений для затронутых объектов, а затем повторите `SaveChanges()` операции.
+— Общий подход для обработки конфликтов параллелизма:
 
-В следующем примере `Person.FirstName` и `Person.LastName` настраиваются как маркер параллелизма. Отсутствует `// TODO:` комментарий в расположение, где следует включить определенную логику приложения выберите значение сохраняется в базе данных.
+1. Catch `DbUpdateConcurrencyException` во время `SaveChanges`.
+2. Используйте `DbUpdateConcurrencyException.Entries` подготовить новый набор изменений для затронутых объектов.
+3. Обновите исходные значения маркера параллелизма в соответствии с текущими значениями в базе данных.
+4. Повторите процесс, пока не возникают.
 
-<!-- [!code-csharp[Main](samples/core/Saving/Saving/Concurrency/Sample.cs?highlight=53,54)] -->
-``` csharp
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+В следующем примере `Person.FirstName` и `Person.LastName` маркеры параллелизма, которые являются программы установки. Отсутствует `// TODO:` комментария в расположении, где содержат определенную логику приложения выберите значение для сохранения.
 
-namespace EFSaving.Concurrency
-{
-    public class Sample
-    {
-        public static void Run()
-        {
-            // Ensure database is created and has a person in it
-            using (var context = new PersonContext())
-            {
-                context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
-
-                context.People.Add(new Person { FirstName = "John", LastName = "Doe" });
-                context.SaveChanges();
-            }
-
-            using (var context = new PersonContext())
-            {
-                // Fetch a person from database and change phone number
-                var person = context.People.Single(p => p.PersonId == 1);
-                person.PhoneNumber = "555-555-5555";
-
-                // Change the persons name in the database (will cause a concurrency conflict)
-                context.Database.ExecuteSqlCommand("UPDATE dbo.People SET FirstName = 'Jane' WHERE PersonId = 1");
-
-                try
-                {
-                    // Attempt to save changes to the database
-                    context.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    foreach (var entry in ex.Entries)
-                    {
-                        if (entry.Entity is Person)
-                        {
-                            // Using a NoTracking query means we get the entity but it is not tracked by the context
-                            // and will not be merged with existing entities in the context.
-                            var databaseEntity = context.People.AsNoTracking().Single(p => p.PersonId == ((Person)entry.Entity).PersonId);
-                            var databaseEntry = context.Entry(databaseEntity);
-
-                            foreach (var property in entry.Metadata.GetProperties())
-                            {
-                                var proposedValue = entry.Property(property.Name).CurrentValue;
-                                var originalValue = entry.Property(property.Name).OriginalValue;
-                                var databaseValue = databaseEntry.Property(property.Name).CurrentValue;
-
-                                // TODO: Logic to decide which value should be written to database
-                                // entry.Property(property.Name).CurrentValue = <value to be saved>;
-
-                                // Update original values to
-                                entry.Property(property.Name).OriginalValue = databaseEntry.Property(property.Name).CurrentValue;
-                            }
-                        }
-                        else
-                        {
-                            throw new NotSupportedException("Don't know how to handle concurrency conflicts for " + entry.Metadata.Name);
-                        }
-                    }
-
-                    // Retry the save operation
-                    context.SaveChanges();
-                }
-            }
-        }
-
-        public class PersonContext : DbContext
-        {
-            public DbSet<Person> People { get; set; }
-
-            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            {
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=EFSaving.Concurrency;Trusted_Connection=True;");
-            }
-        }
-
-        public class Person
-        {
-            public int PersonId { get; set; }
-
-            [ConcurrencyCheck]
-            public string FirstName { get; set; }
-
-            [ConcurrencyCheck]
-            public string LastName { get; set; }
-
-            public string PhoneNumber { get; set; }
-        }
-
-    }
-}
-```
+[!code-csharp[Main](../../../samples/core/Saving/Saving/Concurrency/Sample.cs?name=ConcurrencyHandlingCode&highlight=34-35)]
