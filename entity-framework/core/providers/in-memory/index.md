@@ -6,15 +6,15 @@ ms.date: 10/27/2016
 ms.assetid: 9af0cba7-7605-4f8f-9cfa-dd616fcb880c
 ms.technology: entity-framework-core
 uid: core/providers/in-memory/index
-ms.openlocfilehash: a8e05f50837f3da554b338475d24215706dfa2ec
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+ms.openlocfilehash: 356af9390a8aafa5afe35f333cd1e6ac1988390d
+ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="ef-core-in-memory-database-provider"></a>Поставщик выполняющейся в памяти базы данных EF Core
 
-Этот поставщик базы данных позволяет использовать Entity Framework Core с выполняющейся в памяти базой данных. Это удобно при тестировании кода, использующего Entity Framework Core. Его разработка ведется в рамках [проекта GitHub EntityFramework](https://github.com/aspnet/EntityFramework).
+Этот поставщик базы данных позволяет использовать Entity Framework Core с выполняющейся в памяти базой данных. Это может быть полезно для тестирования несмотря на то, что поставщик SQLite в режиме выполнения в памяти может в большей степени подходить для тестирования реляционных баз данных. Работы над этим поставщиком ведутся в рамках [проекта Entity Framework Core](https://github.com/aspnet/EntityFrameworkCore).
 
 ## <a name="install"></a>Установка
 

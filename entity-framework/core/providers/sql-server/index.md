@@ -6,15 +6,15 @@ ms.date: 10/27/2016
 ms.assetid: 2e007c82-c6e4-45bb-8129-851b79ec1a0a
 ms.technology: entity-framework-core
 uid: core/providers/sql-server/index
-ms.openlocfilehash: b2faf932e0484da4df0c1774afa7ba7ae2d077a5
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+ms.openlocfilehash: 2ed7c0dd127db03d5e7340fde1ef83cf01b30135
+ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="microsoft-sql-server-ef-core-database-provider"></a>Поставщик базы данных Microsoft SQL Server EF Core
 
-Этот поставщик базы данных позволяет использовать Entity Framework Core с Microsoft SQL Server (включая SQL Azure). Его разработка ведется в рамках [проекта GitHub EntityFramework](https://github.com/aspnet/EntityFramework).
+Этот поставщик базы данных позволяет использовать Entity Framework Core с Microsoft SQL Server (включая SQL Azure). Работы над этим поставщиком ведутся в рамках [проекта Entity Framework Core](https://github.com/aspnet/EntityFrameworkCore).
 
 ## <a name="install"></a>Установка
 

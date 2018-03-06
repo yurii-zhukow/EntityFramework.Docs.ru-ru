@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 ms.technology: entity-framework-core
 uid: core/index
-ms.openlocfilehash: 13de9cf98111b8e253e073c591fcec04206b4c4f
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+ms.openlocfilehash: c76b4cd318151b502c549fa0a82800f9987ed94c
+ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="entity-framework-core-quick-overview"></a>Краткий обзор Entity Framework Core
 
@@ -20,16 +20,18 @@ EF Core является объектно-реляционным модулем 
 
 Если вы хотите учиться, создавая код, рекомендуем воспользоваться одним из наших руководств по [началу работы](get-started/index.md) с EF Core.
 
-## <a name="latest-version-ef-core-20"></a>Последняя версия: EF Core 2.0
+## <a name="what-is-new-in-ef-core"></a>Новые возможности в EF Core
 
-Если вы знакомы с EF Core и хотите перейти сразу к сведениям о новой версии.
+Если вы знакомы с EF Core и хотите перейти сразу к сведениям о последних выпусках:
 
-- **[Новые возможности в EF Core 2.0](what-is-new/index.md)**
-- **[Обновление существующих приложений до EF Core 2.0](miscellaneous/1x-2x-upgrade.md)**
+- **[Новые возможности в EF Core 2.1 (сейчас находится на этапе предварительной версии)](xref:core/what-is-new/ef-core-2.1)**
+- **[Новые возможности в EF Core 2.0 (последняя выпущенная версия)](xref:core/what-is-new/ef-core-2.0)**
+- **[Обновление существующих приложений до EF Core 2.0](xref:core/miscellaneous/1x-2x-upgrade)**
+
 
 ## <a name="get-entity-framework-core"></a>Получение Entity Framework Core
 
-[Установите пакет NuGet](https://docs.nuget.org/ndocs/quickstart/use-a-package) для нужного поставщика базы данных. Пример: чтобы установить поставщик SQL Server в кроссплатформенной среде разработки с помощью инструмента `dotnet` в командной строке, введите следующее.
+[Установите пакет NuGet](https://docs.nuget.org/ndocs/quickstart/use-a-package) для нужного поставщика базы данных. Например, чтобы установить поставщик SQL Server в кроссплатформенной среде разработки с помощью инструмента `dotnet` в командной строке, введите следующее.
 
 ``` Console
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
