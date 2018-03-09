@@ -6,11 +6,11 @@ ms.date: 2/23/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 ms.technology: entity-framework-core
 uid: core/providers/index
-ms.openlocfilehash: 520afe85af5a2eacbfc2764fdc0a8addb78c07ab
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: 6311f6a336198b45d307fa8c4318abd2e64e9df0
+ms.sourcegitcommit: fc68321c211aca38f7b9dc3a75677c6ca1b2524b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="database-providers"></a>Поставщики баз данных
 
@@ -71,7 +71,8 @@ install-package provider_package_name
 После установки настройка поставщика осуществляется в `DbContext` с использованием либо метода `OnConfiguring`, либо метода `AddDbContext` (если применяется контейнер внедрения зависимостей). Например, в следующей строке настраивается поставщик SQL Server с использованием переданной строки подключения:
 
 ``` csharp
-  optionsBuilder.UseSqlServer("Server=(localdb)\mssqllocaldb;Database=MyDatabase;Trusted_Connection=True;");
+optionsBuilder.UseSqlServer(
+    "Server=(localdb)\mssqllocaldb;Database=MyDatabase;Trusted_Connection=True;");
 ```  
 
 Поставщики баз данных позволяют расширить возможности EF Core, реализуя уникальные функции для конкретных баз данных. Некоторые концепции являются общими для большинства баз данных и включены в основной набор компонентов EF Core. К ним относятся выражение запросов с помощью LINQ, транзакции и отслеживание изменений объектов при их загрузке из базы данных. Некоторые концепции характерны для определенного поставщика. Например, поставщик SQL Server позволяет [настроить таблицы, оптимизированные для памяти](xref:core/providers/sql-server/memory-optimized-tables) (функция, относящаяся к SQL Server). Другие концепции характерны для класса поставщиков. Например, поставщики EF Core для реляционных баз данных основаны на общей библиотеке `Microsoft.EntityFrameworkCore.Relational`, которая предоставляет API для настройки сопоставлений столбцов и таблиц, ограничения внешнего ключа и т. п. Поставщики обычно распространяются в виде пакетов NuGet.
