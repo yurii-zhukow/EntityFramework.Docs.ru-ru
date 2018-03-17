@@ -6,11 +6,11 @@ ms.date: 2/26/2018
 ms.assetid: 9F4450C5-1A3F-4BB6-AC19-9FAC64292AAD
 ms.technology: entity-framework-core
 uid: core/modeling/query-types
-ms.openlocfilehash: 19a371c65da33e8209cc1ab3423a67c34ddae61e
-ms.sourcegitcommit: fc68321c211aca38f7b9dc3a75677c6ca1b2524b
+ms.openlocfilehash: dfd08cd1c30debddc79740bbf05c39c22e973855
+ms.sourcegitcommit: 01b5cf3b7c983bcced91e7cc4c78391ced2d2caa
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="query-types"></a>Типы запросов
 > [!NOTE]
@@ -20,7 +20,7 @@ ms.lasthandoff: 03/08/2018
 
 Они похожи на типы сущностей в том, что:
 
-- Они являются типами POCO C#, которые добавляются в модель, либо в ```OnModelCreating``` с помощью ```ModelBuilder.Query``` метод, или через свойство DbContext «набор» (для запроса типов такого свойства типизируется как ```DbQuery<T>``` вместо, ```DbSet<T>```).
+- Они являются типами POCO C#, которые добавляются в модель, либо в ```OnModelCreating``` с помощью ```ModelBuilder.Query``` метод, или через свойство DbContext «набор» (для запроса типов такого свойства типизируется как ```DbQuery<T>``` вместо ```DbSet<T>```).
 - Они поддерживают большую часть возможностей же сопоставления как типы обычной сущности. Например, сопоставление наследования, переходы, (см. ниже limitiations) и в реляционных хранилищах, возможность настройки объекты схемы целевой базы данных через ```ToTable```, ```HasColumn``` методов fluent api (или заметок к данным).
 
 Типы запросов отличаются от сущности типов в том, что:
