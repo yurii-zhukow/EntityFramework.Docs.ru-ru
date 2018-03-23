@@ -1,16 +1,16 @@
 ---
-title: "Обновление с EF Core RC2 1.0 до RTM - EF Core"
+title: Обновление с EF Core RC2 1.0 до RTM - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: c3c1940b-136d-45d8-aa4f-cb5040f8980a
 ms.technology: entity-framework-core
 uid: core/miscellaneous/rc2-rtm-upgrade
-ms.openlocfilehash: 7a1d85949a5f9e1ad7efdbf585a608d815e8ce63
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 4bb4c5736708413f6581cad250b089b7bc22a559
+ms.sourcegitcommit: 90139dbd6f485473afda0788a5a314c9aa601ea0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="upgrading-from-ef-core-10-rc2-to-rtm"></a>Обновление до RTM EF Core 1.0 RC2
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/27/2017
 
 *  **AspNetRoles**
 
-    * Имя
+    * name
 
     * NormalizedName
 
@@ -69,6 +69,9 @@ ms.lasthandoff: 10/27/2017
   }
 }
 ```
+
+> [!NOTE]  
+> Начиная с версии 1.0 RTM, [пакета SDK для .NET Core](https://www.microsoft.com/net/download/core) больше не поддерживает `project.json` или при разработке приложений .NET Core с помощью Visual Studio 2015. Корпорация Майкрософт рекомендует [выполнить миграцию project.json в формат csproj](https://docs.microsoft.com/dotnet/articles/core/migration/). Если вы используете Visual Studio, рекомендуется обновить для [2017 г. Visual Studio](https://www.visualstudio.com/downloads/).
 
 ## <a name="uwp-add-binding-redirects"></a>UWP: Добавление переадресации привязок
 
