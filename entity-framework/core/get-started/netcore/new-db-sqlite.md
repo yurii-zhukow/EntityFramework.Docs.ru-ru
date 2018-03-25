@@ -1,26 +1,23 @@
 ---
-title: "Начало работы в .NET Core — новая база данных — Core EF"
+title: Начало работы в .NET Core — новая база данных — Core EF
 author: rick-anderson
 ms.author: riande
 ms.author2: tdykstra
-description: "Начало работы с .NET Core и Entity Framework Core"
+description: Начало работы с .NET Core и Entity Framework Core
 keywords: .NET Core, Entity Framework Core, Visual Studio Code, VS Code, Mac, Linux
 ms.date: 04/05/2017
 ms.assetid: 099d179e-dd7b-4755-8f3c-fcde914bf50b
 ms.technology: entity-framework-core
 uid: core/get-started/netcore/new-db-sqlite
-ms.openlocfilehash: 3becf75e7a513a3aa18c3c2daf628b65327365b0
-ms.sourcegitcommit: 0858f157b806f4a881b94ddbeecf1ece1d53e1e0
+ms.openlocfilehash: 2511dfa3f3262bb12c2058dc1c402b7dcc4c670d
+ms.sourcegitcommit: 90139dbd6f485473afda0788a5a314c9aa601ea0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="getting-started-with-ef-core-on-net-core-console-app-with-a-new-database"></a>Начало работы с EF Core в консольном приложении .NET Core с новой базой данных
 
 В этом пошаговом руководстве вы создадите консольное приложение .NET Core, которое осуществляет базовые операции доступа к базе данных SQLite с помощью Entity Framework Core. Вы примените процесс миграций, чтобы создать базу данных из модели. В разделе [ASP.NET Core - новая база данных](xref:core/get-started/aspnetcore/new-db) описана версия для Visual Studio с использованием ASP.NET Core MVC.
-
-> [!NOTE]  
-> [Пакет SDK для .NET Core](https://www.microsoft.com/net/download/core) больше не поддерживает `project.json` и Visual Studio 2015. Корпорация Майкрософт рекомендует [выполнить миграцию project.json в формат csproj](https://docs.microsoft.com/dotnet/articles/core/migration/). Если вы используете Visual Studio, мы рекомендуем выполнить миграцию на [Visual Studio 2017](https://www.visualstudio.com/downloads/).
 
 > [!TIP]  
 > Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted/NetCore/ConsoleApp.SQLite) из репозитория GitHub.

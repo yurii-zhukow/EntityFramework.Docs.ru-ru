@@ -1,21 +1,18 @@
 ---
-title: "Начало работы в ASP.NET Core — существующая база данных — Core EF"
+title: Начало работы в ASP.NET Core — существующая база данных — Core EF
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 2bc68bea-ff77-4860-bf0b-cf00db6712a0
 ms.technology: entity-framework-core
 uid: core/get-started/aspnetcore/existing-db
-ms.openlocfilehash: afd99d68d2ba25ce58a21dc48d2c7ce27f208807
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+ms.openlocfilehash: db2469d0badd428734425c1f568667f00bef2f4f
+ms.sourcegitcommit: 90139dbd6f485473afda0788a5a314c9aa601ea0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>Начало работы с EF Core в ASP.NET Core с существующей базой данных
-
-> [!IMPORTANT]  
-> [Пакет SDK для .NET Core](https://www.microsoft.com/net/download/core) больше не поддерживает `project.json` и Visual Studio 2015. Всем, кто работает с .NET Core, мы рекомендуем выполнить [миграцию из project.json на csproj](https://docs.microsoft.com/dotnet/articles/core/migration/) и [Visual Studio 2017](https://www.visualstudio.com/downloads/).
 
 В этом пошаговом руководстве вы создадите приложение ASP.NET Core MVC, которое выполняет базовые операции доступа к данным через платформу Entity Framework. Чтобы создать модель Entity Framework для существующей базы данных, мы применим метод реконструирования.
 
@@ -27,9 +24,9 @@ ms.lasthandoff: 11/15/2017
 Для прохождения этого пошагового руководства нужны следующие элементы:
 
 * [Visual Studio 2017 15.3](https://www.visualstudio.com/downloads/) с такими рабочими нагрузками:
-  * **ASP.NET и веб-разработка** в разделе **Интернет и облако**;
-  * **кроссплатформенная разработка .NET Core** (в разделе **Другие наборы инструментов**).
-* [пакет SDK для .NET Core 2.0](https://www.microsoft.com/net/download/core);
+  * **ASP.NET и веб-разработка** в разделе **Интернет и облако**)
+  * **Кроссплатформенная разработка .NET Core** (в разделе **Другие наборы инструментов**)
+* [пакет SDK для .NET Core 2.0](https://www.microsoft.com/net/download/core).
 * [база данных для ведения блогов](#blogging-database).
 
 ### <a name="blogging-database"></a>База данных для ведения блогов
@@ -93,7 +90,7 @@ Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Conn
 Если появляется сообщение об ошибке `The term 'Scaffold-DbContext' is not recognized as the name of a cmdlet`, закройте и снова откройте Visual Studio.
 
 > [!TIP]  
-> Вы можете выбрать, для каких таблиц нужно создать сущности, указав в команде выше аргумент `-Tables`. Пример: `-Tables Blog,Post`.
+> Вы можете выбрать, для каких таблиц нужно создать сущности, указав в команде выше аргумент `-Tables`. Например, `-Tables Blog,Post`.
 
 Процесс реконструирования создает классы сущностей (`Blog.cs` & `Post.cs`) и производный контекст (`BloggingContext.cs`) на основе схемы существующей базы данных.
 
@@ -144,7 +141,7 @@ public partial class BloggingContext : DbContext
 
 В ASP.NET Core настройка обычно выполняется в **файле Startup.cs**. Мы тоже применим этот вариант, а для этого перенесем в **Startup.cs** конфигурацию поставщика базы данных.
 
-* Откройте `Models\BloggingContext.cs`.
+* Откройте файл `Models\BloggingContext.cs`.
 * Удалите метод `OnConfiguring(...)`.
 
 ``` csharp
@@ -202,6 +199,6 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 * Щелкните **Создать**.
 * Введите **URL-адрес** для нового блога и щелкните **Создать**.
 
-![image](_static/create.png)
+![изображение](_static/create.png)
 
-![image](_static/index-existing-db.png)
+![изображение](_static/index-existing-db.png)
