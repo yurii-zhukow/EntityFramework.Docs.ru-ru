@@ -1,5 +1,5 @@
 ---
-title: "Миграции — EF Core"
+title: Миграции — EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 10/30/2017
