@@ -1,16 +1,16 @@
 ---
-title: "Операции - EF Core"
+title: Операции - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: d3e6515b-8181-482c-a790-c4a6778748c1
 ms.technology: entity-framework-core
 uid: core/saving/transactions
-ms.openlocfilehash: 2dda7b7d58ae058fc2aa89fe16fbf46adc8c6bdc
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: fe4c0d6ad7ccb2e97dc94fbf2eb26a41e7fbcb19
+ms.sourcegitcommit: 7113e8675f26cbb546200824512078bf360225df
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-transactions"></a>Использование транзакций
 
@@ -133,4 +133,4 @@ public class BloggingContext : DbContext
    > [!IMPORTANT]  
    > Рекомендуется проверить, что API правильно работает с поставщиком перед полагаться на него для управления транзакциями. Вы, рекомендуется связаться программы обслуживания поставщика базы данных, если это не так. 
 
-2. Начиная с версии 2.1, реализация System.Transactions в .NET Core отсутствует поддержка распределенных транзакций, поэтому нельзя использовать `TransactionScope` или `CommitableTransaction`для координации транзакций через несколько диспетчеров ресурсов. 
+2. Начиная с версии 2.1, реализация System.Transactions в .NET Core отсутствует поддержка распределенных транзакций, поэтому нельзя использовать `TransactionScope` или `CommitableTransaction` для координации транзакций через несколько диспетчеров ресурсов. 
