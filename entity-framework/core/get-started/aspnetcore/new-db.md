@@ -1,5 +1,5 @@
 ---
-title: "Начало работы в ASP.NET Core — новая база данных — Core EF"
+title: Начало работы в ASP.NET Core — новая база данных — Core EF
 author: rick-anderson
 ms.author: riande
 ms.author2: tdykstra
@@ -20,8 +20,8 @@ ms.lasthandoff: 02/12/2018
 
 Для работы с этим руководством вам потребуется следующее:
 * [Visual Studio 2017 15.3](https://www.visualstudio.com/downloads/) с такими рабочими нагрузками:
-  * **ASP.NET и веб-разработка** в разделе **Интернет и облако**)
-  * **Кроссплатформенная разработка .NET Core** (в разделе **Другие наборы инструментов**)
+  * **ASP.NET и веб-разработка** (в разделе **Интернет и облако**);
+  * **Кроссплатформенная разработка .NET Core** (в разделе **Другие наборы инструментов**);
 * [пакет SDK для .NET Core 2.0](https://www.microsoft.com/net/download/core).
 
 > [!TIP]  
@@ -43,19 +43,19 @@ ms.lasthandoff: 02/12/2018
 
 ## <a name="install-entity-framework-core"></a>Установка Entity Framework Core
 
-Установите пакеты для поставщиков базы данных EF Core, с которыми вы будете работать. В этом пошаговом руководстве используется SQL Server. Список доступных поставщиков вы найдете в разделе [Database Providers](../../providers/index.md) (Поставщики базы данных).
+Установите пакеты для поставщиков базы данных EF Core, с которыми вы будете работать. В этом пошаговом руководстве используется SQL Server. Список доступных поставщиков вы найдете в разделе [Поставщики баз данных](../../providers/index.md).
 
 * Последовательно выберите пункты **Средства > Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
 
-* Запуск `Install-Package Microsoft.EntityFrameworkCore.SqlServer`
+* Запустите `Install-Package Microsoft.EntityFrameworkCore.SqlServer`.
 
 Нам понадобятся некоторые средства платформы Entity Framework, чтобы создать базу данных из модели EF Core. Поэтому мы установим пакет средств:
 
-* Запуск `Install-Package Microsoft.EntityFrameworkCore.Tools`
+* Запустите `Install-Package Microsoft.EntityFrameworkCore.Tools`.
 
 Позднее мы применим средства формирования шаблонов для ASP.NET Core, чтобы создать контроллеры и представления. Поэтому мы установим этот пакет разработки:
 
-* Запуск `Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design`
+* Запустите `Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design`.
 
 ## <a name="create-the-model"></a>Создание модели
 
