@@ -6,11 +6,11 @@ ms.date: 2/23/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 ms.technology: entity-framework-core
 uid: core/providers/index
-ms.openlocfilehash: d7313451f324a5e26ae327478996861e31364e7d
-ms.sourcegitcommit: 89edee21606083d01154766e0c4249cec38957f7
+ms.openlocfilehash: 6e39ded6e45f616e2080a23efff939e74de133cf
+ms.sourcegitcommit: 4aaf6049521019c13594076fcd776feb8cd879c6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/22/2018
+ms.lasthandoff: 04/09/2018
 ---
 # <a name="database-providers"></a>Поставщики баз данных
 

@@ -1,23 +1,23 @@
 ---
-title: "Сохранение связанных данных - EF Core"
+title: Сохранение связанных данных - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 07b6680f-ffcf-412c-9857-f997486b386c
 ms.technology: entity-framework-core
 uid: core/saving/related-data
-ms.openlocfilehash: 078879163002cb66e0f0f439415789963181ec15
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: b0ed25267c85e82db18d8a89693b6040db7e4b34
+ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="saving-related-data"></a>Сохранение связанных данных
 
 В дополнение к изолированной сущности, вы также можете использовать связей, определенных в модели.
 
 > [!TIP]  
-> Можно просмотреть в этой статье [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/RelatedData/) на GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/RelatedData/) из репозитория GitHub.
 
 ## <a name="adding-a-graph-of-new-entities"></a>Добавление графика новых сущностей
 
@@ -26,6 +26,9 @@ ms.lasthandoff: 10/27/2017
 В следующем примере блогов и три связанных сообщений все вставляются в базу данных. Обнаружены сообщения и добавлен, так как они доступны через `Blog.Posts` свойство навигации.
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/RelatedData/Sample.cs#AddingGraphOfEntities)]
+
+> [!TIP]  
+> Свойство EntityEntry.State используется для задания состояния одной сущности. Например, `context.Entry(blog).State = EntityState.Modified`.
 
 ## <a name="adding-a-related-entity"></a>Добавление связанной сущности
 
