@@ -1,22 +1,24 @@
 ---
-title: "Краткий обзор — EF Core"
+title: Краткий обзор — EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 ms.technology: entity-framework-core
 uid: core/index
-ms.openlocfilehash: c76b4cd318151b502c549fa0a82800f9987ed94c
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: f9aac91545b97e56686e3a8d2eb9e83c849587d9
+ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="entity-framework-core-quick-overview"></a>Краткий обзор Entity Framework Core
 
 Entity Framework (EF) — это упрощенная, расширяемая и кроссплатформенная версия популярной технологии для доступа к данным Entity Framework.
 
-EF Core является объектно-реляционным модулем сопоставления (O/RM), который позволяет разработчикам .NET работать с базой данных, используя объекты .NET. Это устраняет необходимость в большей части кода для доступа к данным, который разработчикам обычно приходится писать. EF Core поддерживает множество систем баз данных. Дополнительные сведения см. в разделе [Поставщики баз данных](providers/index.md).
+EF Core может использоваться как объектно реляционный модуль сопоставления (O/RM), позволяя разработчикам .NET работать с базой данных с помощью объектов .NET и устраняя необходимость в написании большей части кода, требуемого для доступа к данным. 
+
+EF Core поддерживает множество систем баз данных. Дополнительные сведения см. в разделе [Поставщики баз данных](providers/index.md).
 
 Если вы хотите учиться, создавая код, рекомендуем воспользоваться одним из наших руководств по [началу работы](get-started/index.md) с EF Core.
 
