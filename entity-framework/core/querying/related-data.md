@@ -1,16 +1,16 @@
 ---
-title: "Выполняется загрузка связанных данных — основной EF"
+title: Выполняется загрузка связанных данных — основной EF
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 ms.technology: entity-framework-core
 uid: core/querying/related-data
-ms.openlocfilehash: 0d7705e0e5368435536e98d319c853ea8c732643
-ms.sourcegitcommit: 8f3be0a2a394253efb653388ec66bda964e5ee1b
+ms.openlocfilehash: 5f1fb9376300739ab0e306d9d60e7ec71aa2d2e7
+ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="loading-related-data"></a>Загрузка связанных данных
 
@@ -98,19 +98,19 @@ Entity Framework Core позволяет использовать свойств
 Содержимое `School` навигации всех людей, имеющих студенты могут загружаться заранее с помощью нескольких шаблонов:
 
 - Использование функции cast
-```Csharp
-context.People.Include(person => ((Student)person).School).ToList()
-```
+  ```Csharp
+  context.People.Include(person => ((Student)person).School).ToList()
+  ```
 
 - с помощью `as` оператор
-```Csharp
-context.People.Include(person => (person as Student).School).ToList()
-```
+  ```Csharp
+  context.People.Include(person => (person as Student).School).ToList()
+  ```
 
 - с помощью перегрузки `Include` , принимающий параметр типа `string`
-```Csharp
-context.People.Include("Student").ToList()
-```
+  ```Csharp
+  context.People.Include("Student").ToList()
+  ```
 
 ### <a name="ignored-includes"></a>Учитывается включает
 
