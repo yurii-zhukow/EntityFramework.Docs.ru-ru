@@ -1,5 +1,5 @@
 ---
-title: "Начало работы в .NET Framework — новая база данных — Core EF"
+title: Начало работы в .NET Framework — новая база данных — Core EF
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -7,10 +7,10 @@ ms.assetid: 52b69727-ded9-4a7b-b8d5-73f3acfbbad3
 ms.technology: entity-framework-core
 uid: core/get-started/full-dotnet/new-db
 ms.openlocfilehash: bd7054c6834ae11bfdc352d63654e4304771e432
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="getting-started-with-ef-core-on-net-framework-with-a-new-database"></a>Начало работы с EF Core в .NET Framework с новой базой данных
 
@@ -23,15 +23,15 @@ ms.lasthandoff: 10/27/2017
 
 Для прохождения этого пошагового руководства нужны следующие элементы:
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/);
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/)
 
 * [последняя версия диспетчера пакетов NuGet](https://dist.nuget.org/index.html);
 
-* [последняя версия Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell).
+* [последняя версия Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell);
 
 ## <a name="create-a-new-project"></a>Создание нового проекта
 
-* Откройте Visual Studio.
+* Открытие Visual Studio
 
 * Последовательно выберите "Файл" > "Создать" > "Проект".
 
@@ -49,11 +49,11 @@ ms.lasthandoff: 10/27/2017
 
 * Последовательно выберите пункты "Средства" -> "Диспетчер пакетов NuGet" -> "Консоль диспетчера пакетов".
 
-* Выполните `Install-Package Microsoft.EntityFrameworkCore.SqlServer`.
+* Запуск `Install-Package Microsoft.EntityFrameworkCore.SqlServer`
 
 Далее в этом пошаговом руководстве мы будем использовать некоторые средства платформы Entity Framework для обслуживания базы данных. Поэтому мы установим пакет средств:
 
-* Выполните `Install-Package Microsoft.EntityFrameworkCore.Tools`.
+* Запуск `Install-Package Microsoft.EntityFrameworkCore.Tools`
 
 ## <a name="create-your-model"></a>Создание модели
 
@@ -161,4 +161,4 @@ namespace EFGetStarted.ConsoleApp
 
 Вы увидите, как в базе данных создается один блог, а затем в консоль выводятся сведения обо всех блогах.
 
-![image](_static/output-new-db.png)
+![изображение](_static/output-new-db.png)

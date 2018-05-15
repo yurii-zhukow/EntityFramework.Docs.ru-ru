@@ -1,5 +1,5 @@
 ---
-title: "Начало работы в .NET Framework — существующая база данных — EF Core"
+title: Начало работы в .NET Framework — существующая база данных — EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -7,10 +7,10 @@ ms.assetid: a29a3d97-b2d8-4d33-9475-40ac67b3b2c6
 ms.technology: entity-framework-core
 uid: core/get-started/full-dotnet/existing-db
 ms.openlocfilehash: 3cd69109e3cf8dbc103f9eea6e2553df17f29a98
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="getting-started-with-ef-core-on-net-framework-with-an-existing-database"></a>Начало работы с EF Core в .NET Framework с существующей базой данных
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/15/2017
 > [!TIP]  
 > Если вы уже создали эту базу данных **для ведения блогов**, работая с другим руководством, можете пропустить эти шаги.
 
-* Откройте Visual Studio.
+* Открытие Visual Studio
 
 * Выберите "Инструменты" -> "Подключиться к базе данных...".
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="create-a-new-project"></a>Создание нового проекта
 
-* Откройте Visual Studio.
+* Открытие Visual Studio
 
 * Последовательно выберите "Файл" > "Создать" > "Проект".
 
@@ -78,11 +78,11 @@ ms.lasthandoff: 11/15/2017
 
 * Последовательно выберите пункты "Средства" -> "Диспетчер пакетов NuGet" -> "Консоль диспетчера пакетов".
 
-* Выполните `Install-Package Microsoft.EntityFrameworkCore.SqlServer`.
+* Запуск `Install-Package Microsoft.EntityFrameworkCore.SqlServer`
 
 Чтобы применить реконструирование из существующей базы данных, нам нужно установить еще несколько пакетов.
 
-* Выполните `Install-Package Microsoft.EntityFrameworkCore.Tools`.
+* Запуск `Install-Package Microsoft.EntityFrameworkCore.Tools`
 
 ## <a name="reverse-engineer-your-model"></a>Реконструирование модели
 
@@ -198,4 +198,4 @@ namespace EFGetStarted.ConsoleApp.ExistingDb
 
 Вы увидите, как в базе данных создается один блог, а затем в консоль выводятся сведения обо всех блогах.
 
-![image](_static/output-existing-db.png)
+![изображение](_static/output-existing-db.png)

@@ -8,11 +8,11 @@ ms.topic: get-started-article
 ms.assetid: e153627f-f132-4c11-b13c-6c9a607addce
 ms.technology: entity-framework-core
 uid: core/get-started/aspnetcore/new-db
-ms.openlocfilehash: f6ed19d3c5d2ae8d1f5756558e50c1f0dddd2f07
-ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
+ms.openlocfilehash: 80477ca57b8b3df6de8ba3595c9056c6b8412040
+ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-a-new-database"></a>Начало работы с EF Core в ASP.NET Core с новой базой данных
 
@@ -20,8 +20,8 @@ ms.lasthandoff: 02/12/2018
 
 Для работы с этим руководством вам потребуется следующее:
 * [Visual Studio 2017 15.3](https://www.visualstudio.com/downloads/) с такими рабочими нагрузками:
-  * **ASP.NET и веб-разработка** (в разделе **Интернет и облако**);
-  * **Кроссплатформенная разработка .NET Core** (в разделе **Другие наборы инструментов**);
+  * **ASP.NET и веб-разработка** в разделе **Интернет и облако**)
+  * **Кроссплатформенная разработка .NET Core** (в разделе **Другие наборы инструментов**)
 * [пакет SDK для .NET Core 2.0](https://www.microsoft.com/net/download/core).
 
 > [!TIP]  
@@ -43,19 +43,19 @@ ms.lasthandoff: 02/12/2018
 
 ## <a name="install-entity-framework-core"></a>Установка Entity Framework Core
 
-Установите пакеты для поставщиков базы данных EF Core, с которыми вы будете работать. В этом пошаговом руководстве используется SQL Server. Список доступных поставщиков вы найдете в разделе [Поставщики баз данных](../../providers/index.md).
+Установите пакеты для поставщиков базы данных EF Core, с которыми вы будете работать. В этом пошаговом руководстве используется SQL Server. Список доступных поставщиков вы найдете в разделе [Database Providers](../../providers/index.md) (Поставщики базы данных).
 
 * Последовательно выберите пункты **Средства > Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
 
-* Запустите `Install-Package Microsoft.EntityFrameworkCore.SqlServer`.
+* Запуск `Install-Package Microsoft.EntityFrameworkCore.SqlServer`
 
 Нам понадобятся некоторые средства платформы Entity Framework, чтобы создать базу данных из модели EF Core. Поэтому мы установим пакет средств:
 
-* Запустите `Install-Package Microsoft.EntityFrameworkCore.Tools`.
+* Запуск `Install-Package Microsoft.EntityFrameworkCore.Tools`
 
 Позднее мы применим средства формирования шаблонов для ASP.NET Core, чтобы создать контроллеры и представления. Поэтому мы установим этот пакет разработки:
 
-* Запустите `Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design`.
+* Запуск `Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design`
 
 ## <a name="create-the-model"></a>Создание модели
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 02/12/2018
 * Введите имя класса **Model.cs** и щелкните **ОК**.
 * Замените все содержимое этого файла следующим кодом:
 
- [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Models/Model.cs)]
+  [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Models/Model.cs)]
 
 Примечание. В реальном приложении каждый класс из модели обычно размещается в отдельном файле. В этом руководстве мы для простоты заносим все классы в один файл.
 
@@ -78,13 +78,13 @@ ms.lasthandoff: 02/12/2018
 * Откройте файл **Startup.cs**.
 * Добавьте в него следующие инструкции `using`:
 
- [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Startup.cs#AddedUsings)]
+  [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Startup.cs#AddedUsings)]
 
 Добавьте метод `AddDbContext`, чтобы зарегистрировать нашу службу:
 
 * Добавьте следующий код в метод `ConfigureServices`:
 
- [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Startup.cs?name=ConfigureServices&highlight=7-8)]
+  [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Startup.cs?name=ConfigureServices&highlight=7-8)]
 
 Примечание. В реальном приложении строка подключения обычно помещается в файл конфигурации. Здесь мы для простоты определяем ее прямо в коде. Дополнительные сведения вы найдете в статье [Connection Strings](../../miscellaneous/connection-strings.md) (Строки подключения).
 
