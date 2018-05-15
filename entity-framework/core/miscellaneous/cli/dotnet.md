@@ -4,11 +4,11 @@ author: bricelam
 ms.author: bricelam
 ms.date: 11/6/2017
 ms.technology: entity-framework-core
-ms.openlocfilehash: 396d31c9d0c0f47d299f49e82e557ed29b8420e7
-ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
+ms.openlocfilehash: d053d53bd50d2e7d16223c5b4e4009c9bb2298bb
+ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 <a name="ef-core-net-command-line-tools"></a>Средства командной строки .NET Core EF
 ===============================
@@ -19,14 +19,18 @@ ms.lasthandoff: 04/16/2018
 
 <a name="installing-the-tools"></a>Установка инструментов
 --------------------
-Установка средств командной строки .NET Core EF, выполнив следующие действия:
+> [!NOTE]
+> .NET Core SDK версии 2.1.300 и включает новую **dotnet ef** команды, которые совместимы с EF Core 2.0 и более поздних версиях. Таким образом, при использовании последние версии пакета SDK .NET Core и выполнения EF Core установки не требуется и можно пропустить оставшейся части этого раздела.
+>
+> С другой стороны **dotnet ef** средство автономной версии пакета SDK для .NET Core 2.1.300 и более поздних не совместим с EF основных версий 1.0 и 1.1. Прежде чем можно работать с проекта, использующего более ранних версиях EF ядра на компьютере с .NET Core SDK 2.1.300 или более новая версия, также необходимо установить версию 2.1.200 или более ранней версии пакета SDK и настроить приложение на использование этого старую версию, изменив его  [global.json](https://docs.microsoft.com/en-us/dotnet/core/tools/global-json) файла. Этот файл обычно включаются в нужном каталоге решений (один выше проекта). Затем можно перейти с инструкцией installlation ниже.
+
+Для предыдущих версий пакета SDK для .NET Core можно установить программы командной строки .NET Core EF, выполнив следующие действия:
 
 1. Измените файл проекта и добавьте Microsoft.EntityFrameworkCore.Tools.DotNet как элемент DotNetCliToolReference (см. ниже)
 2. Выполните следующие команды:
 
        dotnet add package Microsoft.EntityFrameworkCore.Design
        dotnet restore
-
 
 Итоговый проект должен выглядеть примерно следующим образом:
 
