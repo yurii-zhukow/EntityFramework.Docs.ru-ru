@@ -1,25 +1,26 @@
 ---
-title: "Ведение журналов - EF Core"
+title: Ведение журналов - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: f6e35c6d-45b7-4258-be1d-87c1bb67438d
 ms.technology: entity-framework-core
 uid: core/miscellaneous/logging
-ms.openlocfilehash: 807560e563eddfb72d4286353b1403a0d2e2a441
-ms.sourcegitcommit: 5367516f063cb42804ec92c31cdf76322554f2b5
+ms.openlocfilehash: 60d76bf3360eb47cdd9836494c1f135d1005a215
+ms.sourcegitcommit: 3adf1267be92effc3c9daa893906a7f36834204f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35232140"
 ---
-# <a name="logging"></a>Ведение журналов
+# <a name="logging"></a>Ведение журнала
 
 > [!TIP]  
-> Можно просмотреть в этой статье [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Logging) на GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Logging) из репозитория GitHub.
 
 ## <a name="aspnet-core-applications"></a>Приложения ASP.NET Core
 
-EF Core автоматически интегрируется с mechanims ведения журнала для ASP.NET Core всякий раз, когда `AddDbContext` или `AddDbContextPool` используется. Таким образом, при использовании ASP.NET Core, ведения журналов должен настраиваться как описано в [документации ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging?tabs=aspnetcore2x).
+EF Core автоматически интегрируется с механизма ведения журнала для ASP.NET Core всякий раз, когда `AddDbContext` или `AddDbContextPool` используется. Таким образом, при использовании ASP.NET Core, ведения журналов должен настраиваться как описано в [документации ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging?tabs=aspnetcore2x).
 
 ## <a name="other-applications"></a>Другие приложения
 
@@ -36,7 +37,7 @@ Core EF, ведение журнала в настоящее время треб
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContext.cs#DefineLoggerFactory)]
 
-Это одноэлементный/глобальный экземпляр затем должна быть зарегистрирована с основными EF на `DbContextOptionsBuilder`. Например:
+Это одноэлементный/глобальный экземпляр затем должна быть зарегистрирована с основными EF на `DbContextOptionsBuilder`. Пример:
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContext.cs#RegisterLoggerFactory)]
 
@@ -45,7 +46,7 @@ Core EF, ведение журнала в настоящее время треб
 
 ## <a name="filtering-what-is-logged"></a>Фильтрация регистрируемых сведений
 
-Чтобы отфильтровать регистрируемых проще всего настроить его при регистрации ILoggerProvider. Например:
+Чтобы отфильтровать регистрируемых проще всего настроить его при регистрации ILoggerProvider. Пример:
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContextWithFiltering.cs#DefineLoggerFactory)]
 
