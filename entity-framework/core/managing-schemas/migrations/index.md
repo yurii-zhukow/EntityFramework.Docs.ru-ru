@@ -5,11 +5,12 @@ ms.author: bricelam
 ms.date: 10/30/2017
 ms.technology: entity-framework-core
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: 24fbe344eba9b99929d905ac2b9e49c68a1a4323
-ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
+ms.openlocfilehash: dd164125c053497af94773011127853ad10d27a6
+ms.sourcegitcommit: 72e59e6af86b568653e1b29727529dfd7f65d312
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34754513"
 ---
 <a name="migrations"></a>Миграции
 ==========
@@ -126,7 +127,7 @@ dotnet ef migrations remove
 
 <a name="reverting-a-migration"></a>Отмена миграции
 ---------------------
-Если вы уже применили одну миграцию для базы данных или несколько и хотите отменить их, можно использовать ту же команду, что и для применения миграций, но указав имя миграции, к которой надо откатить изменения.
+Если вы уже применили одну миграцию для базы данных или несколько и хотите отменить их, можно использовать ту же команду, что и для применения миграций, но указав имя отменяемой миграции.
 
 ``` powershell
 Update-Database LastGoodMigration
@@ -177,7 +178,7 @@ myDbContext.Database.Migrate();
 ```
 
 > [!WARNING]
-> Не вызывайте `EnsureCreated()` перед `Migrate()`. `EnsureCreated()`обходит миграции для создания схемы и вызывает сбой `Migrate()`.
+> Не вызывайте `EnsureCreated()` перед `Migrate()`. `EnsureCreated()` обходит миграции, чтобы создать схему, что приводит к сбою `Migrate()`.
 
 > [!NOTE]
 > Этот метод основан на службе `IMigrator`, которую можно применять в более сложных сценариях. Для доступа к нему используйте `DbContext.GetService<IMigrator>()`.

@@ -14,8 +14,8 @@
 
 ### [Новые возможности в EF Core](core/what-is-new/index.md)
 #### [Стратегия развития EF Core](core/what-is-new/roadmap.md)
-#### [EF Core 2.1 (находится на стадии предварительной версии)](core/what-is-new/ef-core-2.1.md)
-#### [EF Core 2.0 (последний выпуск)](core/what-is-new/ef-core-2.0.md)
+#### [EF Core 2.1](core/what-is-new/ef-core-2.1.md)
+#### [EF Core 2.0](core/what-is-new/ef-core-2.0.md)
 #### [EF Core 1.1](core/what-is-new/ef-core-1.1.md)
 #### [EF Core 1.0](core/what-is-new/ef-core-1.0.md)
 
