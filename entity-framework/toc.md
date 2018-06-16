@@ -127,7 +127,7 @@
 #### [Обновление с версии 1.0 релиз-кандидата 2 до RTM](core/miscellaneous/rc2-rtm-upgrade.md)
 #### [Обновление до EF Core 2.0](core/miscellaneous/1x-2x-upgrade.md)
 
-### [⤤ Справочник по API](https://docs.microsoft.com/dotnet/api/?view=efcore-2.0)
+### [⤤ Справочник по API](https://docs.microsoft.com/dotnet/api/?view=efcore-2.1)
 
 ## [Entity Framework 6](ef6/index.md)
 ### [⤤ Документация](http://msdn.com/data/ef)
