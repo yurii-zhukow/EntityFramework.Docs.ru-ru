@@ -1,5 +1,5 @@
 ---
-title: "Создание и удаление API-интерфейсов - основной EF"
+title: "\U0001F527Создание и удаление API-интерфейсов - основной EF"
 author: bricelam
 ms.author: bricelam
 ms.date: 11/10/2017
@@ -9,6 +9,7 @@ ms.sourcegitcommit: b467368cc350e6059fdc0949e042a41cb11e61d9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "26053824"
 ---
 # <a name="-create-and-drop-apis"></a><span data-ttu-id="f27ca-102">🔧Создание и удаление API-интерфейсы</span><span class="sxs-lookup"><span data-stu-id="f27ca-102">🔧 Create and Drop APIs</span></span>
 

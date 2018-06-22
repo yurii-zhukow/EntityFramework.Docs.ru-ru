@@ -1,5 +1,5 @@
 ---
-title: "Переключаясь между несколько моделей с тем же типом DbContext - EF Core"
+title: Переключаясь между несколько моделей с тем же типом DbContext - EF Core
 author: AndriySvyryd
 ms.author: divega
 ms.date: 12/10/2017
@@ -11,6 +11,7 @@ ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29678726"
 ---
 # <a name="alternating-between-multiple-models-with-the-same-dbcontext-type"></a><span data-ttu-id="fc0ef-102">Переключаясь между несколько моделей с тем же типом DbContext</span><span class="sxs-lookup"><span data-stu-id="fc0ef-102">Alternating between multiple models with the same DbContext type</span></span>
 

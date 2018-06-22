@@ -1,5 +1,5 @@
 ---
-title: "Альтернативные ключи - EF Core"
+title: Альтернативные ключи - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052474"
 ---
 # <a name="alternate-keys"></a><span data-ttu-id="0ca61-102">Альтернативные ключи</span><span class="sxs-lookup"><span data-stu-id="0ca61-102">Alternate Keys</span></span>
 

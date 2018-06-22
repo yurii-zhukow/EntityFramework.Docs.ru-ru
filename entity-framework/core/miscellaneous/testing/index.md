@@ -1,5 +1,5 @@
 ---
-title: "Тестирование компонентов с использованием Entity Framework — EF Core"
+title: Тестирование компонентов с использованием Entity Framework — EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26048866"
 ---
 # <a name="testing"></a><span data-ttu-id="85872-102">Тестирование</span><span class="sxs-lookup"><span data-stu-id="85872-102">Testing</span></span>
 

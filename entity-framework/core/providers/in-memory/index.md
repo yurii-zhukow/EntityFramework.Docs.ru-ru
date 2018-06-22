@@ -1,5 +1,5 @@
 ---
-title: "Поставщик выполняющейся в памяти базы данных — EF Core"
+title: Поставщик выполняющейся в памяти базы данных — EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29678990"
 ---
 # <a name="ef-core-in-memory-database-provider"></a><span data-ttu-id="5ad70-102">Поставщик выполняющейся в памяти базы данных EF Core</span><span class="sxs-lookup"><span data-stu-id="5ad70-102">EF Core In-Memory Database Provider</span></span>
 

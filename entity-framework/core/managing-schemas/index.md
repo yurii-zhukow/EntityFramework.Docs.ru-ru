@@ -1,5 +1,5 @@
 ---
-title: "Управление схемами баз данных — EF Core"
+title: Управление схемами баз данных — EF Core
 author: bricelam
 ms.author: divega
 ms.date: 10/30/2017
@@ -9,6 +9,7 @@ ms.sourcegitcommit: b467368cc350e6059fdc0949e042a41cb11e61d9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "26049386"
 ---
 # <a name="managing-database-schemas"></a><span data-ttu-id="cd84c-102">Управление схемами баз данных</span><span class="sxs-lookup"><span data-stu-id="cd84c-102">Managing Database Schemas</span></span>
 <span data-ttu-id="cd84c-103">EF Core предоставляет два основных способа синхронизации схемы базы данных и модели EF Core. Чтобы выбрать один из них, определите, что является истинным — ваша схема базы данных или модель EF Core.</span><span class="sxs-lookup"><span data-stu-id="cd84c-103">EF Core provides two primary ways of keeping your EF Core model and database schema in sync. To choose between the two, decide whether your EF Core model or the database schema is the source of truth.</span></span>

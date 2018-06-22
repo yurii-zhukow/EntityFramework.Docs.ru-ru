@@ -11,6 +11,7 @@ ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "31812642"
 ---
 # <a name="generated-values"></a><span data-ttu-id="2821a-102">Формирование значений</span><span class="sxs-lookup"><span data-stu-id="2821a-102">Generated Values</span></span>
 

@@ -1,5 +1,5 @@
 ---
-title: "Начало работы в UWP — новая база данных — Core EF"
+title: Начало работы в UWP — новая база данных — Core EF
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -12,6 +12,7 @@ ms.sourcegitcommit: 96324e58c02b97277395ed43173bf13ac80d2012
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26049837"
 ---
 # <a name="getting-started-with-ef-core-on-universal-windows-platform-uwp-with-a-new-database"></a><span data-ttu-id="86fd3-102">Начало работы с EF Core на универсальной платформе Windows (UWP) с новой базой данных</span><span class="sxs-lookup"><span data-stu-id="86fd3-102">Getting Started with EF Core on Universal Windows Platform (UWP) with a New Database</span></span>
 

@@ -1,5 +1,5 @@
 ---
-title: "Индексы - EF Core"
+title: Индексы - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29679003"
 ---
 # <a name="indexes"></a><span data-ttu-id="d734c-102">Индексы</span><span class="sxs-lookup"><span data-stu-id="d734c-102">Indexes</span></span>
 

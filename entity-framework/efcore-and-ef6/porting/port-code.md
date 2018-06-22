@@ -1,5 +1,5 @@
 ---
-title: "Перенос приложений из EF6 в основные EF – перенос модель на основе кода"
+title: Перенос приложений из EF6 в основные EF – перенос модель на основе кода
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -10,6 +10,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052954"
 ---
 # <a name="porting-an-ef6-code-based-model-to-ef-core"></a><span data-ttu-id="c7139-102">Перенос EF6 модели на основе кода EF ядра</span><span class="sxs-lookup"><span data-stu-id="c7139-102">Porting an EF6 Code-Based Model to EF Core</span></span>
 

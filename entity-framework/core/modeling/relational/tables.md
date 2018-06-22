@@ -1,5 +1,5 @@
 ---
-title: "Сопоставление таблиц - EF Core"
+title: Сопоставление таблиц - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052734"
 ---
 # <a name="table-mapping"></a><span data-ttu-id="7a8e9-102">Сопоставление таблиц</span><span class="sxs-lookup"><span data-stu-id="7a8e9-102">Table Mapping</span></span>
 
