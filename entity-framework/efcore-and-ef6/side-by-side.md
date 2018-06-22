@@ -1,5 +1,5 @@
 ---
-title: "EF6 и Core EF — параллельное использование в одном приложении"
+title: EF6 и Core EF — параллельное использование в одном приложении
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -10,6 +10,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26054828"
 ---
 # <a name="using-ef-core-and-ef6-in-the-same-application"></a>Использование EF Core и EF6 в одном приложении
 

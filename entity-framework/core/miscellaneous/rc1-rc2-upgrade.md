@@ -1,5 +1,5 @@
 ---
-title: "Обновление до версии-кандидата 2 - EF Core EF Core 1.0 RC1"
+title: Обновление до версии-кандидата 2 - EF Core EF Core 1.0 RC1
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29678631"
 ---
 # <a name="upgrading-from-ef-core-10-rc1-to-10-rc2"></a>Обновление до версии 1.0 RC2 EF Core 1.0 RC1
 
