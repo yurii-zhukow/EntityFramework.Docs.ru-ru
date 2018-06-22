@@ -1,5 +1,5 @@
 ---
-title: "Устойчивость подключений - EF Core"
+title: Устойчивость подключений - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 11/15/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 860ec5d047342fbc4063a0de881c9861cc1f8813
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/05/2017
+ms.locfileid: "26053534"
 ---
 # <a name="connection-resiliency"></a>Устойчивость подключений
 
