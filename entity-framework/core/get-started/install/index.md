@@ -1,5 +1,5 @@
 ---
-title: "Установка EF Core"
+title: Установка EF Core
 author: divega
 ms.author: divega
 ms.date: 08/06/2017
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "26049246"
 ---
 # <a name="installing-ef-core"></a><span data-ttu-id="98a12-102">Установка EF Core</span><span class="sxs-lookup"><span data-stu-id="98a12-102">Installing EF Core</span></span>
 

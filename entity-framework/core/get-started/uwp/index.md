@@ -1,5 +1,5 @@
 ---
-title: "Приступая к работе с UWP — EF Core"
+title: Приступая к работе с UWP — EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: c72d85805db0aa95f980514a18381fdc5e17c786
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26049436"
 ---
 # <a name="getting-started-with-ef-core-on-universal-windows-platform-uwp"></a><span data-ttu-id="aa752-102">Начало работы с EF Core на универсальной платформе Windows (UWP)</span><span class="sxs-lookup"><span data-stu-id="aa752-102">Getting Started with EF Core on Universal Windows Platform (UWP)</span></span>
 

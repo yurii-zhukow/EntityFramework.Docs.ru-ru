@@ -1,5 +1,5 @@
 ---
-title: "Обязательные и необязательные свойства - EF Core"
+title: Обязательные и необязательные свойства - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052854"
 ---
 # <a name="required-and-optional-properties"></a><span data-ttu-id="db666-102">Обязательные и необязательные свойства</span><span class="sxs-lookup"><span data-stu-id="db666-102">Required and Optional Properties</span></span>
 

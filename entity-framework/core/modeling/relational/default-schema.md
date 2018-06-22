@@ -1,5 +1,5 @@
 ---
-title: "Схема по умолчанию - EF Core"
+title: Схема по умолчанию - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052754"
 ---
 # <a name="default-schema"></a><span data-ttu-id="db587-102">Схема по умолчанию</span><span class="sxs-lookup"><span data-stu-id="db587-102">Default Schema</span></span>
 

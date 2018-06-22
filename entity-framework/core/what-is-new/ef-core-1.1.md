@@ -1,5 +1,5 @@
 ---
-title: "Новые возможности в Core EF 1.1 (EF Core)"
+title: Новые возможности в Core EF 1.1 (EF Core)
 author: divega
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26049677"
 ---
 # <a name="new-features-in-ef-core-11"></a><span data-ttu-id="e2fa2-102">Новые возможности в EF Core 1.1</span><span class="sxs-lookup"><span data-stu-id="e2fa2-102">New features in EF Core 1.1</span></span>
 

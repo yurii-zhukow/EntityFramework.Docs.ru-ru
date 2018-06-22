@@ -1,5 +1,5 @@
 ---
-title: "Тестирование с помощью SQLite - EF Core"
+title: Тестирование с помощью SQLite - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052704"
 ---
 # <a name="testing-with-sqlite"></a><span data-ttu-id="a5c93-102">Тестирование с помощью SQLite</span><span class="sxs-lookup"><span data-stu-id="a5c93-102">Testing with SQLite</span></span>
 

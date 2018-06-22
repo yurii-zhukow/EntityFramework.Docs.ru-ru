@@ -1,5 +1,5 @@
 ---
-title: "Microsoft SQL Server базы данных поставщика - оптимизированные для памяти таблицы — EF Core"
+title: Microsoft SQL Server базы данных поставщика - оптимизированные для памяти таблицы — EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052644"
 ---
 # <a name="memory-optimized-tables-support-in-sql-server-ef-core-database-provider"></a><span data-ttu-id="3fd4b-102">Оптимизированные для памяти таблицы поддерживают поставщик EF основной базы данных для SQL Server</span><span class="sxs-lookup"><span data-stu-id="3fd4b-102">Memory-Optimized Tables support in SQL Server EF Core Database Provider</span></span>
 

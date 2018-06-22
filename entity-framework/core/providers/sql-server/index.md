@@ -1,5 +1,5 @@
 ---
-title: "Поставщик базы данных Microsoft SQL Server — EF Core"
+title: Поставщик базы данных Microsoft SQL Server — EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29678654"
 ---
 # <a name="microsoft-sql-server-ef-core-database-provider"></a><span data-ttu-id="17895-102">Поставщик базы данных Microsoft SQL Server EF Core</span><span class="sxs-lookup"><span data-stu-id="17895-102">Microsoft SQL Server EF Core Database Provider</span></span>
 

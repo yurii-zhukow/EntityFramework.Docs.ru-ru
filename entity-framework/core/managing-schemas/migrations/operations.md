@@ -9,6 +9,7 @@ ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34163146"
 ---
 <a name="custom-migrations-operations"></a><span data-ttu-id="7475b-102">Миграция пользовательских операций</span><span class="sxs-lookup"><span data-stu-id="7475b-102">Custom Migrations Operations</span></span>
 ============================

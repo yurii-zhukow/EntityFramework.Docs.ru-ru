@@ -1,5 +1,5 @@
 ---
-title: "Включая & за исключением типов - EF Core"
+title: Включая & за исключением типов - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052604"
 ---
 # <a name="including--excluding-types"></a><span data-ttu-id="16bd7-102">Включая & за исключением типов</span><span class="sxs-lookup"><span data-stu-id="16bd7-102">Including & Excluding Types</span></span>
 

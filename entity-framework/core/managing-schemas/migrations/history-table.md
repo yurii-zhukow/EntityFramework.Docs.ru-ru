@@ -1,5 +1,5 @@
 ---
-title: "Таблицы журнала миграций пользовательских - EF Core"
+title: Таблицы журнала миграций пользовательских - EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 11/7/2017
@@ -9,6 +9,7 @@ ms.sourcegitcommit: b467368cc350e6059fdc0949e042a41cb11e61d9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "26053814"
 ---
 <a name="custom-migrations-history-table"></a><span data-ttu-id="06bdf-102">Таблицы журнала миграций, пользовательские</span><span class="sxs-lookup"><span data-stu-id="06bdf-102">Custom Migrations History Table</span></span>
 ===============================

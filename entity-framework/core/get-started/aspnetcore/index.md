@@ -1,5 +1,5 @@
 ---
-title: "Начало работы в ASP.NET Core — Core EF"
+title: Начало работы в ASP.NET Core — Core EF
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26048896"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core"></a><span data-ttu-id="de1db-102">Начало работы с EF Core в ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="de1db-102">Getting Started with EF Core on ASP.NET Core</span></span>
 

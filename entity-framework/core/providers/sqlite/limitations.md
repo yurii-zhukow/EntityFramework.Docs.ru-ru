@@ -1,5 +1,5 @@
 ---
-title: "Базовый EF - ограничения - поставщик базы данных SQLite"
+title: Базовый EF - ограничения - поставщик базы данных SQLite
 author: rowanmiller
 ms.author: divega
 ms.date: 04/09/2017
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 60b831318c4f5ec99061e8af6a7c9e7c03b3469c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29719489"
 ---
 # <a name="sqlite-ef-core-database-provider-limitations"></a><span data-ttu-id="f1cc0-102">Ограничения функций поставщика SQLite EF ядра базы данных</span><span class="sxs-lookup"><span data-stu-id="f1cc0-102">SQLite EF Core Database Provider Limitations</span></span>
 

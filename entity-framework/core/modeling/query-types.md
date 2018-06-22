@@ -11,6 +11,7 @@ ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34163178"
 ---
 # <a name="query-types"></a><span data-ttu-id="6d0d3-102">Типы запросов</span><span class="sxs-lookup"><span data-stu-id="6d0d3-102">Query Types</span></span>
 > [!NOTE]

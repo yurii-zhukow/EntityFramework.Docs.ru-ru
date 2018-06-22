@@ -1,5 +1,5 @@
 ---
-title: "Поддерживаемые реализации .NET — EF Core"
+title: Поддерживаемые реализации .NET — EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 08/30/2017
@@ -10,6 +10,7 @@ ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: HT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29678680"
 ---
 # <a name="net-implementations-supported-by-ef-core"></a><span data-ttu-id="8656b-102">Реализации .NET, поддерживаемые EF Core</span><span class="sxs-lookup"><span data-stu-id="8656b-102">.NET implementations supported by EF Core</span></span>
 

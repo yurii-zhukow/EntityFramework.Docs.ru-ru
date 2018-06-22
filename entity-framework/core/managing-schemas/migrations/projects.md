@@ -1,5 +1,5 @@
 ---
-title: "Миграция с несколькими проектами - EF Core"
+title: Миграция с несколькими проектами - EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 10/30/2017
@@ -9,6 +9,7 @@ ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27161231"
 ---
 <a name="using-a-separate-project"></a><span data-ttu-id="fa6fb-102">С помощью отдельного проекта</span><span class="sxs-lookup"><span data-stu-id="fa6fb-102">Using a Separate Project</span></span>
 ========================

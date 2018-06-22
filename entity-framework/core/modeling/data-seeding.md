@@ -11,6 +11,7 @@ ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34163204"
 ---
 # <a name="data-seeding"></a><span data-ttu-id="2a361-102">Присвоение начальных значений данных</span><span class="sxs-lookup"><span data-stu-id="2a361-102">Data Seeding</span></span>
 

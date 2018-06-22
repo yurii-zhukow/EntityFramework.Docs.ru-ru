@@ -1,5 +1,5 @@
 ---
-title: "Перенос приложений из EF6 в основные EF – Проверка требований"
+title: Перенос приложений из EF6 в основные EF – Проверка требований
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -10,6 +10,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052864"
 ---
 # <a name="before-porting-from-ef6-to-ef-core-validate-your-applications-requirements"></a><span data-ttu-id="3cf2d-102">Перед развертыванием с EF6 EF ядра: проверка требования вашего приложения</span><span class="sxs-lookup"><span data-stu-id="3cf2d-102">Before porting from EF6 to EF Core: Validate your Application's Requirements</span></span>
 
