@@ -6,51 +6,51 @@ ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 ms.technology: entity-framework-core
 uid: core/index
-ms.openlocfilehash: 3befcbd3ff3da5dd159e6e6cb5fe7140c81317c2
-ms.sourcegitcommit: a2b38dedc88ca3ccbfe7b1db9602ca02da8294cd
+ms.openlocfilehash: 103e5e069687950a8411f2d92c7b5a191844e0ae
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/31/2018
-ms.locfileid: "34686666"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37948994"
 ---
-# <a name="entity-framework-core-quick-overview"></a><span data-ttu-id="99610-102">Краткий обзор Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="99610-102">Entity Framework Core Quick Overview</span></span>
+# <a name="entity-framework-core-quick-overview"></a><span data-ttu-id="98ce5-102">Краткий обзор Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="98ce5-102">Entity Framework Core Quick Overview</span></span>
 
-<span data-ttu-id="99610-103">Entity Framework (EF) — это упрощенная, расширяемая и кроссплатформенная версия популярной технологии для доступа к данным Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="99610-103">Entity Framework (EF) Core is a lightweight, extensible, and cross-platform version of the popular Entity Framework data access technology.</span></span>
+<span data-ttu-id="98ce5-103">Entity Framework (EF) — это упрощенная, расширяемая и кроссплатформенная версия популярной технологии для доступа к данным Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="98ce5-103">Entity Framework (EF) Core is a lightweight, extensible, and cross-platform version of the popular Entity Framework data access technology.</span></span>
 
-<span data-ttu-id="99610-104">EF Core может использоваться как объектно реляционный модуль сопоставления (O/RM), позволяя разработчикам .NET работать с базой данных с помощью объектов .NET и устраняя необходимость в написании большей части кода, требуемого для доступа к данным.</span><span class="sxs-lookup"><span data-stu-id="99610-104">EF Core can serve as an object-relational mapper (O/RM), enabling .NET developers to work with a database using .NET objects, and eliminating the need for most of the data-access code they usually need to write.</span></span> 
+<span data-ttu-id="98ce5-104">EF Core может использоваться как объектно реляционный модуль сопоставления (O/RM), позволяя разработчикам .NET работать с базой данных с помощью объектов .NET и устраняя необходимость в написании большей части кода, требуемого для доступа к данным.</span><span class="sxs-lookup"><span data-stu-id="98ce5-104">EF Core can serve as an object-relational mapper (O/RM), enabling .NET developers to work with a database using .NET objects, and eliminating the need for most of the data-access code they usually need to write.</span></span>
 
-<span data-ttu-id="99610-105">EF Core поддерживает множество систем баз данных. Дополнительные сведения см. в разделе [Поставщики баз данных](providers/index.md).</span><span class="sxs-lookup"><span data-stu-id="99610-105">EF Core supports many database engines, see [Database Providers](providers/index.md) for details.</span></span>
+<span data-ttu-id="98ce5-105">EF Core поддерживает множество систем баз данных. Дополнительные сведения см. в разделе [Поставщики баз данных](providers/index.md).</span><span class="sxs-lookup"><span data-stu-id="98ce5-105">EF Core supports many database engines, see [Database Providers](providers/index.md) for details.</span></span>
 
-<span data-ttu-id="99610-106">Если вы хотите учиться, создавая код, рекомендуем воспользоваться одним из наших руководств по [началу работы](get-started/index.md) с EF Core.</span><span class="sxs-lookup"><span data-stu-id="99610-106">If you like to learn by writing code, we'd recommend one of our [Getting Started](get-started/index.md) guides to get you started with EF Core.</span></span>
+<span data-ttu-id="98ce5-106">Если вы хотите учиться, создавая код, рекомендуем воспользоваться одним из наших руководств по [началу работы](get-started/index.md) с EF Core.</span><span class="sxs-lookup"><span data-stu-id="98ce5-106">If you like to learn by writing code, we'd recommend one of our [Getting Started](get-started/index.md) guides to get you started with EF Core.</span></span>
 
-## <a name="what-is-new-in-ef-core"></a><span data-ttu-id="99610-107">Новые возможности в EF Core</span><span class="sxs-lookup"><span data-stu-id="99610-107">What is new in EF Core</span></span>
+## <a name="what-is-new-in-ef-core"></a><span data-ttu-id="98ce5-107">Новые возможности в EF Core</span><span class="sxs-lookup"><span data-stu-id="98ce5-107">What is new in EF Core</span></span>
 
-<span data-ttu-id="99610-108">Если вы знакомы с EF Core и хотите перейти сразу к сведениям о последних выпусках:</span><span class="sxs-lookup"><span data-stu-id="99610-108">If you are familiar with EF Core and want to jump straight into the details of the latest releases:</span></span>
+<span data-ttu-id="98ce5-108">Если вы знакомы с EF Core и хотите перейти сразу к сведениям о последних выпусках:</span><span class="sxs-lookup"><span data-stu-id="98ce5-108">If you are familiar with EF Core and want to jump straight into the details of the latest releases:</span></span>
 
-- <span data-ttu-id="99610-109">**[Новые возможности в EF Core 2.1](xref:core/what-is-new/ef-core-2.1)**</span><span class="sxs-lookup"><span data-stu-id="99610-109">**[What is new in EF Core 2.1](xref:core/what-is-new/ef-core-2.1)**</span></span>
-- <span data-ttu-id="99610-110">**[Обновление существующих приложений до EF Core 2.x](xref:core/miscellaneous/1x-2x-upgrade)**</span><span class="sxs-lookup"><span data-stu-id="99610-110">**[Upgrading existing applications to EF Core 2.x](xref:core/miscellaneous/1x-2x-upgrade)**</span></span>
+- <span data-ttu-id="98ce5-109">**[Новые возможности в EF Core 2.1](xref:core/what-is-new/ef-core-2.1)**</span><span class="sxs-lookup"><span data-stu-id="98ce5-109">**[What is new in EF Core 2.1](xref:core/what-is-new/ef-core-2.1)**</span></span>
+- <span data-ttu-id="98ce5-110">**[Обновление существующих приложений до EF Core 2.x](xref:core/miscellaneous/1x-2x-upgrade)**</span><span class="sxs-lookup"><span data-stu-id="98ce5-110">**[Upgrading existing applications to EF Core 2.x](xref:core/miscellaneous/1x-2x-upgrade)**</span></span>
 
 
-## <a name="get-entity-framework-core"></a><span data-ttu-id="99610-111">Получение Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="99610-111">Get Entity Framework Core</span></span>
+## <a name="get-entity-framework-core"></a><span data-ttu-id="98ce5-111">Получение Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="98ce5-111">Get Entity Framework Core</span></span>
 
-<span data-ttu-id="99610-112">[Установите пакет NuGet](https://docs.nuget.org/ndocs/quickstart/use-a-package) для нужного поставщика базы данных.</span><span class="sxs-lookup"><span data-stu-id="99610-112">[Install the NuGet package](https://docs.nuget.org/ndocs/quickstart/use-a-package) for the database provider you want to use.</span></span> <span data-ttu-id="99610-113">Например,</span><span class="sxs-lookup"><span data-stu-id="99610-113">E.g.</span></span> <span data-ttu-id="99610-114">чтобы установить поставщик SQL Server в кроссплатформенной среде разработки с помощью инструмента `dotnet` в командной строке, введите следующее.</span><span class="sxs-lookup"><span data-stu-id="99610-114">to install the SQL Server provider in cross-platform development using `dotnet` tool in the command line:</span></span>
+<span data-ttu-id="98ce5-112">[Установите пакет NuGet](https://docs.nuget.org/ndocs/quickstart/use-a-package) для нужного поставщика базы данных.</span><span class="sxs-lookup"><span data-stu-id="98ce5-112">[Install the NuGet package](https://docs.nuget.org/ndocs/quickstart/use-a-package) for the database provider you want to use.</span></span> <span data-ttu-id="98ce5-113">Например, чтобы установить поставщик SQL Server в кроссплатформенной среде разработки с помощью инструмента `dotnet` в командной строке, введите следующее:</span><span class="sxs-lookup"><span data-stu-id="98ce5-113">For example, to install the SQL Server provider in cross-platform development using `dotnet` tool in the command line:</span></span>
 
 ``` Console
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 ```
 
-<span data-ttu-id="99610-115">В Visual Studio можно использовать консоль диспетчера пакетов.</span><span class="sxs-lookup"><span data-stu-id="99610-115">Or in Visual Studio, using the Package Manager Console:</span></span>
+<span data-ttu-id="98ce5-114">В Visual Studio можно использовать консоль диспетчера пакетов.</span><span class="sxs-lookup"><span data-stu-id="98ce5-114">Or in Visual Studio, using the Package Manager Console:</span></span>
 
 ``` PowerShell
 Install-Package Microsoft.EntityFrameworkCore.SqlServer
 ```
-<span data-ttu-id="99610-116">Дополнительные сведения о доступных поставщиках см. в разделе [Поставщики баз данных](providers/index.md), а об этапах установки — в разделе [Установка EF Core](get-started/install/index.md).</span><span class="sxs-lookup"><span data-stu-id="99610-116">See [Database Providers](providers/index.md) for information on available providers and [Installing EF Core](get-started/install/index.md) for more detailed installation steps.</span></span>
+<span data-ttu-id="98ce5-115">Дополнительные сведения о доступных поставщиках см. в разделе [Поставщики баз данных](providers/index.md), а об этапах установки — в разделе [Установка EF Core](get-started/install/index.md).</span><span class="sxs-lookup"><span data-stu-id="98ce5-115">See [Database Providers](providers/index.md) for information on available providers and [Installing EF Core](get-started/install/index.md) for more detailed installation steps.</span></span>
 
-## <a name="the-model"></a><span data-ttu-id="99610-117">Модель</span><span class="sxs-lookup"><span data-stu-id="99610-117">The Model</span></span>
+## <a name="the-model"></a><span data-ttu-id="98ce5-116">Модель</span><span class="sxs-lookup"><span data-stu-id="98ce5-116">The Model</span></span>
 
-<span data-ttu-id="99610-118">В EF Core доступ к данным осуществляется с помощью модели.</span><span class="sxs-lookup"><span data-stu-id="99610-118">With EF Core, data access is performed using a model.</span></span> <span data-ttu-id="99610-119">Модель состоит из классов сущностей и производного контекста, который представляет сеанс взаимодействия с базой данных, позволяя запрашивать и сохранять данные.</span><span class="sxs-lookup"><span data-stu-id="99610-119">A model is made up of entity classes and a derived context that represents a session with the database, allowing you to query and save data.</span></span> <span data-ttu-id="99610-120">Дополнительные сведения см. в разделе [Создание модели](modeling/index.md).</span><span class="sxs-lookup"><span data-stu-id="99610-120">See [Creating a Model](modeling/index.md) to learn more.</span></span>
+<span data-ttu-id="98ce5-117">В EF Core доступ к данным осуществляется с помощью модели.</span><span class="sxs-lookup"><span data-stu-id="98ce5-117">With EF Core, data access is performed using a model.</span></span> <span data-ttu-id="98ce5-118">Модель состоит из классов сущностей и производного контекста, который представляет сеанс взаимодействия с базой данных, позволяя запрашивать и сохранять данные.</span><span class="sxs-lookup"><span data-stu-id="98ce5-118">A model is made up of entity classes and a derived context that represents a session with the database, allowing you to query and save data.</span></span> <span data-ttu-id="98ce5-119">Дополнительные сведения см. в разделе [Создание модели](modeling/index.md).</span><span class="sxs-lookup"><span data-stu-id="98ce5-119">See [Creating a Model](modeling/index.md) to learn more.</span></span>
 
-<span data-ttu-id="99610-121">Вы можете создать модель из существующей базы данных, вручную составить код модели, соответствующий базе данных, или использовать миграции EF, чтобы создать базу данных из модели (и модифицировать ее по мере изменения модели).</span><span class="sxs-lookup"><span data-stu-id="99610-121">You can generate a model from an existing database, hand code a model to match your database, or use EF Migrations to create a database from your model (and evolve it as your model changes over time).</span></span>
+<span data-ttu-id="98ce5-120">Вы можете создать модель из существующей базы данных, вручную составить код модели, соответствующий базе данных, или использовать миграции EF, чтобы создать базу данных из модели (и модифицировать ее по мере изменения модели).</span><span class="sxs-lookup"><span data-stu-id="98ce5-120">You can generate a model from an existing database, hand code a model to match your database, or use EF Migrations to create a database from your model (and evolve it as your model changes over time).</span></span>
 
 ``` csharp
 using Microsoft.EntityFrameworkCore;
@@ -89,9 +89,9 @@ namespace Intro
 }
 ```
 
-## <a name="querying"></a><span data-ttu-id="99610-122">Выполнение запросов</span><span class="sxs-lookup"><span data-stu-id="99610-122">Querying</span></span>
+## <a name="querying"></a><span data-ttu-id="98ce5-121">Выполнение запросов</span><span class="sxs-lookup"><span data-stu-id="98ce5-121">Querying</span></span>
 
-<span data-ttu-id="99610-123">Экземпляры классов сущностей извлекаются из базы данных с помощью LINQ.</span><span class="sxs-lookup"><span data-stu-id="99610-123">Instances of your entity classes are retrieved from the database using Language Integrated Query (LINQ).</span></span> <span data-ttu-id="99610-124">Дополнительные сведения см. в разделе [Запросы к данным](querying/index.md).</span><span class="sxs-lookup"><span data-stu-id="99610-124">See [Querying Data](querying/index.md) to learn more.</span></span>
+<span data-ttu-id="98ce5-122">Экземпляры классов сущностей извлекаются из базы данных с помощью LINQ.</span><span class="sxs-lookup"><span data-stu-id="98ce5-122">Instances of your entity classes are retrieved from the database using Language Integrated Query (LINQ).</span></span> <span data-ttu-id="98ce5-123">Дополнительные сведения см. в разделе [Запросы к данным](querying/index.md).</span><span class="sxs-lookup"><span data-stu-id="98ce5-123">See [Querying Data](querying/index.md) to learn more.</span></span>
 
 ``` csharp
 using (var db = new BloggingContext())
@@ -103,9 +103,9 @@ using (var db = new BloggingContext())
 }
 ```
 
-## <a name="saving-data"></a><span data-ttu-id="99610-125">Сохранение данных</span><span class="sxs-lookup"><span data-stu-id="99610-125">Saving Data</span></span>
+## <a name="saving-data"></a><span data-ttu-id="98ce5-124">Сохранение данных</span><span class="sxs-lookup"><span data-stu-id="98ce5-124">Saving Data</span></span>
 
-<span data-ttu-id="99610-126">Для создания, удаления и изменения данных в базе данных используются экземпляры классов сущностей.</span><span class="sxs-lookup"><span data-stu-id="99610-126">Data is created, deleted, and modified in the database using instances of your entity classes.</span></span> <span data-ttu-id="99610-127">Дополнительные сведения см. в разделе [Сохранение данных](saving/index.md).</span><span class="sxs-lookup"><span data-stu-id="99610-127">See [Saving Data](saving/index.md) to learn more.</span></span>
+<span data-ttu-id="98ce5-125">Для создания, удаления и изменения данных в базе данных используются экземпляры классов сущностей.</span><span class="sxs-lookup"><span data-stu-id="98ce5-125">Data is created, deleted, and modified in the database using instances of your entity classes.</span></span> <span data-ttu-id="98ce5-126">Дополнительные сведения см. в разделе [Сохранение данных](saving/index.md).</span><span class="sxs-lookup"><span data-stu-id="98ce5-126">See [Saving Data](saving/index.md) to learn more.</span></span>
 
 ``` csharp
 using (var db = new BloggingContext())
