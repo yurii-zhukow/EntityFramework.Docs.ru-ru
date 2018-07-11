@@ -29,7 +29,7 @@
 #### [ASP.NET Core](core/get-started/aspnetcore/index.md)
 ##### [ASP.NET Core — новая база данных](core/get-started/aspnetcore/new-db.md)
 ##### [ASP.NET Core — существующая база данных](core/get-started/aspnetcore/existing-db.md)
-##### [Учебник по EF Core на сайте ASP.NET Core](https://docs.asp.net/en/latest/data/ef-mvc/intro.html)
+##### [EF Core и Razor Pages](/aspnet/core/data/ef-rp/intro)
 #### [Универсальная платформа Windows (UWP)](core/get-started/uwp/index.md)
 ##### [UWP — новая база данных](core/get-started/uwp/getting-started.md)
 

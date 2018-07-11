@@ -5,12 +5,12 @@ ms.author: divega
 ms.date: 08/30/2017
 ms.technology: entity-framework-core
 uid: core/platforms/index
-ms.openlocfilehash: 02e9450cb0ead1701da9f58c51bef3031a3be4ed
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: 790628c407cc4374fee4ebde8201783955afdcc3
+ms.sourcegitcommit: fd50ac53b93a03825dcbb42ed2e7ca95ca858d5f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29678680"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900334"
 ---
 # <a name="net-implementations-supported-by-ef-core"></a>Реализации .NET, поддерживаемые EF Core
 
@@ -29,7 +29,7 @@ ms.locfileid: "29678680"
 
 <sup>(2)</sup> Рекомендации по выбору правильной технологии см. в разделе [Сравнение EF Core и EF6](../../efcore-and-ef6/index.md).
 
-<sup>(3)</sup> В Xamarin присутствуют некоторые проблемы и ограничения, которые могут препятствовать правильной работе некоторых приложений, разработанных с использованием EF Core 2.0. Методы обхода проблем см. в списке [активных проблем] ([](https://github.com/aspnet/entityframeworkCore/issues?q=is%3Aopen+is%3Aissue+label%3Aarea-xamarin).
+<sup>(3)</sup> В Xamarin присутствуют некоторые проблемы и ограничения, которые могут препятствовать правильной работе некоторых приложений, разработанных с использованием EF Core 2.0. Обходные решения см. в списке [активных проблем](https://github.com/aspnet/entityframeworkCore/issues?q=is%3Aopen+is%3Aissue+label%3Aarea-xamarin).
 
 <sup>(4)</sup> В ранних версиях EF Core и универсальной платформы Windows .NET присутствовали некоторые проблемы с совместимостью, особенно в отношении приложений, скомпилированных с использованием цепочки инструментов .NET Native. В новой версии универсальной платформы Windows .NET добавлена поддержка платформы .NET Standard 2.0 и содержится .NET Native 2.0, где исправлено большинство ранее выявленных проблем с совместимостью. Было проведено более тщательное тестирование EF Core 2.0.1 с универсальной платформой Windows, однако эти тесты не были автоматизированными.
 
