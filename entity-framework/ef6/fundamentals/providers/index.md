@@ -9,14 +9,15 @@ ms.technology: entity-framework-6
 ms.topic: article
 ms.assetid: 7BFB7763-CD6C-4520-93A2-7B265F5FA586
 caps.latest.revision: 3
-ms.openlocfilehash: 9ec7a83e8bdfde2f67b821bbe46dd688f64bc51d
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 8bd5a5a420d741accd1167845575e23c09579ae1
+ms.sourcegitcommit: 390f3a37bc55105ed7cc5b0e0925b7f9c9e80ba6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "37911638"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37914301"
 ---
 # <a name="entity-framework-6-providers"></a>Поставщики Entity Framework 6
+> [!NOTE]
 > **Только в EF6 и более поздних версиях**. Функции, API и другие возможности, описанные на этой странице, появились в Entity Framework 6. При использовании более ранней версии могут быть неприменимы некоторые или все сведения.
 
 Сейчас Entity Framework разрабатывается в рамках лицензии на ПО с открытым исходным кодом, поэтому EF6 и более поздние версии не будут поставляться в составе платформы .NET Framework. Такая ситуация дает множество преимуществ, но также требует, чтобы поставщики EF были перестроены в соответствии со сборками EF6. Это означает, что поставщики EF для EF5 и предыдущих версий будут работать с EF6 только после их перестроения.
