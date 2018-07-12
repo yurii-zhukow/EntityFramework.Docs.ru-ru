@@ -12,7 +12,7 @@
 
 ## [Entity Framework Core](core/index.md)
 
-### [Новые возможности в EF Core](core/what-is-new/index.md)
+### [Новые возможности](core/what-is-new/index.md)
 #### [Стратегия развития EF Core](core/what-is-new/roadmap.md)
 #### [EF Core 2.1](core/what-is-new/ef-core-2.1.md)
 #### [EF Core 2.0](core/what-is-new/ef-core-2.0.md)
@@ -67,6 +67,16 @@
 ##### [Альтернативные ключи (ограничения уникальности)](core/modeling/relational/unique-constraints.md)
 ##### [Наследование (реляционная база данных )](core/modeling/relational/inheritance.md)
 
+### [Управление схемами баз данных](core/managing-schemas/index.md)
+#### [Миграции](core/managing-schemas/migrations/index.md)
+##### [Командные среды](core/managing-schemas/migrations/teams.md)
+##### [Пользовательские операции](core/managing-schemas/migrations/operations.md)
+##### [Использование отдельного проекта](core/managing-schemas/migrations/projects.md)
+##### [Несколько поставщиков](core/managing-schemas/migrations/providers.md)
+##### [Настраиваемая таблица журнала](core/managing-schemas/migrations/history-table.md)
+#### [🔧 API создания и удаления](core/managing-schemas/ensure-created.md)
+#### [🔧 Реконструирование](core/managing-schemas/scaffolding.md)
+
 ### [Запросы к данным](core/querying/index.md)
 #### [Базовый запрос](core/querying/basic.md)
 #### [Загрузка связанных данных](core/querying/related-data.md)
@@ -97,23 +107,13 @@
 #### [Выполнение в памяти (для тестирования)](core/providers/in-memory/index.md)
 #### [Создание поставщика баз данных](core/providers/writing-a-provider.md)
 
-### [Управление схемами баз данных](core/managing-schemas/index.md)
-#### [Миграции](core/managing-schemas/migrations/index.md)
-##### [Командные среды](core/managing-schemas/migrations/teams.md)
-##### [Пользовательские операции](core/managing-schemas/migrations/operations.md)
-##### [Использование отдельного проекта](core/managing-schemas/migrations/projects.md)
-##### [Несколько поставщиков](core/managing-schemas/migrations/providers.md)
-##### [Настраиваемая таблица журнала](core/managing-schemas/migrations/history-table.md)
-#### [🔧 API создания и удаления](core/managing-schemas/ensure-created.md)
-#### [🔧 Реконструирование](core/managing-schemas/scaffolding.md)
+### [Инструменты и расширения](core/extensions/index.md)
 
 ### [Справочник по командной строке](core/miscellaneous/cli/index.md)
 #### [Консоль диспетчера пакетов (Visual Studio)](core/miscellaneous/cli/powershell.md)
 #### [Интерфейс командной строки .NET Core](core/miscellaneous/cli/dotnet.md)
 #### [Создание DbContext во время разработки](core/miscellaneous/cli/dbcontext-creation.md)
 #### [Службы времени разработки](core/miscellaneous/cli/services.md)
-
-### [Инструменты и расширения](core/extensions/index.md)
 
 ### Прочее
 #### [Строки подключения](core/miscellaneous/connection-strings.md)
@@ -127,8 +127,158 @@
 #### [Обновление с версии 1.0 релиз-кандидата 2 до RTM](core/miscellaneous/rc2-rtm-upgrade.md)
 #### [Обновление до EF Core 2.0](core/miscellaneous/1x-2x-upgrade.md)
 
-### [⤤ Справочник по API](https://docs.microsoft.com/dotnet/api/?view=efcore-2.1)
+### [⤤ Справочник по API EF Core](https://docs.microsoft.com/dotnet/api/?view=efcore-2.1)
 
 ## [Entity Framework 6](ef6/index.md)
-### [⤤ Документация](http://msdn.com/data/ef)
-### [⤤ Справочник по API](https://msdn.microsoft.com/library/dn223258.aspx)
+
+### [Новые возможности](ef6/what-is-new/index.md)
+#### [Стратегия развития](ef6/what-is-new/roadmap.md)
+#### [Прошлые выпуски](ef6/what-is-new/past-releases.md)
+#### [Обновление до EF6](ef6/what-is-new/upgrading-to-ef6.md)
+#### [Выпуски Visual Studio](ef6/what-is-new/visual-studio.md)
+
+### [Начало работы](ef6/get-started.md)
+
+### [Основы](ef6/fundamentals/index.md)
+#### [Установка Entity Framework](ef6/fundamentals/install.md)
+#### [Работа с DbContext](ef6/fundamentals/working-with-dbcontext.md)
+#### [Как работают отношения](ef6/fundamentals/relationships.md)
+#### [Асинхронные запросы и сохранение](ef6/fundamentals/async.md)
+#### Конфигурация
+##### [На базе кода](ef6/fundamentals/configuring/code-based.md)
+##### [Файл конфигурации](ef6/fundamentals/configuring/config-file.md)
+##### [Строки подключения](ef6/fundamentals/configuring/connection-strings.md)
+##### [Разрешение зависимостей](ef6/fundamentals/configuring/dependency-resolution.md)
+#### [Управление подключениями](ef6/fundamentals/connection-management.md)
+#### Устойчивость подключений
+##### [Логика повтора](ef6/fundamentals/connection-resiliency/retry-logic.md)
+##### [Проблемы с фиксацией транзакций](ef6/fundamentals/connection-resiliency/commit-failures.md)
+#### Привязка данных
+##### [WinForms](ef6/fundamentals/databinding/winforms.md)
+##### [WPF](ef6/fundamentals/databinding/wpf.md)
+#### [Отключенные сущности](ef6/fundamentals/disconnected-entities/index.md)
+##### [Самоотслеживающиеся сущности](ef6/fundamentals/disconnected-entities/self-tracking-entities/index.md)
+###### [Пошаговое руководство](ef6/fundamentals/disconnected-entities/self-tracking-entities/walkthrough.md)
+#### [Ведение журналов и перехват](ef6/fundamentals/logging-and-interception.md)
+#### Производительность
+##### [Особенности производительности (технический документ)](ef6/fundamentals/performance/perf-whitepaper.md)
+##### [Использование NGEN](ef6/fundamentals/performance/ngen.md)
+##### [Использование заготовленных представлений](ef6/fundamentals/performance/pre-generated-views.md)
+#### [Поставщики](ef6/fundamentals/providers/index.md)
+##### [Модель поставщика EF6](ef6/fundamentals/providers/provider-model.md)
+##### [Поставщики и пространственные данные](ef6/fundamentals/providers/spatial-support.md)
+#### [Использование прокси](ef6/fundamentals/proxies.md)
+#### Тестирование с EF6
+##### [Использование макетирования](ef6/fundamentals/testing/mocking.md)
+##### [Написание собственных имитированных реализаций](ef6/fundamentals/testing/writing-test-doubles.md)
+##### [Возможности тестирования с EF4 (статья)](ef6/fundamentals/testing/testability-article.md)
+
+### [Создание модели](ef6/modeling/index.md)
+#### Использование Code First
+##### Рабочие процессы
+###### [С новой базой данных](ef6/modeling/code-first/workflows/new-database.md)
+###### [С существующей базой данных](ef6/modeling/code-first/workflows/existing-database.md)
+##### [Заметки к данным](ef6/modeling/code-first/data-annotations.md)
+##### [Наборы DbSet](ef6/modeling/code-first/dbsets.md)
+##### Типы данных
+###### [Перечисления](ef6/modeling/code-first/data-types/enums.md)
+###### [Пространственные данные](ef6/modeling/code-first/data-types/spatial.md)
+##### Соглашения
+###### [Встроенные соглашения](ef6/modeling/code-first/conventions/built-in.md)
+###### [Настраиваемые соглашения](ef6/modeling/code-first/conventions/custom.md)
+###### [Модельные соглашения](ef6/modeling/code-first/conventions/model.md)
+##### Конфигурация с текучим API
+###### [Отношения ](ef6/modeling/code-first/fluent/relationships.md)
+###### [Типы и свойства](ef6/modeling/code-first/fluent/types-and-properties.md)
+###### [Использование в Visual Basic](ef6/modeling/code-first/fluent/vb.md)
+###### [Сопоставление хранимых процедур](ef6/modeling/code-first/fluent/cud-stored-procedures.md)
+##### [Миграции](ef6/modeling/code-first/migrations/index.md)
+###### [Автоматическая миграция](ef6/modeling/code-first/migrations/automatic.md)
+###### [Работа с существующими базами данных](ef6/modeling/code-first/migrations/existing-database.md)
+###### [Настройка журнала миграции](ef6/modeling/code-first/migrations/history-customization.md)
+###### [Использование Migrate.exe](ef6/modeling/code-first/migrations/migrate-exe.md)
+###### [Миграция в командных средах](ef6/modeling/code-first/migrations/teams.md)
+
+#### Использование EF Designer
+##### Рабочие процессы
+###### [Model First](ef6/modeling/designer/workflows/model-first.md)
+###### [Database First](ef6/modeling/designer/workflows/database-first.md)
+##### Типы данных
+###### [Сложные типы](ef6/modeling/designer/data-types/complex-types.md)
+###### [Перечисления](ef6/modeling/designer/data-types/enums.md)
+###### [Пространственные данные](ef6/modeling/designer/data-types/spatial.md)
+##### Разделение сопоставлений
+###### [Разделение сущности](ef6/modeling/designer/entity-splitting.md)
+###### [Разделение таблицы](ef6/modeling/designer/table-splitting.md)
+##### Сопоставление с наследованием
+###### [Одна таблица на иерархию ](ef6/modeling/designer/inheritance/tph.md)
+###### [Одна таблица на тип](ef6/modeling/designer/inheritance/tpt.md)
+##### Сопоставление хранимых процедур
+###### [Запрос](ef6/modeling/designer/stored-procedures/query.md)
+###### [Обновление](ef6/modeling/designer/stored-procedures/cud.md)
+##### [Сопоставление отношений](ef6/modeling/designer/relationships.md)
+##### [Множество диаграмм](ef6/modeling/designer/multiple-diagrams.md)
+##### [Выбор версии среды выполнения](ef6/modeling/designer/select-runtime-version.md)
+##### [Создание кода](ef6/modeling/designer/codegen/index.md)
+###### [Прошлые версии с ObjectContext ](ef6/modeling/designer/codegen/legacy-objectcontext.md)
+##### Дополнительно
+###### Формат файлов EDMX
+####### [Спецификация CSDL](ef6/modeling/designer/advanced/edmx/csdl-spec.md)
+####### [Спецификация MSL](ef6/modeling/designer/advanced/edmx/msl-spec.md)
+####### [Спецификация SSDL](ef6/modeling/designer/advanced/edmx/ssdl-spec.md)
+###### [Определяющий запрос](ef6/modeling/designer/advanced/defining-query.md)
+###### [Множество результирующих наборов](ef6/modeling/designer/advanced/multiple-result-sets.md)
+###### [Функции с табличным значением](ef6/modeling/designer/advanced/tvfs.md)
+##### [Сочетания клавиш](ef6/modeling/designer/keyboard-shortcuts.md)
+
+### [Запросы к данным](ef6/querying/index.md)
+#### [Метод Load](ef6/querying/load-method.md)
+#### [Локальные данные](ef6/querying/local-data.md)
+#### [Отслеживаемые и неотслеживаемые запросы](ef6/querying/no-tracking.md)
+#### [Использование прямых SQL-запросов](ef6/querying/raw-sql.md)
+#### [Запрос связанных данных](ef6/querying/related-data.md)
+
+### [Сохранение данных](ef6/saving/index.md)
+#### Отслеживание изменений
+##### [Автообнаружение изменений](ef6/saving/change-tracking/auto-detect-changes.md)
+##### [Состояние сущностей](ef6/saving/change-tracking/entity-state.md)
+##### [Значения свойств](ef6/saving/change-tracking/property-values.md)
+#### [Обработка конфликтов параллелизма](ef6/saving/concurrency.md)
+#### [Использование транзакций](ef6/saving/transactions.md)
+#### [Проверка данных](ef6/saving/validation.md)
+
+### [Дополнительные ресурсы](ef6/resources/index.md)
+#### [Блоги](ef6/resources/blogs.md)
+#### [Примеры](ef6/resources/case-studies.md)
+#### [Получение справки](ef6/resources/get-help.md)
+#### [Глоссарий](ef6/resources/glossary.md)
+#### [Образец базы данных School](ef6/resources/school-database.md)
+#### [Инструменты и расширения](ef6/resources/tools.md)
+#### Лицензии
+##### EF5
+###### [Китайский (упрощенное письмо)](ef6/resources/licenses/ef5/chs.md)
+###### [Китайский (традиционное письмо)](ef6/resources/licenses/ef5/cht.md)
+###### [Немецкий](ef6/resources/licenses/ef5/deu.md)
+###### [Английский](ef6/resources/licenses/ef5/enu.md)
+###### [Испанский](ef6/resources/licenses/ef5/esn.md)
+###### [Французский](ef6/resources/licenses/ef5/fra.md)
+###### [Итальянский](ef6/resources/licenses/ef5/ita.md)
+###### [Японский](ef6/resources/licenses/ef5/jpn.md)
+###### [Корейский](ef6/resources/licenses/ef5/kor.md)
+###### [Русский](ef6/resources/licenses/ef5/rus.md)
+##### EF6
+###### Предварительный выпуск
+####### [Альфа-версия](ef6/resources/licenses/ef6/prerelease/alpha.md)
+####### [Бета-версия — релиз-кандидат](ef6/resources/licenses/ef6/prerelease/beta-rc.md)
+###### [Китайский (упрощенное письмо)](ef6/resources/licenses/ef6/chs.md)
+###### [Китайский (традиционное письмо)](ef6/resources/licenses/ef6/cht.md)
+###### [Немецкий](ef6/resources/licenses/ef6/deu.md)
+###### [Английский](ef6/resources/licenses/ef6/enu.md)
+###### [Испанский](ef6/resources/licenses/ef6/esn.md)
+###### [Французский](ef6/resources/licenses/ef6/fra.md)
+###### [Итальянский](ef6/resources/licenses/ef6/ita.md)
+###### [Японский](ef6/resources/licenses/ef6/jpn.md)
+###### [Корейский](ef6/resources/licenses/ef6/kor.md)
+###### [Русский](ef6/resources/licenses/ef6/rus.md)
+
+### [⤤ Справочник по API EF6](https://msdn.microsoft.com/library/dn223258.aspx)
