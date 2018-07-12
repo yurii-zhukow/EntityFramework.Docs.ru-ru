@@ -9,12 +9,12 @@ ms.technology: entity-framework-6
 ms.topic: article
 ms.assetid: 36591d8f-36e1-4835-8a51-90f34f633d1e
 caps.latest.revision: 3
-ms.openlocfilehash: 1941337da55e5bb63efba42360c87c1c0f6ee325
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 5c7431985e2e404060197615bf281fcf3b318403
+ms.sourcegitcommit: 390f3a37bc55105ed7cc5b0e0925b7f9c9e80ba6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "37911718"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37914288"
 ---
 # <a name="code-first-migrations"></a>Code First Migrations
 Code First Migrations — это рекомендуемый способ разработки схемы базы данных приложения при использовании рабочего процесса Code First. Code First Migrations предоставляет набор средств со следующими функциями:
@@ -310,7 +310,7 @@ Code First Migrations — это рекомендуемый способ раз
 
 Code First Migrations будет выполнять конвейер миграций, но будет не применять изменения, а записывать их в SQL-файл. Созданный скрипт автоматически открывается в Visual Studio, готовый для просмотра или сохранения.
 
-### <a name="generating-idempotent-scripts-ef6-onwards"></a>Формирование идемпотентных скриптов (для EF6 и выше)
+### <a name="generating-idempotent-scripts"></a>Создание идемпотентных скриптов
 
 Начиная с EF6, если вы укажете **–SourceMigration $InitialDatabase**, создаваемый скрипт будет идемпотентным. Идемпотентные скрипты могут обновить базу данных любой версии до последней версии (или указанной версии, если вы используете **–TargetMigration**). Созданный скрипт содержит логику для проверки таблицы **\_\_MigrationsHistory** и применяет только изменения, которые еще не применены.
 
