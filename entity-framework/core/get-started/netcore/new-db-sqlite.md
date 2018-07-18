@@ -5,38 +5,35 @@ ms.author: riande
 ms.author2: tdykstra
 description: Начало работы с .NET Core и Entity Framework Core
 keywords: .NET Core, Entity Framework Core, Visual Studio Code, VS Code, Mac, Linux
-ms.date: 04/05/2017
+ms.date: 06/05/2018
 ms.assetid: 099d179e-dd7b-4755-8f3c-fcde914bf50b
 ms.technology: entity-framework-core
 uid: core/get-started/netcore/new-db-sqlite
-ms.openlocfilehash: fcace3c0f259b1a456d9ca1086e6a1549c070d57
-ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
+ms.openlocfilehash: e4eafed037325237345efbc3d7d42b32270a54e3
+ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31812538"
+ms.lasthandoff: 07/08/2018
+ms.locfileid: "37911506"
 ---
 # <a name="getting-started-with-ef-core-on-net-core-console-app-with-a-new-database"></a>Начало работы с EF Core в консольном приложении .NET Core с новой базой данных
 
-В этом пошаговом руководстве вы создадите консольное приложение .NET Core, которое осуществляет базовые операции доступа к базе данных SQLite с помощью Entity Framework Core. Вы примените процесс миграций, чтобы создать базу данных из модели. В разделе [ASP.NET Core - новая база данных](xref:core/get-started/aspnetcore/new-db) описана версия для Visual Studio с использованием ASP.NET Core MVC.
+В этом пошаговом руководстве вы создадите консольное приложение .NET Core, которое осуществляет операции доступа к базе данных SQLite с помощью Entity Framework Core. Вы примените процесс миграций, чтобы создать базу данных из модели. В разделе [ASP.NET Core - новая база данных](xref:core/get-started/aspnetcore/new-db) описана версия для Visual Studio с использованием ASP.NET Core MVC.
 
 > [!TIP]  
 > Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted/NetCore/ConsoleApp.SQLite) из репозитория GitHub.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для прохождения этого пошагового руководства нужны следующие элементы:
-* операционная система, которая поддерживает .NET Core;
-* [пакет SDK для .NET Core](https://www.microsoft.com/net/core) 2.0 (но эти же инструкции с очень небольшими изменениями позволят создать приложение и в предыдущей версии).
+[Пакет SDK для .NET Core](https://www.microsoft.com/net/core) 2.1
 
 ## <a name="create-a-new-project"></a>Создание нового проекта
 
-* Создайте для проекта новую папку `ConsoleApp.SQLite` и с помощью команды `dotnet` заполните ее приложением .NET Core.
+* Создание консольного проекта:
 
 ``` Console
-mkdir ConsoleApp.SQLite
+dotnet new console -o ConsoleApp.SQLite
 cd ConsoleApp.SQLite/
-dotnet new console
 ```
 
 ## <a name="install-entity-framework-core"></a>Установка Entity Framework Core
@@ -50,21 +47,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 dotnet add package Microsoft.EntityFrameworkCore.Design
 ```
 
-* Вручную измените `ConsoleApp.SQLite.csproj`, добавив значение DotNetCliToolReference в Microsoft.EntityFrameworkCore.Tools.DotNet:
-
-  ``` xml
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
-  </ItemGroup>
-  ```
-
-Теперь `ConsoleApp.SQLite.csproj` должен содержать следующее:
-
-[!code[Main](../../../../samples/core/GetStarted/NetCore/ConsoleApp.SQLite/ConsoleApp.SQLite.csproj)]
-
- Примечание. Приведенные выше номера версий были правильными на момент публикации.
-
-*  Выполните `dotnet restore`, чтобы установить новые пакеты.
+* Выполните `dotnet restore`, чтобы установить новые пакеты.
 
 ## <a name="create-the-model"></a>Создание модели
 
@@ -74,17 +57,16 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 
 [!code-csharp[Main](../../../../samples/core/GetStarted/NetCore/ConsoleApp.SQLite/Model.cs)]
 
-Подсказка. В реальном приложении каждый класс помещается в отдельный файл, а строка подключения — в файл конфигурации. Для упрощения в этом руководстве мы заносим все данные в один файл.
+Подсказка. В реальном приложении каждый класс помещается в отдельный файл, а строка подключения — в файл конфигурации. Для упрощения в этом руководстве все данные содержатся в одном файле.
 
 ## <a name="create-the-database"></a>Создание базы данных
 
-Когда модель будет готова, из нее можно создать базу данных с помощью [миграций](https://docs.microsoft.com/aspnet/core/data/ef-mvc/migrations#introduction-to-migrations):
+Когда модель будет готова, создайте базу данных с помощью [миграций](https://docs.microsoft.com/aspnet/core/data/ef-mvc/migrations#introduction-to-migrations).
 
 * Запустите `dotnet ef migrations add InitialCreate`, чтобы сформировать шаблон миграции и создать начальный набор таблиц для модели.
 * Запустите `dotnet ef database update`, чтобы применить созданную миграцию к базе данных. Эта команда создает базу данных и применяет к ней миграции.
 
-> [!NOTE]  
-> Если для SQLite применяются относительные пути, они учитываются относительно главной сборки приложения. В этом примере основным двоичным файлом является `bin/Debug/netcoreapp2.0/ConsoleApp.SQLite.dll`, а значит база данных SQLite расположена в папке `bin/Debug/netcoreapp2.0/blogging.db`.
+База данных SQLite *blogging.db* * находится в каталоге проекта.
 
 ## <a name="use-your-model"></a>Использование модели
 
