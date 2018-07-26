@@ -250,6 +250,7 @@
 ### [Дополнительные ресурсы](ef6/resources/index.md)
 #### [Блоги](ef6/resources/blogs.md)
 #### [Примеры](ef6/resources/case-studies.md)
+#### [Участие](ef6/resources/contribute.md)
 #### [Получение справки](ef6/resources/get-help.md)
 #### [Глоссарий](ef6/resources/glossary.md)
 #### [Образец базы данных School](ef6/resources/school-database.md)
