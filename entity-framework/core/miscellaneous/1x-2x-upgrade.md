@@ -6,12 +6,12 @@ ms.date: 8/13/2017
 ms.assetid: 8BD43C8C-63D9-4F3A-B954-7BC518A1B7DB
 ms.technology: entity-framework-core
 uid: core/miscellaneous/1x-2x-upgrade
-ms.openlocfilehash: dca9a3fb9e514b6eb22281a0f0140539681efb71
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: 9be2368159fe7ab7b6951cc14a84ee63762ce90c
+ms.sourcegitcommit: 4467032fd6ca223e5965b59912d74cf88a1dd77f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949260"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39388456"
 ---
 # <a name="upgrading-applications-from-previous-versions-to-ef-core-20"></a>Обновление приложений из предыдущих версий до EF Core 2.0
 
@@ -154,7 +154,7 @@ optionsBuilder.UseInMemoryDatabase("MyDatabase");
 
 ### <a name="read-only-api-changes"></a>Изменения API только для чтения
 
-`IsReadOnlyBeforeSave`, `IsReadOnlyAferSave`, и `IsStoreGeneratedAlways` устарел и заменены [BeforeSaveBehavior](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IProperty.cs#L39) и [AfterSaveBehavior](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IProperty.cs#L55). Такое поведение, применяются к любому свойству (не только свойства, сформированное хранилищем) и определить, каким образом следует использовать значение свойства при вставке в строку базы данных (`BeforeSaveBehavior`) или при обновлении существующей базы данных строки (`AfterSaveBehavior`).
+`IsReadOnlyBeforeSave`, `IsReadOnlyAfterSave`, и `IsStoreGeneratedAlways` устарел и заменены [BeforeSaveBehavior](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IProperty.cs#L39) и [AfterSaveBehavior](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IProperty.cs#L55). Такое поведение, применяются к любому свойству (не только свойства, сформированное хранилищем) и определить, каким образом следует использовать значение свойства при вставке в строку базы данных (`BeforeSaveBehavior`) или при обновлении существующей базы данных строки (`AfterSaveBehavior`).
 
 Свойства помечены как [ValueGenerated.OnAddOrUpdate](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/ValueGenerated.cs) (например, для вычисляемых столбцов) по умолчанию игнорирует любые текущее значение свойства. Это означает, что сформированное хранилищем значение будет получаться независимо от того задать или изменить на отслеживаемой сущности любое значение. Это можно изменить, задав другой `Before\AfterSaveBehavior`.
 

@@ -6,12 +6,12 @@ ms.date: 2/26/2018
 ms.assetid: 9F4450C5-1A3F-4BB6-AC19-9FAC64292AAD
 ms.technology: entity-framework-core
 uid: core/modeling/query-types
-ms.openlocfilehash: 89f5be356654dc02e353441a83e34c90fc727593
-ms.sourcegitcommit: fd50ac53b93a03825dcbb42ed2e7ca95ca858d5f
+ms.openlocfilehash: 5a2cd451da8833daf2c315419559eb4a2c705b13
+ms.sourcegitcommit: 4467032fd6ca223e5965b59912d74cf88a1dd77f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900308"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39388485"
 ---
 # <a name="query-types"></a>Типы запросов
 > [!NOTE]
@@ -53,7 +53,7 @@ ms.locfileid: "37900308"
 В следующем примере показано, как использовать тип запроса для запроса представления базы данных.
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFrameworkCore/tree/dev/samples/QueryTypes) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFrameworkCore/tree/master/samples/QueryTypes) из репозитория GitHub.
 
 Во-первых определим простую модель блога и Post.
 
