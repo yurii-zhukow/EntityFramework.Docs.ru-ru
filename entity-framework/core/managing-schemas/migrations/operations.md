@@ -1,21 +1,21 @@
 ---
-title: Миграция пользовательских операций - EF Core
+title: Операции пользовательских миграции — EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 11/7/2017
 ms.technology: entity-framework-core
-ms.openlocfilehash: 84d80175e719c950844b13688e1a4992614f25d8
-ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
+ms.openlocfilehash: 510d585534b4809179c905ee5b77cab4209a2b8f
+ms.sourcegitcommit: 902257be9c63c427dc793750a2b827d6feb8e38c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34163146"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39614289"
 ---
 <a name="custom-migrations-operations"></a>Миграция пользовательских операций
 ============================
-MigrationBuilder API дает возможность выполнять различные виды операций во время миграции, но это далеко от exhaustive. Тем не менее API-Интерфейс также является расширяемым, позволяя определять собственные операции. Существует два способа для расширения API: с помощью `Sql()` метод, или определив пользовательский `MigrationOperation` объектов.
+MigrationBuilder API дает возможность выполнять различные виды операций во время миграции, но это далеко не исчерпывающий. Тем не менее API также является расширяемой, что позволяет определять собственные операции. Существует два способа для расширения API: с помощью `Sql()` метод, или определения пользовательских `MigrationOperation` объектов.
 
-Чтобы проиллюстрировать это, рассмотрим реализация операции, обеспечивающий создание пользователя базы данных с помощью каждого подхода. В нашем миграции требуется для включения записи в следующем примере кода:
+Чтобы продемонстрировать, давайте взглянем на реализации операции, которая создает пользователя базы данных с помощью каждого подхода. В нашей миграций нам нужно включить написание следующего кода:
 
 ``` csharp
 migrationBuilder.CreateUser("SQLUser1", "Password");
@@ -23,7 +23,7 @@ migrationBuilder.CreateUser("SQLUser1", "Password");
 
 <a name="using-migrationbuildersql"></a>С помощью MigrationBuilder.Sql()
 ----------------------------
-Самый простой способ реализации пользовательской операции является определение метода расширения, который вызывает `MigrationBuilder.Sql()`.
+Самый простой способ реализовать пользовательскую операцию, — определить метод расширения, который вызывает `MigrationBuilder.Sql()`.
 Ниже приведен пример, который создает соответствующие Transact-SQL.
 
 ``` csharp
@@ -34,7 +34,7 @@ static MigrationBuilder CreateUser(
     => migrationBuilder.Sql($"CREATE USER {name} WITH PASSWORD '{password}';");
 ```
 
-При миграции должны поддерживать несколько поставщиков базы данных, можно использовать `MigrationBuilder.ActiveProvider` свойства. Ниже приведен пример поддержка Microsoft SQL Server и PostgreSQL.
+Если миграции необходима поддержка нескольких поставщиков базы данных, можно использовать `MigrationBuilder.ActiveProvider` свойство. Ниже приведен пример, которые поддерживают Microsoft SQL Server и PostgreSQL.
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -52,14 +52,16 @@ static MigrationBuilder CreateUser(
             return migrationBuilder
                 .Sql($"CREATE USER {name} WITH PASSWORD = '{password}';");
     }
+
+    return migrationBuilder;
 }
 ```
 
-Такой подход работает, только если вы знаете все поставщики которой будут применяться к пользовательской операции.
+Этот подход работает, только если известно, чтобы каждый поставщик применения вашей пользовательской операции.
 
 <a name="using-a-migrationoperation"></a>С помощью MigrationOperation
 ---------------------------
-Для отделения пользовательской операции с SQL, можно определить собственные `MigrationOperation` для его отображения. Операция затем передается поставщику, чтобы можно было определить соответствующий SQL для создания.
+Для отделения пользовательской операции из SQL, можно определить собственные `MigrationOperation` для его отображения. Операция затем передается поставщику, чтобы можно было определить подходящий код SQL для создания.
 
 ``` csharp
 class CreateUserOperation : MigrationOperation
@@ -69,7 +71,7 @@ class CreateUserOperation : MigrationOperation
 }
 ```
 
-При таком подходе метод расширения требуется только для одной из этих операций для добавления `MigrationBuilder.Operations`.
+При таком подходе метод расширения просто нужно добавить одну из этих операций для `MigrationBuilder.Operations`.
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -88,7 +90,7 @@ static MigrationBuilder CreateUser(
 }
 ```
 
-Этот подход требует каждому поставщику, чтобы знать, как создавать код SQL для этой операции в их `IMigrationsSqlGenerator` службы. Ниже приведен пример переопределения генератор SQL Server для обработки операции создания.
+Этот подход требует каждому поставщику, чтобы знать, как создавать код SQL для этой операции в их `IMigrationsSqlGenerator` службы. Ниже приведен пример переопределения генератор SQL Server для обработки новой операции.
 
 ``` csharp
 class MyMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator
@@ -133,7 +135,7 @@ class MyMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator
 }
 ```
 
-Замените обновленный служба генератора sql миграций по умолчанию.
+Замените обновленный службы генератор миграций sql по умолчанию.
 
 ``` csharp
 protected override void OnConfiguring(DbContextOptionsBuilder options)
