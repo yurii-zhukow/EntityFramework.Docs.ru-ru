@@ -1,5 +1,5 @@
 ---
-title: Краткий обзор Entity Framework 6
+title: Общие сведения о EF6
 author: divega
 ms.date: 2016-10-23
 ms.prod: entity-framework
@@ -10,14 +10,14 @@ ms.topic: article
 ms.assetid: 8ae74d63-6bad-4686-b325-bbf9d68f3743
 caps.latest.revision: 5
 uid: ef6/index
-ms.openlocfilehash: 7bb51ea82640ef29bb376c2320ea29a81eeb175e
-ms.sourcegitcommit: 390f3a37bc55105ed7cc5b0e0925b7f9c9e80ba6
+ms.openlocfilehash: c74626593c4109badd75f2a0a4f051c840f7bc7f
+ms.sourcegitcommit: 902257be9c63c427dc793750a2b827d6feb8e38c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37914345"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39614383"
 ---
-# <a name="entity-framework-6-quick-overview"></a>Краткий обзор Entity Framework 6
+# <a name="entity-framework-6"></a>Entity Framework 6
 Entity Framework 6 (EF6) — это проверенное средство объектно-реляционного сопоставления (O/RM) для .NET, которое разрабатывалось и совершенствовалось в течение нескольких лет.
 
 В качестве O/RM EF6 уменьшает несогласованность между реляционным и объектно ориентированным мирами, позволяя разработчикам создавать приложения, которые взаимодействуют с данными, хранящимися в реляционных базах данных, с помощью строго типизированных объектов .NET, представляющих прикладную область, и устраняя необходимость писать большой объем инфраструктурного кода для доступа к данным.

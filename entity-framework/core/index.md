@@ -1,19 +1,19 @@
 ---
-title: Краткий обзор — EF Core
+title: Общие сведения о EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 ms.technology: entity-framework-core
 uid: core/index
-ms.openlocfilehash: 103e5e069687950a8411f2d92c7b5a191844e0ae
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: d2c40356fc3b37251f95b08ee8bf07ed4eab7b80
+ms.sourcegitcommit: 902257be9c63c427dc793750a2b827d6feb8e38c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37948994"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39614312"
 ---
-# <a name="entity-framework-core-quick-overview"></a>Краткий обзор Entity Framework Core
+# <a name="entity-framework-core"></a>Entity Framework Core
 
 Entity Framework (EF) — это упрощенная, расширяемая и кроссплатформенная версия популярной технологии для доступа к данным Entity Framework.
 
