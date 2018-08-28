@@ -1,26 +1,25 @@
 ---
-title: Таблицы журнала миграций пользовательских - EF Core
+title: Таблица журнала пользовательских миграции — EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 11/7/2017
-ms.technology: entity-framework-core
-ms.openlocfilehash: cb9892241f3d7f1fae6293bd60a8a5c3e7120969
-ms.sourcegitcommit: b467368cc350e6059fdc0949e042a41cb11e61d9
+ms.openlocfilehash: 7ee76cadd6fac4ec403918e88460e43067ae5815
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "26053814"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42995700"
 ---
-<a name="custom-migrations-history-table"></a>Таблицы журнала миграций, пользовательские
+<a name="custom-migrations-history-table"></a>Таблица миграции пользовательского журнала
 ===============================
-По умолчанию EF ядра отслеживает отслеживания объекта какие миграции были применены к базе данных путем их записи в таблице с именем `__EFMigrationsHistory`. По различным причинам может потребоваться настроить эту таблицу для удовлетворения ваших потребностей.
+По умолчанию EF Core следит за миграций, которые были применены к базе данных, записав их в таблицу с именем `__EFMigrationsHistory`. По различным причинам можно настроить эту таблицу для удовлетворения ваших потребностей.
 
 > [!IMPORTANT]
-> При настройке таблицы журнала миграций *после* применение миграции, вы несете ответственность за обновление существующей таблицы в базе данных.
+> Если вы настраиваете таблице журнала миграции *после* применение миграций, вы несете ответственность за обновление существующей таблицы в базе данных.
 
 <a name="schema-and-table-name"></a>Имя схемы и таблицы
 ----------------------
-Можно изменить схему и имя таблицы с помощью `MigrationsHistoryTable()` метод в `OnConfiguring()` (или `ConfigureServices()` в ASP.NET Core). Ниже приведен пример с помощью поставщика SQL Server EF Core.
+Можно изменить схему и имя таблицы с помощью `MigrationsHistoryTable()` метод в `OnConfiguring()` (или `ConfigureServices()` на ASP.NET Core). Ниже приведен пример с помощью поставщика SQL Server EF Core.
 
 ``` csharp
 protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -31,7 +30,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder options)
 
 <a name="other-changes"></a>Прочие изменения
 -------------
-Чтобы настроить дополнительные аспекты таблицы, переопределить и заменить поставщика `IHistoryRepository` службы. Ниже приведен пример изменить имя столбца MigrationId *идентификатор* на сервере SQL Server.
+Чтобы настроить дополнительные аспекты класса таблицы, переопределение и замените специфический для поставщика `IHistoryRepository` службы. Ниже приведен пример изменения имени столбца MigrationId для *идентификатор* на сервере SQL Server.
 
 ``` csharp
 protected override void OnConfiguring(DbContextOptionsBuilder options)
@@ -41,7 +40,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder options)
 ```
 
 > [!WARNING]
-> `SqlServerHistoryRepository`внутри внутреннего пространства имен и может измениться в будущих версиях.
+> `SqlServerHistoryRepository` находится внутри внутреннего пространства имен и может измениться в будущих версиях.
 
 ``` csharp
 class MyHistoryRepository : SqlServerHistoryRepository

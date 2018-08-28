@@ -1,35 +1,33 @@
 ---
-title: Альтернативные ключи (ограничения Unique) - EF Core
+title: Альтернативные ключи (ограничения уникальности) — EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 3d419dcf-2b5d-467c-b408-ea03d830721a
-ms.technology: entity-framework-core
 uid: core/modeling/relational/unique-constraints
-ms.openlocfilehash: 1b7e2bef6ede95f8c27211ba00dcc6b97cccde9b
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 7ec58ee31aac79e15329dc8542f37fd117772fbe
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052794"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994195"
 ---
-# <a name="alternate-keys-unique-constraints"></a>Альтернативные ключи (ограничения Unique)
+# <a name="alternate-keys-unique-constraints"></a>Альтернативные ключи (ограничения уникальности)
 
 > [!NOTE]  
-> В этом разделе конфигурации применяется для реляционных баз данных в целом. Методы расширения, показанный здесь будут доступны после установки поставщика реляционной базы данных (из-за общей *Microsoft.EntityFrameworkCore.Relational* пакета).
+> Описанная в этом разделе конфигурации применяется к реляционным базам данных в общем случае. Показанные здесь методы расширения будут доступны после установки поставщика реляционной базы данных (посредством общего *пакета Microsoft.EntityFrameworkCore.Relational*).
 
-Ограничение уникальности введен для каждого альтернативный ключ в модели.
+Для каждого альтернативного ключа в модели введено ограничение уникальности.
 
 ## <a name="conventions"></a>Соглашения
 
-По соглашению, индекс и ограничения, введенные для дополнительный ключ будет называться `AK_<type name>_<property name>`. Для составных ключей альтернативный `<property name>` становится подчеркивания запятыми список имен свойств.
+По соглашению, индекс и ограничения, введенные для альтернативного ключа будет называться `AK_<type name>_<property name>`. Для составных ключей альтернативный `<property name>` становится список имен свойств, разделенных символом подчеркивания.
 
 ## <a name="data-annotations"></a>Заметки к данным
 
-Ограничения UNIQUE не следует задавать с помощью заметок к данным.
+Не ограничения UNIQUE можно настроить с помощью заметок к данным.
 
-## <a name="fluent-api"></a>Fluent API
+## <a name="fluent-api"></a>Текучий API
 
-Чтобы задать имя индекса и ограничения для дополнительный ключ можно использовать Fluent API.
+Fluent API можно использовать для настройки имени индексов и ограничений для альтернативного ключа.
 
 [!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Samples/Relational/AlternateKeyName.cs?name=Model&highlight=9)]

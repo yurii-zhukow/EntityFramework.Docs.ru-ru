@@ -2,19 +2,13 @@
 title: Спецификация языка CSDL - EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: c54255f4-253f-49eb-bec8-ad7927ac2fa3
-caps.latest.revision: 3
-ms.openlocfilehash: 0ece73a19fe7ea244905bccb728ab2a104c5179f
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 88669cf80f9a792fda7d191d9f6be2b1734691df
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122398"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994733"
 ---
 # <a name="csdl-specification"></a>Спецификация CSDL
 Язык CSDL — это язык на основе XML, описывающий сущности, связи и функции, составляющие концептуальную модель управляемого данными приложения. Эту концептуальную модель можно использовать с Entity Framework или службы WCF Data Services. Метаданные, описываемые на языке CSDL используется платформой Entity Framework для сопоставления сущностей и связей, которые определены в концептуальной модели к источнику данных. Дополнительные сведения см. в разделе [спецификация SSDL](~/ef6/modeling/designer/advanced/edmx/ssdl-spec.md) и [спецификация MSL](~/ef6/modeling/designer/advanced/edmx/msl-spec.md).

@@ -2,19 +2,13 @@
 title: Привязка данных с помощью WPF - EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: e90d48e6-bea5-47ef-b756-7b89cce4daf0
-caps.latest.revision: 3
-ms.openlocfilehash: 1756ec14fe83d80199b6040bd345dc2fe6294281
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 0b1f4d5ea204cd80acf42caa499732610daa0e31
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122305"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994827"
 ---
 # <a name="databinding-with-wpf"></a>Привязка данных с помощью WPF
 Это пошаговое руководство показывает, как выполнить привязку к элементам управления WPF в форме «основной / подробности» типов POCO. Приложение использует API-интерфейсов Entity Framework для заполнения объектов с данными из базы данных, отслеживать изменения и сохранения данных в базе данных.

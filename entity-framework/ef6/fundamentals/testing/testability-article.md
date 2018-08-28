@@ -2,19 +2,13 @@
 title: Пригодность для тестирования и Entity Framework 4.0
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 9430e2ab-261c-4e8e-8545-2ebc52d7a247
-caps.latest.revision: 3
-ms.openlocfilehash: 61773f8a23ff54ddb78aeeb5656c669b12f91478
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 17a9f09022531a81042979464de05fbbd2570759
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122369"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42995233"
 ---
 # <a name="testability-and-entity-framework-40"></a>Пригодность для тестирования и Entity Framework 4.0
 Скотт Аллен
@@ -979,8 +973,8 @@ IEntity можно считать небольшой нарушение сохр
 -   (Martin Fowler) « [макетов не только заглушки](http://martinfowler.com/articles/mocksArentStubs.html)"
 -   (Martin Fowler) « [тестирования двойной](http://martinfowler.com/bliki/TestDouble.html)"
 -   Джереми Миллер " [состояние и тестирование взаимодействия](http://codebetter.com/blogs/jeremy.miller/articles/129544.aspx)"
--   MOQ, \<http://code.google.com/p/moq/>
+-   [MOQ](http://code.google.com/p/moq/)
 
 ### <a name="biography"></a>Биография
 
-Скотт Аллен является членом технического персонала в Pluralsight и учредитель OdeToCode.com. В 15-летним коммерческой разработки программных продуктов Скотт участвовал в решения для всех операций из 8-разрядных устройств embedded позволяет высокомасштабируемых веб-приложений ASP.NET. Скоттом можно связаться на его блог по адресу OdeToCode или в Твиттере \< http://twitter.com/OdeToCode>.
+Скотт Аллен является членом технического персонала в Pluralsight и учредитель OdeToCode.com. В 15-летним коммерческой разработки программных продуктов Скотт участвовал в решения для всех операций из 8-разрядных устройств embedded позволяет высокомасштабируемых веб-приложений ASP.NET. Скоттом можно связаться на его блог по адресу OdeToCode или в Твиттере [ http://twitter.com/OdeToCode ](http://twitter.com/OdeToCode).

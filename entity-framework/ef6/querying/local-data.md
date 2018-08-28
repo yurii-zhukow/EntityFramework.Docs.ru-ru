@@ -2,19 +2,13 @@
 title: Локальные данные - EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 2eda668b-1e5d-487d-9a8c-0e3beef03fcb
-caps.latest.revision: 3
-ms.openlocfilehash: 79f0d2175199780d41b43088832bab808ab2fff0
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: dac1a1de20398501c706b118443743d47970df17
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122302"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994278"
 ---
 # <a name="local-data"></a>Локальные данные
 Выполняется запрос LINQ непосредственно к DbSet, всегда отправляет запрос к базе данных, но можно получить доступ к данных, который в данный момент в памяти с помощью свойства DbSet.Local. Можно также открыть нужные дополнительные данные отслеживания EF о сущности с помощью методов DbContext.Entry и DbContext.ChangeTracker.Entries. Методы, представленные в этом разделе, также применимы к моделям, созданным с помощью Code First и конструктора EF.  
