@@ -1,30 +1,28 @@
 ---
-title: Альтернативные ключи - EF Core
+title: Альтернативные ключи — EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 8a5931d4-b480-4298-af36-0e29d74a37c0
-ms.technology: entity-framework-core
 uid: core/modeling/alternate-keys
-ms.openlocfilehash: 09f86a8932b71ec8f30ee90a088091a00233c20f
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: b26d8bc1630af9e811d9c4e7da850a618bc8042e
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052474"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42996975"
 ---
-# <a name="alternate-keys"></a><span data-ttu-id="0ca61-102">Альтернативные ключи</span><span class="sxs-lookup"><span data-stu-id="0ca61-102">Alternate Keys</span></span>
+# <a name="alternate-keys"></a><span data-ttu-id="8acb0-102">Альтернативные ключи</span><span class="sxs-lookup"><span data-stu-id="8acb0-102">Alternate Keys</span></span>
 
-<span data-ttu-id="0ca61-103">Дополнительный ключ служит в качестве альтернативного уникального идентификатора для каждого экземпляра сущности, помимо первичного ключа.</span><span class="sxs-lookup"><span data-stu-id="0ca61-103">An alternate key serves as an alternate unique identifier for each entity instance in addition to the primary key.</span></span> <span data-ttu-id="0ca61-104">Альтернативные ключи можно использовать как целевым объектом связи.</span><span class="sxs-lookup"><span data-stu-id="0ca61-104">Alternate keys can be used as the target of a relationship.</span></span> <span data-ttu-id="0ca61-105">При использовании реляционной базы данных сопоставляется с понятием индекс или ограничение unique для альтернативного ключевые столбцы и один или несколько ограничений внешнего ключа, ссылающихся столбцов.</span><span class="sxs-lookup"><span data-stu-id="0ca61-105">When using a relational database this maps to the concept of a unique index/constraint on the alternate key column(s) and one or more foreign key constraints that reference the column(s).</span></span>
+<span data-ttu-id="8acb0-103">Дополнительный ключ служит в качестве альтернативного уникального идентификатора для каждого экземпляра сущности, помимо первичного ключа.</span><span class="sxs-lookup"><span data-stu-id="8acb0-103">An alternate key serves as an alternate unique identifier for each entity instance in addition to the primary key.</span></span> <span data-ttu-id="8acb0-104">Альтернативные ключи можно использовать в качестве целевого объекта связи.</span><span class="sxs-lookup"><span data-stu-id="8acb0-104">Alternate keys can be used as the target of a relationship.</span></span> <span data-ttu-id="8acb0-105">При использовании реляционной базы данных сопоставляется концепцию индекс или ограничение уникальности на альтернативный столбца первичного ключа и один или несколько ограничений внешнего ключа, которые ссылаются на столбцы.</span><span class="sxs-lookup"><span data-stu-id="8acb0-105">When using a relational database this maps to the concept of a unique index/constraint on the alternate key column(s) and one or more foreign key constraints that reference the column(s).</span></span>
 
 > [!TIP]  
-> <span data-ttu-id="0ca61-106">Если требуется обеспечить уникальность данных столбца, то требуется уникальный индекс, а не дополнительный ключ, см. раздел [индексы](indexes.md).</span><span class="sxs-lookup"><span data-stu-id="0ca61-106">If you just want to enforce uniqueness of a column then you want a unique index rather than an alternate key, see [Indexes](indexes.md).</span></span> <span data-ttu-id="0ca61-107">В EF альтернативные ключи предоставляют больше функциональных возможностей, чем уникальные индексы, так как они могут использоваться в качестве целевого объекта для внешнего ключа.</span><span class="sxs-lookup"><span data-stu-id="0ca61-107">In EF, alternate keys provide greater functionality than unique indexes because they can be used as the target of a foreign key.</span></span>
+> <span data-ttu-id="8acb0-106">Если требуется обеспечить уникальность данных столбца, то требуется уникальный индекс, а не альтернативного ключа, см. в разделе [индексы](indexes.md).</span><span class="sxs-lookup"><span data-stu-id="8acb0-106">If you just want to enforce uniqueness of a column then you want a unique index rather than an alternate key, see [Indexes](indexes.md).</span></span> <span data-ttu-id="8acb0-107">В EF альтернативные ключи обеспечивают больше возможностей, чем уникальные индексы, так как они могут использоваться в качестве целевого объекта внешнего ключа.</span><span class="sxs-lookup"><span data-stu-id="8acb0-107">In EF, alternate keys provide greater functionality than unique indexes because they can be used as the target of a foreign key.</span></span>
 
-<span data-ttu-id="0ca61-108">Альтернативные ключи обычно вводятся автоматически, если это требуется, и необходимо вручную настроить их.</span><span class="sxs-lookup"><span data-stu-id="0ca61-108">Alternate keys are typically introduced for you when needed and you do not need to manually configure them.</span></span> <span data-ttu-id="0ca61-109">В разделе [соглашения](#conventions) для получения дополнительных сведений.</span><span class="sxs-lookup"><span data-stu-id="0ca61-109">See [Conventions](#conventions) for more details.</span></span>
+<span data-ttu-id="8acb0-108">Альтернативные ключи обычно вводятся автоматически, когда требуется и необходимо настроить их вручную.</span><span class="sxs-lookup"><span data-stu-id="8acb0-108">Alternate keys are typically introduced for you when needed and you do not need to manually configure them.</span></span> <span data-ttu-id="8acb0-109">См. в разделе [соглашения](#conventions) для получения дополнительных сведений.</span><span class="sxs-lookup"><span data-stu-id="8acb0-109">See [Conventions](#conventions) for more details.</span></span>
 
-## <a name="conventions"></a><span data-ttu-id="0ca61-110">Соглашения</span><span class="sxs-lookup"><span data-stu-id="0ca61-110">Conventions</span></span>
+## <a name="conventions"></a><span data-ttu-id="8acb0-110">Соглашения</span><span class="sxs-lookup"><span data-stu-id="8acb0-110">Conventions</span></span>
 
-<span data-ttu-id="0ca61-111">По соглашению дополнительный ключ вводится автоматически при идентификации свойством, не первичный ключ в качестве целевого объекта отношения.</span><span class="sxs-lookup"><span data-stu-id="0ca61-111">By convention, an alternate key is introduced for you when you identify a property, that is not the primary key, as the target of a relationship.</span></span>
+<span data-ttu-id="8acb0-111">По соглашению альтернативного ключа вводится автоматически при идентификации свойством, которое не является первичным ключом, что целевым объектом отношения.</span><span class="sxs-lookup"><span data-stu-id="8acb0-111">By convention, an alternate key is introduced for you when you identify a property, that is not the primary key, as the target of a relationship.</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Modeling/Conventions/Samples/AlternateKey.cs?highlight=12)] -->
 ``` csharp
@@ -62,13 +60,13 @@ public class Post
 }
 ```
 
-## <a name="data-annotations"></a><span data-ttu-id="0ca61-112">Заметки к данным</span><span class="sxs-lookup"><span data-stu-id="0ca61-112">Data Annotations</span></span>
+## <a name="data-annotations"></a><span data-ttu-id="8acb0-112">Заметки к данным</span><span class="sxs-lookup"><span data-stu-id="8acb0-112">Data Annotations</span></span>
 
-<span data-ttu-id="0ca61-113">Альтернативные ключи не следует задавать с помощью заметок к данным.</span><span class="sxs-lookup"><span data-stu-id="0ca61-113">Alternate keys can not be configured using Data Annotations.</span></span>
+<span data-ttu-id="8acb0-113">Не альтернативные ключи можно настроить с помощью заметок к данным.</span><span class="sxs-lookup"><span data-stu-id="8acb0-113">Alternate keys can not be configured using Data Annotations.</span></span>
 
-## <a name="fluent-api"></a><span data-ttu-id="0ca61-114">Fluent API</span><span class="sxs-lookup"><span data-stu-id="0ca61-114">Fluent API</span></span>
+## <a name="fluent-api"></a><span data-ttu-id="8acb0-114">Текучий API</span><span class="sxs-lookup"><span data-stu-id="8acb0-114">Fluent API</span></span>
 
-<span data-ttu-id="0ca61-115">Fluent API можно использовать один свойство может являться и резервным ключом.</span><span class="sxs-lookup"><span data-stu-id="0ca61-115">You can use the Fluent API to configure a single property to be an alternate key.</span></span>
+<span data-ttu-id="8acb0-115">Fluent API можно использовать для настройки единственное свойство являться и резервным ключом.</span><span class="sxs-lookup"><span data-stu-id="8acb0-115">You can use the Fluent API to configure a single property to be an alternate key.</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Samples/AlternateKeySingle.cs?highlight=7,8)] -->
 ``` csharp
@@ -92,7 +90,7 @@ class Car
 }
 ```
 
-<span data-ttu-id="0ca61-116">Можно также использовать Fluent API для настройки нескольких свойств являться и резервным ключом (известных как составной альтернативное ключ).</span><span class="sxs-lookup"><span data-stu-id="0ca61-116">You can also use the Fluent API to configure multiple properties to be an alternate key (known as a composite alternate key).</span></span>
+<span data-ttu-id="8acb0-116">Fluent API также можно настроить несколько свойств для являться и резервным ключом (известный как альтернативный составного ключа).</span><span class="sxs-lookup"><span data-stu-id="8acb0-116">You can also use the Fluent API to configure multiple properties to be an alternate key (known as a composite alternate key).</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Samples/AlternateKeyComposite.cs?highlight=7,8)] -->
 ``` csharp

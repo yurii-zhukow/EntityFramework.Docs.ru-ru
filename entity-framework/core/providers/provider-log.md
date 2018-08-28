@@ -1,0 +1,48 @@
+---
+title: Журнал изменений, затрагивающих поставщика — EF Core
+author: ajcvickers
+ms.author: avickers
+ms.date: 08/08/2018
+ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
+ms.technology: entity-framework-core
+uid: core/providers/provider-log
+ms.openlocfilehash: ee73940e3c0030b76e73438b1852cc29ebeadb45
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998356"
+---
+# <a name="provider-impacting-changes"></a><span data-ttu-id="5babd-102">Изменения, влияющие на поставщика</span><span class="sxs-lookup"><span data-stu-id="5babd-102">Provider-impacting changes</span></span>
+
+<span data-ttu-id="5babd-103">Эта страница содержит ссылки на запросы, внесенные в репозитории EF Core, может потребовать авторы других поставщиках баз данных для реагирования на Вытягивание.</span><span class="sxs-lookup"><span data-stu-id="5babd-103">This page contains links to pull requests made on the EF Core repo that may require authors of other database providers to react.</span></span> <span data-ttu-id="5babd-104">Планируется представляют собой отправную точку для авторов существующей базы данных сторонних поставщиков, при обновлении до новой версии своего поставщика.</span><span class="sxs-lookup"><span data-stu-id="5babd-104">The intention is to provide a starting point for authors of existing third-party database providers when updating their provider to a new version.</span></span>
+
+<span data-ttu-id="5babd-105">Этот журнал начинается с изменениями из 2.1 и 2.2.</span><span class="sxs-lookup"><span data-stu-id="5babd-105">We are starting this log with changes from 2.1 to 2.2.</span></span> <span data-ttu-id="5babd-106">Прежде чем 2.1 мы использовали [ `providers-beware` ](https://github.com/aspnet/EntityFrameworkCore/labels/providers-beware) и [ `providers-fyi` ](https://github.com/aspnet/EntityFrameworkCore/labels/providers-fyi) меток на наши проблемы и запросы на включение внесенных изменений.</span><span class="sxs-lookup"><span data-stu-id="5babd-106">Prior to 2.1 we used the [`providers-beware`](https://github.com/aspnet/EntityFrameworkCore/labels/providers-beware) and [`providers-fyi`](https://github.com/aspnet/EntityFrameworkCore/labels/providers-fyi) labels on our issues and pull requests.</span></span>
+
+### <a name="21-----22"></a><span data-ttu-id="5babd-107">2.1---> 2.2</span><span class="sxs-lookup"><span data-stu-id="5babd-107">2.1 ---> 2.2</span></span>
+
+#### <a name="test-only-changes"></a><span data-ttu-id="5babd-108">Только для тестирования изменений</span><span class="sxs-lookup"><span data-stu-id="5babd-108">Test-only changes</span></span>
+
+* <span data-ttu-id="5babd-109">https://github.com/aspnet/EntityFrameworkCore/pull/12057 — Разрешите разделителей групп разрядов настраиваемый SQL в тестах</span><span class="sxs-lookup"><span data-stu-id="5babd-109">https://github.com/aspnet/EntityFrameworkCore/pull/12057 - Allow customizable SQL delimeters in tests</span></span>
+  * <span data-ttu-id="5babd-110">Проверить изменения, обеспечивающие нестрогом с плавающей запятой сравнения в BuiltInDataTypesTestBase</span><span class="sxs-lookup"><span data-stu-id="5babd-110">Test changes that allow non-strict floating point comparisons in BuiltInDataTypesTestBase</span></span>
+  * <span data-ttu-id="5babd-111">Изменения тестирования, обеспечивающие тестов запросов для многократного использования с помощью различных разделителей групп разрядов SQL</span><span class="sxs-lookup"><span data-stu-id="5babd-111">Test changes that allow query tests to be re-used with different SQL delimeters</span></span>
+* <span data-ttu-id="5babd-112">https://github.com/aspnet/EntityFrameworkCore/pull/12072 -Добавьте тесты DbFunction реляционных спецификации тесты</span><span class="sxs-lookup"><span data-stu-id="5babd-112">https://github.com/aspnet/EntityFrameworkCore/pull/12072 - Add DbFunction tests to the relational specification tests</span></span>
+  * <span data-ttu-id="5babd-113">Таким образом, эти тесты могут выполняться для всех поставщиков базы данных</span><span class="sxs-lookup"><span data-stu-id="5babd-113">Such that these tests can be run against all database providers</span></span>
+* <span data-ttu-id="5babd-114">https://github.com/aspnet/EntityFrameworkCore/pull/12362 -Очистка тестовой Async</span><span class="sxs-lookup"><span data-stu-id="5babd-114">https://github.com/aspnet/EntityFrameworkCore/pull/12362 - Async test cleanup</span></span>
+  * <span data-ttu-id="5babd-115">Удалить `Wait` вызовы, ненужные async и переименовать некоторые методы теста</span><span class="sxs-lookup"><span data-stu-id="5babd-115">Remove `Wait` calls, unneeded async, and renamed some test methods</span></span>
+* <span data-ttu-id="5babd-116">https://github.com/aspnet/EntityFrameworkCore/pull/12666 -Унифицировать инфраструктуру ведения журнала тестирования</span><span class="sxs-lookup"><span data-stu-id="5babd-116">https://github.com/aspnet/EntityFrameworkCore/pull/12666 - Unify logging test infrastructure</span></span>
+  * <span data-ttu-id="5babd-117">Добавлен `CreateListLoggerFactory` и удалены некоторые ранее инфраструктурой ведения журнала, потребуются поставщиков, использующих эти тесты для реагирования</span><span class="sxs-lookup"><span data-stu-id="5babd-117">Added `CreateListLoggerFactory` and removed some previous logging infrastructure, which will require providers using these tests to react</span></span>
+* <span data-ttu-id="5babd-118">https://github.com/aspnet/EntityFrameworkCore/pull/12500 — Запустите дополнительные тесты запрос синхронно и асинхронно</span><span class="sxs-lookup"><span data-stu-id="5babd-118">https://github.com/aspnet/EntityFrameworkCore/pull/12500 - Run more query tests both synchronously and asynchronously</span></span>
+  * <span data-ttu-id="5babd-119">Имена тестов и факторинга изменилось, что подразумевает работу поставщиков с помощью этих тестов реагирования на них</span><span class="sxs-lookup"><span data-stu-id="5babd-119">Test names and factoring has changed, which will require providers using these tests to react</span></span>
+* <span data-ttu-id="5babd-120">https://github.com/aspnet/EntityFrameworkCore/pull/12766 — Переименование переходов в модели ComplexNavigations</span><span class="sxs-lookup"><span data-stu-id="5babd-120">https://github.com/aspnet/EntityFrameworkCore/pull/12766 - Renaming navigations in the ComplexNavigations model</span></span>
+  * <span data-ttu-id="5babd-121">Поставщики, с помощью этих тестов может потребоваться react</span><span class="sxs-lookup"><span data-stu-id="5babd-121">Providers using these tests may need to react</span></span>
+* <span data-ttu-id="5babd-122">https://github.com/aspnet/EntityFrameworkCore/pull/12141 — Изменяет контекст в пул, вместо того чтобы избавляться в функциональных тестов</span><span class="sxs-lookup"><span data-stu-id="5babd-122">https://github.com/aspnet/EntityFrameworkCore/pull/12141 - Return the context to the pool instead of disposing in functional tests</span></span>
+  * <span data-ttu-id="5babd-123">Это изменение включает в себя оптимизация тестирования которого может потребоваться поставщиков реагирования на них</span><span class="sxs-lookup"><span data-stu-id="5babd-123">This change includes some test refactoring which may require providers to react</span></span>
+
+
+#### <a name="test-and-product-code-changes"></a><span data-ttu-id="5babd-124">Изменения кода теста и продукта</span><span class="sxs-lookup"><span data-stu-id="5babd-124">Test and product code changes</span></span>
+
+* <span data-ttu-id="5babd-125">https://github.com/aspnet/EntityFrameworkCore/pull/12109 -Консолидировать RelationalTypeMapping.Clone методы</span><span class="sxs-lookup"><span data-stu-id="5babd-125">https://github.com/aspnet/EntityFrameworkCore/pull/12109 - Consolidate RelationalTypeMapping.Clone methods</span></span>
+  * <span data-ttu-id="5babd-126">Изменения в 2.1 RelationalTypeMapping, разрешенное для упрощения в производных классах.</span><span class="sxs-lookup"><span data-stu-id="5babd-126">Changes in 2.1 to the RelationalTypeMapping allowed for a simplification in derived classes.</span></span> <span data-ttu-id="5babd-127">Мы не считают, что это критическим изменением для поставщиков, а поставщики можно воспользоваться преимуществами этого изменения, в их производные типы сопоставление классов.</span><span class="sxs-lookup"><span data-stu-id="5babd-127">We don't believe this was breaking to providers, but providers can take advantage of this change in their derived type mapping classes.</span></span>
+* <span data-ttu-id="5babd-128">https://github.com/aspnet/EntityFrameworkCore/pull/12069 -Тегами или именованные запросы</span><span class="sxs-lookup"><span data-stu-id="5babd-128">https://github.com/aspnet/EntityFrameworkCore/pull/12069 - Tagged or named queries</span></span>
+  * <span data-ttu-id="5babd-129">Добавляет инфраструктуру для добавления тегов запросов LINQ и необходимости эти теги отображаются в виде комментариев в код SQL.</span><span class="sxs-lookup"><span data-stu-id="5babd-129">Adds infrastructure for tagging LINQ queries and having those tags show up as comments in the SQL.</span></span> <span data-ttu-id="5babd-130">Это может потребовать поставщиков реагировать на создание кода SQL.</span><span class="sxs-lookup"><span data-stu-id="5babd-130">This may require providers to react in SQL generation.</span></span>
