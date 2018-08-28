@@ -6,50 +6,50 @@ ms.date: 10/27/2016
 ms.assetid: 850d842e-3fad-4ef2-be17-053768e97b9e
 ms.technology: entity-framework-core
 uid: core/saving/basic
-ms.openlocfilehash: deead323301dc4a0ee0748b4536ddff4596b99e6
-ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
+ms.openlocfilehash: ecf8f344a5baae37a5e7255a4affb1085f1b3ff3
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31006667"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "42447755"
 ---
-# <a name="basic-save"></a><span data-ttu-id="91ee5-102">Базовое сохранение</span><span class="sxs-lookup"><span data-stu-id="91ee5-102">Basic Save</span></span>
+# <a name="basic-save"></a><span data-ttu-id="a7de3-102">Базовое сохранение</span><span class="sxs-lookup"><span data-stu-id="a7de3-102">Basic Save</span></span>
 
-<span data-ttu-id="91ee5-103">Узнайте, как добавлять, изменять и удалять данные, используя контекст и классы сущностей.</span><span class="sxs-lookup"><span data-stu-id="91ee5-103">Learn how to add, modify, and remove data using your context and entity classes.</span></span>
+<span data-ttu-id="a7de3-103">Узнайте, как добавлять, изменять и удалять данные, используя контекст и классы сущностей.</span><span class="sxs-lookup"><span data-stu-id="a7de3-103">Learn how to add, modify, and remove data using your context and entity classes.</span></span>
 
 > [!TIP]  
-> <span data-ttu-id="91ee5-104">Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Basics/) из репозитория GitHub.</span><span class="sxs-lookup"><span data-stu-id="91ee5-104">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Basics/) on GitHub.</span></span>
+> <span data-ttu-id="a7de3-104">Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Basics/) из репозитория GitHub.</span><span class="sxs-lookup"><span data-stu-id="a7de3-104">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Basics/) on GitHub.</span></span>
 
-## <a name="adding-data"></a><span data-ttu-id="91ee5-105">Добавление данных</span><span class="sxs-lookup"><span data-stu-id="91ee5-105">Adding Data</span></span>
+## <a name="adding-data"></a><span data-ttu-id="a7de3-105">Добавление данных</span><span class="sxs-lookup"><span data-stu-id="a7de3-105">Adding Data</span></span>
 
-<span data-ttu-id="91ee5-106">Добавлять новые экземпляры классов сущностей можно с помощью метода *DbSet.Add*.</span><span class="sxs-lookup"><span data-stu-id="91ee5-106">Use the *DbSet.Add* method to add new instances of your entity classes.</span></span> <span data-ttu-id="91ee5-107">Данные будут вставлены в базу данных при вызове метода *SaveChanges*.</span><span class="sxs-lookup"><span data-stu-id="91ee5-107">The data will be inserted in the database when you call *SaveChanges*.</span></span>
+<span data-ttu-id="a7de3-106">Добавлять новые экземпляры классов сущностей можно с помощью метода *DbSet.Add*.</span><span class="sxs-lookup"><span data-stu-id="a7de3-106">Use the *DbSet.Add* method to add new instances of your entity classes.</span></span> <span data-ttu-id="a7de3-107">Данные будут вставлены в базу данных при вызове метода *SaveChanges*.</span><span class="sxs-lookup"><span data-stu-id="a7de3-107">The data will be inserted in the database when you call *SaveChanges*.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Basics/Sample.cs#Add)]
 
 > [!TIP]  
-> <span data-ttu-id="91ee5-108">Методы Add, Attach и Update работают с полным графом переданных им сущностей, как описано в статье [Сохранение связанных данных](related-data.md).</span><span class="sxs-lookup"><span data-stu-id="91ee5-108">The Add, Attach, and Update methods all work on the full graph of entities passed to them, as described in the [Related Data](related-data.md) section.</span></span> <span data-ttu-id="91ee5-109">В качестве альтернативы свойство EntityEntry.State можно использовать для установки состояния только одной сущности.</span><span class="sxs-lookup"><span data-stu-id="91ee5-109">Alternately, the EntityEntry.State property can be used to set the state of just a single entity.</span></span> <span data-ttu-id="91ee5-110">Например, `context.Entry(blog).State = EntityState.Modified`.</span><span class="sxs-lookup"><span data-stu-id="91ee5-110">For example, `context.Entry(blog).State = EntityState.Modified`.</span></span>
+> <span data-ttu-id="a7de3-108">Методы Add, Attach и Update работают с полным графом переданных им сущностей, как описано в статье [Сохранение связанных данных](related-data.md).</span><span class="sxs-lookup"><span data-stu-id="a7de3-108">The Add, Attach, and Update methods all work on the full graph of entities passed to them, as described in the [Related Data](related-data.md) section.</span></span> <span data-ttu-id="a7de3-109">В качестве альтернативы свойство EntityEntry.State можно использовать для установки состояния только одной сущности.</span><span class="sxs-lookup"><span data-stu-id="a7de3-109">Alternately, the EntityEntry.State property can be used to set the state of just a single entity.</span></span> <span data-ttu-id="a7de3-110">Например, `context.Entry(blog).State = EntityState.Modified`.</span><span class="sxs-lookup"><span data-stu-id="a7de3-110">For example, `context.Entry(blog).State = EntityState.Modified`.</span></span>
 
-## <a name="updating-data"></a><span data-ttu-id="91ee5-111">Обновление данных</span><span class="sxs-lookup"><span data-stu-id="91ee5-111">Updating Data</span></span>
+## <a name="updating-data"></a><span data-ttu-id="a7de3-111">Обновление данных</span><span class="sxs-lookup"><span data-stu-id="a7de3-111">Updating Data</span></span>
 
-<span data-ttu-id="91ee5-112">EF автоматически обнаружит изменения, внесенные в существующую сущность, которая отслеживается контекстом.</span><span class="sxs-lookup"><span data-stu-id="91ee5-112">EF will automatically detect changes made to an existing entity that is tracked by the context.</span></span> <span data-ttu-id="91ee5-113">Сюда входят сущности, которые вы загружаете или запрашиваете из базы данных, и сущности, которые ранее были добавлены и сохранены в базе данных.</span><span class="sxs-lookup"><span data-stu-id="91ee5-113">This includes entities that you load/query from the database, and entities that were previously added and saved to the database.</span></span>
+<span data-ttu-id="a7de3-112">EF автоматически обнаружит изменения, внесенные в существующую сущность, которая отслеживается контекстом.</span><span class="sxs-lookup"><span data-stu-id="a7de3-112">EF will automatically detect changes made to an existing entity that is tracked by the context.</span></span> <span data-ttu-id="a7de3-113">Сюда входят сущности, которые вы загружаете или запрашиваете из базы данных, и сущности, которые ранее были добавлены и сохранены в базе данных.</span><span class="sxs-lookup"><span data-stu-id="a7de3-113">This includes entities that you load/query from the database, and entities that were previously added and saved to the database.</span></span>
 
-<span data-ttu-id="91ee5-114">Просто измените значения, присвоенные свойствам, а затем вызовите метод *SaveChanges*.</span><span class="sxs-lookup"><span data-stu-id="91ee5-114">Simply modify the values assigned to properties and then call *SaveChanges*.</span></span>
+<span data-ttu-id="a7de3-114">Просто измените значения, присвоенные свойствам, а затем вызовите метод *SaveChanges*.</span><span class="sxs-lookup"><span data-stu-id="a7de3-114">Simply modify the values assigned to properties and then call *SaveChanges*.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Basics/Sample.cs#Update)]
 
-## <a name="deleting-data"></a><span data-ttu-id="91ee5-115">Удаление данных</span><span class="sxs-lookup"><span data-stu-id="91ee5-115">Deleting Data</span></span>
+## <a name="deleting-data"></a><span data-ttu-id="a7de3-115">Удаление данных</span><span class="sxs-lookup"><span data-stu-id="a7de3-115">Deleting Data</span></span>
 
-<span data-ttu-id="91ee5-116">С помощью метода *DbSet.Remove* можно удалять экземпляры классов сущностей.</span><span class="sxs-lookup"><span data-stu-id="91ee5-116">Use the *DbSet.Remove* method to delete instances of you entity classes.</span></span>
+<span data-ttu-id="a7de3-116">С помощью метода *DbSet.Remove* можно удалять экземпляры классов сущностей.</span><span class="sxs-lookup"><span data-stu-id="a7de3-116">Use the *DbSet.Remove* method to delete instances of your entity classes.</span></span>
 
-<span data-ttu-id="91ee5-117">Если сущность уже существует в базе данных, она будет удалена во время выполнения метода *SaveChanges*.</span><span class="sxs-lookup"><span data-stu-id="91ee5-117">If the entity already exists in the database, it will be deleted during *SaveChanges*.</span></span> <span data-ttu-id="91ee5-118">Если сущность еще не сохранена в базе данных (т. е. она отслеживается как добавленная), она будет удалена из контекста и больше не будет вставляться при вызове метода *SaveChanges*.</span><span class="sxs-lookup"><span data-stu-id="91ee5-118">If the entity has not yet been saved to the database (i.e. it is tracked as added) then it will be removed from the context and will no longer be inserted when *SaveChanges* is called.</span></span>
+<span data-ttu-id="a7de3-117">Если сущность уже существует в базе данных, она будет удалена во время выполнения метода *SaveChanges*.</span><span class="sxs-lookup"><span data-stu-id="a7de3-117">If the entity already exists in the database, it will be deleted during *SaveChanges*.</span></span> <span data-ttu-id="a7de3-118">Если сущность еще не сохранена в базе данных (т. е. она отслеживается как добавленная), она будет удалена из контекста и больше не будет вставляться при вызове метода *SaveChanges*.</span><span class="sxs-lookup"><span data-stu-id="a7de3-118">If the entity has not yet been saved to the database (that is, it is tracked as added) then it will be removed from the context and will no longer be inserted when *SaveChanges* is called.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Basics/Sample.cs#Remove)]
 
-## <a name="multiple-operations-in-a-single-savechanges"></a><span data-ttu-id="91ee5-119">Несколько операций в одном методе SaveChanges</span><span class="sxs-lookup"><span data-stu-id="91ee5-119">Multiple Operations in a single SaveChanges</span></span>
+## <a name="multiple-operations-in-a-single-savechanges"></a><span data-ttu-id="a7de3-119">Несколько операций в одном методе SaveChanges</span><span class="sxs-lookup"><span data-stu-id="a7de3-119">Multiple Operations in a single SaveChanges</span></span>
 
-<span data-ttu-id="91ee5-120">Вы можете объединить несколько операций Add, Update и Remove в один вызов метода *SaveChanges*.</span><span class="sxs-lookup"><span data-stu-id="91ee5-120">You can combine multiple Add/Update/Remove operations into a single call to *SaveChanges*.</span></span>
+<span data-ttu-id="a7de3-120">Вы можете объединить несколько операций Add, Update и Remove в один вызов метода *SaveChanges*.</span><span class="sxs-lookup"><span data-stu-id="a7de3-120">You can combine multiple Add/Update/Remove operations into a single call to *SaveChanges*.</span></span>
 
 > [!NOTE]  
-> <span data-ttu-id="91ee5-121">Для большинства поставщиков баз данных метод *SaveChanges* является транзакционным.</span><span class="sxs-lookup"><span data-stu-id="91ee5-121">For most database providers, *SaveChanges* is transactional.</span></span> <span data-ttu-id="91ee5-122">Это означает, что все операции будут либо успешными, либо неудачными и никогда не будут частично применены.</span><span class="sxs-lookup"><span data-stu-id="91ee5-122">This means  all the operations will either succeed or fail and the operations will never be left partially applied.</span></span>
+> <span data-ttu-id="a7de3-121">Для большинства поставщиков баз данных метод *SaveChanges* является транзакционным.</span><span class="sxs-lookup"><span data-stu-id="a7de3-121">For most database providers, *SaveChanges* is transactional.</span></span> <span data-ttu-id="a7de3-122">Это означает, что все операции будут либо успешными, либо неудачными и никогда не будут частично применены.</span><span class="sxs-lookup"><span data-stu-id="a7de3-122">This means  all the operations will either succeed or fail and the operations will never be left partially applied.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Basics/Sample.cs#MultipleOperations)]
