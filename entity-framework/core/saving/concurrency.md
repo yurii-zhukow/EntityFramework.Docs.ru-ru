@@ -5,12 +5,12 @@ ms.author: divega
 ms.date: 03/03/2018
 ms.technology: entity-framework-core
 uid: core/saving/concurrency
-ms.openlocfilehash: 288d9c6fced5ebbaa2c366248c68547502c3698e
-ms.sourcegitcommit: 8f3be0a2a394253efb653388ec66bda964e5ee1b
+ms.openlocfilehash: 2d8909585201a45eb020537847800f125b3b0120
+ms.sourcegitcommit: 72e59e6af86b568653e1b29727529dfd7f65d312
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29745493"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "42447641"
 ---
 # <a name="handling-concurrency-conflicts"></a>Обработка конфликтов параллелизма
 

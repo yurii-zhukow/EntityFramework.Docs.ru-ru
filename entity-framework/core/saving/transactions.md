@@ -6,12 +6,12 @@ ms.date: 10/27/2016
 ms.assetid: d3e6515b-8181-482c-a790-c4a6778748c1
 ms.technology: entity-framework-core
 uid: core/saving/transactions
-ms.openlocfilehash: fe4c0d6ad7ccb2e97dc94fbf2eb26a41e7fbcb19
-ms.sourcegitcommit: 7113e8675f26cbb546200824512078bf360225df
+ms.openlocfilehash: 6e6ded74e15187b387e8e0b2ad00cb47a84ff7e8
+ms.sourcegitcommit: 6cf6493d81b6d81b0b0f37a00e0fc23ec7189158
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30202501"
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "42447810"
 ---
 # <a name="using-transactions"></a>Использование транзакций
 
@@ -32,35 +32,7 @@ ms.locfileid: "30202501"
 
 Не все поставщики баз данных поддерживают транзакции. Некоторые поставщики могут вызывать исключение или не работать при вызове API транзакций.
 
-<!-- [!code-csharp[Main](samples/core/Saving/Saving/Transactions/ControllingTransaction/Sample.cs?highlight=3,17,18,19)] -->
-``` csharp
-        using (var context = new BloggingContext())
-        {
-            using (var transaction = context.Database.BeginTransaction())
-            {
-                try
-                {
-                    context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/dotnet" });
-                    context.SaveChanges();
-
-                    context.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/visualstudio" });
-                    context.SaveChanges();
-
-                    var blogs = context.Blogs
-                        .OrderBy(b => b.Url)
-                        .ToList();
-
-                    // Commit transaction if all commands succeed, transaction will auto-rollback
-                    // when disposed if either commands fails
-                    transaction.Commit();
-                }
-                catch (Exception)
-                {
-                    // TODO: Handle failure
-                }
-            }
-        }
-```
+[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/ControllingTransaction/Sample.cs?name=Transaction&highlight=3,17,18,19)]
 
 ## <a name="cross-context-transaction-relational-databases-only"></a>Межконтекстная транзакция (только для реляционных баз данных)
 
@@ -121,11 +93,11 @@ public class BloggingContext : DbContext
 
 Можно использовать внешние транзакции, если вам нужно координировать действия в более широком диапазоне.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/AmbientTransaction/Sample.cs?name=Transaction&highlight=1,24,25,26)]
+[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/AmbientTransaction/Sample.cs?name=Transaction&highlight=1,2,3,26,27,28)]
 
 Также можно использовать явную транзакцию.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/CommitableTransaction/Sample.cs?name=Transaction&highlight=1,13,26,27,28)]
+[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/CommitableTransaction/Sample.cs?name=Transaction&highlight=1,15,28,29,30)]
 
 ### <a name="limitations-of-systemtransactions"></a>Ограничения System.Transactions  
 

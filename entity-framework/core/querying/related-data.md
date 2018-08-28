@@ -6,12 +6,12 @@ ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 ms.technology: entity-framework-core
 uid: core/querying/related-data
-ms.openlocfilehash: 5f1fb9376300739ab0e306d9d60e7ec71aa2d2e7
-ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
+ms.openlocfilehash: 05833055f4744940364da4fdea7ded9a90d67508
+ms.sourcegitcommit: a3aec015e0ad7ee31e0f75f00bbf2d286a3ac5c1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31812655"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "42447757"
 ---
 # <a name="loading-related-data"></a>Загрузка связанных данных
 
@@ -64,52 +64,52 @@ Entity Framework Core позволяет использовать свойств
 
 Рассмотрим следующую модель:
 
-```Csharp
-    public class SchoolContext : DbContext
+```csharp
+public class SchoolContext : DbContext
+{
+    public DbSet<Person> People { get; set; }
+    public DbSet<School> Schools { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        public DbSet<Person> People { get; set; }
-        public DbSet<School> Schools { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<School>().HasMany(s => s.Students).WithOne(s => s.School);
-        }
+        modelBuilder.Entity<School>().HasMany(s => s.Students).WithOne(s => s.School);
     }
+}
 
-    public class Person
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+public class Person
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
 
-    public class Student : Person
-    {
-        public School School { get; set; }
-    }
+public class Student : Person
+{
+    public School School { get; set; }
+}
 
-    public class School
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+public class School
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
 
-        public List<Student> Students { get; set; }
-    }
+    public List<Student> Students { get; set; }
+}
 ```
 
 Содержимое навигации `School` всех людей, которые являются учениками, может быть активно загружено с помощью нескольких шаблонов:
 
 - С помощью приведения.
-  ```Csharp
+  ```csharp
   context.People.Include(person => ((Student)person).School).ToList()
   ```
 
 - С помощью оператора `as`.
-  ```Csharp
+  ```csharp
   context.People.Include(person => (person as Student).School).ToList()
   ```
 
 - С помощью перегрузки `Include`, принимающий параметр типа `string`.
-  ```Csharp
+  ```csharp
   context.People.Include("Student").ToList()
   ```
 
@@ -148,26 +148,26 @@ Entity Framework Core позволяет использовать свойств
 
 [!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#NavQueryFiltered)]
 
-## <a name="lazy-loading"></a>«Неспешная» загрузка
+## <a name="lazy-loading"></a>Отложенная загрузка
 
 > [!NOTE]  
 > Эта возможность появилась в EF Core 2.1.
 
 Самый простой способ использовать отложенную загрузку — установить пакет [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) и включить его с помощью вызова `UseLazyLoadingProxies`. Пример:
-```Csharp
+```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder
         .UseLazyLoadingProxies()
         .UseSqlServer(myConnectionString);
 ```
 При использовании AddDbContext:
-```Csharp
-    .AddDbContext<BloggingContext>(
-        b => b.UseLazyLoadingProxies()
-              .UseSqlServer(myConnectionString));
+```csharp
+.AddDbContext<BloggingContext>(
+    b => b.UseLazyLoadingProxies()
+          .UseSqlServer(myConnectionString));
 ```
 Затем EF Core включит отложенную загрузку любого свойства навигации, которое может быть переопределено, то есть оно должно быть типа `virtual` и быть в классе, который может быть унаследован. Например, в следующих сущностях свойства навигации `Post.Blog` и `Blog.Posts` будут загружены отложено.
-```Csharp
+```csharp
 public class Blog
 {
     public int Id { get; set; }
@@ -188,7 +188,7 @@ public class Post
 ### <a name="lazy-loading-without-proxies"></a>Отложенная загрузка без прокси-серверов
 
 Прокси-серверы с отложенной загрузкой работают, внедряя службу `ILazyLoader` в сущность, как описано в статье [Entity Type Constructors](../modeling/constructors.md) (Конструкторы типов сущностей). Пример:
-```Csharp
+```csharp
 public class Blog
 {
     private ICollection<Post> _posts;
@@ -209,7 +209,7 @@ public class Blog
 
     public ICollection<Post> Posts
     {
-        get => LazyLoader?.Load(this, ref _posts);
+        get => LazyLoader.Load(this, ref _posts);
         set => _posts = value;
     }
 }
@@ -235,13 +235,13 @@ public class Post
 
     public Blog Blog
     {
-        get => LazyLoader?.Load(this, ref _blog);
+        get => LazyLoader.Load(this, ref _blog);
         set => _blog = value;
     }
 }
 ```
-Это не требует, чтобы наследуемые типы сущностей или свойства навигации были виртуальными и позволяет экземплярам сущностей, созданным с помощью `new`, отложено загружаться после прикрепления к контексту. Однако для этого требуется ссылка на службу `ILazyLoader`, которая связывает типы сущностей со сборкой EF Core. Чтобы избежать этого, EF Core позволяет внедрить метод `ILazyLoader.Load` в качестве делегата. Пример:
-```Csharp
+Не требуется, чтобы наследуемые типы сущностей или свойства навигации были виртуальными, и экземплярам сущностей, созданным с помощью `new`, можно отложено загружаться после прикрепления к контексту. Однако для этого требуется ссылка на службу `ILazyLoader`, которая определена в пакете [Microsoft.EntityFrameworkCore.Abstractions](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Abstractions/). Этот пакет содержит минимальный набор типов, поэтому он не оказывает большого влияния. Тем не менее, чтобы полностью избежать зависимости от любых пакетов EF Core в типах сущностей, можно ввести метод `ILazyLoader.Load` в качестве делегата. Пример:
+```csharp
 public class Blog
 {
     private ICollection<Post> _posts;
@@ -262,7 +262,7 @@ public class Blog
 
     public ICollection<Post> Posts
     {
-        get => LazyLoader?.Load(this, ref _posts);
+        get => LazyLoader.Load(this, ref _posts);
         set => _posts = value;
     }
 }
@@ -288,13 +288,13 @@ public class Post
 
     public Blog Blog
     {
-        get => LazyLoader?.Load(this, ref _blog);
+        get => LazyLoader.Load(this, ref _blog);
         set => _blog = value;
     }
 }
 ```
 В приведенном выше коде используется метод расширения `Load`, чтобы упростить использование делегата:
-```Csharp
+```csharp
 public static class PocoLoadingExtensions
 {
     public static TRelated Load<TRelated>(
@@ -311,7 +311,7 @@ public static class PocoLoadingExtensions
 }
 ```
 > [!NOTE]  
-> Параметр конструктора для делегата с отложенной загрузкой должен называться "lazyLoader". Конфигурация для использования другого имени запланирована в будущей версии.
+> Параметр конструктора для делегата с отложенной загрузкой должен называться "lazyLoader". Конфигурация для использования отличного от этого имени запланирована в будущей версии.
 
 ## <a name="related-data-and-serialization"></a>Связанные данные и сериализация
 
@@ -323,7 +323,7 @@ public static class PocoLoadingExtensions
 
 Если вы используете ASP.NET Core, вы можете настроить Json.NET для игнорирования циклов, которые он находит в графе объектов. Это делается в методе `ConfigureServices(...)` в `Startup.cs`.
 
-``` csharp
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     ...
