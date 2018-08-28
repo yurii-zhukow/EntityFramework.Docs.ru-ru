@@ -2,19 +2,13 @@
 title: Работа с отключенными сущностями — EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 12138003-a373-4817-b1b7-724130202f5f
-caps.latest.revision: 3
-ms.openlocfilehash: 5419215a77b57ab3c92fb88a512510070ea23bd6
-ms.sourcegitcommit: 45494121254ad4fdcec613d1dd22d850068d6f39
+ms.openlocfilehash: b496a9cba48946974844725c5df5e7df7351cf23
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "37913448"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998230"
 ---
 # <a name="working-with-disconnected-entities"></a>Работа с отключенными сущностями
 В приложении на основе Entity Framework класс контекста несет ответственность за обнаружение изменений, применяемых к отслеживаемым сущностям. Вызов метода SaveChanges сохраняет изменения, отслеживаемые по контексту, в базу данных. При работе с n-уровневыми приложениями объекты сущностей, как правило, изменяются при отключении от контекста, и необходимо решить, как отслеживать изменения и передавать эти изменения обратно в контекст. В этом разделе рассматриваются различные параметры, доступные при использовании Entity Framework с отключенными сущностями.   

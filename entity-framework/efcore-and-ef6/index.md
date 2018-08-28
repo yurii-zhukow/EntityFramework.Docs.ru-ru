@@ -1,16 +1,15 @@
 ---
 title: Сравнение EF Core и EF6
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: a6b9cd22-6803-4c6c-a4d4-21147c0a81cb
 uid: efcore-and-ef6/index
-ms.openlocfilehash: 4609ecbc9e24d8a359694d256523c64141b5ff62
-ms.sourcegitcommit: 2ef0a4a90b01edd22b9206f8729b8de459ef8cab
+ms.openlocfilehash: 09ffd8408ea8575ea367eaf2bdab4002db5c619e
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/20/2018
-ms.locfileid: "30002760"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42997128"
 ---
 # <a name="compare-ef-core--ef6"></a>Сравнение EF Core и EF6
 
