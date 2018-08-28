@@ -2,19 +2,13 @@
 title: Наследование TPT конструктора — EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: efc78c31-b4ea-4ea3-a0cd-c69eb507020e
-caps.latest.revision: 3
-ms.openlocfilehash: c3ccb44f931b830a96a553d5af1e722a9ca4bbf0
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 68980fa89446940b8b7f5f73c519d38e727a9039
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122377"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42996352"
 ---
 # <a name="designer-tpt-inheritance"></a>Наследование TPT конструктора
 Это пошаговое руководство показывает, как реализовать наследование таблица на тип (TPT) в вашей модели, с помощью Entity Framework Designer (конструктор EF). В наследовании типа «одна таблица на тип» используется отдельная таблица в базе данных для сопровождения данных, относящихся к ненаследуемым свойствам и ключевым свойствам для каждого типа в иерархии наследования.

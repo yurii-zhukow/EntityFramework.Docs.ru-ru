@@ -1,17 +1,15 @@
 ---
-title: Ведение журналов - EF Core
+title: Ведение журнала — EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: f6e35c6d-45b7-4258-be1d-87c1bb67438d
-ms.technology: entity-framework-core
 uid: core/miscellaneous/logging
-ms.openlocfilehash: 60d76bf3360eb47cdd9836494c1f135d1005a215
-ms.sourcegitcommit: 3adf1267be92effc3c9daa893906a7f36834204f
+ms.openlocfilehash: efc78fbada3c59bf9cf2c4cb694835bb5ad60e76
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35232140"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42997009"
 ---
 # <a name="logging"></a>Ведение журнала
 
@@ -20,33 +18,33 @@ ms.locfileid: "35232140"
 
 ## <a name="aspnet-core-applications"></a>Приложения ASP.NET Core
 
-EF Core автоматически интегрируется с механизма ведения журнала для ASP.NET Core всякий раз, когда `AddDbContext` или `AddDbContextPool` используется. Таким образом, при использовании ASP.NET Core, ведения журналов должен настраиваться как описано в [документации ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging?tabs=aspnetcore2x).
+EF Core автоматически интегрируется с механизмы ведения журнала ASP.NET Core всякий раз, когда `AddDbContext` или `AddDbContextPool` используется. Таким образом, при использовании ASP.NET Core, ведение журнала следует настроить как описано в разделе [документации по ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging?tabs=aspnetcore2x).
 
 ## <a name="other-applications"></a>Другие приложения
 
-Core EF, ведение журнала в настоящее время требует ILoggerFactory, которое, в свою настроены ILoggerProvider один или несколько. В следующих пакетах поставляются общих поставщиков:
+Ведение журнала в данный момент EF Core требуется ILoggerFactory, который сам настроены ILoggerProvider один или несколько. Общих поставщиков поставляются в следующие пакеты:
 
 * [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/): простое консольное средство ведения журнала.
-* [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/): службы приложений Azure поддерживает «Журналы диагностики» и «Журнал поток» компоненты.
+* [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/): службы приложений Azure поддерживает «Журналы диагностики» и «Вход потока» компоненты.
 * [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/): журналы, чтобы отладчик монитор, используя System.Diagnostics.Debug.WriteLine().
-* [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog/): журналы в журнал событий Windows.
+* [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog/): записывает журнал событий Windows.
 * [Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource/): поддерживает EventSource/EventListener.
 * [Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource/): журналы, чтобы прослушиватель трассировки с помощью System.Diagnostics.TraceSource.TraceEvent().
 
-После установки соответствующих пакетов, в приложении необходимо создать одноэлементный/глобальный экземпляр класса LoggerFactory. Например с помощью средства ведения журнала консоли:
+После установки соответствующих пакетов, в приложении необходимо создать одноэлементный/глобальный экземпляр LoggerFactory. Например используя средство ведения журнала консоли:
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContext.cs#DefineLoggerFactory)]
 
-Это одноэлементный/глобальный экземпляр затем должна быть зарегистрирована с основными EF на `DbContextOptionsBuilder`. Пример:
+Этот одноэлементный или глобальный экземпляр затем должен быть зарегистрирован в EF Core на `DbContextOptionsBuilder`. Пример:
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContext.cs#RegisterLoggerFactory)]
 
 > [!WARNING]
 > Очень важно, приложения не создают новый экземпляр ILoggerFactory для каждого экземпляра контекста. Это приведет к утечке памяти и снижению производительности.
 
-## <a name="filtering-what-is-logged"></a>Фильтрация регистрируемых сведений
+## <a name="filtering-what-is-logged"></a>Фильтрация, регистрируемых
 
-Чтобы отфильтровать регистрируемых проще всего настроить его при регистрации ILoggerProvider. Пример:
+Для фильтрации, регистрируемых проще всего настроить его при регистрации ILoggerProvider. Пример:
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContextWithFiltering.cs#DefineLoggerFactory)]
 
@@ -54,6 +52,6 @@ Core EF, ведение журнала в настоящее время треб
  * в категории «Microsoft.EntityFrameworkCore.Database.Command»
  * на уровне «Сведения»
 
-Для основных EF категории ведения журнала определены в `DbLoggerCategory` класса, чтобы облегчить поиск категорий, но эти решения для простых строк.
+Категории средства ведения журнала для EF Core, определенных в `DbLoggerCategory` класса, чтобы его легко найти в категории, но эти разрешения в простых строк.
 
-Дополнительные сведения о базовой инфраструктурой ведения журнала можно найти в [документации ведения журнала ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging?tabs=aspnetcore2x).
+Дополнительные сведения о базовой инфраструктуре ведения журнала можно найти в [документации ведения журнала ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging?tabs=aspnetcore2x).

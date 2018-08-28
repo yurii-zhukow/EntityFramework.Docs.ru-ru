@@ -2,19 +2,13 @@
 title: Определение запроса - конструктор EF - EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: e52a297e-85aa-42f6-a922-ba960f8a4b22
-caps.latest.revision: 3
-ms.openlocfilehash: 593fb9925a7a0b59a69b8c8dc4846640627756aa
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 60d5310589bb9bc3fdb971673422e80537357e55
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122281"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42996311"
 ---
 # <a name="defining-query---ef-designer"></a>Определяющий запрос - конструктор EF
 В этом пошаговом руководстве показан способ добавления определяющего запроса и соответствующей сущности, тип модели, в конструкторе EF. Определяющий запрос обычно используется для предоставления функций, которые аналогичны предоставляемым представления базы данных, но оно определено в модели, а не в базе данных. Определяющий запрос позволяет выполнить инструкцию SQL, который указан в **DefiningQuery** элемент EDMX-файла. Дополнительные сведения см. в разделе **DefiningQuery** в [спецификация SSDL](~/ef6/modeling/designer/advanced/edmx/ssdl-spec.md).

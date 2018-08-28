@@ -1,19 +1,18 @@
 ---
-title: Службы времени проектирования - EF Core
+title: Службы времени разработки — EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 10/26/2017
-ms.technology: entity-framework-core
-ms.openlocfilehash: f9c8208a59bfcefeaab01ea69e65fe809a0b3d89
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+ms.openlocfilehash: e1cacdd4f40f9c395d8c88a91df4a92ef27001a8
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "26053694"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42997535"
 ---
 <a name="design-time-services"></a>Службы времени разработки
 ====================
-Некоторые службы, используемые в средствах используются только во время разработки. Эти службы управляются отдельно от основной EF службы времени выполнения для предотвращения развертываемого вместе с приложением. Чтобы переопределить один из этих служб (например службы, чтобы создать файлы миграции), добавьте реализацию `IDesignTimeServices` для запускаемого проекта.
+Некоторые службы, используемые средствами используются только во время разработки. Эти службы управляются отдельно от служб среды выполнения EF Core, чтобы предотвратить их развертывание вместе с вашим приложением. Чтобы переопределить одну из этих служб (например службы, чтобы создать файлы миграции), добавьте реализацию `IDesignTimeServices` для запускаемого проекта.
 
 ``` csharp
 class MyDesignTimeServices : IDesignTimeServices

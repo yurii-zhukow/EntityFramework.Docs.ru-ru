@@ -2,19 +2,13 @@
 title: Сопоставление заранее созданные представления — EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 917ba9c8-6ddf-4631-ab8c-c4fb378c2fcd
-caps.latest.revision: 3
-ms.openlocfilehash: 9e74176d02afc424118219eec8e016843333cbb8
-ms.sourcegitcommit: 390f3a37bc55105ed7cc5b0e0925b7f9c9e80ba6
+ms.openlocfilehash: 397569ef374cb44d4938f9e201b588a26c408f6e
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "39122590"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42996476"
 ---
 # <a name="pre-generated-mapping-views"></a>Сопоставление заранее созданные представления
 Прежде чем платформа Entity Framework можно выполнить запрос или сохранить изменения в источнике данных, ей необходимо создать набор сопоставления представлений для доступа к базе данных. Эти представления сопоставления представляют собой набор оператор Entity SQL, отображают состояние базы данных отвлеченно и являются частью метаданных, кэшируемых для каждого домена приложения. При создании нескольких экземпляров того же контекста, в том же домене приложения, они будут повторно использовать сопоставление представления из кэшированных метаданных, а не формируются заново. Сопоставление создание представлений составляет значительную долю общей стоимости выполнения первого запроса, Entity Framework позволяет заранее создавать представления сопоставления и включать их в скомпилированный проект. Дополнительные сведения см. в разделе [вопросы производительности (Entity Framework)](~/ef6/fundamentals/performance/perf-whitepaper.md).

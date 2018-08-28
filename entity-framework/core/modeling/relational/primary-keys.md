@@ -1,36 +1,34 @@
 ---
-title: Первичные ключи - EF Core
+title: Первичные ключи — EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: c78f8f42-564a-45a4-aca7-3ede9f7ed2bc
-ms.technology: entity-framework-core
 uid: core/modeling/relational/primary-keys
-ms.openlocfilehash: fcb1871149c0f20a2576864028b4171904de1982
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 916f3adbcd08cb1037c7fbf68e99630feb321a61
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052724"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998072"
 ---
 # <a name="primary-keys"></a>Первичные ключи
 
 > [!NOTE]  
-> В этом разделе конфигурации применяется для реляционных баз данных в целом. Методы расширения, показанный здесь будут доступны после установки поставщика реляционной базы данных (из-за общей *Microsoft.EntityFrameworkCore.Relational* пакета).
+> Описанная в этом разделе конфигурации применяется к реляционным базам данных в общем случае. Показанные здесь методы расширения будут доступны после установки поставщика реляционной базы данных (посредством общего *пакета Microsoft.EntityFrameworkCore.Relational*).
 
 Ограничение первичного ключа введен для ключа каждого типа сущности.
 
 ## <a name="conventions"></a>Соглашения
 
-По соглашению первичного ключа в базе данных будет называться `PK_<type name>`.
+По соглашению, первичный ключ в базе данных будет называться `PK_<type name>`.
 
 ## <a name="data-annotations"></a>Заметки к данным
 
-Нет определенных аспектов реляционной базы данных первичного ключа можно настроить с помощью заметок к данным.
+Нет конкретных аспектов реляционной базы данных первичного ключа можно настроить с помощью заметок к данным.
 
-## <a name="fluent-api"></a>Fluent API
+## <a name="fluent-api"></a>Текучий API
 
-Чтобы настроить имя ограничения первичного ключа в базе данных можно использовать Fluent API.
+Fluent API можно использовать для настройки имени ограничения первичного ключа в базе данных.
 
 <!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Samples/Relational/KeyName.cs?highlight=9)] -->
 ``` csharp
