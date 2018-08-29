@@ -3,14 +3,13 @@ title: Создание DbContext во время разработки — EF Co
 author: bricelam
 ms.author: bricelam
 ms.date: 10/27/2017
-ms.technology: entity-framework-core
 uid: core/miscellaneous/cli/dbcontext-creation
-ms.openlocfilehash: 648ca990252fb32d8cf181a7ae672d07a81f56bb
-ms.sourcegitcommit: 0935ff275ae739243297f5b97eb21414398125c6
+ms.openlocfilehash: 66fec7605b6ac2da0af1e801f8a1dca0789aea35
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39201923"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42993722"
 ---
 <a name="design-time-dbcontext-creation"></a>Создание DbContext во время разработки
 ==============================
@@ -22,7 +21,7 @@ ms.locfileid: "39201923"
 -------------------------
 Если ваш запускаемый проект приложения ASP.NET Core, инструменты попытаться получить объект DbContext у поставщика услуг приложения.
 
-Средство вначале предпринимается попытка получить доступ к службе, вызвав `Program.BuildWebHost()` и доступ к `IWebHost.Services` свойство.
+Средства сначала пытаются получить доступ к службе, вызвав `Program.BuildWebHost()` и доступ к `IWebHost.Services` свойство.
 
 > [!NOTE]
 > При создании нового приложения ASP.NET Core 2.0, этот обработчик включается по умолчанию. В предыдущих версиях EF Core и ASP.NET Core, инструменты попытке вызвать `Startup.ConfigureServices` напрямую, чтобы получить поставщик службы приложения, но этот шаблон больше не работает правильно в приложениях ASP.NET Core 2.0. Если вы обновляете приложение ASP.NET Core 1.x на 2.0, вы можете [изменить ваш `Program` класс стоит следовать этому шаблону новый][3].

@@ -4,12 +4,12 @@ author: ajcvickers
 ms.date: 02/19/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 uid: core/modeling/value-conversions
-ms.openlocfilehash: d6b51a0a70ee527844b6fe995f39bec534dbaba8
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 2a1956221ecc920feba796e4d95cc97259e89c53
+ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996292"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43152514"
 ---
 # <a name="value-conversions"></a>Преобразования значений
 
@@ -27,7 +27,7 @@ ms.locfileid: "42996292"
 ## <a name="configuring-a-value-converter"></a>Настройка преобразователя значений
 
 Преобразования значений определяются в свойствах в `OnModelCreating` из вашей `DbContext`. Например рассмотрим enum и сущности типа, определенного как:
-```Csharp
+``` csharp
 public class Rider
 {
     public int Id { get; set; }
@@ -43,7 +43,7 @@ public enum EquineBeast
 }
 ```
 Затем можно определить преобразования в `OnModelCreating` для хранения значений enum как строки (например, «Спецов», «Mule»,...) в базе данных:
-```Csharp
+``` csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder
@@ -60,7 +60,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 ## <a name="the-valueconverter-class"></a>Класс ValueConverter
 
 Вызов `HasConversion` как показано выше, создаст `ValueConverter` экземпляра и задать его свойству. `ValueConverter` Вместо этого можно явным образом создать. Пример:
-```Csharp
+``` csharp
 var converter = new ValueConverter<EquineBeast, string>(
     v => v.ToString(),
     v => (EquineBeast)Enum.Parse(typeof(EquineBeast), v));
@@ -82,7 +82,7 @@ EF Core поставляется с набором предварительно 
 * `BoolToStringConverter` -Bool для строк, таких как «Y» и «N»
 * `BoolToTwoValuesConverter` -Bool любые два значения
 * `BytesToStringConverter` -Массив байтов строку в кодировке Base64
-* `CastingConverter` -Преобразования, которые требуется только приведение c#
+* `CastingConverter` -Преобразования, которые требуется только приведение типа
 * `CharToStringConverter` -Char в одну символьную строку
 * `DateTimeOffsetToBinaryConverter` -DateTimeOffset в двоичной кодировке 64-разрядное значение
 * `DateTimeOffsetToBytesConverter` -DateTimeOffset байтовый массив
@@ -101,7 +101,7 @@ EF Core поставляется с набором предварительно 
 * `TimeSpanToTicksConverter` -TimeSpan меткам
 
 Обратите внимание, что `EnumToStringConverter` включается в этот список. Это означает, что нет необходимости для преобразования явно указать, как показано выше. Вместо этого используйте встроенный преобразователь:
-```Csharp
+``` csharp
 var converter = new EnumToStringConverter<EquineBeast>();
 
 modelBuilder
@@ -114,14 +114,14 @@ modelBuilder
 ## <a name="pre-defined-conversions"></a>Предопределенные преобразования
 
 Для общих преобразований, для которых существует встроенный преобразователь нет необходимости явно указать преобразователь. Вместо этого достаточно настроить следует использовать тип поставщика и EF будет автоматически использовать соответствующий встроенный преобразователь. Перечисление для преобразования строк используются как в примере выше, но EF фактически сделает это автоматически при настройке тип поставщика:
-```Csharp
+``` csharp
 modelBuilder
     .Entity<Rider>()
     .Property(e => e.Mount)
     .HasConversion<string>();
 ```
 То же самое достигается путем явного указания типа столбца. Например, если определен тип сущности, например так:
-```Csharp
+``` csharp
 public class Rider
 {
     public int Id { get; set; }

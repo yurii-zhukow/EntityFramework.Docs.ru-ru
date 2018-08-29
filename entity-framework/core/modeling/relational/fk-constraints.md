@@ -1,36 +1,34 @@
 ---
-title: Ограничения внешнего ключа - EF Core
+title: Ограничения внешнего ключа — EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: dbaf4bac-1fd5-46c0-ac57-64d7153bc574
-ms.technology: entity-framework-core
 uid: core/modeling/relational/fk-constraints
-ms.openlocfilehash: 726f03e2ee4cd3ec851c9a861b75dd12f9203e9c
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: a83f72b5d832e349fb4a5fb3b2de0b82bd79ef2a
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052744"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42993992"
 ---
 # <a name="foreign-key-constraints"></a>Ограничения внешнего ключа
 
 > [!NOTE]  
-> В этом разделе конфигурации применяется для реляционных баз данных в целом. Методы расширения, показанный здесь будут доступны после установки поставщика реляционной базы данных (из-за общей *Microsoft.EntityFrameworkCore.Relational* пакета).
+> Описанная в этом разделе конфигурации применяется к реляционным базам данных в общем случае. Показанные здесь методы расширения будут доступны после установки поставщика реляционной базы данных (посредством общего *пакета Microsoft.EntityFrameworkCore.Relational*).
 
 Ограничение внешнего ключа введен для каждой связи в модели.
 
 ## <a name="conventions"></a>Соглашения
 
-По соглашению с именем ограничения внешнего ключа `FK_<dependent type name>_<principal type name>_<foreign key property name>`. Для составных ключей внешнего `<foreign key property name>` становится подчеркивания запятыми список имен свойств внешних ключей.
+По соглашению с именем ограничения внешнего ключа `FK_<dependent type name>_<principal type name>_<foreign key property name>`. Для составных ключей внешнего `<foreign key property name>` становится подчеркивания запятыми список имен свойств внешнего ключа.
 
 ## <a name="data-annotations"></a>Заметки к данным
 
-Имена ограничений внешнего ключа нельзя настроить с помощью заметок к данным.
+Имена ограничение внешнего ключа нельзя настроить с помощью заметок к данным.
 
-## <a name="fluent-api"></a>Fluent API
+## <a name="fluent-api"></a>Текучий API
 
-Fluent API можно использовать для настройки имя ограничения внешнего ключа для элемента связи.
+Fluent API можно использовать для настройки имя ограничения внешнего ключа для связи.
 
 <!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Samples/Relational/RelationshipConstraintName.cs?highlight=12)] -->
 ``` csharp

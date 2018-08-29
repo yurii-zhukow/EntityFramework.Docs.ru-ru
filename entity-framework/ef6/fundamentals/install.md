@@ -3,12 +3,12 @@ title: Получение Entity Framework — EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 122c38a2-f9e8-4ecc-9c72-a83bc9af7814
-ms.openlocfilehash: 78ef1e7b20bd879c972870552c8f692e153b7abb
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 91b78e56f60edf7ebc8769b1c385f8547f63cd3d
+ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996569"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43152392"
 ---
 # <a name="get-entity-framework"></a>Получение платформы Entity Framework
 Платформа Entity Framework состоит из средства EF для Visual Studio и среды выполнения EF.

@@ -106,6 +106,7 @@
 ##### [Ограничения SQLite](core/providers/sqlite/limitations.md)
 #### [Выполнение в памяти (для тестирования)](core/providers/in-memory/index.md)
 #### [Создание поставщика баз данных](core/providers/writing-a-provider.md)
+#### [Изменения, влияющие на поставщика](core/providers/provider-log.md)
 
 ### [Инструменты и расширения](core/extensions/index.md)
 
