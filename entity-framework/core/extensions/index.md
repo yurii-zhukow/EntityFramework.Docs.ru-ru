@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 7/3/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: e9f9a6cbbceeb0379ddb5588b564b0d2a962795f
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e88bd01f79e05a9a3b0c0bbeecca89df178098a6
+ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995517"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43152456"
 ---
 # <a name="ef-core-tools--extensions"></a>Инструменты и расширения EF Core
 
@@ -37,6 +37,12 @@ Entity Developer — мощный конструктор ORM для ADO.NET Enti
 Расширение Visual Studio 2017+. Вы можете реконструировать классы DbContext и POCO из существующей базы данных или проекта базы данных SQL Server и визуализировать и проверить DbContext различными способами.
 
 [Вики-сайт GitHub](https://github.com/ErikEJ/SqlCeToolbox/wiki/EF-Core-Power-Tools)
+
+### <a name="entity-framework-visual-editor"></a>Редактор Visual Entity Framework
+
+Расширение Visual Studio 2017, которое добавляет конструктор ORM для проектирования визуальных объектов на платформе Entity Framework 6, Core 2.0 и Core 2.1. Код создается с помощью шаблонов T4, поэтому его можно адаптировать к любым потребностям. Наследование, однонаправленные и двунаправленные ассоциации поддерживаются, как и перечисления и возможность цветового выделения классов и добавления текстовых блоков для объяснения потенциально сложных частей проекта.
+
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=michaelsawczyn.EFDesigner)
 
 ## <a name="extensions"></a>Расширения
 
