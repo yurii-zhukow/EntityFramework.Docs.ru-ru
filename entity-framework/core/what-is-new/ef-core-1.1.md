@@ -1,17 +1,15 @@
 ---
 title: Новые возможности в Core EF 1.1 (EF Core)
 author: divega
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: C7FE8C85-445A-4F0C-97EC-CC3F7F1D6F5E
-ms.technology: entity-framework-core
 uid: core/what-is-new/ef-core-1.1
-ms.openlocfilehash: 74c1033cab2704bdbb9fa4d3ce111df1f1c29418
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 9f8f2d46f967c7d8ec4f8ea410e51531dfe3ca7b
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26049677"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42995439"
 ---
 # <a name="new-features-in-ef-core-11"></a>Новые возможности в EF Core 1.1
 
@@ -21,11 +19,11 @@ ms.locfileid: "26049677"
 ### <a name="mapping-to-memory-optimized-tables-in-sql-server"></a>Сопоставление с оптимизированными для памяти таблицами в SQL Server
 Вы можете указать, что сопоставленная с таблицей сущность оптимизирована для памяти. Если вы используете EF Core для создания и обслуживания базы данных на основе используемой модели (с помощью миграций или `Database.EnsureCreated()`), то для таких сущностей будет создана оптимизированная для памяти таблица.
 
-## <a name="change-tracking"></a>Отслеживание изменений
+## <a name="change-tracking"></a>Change tracking
 ### <a name="additional-change-tracking-apis-from-ef6"></a>Дополнительные API из EF6 для отслеживания изменений
 Например, `Reload`, `GetModifiedProperties`, `GetDatabaseValues` и т. п.
 
-## <a name="query"></a>Запросы
+## <a name="query"></a>Запрос
 ### <a name="explicit-loading"></a>Явная загрузка
 Позволяет активировать заполнение свойства навигации для сущности, ранее загруженной из базы данных.
 ### <a name="dbsetfind"></a>DbSet.Find
