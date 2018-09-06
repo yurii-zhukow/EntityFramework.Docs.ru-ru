@@ -3,12 +3,12 @@ title: Модели поставщика Entity Framework 6 - EF6
 author: divega
 ms.date: 2018-06-27
 ms.assetid: 066832F0-D51B-4655-8BE7-C983C557E0E4
-ms.openlocfilehash: ebe9b426b164f619b716ac221d1d94354f8b1fe5
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e8b0552ec083d8ab276aa9de109650f423160269
+ms.sourcegitcommit: a81aed575372637997b18a0f9466d8fefb33350a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997741"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43821391"
 ---
 # <a name="the-entity-framework-6-provider-model"></a>Модели поставщика Entity Framework 6
 
@@ -34,7 +34,7 @@ EF зависит от наличия типа, производного от [S
 
 EF зависит от наличия типа, производного от DbProviderServices для добавления новых функциональных возможностей, необходимых EF на основе функциональности, уже предоставляемых поставщиком ADO.NET. В более старых версиях EF класса DbProviderServices входил в состав .NET Framework и был найден в пространстве имен System.Data.Common. Начиная с EF6 этот класс теперь является частью EntityFramework.dll и находится в пространстве имен System.Data.Entity.Core.Common.
 
-Дополнительные сведения об основных возможностях DbProviderServices реализации можно найти на [MSDN](http://msdn.microsoft.com/en-us/library/ee789835.aspx). Тем не менее Обратите внимание на то, что по состоянию на момент написания статьи эта информация не обновляется для EF6 несмотря на то, что большинства понятий, по-прежнему допустимы. Для реализации SQL Server и SQL Server Compact DbProviderServices также возвращены в [codebase открытым исходным кодом](https://gihtub.com/aspnet/EntityFramework6/) и могут служить полезных ссылок для других реализаций.
+Дополнительные сведения об основных возможностях DbProviderServices реализации можно найти на [MSDN](http://msdn.microsoft.com/en-us/library/ee789835.aspx). Тем не менее Обратите внимание на то, что по состоянию на момент написания статьи эта информация не обновляется для EF6 несмотря на то, что большинства понятий, по-прежнему допустимы. Для реализации SQL Server и SQL Server Compact DbProviderServices также возвращены в [codebase открытым исходным кодом](https://github.com/aspnet/EntityFramework6/) и могут служить полезных ссылок для других реализаций.
 
 В более старых версиях EF реализация DbProviderServices для использования были получены напрямую из поставщика ADO.NET. Это было сделано, приведение DbProviderFactory IServiceProvider и вызвать метод GetService. Это тесно связан поставщик EF с DbProviderFactory. Такое объединение заблокирован EF из .NET Framework и поэтому для EF6 тесной связи была удалена и реализация DbProviderServices зарегистрирован непосредственно в файле конфигурации приложения или на основе кода конфигурации, как описано более подробно _регистрации DbProviderServices_ разделе ниже.
 
