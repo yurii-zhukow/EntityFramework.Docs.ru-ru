@@ -3,12 +3,12 @@ title: Определение запроса - конструктор EF - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: e52a297e-85aa-42f6-a922-ba960f8a4b22
-ms.openlocfilehash: 60d5310589bb9bc3fdb971673422e80537357e55
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 8415a265cdbe078422e0467ee97da955a81b873d
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996311"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250976"
 ---
 # <a name="defining-query---ef-designer"></a>Определяющий запрос - конструктор EF
 В этом пошаговом руководстве показан способ добавления определяющего запроса и соответствующей сущности, тип модели, в конструкторе EF. Определяющий запрос обычно используется для предоставления функций, которые аналогичны предоставляемым представления базы данных, но оно определено в модели, а не в базе данных. Определяющий запрос позволяет выполнить инструкцию SQL, который указан в **DefiningQuery** элемент EDMX-файла. Дополнительные сведения см. в разделе **DefiningQuery** в [спецификация SSDL](~/ef6/modeling/designer/advanced/edmx/ssdl-spec.md).
@@ -54,11 +54,11 @@ ms.locfileid: "42996311"
 -   В обозревателе решений щелкните правой кнопкой мыши **DefiningQueryModel.edmx** файл и выберите **открыть с помощью...** .
 -   Выберите **редактор (текстовый) XML**.
 
-    ![XMLEditor](~/ef6/media/xmleditor.png)
+    ![XML-редактор](~/ef6/media/xmleditor.png)
 
 -   Нажмите кнопку **Да** при появлении соответствующего запроса со следующим сообщением:
 
-    ![Warning2](~/ef6/media/warning2.png)
+    ![Предупреждение 2](~/ef6/media/warning2.png)
 
  
 
@@ -136,7 +136,7 @@ ms.locfileid: "42996311"
 -   Дважды щелкните DefiningQueryModel.edmx.
 -   Скажем **Да** следующее сообщение:
 
-    ![Warning2](~/ef6/media/warning2.png)
+    ![Предупреждение 2](~/ef6/media/warning2.png)
 
  
 
@@ -172,7 +172,7 @@ ms.locfileid: "42996311"
     **Сведения о сопоставлении** откроется диалоговое окно.
 -   Выберите **GradeReport** из **&lt;добавить таблицу или представление&gt;** раскрывающегося списка (расположенный в **таблицы**s).  
     По умолчанию сопоставления между концептуальной и хранения **GradeReport** отображаются тип сущности.  
-    ![MappingDetails3](~/ef6/media/mappingdetails.png)
+    ![Сопоставление Details3](~/ef6/media/mappingdetails.png)
 
 В результате **EntitySetMapping** элемент добавляется в раздел сопоставления EDMX-файла. 
 

@@ -3,12 +3,12 @@ title: EF6 Database First.
 author: divega
 ms.date: 2016-10-23
 ms.assetid: cc6ffdb3-388d-4e79-a201-01ec2577c949
-ms.openlocfilehash: c60108c09fcbaaa1f86e77fa52cb13fe018975e1
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 93ae5729e487ed9be3972ac78d599dbea19ed458
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995914"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251093"
 ---
 # <a name="database-first"></a>Сначала базы данных
 В этом пошаговом руководстве видео и пошаговые познакомят вас с первой базы данных разработки, использующий Entity Framework. Во-первых, базы данных дает возможность Реконструировать модель из существующей базы данных. Модель хранится в EDMX-файла (расширение EDMX) и их можно просмотреть и изменить в конструкторе Entity Framework. Классы, которые взаимодействуют с в приложении автоматически создаются из файла EDMX.
@@ -46,17 +46,17 @@ ms.locfileid: "42995914"
 -   Щелкните правой кнопкой мыши **подключения к данным -&gt; добавить соединение...**
 -   Если вы не подключились к базе данных с помощью обозревателя сервера прежде, чем вам потребуется выбрать в качестве источника данных Microsoft SQL Server
 
-    ![SelectDataSource](~/ef6/media/selectdatasource.png)
+    ![Выберите источник данных](~/ef6/media/selectdatasource.png)
 
 -   Подключение к LocalDB или SQL Express, в зависимости от того, какой из них вы установили и введите **DatabaseFirst.Blogging** имя базы данных
 
-    ![SqlExpressConnectionDF](~/ef6/media/sqlexpressconnectiondf.png)
+    ![Подключение SQL Express DF](~/ef6/media/sqlexpressconnectiondf.png)
 
-    ![LocalDBConnectionDF](~/ef6/media/localdbconnectiondf.png)
+    ![Подключение LocalDB DF](~/ef6/media/localdbconnectiondf.png)
 
 -   Выберите **ОК** и вам нужно будет Если вы хотите создать новую базу данных, выберите **Да**
 
-    ![CreateDatabaseDialog](~/ef6/media/createdatabasedialog.png)
+    ![Создание диалогового окна базы данных](~/ef6/media/createdatabasedialog.png)
 
 -   Новой базы данных будут отображаться в обозревателе сервера щелкните его правой кнопкой мыши и выберите **новый запрос**
 -   Скопируйте следующий запрос SQL в новый запрос, а затем щелкните правой кнопкой мыши запрос и выберите **Execute**
@@ -101,21 +101,21 @@ CREATE TABLE [dbo].[Posts] (
 -   Это откроет **мастер моделей EDM**
 -   Выберите **создать из базы данных** и нажмите кнопку **Далее**
 
-    ![WizardStep1](~/ef6/media/wizardstep1.png)
+    ![Мастер, шаг 1](~/ef6/media/wizardstep1.png)
 
 -   Выберите соединение с базой данных, созданной в первом разделе, введите **BloggingContext** как имя строки подключения и нажмите кнопку **Далее**
 
-    ![WizardStep2](~/ef6/media/wizardstep2.png)
+    ![Шаг мастера 2](~/ef6/media/wizardstep2.png)
 
 -   Установите флажок рядом с «Таблицы», чтобы импортировать все таблицы и нажмите кнопку «Готово»
 
-    ![WizardStep3](~/ef6/media/wizardstep3.png)
+    ![Мастер шаг 3](~/ef6/media/wizardstep3.png)
 
  
 
 После завершения процесса реконструирования новой модели добавлен в проект и открывается для просмотра в конструкторе Entity Framework. Файл App.config также был добавлен в проект со сведениями о подключении для базы данных.
 
-![ModelInitial](~/ef6/media/modelinitial.png)
+![Начальная модель](~/ef6/media/modelinitial.png)
 
 ### <a name="additional-steps-in-visual-studio-2010"></a>Дополнительные действия в Visual Studio 2010
 
@@ -135,7 +135,7 @@ CREATE TABLE [dbo].[Posts] (
 -   Выберите **шаблоны в Интернете** из меню слева и выполните поиск **DbContext**
 -   Выберите EF **5.x генератор DbContext для C\#**, введите **BloggingModel** имя и нажмите кнопку **добавить**
 
-    ![DbContextTemplate](~/ef6/media/dbcontexttemplate.png)
+    ![Шаблон DbContext](~/ef6/media/dbcontexttemplate.png)
 
  
 
@@ -145,7 +145,7 @@ CREATE TABLE [dbo].[Posts] (
 
 *Этот снимок экрана из Visual Studio 2012, если вы используете Visual Studio 2010 BloggingModel.tt и BloggingModel.Context.tt файлов будет непосредственно в проекте, а не вложен в узел EDMX-файла.*
 
-![GeneratedClassesDF](~/ef6/media/generatedclassesdf.png)
+![Созданные классы DF](~/ef6/media/generatedclassesdf.png)
 
  
 
@@ -217,7 +217,7 @@ CREATE TABLE [dbo].[Users]
 -   На вкладке "Добавить" мастер обновления проверки рядом с таблицами это означает, что мы хотим добавить новые таблицы из схемы.
     *На вкладке обновления отображается все имеющиеся таблицы в модели, которая будет выполнена проверка изменений во время обновления. На вкладках Delete отображаются все таблицы, которые были удалены из схемы, а также будут удалены из модели как часть обновления. Сведения об этих двух вкладках обнаруживается автоматически и предоставляется только в ознакомительных целях нельзя изменить какие-либо параметры.*
 
-    ![RefreshWizard](~/ef6/media/refreshwizard.png)
+    ![Обновление мастера](~/ef6/media/refreshwizard.png)
 
 -   Щелкните "Готово" в мастере обновления
 
@@ -225,7 +225,7 @@ CREATE TABLE [dbo].[Users]
 
 Теперь модель обновляется для включения нового Пользовательская сущность, которая сопоставляется с таблицей пользователей, которые мы добавили в базу данных.
 
-![ModelUpdated](~/ef6/media/modelupdated.png)
+![Модель обновлена](~/ef6/media/modelupdated.png)
 
 ## <a name="summary"></a>Сводка
 

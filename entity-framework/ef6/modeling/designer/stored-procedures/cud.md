@@ -3,12 +3,12 @@ title: Конструктора CUD хранимые процедуры — EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 1e773972-2da5-45e0-85a2-3cf3fbcfa5cf
-ms.openlocfilehash: 7a3176e1057816dd11ced5fc545aa3baa672bd03
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 36c9b97b77fec30136cba1d850a0259c689e69ae
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993893"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250924"
 ---
 # <a name="designer-cud-stored-procedures"></a>Конструктора CUD хранимых процедур
 Это пошаговое руководство показано, как сопоставить создания\\вставки, обновления и удаления (CUD) типа сущности с хранимыми процедурами, с помощью Entity Framework Designer (конструктор EF).  По умолчанию Entity Framework автоматически создает инструкции SQL для операций CUD, но также можно сопоставить хранимые процедуры для этих операций.  
@@ -54,7 +54,7 @@ var query = context.Products.SqlQuery("EXECUTE [dbo].[GetAllProducts]");
 -   Кроме того, выберите следующие хранимые процедуры в разделе **хранимые процедуры и функции** узла: **DeletePerson**, **InsertPerson**, и **UpdatePerson** . 
 -   Начиная с Visual Studio 2012 конструкторе EF поддерживает массовый импорт хранимых процедур. **Импортировать выбранные хранимые процедуры и функции в модели сущности** установлен по умолчанию. Так как в этом примере мы сохранили процедуры, вставки, обновления и удаления типов сущностей, мы не требуется импортировать их и будет снимите этот флажок. 
 
-    ![ImportSProcs](~/ef6/media/importsprocs.jpg)
+    ![Импорт S Procs](~/ef6/media/importsprocs.jpg)
 
 -   Нажмите кнопку **Готово**.
     Конструктор EF, который предоставляет область конструктора для изменения модели, отображается.
@@ -72,7 +72,7 @@ var query = context.Products.SqlQuery("EXECUTE [dbo].[GetAllProducts]");
 -   Нажмите клавишу **ВВОД**.
 -   По умолчанию **NewPersonID** сопоставляется с ключом сущности **PersonID**. Обратите внимание, что стрелка указывает направление сопоставления — значение столбца результата передается свойству.
 
-    ![MappingDetails](~/ef6/media/mappingdetails.png)
+    ![Сведения о сопоставлении](~/ef6/media/mappingdetails.png)
 
 -   Нажмите кнопку **&lt;Выбор функции обновления&gt;** и выберите **UpdatePerson** из результирующего раскрывающегося списка.
 -   Появятся применяемые по умолчанию сопоставления параметров хранимой процедуры со свойствами сущности.

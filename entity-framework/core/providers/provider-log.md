@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 44b200223153fca44cb2cfa3e78b3bedc7b4a552
-ms.sourcegitcommit: a81aed575372637997b18a0f9466d8fefb33350a
+ms.openlocfilehash: 5da1043310e2858638c81a0654a9cab23e39c220
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43821339"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250820"
 ---
 # <a name="provider-impacting-changes"></a>Изменения, влияющие на поставщика
 
@@ -19,9 +19,9 @@ ms.locfileid: "43821339"
 
 Этот журнал начинается с изменениями из 2.1 и 2.2. Прежде чем 2.1 мы использовали [ `providers-beware` ](https://github.com/aspnet/EntityFrameworkCore/labels/providers-beware) и [ `providers-fyi` ](https://github.com/aspnet/EntityFrameworkCore/labels/providers-fyi) меток на наши проблемы и запросы на включение внесенных изменений.
 
-### <a name="21-----22"></a>2.1---> 2.2
+## <a name="21-----22"></a>2.1---> 2.2
 
-#### <a name="test-only-changes"></a>Только для тестирования изменений
+### <a name="test-only-changes"></a>Только для тестирования изменений
 
 * https://github.com/aspnet/EntityFrameworkCore/pull/12057 — Разрешите разделителей групп разрядов настраиваемый SQL в тестах
   * Проверить изменения, обеспечивающие нестрогом с плавающей запятой сравнения в BuiltInDataTypesTestBase
@@ -40,7 +40,7 @@ ms.locfileid: "43821339"
   * Это изменение включает в себя оптимизация тестирования которого может потребоваться поставщиков реагирования на них
 
 
-#### <a name="test-and-product-code-changes"></a>Изменения кода теста и продукта
+### <a name="test-and-product-code-changes"></a>Изменения кода теста и продукта
 
 * https://github.com/aspnet/EntityFrameworkCore/pull/12109 -Консолидировать RelationalTypeMapping.Clone методы
   * Изменения в 2.1 RelationalTypeMapping, разрешенное для упрощения в производных классах. Мы не считают, что это критическим изменением для поставщиков, а поставщики можно воспользоваться преимуществами этого изменения, в их производные типы сопоставление классов.
@@ -50,4 +50,5 @@ ms.locfileid: "43821339"
   * Позволяет преобразователи для регистрации за пределами поставщика сопоставления типов и членов
     * Поставщики должны вызывать base. FindMapping() ITypeMappingSource реализации для работы
   * Следуйте этому шаблону, чтобы добавить поддержку пространственных к поставщику, который остается согласованным на всех поставщиков.
-
+* https://github.com/aspnet/EntityFrameworkCore/pull/13199 — Добавление расширенных возможностей отладки для создания поставщика службы
+  * Позволяет DbContextOptionsExtensions реализовать новый интерфейс, который может помочь пользователям понять, почему доступ к внутренней службе, повторного построения

@@ -3,12 +3,12 @@ title: Разрешение зависимостей - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 32d19ac6-9186-4ae1-8655-64ee49da55d0
-ms.openlocfilehash: 45681bb0cedecd502b1968b90b7f682d3257dd23
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: c6c56c3048e17a5c888ffe564e7606abf8b0c4ed
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42998167"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251249"
 ---
 # <a name="dependency-resolution"></a>Разрешение зависимостей
 > [!NOTE]
@@ -25,13 +25,11 @@ public interface IDbDependencyResolver
 
 Метод GetService обычно вызывается EF и обрабатывается реализацию IDbDependencyResolver, предоставленное платформой EF или приложением. При вызове аргумент типа является типом интерфейса или базового класса запрашиваемой службы, а объект ключа равно null или объект, предоставляющий контекстную информацию о запрошенную службу.  
 
-Эта статья содержит подробные сведения о том, как реализовать IDbDependencyResolver, но вместо выступает в качестве ссылки для типов служб (то есть, интерфейсов и базовых типах классов), для которых EF вызывает GetService и семантика объекта ключа для каждого из них вызовы. В этом документе будет постоянно обновляются, по мере добавления дополнительных служб.  
+Если не указано иное, любой объект, возвращаемый должен быть поточно ориентированной, так как он может использоваться как единственный экземпляр. Во многих случаях объекты, возвращаемые в этом случае является фабрикой самой фабрики должен быть поточно ориентированной, но не нужно быть потокобезопасными, поскольку у фабрики для каждого использования запрашивается новый экземпляр объекта, возвращаемого из фабрики.
 
-## <a name="services-resolved"></a>Разрешения службы  
+Эта статья содержит подробные сведения о том, как реализовать IDbDependencyResolver, но вместо выступает в качестве ссылки для типов служб (то есть, интерфейсов и базовых типах классов), для которых EF вызывает GetService и семантика объекта ключа для каждого из них вызовы.
 
-Если не указано иное, любой объект, возвращаемый должен быть поточно ориентированной, так как он может использоваться как единственный экземпляр. Во многих случаях объекты, возвращаемые в этом случае является фабрикой самой фабрики должен быть поточно ориентированной, но не нужно быть потокобезопасными, поскольку у фабрики для каждого использования запрашивается новый экземпляр объекта, возвращаемого из фабрики.  
-
-### <a name="systemdataentityidatabaseinitializertcontext"></a>System.Data.Entity.IDatabaseInitializer < TContext\>  
+## <a name="systemdataentityidatabaseinitializertcontext"></a>System.Data.Entity.IDatabaseInitializer < TContext\>  
 
 **Представленные версии**: EF6.0.0  
 
@@ -39,7 +37,7 @@ public interface IDbDependencyResolver
 
 **Ключ**: не использовать, будет иметь значение null  
 
-### <a name="funcsystemdataentitymigrationssqlmigrationsqlgenerator"></a>Func < System.Data.Entity.Migrations.Sql.MigrationSqlGenerator\>  
+## <a name="funcsystemdataentitymigrationssqlmigrationsqlgenerator"></a>Func < System.Data.Entity.Migrations.Sql.MigrationSqlGenerator\>  
 
 **Представленные версии**: EF6.0.0
 
@@ -50,7 +48,7 @@ public interface IDbDependencyResolver
 >[!NOTE]
 > См. Дополнительные сведения о службах, связанные с поставщиком, в EF6 [модель поставщика EF6](~/ef6/fundamentals/providers/provider-model.md) раздел.  
 
-### <a name="systemdataentitycorecommondbproviderservices"></a>System.Data.Entity.Core.Common.DbProviderServices  
+## <a name="systemdataentitycorecommondbproviderservices"></a>System.Data.Entity.Core.Common.DbProviderServices  
 
 **Представленные версии**: EF6.0.0  
 
@@ -61,7 +59,7 @@ public interface IDbDependencyResolver
 >[!NOTE]
 > См. Дополнительные сведения о службах, связанные с поставщиком, в EF6 [модель поставщика EF6](~/ef6/fundamentals/providers/provider-model.md) раздел.  
 
-### <a name="systemdataentityinfrastructureidbconnectionfactory"></a>System.Data.Entity.Infrastructure.IDbConnectionFactory  
+## <a name="systemdataentityinfrastructureidbconnectionfactory"></a>System.Data.Entity.Infrastructure.IDbConnectionFactory  
 
 **Представленные версии**: EF6.0.0  
 
@@ -72,7 +70,7 @@ public interface IDbDependencyResolver
 >[!NOTE]
 > См. Дополнительные сведения о службах, связанные с поставщиком, в EF6 [модель поставщика EF6](~/ef6/fundamentals/providers/provider-model.md) раздел.  
 
-### <a name="systemdataentityinfrastructureimanifesttokenservice"></a>System.Data.Entity.Infrastructure.IManifestTokenService  
+## <a name="systemdataentityinfrastructureimanifesttokenservice"></a>System.Data.Entity.Infrastructure.IManifestTokenService  
 
 **Представленные версии**: EF6.0.0  
 
@@ -82,7 +80,7 @@ public interface IDbDependencyResolver
 
 **Ключ**: не использовать, будет иметь значение null  
 
-### <a name="systemdataentityinfrastructureidbproviderfactoryservice"></a>System.Data.Entity.Infrastructure.IDbProviderFactoryService  
+## <a name="systemdataentityinfrastructureidbproviderfactoryservice"></a>System.Data.Entity.Infrastructure.IDbProviderFactoryService  
 
 **Представленные версии**: EF6.0.0  
 
@@ -90,7 +88,7 @@ public interface IDbDependencyResolver
 
 **Ключ**: не использовать, будет иметь значение null  
 
-### <a name="funcdbcontext-systemdataentityinfrastructureidbmodelcachekey"></a>Func < DbContext, System.Data.Entity.Infrastructure.IDbModelCacheKey\>  
+## <a name="funcdbcontext-systemdataentityinfrastructureidbmodelcachekey"></a>Func < DbContext, System.Data.Entity.Infrastructure.IDbModelCacheKey\>  
 
 **Представленные версии**: EF6.0.0  
 
@@ -98,7 +96,7 @@ public interface IDbDependencyResolver
 
 **Ключ**: не использовать, будет иметь значение null  
 
-### <a name="systemdataentityspatialdbspatialservices"></a>System.Data.Entity.Spatial.DbSpatialServices  
+## <a name="systemdataentityspatialdbspatialservices"></a>System.Data.Entity.Spatial.DbSpatialServices  
 
 **Представленные версии**: EF6.0.0  
 
@@ -109,7 +107,7 @@ public interface IDbDependencyResolver
 >[!NOTE]
 > См. Дополнительные сведения о службах, связанные с поставщиком, в EF6 [модель поставщика EF6](~/ef6/fundamentals/providers/provider-model.md) раздел.  
 
-### <a name="funcsystemdataentityinfrastructureidbexecutionstrategy"></a>Func < System.Data.Entity.Infrastructure.IDbExecutionStrategy\>  
+## <a name="funcsystemdataentityinfrastructureidbexecutionstrategy"></a>Func < System.Data.Entity.Infrastructure.IDbExecutionStrategy\>  
 
 **Представленные версии**: EF6.0.0  
 
@@ -120,7 +118,7 @@ public interface IDbDependencyResolver
 >[!NOTE]
 > См. Дополнительные сведения о службах, связанные с поставщиком, в EF6 [модель поставщика EF6](~/ef6/fundamentals/providers/provider-model.md) раздел.  
 
-### <a name="funcdbconnection-string-systemdataentitymigrationshistoryhistorycontext"></a>Func < DbConnection, строка, System.Data.Entity.Migrations.History.HistoryContext\>  
+## <a name="funcdbconnection-string-systemdataentitymigrationshistoryhistorycontext"></a>Func < DbConnection, строка, System.Data.Entity.Migrations.History.HistoryContext\>  
 
 **Представленные версии**: EF6.0.0  
 
@@ -131,7 +129,7 @@ public interface IDbDependencyResolver
 >[!NOTE]
 > См. Дополнительные сведения о службах, связанные с поставщиком, в EF6 [модель поставщика EF6](~/ef6/fundamentals/providers/provider-model.md) раздел.  
 
-### <a name="systemdatacommondbproviderfactory"></a>System.Data.Common.DbProviderFactory  
+## <a name="systemdatacommondbproviderfactory"></a>System.Data.Common.DbProviderFactory  
 
 **Представленные версии**: EF6.0.0  
 
@@ -142,7 +140,7 @@ public interface IDbDependencyResolver
 >[!NOTE]
 > Эта служба не изменяется обычно непосредственно, так как в реализации по умолчанию используется обычный Регистрация поставщика ADO.NET. См. Дополнительные сведения о службах, связанные с поставщиком, в EF6 [модель поставщика EF6](~/ef6/fundamentals/providers/provider-model.md) раздел.  
 
-### <a name="systemdataentityinfrastructureiproviderinvariantname"></a>System.Data.Entity.Infrastructure.IProviderInvariantName  
+## <a name="systemdataentityinfrastructureiproviderinvariantname"></a>System.Data.Entity.Infrastructure.IProviderInvariantName  
 
 **Представленные версии**: EF6.0.0  
 
@@ -153,7 +151,7 @@ public interface IDbDependencyResolver
 >[!NOTE]
 > См. Дополнительные сведения о службах, связанные с поставщиком, в EF6 [модель поставщика EF6](~/ef6/fundamentals/providers/provider-model.md) раздел.  
 
-### <a name="systemdataentitycoremappingviewgenerationiviewassemblycache"></a>System.Data.Entity.Core.Mapping.ViewGeneration.IViewAssemblyCache  
+## <a name="systemdataentitycoremappingviewgenerationiviewassemblycache"></a>System.Data.Entity.Core.Mapping.ViewGeneration.IViewAssemblyCache  
 
 **Представленные версии**: EF6.0.0  
 
@@ -161,7 +159,7 @@ public interface IDbDependencyResolver
 
 **Ключ**: не использовать, будет иметь значение null  
 
-### <a name="systemdataentityinfrastructurepluralizationipluralizationservice"></a>System.Data.Entity.Infrastructure.Pluralization.IPluralizationService
+## <a name="systemdataentityinfrastructurepluralizationipluralizationservice"></a>System.Data.Entity.Infrastructure.Pluralization.IPluralizationService
 
 **Представленные версии**: EF6.0.0  
 
@@ -169,7 +167,7 @@ public interface IDbDependencyResolver
 
 **Ключ**: не использовать, будет иметь значение null  
 
-### <a name="systemdataentityinfrastructureinterceptionidbinterceptor"></a>System.Data.Entity.Infrastructure.Interception.IDbInterceptor  
+## <a name="systemdataentityinfrastructureinterceptionidbinterceptor"></a>System.Data.Entity.Infrastructure.Interception.IDbInterceptor  
 
 **Представленные версии**: EF6.0.0
 
@@ -177,7 +175,7 @@ public interface IDbDependencyResolver
 
 **Ключ**: не использовать, будет иметь значение null.  
 
-### <a name="funcsystemdataentitydbcontext-actionstring-systemdataentityinfrastructureinterceptiondatabaselogformatter"></a>Func < System.Data.Entity.DbContext, действие < строка\>, System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter\>  
+## <a name="funcsystemdataentitydbcontext-actionstring-systemdataentityinfrastructureinterceptiondatabaselogformatter"></a>Func < System.Data.Entity.DbContext, действие < строка\>, System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter\>  
 
 **Представленные версии**: EF6.0.0  
 
@@ -185,7 +183,7 @@ public interface IDbDependencyResolver
 
 **Ключ**: не использовать, будет иметь значение null.  
 
-### <a name="funcsystemdataentitydbcontext"></a>Func < System.Data.Entity.DbContext\>  
+## <a name="funcsystemdataentitydbcontext"></a>Func < System.Data.Entity.DbContext\>  
 
 **Представленные версии**: EF6.1.0  
 
@@ -193,7 +191,7 @@ public interface IDbDependencyResolver
 
 **Ключ**: объект типа для типа производном DbContext, для которого требуется фабрику.  
 
-### <a name="funcsystemdataentitycoremetadataedmimetadataannotationserializer"></a>Func < System.Data.Entity.Core.Metadata.Edm.IMetadataAnnotationSerializer\>  
+## <a name="funcsystemdataentitycoremetadataedmimetadataannotationserializer"></a>Func < System.Data.Entity.Core.Metadata.Edm.IMetadataAnnotationSerializer\>  
 
 **Представленные версии**: EF6.1.0  
 
@@ -201,7 +199,7 @@ public interface IDbDependencyResolver
 
 **Ключ**: имя, для которого создается заметка сериализации или десериализации.  
 
-### <a name="funcsystemdataentityinfrastructuretransactionhandler"></a>Func < System.Data.Entity.Infrastructure.TransactionHandler\>  
+## <a name="funcsystemdataentityinfrastructuretransactionhandler"></a>Func < System.Data.Entity.Infrastructure.TransactionHandler\>  
 
 **Представленные версии**: EF6.1.0  
 

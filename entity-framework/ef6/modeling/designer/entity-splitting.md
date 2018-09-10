@@ -3,19 +3,19 @@ title: Разделение конструктора сущностей - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: aa2dd48a-1f0e-49dd-863d-d6b4f5834832
-ms.openlocfilehash: 214561f0a0381bced3ceae0b6acfcd45f5dd65c5
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 06199be977276cd3656e2550df79bac24276ec51
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995623"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250602"
 ---
 # <a name="designer-entity-splitting"></a>Разбиение конструктора сущностей
 В этом пошаговом руководстве показано, как сопоставить тип сущности с двумя таблицами путем изменения модели с Entity Framework Designer (конструктор EF). Сущность можно сопоставить с несколькими таблицами, если в таблицах имеется общий ключ. Основные понятия, которые применяются для сопоставления типа сущности с двумя таблицами, легко распространить на сопоставление типа сущности более чем с двумя таблицами.
 
 На следующем рисунке показана основные окна, которые используются при работе с конструктором EF.
 
-![EFDesigner](~/ef6/media/efdesigner.png)
+![Конструктор EF](~/ef6/media/efdesigner.png)
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -93,7 +93,7 @@ CONSTRAINT [FK_Person_PersonInfo] FOREIGN KEY ([PersonId]) REFERENCES [dbo].[Per
 -   В рабочей области конструирования выберите **PersonInfo** сущности и нажмите клавишу **удалить** кнопку на клавиатуре.
 -   Нажмите кнопку **нет** при запросе, если вы хотите удалить **PersonInfo** таблицы из модели, мы сейчас будет сопоставить с **Person** сущности.
 
-    ![DeleteTables](~/ef6/media/deletetables.png)
+    ![Удаление таблиц](~/ef6/media/deletetables.png)
 
 Для следующего шага требуется **сведения о сопоставлении** окна. Если это окно не отображается, щелкните правой кнопкой мыши область конструктора и выберите **сведения о сопоставлении**.
 
@@ -103,7 +103,7 @@ CONSTRAINT [FK_Person_PersonInfo] FOREIGN KEY ([PersonId]) REFERENCES [dbo].[Per
 
 **Person** типа сущности теперь сопоставлена с **Person** и **PersonInfo** таблиц.
 
-![Mapping2](~/ef6/media/mapping2.png)
+![Сопоставление 2](~/ef6/media/mapping2.png)
 
 ## <a name="use-the-model"></a>Использование модели
 
@@ -136,9 +136,9 @@ CONSTRAINT [FK_Person_PersonInfo] FOREIGN KEY ([PersonId]) REFERENCES [dbo].[Per
 
 -   Следующие два **вставить** инструкции были выполнены в результате выполнения контекста. SaveChanges(). Они принимают данные из **Person** сущности и разделения между **Person** и **PersonInfo** таблиц.
 
-    ![Insert1](~/ef6/media/insert1.png)
+    ![Вставьте 1](~/ef6/media/insert1.png)
 
-    ![Insert2](~/ef6/media/insert2.png)
+    ![Вставить 2](~/ef6/media/insert2.png)
 -   Следующие **ВЫБЕРИТЕ** был выполнен в результате перечисление людей в базе данных. Он объединяет данные из **Person** и **PersonInfo** таблицы.
 
     ![Выбрать](~/ef6/media/select.png)

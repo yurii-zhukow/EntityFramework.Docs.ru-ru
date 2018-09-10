@@ -3,12 +3,12 @@ title: Поддержка Enum - конструктор EF - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: c6ae6d8f-1ace-47db-ad47-b1718f1ba082
-ms.openlocfilehash: d4c5528c4dc13ab7189421feebf84c2cb2f4b2bb
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: a94a497e8c5b3213dd7eb4215de90164d437507d
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995641"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250639"
 ---
 # <a name="enum-support---ef-designer"></a>Поддержка перечислений — конструктор EF
 > [!NOTE]
@@ -70,11 +70,11 @@ ms.locfileid: "42995641"
 
 1.  В конструкторе Entity Framework, щелкните правой кнопкой мыши свойство Name, выберите **преобразовать перечисление**
 
-    ![ConvertToEnum](~/ef6/media/converttoenum.png)
+    ![Преобразовать в перечисление](~/ef6/media/converttoenum.png)
 
 2.  В **перечислить** тип диалогового окна **DepartmentNames** для именем типа перечисления, изменить базовый тип для **Int32**, а затем добавьте следующие элементы в тип: английского языка, Математические и экономики
 
-    ![AddEnumType](~/ef6/media/addenumtype.png)
+    ![Добавьте тип перечисления](~/ef6/media/addenumtype.png)
 
 3.  Нажмите клавишу **ОК**
 4.  Сохранение модели и построение проекта
@@ -85,7 +85,7 @@ ms.locfileid: "42995641"
 
 При переключении в окно браузера модели, вы увидите сообщение о том, что тип также был добавлен к узлу для перечислимых типов.
 
-![ModelBrowser](~/ef6/media/modelbrowser.png)
+![Браузер моделей](~/ef6/media/modelbrowser.png)
 
 >[!NOTE]
 > Можно также добавить новые типы перечисления из этого окна, щелкнув правой кнопкой мыши и выбрав **добавить тип перечисления**. После создания типа, он будет отображаться в списке типов, и вы смогли бы связать со свойством

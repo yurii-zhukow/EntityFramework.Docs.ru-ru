@@ -3,12 +3,12 @@ title: Автоматическое Code First Migrations - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 0eb86787-2161-4cb4-9cb8-67c5d6e95650
-ms.openlocfilehash: f358a4df04b03399e9e54ffdf0389e43d715af1c
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 256d1c774a2165dc12daf3d04550566c1a44b751
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996099"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250456"
 ---
 # <a name="automatic-code-first-migrations"></a>Автоматическое Code First Migrations
 Автоматический перенос позволяет использовать Code First Migrations без файл кода в проекте для каждого изменения, внесенные. Не все изменения, которые могут применяться автоматически — например переименование столбцов требуют использования миграции на основе кода.
@@ -85,7 +85,7 @@ ms.locfileid: "42996099"
 
 -   Запустите приложение и вы увидите, что **MigrationsAutomaticCodeDemo.BlogContext** база данных создается автоматически.
 
-    ![DatabaseLocalDB](~/ef6/media/databaselocaldb.png)
+    ![База данных LocalDB](~/ef6/media/databaselocaldb.png)
 
 ## <a name="enabling-migrations"></a>Включение миграций
 

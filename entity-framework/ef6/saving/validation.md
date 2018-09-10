@@ -3,12 +3,12 @@ title: Проверка - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 77d6a095-c0d0-471e-80b9-8f9aea6108b2
-ms.openlocfilehash: eec834888e2e3efaadc8acf9d4f64307f394ea4a
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 65639b0f91f54ee2cd1336f6b6cd4caf45ede680
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994449"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251028"
 ---
 # <a name="data-validation"></a>Проверка данных
 > [!NOTE]
@@ -54,7 +54,7 @@ ms.locfileid: "42994449"
 
 Без дополнительного кода или разметки изменений в приложение существующее приложение MVC будет выполнять проверки на стороне клиента, даже динамическое создание сообщения с использованием имени свойства и заметки.
 
-![figure01](~/ef6/media/figure01.png)
+![Рис. 1](~/ef6/media/figure01.png)
 
 В блога back-метод этого создать представления, Entity Framework используется для сохранения в новой записи в базу данных, но проверка на стороне клиента в MVC запускается прежде, чем оно достигнет этого кода.
 
@@ -153,7 +153,7 @@ IValidatableObject — это интерфейс, живет в System.Component
 
 В отличие от проверки, предоставляемый Fluent API результат этой проверки будет распознаваться модулем представление и обработчик исключений, который я использовал выше, чтобы добавить ошибку в ModelState не требуется. Поскольку я обоих имен свойств в ValidationResult, MVC HtmlHelpers отображает сообщение об ошибке для оба этих свойства.
 
-![figure02](~/ef6/media/figure02.png)
+![Рис. 2](~/ef6/media/figure02.png)
 
 ## <a name="dbcontextvalidateentity"></a>DbContext.ValidateEntity
 

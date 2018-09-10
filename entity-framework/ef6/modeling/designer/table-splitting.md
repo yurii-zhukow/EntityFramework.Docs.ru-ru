@@ -3,12 +3,12 @@ title: Разделение конструктора таблицы - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 452f17c3-9f26-4de4-9894-8bc036e23b0f
-ms.openlocfilehash: 87b6e1bd0374f77dfffab342c659cf4e16c8a337
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: f07aeb0aa679f6fa8131c667ac808f17c3f03f20
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994507"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250989"
 ---
 # <a name="designer-table-splitting"></a>Разбиение конструктора таблиц
 В этом пошаговом руководстве показано, как сопоставить несколько типов сущностей с одной таблицей путем изменения модели с Entity Framework Designer (конструктор EF).
@@ -17,7 +17,7 @@ ms.locfileid: "42994507"
 
 На следующем рисунке показана основные окна, которые используются при работе с конструктором EF.
 
-![EFDesigner](~/ef6/media/efdesigner.png)
+![Конструктор EF](~/ef6/media/efdesigner.png)
 
 ## <a name="prerequisites"></a>Предварительные требования
 
@@ -130,8 +130,8 @@ ms.locfileid: "42994507"
 
 -   Следующие **ВЫБЕРИТЕ** был выполнен в результате выполнения контекста. People.FirstOrDefault() и выбирает только столбцы сопоставляются **Person**
 
-    ![Select1](~/ef6/media/select1.png)
+    ![Выберите 1](~/ef6/media/select1.png)
 
 -   Следующие **ВЫБЕРИТЕ** была выполнена из-за доступа к existingPerson.Instructor свойство навигации и выбирает только нужные столбцы, которые сопоставляются с **HireInfo**
 
-    ![Select2](~/ef6/media/select2.png)
+    ![Выберите 2](~/ef6/media/select2.png)

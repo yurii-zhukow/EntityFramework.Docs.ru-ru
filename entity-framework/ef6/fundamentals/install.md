@@ -3,12 +3,12 @@ title: Получение Entity Framework — EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 122c38a2-f9e8-4ecc-9c72-a83bc9af7814
-ms.openlocfilehash: 91b78e56f60edf7ebc8769b1c385f8547f63cd3d
-ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
+ms.openlocfilehash: 601f8d123d5494be6a658da1c4ad3743ed50385c
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43152392"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250885"
 ---
 # <a name="get-entity-framework"></a>Получение платформы Entity Framework
 Платформа Entity Framework состоит из средства EF для Visual Studio и среды выполнения EF.
@@ -27,7 +27,7 @@ ms.locfileid: "43152392"
 
 Можно установить пакет EntityFramework щелкните правой кнопкой мыши **ссылки** папку проекта и выбрав **управление пакетами NuGet...**
 
-![ManageNuGetPackages](~/ef6/media/managenugetpackages.png)
+![Управление пакетами NuGet](~/ef6/media/managenugetpackages.png)
 
 ### <a name="installing-from-package-manager-console"></a>Установка консоли диспетчера пакетов
 
@@ -55,7 +55,7 @@ EF сред выполнения, прежде чем 4.1 были частью 
 
 Чтобы установить последнюю предварительную версию можно выбрать EntityFramework **включить предварительный выпуск** в окне «Управление пакетами NuGet». Если доступны без предварительной версии вы автоматически получите последнюю версию полностью поддерживаемую версию Entity Framework.
 
-![IncludePreRelease](~/ef6/media/includeprerelease.png)
+![Включить предварительные выпуски](~/ef6/media/includeprerelease.png)
 
 Также можно запустить следующую команду [консоль диспетчера пакетов](http://docs.nuget.org/docs/start-here/using-the-package-manager-console).
 

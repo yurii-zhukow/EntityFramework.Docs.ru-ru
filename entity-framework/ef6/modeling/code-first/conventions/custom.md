@@ -3,12 +3,12 @@ title: Пользовательский код соглашения First - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: dd2bdbd9-ae9e-470a-aeb8-d0ba160499b7
-ms.openlocfilehash: 79450790c6d3c8ce7fad209e3946e81d3fad4b75
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: a0e8080037cf86640275f498ed159c847ff5c057
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995832"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251067"
 ---
 # <a name="custom-code-first-conventions"></a>Первый соглашения о написании пользовательского кода
 > [!NOTE]
@@ -115,7 +115,7 @@ ms.locfileid: "42995832"
 
 Этот код будет настроить типы в нашей модели иметь составной ключ, состоящий из столбца Key int и строкового имени столбца. Если просмотреть модель в конструкторе оно выглядело следующим образом:
 
-![compositeKey](~/ef6/media/compositekey.png)
+![составной ключ](~/ef6/media/compositekey.png)
 
 Другой пример соглашений свойство — настроить все свойства даты и времени в моей модели для сопоставления с типом datetime2 в SQL Server вместо даты и времени. Это можно сделать с помощью следующих:
 
@@ -292,7 +292,7 @@ ms.locfileid: "42995832"
 
 Приведенный выше код будет сопоставлен структуру таблицы, которая выглядит следующим образом:
 
-![tptExample](~/ef6/media/tptexample.jpg)
+![Пример TPT](~/ef6/media/tptexample.jpg)
 
 Можно избежать этого и поддерживать TPH сопоставление по умолчанию, несколькими способами:
 

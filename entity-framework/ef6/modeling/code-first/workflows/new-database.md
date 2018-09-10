@@ -3,12 +3,12 @@ title: Code First в новой базе данных - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 2df6cb0a-7d8b-4e28-9d05-e2b9a90125af
-ms.openlocfilehash: 50c6a4710bc50879304f64e781a46c4836f86882
-ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
+ms.openlocfilehash: 8ed1bfbc3536acc0d83b9c8ecdd180aeb44eff83
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43152482"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251054"
 ---
 # <a name="code-first-to-a-new-database"></a>Code First в новой базе данных
 В этом пошаговом руководстве видео и пошаговые познакомят вас с разработки Code First, предназначенные для новой базы данных. Этот сценарий включает предназначенные для базы данных, которая не существует и Code First создаст пустую базу данных, Code First добавит новые таблицы для. Во-первых, код позволяет определить модель с помощью c#\# или классам VB.Net. Дополнительная настройка при необходимости выполняются с помощью атрибутов для классов и свойств или с помощью текучего API.
@@ -199,13 +199,13 @@ Press any key to exit...
 -   Щелкните правой кнопкой мыши **подключения к данным** и выберите **добавить соединение...**
 -   Если вы не подключились к базе данных с помощью обозревателя сервера прежде, чем вам потребуется выбрать в качестве источника данных Microsoft SQL Server
 
-    ![SelectDataSource](~/ef6/media/selectdatasource.png)
+    ![Выберите источник данных](~/ef6/media/selectdatasource.png)
 
 -   Подключение к LocalDB или SQL Express, в зависимости от того, какой из них установки
 
 Теперь можно проверить, Code First создает схему.
 
-![SchemaInitial](~/ef6/media/schemainitial.png)
+![Начальный схемы](~/ef6/media/schemainitial.png)
 
 Классы для включения в модель, просмотрев свойства DbSet, которые мы определили работы DbContext. Затем набор соглашения Code First, по умолчанию используется для определения имен таблиц и столбцов, определения типов данных, найти первичные ключи и т. д. Далее в этом пошаговом руководстве мы рассмотрим, как можно переопределить эти соглашения.
 
@@ -266,7 +266,7 @@ namespace CodeFirstNewDatabaseSample.Migrations
 
 Теперь новый столбец URL-адрес добавляется в блоги таблицу в базе данных:
 
-![SchemaWithUrl](~/ef6/media/schemawithurl.png)
+![Схема с URL-адрес](~/ef6/media/schemawithurl.png)
 
 ## <a name="6-data-annotations"></a>6. Заметки к данным
 
@@ -316,7 +316,7 @@ public class User
 
 Теперь новая таблица добавляется в базу данных:
 
-![SchemaWithUsers](~/ef6/media/schemawithusers.png)
+![Схема с пользователями](~/ef6/media/schemawithusers.png)
 
 Приведен полный список заметок, поддерживаемых EF.
 
@@ -365,7 +365,7 @@ public class BloggingContext : DbContext
 
 Теперь в столбце DisplayName переименовывается для отображения\_имя:
 
-![SchemaWithDisplayNameRenamed](~/ef6/media/schemawithdisplaynamerenamed.png)
+![Схема с отображаемым именем переименован](~/ef6/media/schemawithdisplaynamerenamed.png)
 
 ## <a name="summary"></a>Сводка
 

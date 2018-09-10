@@ -3,12 +3,12 @@ title: Code First для существующей базы данных - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: a7e60b74-973d-4480-868f-500a3899932e
-ms.openlocfilehash: 29f959265e0fd0d5e14c156519e6931fd8da0677
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: fedfb921919582e2cdb5f3bc497f11889b972ad6
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995094"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251080"
 ---
 # <a name="code-first-to-an-existing-database"></a>Code First для существующей базы данных
 В этом пошаговом руководстве видео и пошаговые познакомят вас с разработки Code First, предназначенных для существующей базы данных. Во-первых, код позволяет определить модель с помощью c#\# или классам VB.Net. При необходимости дополнительной настройки могут выполняться с помощью атрибутов для классов и свойств или с помощью текучего API.
@@ -33,15 +33,15 @@ ms.locfileid: "42995094"
 -   Щелкните правой кнопкой мыши **подключения к данным -&gt; добавить соединение...**
 -   Если вы не подключились к базе данных из **обозревателя серверов** прежде, чем вам нужно будет выбрать **Microsoft SQL Server** как источник данных
 
-    ![SelectDataSource](~/ef6/media/selectdatasource.png)
+    ![Выберите источник данных](~/ef6/media/selectdatasource.png)
 
 -   Подключитесь к экземпляру LocalDB и введите **ведения блогов** имя базы данных
 
-    ![LocalDBConnection](~/ef6/media/localdbconnection.png)
+    ![Подключение LocalDB](~/ef6/media/localdbconnection.png)
 
 -   Выберите **ОК** и вам нужно будет Если вы хотите создать новую базу данных, выберите **Да**
 
-    ![CreateDatabaseDialog](~/ef6/media/createdatabasedialog.png)
+    ![Создание диалогового окна базы данных](~/ef6/media/createdatabasedialog.png)
 
 -   Новой базы данных будут отображаться в обозревателе сервера щелкните его правой кнопкой мыши и выберите **новый запрос**
 -   Скопируйте следующий запрос SQL в новый запрос, а затем щелкните правой кнопкой мыши запрос и выберите **Execute**
@@ -92,15 +92,15 @@ VALUES ('.NET Framework Blog', 'http://blogs.msdn.com/dotnet/')
 -   Это откроет **мастер моделей EDM**
 -   Выберите **Code First, из базы данных** и нажмите кнопку **Далее**
 
-    ![WizardOneCFE](~/ef6/media/wizardonecfe.png)
+    ![Мастер один CFE](~/ef6/media/wizardonecfe.png)
 
 -   Выберите соединение с базой данных, созданной в первом разделе и нажмите кнопку **Далее**
 
-    ![WizardTwoCFE](~/ef6/media/wizardtwocfe.png)
+    ![Мастер два CFE](~/ef6/media/wizardtwocfe.png)
 
 -   Установите флажок рядом с полем **таблиц** для импорта всех таблиц и нажмите кнопку **Готово**
 
-    ![WizardThreeCFE](~/ef6/media/wizardthreecfe.png)
+    ![Мастер три CFE](~/ef6/media/wizardthreecfe.png)
 
 После завершения процесса реконструирования с числом элементов будут добавлены в проект, давайте взглянем на то, что добавляется.
 
