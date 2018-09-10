@@ -3,12 +3,12 @@ title: Шаблоны создания кода конструктора в EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 56e00fa2-f9f0-48b3-8006-f8266ca7e74b
-ms.openlocfilehash: 29e28dd4ebe0e5e6e3cddacb1d34202c2010f389
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e4d4aaa647baca9f85b85db1aadaade37abd6ff2
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994875"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251171"
 ---
 # <a name="designer-code-generation-templates"></a>Шаблоны создания кода конструктора
 При создании модели с помощью Entity Framework Designer классы и производный контекст создаются автоматически. Помимо создания кода по умолчанию, вам доступны несколько шаблонов, которые можно использовать для настройки генерируемого кода. Эти шаблоны представляют собой текстовые шаблоны T4, позволяющие при необходимости настраивать шаблоны.
@@ -151,7 +151,7 @@ ms.locfileid: "42994875"
 
 Чтобы приступить к использованию шаблона создания кода, щелкните правой кнопкой мыши пустое место в области конструктора в конструкторе EF Designer и выберите **Добавить элемент создания кода…**.
 
-![Add_Code_Gen_Item](~/ef6/media/add-code-gen-item.png)
+![Добавление элемента создания кода](~/ef6/media/add-code-gen-item.png)
 
 Если вы уже установили нужный шаблон (или он был включен в состав Visual Studio), он будет доступен в разделе **Код** или **Данные** в меню слева.
 
@@ -166,8 +166,8 @@ ms.locfileid: "42994875"
 > [!NOTE]
 > Для моделей, созданных в Visual Studio 2012, потребуется удалить шаблоны, используемые для создания кода по умолчанию. В противном случае будут созданы повторяющиеся классы и контекст. Файлы по умолчанию: **&lt;имя_модели&gt;.tt** и **&lt;имя_модели&gt;.context.tt**. 
 
-![VS2012_Templates](~/ef6/media/vs2012-templates.png)
+![Шаблоны Visual Studio 2012](~/ef6/media/vs2012-templates.png)
 
 Если вы используете Visual Studio 2010, TT-файлы добавляются непосредственно в проект.  
 
-![VS2010_Templates](~/ef6/media/vs2010-templates.png)
+![Шаблоны Visual Studio 2010](~/ef6/media/vs2010-templates.png)

@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 3c88427c-20c6-42ec-a736-22d3eccd5071
 uid: core/get-started/index
-ms.openlocfilehash: 144cc8c8c9979e4ce24260c2975e6b10d4fdbb84
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: c8d53b47d215c0db673c9058e9d78a7e2e7b895f
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994927"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250742"
 ---
 # <a name="getting-started-with-entity-framework-core"></a>Начало работы с Entity Framework Core
 
@@ -23,5 +23,17 @@ ms.locfileid: "42994927"
 
 Entity Framework Core позволяет создать модель на основе существующей базы данных или базу данных на основе модели. Доступны учебники, демонстрирующие оба этих подхода.
 
+* .NET Framework (консольные приложения, WinForms, WPF)
+  * [Новая база данных](full-dotnet/new-db.md)
+  * [Существующая база данных](full-dotnet/existing-db.md)
+* .NET Core (Windows, macOS, Linux)
+  * [Новая база данных](netcore/new-db-sqlite.md)
+* ASP.NET Core
+  * [Новая база данных](aspnetcore/new-db.md)
+  * [Существующая база данных](aspnetcore/existing-db.md)
+  * [EF Core и Razor Pages](/aspnet/core/data/ef-rp/intro)
+* Универсальная платформа Windows (UWP)
+  * [Новая база данных](uwp/getting-started.md)
+
 > [!NOTE]  
-> Эти учебники и соответствующие примеры были обновлены до EF Core 2.0 (кроме учебника UWP, где по-прежнему используется EF Core 1.1). Но в большинстве случаев приложения, использующие предыдущие выпуски, можно создать с минимальными отступлениями от приведенных инструкций. 
+> Эти руководства и сопутствующие примеры обновлены для использования EF Core 2.1. Но в большинстве случаев приложения, использующие предыдущие выпуски, можно создать с минимальными отступлениями от приведенных инструкций. 
