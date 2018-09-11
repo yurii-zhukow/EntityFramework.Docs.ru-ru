@@ -4,21 +4,33 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 834C9729-7F6E-4355-917D-DE3EE9FE149E
 uid: core/what-is-new/roadmap
-ms.openlocfilehash: cd4b7ddaafe9501c4bb9f2496e87f619d239ab62
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: fd9086c9911cdb0890117d44c2787780aad9a7cb
+ms.sourcegitcommit: a81aed575372637997b18a0f9466d8fefb33350a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995264"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43821365"
 ---
 # <a name="entity-framework-core-roadmap"></a>Стратегия развития Entity Framework Core
 
 > [!IMPORTANT]
 > Обратите внимание на то, что наборы возможностей и расписания будущих выпусков могут быть изменены, и, несмотря на то, что мы стараемся поддерживать эту страницу в актуальном состоянии, в определенные моменты времени содержание страницы может не отражать наши текущие планы.
 
+## <a name="last-release-ef-core-21"></a>Последний выпуск: EF Core 2.1
+
 Стабильная версия EF Core 2.1 была выпущена 30 мая 2018 г. Дополнительные сведения об этом выпуске см. в статье [Новые возможности в EF Core 2.1](xref:core/what-is-new/ef-core-2.1).
 
-[Разработка плана выпуска](#release-planning-process) для выпуска, следующего за версией 2.1, еще не завершена.
+## <a name="future-releases"></a>Будущие выпуски
+
+### <a name="ef-core-22"></a>EF Core 2.2
+
+Этот выпуск включает множество исправлений ошибок и сравнительно небольшой набор новых функций. Сведения об этом выпуске включены в [объявление о стратегическом плане по EF Core 2.2](https://github.com/aspnet/Announcements/issues/308). 
+
+### <a name="ef-core-30"></a>EF Core 3.0
+
+Хотя [процесс планирования выпуска](#release-planning-process), следующего после 2.2, не закончен, сейчас мы планируем опубликовать основной выпуск вместе с .NET Core 3.0 и ASP.NET 3.0. 
+
+Рабочие элементы, предварительно назначенные для будущего выпуска, можно просмотреть в [этом запросе в средстве отслеживания проблем](https://github.com/aspnet/EntityFrameworkCore/issues?q=is%3Aopen+is%3Aissue+milestone%3A3.0.0+sort%3Areactions-%2B1-desc).
 
 ## <a name="schedule"></a>Расписание
 
