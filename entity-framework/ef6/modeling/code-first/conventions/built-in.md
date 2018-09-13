@@ -1,14 +1,14 @@
 ---
 title: Соглашения Code First - EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: bc644573-c2b2-4ed7-8745-3c37c41058ad
-ms.openlocfilehash: c5fa580879a4b53fed34d94b737988875f38c62c
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 4d03a32db5d84eb37c22617a95005b272172a65d
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995530"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45491004"
 ---
 # <a name="code-first-conventions"></a>Первый соглашения о коде
 Во-первых, код позволяет описания модели с помощью классов C# или Visual Basic .NET. Основные фигуры модели определяется с использованием соглашений. Соглашения являются наборы правил, которые используются для автоматической настройки концептуальной модели на основе определений класса при работе в режиме Code First. Правила определяются в пространстве имен System.Data.Entity.ModelConfiguration.Conventions.  

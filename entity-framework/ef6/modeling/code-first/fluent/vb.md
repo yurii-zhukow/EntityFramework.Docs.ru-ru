@@ -1,14 +1,14 @@
 ---
 title: Fluent API с использованием VB.NET - EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 763dc6a2-764a-4600-896c-f6f13abf56ec
-ms.openlocfilehash: b21ee872034ca3c82ec793835476d79585a1018b
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: cbdd32696fb88d3de6cf1966040e5dda49fe19cd
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993485"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489476"
 ---
 # <a name="fluent-api-with-vbnet"></a>Fluent API с использованием VB.NET
 Во-первых, код позволяет определить модель с помощью c#\# или классам VB.NET. Дополнительная настройка при необходимости выполняются с помощью атрибутов для классов и свойств или с помощью текучего API. В этом пошаговом руководстве показано, как выполнять с помощью VB.NET конфигурация текучего API.

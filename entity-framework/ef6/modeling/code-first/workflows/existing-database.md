@@ -1,14 +1,14 @@
 ---
 title: Code First для существующей базы данных - EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: a7e60b74-973d-4480-868f-500a3899932e
-ms.openlocfilehash: fedfb921919582e2cdb5f3bc497f11889b972ad6
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: f05420beb3dff2d632151fcbf48986b0d9cd18ff
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44251080"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490614"
 ---
 # <a name="code-first-to-an-existing-database"></a>Code First для существующей базы данных
 В этом пошаговом руководстве видео и пошаговые познакомят вас с разработки Code First, предназначенных для существующей базы данных. Во-первых, код позволяет определить модель с помощью c#\# или классам VB.Net. При необходимости дополнительной настройки могут выполняться с помощью атрибутов для классов и свойств или с помощью текучего API.

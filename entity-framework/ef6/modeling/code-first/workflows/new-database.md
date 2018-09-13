@@ -1,14 +1,14 @@
 ---
 title: Code First в новой базе данных - EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 2df6cb0a-7d8b-4e28-9d05-e2b9a90125af
-ms.openlocfilehash: 8ed1bfbc3536acc0d83b9c8ecdd180aeb44eff83
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: 6572574ad36094ac0960c429cfa8606b6aebb492
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44251054"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490756"
 ---
 # <a name="code-first-to-a-new-database"></a>Code First в новой базе данных
 В этом пошаговом руководстве видео и пошаговые познакомят вас с разработки Code First, предназначенные для новой базы данных. Этот сценарий включает предназначенные для базы данных, которая не существует и Code First создаст пустую базу данных, Code First добавит новые таблицы для. Во-первых, код позволяет определить модель с помощью c#\# или классам VB.Net. Дополнительная настройка при необходимости выполняются с помощью атрибутов для классов и свойств или с помощью текучего API.
@@ -20,7 +20,7 @@ ms.locfileid: "44251054"
 
 **Видео**: [WMV](http://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-winvideo-CodeFirstNewDatabase.wmv) | [MP4](http://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-mp4Video-CodeFirstNewDatabase.m4v) | [WMV (ZIP)](http://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-winvideo-CodeFirstNewDatabase.zip)
 
-# <a name="pre-requisites"></a>Предварительные требования
+## <a name="pre-requisites"></a>Предварительные требования
 
 Для выполнения этого пошагового руководства необходимо иметь по крайней мере Visual Studio 2010 или Visual Studio 2012.
 

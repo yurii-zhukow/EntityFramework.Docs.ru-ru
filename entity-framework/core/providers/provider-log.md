@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 5da1043310e2858638c81a0654a9cab23e39c220
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: a637e5e2f75e16bc7b11b1a51abcbe16274a1c75
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44250820"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490776"
 ---
 # <a name="provider-impacting-changes"></a>Изменения, влияющие на поставщика
 
@@ -52,3 +52,7 @@ ms.locfileid: "44250820"
   * Следуйте этому шаблону, чтобы добавить поддержку пространственных к поставщику, который остается согласованным на всех поставщиков.
 * https://github.com/aspnet/EntityFrameworkCore/pull/13199 — Добавление расширенных возможностей отладки для создания поставщика службы
   * Позволяет DbContextOptionsExtensions реализовать новый интерфейс, который может помочь пользователям понять, почему доступ к внутренней службе, повторного построения
+* https://github.com/aspnet/EntityFrameworkCore/pull/13289 — Добавляет CanConnect API для использования путем проверки работоспособности
+  * Этот запрос на Вытягивание добавляет понятие `CanConnect` которого будет использоваться служба работоспособности ASP.NET Core проверяет, чтобы определить, доступна ли база данных. По умолчанию реляционных реализация просто вызывает `Exist`, но поставщики могут реализовывать другое значение при необходимости. Нереляционные поставщиков необходимо реализовать новый интерфейс API в порядке для проверки работоспособности, чтобы можно было использовать.
+* https://github.com/aspnet/EntityFrameworkCore/pull/13306 -Обновление базового RelationalTypeMapping не задать размер DbParameter
+  * Остановите задание размера по умолчанию, так как это может привести к усечению. Поставщики может потребоваться добавить свою собственную логику, если необходимо задать размер.

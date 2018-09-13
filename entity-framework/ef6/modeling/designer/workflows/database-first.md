@@ -1,14 +1,14 @@
 ---
 title: EF6 Database First.
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: cc6ffdb3-388d-4e79-a201-01ec2577c949
-ms.openlocfilehash: 93ae5729e487ed9be3972ac78d599dbea19ed458
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: b499dea02cbeaa64f6ef87bf89cc739110c8b560
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44251093"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490926"
 ---
 # <a name="database-first"></a>Сначала базы данных
 В этом пошаговом руководстве видео и пошаговые познакомят вас с первой базы данных разработки, использующий Entity Framework. Во-первых, базы данных дает возможность Реконструировать модель из существующей базы данных. Модель хранится в EDMX-файла (расширение EDMX) и их можно просмотреть и изменить в конструкторе Entity Framework. Классы, которые взаимодействуют с в приложении автоматически создаются из файла EDMX.

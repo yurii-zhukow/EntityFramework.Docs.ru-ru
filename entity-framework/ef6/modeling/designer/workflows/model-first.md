@@ -1,14 +1,14 @@
 ---
 title: Model First - EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: e1b9c319-bb8a-4417-ac94-7890f257e7f6
-ms.openlocfilehash: 3dd0eba29619f09995d7009dd29462c14bde98c4
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: 8e010f95db40261073b4af80a3c0e3225a2cd1cf
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44251145"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490484"
 ---
 # <a name="model-first"></a>Model First
 В этом пошаговом руководстве видео и пошаговые познакомят вас с первой модели разработки, использующий Entity Framework. Во-первых, модель позволяет создать новую модель с помощью Entity Framework Designer, а затем создать схему базы данных из модели. Модель хранится в EDMX-файла (расширение EDMX) и их можно просмотреть и изменить в конструкторе Entity Framework. Классы, которые взаимодействуют с в приложении автоматически создаются из файла EDMX.

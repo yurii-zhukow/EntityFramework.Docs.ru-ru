@@ -1,14 +1,14 @@
 ---
 title: Необработанные SQL-запросы - EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 9e1ee76e-2499-408c-81e8-9b6c5d1945a0
-ms.openlocfilehash: 99893ca1c634ce6f2e4cf9dcb70b1a1e43532c60
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 6b00648939ccedffeed09b4e1d6e8d70fa262a36
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995738"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490588"
 ---
 # <a name="raw-sql-queries"></a>Необработанные SQL-запросы
 Платформа Entity Framework позволяет выполнять запросы с помощью LINQ с помощью классов сущностей. Тем не менее могут возникнуть ситуации, которые вы хотите выполнять запросы с помощью необработанных SQL непосредственно в базе данных. Это включает в себя вызов хранимых процедур, которые могут оказаться полезными для Code First моделей, которые в настоящее время не поддерживает сопоставление с хранимыми процедурами. Методы, представленные в этом разделе, также применимы к моделям, созданным с помощью Code First и конструктора EF.  

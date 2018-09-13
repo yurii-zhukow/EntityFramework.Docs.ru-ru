@@ -1,14 +1,14 @@
 ---
 title: Автоматическое Code First Migrations - EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 0eb86787-2161-4cb4-9cb8-67c5d6e95650
-ms.openlocfilehash: 256d1c774a2165dc12daf3d04550566c1a44b751
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: 21f77ef49db2485047292b3928b4f63d49dbb180
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44250456"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489990"
 ---
 # <a name="automatic-code-first-migrations"></a>Автоматическое Code First Migrations
 Автоматический перенос позволяет использовать Code First Migrations без файл кода в проекте для каждого изменения, внесенные. Не все изменения, которые могут применяться автоматически — например переименование столбцов требуют использования миграции на основе кода.

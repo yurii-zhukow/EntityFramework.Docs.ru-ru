@@ -1,14 +1,14 @@
 ---
 title: Конструктора CUD хранимые процедуры — EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 1e773972-2da5-45e0-85a2-3cf3fbcfa5cf
-ms.openlocfilehash: 36c9b97b77fec30136cba1d850a0259c689e69ae
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: 35a00aa817c8643352c517c233977efd49e3baac
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44250924"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489561"
 ---
 # <a name="designer-cud-stored-procedures"></a>Конструктора CUD хранимых процедур
 Это пошаговое руководство показано, как сопоставить создания\\вставки, обновления и удаления (CUD) типа сущности с хранимыми процедурами, с помощью Entity Framework Designer (конструктор EF).  По умолчанию Entity Framework автоматически создает инструкции SQL для операций CUD, но также можно сопоставить хранимые процедуры для этих операций.  

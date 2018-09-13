@@ -1,14 +1,14 @@
 ---
 title: Обработка конфликтов параллелизма — EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 2318e4d3-f561-4720-bbc3-921556806476
-ms.openlocfilehash: f233af217287dd6bf35e5b7fea8e44974168b312
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 81ae186201fdfac331b1d4e7836b222545fe78b5
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997814"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489158"
 ---
 # <a name="handling-concurrency-conflicts"></a>Обработка конфликтов параллелизма
 Оптимистичный параллелизм предусматривает оптимистически попытка сохранить сущность в базу данных в надеюсь, что данные оттуда не изменялась после сущность была загружена. Если оказывается, что данные изменились, то возникает исключение, и необходимо разрешить конфликт, прежде чем сохранить еще раз. В этом разделе описывается, как для обработки таких исключений в Entity Framework. Методы, представленные в этом разделе, также применимы к моделям, созданным с помощью Code First и конструктора EF.  

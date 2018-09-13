@@ -1,14 +1,14 @@
 ---
 title: Работа с состояния сущностей - EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: acb27f46-3f3a-4179-874a-d6bea5d7120c
-ms.openlocfilehash: 1a415e7c6090365a66d58fc9a2dd3256984d7a8e
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: c1dde7810d1dfa8a73e6bd2cf091b24be6b865d8
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997951"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490673"
 ---
 # <a name="working-with-entity-states"></a>Работа с состояния сущностей
 В этом разделе будут рассмотрены способы добавления и присоединить сущности к контексту и как платформа Entity Framework преобразует их во время SaveChanges.
