@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: ee8e14ec-2158-4c9c-96b5-118715e2ed9e
 uid: core/saving/cascade-delete
-ms.openlocfilehash: afe00ddb1b487c6b1b2ea42708c9967a57cea04b
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 15b7e69676ef9aeb70121fcec404c34a17e5e2bb
+ms.sourcegitcommit: 8d04a2ad98036f32ca70c77ce3040c5edb1cdf82
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995246"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44384843"
 ---
 # <a name="cascade-delete"></a>Каскадное удаление
 
@@ -82,12 +82,12 @@ EF Core реализует несколько поведений удалени�
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   After deleting blog '1':
     Blog '1' is in state Deleted with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   Saving changes:
     DELETE FROM [Posts] WHERE [PostId] = 1
@@ -97,7 +97,7 @@ EF Core реализует несколько поведений удалени�
   After SaveChanges:
     Blog '1' is in state Detached with 2 posts referenced.
       Post '1' is in state Detached with FK '1' and no reference to a blog.
-      Post '1' is in state Detached with FK '1' and no reference to a blog.
+      Post '2' is in state Detached with FK '1' and no reference to a blog.
 ```
 
 * Блог помечен как удаленный.
@@ -111,12 +111,12 @@ EF Core реализует несколько поведений удалени�
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   After deleting blog '1':
     Blog '1' is in state Deleted with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   Saving changes:
     UPDATE [Posts] SET [BlogId] = NULL WHERE [PostId] = 1
@@ -134,12 +134,12 @@ EF Core реализует несколько поведений удалени�
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   After deleting blog '1':
     Blog '1' is in state Deleted with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   Saving changes:
     UPDATE [Posts] SET [BlogId] = NULL WHERE [PostId] = 1
@@ -149,7 +149,7 @@ EF Core реализует несколько поведений удалени�
   After SaveChanges:
     Blog '1' is in state Detached with 2 posts referenced.
       Post '1' is in state Unchanged with FK 'null' and no reference to a blog.
-      Post '1' is in state Unchanged with FK 'null' and no reference to a blog.
+      Post '2' is in state Unchanged with FK 'null' and no reference to a blog.
 ```
 
 * Блог помечен как удаленный.
@@ -164,12 +164,12 @@ EF Core реализует несколько поведений удалени�
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   After deleting blog '1':
     Blog '1' is in state Deleted with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   Saving changes:
   SaveChanges threw InvalidOperationException: The association between entity types 'Blog' and 'Post' has been severed but the foreign key for this relationship cannot be set to null. If the dependent entity should be deleted, then setup the relationship to use cascade deletes.
@@ -193,12 +193,12 @@ EF Core реализует несколько поведений удалени�
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   After making posts orphans:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Modified with FK '1' and no reference to a blog.
-      Post '1' is in state Modified with FK '1' and no reference to a blog.
+      Post '2' is in state Modified with FK '1' and no reference to a blog.
 
   Saving changes:
     DELETE FROM [Posts] WHERE [PostId] = 1
@@ -207,7 +207,7 @@ EF Core реализует несколько поведений удалени�
   After SaveChanges:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Detached with FK '1' and no reference to a blog.
-      Post '1' is in state Detached with FK '1' and no reference to a blog.
+      Post '2' is in state Detached with FK '1' and no reference to a blog.
 ```
 
 * Записи помечены как измененные, так как из-за разрыва связи внешний ключ помечен как NULL.
@@ -221,12 +221,12 @@ EF Core реализует несколько поведений удалени�
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   After making posts orphans:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Modified with FK 'null' and no reference to a blog.
-      Post '1' is in state Modified with FK 'null' and no reference to a blog.
+      Post '2' is in state Modified with FK 'null' and no reference to a blog.
 
   Saving changes:
     UPDATE [Posts] SET [BlogId] = NULL WHERE [PostId] = 1
@@ -244,12 +244,12 @@ EF Core реализует несколько поведений удалени�
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   After making posts orphans:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Modified with FK 'null' and no reference to a blog.
-      Post '1' is in state Modified with FK 'null' and no reference to a blog.
+      Post '2' is in state Modified with FK 'null' and no reference to a blog.
 
   Saving changes:
     UPDATE [Posts] SET [BlogId] = NULL WHERE [PostId] = 1
@@ -258,7 +258,7 @@ EF Core реализует несколько поведений удалени�
   After SaveChanges:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK 'null' and no reference to a blog.
-      Post '1' is in state Unchanged with FK 'null' and no reference to a blog.
+      Post '2' is in state Unchanged with FK 'null' and no reference to a blog.
 ```
 
 * Записи помечены как измененные, так как из-за разрыва связи внешний ключ помечен как NULL.
@@ -272,12 +272,12 @@ EF Core реализует несколько поведений удалени�
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
-      Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
+      Post '2' is in state Unchanged with FK '1' and reference to blog '1'.
 
   After making posts orphans:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Modified with FK '1' and no reference to a blog.
-      Post '1' is in state Modified with FK '1' and no reference to a blog.
+      Post '2' is in state Modified with FK '1' and no reference to a blog.
 
   Saving changes:
   SaveChanges threw InvalidOperationException: The association between entity types 'Blog' and 'Post' has been severed but the foreign key for this relationship cannot be set to null. If the dependent entity should be deleted, then setup the relationship to use cascade deletes.
