@@ -3,12 +3,12 @@ title: Конструктора запросов хранимые процеду
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 9554ed25-c5c1-43be-acad-5da37739697f
-ms.openlocfilehash: 6284b10261e6f3b9bf69d1c15e121988e4976d48
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 04478ea1c8cd43a7ba4ee788e464992af3de7f64
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489951"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283905"
 ---
 # <a name="designer-query-stored-procedures"></a>Конструктора запроса хранимых процедур
 Это пошаговое руководство показано, как используется Entity Framework Designer (конструктор EF) для импорта хранимой процедуры в модели, а затем вызвать импортированных хранимые процедуры для получения результатов. 
@@ -100,4 +100,4 @@ The department name is Engineering
 <a name="output-parameters"></a>Выходные параметры
 -----------------
 
-Если используются выходные параметры, их значения не будут доступны, пока не полностью считать результаты. Это происходит из-за особенностей DbDataReader, см. в разделе [получение данных с помощью объекта DataReader](http://go.microsoft.com/fwlink/?LinkID=398589) для получения дополнительных сведений.
+Если используются выходные параметры, их значения не будут доступны, пока не полностью считать результаты. Это происходит из-за особенностей DbDataReader, см. в разделе [получение данных с помощью объекта DataReader](https://go.microsoft.com/fwlink/?LinkID=398589) для получения дополнительных сведений.

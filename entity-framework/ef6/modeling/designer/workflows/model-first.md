@@ -3,12 +3,12 @@ title: Model First - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: e1b9c319-bb8a-4417-ac94-7890f257e7f6
-ms.openlocfilehash: 8e010f95db40261073b4af80a3c0e3225a2cd1cf
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: d429d5ea590b22c77f3f7f0bcfbd5dfc0a3e0049
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490484"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283879"
 ---
 # <a name="model-first"></a>Model First
 В этом пошаговом руководстве видео и пошаговые познакомят вас с первой модели разработки, использующий Entity Framework. Во-первых, модель позволяет создать новую модель с помощью Entity Framework Designer, а затем создать схему базы данных из модели. Модель хранится в EDMX-файла (расширение EDMX) и их можно просмотреть и изменить в конструкторе Entity Framework. Классы, которые взаимодействуют с в приложении автоматически создаются из файла EDMX.
@@ -18,13 +18,13 @@ ms.locfileid: "45490484"
 
 **Представляет**: [Роуэн Миллер (Rowan Miller)](http://romiller.com/)
 
-**Видео**: [WMV](http://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.wmv) | [MP4](http://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-mp4video-modelfirst.m4v) | [WMV (ZIP)](http://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.zip)
+**Видео**: [WMV](https://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.wmv) | [MP4](https://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-mp4video-modelfirst.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.zip)
 
 ## <a name="pre-requisites"></a>Предварительные требования
 
 Для выполнения этого пошагового руководства вам потребуется Visual Studio 2010 или Visual Studio 2012.
 
-Если вы используете Visual Studio 2010, также необходимо будет иметь [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) установлен.
+Если вы используете Visual Studio 2010, также необходимо будет иметь [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) установлен.
 
 ## <a name="1-create-the-application"></a>1. Создание приложения
 
@@ -84,7 +84,7 @@ Entity Framework Designer открывается с пустой модели. �
 Во-первых, нам нужно получить последнюю версию Entity Framework из NuGet.
 
 -   **Проект —&gt; управление пакетами NuGet... ** 
-     *При отсутствии **управление пакетами NuGet... ** следует установить параметр [последнюю версию NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*
+     *При отсутствии **управление пакетами NuGet... ** следует установить параметр [последнюю версию NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*
 -   Выберите **Online** вкладку
 -   Выберите **EntityFramework** пакета
 -   Нажмите кнопку **установки**

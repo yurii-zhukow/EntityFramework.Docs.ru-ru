@@ -3,12 +3,12 @@ title: Автоматическое Code First Migrations - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 0eb86787-2161-4cb4-9cb8-67c5d6e95650
-ms.openlocfilehash: 21f77ef49db2485047292b3928b4f63d49dbb180
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 2713afaf09707b7696e90464aac9945c2d82d274
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489990"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283918"
 ---
 # <a name="automatic-code-first-migrations"></a>Автоматическое Code First Migrations
 Автоматический перенос позволяет использовать Code First Migrations без файл кода в проекте для каждого изменения, внесенные. Не все изменения, которые могут применяться автоматически — например переименование столбцов требуют использования миграции на основе кода.
@@ -97,7 +97,7 @@ ms.locfileid: "45489990"
     public string Url { get; set; }
 ```
 
-Если бы вы запустили приложение снова, оно выдало бы исключение InvalidOperationException с сообщением: *Модель, поддерживающая контекст BlogContext, изменилась с момента создания базы данных. Попробуйте обновить базу данных с помощью Code First Migrations (* [*http://go.microsoft.com/fwlink/?LinkId=238269*](http://go.microsoft.com/fwlink/?LinkId=238269)*).*
+Если бы вы запустили приложение снова, оно выдало бы исключение InvalidOperationException с сообщением: *Модель, поддерживающая контекст BlogContext, изменилась с момента создания базы данных. Попробуйте обновить базу данных с помощью Code First Migrations (* [*http://go.microsoft.com/fwlink/?LinkId=238269*](https://go.microsoft.com/fwlink/?LinkId=238269)*).*
 
 Как видно из исключения, пора приступить к использованию Code First Migrations. Поскольку мы хотим использовать автоматический перенос мы собираемся укажите **— EnableAutomaticMigrations** переключения.
 

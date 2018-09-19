@@ -3,12 +3,12 @@ title: Прошлые выпуски платформы Entity Framework — EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 1060bb99-765f-4f32-aaeb-d6635d3dbd3e
-ms.openlocfilehash: 4c711bb48938e5c0432881c61766b0bff66498f2
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 4fa27f8259ecc011d9d30080aee3c44353ef533d
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490148"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283996"
 ---
 # <a name="past-releases-of-entity-framework"></a>Прошлые выпуски платформы Entity Framework
 
@@ -127,7 +127,7 @@ Entity Framework Designer в Visual Studio 2012 также добавлена п
 
 Ниже приведен список содержимого, которые мы собрали специально для выпуска EF 5.
 
--   [Post EF 5 выпуска](http://blogs.msdn.com/b/adonet/archive/2012/08/15/ef5-released.aspx)
+-   [Post EF 5 выпуска](https://blogs.msdn.com/b/adonet/archive/2012/08/15/ef5-released.aspx)
 -   Новые возможности в EF5
     -   [Поддержку перечисления в коде в первую очередь](~/ef6/modeling/code-first/data-types/enums.md)
     -   [Поддержку перечисления в конструкторе EF](~/ef6/modeling/designer/data-types/enums.md)
@@ -194,16 +194,16 @@ EF 4.3.1 среда выполнения была выпущена в NuGet в �
 
 Ниже приведен список содержимого, которые мы собрали специально для выпуска EF 4.3.1, большая часть содержимого для EF 4.1 по-прежнему применяется к EF 4.3 также.
 
--   [EF 4.3.1 выпуска записи блога](http://blogs.msdn.com/b/adonet/archive/2012/02/29/ef4-3-1-and-ef5-beta-1-available-on-nuget.aspx)
+-   [EF 4.3.1 выпуска записи блога](https://blogs.msdn.com/b/adonet/archive/2012/02/29/ef4-3-1-and-ef5-beta-1-available-on-nuget.aspx)
 
 ## <a name="ef-43"></a>EF 4.3
 EF 4.3.0 среда выполнения была выпущена в NuGet в февраль 2012 г.
 Этот выпуск включены новой функции Code First Migrations, позволяет базе данных, созданной механизмом Code First, постепенно изменять по мере развития модели Code First.
 
 Ниже приведен список содержимого, которые мы собрали специально для выпуска EF 4.3, большая часть содержимого для EF 4.1 по-прежнему применяется к EF 4.3 также:
--   [Post 4.3 выпуска EF](http://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-released.aspx)
--   [Пошаговое руководство по EF 4.3 миграция на базе кода](http://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-code-based-migrations-walkthrough.aspx)
--   [Пошаговое руководство 4.3 автоматический перенос EF](http://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-automatic-migrations-walkthrough.aspx)
+-   [Post 4.3 выпуска EF](https://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-released.aspx)
+-   [Пошаговое руководство по EF 4.3 миграция на базе кода](https://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-code-based-migrations-walkthrough.aspx)
+-   [Пошаговое руководство 4.3 автоматический перенос EF](https://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-automatic-migrations-walkthrough.aspx)
 
 ## <a name="ef-42"></a>EF 4.2
 EF 4.2.0 среда выполнения была выпущена в NuGet в ноябре 2011 г.
@@ -212,9 +212,9 @@ EF 4.2.0 среда выполнения была выпущена в NuGet в �
 
 Вот список содержимого, которые мы собрали специально для выпуска EF 4.2, содержимое, указанное для EF 4.1 по-прежнему применяется к EF 4.2 также.
 
--   [Post 4.2 выпуска EF](http://blogs.msdn.com/b/adonet/archive/2011/11/01/ef-4-2-released.aspx)
--   [Код первого пошагового руководства](http://blogs.msdn.com/b/adonet/archive/2011/09/28/ef-4-2-code-first-walkthrough.aspx)
--   [Модель & базы данных первого пошагового руководства](http://blogs.msdn.com/b/adonet/archive/2011/09/28/ef-4-2-model-amp-database-first-walkthrough.aspx)
+-   [Post 4.2 выпуска EF](https://blogs.msdn.com/b/adonet/archive/2011/11/01/ef-4-2-released.aspx)
+-   [Код первого пошагового руководства](https://blogs.msdn.com/b/adonet/archive/2011/09/28/ef-4-2-code-first-walkthrough.aspx)
+-   [Модель & базы данных первого пошагового руководства](https://blogs.msdn.com/b/adonet/archive/2011/09/28/ef-4-2-model-amp-database-first-walkthrough.aspx)
 
 ## <a name="ef-411"></a>EF 4.1.1
 EF 4.1.10715 среда выполнения была выпущена в NuGet в июле 2011 г.
@@ -227,7 +227,7 @@ EF 4.1.10715 среда выполнения была выпущена в NuGet 
 
 Ниже приведен список содержимого, мы собрали для 4.1.1 выпуска:
 
--   [EF 4.1.1 выпуска Post](http://blogs.msdn.com/b/adonet/archive/2011/07/25/ef-4-1-update-1-released.aspx)
+-   [EF 4.1.1 выпуска Post](https://blogs.msdn.com/b/adonet/archive/2011/07/25/ef-4-1-update-1-released.aspx)
 
 ## <a name="ef-41"></a>EF 4.1
 EF 4.1.10331 среды выполнения был первым опубликованы в NuGet, а в апреля 2011 г.
@@ -238,10 +238,10 @@ EF 4.1.10331 среды выполнения был первым опублик�
 
 Ниже приведен список содержимого, которые мы собрали для версии 4.1. Большая часть будет по-прежнему относится к более поздних версиях Entity Framework:
 
--   [Post выпуск 4.1 EF](http://blogs.msdn.com/b/adonet/archive/2011/04/11/ef-4-1-released.aspx)
--   [Код первого пошагового руководства](http://blogs.msdn.com/b/adonet/archive/2011/03/15/ef-4-1-code-first-walkthrough.aspx)
--   [Модель & базы данных первого пошагового руководства](http://blogs.msdn.com/b/adonet/archive/2011/03/15/ef-4-1-model-amp-database-first-walkthrough.aspx)
--   [SQL Azure федераций и Entity Framework](http://blogs.msdn.com/b/adonet/archive/2012/01/10/sql-azure-federations-and-the-entity-framework.aspx)
+-   [Post выпуск 4.1 EF](https://blogs.msdn.com/b/adonet/archive/2011/04/11/ef-4-1-released.aspx)
+-   [Код первого пошагового руководства](https://blogs.msdn.com/b/adonet/archive/2011/03/15/ef-4-1-code-first-walkthrough.aspx)
+-   [Модель & базы данных первого пошагового руководства](https://blogs.msdn.com/b/adonet/archive/2011/03/15/ef-4-1-model-amp-database-first-walkthrough.aspx)
+-   [SQL Azure федераций и Entity Framework](https://blogs.msdn.com/b/adonet/archive/2012/01/10/sql-azure-federations-and-the-entity-framework.aspx)
 
 ## <a name="ef-40"></a>EF 4.0
 Этот выпуск был включен в .NET Framework 4 и Visual Studio 2010 в апреле 2010.

@@ -3,12 +3,12 @@ title: Fluent API с использованием VB.NET - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 763dc6a2-764a-4600-896c-f6f13abf56ec
-ms.openlocfilehash: cbdd32696fb88d3de6cf1966040e5dda49fe19cd
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 6aa74fa72296f66f0b069b9b5ee7e2e016570525
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489476"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283749"
 ---
 # <a name="fluent-api-with-vbnet"></a>Fluent API с использованием VB.NET
 Во-первых, код позволяет определить модель с помощью c#\# или классам VB.NET. Дополнительная настройка при необходимости выполняются с помощью атрибутов для классов и свойств или с помощью текучего API. В этом пошаговом руководстве показано, как выполнять с помощью VB.NET конфигурация текучего API.
@@ -22,7 +22,7 @@ ms.locfileid: "45489476"
 
 Для выполнения этого пошагового руководства необходимо иметь по крайней мере Visual Studio 2010 или Visual Studio 2012.
 
-Если вы используете Visual Studio 2010, также необходимо будет иметь [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) установлен
+Если вы используете Visual Studio 2010, также необходимо будет иметь [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) установлен
 
 ## <a name="create-the-application"></a>Создание приложения
 
@@ -139,7 +139,7 @@ ms.locfileid: "45489476"
 
 -   ** Проект —&gt; **управление пакетами NuGet...**
 > [!NOTE]
-> Если у вас нет **управление пакетами NuGet...** параметр, необходимо установить [последнюю версию NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)
+> Если у вас нет **управление пакетами NuGet...** параметр, необходимо установить [последнюю версию NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)
 -   Выберите **Online** вкладку
 -   Выберите **EntityFramework** пакета
 -   Нажмите кнопку **установки**

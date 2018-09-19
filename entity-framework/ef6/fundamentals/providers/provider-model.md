@@ -3,12 +3,12 @@ title: Модели поставщика Entity Framework 6 - EF6
 author: divega
 ms.date: 06/27/2018
 ms.assetid: 066832F0-D51B-4655-8BE7-C983C557E0E4
-ms.openlocfilehash: 13276feb0b22ea8068d7e1f645d48a3d41d77cdf
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: de2e0a24f1b5f67d28cb831491b50d32f45af60a
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490188"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283931"
 ---
 # <a name="the-entity-framework-6-provider-model"></a>Модели поставщика Entity Framework 6
 
@@ -28,13 +28,13 @@ ms.locfileid: "45490188"
 
 ### <a name="dbproviderfactory"></a>DbProviderFactory
 
-EF зависит от наличия типа, производного от [System.Data.Common.DbProviderFactory](http://msdn.microsoft.com/en-us/library/system.data.common.dbproviderfactory.aspx) для выполнения всех базы данных низкого уровня доступа. DbProviderFactory не фактически является частью EF, а вместо этого является, класс в .NET Framework, которая служит точкой входа для поставщиков ADO.NET может использоваться платформой EF, другие O/RMs или непосредственно приложением для получения экземпляров подключения, команды, параметры и другие абстракции ADO.NET в поставщике узлам. Дополнительные сведения о DbProviderFactory см. в [документацию MSDN для ADO.NET](http://msdn.microsoft.com/en-us/library/a6cd7c08.aspx).
+EF зависит от наличия типа, производного от [System.Data.Common.DbProviderFactory](https://msdn.microsoft.com/en-us/library/system.data.common.dbproviderfactory.aspx) для выполнения всех базы данных низкого уровня доступа. DbProviderFactory не фактически является частью EF, а вместо этого является, класс в .NET Framework, которая служит точкой входа для поставщиков ADO.NET может использоваться платформой EF, другие O/RMs или непосредственно приложением для получения экземпляров подключения, команды, параметры и другие абстракции ADO.NET в поставщике узлам. Дополнительные сведения о DbProviderFactory см. в [документацию MSDN для ADO.NET](https://msdn.microsoft.com/en-us/library/a6cd7c08.aspx).
 
 ### <a name="dbproviderservices"></a>DbProviderServices
 
 EF зависит от наличия типа, производного от DbProviderServices для добавления новых функциональных возможностей, необходимых EF на основе функциональности, уже предоставляемых поставщиком ADO.NET. В более старых версиях EF класса DbProviderServices входил в состав .NET Framework и был найден в пространстве имен System.Data.Common. Начиная с EF6 этот класс теперь является частью EntityFramework.dll и находится в пространстве имен System.Data.Entity.Core.Common.
 
-Дополнительные сведения об основных возможностях DbProviderServices реализации можно найти на [MSDN](http://msdn.microsoft.com/en-us/library/ee789835.aspx). Тем не менее Обратите внимание на то, что по состоянию на момент написания статьи эта информация не обновляется для EF6 несмотря на то, что большинства понятий, по-прежнему допустимы. Для реализации SQL Server и SQL Server Compact DbProviderServices также возвращены в [codebase открытым исходным кодом](https://github.com/aspnet/EntityFramework6/) и могут служить полезных ссылок для других реализаций.
+Дополнительные сведения об основных возможностях DbProviderServices реализации можно найти на [MSDN](https://msdn.microsoft.com/en-us/library/ee789835.aspx). Тем не менее Обратите внимание на то, что по состоянию на момент написания статьи эта информация не обновляется для EF6 несмотря на то, что большинства понятий, по-прежнему допустимы. Для реализации SQL Server и SQL Server Compact DbProviderServices также возвращены в [codebase открытым исходным кодом](https://github.com/aspnet/EntityFramework6/) и могут служить полезных ссылок для других реализаций.
 
 В более старых версиях EF реализация DbProviderServices для использования были получены напрямую из поставщика ADO.NET. Это было сделано, приведение DbProviderFactory IServiceProvider и вызвать метод GetService. Это тесно связан поставщик EF с DbProviderFactory. Такое объединение заблокирован EF из .NET Framework и поэтому для EF6 тесной связи была удалена и реализация DbProviderServices зарегистрирован непосредственно в файле конфигурации приложения или на основе кода конфигурации, как описано более подробно _регистрации DbProviderServices_ разделе ниже.
 
@@ -88,7 +88,7 @@ _Тип_ строка должна быть реализация DbProviderServi
 
 ### <a name="code-based-registration"></a>Регистрация на основе кода
 
-Начиная с EF6 поставщиков также можно зарегистрировать с помощью кода. Это позволяет поставщика EF использовать без изменения в файл конфигурации приложения. Для использования конфигурации на основе кода приложения необходимо создать класс DbConfiguration, как описано в разделе [документации конфигурация на основе кода](http://msdn.com/data/jj680699). Конструктор класса DbConfiguration необходимо вызвать SetProviderServices для регистрации поставщика EF. Пример:
+Начиная с EF6 поставщиков также можно зарегистрировать с помощью кода. Это позволяет поставщика EF использовать без изменения в файл конфигурации приложения. Для использования конфигурации на основе кода приложения необходимо создать класс DbConfiguration, как описано в разделе [документации конфигурация на основе кода](https://msdn.com/data/jj680699). Конструктор класса DbConfiguration необходимо вызвать SetProviderServices для регистрации поставщика EF. Пример:
 
 ``` csharp
 public class MyConfiguration : DbConfiguration

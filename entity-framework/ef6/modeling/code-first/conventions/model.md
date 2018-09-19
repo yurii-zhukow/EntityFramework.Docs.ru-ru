@@ -3,12 +3,12 @@ title: Модели с использованием соглашений - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 0fc4eef8-29b8-4192-9c77-08fd33d3db3a
-ms.openlocfilehash: fb79164f71cb3afff705a83f5078a13d043abca8
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 80b722730b4ca6c9d00a8611b6c9027e8bc9fe61
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490939"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283711"
 ---
 # <a name="model-based-conventions"></a>Правила на основе моделей
 > [!NOTE]
@@ -146,7 +146,7 @@ public class ForeignKeyNamingConvention : IStoreModelConvention<AssociationType>
 
 ## <a name="extending-existing-conventions"></a>Расширение существующего соглашения   
 
-Если вам нужно написать соглашением, похожее на одно из соглашений, которые Entity Framework уже применяется к модели всегда можно расширить, соглашение, чтобы избежать необходимости переписывать его заново.  Примером этого является замените существующие сопоставления соглашение о на новый идентификатор.   Дополнительное преимущество для переопределения в соответствии с соглашением ключа — что переопределенный метод будет вызван только в том случае, если отсутствует ключ уже определено или задано явно. Список соглашений, используемых Entity Framework можно найти здесь: [ http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx ](http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx).  
+Если вам нужно написать соглашением, похожее на одно из соглашений, которые Entity Framework уже применяется к модели всегда можно расширить, соглашение, чтобы избежать необходимости переписывать его заново.  Примером этого является замените существующие сопоставления соглашение о на новый идентификатор.   Дополнительное преимущество для переопределения в соответствии с соглашением ключа — что переопределенный метод будет вызван только в том случае, если отсутствует ключ уже определено или задано явно. Список соглашений, используемых Entity Framework можно найти здесь: [ http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx ](https://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx).  
 
 ``` csharp
 using System.Data.Entity;
@@ -209,4 +209,4 @@ public class BlogContext : DbContext
 
 ## <a name="notes"></a>Примечания  
 
-Список соглашений, применяемых в настоящее время платформа Entity Framework можно найти в документации MSDN: [ http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx ](http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx).  Этот список извлекаются непосредственно из исходного кода.  Исходный код для платформы Entity Framework 6 можно найти в [GitHub](https://github.com/aspnet/entityframework6/) и хорошо подходят многие из соглашения, используемые платформой Entity Framework отправных точек для пользовательской модели на основе соглашений.  
+Список соглашений, применяемых в настоящее время платформа Entity Framework можно найти в документации MSDN: [ http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx ](https://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx).  Этот список извлекаются непосредственно из исходного кода.  Исходный код для платформы Entity Framework 6 можно найти в [GitHub](https://github.com/aspnet/entityframework6/) и хорошо подходят многие из соглашения, используемые платформой Entity Framework отправных точек для пользовательской модели на основе соглашений.  
