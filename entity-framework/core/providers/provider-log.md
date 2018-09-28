@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: a637e5e2f75e16bc7b11b1a51abcbe16274a1c75
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: fa1362c84cb1954360d337670fb5fef21e5cf165
+ms.sourcegitcommit: 15022dd06d919c29b1189c82611ea32f9fdc6617
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490776"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47415748"
 ---
 # <a name="provider-impacting-changes"></a>Изменения, влияющие на поставщика
 
@@ -56,3 +56,6 @@ ms.locfileid: "45490776"
   * Этот запрос на Вытягивание добавляет понятие `CanConnect` которого будет использоваться служба работоспособности ASP.NET Core проверяет, чтобы определить, доступна ли база данных. По умолчанию реляционных реализация просто вызывает `Exist`, но поставщики могут реализовывать другое значение при необходимости. Нереляционные поставщиков необходимо реализовать новый интерфейс API в порядке для проверки работоспособности, чтобы можно было использовать.
 * https://github.com/aspnet/EntityFrameworkCore/pull/13306 -Обновление базового RelationalTypeMapping не задать размер DbParameter
   * Остановите задание размера по умолчанию, так как это может привести к усечению. Поставщики может потребоваться добавить свою собственную логику, если необходимо задать размер.
+* https://github.com/aspnet/EntityFrameworkCore/pull/13372 -RevEng: Всегда указывайте тип столбца для десятичных столбцов
+  * Всегда можно настройте тип столбца для десятичных столбцов в шаблонном коде, а не настраивать в соответствии с соглашением.
+  * Поставщики должны не требуется вносить изменения с их стороны.
