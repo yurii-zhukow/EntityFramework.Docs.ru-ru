@@ -1,202 +1,284 @@
 ---
-title: .NET core CLI — EF Core
+title: EF Core Справочник по средствам (CLI) .NET — EF Core
 author: bricelam
 ms.author: bricelam
-ms.date: 11/06/2017
+ms.date: 09/20/2018
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: 3534336f1caeed96079b35c739d694a536919020
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: a280aad0344a89c41c30be27a249df3c28c44c70
+ms.sourcegitcommit: ad1bdea58ed35d0f19791044efe9f72f94189c18
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489613"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47447174"
 ---
-<a name="ef-core-net-command-line-tools"></a><span data-ttu-id="cd1c9-102">Средства командной строки .NET Core EF</span><span class="sxs-lookup"><span data-stu-id="cd1c9-102">EF Core .NET Command-line Tools</span></span>
-===============================
-<span data-ttu-id="cd1c9-103">Инструменты командной строки .NET Entity Framework Core представляют собой расширение для кроссплатформенного **dotnet** команду, которая входит в состав из [пакет SDK для .NET Core][2].</span><span class="sxs-lookup"><span data-stu-id="cd1c9-103">The Entity Framework Core .NET Command-line Tools are an extension to the cross-platform **dotnet** command, which is part of the [.NET Core SDK][2].</span></span>
+# <a name="entity-framework-core-tools-reference---net-cli"></a><span data-ttu-id="537c7-102">Справочник по — .NET CLI средствам Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="537c7-102">Entity Framework Core tools reference - .NET CLI</span></span>
 
-> [!TIP]
-> <span data-ttu-id="cd1c9-104">Если вы используете Visual Studio, мы рекомендуем [инструменты PMC] [ 1] , так как они предоставляют более интегрированное взаимодействие.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-104">If you're using Visual Studio, we recommend [the PMC Tools][1] instead since they provide a more integrated experience.</span></span>
+<span data-ttu-id="537c7-103">Средства интерфейса командной строки (CLI) для Entity Framework Core выполнения задач разработки во время разработки.</span><span class="sxs-lookup"><span data-stu-id="537c7-103">The command-line interface (CLI) tools for Entity Framework Core perform design-time development tasks.</span></span> <span data-ttu-id="537c7-104">Например, они создают [миграций](/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-2.0#introduction-to-migrations), применить миграции и создать код для модели, основанные на существующей базы данных.</span><span class="sxs-lookup"><span data-stu-id="537c7-104">For example, they create [migrations](/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-2.0#introduction-to-migrations), apply migrations, and generate code for a model based on an existing database.</span></span> <span data-ttu-id="537c7-105">Команды представляют собой расширение для кроссплатформенного [dotnet](/dotnet/core/tools) команду, которая входит в состав из [пакет SDK для .NET Core](https://www.microsoft.com/net/core).</span><span class="sxs-lookup"><span data-stu-id="537c7-105">The commands are an extension to the cross-platform [dotnet](/dotnet/core/tools) command, which is part of the [.NET Core SDK](https://www.microsoft.com/net/core).</span></span> <span data-ttu-id="537c7-106">Эти средства работы с проектами .NET Core.</span><span class="sxs-lookup"><span data-stu-id="537c7-106">These tools work with .NET Core projects.</span></span>
 
-<a name="installing-the-tools"></a><span data-ttu-id="cd1c9-105">Установка инструментов</span><span class="sxs-lookup"><span data-stu-id="cd1c9-105">Installing the tools</span></span>
---------------------
-> [!NOTE]
-> <span data-ttu-id="cd1c9-106">На пакет SDK для .NET Core версии 2.1.300 и включает в себя более новые **dotnet ef** команд, которые совместимы с EF Core 2.0 и более поздних версий.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-106">The .NET Core SDK version 2.1.300 and newer includes **dotnet ef** commands that are compatible with EF Core 2.0 and later versions.</span></span> <span data-ttu-id="cd1c9-107">Таким образом, если вы используете последние версии пакета SDK для .NET Core и среды выполнения EF Core, никакой установки не требуется и оставшейся части этого раздела можно проигнорировать.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-107">Therefore if you are using recent versions of the .NET Core SDK and the EF Core runtime, no installation is required and you can ignore the rest of this section.</span></span>
->
-> <span data-ttu-id="cd1c9-108">С другой стороны **dotnet ef** средство автономной версии пакета SDK для .NET Core 2.1.300 и более поздних версий не совместим с версией EF Core 1.0 и 1.1.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-108">On the other hand, the **dotnet ef** tool contained in .NET Core SDK version 2.1.300 and newer is not compatible with EF Core version 1.0 and 1.1.</span></span> <span data-ttu-id="cd1c9-109">Прежде чем можно работать с проектом, который использует эти более ранних версиях EF Core на компьютере с .NET Core SDK 2.1.300 или более поздняя версия, необходимо также установить версию 2.1.200 или более ранней версии пакета SDK и настроить приложение, чтобы использовать версию, изменив его  [global.json](https://docs.microsoft.com/en-us/dotnet/core/tools/global-json) файла.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-109">Before you can work with a project that uses these earlier versions of EF Core on a computer that has .NET Core SDK 2.1.300 or newer installed, you must also install version 2.1.200 or older of the SDK and configure the application to use that older version by modifying its [global.json](https://docs.microsoft.com/en-us/dotnet/core/tools/global-json) file.</span></span> <span data-ttu-id="cd1c9-110">Этот файл обычно включаются в каталоге решения (по одному выше проекта).</span><span class="sxs-lookup"><span data-stu-id="cd1c9-110">This file is normally included in the solution directory (one above the project).</span></span> <span data-ttu-id="cd1c9-111">Затем можно перейти с инструкцией installlation ниже.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-111">Then you can proceed with the installlation instruction below.</span></span>
+<span data-ttu-id="537c7-107">Если вы используете Visual Studio, мы рекомендуем [инструменты консоли диспетчера пакетов](powershell.md) вместо:</span><span class="sxs-lookup"><span data-stu-id="537c7-107">If you're using Visual Studio, we recommend the [Package Manager Console tools](powershell.md) instead:</span></span>
+* <span data-ttu-id="537c7-108">Они автоматически взаимодействуют с текущего проекта, выбранного в **консоль диспетчера пакетов** без необходимости вручную переключить каталоги.</span><span class="sxs-lookup"><span data-stu-id="537c7-108">They automatically work with the current project selected in the **Package Manager Console** without requiring that you manually switch directories.</span></span>
+* <span data-ttu-id="537c7-109">Они автоматически открывают файлы, созданные с помощью команды после выполнения команды.</span><span class="sxs-lookup"><span data-stu-id="537c7-109">They automatically open files generated by a command after the command is completed.</span></span>
 
-<span data-ttu-id="cd1c9-112">Для предыдущих версий пакета SDK для .NET Core можно установить средства командной строки .NET Core EF, выполнив следующие действия:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-112">For previous versions of the .NET Core SDK, you can install the EF Core .NET Command-line Tools using these steps:</span></span>
+## <a name="installing-the-tools"></a><span data-ttu-id="537c7-110">Установка инструментов</span><span class="sxs-lookup"><span data-stu-id="537c7-110">Installing the tools</span></span>
 
-1. <span data-ttu-id="cd1c9-113">Измените файл проекта и добавьте Microsoft.EntityFrameworkCore.Tools.DotNet как элемент DotNetCliToolReference (см. ниже)</span><span class="sxs-lookup"><span data-stu-id="cd1c9-113">Edit the project file and add Microsoft.EntityFrameworkCore.Tools.DotNet as a DotNetCliToolReference item (See below)</span></span>
-2. <span data-ttu-id="cd1c9-114">Выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-114">Run the following commands:</span></span>
+<span data-ttu-id="537c7-111">Процедура установки зависит от типа проекта и версии:</span><span class="sxs-lookup"><span data-stu-id="537c7-111">The installation procedure depends on project type and version:</span></span>
 
-       dotnet add package Microsoft.EntityFrameworkCore.Design
-       dotnet restore
+* <span data-ttu-id="537c7-112">ASP.NET Core версии 2.1 и более поздние версии</span><span class="sxs-lookup"><span data-stu-id="537c7-112">ASP.NET Core version 2.1 and later</span></span>
+* <span data-ttu-id="537c7-113">EF Core 2.x</span><span class="sxs-lookup"><span data-stu-id="537c7-113">EF Core 2.x</span></span>
+* <span data-ttu-id="537c7-114">EF Core 1.x</span><span class="sxs-lookup"><span data-stu-id="537c7-114">EF Core 1.x</span></span>
 
-<span data-ttu-id="cd1c9-115">Итоговый проект должен выглядеть следующим образом:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-115">The resulting project should look something like this:</span></span>
+### <a name="aspnet-core-21"></a><span data-ttu-id="537c7-115">ASP.NET Core 2.1 или более поздней</span><span class="sxs-lookup"><span data-stu-id="537c7-115">ASP.NET Core 2.1+</span></span>
 
-``` xml
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design"
-                      Version="2.0.0"
-                      PrivateAssets="All" />
-  </ItemGroup>
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet"
-                            Version="2.0.0" />
-  </ItemGroup>
-</Project>
+* <span data-ttu-id="537c7-116">Установка текущего [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core).</span><span class="sxs-lookup"><span data-stu-id="537c7-116">Install the current [.NET Core SDK](https://www.microsoft.com/net/download/core).</span></span> <span data-ttu-id="537c7-117">Это нужно сделать, даже если у вас установлена последняя версия Visual Studio 2017.</span><span class="sxs-lookup"><span data-stu-id="537c7-117">The SDK has to be installed even if you have the latest version of Visual Studio 2017.</span></span>
+
+  <span data-ttu-id="537c7-118">Это все, что необходимо для ASP.NET Core 2.1 или более поздней, поскольку `Microsoft.EntityFrameworkCore.Design` пакет включен в [метапакет Microsoft.AspNetCore.App](/aspnet/core/fundamentals/metapackage-app).</span><span class="sxs-lookup"><span data-stu-id="537c7-118">This is all that is needed for ASP.NET Core 2.1+ because the `Microsoft.EntityFrameworkCore.Design` package is included in the [Microsoft.AspNetCore.App metapackage](/aspnet/core/fundamentals/metapackage-app).</span></span>
+
+### <a name="ef-core-2x-not-aspnet-core"></a><span data-ttu-id="537c7-119">EF Core 2.x (не в ASP.NET Core)</span><span class="sxs-lookup"><span data-stu-id="537c7-119">EF Core 2.x (not ASP.NET Core)</span></span>
+
+<span data-ttu-id="537c7-120">`dotnet ef` Они включены в пакет SDK для .NET Core, но для включения команд необходимо установить `Microsoft.EntityFrameworkCore.Design` пакета.</span><span class="sxs-lookup"><span data-stu-id="537c7-120">The `dotnet ef` commands are included in the .NET Core SDK, but to enable the commands you have to install the `Microsoft.EntityFrameworkCore.Design` package.</span></span>
+
+* <span data-ttu-id="537c7-121">Установка текущего [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core).</span><span class="sxs-lookup"><span data-stu-id="537c7-121">Install the current [.NET Core SDK](https://www.microsoft.com/net/download/core).</span></span> <span data-ttu-id="537c7-122">Это нужно сделать, даже если у вас установлена последняя версия Visual Studio 2017.</span><span class="sxs-lookup"><span data-stu-id="537c7-122">The SDK has to be installed even if you have the latest version of Visual Studio 2017.</span></span>
+
+* <span data-ttu-id="537c7-123">Установите последнюю стабильную `Microsoft.EntityFrameworkCore.Design` пакета.</span><span class="sxs-lookup"><span data-stu-id="537c7-123">Install the latest stable `Microsoft.EntityFrameworkCore.Design` package.</span></span> 
+
+  ``` Console   
+  dotnet add package Microsoft.EntityFrameworkCore.Design   
+  ```
+
+### <a name="ef-core-1x"></a><span data-ttu-id="537c7-124">EF Core 1.x</span><span class="sxs-lookup"><span data-stu-id="537c7-124">EF Core 1.x</span></span>
+
+* <span data-ttu-id="537c7-125">Установка пакета SDK .NET Core версии 2.1.200.</span><span class="sxs-lookup"><span data-stu-id="537c7-125">Install the .NET Core SDK version 2.1.200.</span></span> <span data-ttu-id="537c7-126">Более поздние версии не совместимы с помощью средств CLI для EF Core 1.0 и 1.1.</span><span class="sxs-lookup"><span data-stu-id="537c7-126">Later versions are not compatible with CLI tools for EF Core 1.0 and 1.1.</span></span>
+
+* <span data-ttu-id="537c7-127">Настройка приложения для использования 2.1.200 версию пакета SDK, изменив его [global.json](/dotnet/core/tools/global-json) файла.</span><span class="sxs-lookup"><span data-stu-id="537c7-127">Configure the application to use the 2.1.200 SDK version by modifying its [global.json](/dotnet/core/tools/global-json) file.</span></span> <span data-ttu-id="537c7-128">Этот файл обычно включаются в каталоге решения (по одному выше проекта).</span><span class="sxs-lookup"><span data-stu-id="537c7-128">This file is normally included in the solution directory (one above the project).</span></span> 
+
+* <span data-ttu-id="537c7-129">Измените файл проекта и добавьте `Microsoft.EntityFrameworkCore.Tools.DotNet` как `DotNetCliToolReference` элемента.</span><span class="sxs-lookup"><span data-stu-id="537c7-129">Edit the project file and add `Microsoft.EntityFrameworkCore.Tools.DotNet` as a `DotNetCliToolReference` item.</span></span> <span data-ttu-id="537c7-130">Укажите последнюю версию 1.x, например: 1.1.6.</span><span class="sxs-lookup"><span data-stu-id="537c7-130">Specify the latest 1.x version, for example: 1.1.6.</span></span> <span data-ttu-id="537c7-131">См. в примере файла проекта в конце этого раздела.</span><span class="sxs-lookup"><span data-stu-id="537c7-131">See the project file example at the end of this section.</span></span>
+
+* <span data-ttu-id="537c7-132">Установка последней версии 1.x `Microsoft.EntityFrameworkCore.Design` пакета, например:</span><span class="sxs-lookup"><span data-stu-id="537c7-132">Install the latest 1.x version of the `Microsoft.EntityFrameworkCore.Design` package, for example:</span></span>
+
+  ```console
+  dotnet add package Microsoft.EntityFrameworkCore.Design -v 1.1.6
+  ```
+
+  <span data-ttu-id="537c7-133">С помощью ссылки на пакеты оба добавлены файле проекта выглядит примерно следующим образом:</span><span class="sxs-lookup"><span data-stu-id="537c7-133">With both package references added, the project file looks something like this:</span></span>
+
+  ``` xml
+  <Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <OutputType>Exe</OutputType>
+      <TargetFramework>netcoreapp1.1</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design"
+                        Version="1.1.6"
+                         PrivateAssets="All" />
+    </ItemGroup>
+    <ItemGroup>
+       <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet"
+                              Version="1.1.6" />
+    </ItemGroup>
+  </Project>
+  ```
+
+  <span data-ttu-id="537c7-134">Ссылку на пакет с `PrivateAssets="All"` не предоставляется для проектов, которые ссылаются на этот проект.</span><span class="sxs-lookup"><span data-stu-id="537c7-134">A package reference with `PrivateAssets="All"` isn't exposed to projects that reference this project.</span></span> <span data-ttu-id="537c7-135">Это ограничение особенно полезна для пакетов, которые обычно используются только во время разработки.</span><span class="sxs-lookup"><span data-stu-id="537c7-135">This restriction is especially useful for packages that are typically only used during development.</span></span>
+
+### <a name="verify-installation"></a><span data-ttu-id="537c7-136">Проверка установки</span><span class="sxs-lookup"><span data-stu-id="537c7-136">Verify installation</span></span>
+
+<span data-ttu-id="537c7-137">Выполните следующие команды, чтобы проверить, правильно установлены средства интерфейса командной строки EF Core:</span><span class="sxs-lookup"><span data-stu-id="537c7-137">Run the following commands to verify that EF Core CLI tools are correctly installed:</span></span>
+
+  ``` Console
+  dotnet restore
+  dotnet ef
+  ```
+
+<span data-ttu-id="537c7-138">Результатом выполнения команды определяет версию средства в используйте:</span><span class="sxs-lookup"><span data-stu-id="537c7-138">The output from the command identifies the version of the tools in use:</span></span>
+
+```console
+
+                     _/\__
+               ---==/    \\
+         ___  ___   |.    \|\
+        | __|| __|  |  )   \\\
+        | _| | _|   \_/ |  //|\\
+        |___||_|       /   \\\/\\
+
+Entity Framework Core .NET Command-line Tools 2.1.3-rtm-32065
+
+<Usage documentation follows, not shown.>
 ```
 
-> [!NOTE]
-> <span data-ttu-id="cd1c9-116">Ссылку на пакет с `PrivateAssets="All"` означает, что он не доступен для проектов, которые ссылаются на этот проект, что особенно полезно для пакетов, которые обычно используются только во время разработки.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-116">A package reference with `PrivateAssets="All"` means it isn't exposed to projects that reference this project, which is especially useful for packages that are typically only used during development.</span></span>
+## <a name="using-the-tools"></a><span data-ttu-id="537c7-139">С помощью средств</span><span class="sxs-lookup"><span data-stu-id="537c7-139">Using the tools</span></span>
 
-<span data-ttu-id="cd1c9-117">Если все делается вправо, вы сможете успешно, выполните следующую команду в командной строке.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-117">If you did everything right, you should be able to successfully run the following command in a command prompt.</span></span>
+<span data-ttu-id="537c7-140">Перед использованием средств, может потребоваться создать запускаемый проект, или установите среду.</span><span class="sxs-lookup"><span data-stu-id="537c7-140">Before using the tools, you might have to create a startup project or set the environment.</span></span>
 
-``` Console
-dotnet ef
+### <a name="target-project-and-startup-project"></a><span data-ttu-id="537c7-141">Целевой и запускаемый проект</span><span class="sxs-lookup"><span data-stu-id="537c7-141">Target project and startup project</span></span>
+
+<span data-ttu-id="537c7-142">См. команды *проекта* и *запускаемым проектом*.</span><span class="sxs-lookup"><span data-stu-id="537c7-142">The commands refer to a *project* and a *startup project*.</span></span>
+
+* <span data-ttu-id="537c7-143">*Проекта* также известен как *целевой проект* так как это где команды добавления или удаления файлов.</span><span class="sxs-lookup"><span data-stu-id="537c7-143">The *project* is also known as the *target project* because it's where the commands add or remove files.</span></span> <span data-ttu-id="537c7-144">По умолчанию проект в текущем каталоге является целевого проекта.</span><span class="sxs-lookup"><span data-stu-id="537c7-144">By default, the project in the current directory is the target project.</span></span> <span data-ttu-id="537c7-145">Можно указать другой проект в качестве целевого проекта с помощью <nobr> `--project` </nobr> параметр.</span><span class="sxs-lookup"><span data-stu-id="537c7-145">You can specify a different project as target project by using the <nobr>`--project`</nobr> option.</span></span>
+
+* <span data-ttu-id="537c7-146">*Запускаемым проектом* является тот, который построение и запуск средств.</span><span class="sxs-lookup"><span data-stu-id="537c7-146">The *startup project* is the one that the tools build and run.</span></span> <span data-ttu-id="537c7-147">Средства должны выполнить код приложения во время разработки для получения сведений о проекте, например строку подключения базы данных и конфигурации модели.</span><span class="sxs-lookup"><span data-stu-id="537c7-147">The tools have to execute application code at design time to get information about the project, such as the database connection string and the configuration of the model.</span></span> <span data-ttu-id="537c7-148">По умолчанию проект в текущем каталоге является запускаемым проектом.</span><span class="sxs-lookup"><span data-stu-id="537c7-148">By default, the project in the current directory is the startup project.</span></span> <span data-ttu-id="537c7-149">Можно указать другой проект запускаемым проектом с помощью <nobr> `--startup-project` </nobr> параметр.</span><span class="sxs-lookup"><span data-stu-id="537c7-149">You can specify a different project as startup project by using the <nobr>`--startup-project`</nobr> option.</span></span>
+
+<span data-ttu-id="537c7-150">Зачастую того же проекта запускаемого проекта и целевой проект.</span><span class="sxs-lookup"><span data-stu-id="537c7-150">The startup project and target project are often the same project.</span></span> <span data-ttu-id="537c7-151">Типичный сценарий, где они находятся отдельные проекты — когда:</span><span class="sxs-lookup"><span data-stu-id="537c7-151">A typical scenario where they are separate projects is when:</span></span>
+
+* <span data-ttu-id="537c7-152">В библиотеке классов .NET Core, EF Core контекст и классы сущностей.</span><span class="sxs-lookup"><span data-stu-id="537c7-152">The EF Core context and entity classes are in a .NET Core class library.</span></span>
+* <span data-ttu-id="537c7-153">Консольное приложение .NET Core или веб-приложение ссылается на библиотеку классов.</span><span class="sxs-lookup"><span data-stu-id="537c7-153">A .NET Core console app or web app references the class library.</span></span>
+
+<span data-ttu-id="537c7-154">Существует также возможность [поместите код миграции в библиотеку классов, отдельно от контекста EF Core](xref:core/managing-schemas/migrations/projects).</span><span class="sxs-lookup"><span data-stu-id="537c7-154">It's also possible to [put migrations code in a class library separate from the EF Core context](xref:core/managing-schemas/migrations/projects).</span></span>
+
+### <a name="other-target-frameworks"></a><span data-ttu-id="537c7-155">Другие целевые платформы</span><span class="sxs-lookup"><span data-stu-id="537c7-155">Other target frameworks</span></span>
+
+<span data-ttu-id="537c7-156">Средства CLI работать с проектам .NET Core и .NET Framework.</span><span class="sxs-lookup"><span data-stu-id="537c7-156">The CLI tools work with .NET Core projects and .NET Framework projects.</span></span> <span data-ttu-id="537c7-157">Приложения, которые имеют модель EF Core в библиотеку классов .NET Standard может отсутствовать, .NET Core или .NET Framework проекта.</span><span class="sxs-lookup"><span data-stu-id="537c7-157">Apps that have the EF Core model in a .NET Standard class library might not have a .NET Core or .NET Framework project.</span></span> <span data-ttu-id="537c7-158">Например это верно для приложений Xamarin и универсальной платформы Windows.</span><span class="sxs-lookup"><span data-stu-id="537c7-158">For example, this is true of Xamarin and Universal Windows Platform apps.</span></span> <span data-ttu-id="537c7-159">В таком случае можно создать проект консольного приложения .NET Core, единственным назначением которого является в качестве запускаемого проекта для средств.</span><span class="sxs-lookup"><span data-stu-id="537c7-159">In such cases, you can create a .NET Core console app project whose only purpose is to act as startup project for the tools.</span></span> <span data-ttu-id="537c7-160">Проект может быть пустым проектом с не содержащим реального кода &mdash; этот компонент необходим только для предоставления целевой объект для выполнения средства.</span><span class="sxs-lookup"><span data-stu-id="537c7-160">The project can be a dummy project with no real code &mdash; it is only needed to provide a target for the tooling.</span></span>
+
+<span data-ttu-id="537c7-161">Почему является пустым проектом требуется?</span><span class="sxs-lookup"><span data-stu-id="537c7-161">Why is a dummy project required?</span></span> <span data-ttu-id="537c7-162">Как упоминалось ранее, средства нужно выполнять код приложения во время разработки.</span><span class="sxs-lookup"><span data-stu-id="537c7-162">As mentioned earlier, the tools have to execute application code at design time.</span></span> <span data-ttu-id="537c7-163">Для этого им необходимо использовать среду выполнения .NET Core.</span><span class="sxs-lookup"><span data-stu-id="537c7-163">To do that, they need to use the .NET Core runtime.</span></span> <span data-ttu-id="537c7-164">Когда модель EF Core находится в проекте, ориентированном на .NET Core или .NET Framework, средства EF Core позаимствовать среды выполнения из проекта.</span><span class="sxs-lookup"><span data-stu-id="537c7-164">When the EF Core model is in a project that targets .NET Core or .NET Framework, the EF Core tools borrow the runtime from the project.</span></span> <span data-ttu-id="537c7-165">Они не могут делать, если модель EF Core в библиотеку классов .NET Standard.</span><span class="sxs-lookup"><span data-stu-id="537c7-165">They can't do that if the EF Core model is in a .NET Standard class library.</span></span> <span data-ttu-id="537c7-166">.NET Standard не фактическую реализацию .NET; это спецификация набора API-интерфейсов, реализации .NET должны поддерживать.</span><span class="sxs-lookup"><span data-stu-id="537c7-166">The .NET Standard is not an actual .NET implementation; it's a specification of a set of APIs that .NET implementations must support.</span></span> <span data-ttu-id="537c7-167">Поэтому .NET Standard недостаточно для инструментов EF Core для выполнения кода приложения.</span><span class="sxs-lookup"><span data-stu-id="537c7-167">Therefore .NET Standard is not sufficient for the EF Core tools to execute application code.</span></span> <span data-ttu-id="537c7-168">Фиктивный проект, созданный для использования в качестве запускаемого проекта предоставляет конкретную целевую платформу, в которой средства можно загружать библиотеки классов .NET Standard.</span><span class="sxs-lookup"><span data-stu-id="537c7-168">The dummy project you create to use as startup project provides a concrete target platform into which the tools can load the .NET Standard class library.</span></span> 
+
+### <a name="aspnet-core-environment"></a><span data-ttu-id="537c7-169">Среда ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="537c7-169">ASP.NET Core environment</span></span>
+
+<span data-ttu-id="537c7-170">Чтобы указать среду для проектов ASP.NET Core, задайте **ASPNETCORE_ENVIRONMENT** переменной среды перед запуском команды.</span><span class="sxs-lookup"><span data-stu-id="537c7-170">To specify the environment for ASP.NET Core projects, set the **ASPNETCORE_ENVIRONMENT** environment variable before running commands.</span></span>
+
+## <a name="common-options"></a><span data-ttu-id="537c7-171">Общие параметры</span><span class="sxs-lookup"><span data-stu-id="537c7-171">Common options</span></span>
+
+|                   | <span data-ttu-id="537c7-172">Параметр</span><span class="sxs-lookup"><span data-stu-id="537c7-172">Option</span></span>                             | <span data-ttu-id="537c7-173">Описание</span><span class="sxs-lookup"><span data-stu-id="537c7-173">Description</span></span>                                                                                                                                                                                                                                                   |
+|-------------------|------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                   | `--json`                           | <span data-ttu-id="537c7-174">Показать выходные данные JSON.</span><span class="sxs-lookup"><span data-stu-id="537c7-174">Show JSON output.</span></span>                                                                                                                                                                                                                                             |
+| <nobr>`-c`</nobr> | `--context <DBCONTEXT>`            | <span data-ttu-id="537c7-175">`DbContext` Класс для использования.</span><span class="sxs-lookup"><span data-stu-id="537c7-175">The `DbContext` class to use.</span></span> <span data-ttu-id="537c7-176">Имя класса, только из цифр или полное с пространствами имен.</span><span class="sxs-lookup"><span data-stu-id="537c7-176">Class name only or fully qualified with namespaces.</span></span>  <span data-ttu-id="537c7-177">Если этот параметр опущен, найти класс контекста EF Core.</span><span class="sxs-lookup"><span data-stu-id="537c7-177">If this option is omitted, EF Core will find the context class.</span></span> <span data-ttu-id="537c7-178">Если имеется несколько классов контекста, этот параметр является обязательным.</span><span class="sxs-lookup"><span data-stu-id="537c7-178">If there are multiple context classes, this option is required.</span></span>                                            |
+| `-p`              | `--project <PROJECT>`              | <span data-ttu-id="537c7-179">Относительный путь к папке проекта целевого проекта.</span><span class="sxs-lookup"><span data-stu-id="537c7-179">Relative path to the project folder of the target project.</span></span>  <span data-ttu-id="537c7-180">Значение по умолчанию является текущая папка.</span><span class="sxs-lookup"><span data-stu-id="537c7-180">Default value is the current folder.</span></span>                                                                                                                                                              |
+| `-s`              | `--startup-project <PROJECT>`      | <span data-ttu-id="537c7-181">Относительный путь к папке проекта, запускаемого проекта.</span><span class="sxs-lookup"><span data-stu-id="537c7-181">Relative path to the project folder of the startup project.</span></span> <span data-ttu-id="537c7-182">Значение по умолчанию является текущая папка.</span><span class="sxs-lookup"><span data-stu-id="537c7-182">Default value is the current folder.</span></span>                                                                                                                                                              |
+|                   | `--framework <FRAMEWORK>`          | <span data-ttu-id="537c7-183">[Моникера целевой платформы](/dotnet/standard/frameworks#supported-target-framework-versions) для [требуемой версии .NET framework](/dotnet/standard/frameworks).</span><span class="sxs-lookup"><span data-stu-id="537c7-183">The [Target Framework Moniker](/dotnet/standard/frameworks#supported-target-framework-versions) for the [target framework](/dotnet/standard/frameworks).</span></span>  <span data-ttu-id="537c7-184">Используется, если в файле проекта указываются нескольких целевых платформ, и вы хотите выбрать один из них.</span><span class="sxs-lookup"><span data-stu-id="537c7-184">Use when the project file specifies multiple target frameworks, and you want to select one of them.</span></span> |
+|                   | `--configuration <CONFIGURATION>`  | <span data-ttu-id="537c7-185">Конфигурацию сборки, например: `Debug` или `Release`.</span><span class="sxs-lookup"><span data-stu-id="537c7-185">The build configuration, for example: `Debug` or `Release`.</span></span>                                                                                                                                                                                                   |
+|                   | `--runtime <IDENTIFIER>`           | <span data-ttu-id="537c7-186">Идентификатор целевой среды выполнения для восстановления пакетов.</span><span class="sxs-lookup"><span data-stu-id="537c7-186">The identifier of the target runtime to restore packages for.</span></span> <span data-ttu-id="537c7-187">Список идентификаторов сред выполнения (RID) см. в [каталоге RID](/dotnet/core/rid-catalog).</span><span class="sxs-lookup"><span data-stu-id="537c7-187">For a list of Runtime Identifiers (RIDs), see the [RID catalog](/dotnet/core/rid-catalog).</span></span>                                                                                                      |
+| `-h`              | `--help`                           | <span data-ttu-id="537c7-188">Показать справочные сведения.</span><span class="sxs-lookup"><span data-stu-id="537c7-188">Show help information.</span></span>                                                                                                                                                                                                                                        |
+| `-v`              | `--verbose`                        | <span data-ttu-id="537c7-189">Показать подробные выходные данные.</span><span class="sxs-lookup"><span data-stu-id="537c7-189">Show verbose output.</span></span>                                                                                                                                                                                                                                          |
+|                   | `--no-color`                       | <span data-ttu-id="537c7-190">Не необходимо выделить цветом выходные данные.</span><span class="sxs-lookup"><span data-stu-id="537c7-190">Don't colorize output.</span></span>                                                                                                                                                                                                                                        |
+|                   | `--prefix-output`                  | <span data-ttu-id="537c7-191">Префикс выходных данных с уровнем.</span><span class="sxs-lookup"><span data-stu-id="537c7-191">Prefix output with level.</span></span>                                                                                                                                                                                                                                     |
+
+## <a name="dotnet-ef-database-drop"></a><span data-ttu-id="537c7-192">Удаление базы данных ef DotNet</span><span class="sxs-lookup"><span data-stu-id="537c7-192">dotnet ef database drop</span></span>
+
+<span data-ttu-id="537c7-193">Удаляет базу данных.</span><span class="sxs-lookup"><span data-stu-id="537c7-193">Drops the database.</span></span>
+
+<span data-ttu-id="537c7-194">Параметры:</span><span class="sxs-lookup"><span data-stu-id="537c7-194">Options:</span></span>
+
+|                   | <span data-ttu-id="537c7-195">Параметр</span><span class="sxs-lookup"><span data-stu-id="537c7-195">Option</span></span>                   | <span data-ttu-id="537c7-196">Описание</span><span class="sxs-lookup"><span data-stu-id="537c7-196">Description</span></span>                                                |
+|-------------------|--------------------------|------------------------------------------------------------|
+| <nobr>`-f`</nobr> | <nobr>`--force`</nobr>   | <span data-ttu-id="537c7-197">Не подтверждено.</span><span class="sxs-lookup"><span data-stu-id="537c7-197">Don't confirm.</span></span>                                             |
+|                   | <nobr>`--dry-run`</nobr> | <span data-ttu-id="537c7-198">Показать базу данных, которая будет удалена, но не удаляйте ее.</span><span class="sxs-lookup"><span data-stu-id="537c7-198">Show which database would be dropped, but don't drop it.</span></span>   |
+
+## <a name="dotnet-ef-database-update"></a><span data-ttu-id="537c7-199">Обновление базы данных ef DotNet</span><span class="sxs-lookup"><span data-stu-id="537c7-199">dotnet ef database update</span></span>
+
+<span data-ttu-id="537c7-200">Обновляет базу данных, последнюю миграцию или указанного миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-200">Updates the database to the last migration or to a specified migration.</span></span>
+
+<span data-ttu-id="537c7-201">Аргументы:</span><span class="sxs-lookup"><span data-stu-id="537c7-201">Arguments:</span></span>
+
+| <span data-ttu-id="537c7-202">Аргумент</span><span class="sxs-lookup"><span data-stu-id="537c7-202">Argument</span></span>       | <span data-ttu-id="537c7-203">Описание</span><span class="sxs-lookup"><span data-stu-id="537c7-203">Description</span></span>                                                                                                                                                                                                                                                     |
+|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `<MIGRATION>`  | <span data-ttu-id="537c7-204">Целевой объект миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-204">The target migration.</span></span> <span data-ttu-id="537c7-205">Миграция может быть идентифицирован по имени или по идентификатору.</span><span class="sxs-lookup"><span data-stu-id="537c7-205">Migrations may be identified by name or by ID.</span></span> <span data-ttu-id="537c7-206">Число 0 является особым случаем, это значит, что *перед первой миграции* и вызывает всех операций переноса для отмены изменений.</span><span class="sxs-lookup"><span data-stu-id="537c7-206">The number 0 is a special case that means *before the first migration* and causes all migrations to be reverted.</span></span> <span data-ttu-id="537c7-207">Если перенос не указан, команда по умолчанию к последней миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-207">If no migration is specified, the command defaults to the last migration.</span></span> |
+
+<span data-ttu-id="537c7-208">Следующие примеры обновления базы данных для указанного миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-208">The following examples update the database to a specified migration.</span></span> <span data-ttu-id="537c7-209">Первый использует имя миграции, а второй использует идентификатор миграции:</span><span class="sxs-lookup"><span data-stu-id="537c7-209">The first uses the migration name and the second uses the migration ID:</span></span>
+
+```console
+dotnet ef database update InitialCreate
+dotnet ef database update 20180904195021_InitialCreate
 ```
 
-<a name="using-the-tools"></a><span data-ttu-id="cd1c9-118">С помощью средств</span><span class="sxs-lookup"><span data-stu-id="cd1c9-118">Using the tools</span></span>
----------------
-<span data-ttu-id="cd1c9-119">При каждом вызове команды состоит из двух проектов:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-119">Whenever you invoke a command, there are two projects involved:</span></span>
+## <a name="dotnet-ef-dbcontext-info"></a><span data-ttu-id="537c7-210">сведения о dbcontext ef DotNet</span><span class="sxs-lookup"><span data-stu-id="537c7-210">dotnet ef dbcontext info</span></span>
 
-<span data-ttu-id="cd1c9-120">Целевой проект служит для добавления всех файлов (в некоторых случаях они удаляются из него).</span><span class="sxs-lookup"><span data-stu-id="cd1c9-120">The target project is where any files are added (or in some cases removed).</span></span> <span data-ttu-id="cd1c9-121">Проект по умолчанию проект в текущем каталоге, но можно изменить с помощью <nobr> **`--project`** </nobr> параметр.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-121">The target project defaults to the project in the current directory, but can be changed using the <nobr>**`--project`**</nobr> option.</span></span>
+<span data-ttu-id="537c7-211">Получает сведения о `DbContext` типа.</span><span class="sxs-lookup"><span data-stu-id="537c7-211">Gets information about a `DbContext` type.</span></span>
 
-<span data-ttu-id="cd1c9-122">Запускаемый проект эмулируется инструментами при выполнении кода проекта.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-122">The startup project is the one emulated by the tools when executing your project's code.</span></span> <span data-ttu-id="cd1c9-123">Он также по умолчанию в проект в текущем каталоге, но можно изменить с помощью **`--startup-project`** параметр.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-123">It also defaults to the project in the current directory, but can be changed using the **`--startup-project`** option.</span></span>
+## <a name="dotnet-ef-dbcontext-list"></a><span data-ttu-id="537c7-212">DotNet ef dbcontext списка</span><span class="sxs-lookup"><span data-stu-id="537c7-212">dotnet ef dbcontext list</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="cd1c9-124">Например, обновление базы данных веб-приложения с EF Core установлен в виде отдельного проекта будет выглядеть следующим образом: `dotnet ef database update --project {project-path}` (из каталога веб-приложения)</span><span class="sxs-lookup"><span data-stu-id="cd1c9-124">For instance, updating the database of your web application that has EF Core installed in a different project would look like this: `dotnet ef database update --project {project-path}` (from your web app directory)</span></span>
+<span data-ttu-id="537c7-213">Выводит список доступных `DbContext` типов.</span><span class="sxs-lookup"><span data-stu-id="537c7-213">Lists available `DbContext` types.</span></span>
 
-<span data-ttu-id="cd1c9-125">Общие параметры:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-125">Common options:</span></span>
+## <a name="dotnet-ef-dbcontext-scaffold"></a><span data-ttu-id="537c7-214">DotNet ef dbcontext каркаса</span><span class="sxs-lookup"><span data-stu-id="537c7-214">dotnet ef dbcontext scaffold</span></span>
 
-|    |                                  |                             |
-|:---|:---------------------------------|:----------------------------|
-|    | `--json`                           | <span data-ttu-id="cd1c9-126">Показать выходные данные JSON.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-126">Show JSON output.</span></span>           |
-| <span data-ttu-id="cd1c9-127">-c</span><span class="sxs-lookup"><span data-stu-id="cd1c9-127">-c</span></span> | `--context <DBCONTEXT>`           | <span data-ttu-id="cd1c9-128">DbContext для использования.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-128">The DbContext to use.</span></span>       |
-| <span data-ttu-id="cd1c9-129">-p</span><span class="sxs-lookup"><span data-stu-id="cd1c9-129">-p</span></span> | `--project <PROJECT>`             | <span data-ttu-id="cd1c9-130">Проект для использования.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-130">The project to use.</span></span>         |
-| <span data-ttu-id="cd1c9-131">-s</span><span class="sxs-lookup"><span data-stu-id="cd1c9-131">-s</span></span> | `--startup-project <PROJECT>`     | <span data-ttu-id="cd1c9-132">Запускаемый проект для использования.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-132">The startup project to use.</span></span> |
-|    | `--framework <FRAMEWORK>`         | <span data-ttu-id="cd1c9-133">Целевая платформа.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-133">The target framework.</span></span>       |
-|    | `--configuration <CONFIGURATION>` | <span data-ttu-id="cd1c9-134">Используемая конфигурация.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-134">The configuration to use.</span></span>   |
-|    | `--runtime <IDENTIFIER>`          | <span data-ttu-id="cd1c9-135">Среда выполнения для использования.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-135">The runtime to use.</span></span>         |
-| <span data-ttu-id="cd1c9-136">-h</span><span class="sxs-lookup"><span data-stu-id="cd1c9-136">-h</span></span> | `--help`                           | <span data-ttu-id="cd1c9-137">Показать справочные сведения.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-137">Show help information.</span></span>      |
-| <span data-ttu-id="cd1c9-138">-v</span><span class="sxs-lookup"><span data-stu-id="cd1c9-138">-v</span></span> | `--verbose`                        | <span data-ttu-id="cd1c9-139">Показать подробные выходные данные.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-139">Show verbose output.</span></span>        |
-|    | `--no-color`                       | <span data-ttu-id="cd1c9-140">Не необходимо выделить цветом выходные данные.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-140">Don't colorize output.</span></span>      |
-|    | `--prefix-output`                  | <span data-ttu-id="cd1c9-141">Префикс выходных данных с уровнем.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-141">Prefix output with level.</span></span>   |
+<span data-ttu-id="537c7-215">Создает код для `DbContext` и типы сущностей для базы данных.</span><span class="sxs-lookup"><span data-stu-id="537c7-215">Generates code for a `DbContext` and entity types for a database.</span></span>
 
+<span data-ttu-id="537c7-216">Аргументы:</span><span class="sxs-lookup"><span data-stu-id="537c7-216">Arguments:</span></span>
 
-> [!TIP]
-> <span data-ttu-id="cd1c9-142">Среда ASP.NET Core, установите **ASPNETCORE_ENVIRONMENT** переменной среды перед запуском.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-142">To specify the ASP.NET Core environment, set the **ASPNETCORE_ENVIRONMENT** environment variable before running.</span></span>
+| <span data-ttu-id="537c7-217">Аргумент</span><span class="sxs-lookup"><span data-stu-id="537c7-217">Argument</span></span>        | <span data-ttu-id="537c7-218">Описание</span><span class="sxs-lookup"><span data-stu-id="537c7-218">Description</span></span>                                                                                                                                                                                                             |
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `<CONNECTION>`  | <span data-ttu-id="537c7-219">Строка подключения к базе данных.</span><span class="sxs-lookup"><span data-stu-id="537c7-219">The connection string to the database.</span></span> <span data-ttu-id="537c7-220">Для проектов ASP.NET Core 2.x, значение может быть *имя =\<имя строки подключения >*.</span><span class="sxs-lookup"><span data-stu-id="537c7-220">For ASP.NET Core 2.x projects, the value can be *name=\<name of connection string>*.</span></span> <span data-ttu-id="537c7-221">В этом случае имя берется из источников конфигурации, которые были настроены для проекта.</span><span class="sxs-lookup"><span data-stu-id="537c7-221">In that case the name comes from the configuration sources that are set up for the project.</span></span> |
+| `<PROVIDER>`    | <span data-ttu-id="537c7-222">Используемый поставщик.</span><span class="sxs-lookup"><span data-stu-id="537c7-222">The provider to use.</span></span> <span data-ttu-id="537c7-223">Обычно это имя пакета NuGet, например: `Microsoft.EntityFrameworkCore.SqlServer`.</span><span class="sxs-lookup"><span data-stu-id="537c7-223">Typically this is the name of the NuGet package, for example: `Microsoft.EntityFrameworkCore.SqlServer`.</span></span>                                                                                           |
 
-<a name="commands"></a><span data-ttu-id="cd1c9-143">Команды</span><span class="sxs-lookup"><span data-stu-id="cd1c9-143">Commands</span></span>
---------
+<span data-ttu-id="537c7-224">Параметры:</span><span class="sxs-lookup"><span data-stu-id="537c7-224">Options:</span></span>
 
-### <a name="dotnet-ef-database-drop"></a><span data-ttu-id="cd1c9-144">Удаление базы данных ef DotNet</span><span class="sxs-lookup"><span data-stu-id="cd1c9-144">dotnet ef database drop</span></span>
+|                   | <span data-ttu-id="537c7-225">Параметр</span><span class="sxs-lookup"><span data-stu-id="537c7-225">Option</span></span>                                    | <span data-ttu-id="537c7-226">Описание</span><span class="sxs-lookup"><span data-stu-id="537c7-226">Description</span></span>                                                                                                                                                                    |
+|-------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <span data-ttu-id="537c7-227"><nobr>-d</nobr></span><span class="sxs-lookup"><span data-stu-id="537c7-227"><nobr>-d</nobr></span></span>   | `--data-annotations`                      | <span data-ttu-id="537c7-228">Атрибуты можно используйте для настройки модели (где это возможно).</span><span class="sxs-lookup"><span data-stu-id="537c7-228">Use attributes to configure the model (where possible).</span></span> <span data-ttu-id="537c7-229">Если этот параметр опущен, используется только текучего API.</span><span class="sxs-lookup"><span data-stu-id="537c7-229">If this option is omitted, only the fluent API is used.</span></span>                                                                |
+| `-c`              | `--context <NAME>`                        | <span data-ttu-id="537c7-230">Имя `DbContext` класса, необходимо создать.</span><span class="sxs-lookup"><span data-stu-id="537c7-230">The name of the `DbContext` class to generate.</span></span>                                                                                                                                 |
+|                   | `--context-dir <PATH>`                    | <span data-ttu-id="537c7-231">Каталог для размещения `DbContext` файл класса.</span><span class="sxs-lookup"><span data-stu-id="537c7-231">The directory to put the `DbContext` class file in.</span></span> <span data-ttu-id="537c7-232">Пути задаются относительно каталога проекта.</span><span class="sxs-lookup"><span data-stu-id="537c7-232">Paths are relative to the project directory.</span></span> <span data-ttu-id="537c7-233">Пространства имен являются производными от ее имени.</span><span class="sxs-lookup"><span data-stu-id="537c7-233">Namespaces are derived from the folder names.</span></span>                                 |
+| `-f`              | `--force`                                 | <span data-ttu-id="537c7-234">Перезаписывайте существующие файлы.</span><span class="sxs-lookup"><span data-stu-id="537c7-234">Overwrite existing files.</span></span>                                                                                                                                                      |
+| `-o`              | `--output-dir <PATH>`                     | <span data-ttu-id="537c7-235">Чтобы поместить файлы классов сущностей в каталог.</span><span class="sxs-lookup"><span data-stu-id="537c7-235">The directory to put entity class files in.</span></span> <span data-ttu-id="537c7-236">Пути задаются относительно каталога проекта.</span><span class="sxs-lookup"><span data-stu-id="537c7-236">Paths are relative to the project directory.</span></span>                                                                                       |
+|                   | <nobr>`--schema <SCHEMA_NAME>...`</nobr>  | <span data-ttu-id="537c7-237">Схемы таблиц для создания типов сущности для.</span><span class="sxs-lookup"><span data-stu-id="537c7-237">The schemas of tables to generate entity types for.</span></span> <span data-ttu-id="537c7-238">Чтобы указать несколько схем, повторите `--schema` для каждого из них.</span><span class="sxs-lookup"><span data-stu-id="537c7-238">To specify multiple schemas, repeat `--schema` for each one.</span></span> <span data-ttu-id="537c7-239">Если этот параметр указан, включаются все схемы.</span><span class="sxs-lookup"><span data-stu-id="537c7-239">If this option is omitted, all schemas are included.</span></span>          |
+| `-t`              | <span data-ttu-id="537c7-240">`--table <TABLE_NAME>`...</span><span class="sxs-lookup"><span data-stu-id="537c7-240">`--table <TABLE_NAME>`...</span></span>                 | <span data-ttu-id="537c7-241">Для создания типов сущности для таблиц.</span><span class="sxs-lookup"><span data-stu-id="537c7-241">The tables to generate entity types for.</span></span> <span data-ttu-id="537c7-242">Чтобы указать несколько таблиц, повторите `-t` или `--table` для каждого из них.</span><span class="sxs-lookup"><span data-stu-id="537c7-242">To specify multiple tables, repeat `-t` or `--table` for each one.</span></span> <span data-ttu-id="537c7-243">Если этот параметр указан, включаются все таблицы.</span><span class="sxs-lookup"><span data-stu-id="537c7-243">If this option is omitted, all tables are included.</span></span>                |
+|                   | `--use-database-names`                    | <span data-ttu-id="537c7-244">Используйте имена таблиц и столбцов, так же, как в базе данных.</span><span class="sxs-lookup"><span data-stu-id="537c7-244">Use table and column names exactly as they appear in the database.</span></span> <span data-ttu-id="537c7-245">Если этот параметр задан, имена баз данных меняется на более точно соответствовать соглашениям C# имя стиля.</span><span class="sxs-lookup"><span data-stu-id="537c7-245">If this option is omitted, database names are changed to more closely conform to C# name style conventions.</span></span> |
 
-<span data-ttu-id="cd1c9-145">Удаляет базу данных.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-145">Drops the database.</span></span>
+<span data-ttu-id="537c7-246">В следующем примере, формирует шаблоны все схемы и таблицы и помещает новые файлы в *моделей* папки.</span><span class="sxs-lookup"><span data-stu-id="537c7-246">The following example scaffolds all schemas and tables and puts the new files in the *Models* folder.</span></span>
 
-<span data-ttu-id="cd1c9-146">Параметры:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-146">Options:</span></span>
+```console
+dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+```
 
-|    |           |                                                          |
-|:---|:----------|:---------------------------------------------------------|
-| <span data-ttu-id="cd1c9-147">-f</span><span class="sxs-lookup"><span data-stu-id="cd1c9-147">-f</span></span> | `--force`   | <span data-ttu-id="cd1c9-148">Не подтверждено.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-148">Don't confirm.</span></span>                                           |
-|    | `--dry-run` | <span data-ttu-id="cd1c9-149">Показать базу данных, которая будет удалена, но не удаляйте ее.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-149">Show which database would be dropped, but don't drop it.</span></span> |
+<span data-ttu-id="537c7-247">В следующем примере формирует шаблоны только указанных таблиц и создает контекст в отдельную папку с указанным именем:</span><span class="sxs-lookup"><span data-stu-id="537c7-247">The following example scaffolds only selected tables and creates the context in a separate folder with a specified name:</span></span>
 
-### <a name="dotnet-ef-database-update"></a><span data-ttu-id="cd1c9-150">Обновление базы данных ef DotNet</span><span class="sxs-lookup"><span data-stu-id="cd1c9-150">dotnet ef database update</span></span>
+```console
+dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -t Blog -t Post --context-dir Context -c BlogContext
+```
 
-<span data-ttu-id="cd1c9-151">Обновляет базу данных для указанного миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-151">Updates the database to a specified migration.</span></span>
+## <a name="dotnet-ef-migrations-add"></a><span data-ttu-id="537c7-248">Добавление DotNet ef migrations</span><span class="sxs-lookup"><span data-stu-id="537c7-248">dotnet ef migrations add</span></span>
 
-<span data-ttu-id="cd1c9-152">Аргументы:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-152">Arguments:</span></span>
+<span data-ttu-id="537c7-249">Добавление новой миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-249">Adds a new migration.</span></span>
 
-|              |                                                                                              |
-|:-------------|:---------------------------------------------------------------------------------------------|
-| `<MIGRATION>` | <span data-ttu-id="cd1c9-153">Целевой объект миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-153">The target migration.</span></span> <span data-ttu-id="cd1c9-154">Если значение равно 0, будут отменены все миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-154">If 0, all migrations will be reverted.</span></span> <span data-ttu-id="cd1c9-155">По умолчанию к последней миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-155">Defaults to the last migration.</span></span> |
+<span data-ttu-id="537c7-250">Аргументы:</span><span class="sxs-lookup"><span data-stu-id="537c7-250">Arguments:</span></span>
 
-### <a name="dotnet-ef-dbcontext-info"></a><span data-ttu-id="cd1c9-156">сведения о dbcontext ef DotNet</span><span class="sxs-lookup"><span data-stu-id="cd1c9-156">dotnet ef dbcontext info</span></span>
+| <span data-ttu-id="537c7-251">Аргумент</span><span class="sxs-lookup"><span data-stu-id="537c7-251">Argument</span></span>  | <span data-ttu-id="537c7-252">Описание</span><span class="sxs-lookup"><span data-stu-id="537c7-252">Description</span></span>                  |
+|-----------|------------------------------|
+| `<NAME>`  | <span data-ttu-id="537c7-253">Имя миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-253">The name of the migration.</span></span>   |
 
-<span data-ttu-id="cd1c9-157">Возвращает сведения о типе DbContext.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-157">Gets information about a DbContext type.</span></span>
+<span data-ttu-id="537c7-254">Параметры:</span><span class="sxs-lookup"><span data-stu-id="537c7-254">Options:</span></span>
 
-### <a name="dotnet-ef-dbcontext-list"></a><span data-ttu-id="cd1c9-158">DotNet ef dbcontext списка</span><span class="sxs-lookup"><span data-stu-id="cd1c9-158">dotnet ef dbcontext list</span></span>
+|                   | <span data-ttu-id="537c7-255">Параметр</span><span class="sxs-lookup"><span data-stu-id="537c7-255">Option</span></span>                              | <span data-ttu-id="537c7-256">Описание</span><span class="sxs-lookup"><span data-stu-id="537c7-256">Description</span></span>                                                                                                        |
+|-------------------|-------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| <nobr>`-o`</nobr> | <nobr>`--output-dir <PATH>`</nobr>  | <span data-ttu-id="537c7-257">Каталог (и sub-namespace) для использования.</span><span class="sxs-lookup"><span data-stu-id="537c7-257">The directory (and sub-namespace) to use.</span></span> <span data-ttu-id="537c7-258">Пути задаются относительно каталога проекта.</span><span class="sxs-lookup"><span data-stu-id="537c7-258">Paths are relative to the project directory.</span></span> <span data-ttu-id="537c7-259">По умолчанию используется «Миграция».</span><span class="sxs-lookup"><span data-stu-id="537c7-259">Defaults to "Migrations".</span></span>   |
 
-<span data-ttu-id="cd1c9-159">Список доступных типов DbContext.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-159">Lists available DbContext types.</span></span>
+## <a name="dotnet-ef-migrations-list"></a><span data-ttu-id="537c7-260">DotNet ef migrations списка</span><span class="sxs-lookup"><span data-stu-id="537c7-260">dotnet ef migrations list</span></span>
 
-### <a name="dotnet-ef-dbcontext-scaffold"></a><span data-ttu-id="cd1c9-160">DotNet ef dbcontext каркаса</span><span class="sxs-lookup"><span data-stu-id="cd1c9-160">dotnet ef dbcontext scaffold</span></span>
+<span data-ttu-id="537c7-261">Список доступных миграций.</span><span class="sxs-lookup"><span data-stu-id="537c7-261">Lists available migrations.</span></span>
 
-<span data-ttu-id="cd1c9-161">Формирует шаблоны DbContext и типов сущностей для базы данных.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-161">Scaffolds a DbContext and entity types for a database.</span></span>
+## <a name="dotnet-ef-migrations-remove"></a><span data-ttu-id="537c7-262">удалить DotNet ef migrations</span><span class="sxs-lookup"><span data-stu-id="537c7-262">dotnet ef migrations remove</span></span>
 
-<span data-ttu-id="cd1c9-162">Аргументы:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-162">Arguments:</span></span>
+<span data-ttu-id="537c7-263">Удаляет последнюю миграцию (выполняется откат изменений кода, которые были выполнены для миграции).</span><span class="sxs-lookup"><span data-stu-id="537c7-263">Removes the last migration (rolls back the code changes that were done for the migration).</span></span> 
 
-|               |                                                                             |
-|:--------------|:----------------------------------------------------------------------------|
-| `<CONNECTION>` | <span data-ttu-id="cd1c9-163">Строка подключения к базе данных.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-163">The connection string to the database.</span></span>                                      |
-| `<PROVIDER>`   | <span data-ttu-id="cd1c9-164">Используемый поставщик.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-164">The provider to use.</span></span> <span data-ttu-id="cd1c9-165">(например, Microsoft.EntityFrameworkCore.SqlServer)</span><span class="sxs-lookup"><span data-stu-id="cd1c9-165">(for example, Microsoft.EntityFrameworkCore.SqlServer)</span></span> |
+<span data-ttu-id="537c7-264">Параметры:</span><span class="sxs-lookup"><span data-stu-id="537c7-264">Options:</span></span>
 
-<span data-ttu-id="cd1c9-166">Параметры:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-166">Options:</span></span>
+|                   | <span data-ttu-id="537c7-265">Параметр</span><span class="sxs-lookup"><span data-stu-id="537c7-265">Option</span></span>    | <span data-ttu-id="537c7-266">Описание</span><span class="sxs-lookup"><span data-stu-id="537c7-266">Description</span></span>                                                                        |
+|-------------------|-----------|------------------------------------------------------------------------------------|
+| <nobr>`-f`</nobr> | `--force` | <span data-ttu-id="537c7-267">Миграции отменить (откатить изменения, которые были применены к базе данных).</span><span class="sxs-lookup"><span data-stu-id="537c7-267">Revert the migration (roll back the changes that were applied to the database).</span></span>    |
 
-|                 |                                         |                                                                                                  |
-|:----------------|:----------------------------------------|:-------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="cd1c9-167"><nobr>-d</nobr></span><span class="sxs-lookup"><span data-stu-id="cd1c9-167"><nobr>-d</nobr></span></span> | `--data-annotations`                      | <span data-ttu-id="cd1c9-168">Атрибуты можно используйте для настройки модели (где это возможно).</span><span class="sxs-lookup"><span data-stu-id="cd1c9-168">Use attributes to configure the model (where possible).</span></span> <span data-ttu-id="cd1c9-169">Если этот параметр опущен, используется только текучего API.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-169">If omitted, only the fluent API is used.</span></span> |
-| <span data-ttu-id="cd1c9-170">-c</span><span class="sxs-lookup"><span data-stu-id="cd1c9-170">-c</span></span>              | `--context <NAME>`                       | <span data-ttu-id="cd1c9-171">Имя DbContext.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-171">The name of the DbContext.</span></span>                                                                       |
-|                 | `--context-dir <PATH>`                   | <span data-ttu-id="cd1c9-172">Поместите файл DbContext в каталог.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-172">The directory to put DbContext file in.</span></span> <span data-ttu-id="cd1c9-173">Пути задаются относительно каталога проекта.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-173">Paths are relative to the project directory.</span></span>             |
-| <span data-ttu-id="cd1c9-174">-f</span><span class="sxs-lookup"><span data-stu-id="cd1c9-174">-f</span></span>              | `--force`                                 | <span data-ttu-id="cd1c9-175">Перезаписывайте существующие файлы.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-175">Overwrite existing files.</span></span>                                                                        |
-| <span data-ttu-id="cd1c9-176">-o</span><span class="sxs-lookup"><span data-stu-id="cd1c9-176">-o</span></span>              | `--output-dir <PATH>`                    | <span data-ttu-id="cd1c9-177">Чтобы поместить файлы каталог.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-177">The directory to put files in.</span></span> <span data-ttu-id="cd1c9-178">Пути задаются относительно каталога проекта.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-178">Paths are relative to the project directory.</span></span>                      |
-|                 | <nobr>`--schema <SCHEMA_NAME>...`</nobr> | <span data-ttu-id="cd1c9-179">Схемы таблиц для создания типов сущности для.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-179">The schemas of tables to generate entity types for.</span></span>                                              |
-| <span data-ttu-id="cd1c9-180">-t</span><span class="sxs-lookup"><span data-stu-id="cd1c9-180">-t</span></span>              | <span data-ttu-id="cd1c9-181">`--table <TABLE_NAME>`...</span><span class="sxs-lookup"><span data-stu-id="cd1c9-181">`--table <TABLE_NAME>`...</span></span>                | <span data-ttu-id="cd1c9-182">Для создания типов сущности для таблиц.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-182">The tables to generate entity types for.</span></span>                                                         |
-|                 | `--use-database-names`                    | <span data-ttu-id="cd1c9-183">Используйте имена таблиц и столбцов непосредственно из базы данных.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-183">Use table and column names directly from the database.</span></span>                                           |
+## <a name="dotnet-ef-migrations-script"></a><span data-ttu-id="537c7-268">DotNet ef migrations сценария</span><span class="sxs-lookup"><span data-stu-id="537c7-268">dotnet ef migrations script</span></span>
 
-### <a name="dotnet-ef-migrations-add"></a><span data-ttu-id="cd1c9-184">Добавление DotNet ef migrations</span><span class="sxs-lookup"><span data-stu-id="cd1c9-184">dotnet ef migrations add</span></span>
+<span data-ttu-id="537c7-269">Формирует скрипт SQL из миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-269">Generates a SQL script from migrations.</span></span>
 
-<span data-ttu-id="cd1c9-185">Добавление новой миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-185">Adds a new migration.</span></span>
+<span data-ttu-id="537c7-270">Аргументы:</span><span class="sxs-lookup"><span data-stu-id="537c7-270">Arguments:</span></span>
 
-<span data-ttu-id="cd1c9-186">Аргументы:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-186">Arguments:</span></span>
+| <span data-ttu-id="537c7-271">Аргумент</span><span class="sxs-lookup"><span data-stu-id="537c7-271">Argument</span></span>  | <span data-ttu-id="537c7-272">Описание</span><span class="sxs-lookup"><span data-stu-id="537c7-272">Description</span></span>                                                                                                                                                   |
+|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `<FROM>`  | <span data-ttu-id="537c7-273">Начала миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-273">The starting migration.</span></span> <span data-ttu-id="537c7-274">Миграция может быть идентифицирован по имени или по идентификатору.</span><span class="sxs-lookup"><span data-stu-id="537c7-274">Migrations may be identified by name or by ID.</span></span> <span data-ttu-id="537c7-275">Число 0 является особым случаем, это значит, что *перед первой миграции*.</span><span class="sxs-lookup"><span data-stu-id="537c7-275">The number 0 is a special case that means *before the first migration*.</span></span> <span data-ttu-id="537c7-276">По умолчанию равно 0.</span><span class="sxs-lookup"><span data-stu-id="537c7-276">Defaults to 0.</span></span> |
+| `<TO>`    | <span data-ttu-id="537c7-277">Окончания миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-277">The ending migration.</span></span> <span data-ttu-id="537c7-278">По умолчанию к последней миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-278">Defaults to the last migration.</span></span>                                                                                                         |
 
-|         |                            |
-|:--------|:---------------------------|
-| `<NAME>` | <span data-ttu-id="cd1c9-187">Имя миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-187">The name of the migration.</span></span> |
+<span data-ttu-id="537c7-279">Параметры:</span><span class="sxs-lookup"><span data-stu-id="537c7-279">Options:</span></span>
 
-<span data-ttu-id="cd1c9-188">Параметры:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-188">Options:</span></span>
+|                   | <span data-ttu-id="537c7-280">Параметр</span><span class="sxs-lookup"><span data-stu-id="537c7-280">Option</span></span>             | <span data-ttu-id="537c7-281">Описание</span><span class="sxs-lookup"><span data-stu-id="537c7-281">Description</span></span>                                                          |
+|-------------------|--------------------|----------------------------------------------------------------------|
+| <nobr>`-o`</nobr> | `--output <FILE>`  | <span data-ttu-id="537c7-282">Файл, чтобы написать сценарий для.</span><span class="sxs-lookup"><span data-stu-id="537c7-282">The file to write the script to.</span></span>                                     |
+| `-i`              | `--idempotent`     | <span data-ttu-id="537c7-283">Создайте скрипт, который может использоваться в любой базе данных с любой миграции.</span><span class="sxs-lookup"><span data-stu-id="537c7-283">Generate a script that can be used on a database at any migration.</span></span>   |
 
-|                 |                                   |                                                                                                                  |
-|:----------------|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="cd1c9-189"><nobr>-o</nobr></span><span class="sxs-lookup"><span data-stu-id="cd1c9-189"><nobr>-o</nobr></span></span> | <span data-ttu-id="cd1c9-190"><nobr> `--output-dir <PATH>` </nobr></span><span class="sxs-lookup"><span data-stu-id="cd1c9-190"><nobr> `--output-dir <PATH>` </nobr></span></span> | <span data-ttu-id="cd1c9-191">Каталог (и sub-namespace) для использования.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-191">The directory (and sub-namespace) to use.</span></span> <span data-ttu-id="cd1c9-192">Пути задаются относительно каталога проекта.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-192">Paths are relative to the project directory.</span></span> <span data-ttu-id="cd1c9-193">По умолчанию используется «Миграция».</span><span class="sxs-lookup"><span data-stu-id="cd1c9-193">Defaults to "Migrations".</span></span> |
+<span data-ttu-id="537c7-284">В следующем примере создается скрипт для миграции это InitialCreate:</span><span class="sxs-lookup"><span data-stu-id="537c7-284">The following example creates a script for the InitialCreate migration:</span></span>
 
-### <a name="dotnet-ef-migrations-list"></a><span data-ttu-id="cd1c9-194">DotNet ef migrations списка</span><span class="sxs-lookup"><span data-stu-id="cd1c9-194">dotnet ef migrations list</span></span>
+```console
+dotnet ef migrations script 0 InitialCreate
+```
 
-<span data-ttu-id="cd1c9-195">Список доступных миграций.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-195">Lists available migrations.</span></span>
+<span data-ttu-id="537c7-285">В следующем примере создается скрипт для всех операций миграции после миграции это InitialCreate.</span><span class="sxs-lookup"><span data-stu-id="537c7-285">The following example creates a script for all migrations after the InitialCreate migration.</span></span>
 
-### <a name="dotnet-ef-migrations-remove"></a><span data-ttu-id="cd1c9-196">удалить DotNet ef migrations</span><span class="sxs-lookup"><span data-stu-id="cd1c9-196">dotnet ef migrations remove</span></span>
-
-<span data-ttu-id="cd1c9-197">Удаление последней миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-197">Removes the last migration.</span></span>
-
-<span data-ttu-id="cd1c9-198">Параметры:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-198">Options:</span></span>
-
-|    |         |                                                                       |
-|:---|:--------|:----------------------------------------------------------------------|
-| <span data-ttu-id="cd1c9-199">-f</span><span class="sxs-lookup"><span data-stu-id="cd1c9-199">-f</span></span> | `--force` | <span data-ttu-id="cd1c9-200">Отменить миграцию, если она была применена к базе данных.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-200">Revert the migration if it has been applied to the database.</span></span> |
-
-### <a name="dotnet-ef-migrations-script"></a><span data-ttu-id="cd1c9-201">DotNet ef migrations сценария</span><span class="sxs-lookup"><span data-stu-id="cd1c9-201">dotnet ef migrations script</span></span>
-
-<span data-ttu-id="cd1c9-202">Формирует скрипт SQL из миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-202">Generates a SQL script from migrations.</span></span>
-
-<span data-ttu-id="cd1c9-203">Аргументы:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-203">Arguments:</span></span>
-
-|         |                                                               |
-|:--------|:--------------------------------------------------------------|
-| `<FROM>` | <span data-ttu-id="cd1c9-204">Начала миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-204">The starting migration.</span></span> <span data-ttu-id="cd1c9-205">По умолчанию равно 0 (исходной базы данных).</span><span class="sxs-lookup"><span data-stu-id="cd1c9-205">Defaults to 0 (the initial database).</span></span> |
-| `<TO>`   | <span data-ttu-id="cd1c9-206">Окончания миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-206">The ending migration.</span></span> <span data-ttu-id="cd1c9-207">По умолчанию к последней миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-207">Defaults to the last migration.</span></span>         |
-
-<span data-ttu-id="cd1c9-208">Параметры:</span><span class="sxs-lookup"><span data-stu-id="cd1c9-208">Options:</span></span>
-
-|    |                  |                                                                    |
-|:---|:-----------------|:-------------------------------------------------------------------|
-| <span data-ttu-id="cd1c9-209">-o</span><span class="sxs-lookup"><span data-stu-id="cd1c9-209">-o</span></span> | `--output <FILE>` | <span data-ttu-id="cd1c9-210">Файл для записи результата.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-210">The file to write the result to.</span></span>                                   |
-| <span data-ttu-id="cd1c9-211">-i</span><span class="sxs-lookup"><span data-stu-id="cd1c9-211">-i</span></span> | `--idempotent`     | <span data-ttu-id="cd1c9-212">Создайте скрипт, который может использоваться в любой базе данных с любой миграции.</span><span class="sxs-lookup"><span data-stu-id="cd1c9-212">Generate a script that can be used on a database at any migration.</span></span> |
-
-
-  [1]: powershell.md
-  [2]: https://www.microsoft.com/net/core
+```console
+dotnet ef migrations script 20180904195021_InitialCreate
+```
