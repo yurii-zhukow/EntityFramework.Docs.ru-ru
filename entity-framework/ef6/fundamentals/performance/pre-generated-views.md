@@ -3,19 +3,19 @@ title: Сопоставление заранее созданные предст
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 917ba9c8-6ddf-4631-ab8c-c4fb378c2fcd
-ms.openlocfilehash: da5d59ba5a899a0ee3a1eec3db0da1b4ece871d8
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: 1fda9fe9638adce9b24a6b81aa081effeb0def81
+ms.sourcegitcommit: c568d33214fc25c76e02c8529a29da7a356b37b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46284113"
+ms.lasthandoff: 09/30/2018
+ms.locfileid: "47459530"
 ---
 # <a name="pre-generated-mapping-views"></a>Сопоставление заранее созданные представления
 Прежде чем платформа Entity Framework можно выполнить запрос или сохранить изменения в источнике данных, ей необходимо создать набор сопоставления представлений для доступа к базе данных. Эти представления сопоставления представляют собой набор оператор Entity SQL, отображают состояние базы данных отвлеченно и являются частью метаданных, кэшируемых для каждого домена приложения. При создании нескольких экземпляров того же контекста, в том же домене приложения, они будут повторно использовать сопоставление представления из кэшированных метаданных, а не формируются заново. Сопоставление создание представлений составляет значительную долю общей стоимости выполнения первого запроса, Entity Framework позволяет заранее создавать представления сопоставления и включать их в скомпилированный проект. Дополнительные сведения см. в разделе [вопросы производительности (Entity Framework)](~/ef6/fundamentals/performance/perf-whitepaper.md).
 
-## <a name="generating-mapping-views-with-the-ef-power-tools"></a>Создание сопоставления представлений с помощью EF Power Tools
+## <a name="generating-mapping-views-with-the-ef-power-tools-community-edition"></a>Создание сопоставления представлений с помощью EF Power Tools Community Edition
 
-Чтобы заранее создать представления проще всего использовать [EF Power Tools](https://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d). Если у вас установлены инструменты Power имеется пункт меню, чтобы создать представления, как показано ниже.
+Чтобы заранее создать представления проще всего использовать [EF Power Tools Community Edition](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition). Если у вас установлены инструменты Power имеется пункт меню, чтобы создать представления, как показано ниже.
 
 -   Для **Code First** моделей, щелкните правой кнопкой мыши на файл кода, который содержит ваш класс DbContext.
 -   Для **конструктор EF** моделей, щелкните правой кнопкой мыши на файле EDMX.

@@ -3,12 +3,12 @@ title: Рекомендации по ускорению EF4 EF5 и EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d6d5a465-6434-45fa-855d-5eb48c61a2ea
-ms.openlocfilehash: a58461a6d18d9d53c002b5d45cecbff7b0cdf81e
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: fb184fe8720b552a2050607bb17648f0413c31d1
+ms.sourcegitcommit: c568d33214fc25c76e02c8529a29da7a356b37b4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490263"
+ms.lasthandoff: 09/30/2018
+ms.locfileid: "47459595"
 ---
 # <a name="performance-considerations-for-ef-4-5-and-6"></a>Рекомендации по ускорению EF 4, 5 и 6
 Дэвид Obando, Эрик Dettinger и другими
@@ -88,19 +88,17 @@ Entity Framework 6 является готовую выпуска аппарат
 
 ### <a name="23-using-pre-generated-views-to-decrease-model-load-time"></a>Время загрузки 2,3 Pre-Generated представлениями для уменьшения модели
 
-#### <a name="231-pre-generated-views-using-the-entity-framework-power-tools"></a>2.3.1 заранее сформированные представления, с помощью Entity Framework Power Tools
+Подробные сведения о том, как использовать заранее созданные представления Entity Framework 6 [Pre-Generated сопоставление представлений](~/ef6/fundamentals/performance/pre-generated-views.md)
 
-Также можно с помощью Entity Framework Power Tools для создания представлений моделей EDMX и Code First, щелкнув правой кнопкой мыши файл класса модели и выберите «Создание представления» с помощью меню Entity Framework. Работают только с производным DbContext контексты Entity Framework Power Tools и можно найти в \<http://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d>.
+#### <a name="231-pre-generated-views-using-the-entity-framework-power-tools-community-edition"></a>2.3.1 заранее сформированные представления, с помощью Entity Framework Power Tools Community Edition
 
-Дополнительные сведения о том, как использовать заранее созданные представления Entity Framework 6 [Pre-Generated сопоставления представлений](~/ef6/fundamentals/performance/pre-generated-views.md).
+Можно использовать [Entity Framework 6 Power Tools Community Edition](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition) для создания представлений моделей EDMX и Code First, щелкнув правой кнопкой мыши файл класса модели и выберите «Создание представления» с помощью меню Entity Framework. Entity Framework Power Tools Community Edition работают только с производным DbContext контекстов.
 
 #### <a name="232-how-to-use-pre-generated-views-with-a-model-created-by-edmgen"></a>2.3.2 как использовать заранее созданные представления с помощью модели, созданные EDMGen
 
 EDMGen — это служебная программа, которая поставляется с .NET и работает с Entity Framework 4 и 5, но не с Entity Framework 6. EDMGen позволяет создавать файл модели, на уровне объектов и представления из командной строки. Один из выходов появится файл представления на языке программирования, Visual Basic или C\#. Это файл кода, содержащий фрагменты Entity SQL для каждого набора сущностей. Чтобы включить заранее созданные представления, просто включите файл в проекте.
 
 Если вы вручную редактировать файлы схемы для модели, необходимо будет повторно создать файл представления. Это можно сделать, выполнив EDMGen с **/mode:ViewGeneration** флаг.
-
-Подробнее см. в разделе [как: Pre-Generate представлений для повышения производительности запросов](https://msdn.microsoft.com/library/bb896240.aspx).
 
 #### <a name="233-how-to-use-pre-generated-views-with-an-edmx-file"></a>2.3.3 способы использования представления Pre-Generated с EDMX-файла
 
@@ -113,13 +111,9 @@ EDMGen также можно использовать для создания п
 
 Если вы используете Entity Framework 6 представления можно получить шаблоны создания T4 из коллекции Visual Studio в \<http://visualstudiogallery.msdn.microsoft.com/18a7db90-6705-4d19-9dd1-0a6c23d0751f>.
 
-#### <a name="234-how-to-use-pre-generated-views-with-a-code-first-model"></a>2.3.4 способы использования Pre-Generated представлений с моделью Code First
-
-Можно также использовать заранее созданные представления в проекте Code First. Entity Framework Power Tools есть возможность создать файл представления для кода первого проекта. Entity Framework Power Tools можно найти в коллекции Visual Studio по адресу \<http://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d/>.
-
 ### <a name="24-reducing-the-cost-of-view-generation"></a>2.4, снижая затраты средств создания представления
 
-Используя заранее созданные представления перемещает затраты на создание представлений из загрузки модели (времени выполнения) на время компиляции. Хотя это улучшает производительность при запуске во время выполнения, будут по-прежнему возникают усилий, затрачиваемых на создание представлений при разработке. Существует несколько дополнительных приемов, которые могут помочь снизить затраты на создание представлений, как во время компиляции и выполнения.
+Используя заранее созданные представления перемещает затраты на создание представлений из модели загрузки (времени выполнения) время разработки. Хотя это улучшает производительность при запуске во время выполнения, будут по-прежнему возникают усилий, затрачиваемых на создание представлений при разработке. Существует несколько дополнительных приемов, которые могут помочь снизить затраты на создание представлений, как во время компиляции и выполнения.
 
 #### <a name="241-using-foreign-key-associations-to-reduce-view-generation-cost"></a>2.4.1 с помощью внешнего ключа ассоциации, чтобы сократить затраты на создание представления
 
