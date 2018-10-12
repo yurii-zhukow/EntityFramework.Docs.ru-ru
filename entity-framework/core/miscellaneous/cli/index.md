@@ -1,45 +1,27 @@
 ---
-title: Справочник по командной строке — EF Core
+title: Справочник по инструментам Entity Framework Core — EF Core
 author: bricelam
 ms.author: bricelam
-ms.date: 11/06/2017
-ms.openlocfilehash: d43b01fc61bb1c9b678e12e41c27d7efe9a59fa5
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.date: 09/19/2018
+uid: core/miscellaneous/cli/index
+ms.openlocfilehash: 9fcb452c2798a3d07e39cbcc3c34629dca4394ff
+ms.sourcegitcommit: ad1bdea58ed35d0f19791044efe9f72f94189c18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490367"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47447122"
 ---
-<a name="entity-framework-core-tools"></a><span data-ttu-id="60673-102">Инструменты Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="60673-102">Entity Framework Core Tools</span></span>
-===========================
-<span data-ttu-id="60673-103">Инструменты Entity Framework Core помогают разрабатывать приложения EF Core.</span><span class="sxs-lookup"><span data-stu-id="60673-103">The Entity Framework Core Tools help you during the development of EF Core apps.</span></span> <span data-ttu-id="60673-104">Они используются в основном для формирования DbContext и типов сущностей посредством реконструирования схемы базы данных, а также для управления миграциями.</span><span class="sxs-lookup"><span data-stu-id="60673-104">They're primarily used to scaffold a DbContext and entity types by reverse engineering the schema of a database, and to manage Migrations.</span></span>
+# <a name="entity-framework-core-tools-reference"></a><span data-ttu-id="3b923-102">Справочник по инструментам Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="3b923-102">Entity Framework Core tools reference</span></span>
 
-<span data-ttu-id="60673-105">[Инструменты консоли диспетчера пакетов (PMC) EF Core][1] предоставляют самые широчайшие возможности внутри Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="60673-105">The [EF Core Package Manager Console (PMC) Tools][1] provide a superior experience inside Visual Studio.</span></span> <span data-ttu-id="60673-106">Чтобы запустить их, используйте [консоль диспетчера пакетов][2] NuGet.</span><span class="sxs-lookup"><span data-stu-id="60673-106">Run them using NuGet's [Package Manager Console][2].</span></span> <span data-ttu-id="60673-107">Эти инструменты совместимы с проектами .NET Framework и .NET Core.</span><span class="sxs-lookup"><span data-stu-id="60673-107">These tools work with both .NET Framework and .NET Core projects.</span></span>
+<span data-ttu-id="3b923-103">Инструменты Entity Framework Core используются для задач разработки.</span><span class="sxs-lookup"><span data-stu-id="3b923-103">The Entity Framework Core tools help with design-time development tasks.</span></span> <span data-ttu-id="3b923-104">Эти инструменты используются в основном для управления миграциями и формирования `DbContext` и типов сущностей путем реконструирования схемы базы данных.</span><span class="sxs-lookup"><span data-stu-id="3b923-104">They're primarily used to manage Migrations and to scaffold a `DbContext` and entity types by reverse engineering the schema of a database.</span></span>
 
-<span data-ttu-id="60673-108">[Инструменты командной строки EF Core .NET][3] представляют собой расширение для [инструментов интерфейса командной строки (CLI) .NET Core][4], которые являются кроссплатформенными и могут выполняться за пределами Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="60673-108">The [EF Core .NET Command-line Tools][3] are an extension to the [.NET Core command-line interface (CLI) tools][4] that are cross-platform and can run outside of Visual Studio.</span></span> <span data-ttu-id="60673-109">Этим инструментам нужен проект пакета SDK .NET Core (с `Sdk="Microsoft.NET.Sdk"` или аналогичным объектом в файле проекта).</span><span class="sxs-lookup"><span data-stu-id="60673-109">These tools require a .NET Core SDK project (one with `Sdk="Microsoft.NET.Sdk"` or similar in the project file).</span></span>
+* <span data-ttu-id="3b923-105">[Инструменты консоли диспетчера пакетов EF Core](powershell.md) запускаются в [консоли диспетчера пакетов](https://docs.microsoft.com/nuget/tools/package-manager-console) в Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="3b923-105">The [EF Core Package Manager Console tools](powershell.md)) run in the [Package Manager Console](https://docs.microsoft.com/nuget/tools/package-manager-console) in Visual Studio.</span></span> <span data-ttu-id="3b923-106">Эти инструменты совместимы с проектами .NET Framework и .NET Core.</span><span class="sxs-lookup"><span data-stu-id="3b923-106">These tools work with both .NET Framework and .NET Core projects.</span></span>
 
-<span data-ttu-id="60673-110">Оба варианта инструментов предоставляют одинаковую функциональность.</span><span class="sxs-lookup"><span data-stu-id="60673-110">Both tools expose the same functionality.</span></span> <span data-ttu-id="60673-111">При разработке в Visual Studio мы рекомендуем использовать инструменты PMC, так как они лучше интегрированы.</span><span class="sxs-lookup"><span data-stu-id="60673-111">If you're developing in Visual Studio, we recommend using the PMC Tools since they provide a more integrated experience.</span></span>
+* <span data-ttu-id="3b923-107">[Инструменты интерфейса командной строки EF Core .NET](dotnet.md) представляют собой расширение для кроссплатформенных [инструментов .NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/).</span><span class="sxs-lookup"><span data-stu-id="3b923-107">The [EF Core .NET command-line interface (CLI) tools](dotnet.md) are an extension to the cross-platform [.NET Core CLI tools](https://docs.microsoft.com/dotnet/core/tools/).</span></span> <span data-ttu-id="3b923-108">Этим инструментам нужен проект пакета SDK .NET Core (с `Sdk="Microsoft.NET.Sdk"` или аналогичным объектом в файле проекта).</span><span class="sxs-lookup"><span data-stu-id="3b923-108">These tools require a .NET Core SDK project (one with `Sdk="Microsoft.NET.Sdk"` or similar in the project file).</span></span>
 
-<a name="frameworks"></a><span data-ttu-id="60673-112">Инфраструктуры</span><span class="sxs-lookup"><span data-stu-id="60673-112">Frameworks</span></span>
-----------
-<span data-ttu-id="60673-113">Эти инструменты поддерживают проекты, предназначенные для .NET Framework или .NET Core.</span><span class="sxs-lookup"><span data-stu-id="60673-113">The tools support projects targeting .NET Framework or .NET Core.</span></span>
+<span data-ttu-id="3b923-109">Оба варианта инструментов предоставляют одинаковую функциональность.</span><span class="sxs-lookup"><span data-stu-id="3b923-109">Both tools expose the same functionality.</span></span> <span data-ttu-id="3b923-110">При разработке в Visual Studio мы рекомендуем использовать инструменты **консоли диспетчера пакетов**, так как они лучше интегрированы.</span><span class="sxs-lookup"><span data-stu-id="3b923-110">If you're developing in Visual Studio, we recommend using the **Package Manager Console** tools since they provide a more integrated experience.</span></span>
 
-<span data-ttu-id="60673-114">Если вам нужно использовать библиотеку классов, то по возможности используйте библиотеки классов .NET Core или .NET Framework.</span><span class="sxs-lookup"><span data-stu-id="60673-114">If you want to use a class library, then consider using a .NET Core or .NET Framework class library if possible.</span></span> <span data-ttu-id="60673-115">В этом случае количество проблем с инструментарием .NET. будет сведено к минимуму.</span><span class="sxs-lookup"><span data-stu-id="60673-115">This will result in the least issues with .NET tooling.</span></span> <span data-ttu-id="60673-116">Если же вы хотите использовать библиотеку классов .NET Standard, то необходимо будет использовать запускаемый проект с указанием конкретной целевой платформы (.NET Framework или .NET Core), в который можно будет загрузить вашу библиотеку классов.</span><span class="sxs-lookup"><span data-stu-id="60673-116">If instead you wish to use a .NET Standard class library, then you will need to use a startup project that targets .NET Framework or .NET Core so that the tooling has a conrete target platform into which it can load your class library.</span></span> <span data-ttu-id="60673-117">Этот запускаемый проект может быть пустым проектом, не содержащим реального кода, а используемым лишь как целевое назначение для инструментария.</span><span class="sxs-lookup"><span data-stu-id="60673-117">This startup project can be a dummy project with no real code--it is only needed to provide a target for the tooling.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="3b923-111">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="3b923-111">Next steps</span></span>
 
-<span data-ttu-id="60673-118">Если проект предназначен для другой платформы (например, для универсальной платформы Windows или Xamarin), необходимо будет создать отдельную библиотеку классов .NET Standard.</span><span class="sxs-lookup"><span data-stu-id="60673-118">If your project targets another framework (for example, Universal Windows or Xamarin), then you will need to create a separate .NET Standard class library.</span></span> <span data-ttu-id="60673-119">В этом случае следуйте указаниям выше, чтобы создать запускаемый проект для использования с инструментарием.</span><span class="sxs-lookup"><span data-stu-id="60673-119">In this case, follow the guidance above to also create a startup project that can be used by the tooling.</span></span>
-
-<a name="startup-and-target-projects"></a><span data-ttu-id="60673-120">Запускаемый и целевой проекты</span><span class="sxs-lookup"><span data-stu-id="60673-120">Startup and Target Projects</span></span>
----------------------------
-<span data-ttu-id="60673-121">С каждым вызовом команды связаны два проекта: целевой и запускаемый.</span><span class="sxs-lookup"><span data-stu-id="60673-121">Whenever you invoke a command, there are two projects involved: the target project and the startup project.</span></span>
-
-<span data-ttu-id="60673-122">Целевой проект служит для добавления всех файлов (в некоторых случаях они удаляются из него).</span><span class="sxs-lookup"><span data-stu-id="60673-122">The target project is where any files are added (or in some cases removed).</span></span>
-
-<span data-ttu-id="60673-123">Запускаемый проект эмулируется инструментами при выполнении кода проекта.</span><span class="sxs-lookup"><span data-stu-id="60673-123">The startup project is the one emulated by the tools when executing your project's code.</span></span>
-
-<span data-ttu-id="60673-124">Целевой и запускаемый проекты могут совпадать.</span><span class="sxs-lookup"><span data-stu-id="60673-124">Both the target project and the startup project can be the same.</span></span>
-
-
-  [1]: powershell.md
-  [2]: https://docs.microsoft.com/nuget/tools/package-manager-console
-  [3]: dotnet.md
-  [4]: https://docs.microsoft.com/dotnet/core/tools/
+* [<span data-ttu-id="3b923-112">Справочник по инструментам консоли диспетчера пакетов EF Core</span><span class="sxs-lookup"><span data-stu-id="3b923-112">EF Core Package Manager Console tools reference</span></span>](powershell.md)
+* [<span data-ttu-id="3b923-113">Справочник по инструментам EF Core — .NET CLI</span><span class="sxs-lookup"><span data-stu-id="3b923-113">EF Core .NET CLI tools reference</span></span>](dotnet.md)
