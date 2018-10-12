@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 08/02/2018
 ms.assetid: 2bc68bea-ff77-4860-bf0b-cf00db6712a0
 uid: core/get-started/aspnetcore/existing-db
-ms.openlocfilehash: 79a73e38fdc9c4268c21de66571d6272f33e9457
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 84e2e4bc1bdc774fa059fa893e0f8ac128931feb
+ms.sourcegitcommit: ad1bdea58ed35d0f19791044efe9f72f94189c18
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997040"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47447187"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>Начало работы с EF Core в ASP.NET Core с существующей базой данных
 
@@ -171,6 +171,12 @@ public partial class BloggingContext : DbContext
 * Щелкните **Создать**.
 * Введите **URL-адрес** для нового блога и щелкните **Создать**.
 
-![изображение](_static/create.png)
+  ![Страница "Создать"](_static/create.png)
 
-![изображение](_static/index-existing-db.png)
+  ![Главная страница](_static/index-existing-db.png)
+
+## <a name="next-steps"></a>Следующие шаги
+
+Дополнительные сведения о формировании классов контекста и сущности см. в следующих статьях:
+* [Entity Framework Core tools reference - .NET CLI](xref:core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold) (Справочник по основным инструментам Entity Framework Core — .NET CLI)
+* [Entity Framework Core tools reference - Package Manager Console](xref:core/miscellaneous/cli/powershell#scaffold-dbcontext) (Справочник по основным инструментам Entity Framework Core — консоль диспетчера пакетов)

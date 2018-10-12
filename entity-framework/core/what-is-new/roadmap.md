@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 834C9729-7F6E-4355-917D-DE3EE9FE149E
 uid: core/what-is-new/roadmap
-ms.openlocfilehash: fd9086c9911cdb0890117d44c2787780aad9a7cb
-ms.sourcegitcommit: a81aed575372637997b18a0f9466d8fefb33350a
+ms.openlocfilehash: 36d5fa8009de0aadba3b636630e1d5bddf41723c
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43821365"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490835"
 ---
 # <a name="entity-framework-core-roadmap"></a>Стратегия развития Entity Framework Core
 
@@ -28,7 +28,7 @@ ms.locfileid: "43821365"
 
 ### <a name="ef-core-30"></a>EF Core 3.0
 
-Хотя [процесс планирования выпуска](#release-planning-process), следующего после 2.2, не закончен, сейчас мы планируем опубликовать основной выпуск вместе с .NET Core 3.0 и ASP.NET 3.0. 
+Хотя [процесс планирования выпуска](#release-planning-process), следующего после 2.2, не закончен, сейчас мы планируем опубликовать основной выпуск вместе с .NET Core 3.0 и ASP.NET 3.0. 
 
 Рабочие элементы, предварительно назначенные для будущего выпуска, можно просмотреть в [этом запросе в средстве отслеживания проблем](https://github.com/aspnet/EntityFrameworkCore/issues?q=is%3Aopen+is%3Aissue+milestone%3A3.0.0+sort%3Areactions-%2B1-desc).
 

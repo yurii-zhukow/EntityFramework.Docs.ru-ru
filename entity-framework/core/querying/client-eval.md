@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 8b6697cc-7067-4dc2-8007-85d80503d123
 uid: core/querying/client-eval
-ms.openlocfilehash: 78f8d9576748a725634665f915def80b5a13820c
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 47e22be274d02b5221c638d07151d9607aa7e24f
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997881"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250807"
 ---
 # <a name="client-vs-server-evaluation"></a>Выполнение в клиенте и на сервере
 
@@ -49,7 +49,7 @@ public static string StandardizeUrl(string url)
 }
 ```
 
-## <a name="disabling-client-evaluation"></a>Отключение выполнения в клиенте
+## <a name="client-evaluation-performance-issues"></a>Проблемы с производительностью при вычислении в клиенте
 
 Хотя выполнение в клиенте может быть очень полезным, в некоторых случаях это может привести к снижению производительности. Рассмотрим следующий запрос, где вспомогательный метод теперь используется в фильтре. Так как этот запрос невозможно выполнить в базе данных, все данные извлекаются в память, а затем фильтр применяется в клиенте. В зависимости от объема данных и степени их фильтрования это может привести к низкой производительности.
 
@@ -60,7 +60,13 @@ var blogs = context.Blogs
     .ToList();
 ```
 
-По умолчанию EF Core будет регистрировать предупреждение при выполнении запроса в клиенте. Дополнительные сведения о просмотре выходных данных журнала см. в [этой статье](../miscellaneous/logging.md). Вы можете изменить поведение при выполнении запроса в клиенте: либо создавать предупреждение, либо ничего не делать. Это можно указать при настройке параметров для вашего контекста — обычно в `DbContext.OnConfiguring` или в `Startup.cs`, если вы используете ASP.NET Core.
+## <a name="client-evaluation-logging"></a>Журналирование вычислений в клиенте
+
+По умолчанию EF Core будет регистрировать предупреждение при выполнении запроса в клиенте. Дополнительные сведения о просмотре выходных данных журнала см. в [этой статье](../miscellaneous/logging.md). 
+
+## <a name="optional-behavior-throw-an-exception-for-client-evaluation"></a>Необязательное поведение: создание исключения при вычислении в клиенте
+
+Вы можете изменить поведение при выполнении запроса в клиенте: либо создавать предупреждение, либо ничего не делать. Это можно указать при настройке параметров для вашего контекста — обычно в `DbContext.OnConfiguring` или в `Startup.cs`, если вы используете ASP.NET Core.
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/ClientEval/ThrowOnClientEval/BloggingContext.cs?highlight=5)] -->
 ``` csharp
