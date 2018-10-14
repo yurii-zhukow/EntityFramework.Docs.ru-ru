@@ -3,12 +3,12 @@ title: Связи, свойства навигации и внешние клю�
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 8a21ae73-6d9b-4b50-838a-ec1fddffcf37
-ms.openlocfilehash: a98c1bf798a8a6d2c748408d7363d5f884e7e6e9
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 46c2d11b5704ec7ae82a423ae042b87f5efe436f
+ms.sourcegitcommit: 8b42045cd21f80f425a92f5e4e9dd4972a31720b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490549"
+ms.lasthandoff: 10/14/2018
+ms.locfileid: "49315663"
 ---
 # <a name="relationships-navigation-properties-and-foreign-keys"></a>Связи, свойства навигации и внешние ключи
 Этот раздел содержит общие сведения о том, как платформа Entity Framework управляет связи между сущностями. Она также предоставляет некоторые рекомендации о том, как сопоставить и управлять связями.
@@ -153,7 +153,7 @@ public class Department
 > В сопоставлении на основе внешнего ключа при загрузке связанного конечного элемента зависимого объекта связанный объект загружается на основе значения внешнего ключа зависимого объекта, находящегося на момент загрузки в памяти:
 
 ``` csharp
-    // Get the course where currently DepartmentID = 1.
+    // Get the course where currently DepartmentID = 2.
     Course course2 = context.Courses.First(c=>c.DepartmentID == 2);
 
     // Use DepartmentID foreign key property
