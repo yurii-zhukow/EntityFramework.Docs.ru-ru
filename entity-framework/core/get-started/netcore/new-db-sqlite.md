@@ -6,12 +6,12 @@ description: Начало работы с .NET Core и Entity Framework Core
 ms.date: 08/03/2018
 ms.assetid: 099d179e-dd7b-4755-8f3c-fcde914bf50b
 uid: core/get-started/netcore/new-db-sqlite
-ms.openlocfilehash: 51f5752eebce5603c663072f7b36dfecd4ddf227
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: ec20040917a2bca8177924b6905b1cd79e5cd9da
+ms.sourcegitcommit: 7a7da65404c9338e1e3df42576a13be536a6f95f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993696"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48834739"
 ---
 # <a name="getting-started-with-ef-core-on-net-core-console-app-with-a-new-database"></a>Начало работы с EF Core в консольном приложении .NET Core с новой базой данных
 
@@ -29,9 +29,16 @@ ms.locfileid: "42993696"
 
   ``` Console
   dotnet new console -o ConsoleApp.SQLite
+  ```
+## <a name="change-the-current-directory"></a>Изменение текущего каталога
+
+В последующих шагах нам нужно выдавать команды `dotnet` для приложения.
+
+* Мы изменяем текущий каталог на каталог приложения следующим образом:
+
+  ``` Console
   cd ConsoleApp.SQLite/
   ```
-
 ## <a name="install-entity-framework-core"></a>Установка Entity Framework Core
 
 Чтобы использовать EF Core, установите пакеты для поставщиков базы данных, с которыми вы будете работать. В этом пошаговом руководстве используется SQLite. Список доступных поставщиков вы найдете в разделе [Database Providers](../../providers/index.md) (Поставщики базы данных).
@@ -57,7 +64,7 @@ ms.locfileid: "42993696"
 
 ## <a name="create-the-database"></a>Создание базы данных
 
-Когда модель будет готова, создайте базу данных с помощью [миграций](https://docs.microsoft.com/aspnet/core/data/ef-mvc/migrations#introduction-to-migrations).
+Когда модель будет готова, создайте базу данных с помощью [миграций](xref:core/managing-schemas/migrations/index).
 
 * Запустите `dotnet ef migrations add InitialCreate`, чтобы сформировать шаблон миграции и создать начальный набор таблиц для модели.
 * Запустите `dotnet ef database update`, чтобы применить созданную миграцию к базе данных. Эта команда создает базу данных и применяет к ней миграции.
@@ -70,7 +77,7 @@ ms.locfileid: "42993696"
 
   [!code-csharp[Main](../../../../samples/core/GetStarted/NetCore/ConsoleApp.SQLite/Program.cs)]
 
-* Проверьте работу приложения:
+* Тестирование приложения из консоли. См. раздел [Примечание Visual Studio](#vs) для запуска приложения из Visual Studio.
 
   `dotnet run`
 
@@ -86,12 +93,24 @@ ms.locfileid: "42993696"
 
 ### <a name="changing-the-model"></a>Изменение модели
 
-- Если вы внесете в модель изменения, с помощью команды `dotnet ef migrations add` вы можете сформировать новую [миграцию](https://docs.microsoft.com/aspnet/core/data/ef-mvc/migrations#introduction-to-migrations). Проверьте сформированный код (и внесите необходимые правки), а затем используйте команду `dotnet ef database update`, чтобы применить изменения схемы к базе данных.
+- Если вы внесете в модель изменения, с помощью команды `dotnet ef migrations add` вы можете сформировать новую [миграцию](xref:core/managing-schemas/migrations/index). Проверьте сформированный код (и внесите необходимые правки), а затем используйте команду `dotnet ef database update`, чтобы применить изменения схемы к базе данных.
 - EF Core использует таблицу `__EFMigrationsHistory` в базе данных для отслеживания уже выполнявшихся в ней миграций.
 - Ядро СУБД SQLite не поддерживает некоторые изменения схем, поддерживаемые большинством других реляционных баз данных. Например, не поддерживается операция `DropColumn`. При миграциях EF Core будет создан код для этих операций. Но если вы попробуете применить их к базе данных или сгенерировать скрипт, EF Core будет выдавать исключения. Подробнее о них можно узнать [в этой статье](../../providers/sqlite/limitations.md). Если вы разрабатываете новое приложение, при изменении модели лучше не использовать миграции, а просто отказаться от старой базы данных и создать новую.
 
+<a name="vs"></a>
+### <a name="run-from-visual-studio"></a>Запуск из Visual Studio
+
+Чтобы запустить этот пример из Visual Studio, необходимо вручную задать рабочий каталог, который должен быть корнем проекта. Если рабочий каталог не задан, возникает следующее исключение `Microsoft.Data.Sqlite.SqliteException`: `SQLite Error 1: 'no such table: Blogs'`.
+
+Чтобы задать рабочий каталог, выполните следующие действия.
+
+* В **обозревателе решений** щелкните проект правой кнопкой мыши и выберите пункт **Свойства**.
+* Выберите вкладку **Отладка** в левой панели.
+* Задайте каталог проекта в качестве **рабочего каталога**.
+* Сохраните изменения.
+
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Введение в ASP.NET Core MVC для Mac и Linux](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app-xplat/index)
-* [Введение в ASP.NET Core MVC для Visual Studio](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/index)
-* [Начало работы с ASP.NET Core и Entity Framework Core с использованием Visual Studio](https://docs.microsoft.com/aspnet/core/data/ef-mvc/index)
+* [Руководство. Начало работы с EF Core в ASP.NET Core с новой базой данных с использованием SQLite](xref:core/get-started/aspnetcore/new-db)
+* [Руководство. Начало работы с Razor Pages в ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)
+* [Руководство. Razor Pages с Entity Framework Core в ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)
