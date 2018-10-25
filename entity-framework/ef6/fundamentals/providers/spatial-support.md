@@ -3,12 +3,12 @@ title: Поддержка пространственных типов - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 1097cb00-15f5-453d-90ed-bff9403d23e3
-ms.openlocfilehash: ffd22222f59a541d8135d3738d37a7e8f5dc5d7c
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 9c00e82c663daec219fe649a8d889afcc81564f7
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489756"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022279"
 ---
 # <a name="provider-support-for-spatial-types"></a>Поддержка пространственных типов
 Платформа Entity Framework поддерживает работу с пространственными данными через классы DbGeography или DbGeometry. Эти классы используют функциональные возможности конкретной базы данных, предлагаемых поставщиком Entity Framework. Не все поставщики поддерживают Пространственные данные и которые, возможно, дополнительные необходимые компоненты, например, установка сборок пространственный тип. Дополнительные сведения о поддержке поставщика для пространственных типов приведены ниже.  
@@ -56,4 +56,4 @@ ms.locfileid: "45489756"
 
 При установке Visual Studio также часто установит версию SQL Server, и это будет включать копию файла Microsoft.SqlServer.Types.dll.  
 
-Если SQL Server не установлен на компьютере, где вы хотите использовать Пространственные типы или Пространственные типы были исключены из установки SQL Server, вам потребуется установить их вручную. Типы могут быть установлены с помощью `SQLSysClrTypes.msi`, который является частью пакета дополнительных компонентов Microsoft SQL Server. Пространственные типы — SQL Server от версии, поэтому рекомендуется [поиск «SQL Server Feature Pack»](https://www.microsoft.com/en-us/search/result.aspx?q=sql+server+feature+pack) в центре загрузки Майкрософт, затем выберите и загрузите соответствующий до версии SQL Server, будет использоваться.
+Если SQL Server не установлен на компьютере, где вы хотите использовать Пространственные типы или Пространственные типы были исключены из установки SQL Server, вам потребуется установить их вручную. Типы могут быть установлены с помощью `SQLSysClrTypes.msi`, который является частью пакета дополнительных компонентов Microsoft SQL Server. Пространственные типы — SQL Server от версии, поэтому рекомендуется [поиск «SQL Server Feature Pack»](https://www.microsoft.com/search/result.aspx?q=sql+server+feature+pack) в центре загрузки Майкрософт, затем выберите и загрузите соответствующий до версии SQL Server, будет использоваться.

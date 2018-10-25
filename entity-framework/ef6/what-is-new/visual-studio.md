@@ -3,12 +3,12 @@ title: Выпуски Visual Studio - EF6
 author: divega
 ms.date: 07/05/2018
 ms.assetid: 028FF890-4EDB-4F03-AE53-72F9C33EC92F
-ms.openlocfilehash: d104236ac5c8877da421ba10de9827f17937a9ec
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 16bcdc6d0e7c5632d4f4c06ba285a7a666f24204
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489925"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022255"
 ---
 # <a name="visual-studio-releases"></a>Выпуски Visual Studio
 
@@ -41,7 +41,7 @@ ms.locfileid: "45489925"
 
 ## <a name="visual-studio-2013"></a>Visual Studio 2013
 - Эта версия Visual Studio включает и более старую версию средства платформы Entity Framework и среды выполнения.
-Рекомендуется обновить средства платформы Entity Framework 6.1.3, с помощью [установщик](https://www.microsoft.com/en-us/download/details.aspx?id=40762) доступны в центре загрузки Майкрософт.
+Рекомендуется обновить средства платформы Entity Framework 6.1.3, с помощью [установщик](https://www.microsoft.com/download/details.aspx?id=40762) доступны в центре загрузки Майкрософт.
 См. в разделе [последние выпуски](~/ef6/what-is-new/past-releases.md#ef-613) Дополнительные сведения об этих выпусках.
 - Добавление новых проектов с помощью обновленных средств EF Entity Framework автоматически добавит EF 6.1.3 пакет NuGet.
 Можно вручную установить или обновить до любой пакет EF NuGet, доступный через Интернет.
@@ -52,7 +52,7 @@ ms.locfileid: "45489925"
 ## <a name="visual-studio-2012"></a>Visual Studio 2012
 
 - Эта версия Visual Studio включает и более старую версию средства платформы Entity Framework и среды выполнения.
-Рекомендуется обновить средства платформы Entity Framework 6.1.3, с помощью [установщик](https://www.microsoft.com/en-us/download/details.aspx?id=40762) доступны в центре загрузки Майкрософт.
+Рекомендуется обновить средства платформы Entity Framework 6.1.3, с помощью [установщик](https://www.microsoft.com/download/details.aspx?id=40762) доступны в центре загрузки Майкрософт.
 См. в разделе [последние выпуски](~/ef6/what-is-new/past-releases.md#ef-613) Дополнительные сведения об этих выпусках.
 - Добавление новых проектов с помощью обновленных средств EF Entity Framework автоматически добавит EF 6.1.3 пакет NuGet.
 Можно вручную установить или обновить до любой пакет EF NuGet, доступный через Интернет.
