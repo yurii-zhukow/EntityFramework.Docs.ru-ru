@@ -5,12 +5,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: a6b9cd22-6803-4c6c-a4d4-21147c0a81cb
 uid: efcore-and-ef6/index
-ms.openlocfilehash: 8568f0a3c6c4585c4fe05508fd610614107c8f66
-ms.sourcegitcommit: 8b42045cd21f80f425a92f5e4e9dd4972a31720b
+ms.openlocfilehash: 0f9f0d4708fa283855eddf2cfc231b37356e413e
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2018
-ms.locfileid: "49315650"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022354"
 ---
 # <a name="compare-ef-core--ef6"></a>Сравнение EF Core и EF6
 
@@ -73,7 +73,7 @@ EF Core предлагает новые функции, которые не бу
 
 ### <a name="querying-data"></a>Запросы к данным
 
-| **Возможность                                             | **EF6**  | **EF Core**                           |
+| **Возможность**                                           | **EF6**  | **EF Core**                           |
 |:------------------------------------------------------|:---------|:--------------------------------------|
 | Запросы LINQ                                          | Да      | 1.0 (ожидается для сложных запросов) |
 | Создание удобного для чтения кода SQL                                | Плохо     | 1.0                                   |
@@ -147,7 +147,7 @@ EF Core предлагает новые функции, которые не бу
 ## <a name="guidance-for-new-applications"></a>Рекомендации для новых приложений
 
 Используйте EF Core в новом приложении, если выполнены оба условия:
-* Приложению нужны возможности .NET Core. Дополнительные сведения см. в статье [Выбор между .NET Core и .NET Framework для серверных приложений](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server).
+* Приложению нужны возможности .NET Core. Дополнительные сведения см. в статье [Выбор между .NET Core и .NET Framework для серверных приложений](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
 * EF Core поддерживает все функции, которые требуются приложению. Если нужная функция отсутствует, ознакомьтесь со [стратегией развития EF Core](xref:core/what-is-new/roadmap), чтобы узнать, будет ли эта функция поддерживаться в будущем. 
 
 Используйте EF6, если выполнены оба условия:

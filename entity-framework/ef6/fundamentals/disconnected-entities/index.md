@@ -3,21 +3,21 @@ title: Работа с отключенными сущностями — EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 12138003-a373-4817-b1b7-724130202f5f
-ms.openlocfilehash: beb3847ce507a2112ac0d396a2023c7c4e2fca7d
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 11ca2a9a4161e02d32d98bf03dd4cf28545334b7
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489938"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022175"
 ---
 # <a name="working-with-disconnected-entities"></a>Работа с отключенными сущностями
 В приложении на основе Entity Framework класс контекста несет ответственность за обнаружение изменений, применяемых к отслеживаемым сущностям. Вызов метода SaveChanges сохраняет изменения, отслеживаемые по контексту, в базу данных. При работе с n-уровневыми приложениями объекты сущностей, как правило, изменяются при отключении от контекста, и необходимо решить, как отслеживать изменения и передавать эти изменения обратно в контекст. В этом разделе рассматриваются различные параметры, доступные при использовании Entity Framework с отключенными сущностями.   
 
 ## <a name="web-service-frameworks"></a>Платформы веб-службы
 
-Как правило, технологии веб-служб поддерживают шаблоны, которые могут использоваться для сохранения изменений в отдельных отключенных объектах. Например, веб-API ASP.NET позволяет написать код для действий контроллера, которые могут включать вызовы к EF для сохранения изменений, внесенных в объект в базе данных. По сути, средства веб-API в Visual Studio упрощают автоматическую генерацию контроллера веб-API из модели Entity Framework 6. Дополнительные сведения см. в разделе [Использование веб-API с Entity Framework 6](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/).   
+Как правило, технологии веб-служб поддерживают шаблоны, которые могут использоваться для сохранения изменений в отдельных отключенных объектах. Например, веб-API ASP.NET позволяет написать код для действий контроллера, которые могут включать вызовы к EF для сохранения изменений, внесенных в объект в базе данных. По сути, средства веб-API в Visual Studio упрощают автоматическую генерацию контроллера веб-API из модели Entity Framework 6. Дополнительные сведения см. в разделе [Использование веб-API с Entity Framework 6](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/).   
 
-Существовали и другие технологии веб-служб, которые обеспечивали интеграцию с Entity Framework, например [WCF Data Services](https://docs.microsoft.com/dotnet/framework/data/wcf/create-a-data-service-using-an-adonet-ef-data-wcf) и [RIA Services](https://docs.microsoft.com/en-us/previous-versions/dotnet/wcf-ria/ee707344(v=vs.91)).
+Существовали и другие технологии веб-служб, которые обеспечивали интеграцию с Entity Framework, например [WCF Data Services](https://docs.microsoft.com/dotnet/framework/data/wcf/create-a-data-service-using-an-adonet-ef-data-wcf) и [RIA Services](https://docs.microsoft.com/previous-versions/dotnet/wcf-ria/ee707344(v=vs.91)).
 
 ## <a name="low-level-ef-apis"></a>Низкоуровневые интерфейсы API EF
 
