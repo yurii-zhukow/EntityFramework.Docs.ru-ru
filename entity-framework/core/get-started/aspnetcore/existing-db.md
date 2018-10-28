@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 08/02/2018
 ms.assetid: 2bc68bea-ff77-4860-bf0b-cf00db6712a0
 uid: core/get-started/aspnetcore/existing-db
-ms.openlocfilehash: 84e2e4bc1bdc774fa059fa893e0f8ac128931feb
-ms.sourcegitcommit: ad1bdea58ed35d0f19791044efe9f72f94189c18
+ms.openlocfilehash: bba2742c3f3b6da93dd4b4f170a3878fc0473bc8
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47447187"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022201"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>Начало работы с EF Core в ASP.NET Core с существующей базой данных
 
@@ -59,7 +59,7 @@ ms.locfileid: "47447187"
 
 Чтобы установить EF Core, установите пакеты целевых поставщиков базы данных EF Core, с которыми вы будете работать. Список доступных поставщиков вы найдете в разделе [Database Providers](../../providers/index.md) (Поставщики базы данных). 
 
-В этом руководстве используется SQL Server, поэтому устанавливать пакет поставщиков не требуется. Пакет поставщиков SQL Server включен в [метапакет Microsoft.AspnetCore.App](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/metapackage-app?view=aspnetcore-2.1).
+В этом руководстве используется SQL Server, поэтому устанавливать пакет поставщиков не требуется. Пакет поставщиков SQL Server включен в [метапакет Microsoft.AspnetCore.App](https://docs.microsoft.com/aspnet/core/fundamentals/metapackage-app?view=aspnetcore-2.1).
 
 ## <a name="reverse-engineer-your-model"></a>Реконструирование модели
 
@@ -173,7 +173,7 @@ public partial class BloggingContext : DbContext
 
   ![Страница "Создать"](_static/create.png)
 
-  ![Главная страница](_static/index-existing-db.png)
+  ![Страница индексов](_static/index-existing-db.png)
 
 ## <a name="next-steps"></a>Следующие шаги
 

@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/13/2018
 ms.assetid: a0ae2f21-1eef-43c6-83ad-92275f9c0727
 uid: core/get-started/uwp/getting-started
-ms.openlocfilehash: 48d26adbe17e4734753a7ada547b9c13317bef0d
-ms.sourcegitcommit: 8b42045cd21f80f425a92f5e4e9dd4972a31720b
+ms.openlocfilehash: 456967a0dc981053919064a19cc9c98bf7309865
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2018
-ms.locfileid: "49315624"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022380"
 ---
 # <a name="getting-started-with-ef-core-on-universal-windows-platform-uwp-with-a-new-database"></a>Начало работы с EF Core на универсальной платформе Windows (UWP) с новой базой данных
 
@@ -19,7 +19,7 @@ ms.locfileid: "49315624"
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* [Windows 10 Fall Creators Update (10.0, сборка 16299) или более поздняя версия](https://support.microsoft.com/en-us/help/4027667/windows-update-windows-10).
+* [Windows 10 Fall Creators Update (10.0, сборка 16299) или более поздняя версия](https://support.microsoft.com/help/4027667/windows-update-windows-10).
 
 * [Visual Studio 2017 версии 15.7 или более поздняя версия](https://www.visualstudio.com/downloads/) с рабочей нагрузкой **Разработка приложений для универсальной платформы Windows**.
 
