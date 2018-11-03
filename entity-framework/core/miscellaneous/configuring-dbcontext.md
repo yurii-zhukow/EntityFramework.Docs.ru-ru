@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: 393349c05ffaf42c6d2520e73abce23def6becc0
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: f5a9ae17471391442170d8c40264e4db6922cb08
+ms.sourcegitcommit: 39080d38e1adea90db741257e60dc0e7ed08aa82
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995942"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50980006"
 ---
 # <a name="configuring-a-dbcontext"></a>Настройка DbContext
 
@@ -25,7 +25,7 @@ ms.locfileid: "42995942"
 
 `DbContext` необходимо иметь экземпляр `DbContextOptions` для какой-либо работы. `DbContextOptions` Экземпляр содержит сведения о конфигурации, такие как:
 
-- Поставщик базы данных для использования, обычно выбирается путем вызова метода, такие как `UseSqlServer` или `UseSqlite`
+- Поставщик базы данных для использования, обычно выбирается путем вызова метода, таких как `UseSqlServer` или `UseSqlite`. Эти методы расширения требуется соответствующий пакет поставщика, например `Microsoft.EntityFrameworkCore.SqlServer` или `Microsoft.EntityFrameworkCore.Sqlite`. Эти методы определяются в `Microsoft.EntityFrameworkCore` пространства имен.
 - Любой необходимую строку подключения или идентификатор экземпляра базы данных, обычно передается в качестве аргумента в метод выбора поставщика, упомянутых выше
 - Любое необязательное поведение уровня поставщика селекторы, также цепочку внутри вызова метода выбора поставщика
 - Все общие селекторы поведение EF Core, обычно связанных после или до метода выбора поставщика
