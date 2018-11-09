@@ -72,7 +72,7 @@
 ##### [Использование отдельного проекта](core/managing-schemas/migrations/projects.md)
 ##### [Несколько поставщиков](core/managing-schemas/migrations/providers.md)
 ##### [Настраиваемая таблица журнала](core/managing-schemas/migrations/history-table.md)
-#### [🔧 API создания и удаления](core/managing-schemas/ensure-created.md)
+#### [API создания и удаления](core/managing-schemas/ensure-created.md)
 #### [🔧 Реконструирование](core/managing-schemas/scaffolding.md)
 
 ### [Запросы к данным](core/querying/index.md)
