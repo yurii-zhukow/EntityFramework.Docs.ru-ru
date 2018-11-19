@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 08/06/2018
 ms.assetid: a29a3d97-b2d8-4d33-9475-40ac67b3b2c6
 uid: core/get-started/full-dotnet/existing-db
-ms.openlocfilehash: b9e079f88dd35016407b19bb627f8bd46edb3d4c
-ms.sourcegitcommit: ad1bdea58ed35d0f19791044efe9f72f94189c18
+ms.openlocfilehash: 1b90c491a3b2025da750a3266ff45d9d92bb1d0d
+ms.sourcegitcommit: b3c2b34d5f006ee3b41d6668f16fe7dcad1b4317
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47447161"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51688619"
 ---
 # <a name="getting-started-with-ef-core-on-net-framework-with-an-existing-database"></a>Начало работы с EF Core в .NET Framework с существующей базой данных
 
@@ -120,5 +120,6 @@ ms.locfileid: "47447161"
 ## <a name="next-steps"></a>Следующие шаги
 
 Дополнительные сведения о формировании классов контекста и сущности см. в следующих статьях:
+* [Реконструирование](xref:core/managing-schemas/scaffolding)
 * [Entity Framework Core tools reference - .NET CLI](xref:core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold) (Справочник по основным инструментам Entity Framework Core — .NET CLI)
 * [Entity Framework Core tools reference - Package Manager Console](xref:core/miscellaneous/cli/powershell#scaffold-dbcontext) (Справочник по основным инструментам Entity Framework Core — консоль диспетчера пакетов)
