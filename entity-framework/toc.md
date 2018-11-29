@@ -285,4 +285,4 @@
 ###### [Корейский](ef6/resources/licenses/ef6/kor.md)
 ###### [Русский](ef6/resources/licenses/ef6/rus.md)
 
-### [⤤ Справочник по API EF6](https://msdn.microsoft.com/library/dn223258.aspx)
+### [⤤ Справочник по API EF6](https://docs.microsoft.com/dotnet/api/?view=entity-framework-6.2.0)
