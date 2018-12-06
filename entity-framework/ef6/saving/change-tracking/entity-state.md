@@ -3,12 +3,12 @@ title: Работа с состояния сущностей - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: acb27f46-3f3a-4179-874a-d6bea5d7120c
-ms.openlocfilehash: c1dde7810d1dfa8a73e6bd2cf091b24be6b865d8
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: ef0e8d5a5a9d66adab7046088c49d8cd472edc8a
+ms.sourcegitcommit: e5f9ca4aa41e64141fa63a1e5fcf4d4775d67d24
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490673"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52899656"
 ---
 # <a name="working-with-entity-states"></a>Работа с состояния сущностей
 В этом разделе будут рассмотрены способы добавления и присоединить сущности к контексту и как платформа Entity Framework преобразует их во время SaveChanges.
@@ -71,7 +71,6 @@ using (var context = new BloggingContext())
     blog.Owner = new User { UserName = "johndoe1987" };
 
     // Add a new Post by adding to the collection of a tracked Blog
-    var blog = context.Blogs.Find(2);
     blog.Posts.Add(new Post { Name = "How to Add Entities" });
 
     context.SaveChanges();
