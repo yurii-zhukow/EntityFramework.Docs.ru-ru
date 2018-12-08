@@ -4,12 +4,12 @@ author: anpete
 ms.date: 02/26/2018
 ms.assetid: 9F4450C5-1A3F-4BB6-AC19-9FAC64292AAD
 uid: core/modeling/query-types
-ms.openlocfilehash: 3328082dbc62aa80eb5fb29d2e57df1eef248d1f
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: cb391343e6f24092ae0874003c0ef2935dd4e03f
+ms.sourcegitcommit: 8dd71a57a01c439431164c163a0722877d0e5cd8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489496"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53028184"
 ---
 # <a name="query-types"></a>Типы запросов
 > [!NOTE]
@@ -56,28 +56,28 @@ ms.locfileid: "45489496"
 В следующем примере показано, как использовать тип запроса для запроса представления базы данных.
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFrameworkCore/tree/master/samples/QueryTypes) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/QueryTypes) из репозитория GitHub.
 
 Во-первых определим простую модель блога и Post.
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryTypes/Program.cs#Entities)]
+[!code-csharp[Main](../../../samples/core/QueryTypes/Program.cs#Entities)]
 
 Далее мы определим представление простой базы данных, которые позволят нам запросить число сообщений, связанных с каждого блога:
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryTypes/Program.cs#View)]
+[!code-csharp[Main](../../../samples/core/QueryTypes/Program.cs#View)]
 
 Далее мы определим класс для хранения результата из представления базы данных:
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryTypes/Program.cs#QueryType)]
+[!code-csharp[Main](../../../samples/core/QueryTypes/Program.cs#QueryType)]
 
 Далее мы настраиваем тип запроса в _OnModelCreating_ с помощью `modelBuilder.Query<T>` API.
 Мы используем стандартную конфигурацию fluent API-интерфейсы для настройки сопоставления для типа запроса:
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryTypes/Program.cs#Configuration)]
+[!code-csharp[Main](../../../samples/core/QueryTypes/Program.cs#Configuration)]
 
 Наконец можно запросить представления базы данных обычным образом:
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryTypes/Program.cs#Query)]
+[!code-csharp[Main](../../../samples/core/QueryTypes/Program.cs#Query)]
 
 > [!TIP]
 > Обратите внимание, что мы определили свойство контекста запроса уровня (DbQuery) в качестве корневого для запросов этого типа.
