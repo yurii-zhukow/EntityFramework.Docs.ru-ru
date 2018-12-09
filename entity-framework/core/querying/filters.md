@@ -3,12 +3,12 @@ title: Глобальные фильтры запросов — EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: 73efe62262cf45cc1841d7a86cf59249cf07c5ea
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 201292a440d37d240f31452eaebb23dcd4aee1a6
+ms.sourcegitcommit: 8dd71a57a01c439431164c163a0722877d0e5cd8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996669"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53028171"
 ---
 # <a name="global-query-filters"></a>Глобальные фильтры запросов
 
@@ -22,17 +22,17 @@ ms.locfileid: "42996669"
 В следующем примере показано, как использовать глобальные фильтры запросов для реализации такого поведения запроса, как обратимое удаление и мультитенантность, в простой модели ведения блогов.
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFrameworkCore/tree/master/samples/QueryFilters) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/QueryFilters) из репозитория GitHub.
 
 Сначала определите сущности:
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryFilters/Program.cs#Entities)]
+[!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#Entities)]
 
 Запишите объявление поля __tenantId_ в сущности _Blog_. Оно будет использоваться для связывания каждого экземпляра блога с конкретным клиентом. Также определено свойство _IsDeleted_ в типе сущности _Post_. Оно используется, чтобы проверять, был ли экземпляр _Post_ удален "обратимо". То есть экземпляр помечен как удаленный без физического удаления базовых данных.
 
 Затем настройте фильтры запросов в _OnModelCreating_, используя API ```HasQueryFilter```.
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryFilters/Program.cs#Configuration)]
+[!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#Configuration)]
 
 Выражения предиката, поступающие в вызовы _HasQueryFilter_, будут автоматически применяться ко всем запросам LINQ для этих типов.
 
@@ -43,7 +43,7 @@ ms.locfileid: "42996669"
 
 Фильтры можно отключить для отдельных запросов LINQ, используя оператор ```IgnoreQueryFilters()```.
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryFilters/Program.cs#IgnoreFilters)]
+[!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#IgnoreFilters)]
 
 ## <a name="limitations"></a>Ограничения
 
