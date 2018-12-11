@@ -3,12 +3,12 @@ title: Обновление до платформы Entity Framework 6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 29958ae5-85d3-4585-9ba6-550b8ec9393a
-ms.openlocfilehash: 2e2dacfe67238bdb7fd1f31f784319049f0f2cb0
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 711f1940080de27bd23cb8f641a5c7f2711dd65b
+ms.sourcegitcommit: a6082a2caee62029f101eb1000656966195cd6ee
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490952"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53182011"
 ---
 # <a name="upgrading-to-entity-framework-6"></a>Обновление до платформы Entity Framework 6
 
@@ -66,20 +66,20 @@ Install-Package EntityFramework
 
 Общее правило для изменения пространства имен является то, что любой тип в System.Data.* перемещается в System.Data.Entity.Core.*. Другими словами, просто вставьте **Entity.Core.** После System.Data. Пример:
 
-- System.Data.EntityException = > System.Data. **Entity.Core.** EntityException  
-- System.Data.Objects.ObjectContext = > System.Data. **Entity.Core.** Objects.ObjectContext  
-- System.Data.Objects.DataClasses.RelationshipManager = > System.Data. **Entity.Core.** Objects.DataClasses.RelationshipManager  
+- System.Data.EntityException = > System.Data. **Entity.Core**. EntityException  
+- System.Data.Objects.ObjectContext = > System.Data. **Entity.Core**. Objects.ObjectContext  
+- System.Data.Objects.DataClasses.RelationshipManager = > System.Data. **Entity.Core**. Objects.DataClasses.RelationshipManager  
 
 Эти типы находятся в *Core* пространства имен, так как они не используются непосредственно для большинства приложений на основе DbContext. Некоторые типы, которые были частью System.Data.Entity.dll по-прежнему используются часто, так и непосредственно для приложений на основе DbContext и поэтому не были перемещены в *Core* пространства имен. Эти особые значения приведены ниже.
 
-- System.Data.EntityState = > System.Data. **Сущности.** EntityState  
+- System.Data.EntityState = > System.Data. **Сущности**. EntityState  
 - System.Data.Objects.DataClasses.EdmFunctionAttribute = > System.Data. **Entity.DbFunctionAttribute**  
   > [!NOTE]
   > Этот класс был переименован; класс со старым именем все еще существует и работает, но он теперь помечен как устаревший.  
 - System.Data.Objects.EntityFunctions = > System.Data. **Entity.DbFunctions**  
   > [!NOTE]
   > Этот класс был переименован; класс со старым именем все еще существует и работает, но теперь помечены как устаревшие.)  
-- Пространственные классов (например, DbGeography, DbGeometry) перешли из System.Data.Spatial = > System.Data. **Сущности.** Пространственных
+- Пространственные классов (например, DbGeography, DbGeometry) перешли из System.Data.Spatial = > System.Data. **Сущности**. Пространственные
 
 > [!NOTE]
 > Некоторые типы в пространстве имен System.Data находятся в System.Data.dll, которая не является сборкой EF. Эти типы не были перемещены и поэтому их пространства имен остаются неизменными.
