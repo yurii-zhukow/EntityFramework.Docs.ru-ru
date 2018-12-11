@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 07/03/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: 1edc7a20f54b2d26f899c93e98dfaf6d62c29f86
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 67eae6cb943b974cc9cd581b8054836d2e37b1e9
+ms.sourcegitcommit: a6082a2caee62029f101eb1000656966195cd6ee
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490731"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53181998"
 ---
 # <a name="ef-core-tools--extensions"></a>Инструменты и расширения EF Core
 
@@ -43,6 +43,19 @@ Entity Developer — мощный конструктор ORM для ADO.NET Enti
 Расширение Visual Studio 2017, которое добавляет конструктор ORM для проектирования визуальных объектов на платформе Entity Framework 6, Core 2.0 и Core 2.1. Код создается с помощью шаблонов T4, поэтому его можно адаптировать к любым потребностям. Наследование, однонаправленные и двунаправленные ассоциации поддерживаются, как и перечисления и возможность цветового выделения классов и добавления текстовых блоков для объяснения потенциально сложных частей проекта.
 
 [Marketplace](https://marketplace.visualstudio.com/items?itemName=michaelsawczyn.EFDesigner)
+
+### <a name="catfactory"></a>CatFactory
+
+CatFactory — это механизм формирования шаблонов для .NET Core и Entity Framework Core. Концепция, лежащая в основе CatFactory, представляет собой экспорт существующей базы данных из экземпляра SQL Server с ее последующим представлением в моделях для базы данных; формирование шаблонов для сущностей, конфигураций, репозиториев и многое другое.
+
+[Репозиторий GitHub](https://github.com/hherzl/CatFactory.EntityFrameworkCore)
+
+### <a name="loresofts-entity-framework-core-generator"></a>Entity Framework Core Generator от LoreSoft
+
+Entity Framework Core Generator (efg) — это средство командной строки .NET Core, которое создает модели EF Core на основе существующей базы данных почти так же, как `dotnet ef dbcontext scaffold`. Однако отличие Entity Framework Core Generator состоит в том, что оно также поддерживает безопасное [повторное создание](https://efg.loresoft.com/en/latest/regeneration/) кода. Повторное создание кода осуществляется с помощью замены региона или синтаксического анализа файлов сопоставления. Средство также поддерживает формирование моделей представлений, проверку и код средства сопоставления объектов. Дополнительные сведения см. в руководстве и статьях, ссылки на которые приведены в документации продукта.
+
+[Руководство](http://www.loresoft.com/Generate-ASP-NET-Web-API)
+[Документация](https://efg.loresoft.com/en/latest/)
 
 ## <a name="extensions"></a>Расширения
 
