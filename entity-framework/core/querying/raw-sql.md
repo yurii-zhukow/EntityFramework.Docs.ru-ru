@@ -4,16 +4,16 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 uid: core/querying/raw-sql
-ms.openlocfilehash: 21cb688d6775039def3b0be12768da71b5d96531
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 0ad9731840c5f72064f2f66932b9867a0144f437
+ms.sourcegitcommit: 2da6f9b05e1ce3a46491e5cc68f17758bdeb6b02
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997148"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53006873"
 ---
 # <a name="raw-sql-queries"></a>Необработанные SQL-запросы
 
-Entity Framework Core позволяет вам переходить на уровень необработанных SQL-запросов при работе с реляционной базой данных. Это может быть полезно, если запрос, который вы хотите выполнить, не может быть выражен с помощью LINQ или если использование запроса LINQ приводит к отправке неэффективных SQL-запросов в базу данных. Необработанные SQL-запросы могут возвращать типы сущностей или, начиная с EF Core 2.1, [типы запросов](xref:core/modeling/query-types), которые являются частью модели.
+Entity Framework Core позволяет вам переходить на уровень необработанных SQL-запросов при работе с реляционной базой данных. Это может быть полезно, если запрос, который вы хотите выполнить, не может быть выражен с помощью LINQ или если использование запроса LINQ приводит к отправке неэффективных SQL-запросов. Необработанные SQL-запросы могут возвращать типы сущностей или, начиная с EF Core 2.1, [типы запросов](xref:core/modeling/query-types), которые являются частью модели.
 
 > [!TIP]  
 > Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) из репозитория GitHub.
@@ -88,7 +88,7 @@ var blogs = context.Blogs
 var user = new SqlParameter("user", "johndoe");
 
 var blogs = context.Blogs
-    .FromSql("EXECUTE dbo.GetMostPopularBlogsForUser @user", user)
+    .FromSql("EXECUTE dbo.GetMostPopularBlogsForUser @user", user)
     .ToList();
 ```
 
@@ -118,8 +118,8 @@ var blogs = context.Blogs
 var searchTerm = ".NET";
 
 var blogs = context.Blogs
-    .FromSql($"SELECT * FROM dbo.SearchBlogs({searchTerm})")
-    .Include(b => b.Posts)
+    .FromSql($"SELECT * FROM dbo.SearchBlogs({searchTerm})")
+    .Include(b => b.Posts)
     .ToList();
 ```
 
