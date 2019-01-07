@@ -3,12 +3,12 @@ title: Асинхронные запросы и сохраняет - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d56e6f1d-4bd1-4b50-9558-9a30e04a8ec3
-ms.openlocfilehash: 4ed4f5c13341f33ccff8325a5ddacd8f7b195a76
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: de702365251fd05c423c8590ccaefa7d8542ad02
+ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46283827"
+ms.lasthandoff: 01/06/2019
+ms.locfileid: "54058764"
 ---
 # <a name="async-query-and-save"></a>Асинхронный запрос и сохраните
 > [!NOTE]
@@ -41,7 +41,7 @@ EF6 появилась поддержка для асинхронного зап
     -   В обозревателе решений щелкните правой кнопкой мыши **AsyncDemo** проекта
     -   Выберите **управление пакетами NuGet...**
     -   В диалоговом окне «Управление пакетами NuGet» выберите **Online** вкладку и выберите **EntityFramework** пакета
-    -   Нажмите кнопку **установки**
+    -   Нажмите кнопку **Установить**
 -   Добавить **Model.cs** класс следующей реализацией
 
 ``` csharp
@@ -76,7 +76,7 @@ EF6 появилась поддержка для асинхронного зап
     }
 ```
 
- 
+ 
 
 ## <a name="create-a-synchronous-program"></a>Создание синхронная программа
 
@@ -96,7 +96,6 @@ EF6 появилась поддержка для асинхронного зап
             {
                 PerformDatabaseOperations();
 
-                Console.WriteLine();
                 Console.WriteLine("Quote of the day");
                 Console.WriteLine(" Don't worry about the world coming to an end today... ");
                 Console.WriteLine(" It's already tomorrow in Australia.");
@@ -115,16 +114,18 @@ EF6 появилась поддержка для асинхронного зап
                     {
                         Name = "Test Blog #" + (db.Blogs.Count() + 1)
                     });
+                    Console.WriteLine("Calling SaveChanges.");
                     db.SaveChanges();
+                    Console.WriteLine("SaveChanges completed.");
 
                     // Query for all blogs ordered by name
+                    Console.WriteLine("Executing query.");
                     var blogs = (from b in db.Blogs
                                 orderby b.Name
                                 select b).ToList();
 
                     // Write all blogs out to Console
-                    Console.WriteLine();
-                    Console.WriteLine("All blogs:");
+                    Console.WriteLine("Query completed with following results:");
                     foreach (var blog in blogs)
                     {
                         Console.WriteLine(" " + blog.Name);
@@ -145,20 +146,20 @@ EF6 появилась поддержка для асинхронного зап
 4.  Запрос возвращает и результаты записываются в **консоли**
 5.  Цитата дня записывается **консоли**
 
-![Выходные данные для синхронизации](~/ef6/media/syncoutput.png) 
+![Выходные данные для синхронизации](~/ef6/media/syncoutput.png) 
 
- 
+ 
 
 ## <a name="making-it-asynchronous"></a>Воплощение в асинхронный
 
 Теперь, когда у нас есть нашей программы работу программ, мы можем начать использовать новый асинхронного программирования и ключевые слова ожидания. Мы внесли следующие изменения в файл Program.cs
 
-1.  Строка 2: С помощью инструкции для **System.Data.Entity** пространство имен дает доступ к методам расширения async EF.
-2.  Строки 4: С помощью инструкции для **System.Threading.Tasks** пространства имен позволяет использовать **задачи** типа.
-3.  Строка 12 & 18: мы записи как задачу, которая отслеживает ход выполнения **PerformSomeDatabaseOperations** (строка 12) и затем блокирует выполнение программы для этой задачи до завершения одного раза всю работу для программы создается (строка 18).
-4.  Строка 25: Мы включили обновления **PerformSomeDatabaseOperations** были помечены как **async** и вернуть **задачи**.
-5.  Строка 35: Мы теперь вызова асинхронная версия метода SaveChanges и ожидает его завершения.
-6.  Строки 42: Мы теперь вызова асинхронная версия ToList и ожидает от результата.
+1.  Строка 2: Оператор using для **System.Data.Entity** пространство имен дает доступ к методам расширения async EF.
+2.  Строка 4: Оператор using для **System.Threading.Tasks** пространства имен позволяет использовать **задачи** типа.
+3.  Строка 12 & 18: Мы записи как задачу, которая отслеживает ход выполнения **PerformSomeDatabaseOperations** (строка 12) и затем блокирует выполнение программы для этой задачи до завершения одного раза всю работу для программы создается (строка 18).
+4.  Строка 25: Мы улучшили обновления **PerformSomeDatabaseOperations** были помечены как **async** и вернуть **задачи**.
+5.  Строка 35: Теперь мы вызова асинхронная версия метода SaveChanges и ожидает его завершения.
+6.  Строки 42: Теперь мы звоним асинхронная версия ToList и ожидает от результата.
 
 Полный список методов доступные расширения в пространстве имен System.Data.Entity ссылки на класс QueryableExtensions. *Также необходимо добавить «использование System.Data.Entity» с помощью инструкций.*
 
@@ -227,9 +228,9 @@ EF6 появилась поддержка для асинхронного зап
 4.  Запрос для всех **блоги** отправляется в базу данных *Опять же, управляемый поток может выполнять другую работу, пока запрос обрабатывается в базе данных. Так как все другие выполнения потока программа просто приостанавливает работу во время ожидания вызова хотя.*
 5.  Запрос возвращает и результаты записываются в **консоли**
 
-![Выходные данные Async](~/ef6/media/asyncoutput.png) 
+![Выходные данные Async](~/ef6/media/asyncoutput.png) 
 
- 
+ 
 
 ## <a name="the-takeaway"></a>Отсюда вывод:
 
