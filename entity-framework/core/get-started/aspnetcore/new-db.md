@@ -5,12 +5,12 @@ ms.author: riande
 ms.date: 08/03/2018
 ms.assetid: e153627f-f132-4c11-b13c-6c9a607addce
 uid: core/get-started/aspnetcore/new-db
-ms.openlocfilehash: 2248c60045a914c902f1c958a86c69b283abd722
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: 4734586adc89e9c1d866a1b4accd8b5e51fe2bb0
+ms.sourcegitcommit: ebf661025d2ad2b62466fa7bf0e0772a7811cbe7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022240"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54211170"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-a-new-database"></a>Начало работы с EF Core в ASP.NET Core с новой базой данных
 
@@ -201,7 +201,7 @@ ms.locfileid: "50022240"
 Подсистема формирования шаблонов создает следующие файлы:
 
 * файл контроллера (*Controllers/MoviesController.cs*);
-* файлы представления Razor для страниц Create, Delete, Details, Edit и Index (_Views/Movies/*.cshtml_).
+* файлы представления Razor для страниц Create, Delete, Details, Edit и Index (_Views/Blogs/*.cshtml_).
 
 ## <a name="run-the-application"></a>Запуск приложения
 
@@ -228,6 +228,6 @@ dotnet run
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Руководство. Начало работы с EF Core в .NET Core с новой базой данных с использованием SQLite](xref:core/get-started/netcore/new-db-sqlite)
-* [Руководство. Начало работы с Razor Pages в ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)
-* [Руководство. Razor Pages с Entity Framework Core в ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)
+* Руководство [ Начало работы с EF Core в консольном приложении .NET Core с новой базой данных](xref:core/get-started/netcore/new-db-sqlite)
+* [Учебник. Начало работы с Razor Pages в ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)
+* [Учебник. Razor Pages с Entity Framework Core в ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)

@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 08/02/2018
 ms.assetid: 2bc68bea-ff77-4860-bf0b-cf00db6712a0
 uid: core/get-started/aspnetcore/existing-db
-ms.openlocfilehash: 23cd53b0e162afc5db0243b7032bb9c5f18bfb35
-ms.sourcegitcommit: b3c2b34d5f006ee3b41d6668f16fe7dcad1b4317
+ms.openlocfilehash: c8acb95395968f710e6b896de6c3598cb7b23676
+ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688697"
+ms.lasthandoff: 01/06/2019
+ms.locfileid: "54058790"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>Начало работы с EF Core в ASP.NET Core с существующей базой данных
 
@@ -48,7 +48,7 @@ ms.locfileid: "51688697"
 * **"Файл" > "Создать" > "Проект"…**
 * В меню слева выберите **"Установленные" > Visual C# > Интернет**
 * Выберите шаблон проекта **Веб-приложение ASP.NET Core**
-* Введите имя проекта **EFGetStarted.AspNetCore.ExistingDb** и щелкните **ОК**.
+* Введите имя **EFGetStarted.AspNetCore.ExistingDb** (требуется точное соответствие пространству имен, используемому позже) и нажмите кнопку **ОК** 
 * Дождитесь появления диалогового окна **Создание веб-приложения ASP.NET Core**.
 * В соответствующих раскрывающихся списках должна быть выбрана целевая платформа **.NET Core** и версия **ASP.NET Core 2.1**
 * Выберите шаблон **Веб-приложение (модель-представление-контроллер)**
