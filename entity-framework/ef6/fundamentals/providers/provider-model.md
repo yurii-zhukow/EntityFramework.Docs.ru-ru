@@ -3,12 +3,12 @@ title: Модели поставщика Entity Framework 6 - EF6
 author: divega
 ms.date: 06/27/2018
 ms.assetid: 066832F0-D51B-4655-8BE7-C983C557E0E4
-ms.openlocfilehash: d07a8689fe968bb1512095a59a61abc7ac346a31
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: 8cbf6f87e0936f374c3d8a0c15a0e1d9c828f764
+ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022328"
+ms.lasthandoff: 02/03/2019
+ms.locfileid: "55668756"
 ---
 # <a name="the-entity-framework-6-provider-model"></a>Модели поставщика Entity Framework 6
 
@@ -28,7 +28,7 @@ ms.locfileid: "50022328"
 
 ### <a name="dbproviderfactory"></a>DbProviderFactory
 
-EF зависит от наличия типа, производного от [System.Data.Common.DbProviderFactory](https://msdn.microsoft.com/library/system.data.common.dbproviderfactory.aspx) для выполнения всех базы данных низкого уровня доступа. DbProviderFactory не фактически является частью EF, а вместо этого является, класс в .NET Framework, которая служит точкой входа для поставщиков ADO.NET может использоваться платформой EF, другие O/RMs или непосредственно приложением для получения экземпляров подключения, команды, параметры и другие абстракции ADO.NET в поставщике узлам. Дополнительные сведения о DbProviderFactory см. в [документацию MSDN для ADO.NET](https://msdn.microsoft.com/library/a6cd7c08.aspx).
+EF зависит от наличия типа, производного от [System.Data.Common.DbProviderFactory](https://msdn.microsoft.com/library/system.data.common.dbproviderfactory.aspx) для выполнения всех базы данных низкого уровня доступа. DbProviderFactory не фактически является частью EF, а вместо этого является, класс в .NET Framework, которая служит точкой входа для поставщиков ADO.NET может использоваться платформой EF, другие O/RMs или непосредственно приложением для получения экземпляров подключения, команды, параметры и другие абстракции ADO.NET в поставщике узлам. Дополнительные сведения о DbProviderFactory можно найти в [документацию MSDN для ADO.NET](https://msdn.microsoft.com/library/a6cd7c08.aspx).
 
 ### <a name="dbproviderservices"></a>DbProviderServices
 
