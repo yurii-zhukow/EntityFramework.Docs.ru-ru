@@ -4,12 +4,12 @@ author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: 58c79d477d590eea355a922b3e1233bbecb305cc
-ms.sourcegitcommit: a6082a2caee62029f101eb1000656966195cd6ee
+ms.openlocfilehash: 5ebc4edba07063ad5e77154adcde5f2664c0d748
+ms.sourcegitcommit: 85d17524d8e022f933cde7fc848313f57dfd3eb8
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53181985"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55760526"
 ---
 # <a name="installing-entity-framework-core"></a>Установка Entity Framework Core
 
@@ -31,7 +31,7 @@ ms.locfileid: "53181985"
 
 Если вы создаете приложение ASP.NET Core, устанавливать поставщики в памяти и поставщики SQL Server не нужно. Эти поставщики включены в текущие версии ASP.NET Core, а также в среду выполнения EF Core.  
 
-Установить или обновить пакеты NuGet можно в интерфейсе командной строки (CLI) .NET Core, диалоговом окне диспетчера пакетов Visual Studio или консоли диспетчера пакетов Visual Studio.
+Установить или обновить пакеты NuGet можно в интерфейсе командной строки (CLI) .NET Core, а также в диалоговом окне или консоли диспетчера пакетов Visual Studio.
 
 ### <a name="net-core-cli"></a>Интерфейс командной строки .NET Core
 
