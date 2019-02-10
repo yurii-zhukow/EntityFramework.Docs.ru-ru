@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f6e35c6d-45b7-4258-be1d-87c1bb67438d
 uid: core/miscellaneous/logging
-ms.openlocfilehash: 65501b5ac03ae544c51b7fc1a07fa9eea849f1e3
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: 0a996403afdbe076b1690c98eeb305b40c4d1f4a
+ms.sourcegitcommit: 109a16478de498b65717a6e09be243647e217fb3
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022149"
+ms.lasthandoff: 02/10/2019
+ms.locfileid: "55985578"
 ---
 # <a name="logging"></a>Ведение журнала
 
@@ -24,12 +24,15 @@ EF Core автоматически интегрируется с механиз�
 
 Ведение журнала в данный момент EF Core требуется ILoggerFactory, который сам настроены ILoggerProvider один или несколько. Общих поставщиков поставляются в следующие пакеты:
 
-* [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/): простое консольное средство ведения журнала.
-* [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/): службы приложений Azure поддерживает «Журналы диагностики» и «Вход потока» компоненты.
-* [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/): журналы, чтобы отладчик монитор, используя System.Diagnostics.Debug.WriteLine().
-* [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog/): записывает журнал событий Windows.
-* [Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource/): поддерживает EventSource/EventListener.
-* [Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource/): журналы, чтобы прослушиватель трассировки с помощью System.Diagnostics.TraceSource.TraceEvent().
+* [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/): Простое консольное средство ведения журнала.
+* [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/): Поддерживает службы приложений «Журналы диагностики» и «Вход потока» компоненты.
+* [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/): Журналы, чтобы отладчик монитор, используя System.Diagnostics.Debug.WriteLine().
+* [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog/): Записывает журнал событий Windows.
+* [Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource/): Поддерживает EventSource/EventListener.
+* [Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource/): Журналы, чтобы прослушиватель трассировки с помощью System.Diagnostics.TraceSource.TraceEvent().
+
+> [!NOTE]
+> В следующем коде используется пример `ConsoleLoggerProvider` конструктор, который были устарел в версии 2.2. Правильное замены для устаревших API регистрации будут доступны в версии 3.0. В то же время можно безопасно пропускать и отключать предупреждения.
 
 После установки соответствующих пакетов, в приложении необходимо создать одноэлементный/глобальный экземпляр LoggerFactory. Например используя средство ведения журнала консоли:
 
@@ -43,6 +46,9 @@ EF Core автоматически интегрируется с механиз�
 > Очень важно, приложения не создают новый экземпляр ILoggerFactory для каждого экземпляра контекста. Это приведет к утечке памяти и снижению производительности.
 
 ## <a name="filtering-what-is-logged"></a>Фильтрация, регистрируемых
+
+> [!NOTE]
+> В следующем коде используется пример `ConsoleLoggerProvider` конструктор, который были устарел в версии 2.2. Правильное замены для устаревших API регистрации будут доступны в версии 3.0. В то же время можно безопасно пропускать и отключать предупреждения.
 
 Для фильтрации, регистрируемых проще всего настроить его при регистрации ILoggerProvider. Пример:
 
