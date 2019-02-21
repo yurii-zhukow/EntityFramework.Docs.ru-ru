@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 11/15/2016
 ms.assetid: e079d4af-c455-4a14-8e15-a8471516d748
 uid: core/miscellaneous/connection-resiliency
-ms.openlocfilehash: 729cf9b8c038ea2adba8c79c68d9f6fb1676fefa
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: 6d8cf117dfd94524a53e10bb4a23c2a44c4c8e7b
+ms.sourcegitcommit: 33b2e84dae96040f60a613186a24ff3c7b00b6db
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022188"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56459176"
 ---
 # <a name="connection-resiliency"></a>Устойчивость подключений
 
@@ -17,9 +17,21 @@ ms.locfileid: "50022188"
 
 Например поставщик SQL Server включает в себя стратегии выполнения, специально предназначенную для SQL Server (включая SQL Azure). Он учитывает типы исключений, которые могут быть повторены и содержит допустимые значения по умолчанию максимальное число повторных попыток, задержку между повторными попытками и т. д.
 
-Стратегия выполнения указывается при настройке параметров для текущего контекста. Это обычно находится в `OnConfiguring` метода производного контекста, или в `Startup.cs` для приложения ASP.NET Core.
+Стратегия выполнения указывается при настройке параметров для текущего контекста. Это обычно находится в `OnConfiguring` метода производного контекста:
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/ConnectionResiliency/Program.cs#OnConfiguring)]
+
+или в `Startup.cs` для приложения ASP.NET Core:
+
+``` csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddDbContext<PicnicContext>(
+        options => options.UseSqlServer(
+            "<connection string>",
+            providerOptions => providerOptions.EnableRetryOnFailure()));
+}
+```
 
 ## <a name="custom-execution-strategy"></a>Стратегия выполнения пользовательских
 
@@ -41,7 +53,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 Тем не менее если код запускает транзакцию с помощью `BeginTransaction()` вы определяете собственную группу операций, которые должны рассматриваться как единое целое, и все содержимое транзакции необходимо воспроизводить должен произойти сбой. Если попытаться сделать это, при использовании стратегии выполнения, вы получите исключение, как показано ниже:
 
-> InvalidOperationException: Настроенная стратегия выполнения 'SqlServerRetryingExecutionStrategy' не поддерживает запуск транзакций пользователем. Используйте стратегию выполнения, возвращенную 'DbContext.Database.CreateExecutionStrategy()', чтобы выполнить все операции в транзакции как повторяемую единицу.
+> InvalidOperationException: The configured execution strategy 'SqlServerRetryingExecutionStrategy' does not support user initiated transactions" (System.InvalidOperationException: настроенная стратегия выполнения SqlServerRetryingExecutionStrategy не поддерживает запуск транзакций пользователем). Используйте стратегию выполнения, возвращенную 'DbContext.Database.CreateExecutionStrategy()', чтобы выполнить все операции в транзакции как повторяемую единицу.
 
 Решение заключается в том, чтобы вызвать стратегию выполнения с помощью делегата, который представляет все, нужно выполнить вручную. В случае временного сбоя стратегия выполнения будет снова вызывать делегат.
 
