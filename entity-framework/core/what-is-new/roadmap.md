@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 834C9729-7F6E-4355-917D-DE3EE9FE149E
 uid: core/what-is-new/roadmap
-ms.openlocfilehash: 7eba9e1a8e145ef407f844ff3a3ab3069495b7ae
-ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
+ms.openlocfilehash: 9064b323c11282418f2bedf70f874d45c18bb78a
+ms.sourcegitcommit: 735715f10cc8a231c213e4f055d79f0effd86570
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/06/2019
-ms.locfileid: "54058738"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56325344"
 ---
 # <a name="entity-framework-core-roadmap"></a>Стратегия развития Entity Framework Core
 
@@ -23,7 +23,7 @@ ms.locfileid: "54058738"
 Новые функции пока не готовы, поэтому  [пакеты EF Core 3.0 предварительной версии 1, опубликованные в коллекции NuGet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/3.0.0-preview.18572.1) в декабре 2018 г., содержат только [исправления ошибок, небольшие улучшения и изменения, сделанные как подготовка к работе над версией 3.0](https://github.com/aspnet/EntityFrameworkCore/issues?q=is%3Aissue+milestone%3A3.0.0+is%3Aclosed+label%3Aclosed-fixed).
 
 Более того, нам все еще требуется уточнить [план выпусков](#release-planning-process) этой версии, который поможет реализовать необходимые функции в нужный срок.
-Мы обязательно предоставим дополнительные сведения, как только ситуация станет яснее. Но уже сейчас мы можем назвать ряд основных функций и направлений работы:
+Мы обязательно предоставим дополнительные сведения, как только ситуация прояснится. Но уже сейчас мы можем назвать ряд основных функций и направлений работы:
 
 - **Улучшения LINQ ([#12795](https://github.com/aspnet/EntityFrameworkCore/issues/12795))**: LINQ позволяет писать запросы к базам данных прямо в коде вашего языка программирования, используя различные типы форматированных данных, функции IntelliSense и проверку типа во время компиляции.
   Однако LINQ также поддерживает написание неограниченного числа сложных запросов, и поставщикам LINQ всегда было сложно обеспечить работу этой функции.
