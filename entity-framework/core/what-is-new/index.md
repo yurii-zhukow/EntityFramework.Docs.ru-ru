@@ -1,23 +1,18 @@
 ---
-title: Новые возможности в EF Core — EF Core
+title: "Новые возможности в EF Core\_— EF Core"
 author: divega
 ms.date: 02/20/2018
 ms.assetid: C21F89EE-FB08-4ED9-A2A0-76CB7656E6E4
 uid: core/what-is-new/index
-ms.openlocfilehash: 26589f75684be2428101739805336d9a673b9329
-ms.sourcegitcommit: fa863883f1193d2118c2f9cee90808baa5e3e73e
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52857459"
 ---
-# <a name="what-is-new-in-ef-core"></a>Новые возможности в EF Core
 
-Дополнительные сведения о новых возможностях в каждом выпуске см. по следующим ссылкам:
+# <a name="what-is-new-in-ef-core"></a>Новые возможности в EF Core
 
 ## <a name="future-releases"></a>Будущие выпуски
 
-- [Стратегия развития EF Core](xref:core/what-is-new/roadmap)
+EF Core 3.0 сейчас предоставляется в виде предварительной версии. EF Core 3.0 включает набор [новых функций](xref:core/what-is-new/ef-core-3.0/features), а также [критические изменения](xref:core/what-is-new/ef-core-3.0/breaking-changes), которые следует учитывать при обновлении.
+
+Дополнительные сведения о планируемых будущих версиях (3.0 и выше) см. в описании [стратегии развития EF Core](xref:core/what-is-new/roadmap).
 
 ## <a name="recent-releases"></a>Последние выпуски
 
