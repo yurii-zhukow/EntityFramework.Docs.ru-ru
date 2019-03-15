@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: a7e1a03bf1131cd53123f5cc39b07bed94619b44
-ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
+ms.openlocfilehash: 748db8a71a04a2d696ef21a03319906b9fc776be
+ms.sourcegitcommit: a709054b2bc7a8365201d71f59325891aacd315f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463382"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57829230"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>Критические изменения в EF Core 3.0 (сейчас предоставляются в виде предварительной версии)
 
@@ -22,11 +22,10 @@ ms.locfileid: "57463382"
 
 ## <a name="linq-queries-are-no-longer-evaluated-on-the-client"></a>Запросы LINQ больше не вычисляются на клиенте
 
-[Отслеживание вопроса 12795](https://github.com/aspnet/EntityFrameworkCore/issues/12795)
+[Отслеживание вопроса № 14935](https://github.com/aspnet/EntityFrameworkCore/issues/14935)
+[Также см. вопрос № 12795](https://github.com/aspnet/EntityFrameworkCore/issues/12795)
 
-> [!IMPORTANT]
-> Предварительно заявляем об этом критическом изменении.
-Оно еще не было добавлено ни в одну из предварительных версий 3.0.
+Это изменение будет внесено в предварительную версию 4 EF Core 3.0.
 
 **Старое поведение**
 
@@ -98,8 +97,14 @@ ms.locfileid: "57463382"
 **Решение проблемы**
 
 Это событие ведения журнала определено `RelationalEventId.CommandExecuting` с идентификатором события 20100.
-Чтобы снова вести журнал SQL на уровне `Info`, переключитесь на ведение журнала на уровне `Debug` и выполните фильтрацию только по этому событию.
-
+Чтобы снова начать ведение журнала SQL на уровне `Info`, явно настройте уровень в методе `OnConfiguring` или `AddDbContext`.
+Например:
+```C#
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder
+        .UseSqlServer(connectionString)
+        .ConfigureWarnings(c => c.Log((RelationalEventId.CommandExecuting, LogLevel.Info)));
+```
 
 ## <a name="temporary-key-values-are-no-longer-set-onto-entity-instances"></a>Временные значения ключа больше не устанавливаются для экземпляров сущностей
 
@@ -439,6 +444,28 @@ modelBuilder
     .HasField("_id");
 ```
 
+## <a name="adddbcontextadddbcontextpool-no-longer-call-addlogging-and-addmemorycache"></a>AddDbContext/AddDbContextPool больше не вызывает метод AddLogging и AddMemoryCache
+
+[Отслеживание вопроса № 14756](https://github.com/aspnet/EntityFrameworkCore/issues/14756)
+
+Это изменение будет внесено в предварительную версию 4 EF Core 3.0.
+
+**Старое поведение**
+
+До EF Core 3.0 вызов метода `AddDbContext` или `AddDbContextPool` также приводил к регистрации служб ведения журналов и кэширования памяти с внедрением зависимостей с помощью вызовов к методам [AddLogging](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging) и [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache).
+
+**Новое поведение**
+
+Начиная с версии EF Core 3.0 методы `AddDbContext` и `AddDbContextPool` больше не регистрируют такие службы с внедрением зависимостей.
+
+**Причина**
+
+EF Core 3.0 не требует, чтобы такие службы присутствовали в контейнере внедрения зависимостей приложения. Но если интерфейс `ILoggerFactory` зарегистрирован в контейнере внедрения зависимостей приложения, он будет по-прежнему использоваться EF Core.
+
+**Решение проблемы**
+
+Если для работы вашего приложения нужны такие службы, явно зарегистрируйте их в контейнере внедрения зависимостей с помощью метода [AddLogging](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging) или [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache).
+
 ## <a name="dbcontextentry-now-performs-a-local-detectchanges"></a>DbContext.Entry теперь выполняет локальную процедуру DetectChanges
 
 [Отслеживание вопроса 13552](https://github.com/aspnet/EntityFrameworkCore/issues/13552)
@@ -610,6 +637,43 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     optionsBuilder
         .ConfigureWarnings(w => w.Log(CoreEventId.ManyServiceProvidersCreatedWarning));
 }
+```
+
+## <a name="new-behavior-for-hasonehasmany-called-with-a-single-string"></a>Новое поведение для вызова HasOne/HasMany с одной строкой
+
+[Отслеживание вопроса № 9171](https://github.com/aspnet/EntityFrameworkCore/issues/9171)
+
+Это изменение будет внесено в предварительную версию 4 EF Core 3.0.
+
+**Старое поведение**
+
+До версии EF Core 3.0 интерпретация кода с вызовом `HasOne` или `HasMany` с одной строкой была очень запутанной.
+Например:
+```C#
+modelBuilder.Entity<Samurai>().HasOne("Entrance").WithOne();
+```
+
+Складывается впечатление, что код связывает `Samuri` с другим типом сущности с помощью свойства навигации `Entrance`, которое может быть закрытым.
+
+На самом деле этот код пытается создать отношение с некоторым типом сущности под именем `Entrance`, который не имеет свойства навигации.
+
+**Новое поведение**
+
+Начиная с EF Core 3.0, указанный выше код выполняет те действия, которые должен был выполнять раньше.
+
+**Причина**
+
+Старое поведение создавало большую путаницу, особенно при считывании кода конфигурации и при поиске ошибок.
+
+**Решение проблемы**
+
+Это приведет к нарушению работы только тех приложений, которые явно настраивают отношения с помощью строк для имен типов и не указывают явно свойство навигации.
+Такой подход используется нечасто.
+Прежнее поведение можно реализовать с помощью явной передачи значения `null` для имени свойства навигации.
+Например:
+
+```C#
+modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 ```
 
 ## <a name="the-relationaltypemapping-annotation-is-now-just-typemapping"></a>Заметка Relational:TypeMapping теперь является просто TypeMapping

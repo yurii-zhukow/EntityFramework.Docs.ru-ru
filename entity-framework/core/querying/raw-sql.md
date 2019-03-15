@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 uid: core/querying/raw-sql
-ms.openlocfilehash: ad7ac3099cfd4c49b88acfbbff61f2af9294b6ec
-ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
+ms.openlocfilehash: 0ad43db794902cf1f46bfe8f117fbd36e06f3c44
+ms.sourcegitcommit: a709054b2bc7a8365201d71f59325891aacd315f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463247"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57829178"
 ---
 # <a name="raw-sql-queries"></a>Необработанные SQL-запросы
 
@@ -96,7 +96,7 @@ var blogs = context.Blogs
 
 Запросы, использующие `FromSql()`, следуют тем же правилам отслеживания изменений, что и любой другой запрос LINQ в EF Core. Например, если запрос проецирует типы сущностей, результаты будут отслеживаться по умолчанию.  
 
-В следующем примере используется необработанный запрос SQL, который выбирает одну из функций с табличным значением, а затем отключает отслеживание изменений с помощью вызова .AsNoTracking():
+В следующем примере используется необработанный SQL-запрос, который выбирает одну из функций с табличным значением, а затем отключает отслеживание изменений с помощью вызова .AsNoTracking():
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
