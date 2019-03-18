@@ -3,16 +3,16 @@ title: Глоссарий Entity Framework - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 3f05ffdd-49bc-499c-9732-4a368bf5d2d7
-ms.openlocfilehash: 9ed7a2d841c625de35de57edb4e57e69b89a3db9
-ms.sourcegitcommit: 5d74ac575f813110db6d870720f50dd7606446bc
+ms.openlocfilehash: 4e42e5870879524b814cecdc361e688d36f0180f
+ms.sourcegitcommit: 6c4e06bc62d98442530e93a44725e38e59483d42
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48881271"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58131387"
 ---
 # <a name="entity-framework-glossary"></a>Глоссарий Entity Framework
 ## <a name="code-first"></a>Code First
-Создание модели Entity Framework с помощью кода. Модели можно ориентироваться и существующей базы данных, или новую базу данных.
+Создание модели Entity Framework с помощью кода. Модели можно назначить существующую или новую базу данных.
 
 ## <a name="context"></a>Контекст
 Класс, представляющий сеанс с базой данных, позволяя запрашивать и сохранять данные. Контекст является производным от класса DbContext или ObjectContext.
@@ -20,7 +20,7 @@ ms.locfileid: "48881271"
 ## <a name="convention-code-first"></a>Соглашение об (Code First)
 Правило, которое используют Entity Framework для определения вида модели из классов.
 
-## <a name="database-first"></a>Сначала базы данных
+## <a name="database-first"></a>База данных как основа
 Создание модели Entity Framework, в конструкторе EF, нацеленный существующей базы данных.
 
 ## <a name="eager-loading"></a>Безотложная загрузка

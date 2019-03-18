@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 04/09/2017
 ms.assetid: 94ab4800-c460-4caa-a5e8-acdfee6e6ce2
 uid: core/providers/sqlite/limitations
-ms.openlocfilehash: 69c40fcd8b7ddb925728b1bad9992ad2a81e7540
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 53262bc926d79f42c4418a62717a462564dc80bf
+ms.sourcegitcommit: 6c4e06bc62d98442530e93a44725e38e59483d42
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994668"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58131419"
 ---
 # <a name="sqlite-ef-core-database-provider-limitations"></a>Ограничения функций поставщика базы данных SQLite EF Core
 
@@ -41,7 +41,7 @@ ms.locfileid: "42994668"
 | DropPrimaryKey       | ✗          |                  |
 | DropTable            | ✔          | 1.0              |
 | DropUniqueConstraint | ✗          |                  |
-| RenameColumn         | ✗          |                  |
+| RenameColumn         | ✔          | 2.2.2            |
 | RenameIndex          | ✔          | 2.1              |
 | RenameTable          | ✔          | 1.0              |
 | EnsureSchema         | ✔ (нет-op)  | 2.0              |
@@ -52,7 +52,7 @@ ms.locfileid: "42994668"
 
 ## <a name="migrations-limitations-workaround"></a>Инструкции по решению ограничения миграции
 
-Вы можете устранить некоторые из этих ограничений, написав код в миграции для выполнения таблицы вручную перестроить. Перестройка таблицы включает в себя переименование существующей таблицы, создание новой таблицы, копирование данных в новую таблицу и удалить старую таблицу. Необходимо будет использовать `Sql(string)` метод для выполнения некоторых из этих действий.
+Вы можете устранить некоторые из этих ограничений, написав код в миграции для выполнения таблицы вручную перестроить. Перестройка таблицы включает в себя переименование существующей таблицы, создание новой таблицы, копирование данных в новую таблицу и удаление старой таблицы. Необходимо будет использовать `Sql(string)` метод для выполнения некоторых из этих действий.
 
 См. в разделе [внесения других типов из таблицы изменений схемы](http://sqlite.org/lang_altertable.html#otheralter) в SQLite документации для получения дополнительных сведений.
 
