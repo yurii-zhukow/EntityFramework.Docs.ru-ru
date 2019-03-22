@@ -5,12 +5,12 @@ ms.author: riande
 ms.date: 08/03/2018
 ms.assetid: e153627f-f132-4c11-b13c-6c9a607addce
 uid: core/get-started/aspnetcore/new-db
-ms.openlocfilehash: 4734586adc89e9c1d866a1b4accd8b5e51fe2bb0
-ms.sourcegitcommit: ebf661025d2ad2b62466fa7bf0e0772a7811cbe7
+ms.openlocfilehash: 25e5a683acf4bbed0b978cc6a80f1b50a0b64ca1
+ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54211170"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319183"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-a-new-database"></a>Начало работы с EF Core в ASP.NET Core с новой базой данных
 
@@ -54,7 +54,7 @@ ms.locfileid: "54211170"
   * Убедитесь, что для параметра **Проверка подлинности** задано значение **Без проверки подлинности**.
   * Нажмите кнопку **ОК**.
 
-Предупреждение. Если для параметра **Проверка подлинности** установить значение **Учетные записи отдельных пользователей** вместо **Без проверки подлинности**, в проект будет добавлен файл `Models\IdentityModel.cs` с моделью Entity Framework Core. Используя методы, представленные в этом руководстве, вы можете добавить еще одну модель или расширить уже созданную, включив в нее ваши классы сущностей.
+Предупреждение: Если для параметра **Проверка подлинности** установить значение **Учетные записи отдельных пользователей** вместо **Без проверки подлинности**, в проект будет добавлен файл `Models\IdentityModel.cs` с моделью Entity Framework Core. Используя методы, представленные в этом руководстве, вы можете добавить еще одну модель или расширить уже созданную, включив в нее ваши классы сущностей.
 
 # <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
@@ -114,9 +114,9 @@ ms.locfileid: "54211170"
 
 ## <a name="register-the-context-with-dependency-injection"></a>Регистрация контекста с помощью внедрения зависимостей
 
-С помощью [внедрения зависимостей](http://docs.asp.net/en/latest/fundamentals/dependency-injection.html) службы (например, `BloggingContext`) регистрируются во время запуска приложения. Компоненты, которым требуются эти службы (например, контроллеры MVC), обращаются к ним через свойства или параметры конструктора.
+Чтобы сделать контекст `BloggingContext` доступным контроллерам MVC, зарегистрируйте его как службу в `Startup.cs`.
 
-Чтобы сделать контекст `BloggingContext` доступным MVC-контроллерам, зарегистрируйте его как службу.
+Службы (такие как `BloggingContext`) регистрируются с помощью [внедрения зависимостей](http://docs.asp.net/en/latest/fundamentals/dependency-injection.html) во время запуска приложения, чтобы компоненты, которым они требуются (например, контроллеры MVC), могли обращаться к ним автоматически через свойства и параметры конструктора.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -228,6 +228,6 @@ dotnet run
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* Руководство [ Начало работы с EF Core в консольном приложении .NET Core с новой базой данных](xref:core/get-started/netcore/new-db-sqlite)
+* [Учебник. Начало работы с EF Core в консольном приложении .NET Core с новой базой данных](xref:core/get-started/netcore/new-db-sqlite)
 * [Учебник. Начало работы с Razor Pages в ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)
 * [Учебник. Razor Pages с Entity Framework Core в ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)
