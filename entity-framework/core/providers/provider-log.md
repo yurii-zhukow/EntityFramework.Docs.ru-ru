@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 1133976d8d25e4099b64a1a30a8d2066ff3f6cd7
-ms.sourcegitcommit: 645785187ae23ddf7d7b0642c7a4da5ffb0c7f30
+ms.openlocfilehash: 229c15ec0402e1706318593a099236f723d80595
+ms.sourcegitcommit: ab847dd881d51122e695b7cd8c025fcf3a5a9033
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419670"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58678388"
 ---
 # <a name="provider-impacting-changes"></a>Изменения, влияющие на поставщика
 
@@ -61,6 +61,10 @@ ms.locfileid: "58419670"
   * `EntityMaterializerSource` упрощена
 * https://github.com/aspnet/EntityFrameworkCore/pull/14895
   * Перевод StartsWith был изменен способом, который поставщики могут want/необходимости реагирования на них
+* https://github.com/aspnet/EntityFrameworkCore/pull/15168
+  * Соглашение о наборе служб были изменены. Поставщики должны теперь являются производными от «ProviderConventionSet» или «RelationalConventionSet».
+  * Настройки можно добавлять с помощью `IConventionSetCustomizer` служб, но это предназначено для использования другими расширениями, не поставщиков.
+  * Соглашения, используемые во время выполнения должен быть разрешен из `IConventionSetBuilder`.
 
 ## <a name="21-----22"></a>2.1 ---> 2.2
 
