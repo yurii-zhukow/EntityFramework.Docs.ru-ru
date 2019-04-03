@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 229c15ec0402e1706318593a099236f723d80595
-ms.sourcegitcommit: ab847dd881d51122e695b7cd8c025fcf3a5a9033
+ms.openlocfilehash: 9ef87a737111053df0359f3b2d7a4f82d25c578a
+ms.sourcegitcommit: a8b04050033c5dc46c076b7e21b017749e0967a8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58678388"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58867948"
 ---
 # <a name="provider-impacting-changes"></a>Изменения, влияющие на поставщика
 
@@ -43,9 +43,6 @@ ms.locfileid: "58678388"
   * `IMigrationsSqlGenerator` в ограниченной службы отличается от это отдельная служба
 * https://github.com/aspnet/EntityFrameworkCore/pull/14706
   * Инфраструктуры для создания реляционных команды сделан общим, его можно безопасно используется поставщиками и немного рефакторинга.
-  * `IRelationalCommandBuilderFactory`в ограниченной службы отличается от одноэлементные службы
-  * `IShaperCommandContextFactory` в ограниченной службы отличается от одноэлементные службы
-  * `ISelectExpressionFactory` в ограниченной службы отличается от одноэлементные службы
 * https://github.com/aspnet/EntityFrameworkCore/pull/14733
   * `ILazyLoader` был изменен с ограниченной службы на временной ошибкой службы
 * https://github.com/aspnet/EntityFrameworkCore/pull/14610

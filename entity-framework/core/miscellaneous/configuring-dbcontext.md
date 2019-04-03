@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: f5a9ae17471391442170d8c40264e4db6922cb08
-ms.sourcegitcommit: 39080d38e1adea90db741257e60dc0e7ed08aa82
+ms.openlocfilehash: 9400fe8ea817b6aca0fb63c1de05ffe1dc997b2f
+ms.sourcegitcommit: a8b04050033c5dc46c076b7e21b017749e0967a8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980006"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58868013"
 ---
 # <a name="configuring-a-dbcontext"></a>Настройка DbContext
 
@@ -161,6 +161,27 @@ using (var context = serviceProvider.GetService<BloggingContext>())
 
 var options = serviceProvider.GetService<DbContextOptions<BloggingContext>>();
 ```
+## <a name="avoiding-dbcontext-threading-issues"></a>Как избежать DbContext потоками
+
+Entity Framework Core не поддерживает несколько параллельных операций выполняемых в этом же `DbContext` экземпляра. Одновременный доступ может привести к неопределенному поведению, сбои приложения и повреждения данных. Из-за этого очень важно всегда используйте разделения `DbContext` экземпляров для операций, которые выполняются в параллельном режиме. 
+
+Существуют распространенные ошибки, которые могут inadvernetly причина одновременный доступ на том же `DbContext` экземпляр:
+
+### <a name="forgetting-to-await-the-completion-of-an-asynchronous-operation-before-starting-any-other-operation-on-the-same-dbcontext"></a>Если забыть должно ожидать завершения асинхронной операции, прежде чем любой другой операции одинаковым DbContext
+
+Асинхронные методы позволяют EF Core для запуска операций, которые обращаются к базе данных в виде без блокировки. Однако если вызывающий объект не ожидать завершения одного из этих методов и продолжает выполнять другие операции на `DbContext`, состояние `DbContext` может быть (и весьма вероятно будут) поврежден. 
+
+Всегда сразу ожидать асинхронные методы EF Core.  
+
+### <a name="implicitly-sharing-dbcontext-instances-across-multiple-threads-via-dependency-injection"></a>Неявно совместное использование экземпляров DbContext в нескольких потоках посредством внедрения зависимостей
+
+[ `AddDbContext` ](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) Регистрирует метод расширения `DbContext` типы с [области времени существования](https://docs .microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes) по умолчанию. 
+
+Это безопасно из проблемы параллельного доступа в приложениях ASP.NET Core, поскольку имеется только один поток, выполнение каждого запроса клиента в определенный момент времени, а каждый запрос возвращает область внедрения отдельных зависимостей (и поэтому отдельное `DbContext` экземпляр).
+
+Тем не менее любой код, который явно выполняет несколько потоков в параллельного следует убедиться, что `DbContext` экземпляры никогда не accesed одновременно.
+
+С помощью внедрения зависимостей, это можно сделать путем либо регистрации контекста как областью действия и создание области (с помощью `IServiceScopeFactory`) для каждого потока, или путем регистрации `DbContext` как временные (с помощью перегрузки `AddDbContext` принимающий `ServiceLifetime` параметр).
 
 ## <a name="more-reading"></a>Дополнительные материалы
 
