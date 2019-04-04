@@ -4,8 +4,13 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 uid: core/index
+ms.openlocfilehash: fa0695be29668789a179f9a0d6330f3361dbac29
+ms.sourcegitcommit: 6c4e06bc62d98442530e93a44725e38e59483d42
+ms.translationtype: HT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 03/17/2019
+ms.locfileid: "58131429"
 ---
-
 # <a name="entity-framework-core"></a>Entity Framework Core
 
 Entity Framework (EF) Core — это простая, кроссплатформенная и расширяемая версия популярной технологии доступа к данным Entity Framework [с открытым исходным кодом](https://github.com/aspnet/EntityFrameworkCore).
