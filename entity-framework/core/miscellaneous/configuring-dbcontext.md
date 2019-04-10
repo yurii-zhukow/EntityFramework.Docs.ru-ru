@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: 9400fe8ea817b6aca0fb63c1de05ffe1dc997b2f
-ms.sourcegitcommit: a8b04050033c5dc46c076b7e21b017749e0967a8
+ms.openlocfilehash: 0350b25d0d0efe05df7cb9e93a3f4ae2d864fd63
+ms.sourcegitcommit: 47e0a66a136e743a815d099d2bee5f0da1a068c6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58868013"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59363941"
 ---
 # <a name="configuring-a-dbcontext"></a>Настройка DbContext
 
@@ -175,7 +175,7 @@ Entity Framework Core не поддерживает несколько пара�
 
 ### <a name="implicitly-sharing-dbcontext-instances-across-multiple-threads-via-dependency-injection"></a>Неявно совместное использование экземпляров DbContext в нескольких потоках посредством внедрения зависимостей
 
-[ `AddDbContext` ](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) Регистрирует метод расширения `DbContext` типы с [области времени существования](https://docs .microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes) по умолчанию. 
+[ `AddDbContext` ](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) Регистрирует метод расширения `DbContext` типы с [области времени существования](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes) по умолчанию. 
 
 Это безопасно из проблемы параллельного доступа в приложениях ASP.NET Core, поскольку имеется только один поток, выполнение каждого запроса клиента в определенный момент времени, а каждый запрос возвращает область внедрения отдельных зависимостей (и поэтому отдельное `DbContext` экземпляр).
 
