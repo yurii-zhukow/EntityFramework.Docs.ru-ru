@@ -65,6 +65,7 @@
 #### [Преобразования значений](core/modeling/value-conversions.md)
 #### [Присвоение начальных значений данных](core/modeling/data-seeding.md)
 #### [Конструкторы типов сущностей](core/modeling/constructors.md)
+#### [Разделение таблицы](core/modeling/table-splitting.md)
 #### [Собственные типы сущностей](core/modeling/owned-entities.md)
 #### [Типы запросов](core/modeling/query-types.md)
 #### [Переключение моделей с одинаковым DbContext](core/modeling/dynamic-model.md)
