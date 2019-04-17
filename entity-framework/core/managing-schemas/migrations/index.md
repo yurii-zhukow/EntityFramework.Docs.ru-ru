@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: 5ae06a4342a556936dc44c5bf6622814eaad4733
-ms.sourcegitcommit: 7a7da65404c9338e1e3df42576a13be536a6f95f
+ms.openlocfilehash: b94ac567644a9d98a05a40857cc072c500203370
+ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48834751"
+ms.lasthandoff: 04/14/2019
+ms.locfileid: "59562563"
 ---
 <a name="migrations"></a>Миграции
 ==========
@@ -47,8 +47,8 @@ dotnet ef migrations add InitialCreate
 
 В каталог **Migrations** проекта добавляются три файла.
 
-* **00000000000000_InitialCreate.cs** — главный файл миграций. Содержит операции, необходимые для применения миграции (в `Up()`) и ее отмены (в `Down()`).
-* **00000000000000_InitialCreate.Designer.cs** — файл метаданных миграций. Содержит сведения, используемые EF.
+* **XXXXXXXXXXXXXX_InitialCreate.cs** — главный файл миграций. Содержит операции, необходимые для применения миграции (в `Up()`) и ее отмены (в `Down()`).
+* **XXXXXXXXXXXXXX_InitialCreate.Designer.cs** — файл метаданных миграций. Содержит сведения, используемые EF.
 * **MyContextModelSnapshot.cs** — моментальный снимок текущей модели. Используется для определения появившихся изменений при добавлении следующей миграции.
 
 Метка времени в именах файлов позволяет расположить их в хронологическом порядке, чтобы вы могли отслеживать ход изменений.
@@ -204,4 +204,4 @@ myDbContext.Database.Migrate();
 <a name="next-steps"></a>Следующие шаги
 ----------
 
-Дополнительные сведения см. в разделе <xref:core/miscellaneous/cli/index>.
+Для получения дополнительной информации см. <xref:core/miscellaneous/cli/index>.
