@@ -5,10 +5,10 @@ ms.date: 02/19/2019
 ms.assetid: 2EBE2CCC-E52D-483F-834C-8877F5EB0C0C
 uid: core/what-is-new/ef-core-3.0/features
 ms.openlocfilehash: 7501a806271c9734e85e31845f260f2d512da077
-ms.sourcegitcommit: a8b04050033c5dc46c076b7e21b017749e0967a8
+ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58867961"
 ---
 # <a name="new-features-included-in-ef-core-30-currently-in-preview"></a>Новые функции в EF Core 3.0 (сейчас предоставляются в виде предварительной версии)
@@ -27,7 +27,7 @@ ms.locfileid: "58867961"
 
 ## <a name="linq-improvements"></a>Улучшения LINQ 
 
-[Отслеживание вопроса № 12795](https://github.com/aspnet/EntityFrameworkCore/issues/12795)
+[Отслеживание вопроса 12795](https://github.com/aspnet/EntityFrameworkCore/issues/12795)
 
 Работа над этой функцией началась, однако она еще не включена в текущую предварительную версию.
 
@@ -40,7 +40,7 @@ LINQ позволяет писать запросы к базам данных �
 
 ## <a name="cosmos-db-support"></a>Поддержка Cosmos DB 
 
-[Отслеживание вопроса № 8443](https://github.com/aspnet/EntityFrameworkCore/issues/8443)
+[Отслеживание вопроса 8443](https://github.com/aspnet/EntityFrameworkCore/issues/8443)
 
 Эта функция включена в текущую предварительную версию, но еще не готова. 
 
@@ -86,7 +86,7 @@ public class OrderDetails
 
 ## <a name="reverse-engineering-of-database-views"></a>Реконструирование представлений базы данных
 
-[Отслеживание вопроса № 1679](https://github.com/aspnet/EntityFrameworkCore/issues/1679)
+[Отслеживание вопроса 1679](https://github.com/aspnet/EntityFrameworkCore/issues/1679)
 
 Эта функция не включена в текущую предварительную версию.
 
@@ -104,7 +104,7 @@ public class OrderDetails
 
 ## <a name="ef-63-on-net-core"></a>EF 6.3 на платформе .NET Core
 
-[Отслеживание вопроса EF6 № 271](https://github.com/aspnet/EntityFramework6/issues/271)
+[Отслеживание вопроса EF6#271](https://github.com/aspnet/EntityFramework6/issues/271)
 
 Работа над этой функцией началась, однако она еще не включена в текущую предварительную версию. 
 

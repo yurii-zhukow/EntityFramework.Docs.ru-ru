@@ -3,14 +3,17 @@ title: Глобальные фильтры запросов — EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: 201292a440d37d240f31452eaebb23dcd4aee1a6
-ms.sourcegitcommit: 8dd71a57a01c439431164c163a0722877d0e5cd8
+ms.openlocfilehash: 4afc9fb0338d34845639d57013ac710445321940
+ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53028171"
+ms.lasthandoff: 04/14/2019
+ms.locfileid: "59562446"
 ---
 # <a name="global-query-filters"></a>Глобальные фильтры запросов
+
+> [!NOTE]
+> Эта возможность появилась в EF Core 2.0.
 
 Глобальные фильтры запросов являются предикатами запросов LINQ (логическое выражение, которое обычно передается в оператор запроса LINQ *Where*), которые применяются непосредственно в типах сущностей в модели метаданных (обычно в *OnModelCreating*). Такие фильтры автоматически применяются к любым запросам LINQ, связанным с этими типами сущностей, включая типы сущностей, указанные косвенно, например, с помощью оператора Include или ссылок на свойства прямой навигации. Ниже приведены некоторые типичные способы применения этой функции.
 
