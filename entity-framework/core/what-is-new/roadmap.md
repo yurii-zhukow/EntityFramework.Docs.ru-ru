@@ -4,19 +4,19 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 834C9729-7F6E-4355-917D-DE3EE9FE149E
 uid: core/what-is-new/roadmap
-ms.openlocfilehash: f466d112e5ed8661ad1e2d91079c1c01d34b9002
-ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
+ms.openlocfilehash: e9d1a707c643036fa15b1e0e46730eadefd65518
+ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463234"
+ms.lasthandoff: 04/14/2019
+ms.locfileid: "59562472"
 ---
 # <a name="entity-framework-core-roadmap"></a>Стратегия развития Entity Framework Core
 
 > [!IMPORTANT]
 > Обратите внимание на то, что наборы возможностей и расписания будущих выпусков могут быть изменены, и, несмотря на то, что мы стараемся поддерживать эту страницу в актуальном состоянии, в определенные моменты времени содержание страницы может не отражать наши текущие планы.
 
-### <a name="ef-core-30"></a>EF Core 3.0
+## <a name="ef-core-30"></a>EF Core 3.0
 
 Выпустив EF Core 2.2, мы сконцентрировали свои усилия на EF Core 3.0.
 Ознакомьтесь с разделом [Новые возможности в EF Core 3.0](xref:core/what-is-new/ef-core-3.0/index), чтобы узнать о запланированных [новых функциях](xref:core/what-is-new/ef-core-3.0/features) и преднамеренных [критических изменениях](xref:core/what-is-new/ef-core-3.0/breaking-changes), включенных в этот выпуск.

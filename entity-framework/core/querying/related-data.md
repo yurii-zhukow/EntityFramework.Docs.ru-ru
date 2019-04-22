@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: 6beaebf2c6859fcf91e963bfae02f029f8f51147
-ms.sourcegitcommit: 6c4e06bc62d98442530e93a44725e38e59483d42
+ms.openlocfilehash: e98e2e601203db7ea3d3344ddc7b7e0aff7f2143
+ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58131440"
+ms.lasthandoff: 04/14/2019
+ms.locfileid: "59562524"
 ---
 # <a name="loading-related-data"></a>Загрузка связанных данных
 
@@ -108,7 +108,7 @@ public class School
 
 - С помощью перегрузки `Include`, принимающий параметр типа `string`.
   ```csharp
-  context.People.Include("Student").ToList()
+  context.People.Include("School").ToList()
   ```
 
 ### <a name="ignored-includes"></a>Игнорируемые включения
