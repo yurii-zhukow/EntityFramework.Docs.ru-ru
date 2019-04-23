@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 9ef87a737111053df0359f3b2d7a4f82d25c578a
-ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
+ms.openlocfilehash: 61a58bd6119763d90731fac62343b983af510cb6
+ms.sourcegitcommit: 87fcaba46535aa351db4bdb1231bd14b40e459b9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58867948"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59929879"
 ---
 # <a name="provider-impacting-changes"></a>Изменения, влияющие на поставщика
 
@@ -62,6 +62,7 @@ ms.locfileid: "58867948"
   * Соглашение о наборе служб были изменены. Поставщики должны теперь являются производными от «ProviderConventionSet» или «RelationalConventionSet».
   * Настройки можно добавлять с помощью `IConventionSetCustomizer` служб, но это предназначено для использования другими расширениями, не поставщиков.
   * Соглашения, используемые во время выполнения должен быть разрешен из `IConventionSetBuilder`.
+* https://github.com/aspnet/EntityFrameworkCore/pull/15288 -Заполнение данными были вынесены в открытый API, чтобы избежать необходимости использования внутренних типов. Это следует только повлиять на нереляционных поставщиков, поскольку заполнение обрабатывается базовым классом реляционных для всех поставщиков реляционной.
 
 ## <a name="21-----22"></a>2.1 ---> 2.2
 
@@ -82,7 +83,6 @@ ms.locfileid: "58867948"
   * Поставщики, с помощью этих тестов может потребоваться react
 * [https://github.com/aspnet/EntityFrameworkCore/pull/12141](https://github.com/aspnet/EntityFrameworkCore/pull/12141) — Изменяет контекст в пул, вместо того чтобы избавляться в функциональных тестов
   * Это изменение включает в себя оптимизация тестирования которого может потребоваться поставщиков реагирования на них
-
 
 ### <a name="test-and-product-code-changes"></a>Изменения кода теста и продукта
 
