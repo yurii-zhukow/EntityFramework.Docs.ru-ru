@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: 0350b25d0d0efe05df7cb9e93a3f4ae2d864fd63
-ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
+ms.openlocfilehash: 316d363d4a1b8a909efc1c32b492280c0d16cb4e
+ms.sourcegitcommit: 960e42a01b3a2f76da82e074f64f52252a8afecc
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59363941"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405211"
 ---
 # <a name="configuring-a-dbcontext"></a>Настройка DbContext
 
@@ -163,7 +163,13 @@ var options = serviceProvider.GetService<DbContextOptions<BloggingContext>>();
 ```
 ## <a name="avoiding-dbcontext-threading-issues"></a>Как избежать DbContext потоками
 
-Entity Framework Core не поддерживает несколько параллельных операций выполняемых в этом же `DbContext` экземпляра. Одновременный доступ может привести к неопределенному поведению, сбои приложения и повреждения данных. Из-за этого очень важно всегда используйте разделения `DbContext` экземпляров для операций, которые выполняются в параллельном режиме. 
+Entity Framework Core не поддерживает несколько параллельных операций выполняемых в этом же `DbContext` экземпляра. Сюда входят как параллельное выполнение асинхронных запросов, так и любые явные совместное использование из нескольких потоков. Таким образом, всегда `await` async вызывает немедленно, или отдельное `DbContext` экземпляров для операций, которые выполняются в параллельном режиме.
+
+Когда EF Core обнаруживает попытку использования `DbContext` экземпляра параллельно, вы увидите `InvalidOperationException` с примерно следующее сообщение: 
+
+> Вторая операция запущена на данном контексте до завершения предыдущей операции. Обычно это вызывается различными потоками используется тот же экземпляр DbContext, однако члены экземпляра не гарантируется потокобезопасность.
+
+Если параллельный доступ не обнаруживается, это может привести приведет к неопределенному поведению, сбои приложения и повреждения данных.
 
 Существуют распространенные ошибки, которые могут inadvernetly причина одновременный доступ на том же `DbContext` экземпляр:
 

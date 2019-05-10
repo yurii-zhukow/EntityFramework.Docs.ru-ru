@@ -3,12 +3,12 @@ title: Работа с транзакциями - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 0d0f1824-d781-4cb3-8fda-b7eaefced1cd
-ms.openlocfilehash: 7197733ab25c8475746e7863963384730919e3ff
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 96cfff4cca59ab27dd68f50d0260e90902e33a92
+ms.sourcegitcommit: eefcab31142f61a7aaeac03ea90dcd39f158b8b8
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489782"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873238"
 ---
 # <a name="working-with-transactions"></a>Работа с транзакциями
 > [!NOTE]
@@ -39,7 +39,7 @@ ms.locfileid: "45489782"
 
 Начиная с EF6 framework теперь предоставляет:  
 
-1. **Database.BeginTransaction()** : более простой метод для пользователя для запуска и завершения транзакций, сами в существующих DbContext — позволяя выполнять несколько операций для объединения в той же транзакции и, следовательно все зафиксированные или все откат как один. Он также позволяет пользователю легче указать уровень изоляции для транзакции.  
+1. **Database.BeginTransaction()** : Более простой метод для пользователя для запуска и завершения транзакций, сами в существующих DbContext — позволяя выполнять несколько операций для объединения в той же транзакции и, следовательно все зафиксированные или все как один откат. Он также позволяет пользователю легче указать уровень изоляции для транзакции.  
 2. **Database.UseTransaction()** : что позволяет использовать транзакцию, в которой был запущен вне платформы Entity Framework DbContext.  
 
 ### <a name="combining-several-operations-into-one-transaction-within-the-same-context"></a>Объединение нескольких операций в одну транзакцию, в том же контексте  
@@ -126,7 +126,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
-sing System.Transactions;
+using System.Transactions;
 
 namespace TransactionsExamples
 {
