@@ -5,12 +5,12 @@ ms.author: riande
 ms.date: 08/03/2018
 ms.assetid: e153627f-f132-4c11-b13c-6c9a607addce
 uid: core/get-started/aspnetcore/new-db
-ms.openlocfilehash: fbc1a00d6d6d0624bcbbfa1e51f4e21a915baaaa
-ms.sourcegitcommit: f277883a5ed28eba57d14aaaf17405bc1ae9cf94
+ms.openlocfilehash: 2eb1668b8c077fabc9cb21088452fd1bead7ff22
+ms.sourcegitcommit: ea1cdec0b982b922a59b9d9301d3ed2b94baca0f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/18/2019
-ms.locfileid: "65874567"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66452248"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-a-new-database"></a>Начало работы с EF Core в ASP.NET Core с новой базой данных
 
@@ -226,8 +226,12 @@ dotnet run
 
   ![Страница индексов](_static/index-new-db.png)
 
-## <a name="additional-resources"></a>Дополнительные ресурсы
+## <a name="additional-tutorials"></a>Дополнительные руководства
 
-* [Учебник. Начало работы с EF Core в консольном приложении .NET Core с новой базой данных](xref:core/get-started/netcore/new-db-sqlite)
-* [Начало работы с Razor Pages в ASP.NET Core](/aspnet/core/tutorials/razor-pages/razor-pages-start) или [Начало работы с ASP.NET Core MVC](/aspnet/core/tutorials/first-mvc-app/start-mvc)
-* [Учебник. Razor Pages с Entity Framework Core в ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro) или [Учебник. Начало работы с EF Core в веб-приложении MVC ASP.NET](/aspnet/core/data/ef-mvc/intro)
+* [Начало работы с EF Core в консольном приложении .NET Core с новой базой данных](xref:core/get-started/netcore/new-db-sqlite)
+* MVC ASP.NET Core:
+  * [Начало работы с MVC ASP.NET Core](/aspnet/core/tutorials/first-mvc-app/start-mvc)
+  * [Начало работы с EF Core в веб-приложении MVC ASP.NET](/aspnet/core/data/ef-mvc/intro)
+* [Razor Pages](/aspnet/core/razor-pages/index):
+  * [Начало работы с Razor Pages в ASP.NET Core](/aspnet/core/tutorials/razor-pages/razor-pages-start)
+  * [Razor Pages с Entity Framework Core в ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)
