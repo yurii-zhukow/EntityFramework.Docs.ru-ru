@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 04/09/2017
 ms.assetid: 94ab4800-c460-4caa-a5e8-acdfee6e6ce2
 uid: core/providers/sqlite/limitations
-ms.openlocfilehash: ce834d60b9ceb4c414f097f2d86254cc5edd958f
-ms.sourcegitcommit: 645785187ae23ddf7d7b0642c7a4da5ffb0c7f30
+ms.openlocfilehash: eaa7d5b1496172e4f3821433a1cd098ee7e8b737
+ms.sourcegitcommit: 9bd64a1a71b7f7aeb044aeecc7c4785b57db1ec9
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419709"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67394806"
 ---
 # <a name="sqlite-ef-core-database-provider-limitations"></a>Ограничения функций поставщика базы данных SQLite EF Core
 
@@ -22,6 +22,25 @@ ms.locfileid: "58419709"
 * Схемы
 * Последовательности
 * Вычисляемые столбцы
+
+## <a name="query-limitations"></a>Ограничения запросов
+
+SQLite изначально не поддерживают следующие типы данных. EF Core может считывать и записывать значения этих типов, и запрос для проверки на равенство (`where e.Property == value`) также поддерживается. Другие операции, однако, как и сравнение и упорядочение потребует оценка на клиенте.
+
+* DateTimeOffset
+* Десятичное число
+* TimeSpan
+* UInt64
+
+Вместо `DateTimeOffset`, мы рекомендуем использовать значения даты и времени. При обработке нескольких часовых поясов, рекомендуется преобразовать значения в формат UTC перед сохранением и затем преобразуется в соответствующий часовой пояс.
+
+`Decimal` Тип обеспечивает высокий уровень точности. Если вам не понадобиться такой уровень точности, тем не менее, рекомендуется вместо этого использовать double. Можно использовать [преобразователь значений](../../modeling/value-conversions.md) продолжать использовать decimal в классах.
+
+``` csharp
+modelBuilder.Entity<MyEntity>()
+    .Property(e => e.DecimalProperty)
+    .HasConversion<double>();
+```
 
 ## <a name="migrations-limitations"></a>Ограничения миграции
 
@@ -49,7 +68,7 @@ ms.locfileid: "58419709"
 | DropSchema           | ✔ (нет-op)  | 2.0              |
 | Insert               | ✔          | 2.0              |
 | Обновление               | ✔          | 2.0              |
-| Удаление               | ✔          | 2.0              |
+| Оператор delete               | ✔          | 2.0              |
 
 ## <a name="migrations-limitations-workaround"></a>Инструкции по решению ограничения миграции
 
