@@ -6,16 +6,16 @@ description: Начало работы с .NET Core и Entity Framework Core
 ms.date: 08/03/2018
 ms.assetid: 099d179e-dd7b-4755-8f3c-fcde914bf50b
 uid: core/get-started/netcore/new-db-sqlite
-ms.openlocfilehash: a0df80a8fe96be4f8cc3177919e2b087e14cb49c
-ms.sourcegitcommit: 735715f10cc8a231c213e4f055d79f0effd86570
+ms.openlocfilehash: e6996630e399659807d23304993c8e19c11ca6f5
+ms.sourcegitcommit: 83c1e2fc034e5eb1fec1ebabc8d629ffcc7c0632
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56325331"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67351338"
 ---
 # <a name="getting-started-with-ef-core-on-net-core-console-app-with-a-new-database"></a>Начало работы с EF Core в консольном приложении .NET Core с новой базой данных
 
-В этом руководстве вы создадите консольное приложение .NET Core, которое осуществляет доступ к базе данных SQLite с помощью Entity Framework Core. Вы примените процесс миграций, чтобы создать базу данных из модели. В разделе [ASP.NET Core - новая база данных](xref:core/get-started/aspnetcore/new-db) описана версия для Visual Studio с использованием ASP.NET Core MVC.
+В этом руководстве вы создадите консольное приложение .NET Core, которое осуществляет доступ к базе данных SQLite с помощью Entity Framework Core. Вы примените процесс [миграций](xref:core/managing-schemas/migrations/index), чтобы создать базу данных из модели. В разделе [ASP.NET Core - новая база данных](xref:core/get-started/aspnetcore/new-db) описана версия для Visual Studio с использованием ASP.NET Core MVC.
 
 [Пример для этой статьи на GitHub](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted/NetCore/ConsoleApp.SQLite).
 
