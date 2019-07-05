@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 96586808862c4373168dcd34a5f00c9f2f7563c3
-ms.sourcegitcommit: 9bd64a1a71b7f7aeb044aeecc7c4785b57db1ec9
+ms.openlocfilehash: dcbea1a2aab5baea35f81500bb7bb5482695d778
+ms.sourcegitcommit: 812010a35afe902d8c4bb03a67d575f8e91b5ec0
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67394831"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67506261"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>Критические изменения в EF Core 3.0 (сейчас предоставляются в виде предварительной версии)
 
@@ -1396,10 +1396,6 @@ var constraintName = myForeignKey.ConstraintName;
 
 До выпуска версии EF Core 3.0 эти методы были защищены.
 
-```C#
-var constraintName = myForeignKey.Name;
-```
-
 **Новое поведение**
 
 Начиная с EF Core 3.0 эти методы стали общедоступными.
@@ -1463,3 +1459,26 @@ var constraintName = myForeignKey.Name;
 **Решение проблемы**
 
 SQLitePCL.raw версии 2.0.0 включает некоторые критические изменения. Подробные сведения см. в [заметках о выпуске](https://github.com/ericsink/SQLitePCL.raw/blob/v2/v2.md).
+
+
+## <a name="nettopologysuite-updated-to-version-200"></a>Обновление NetTopologySuite до версии 2.0.0
+
+[Отслеживание вопроса № 14825](https://github.com/aspnet/EntityFrameworkCore/issues/14825)
+
+Это изменение реализовано в EF Core 3.0, предварительная версия 7.
+
+**Старое поведение**
+
+Пространственные пакеты раньше зависели от версии NetTopologySuite 1.15.1.
+
+**Новое поведение**
+
+Мы обновили пакет, и теперь он зависит от версии 2.0.0.
+
+**Причина**
+
+Версия NetTopologySuite 2.0.0 помогает решить ряд проблем с удобством использования, возникающих у пользователей EF Core.
+
+**Решение проблемы**
+
+NetTopologySuite версии 2.0.0 включает некоторые критические изменения. Подробные сведения см. в [заметках о выпуске](https://www.nuget.org/packages/NetTopologySuite/2.0.0-pre001).
