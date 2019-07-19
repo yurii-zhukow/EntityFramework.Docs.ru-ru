@@ -4,12 +4,12 @@ author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: 5ebc4edba07063ad5e77154adcde5f2664c0d748
-ms.sourcegitcommit: 85d17524d8e022f933cde7fc848313f57dfd3eb8
+ms.openlocfilehash: db1b83a9222e00a5e226a134085b18247b31f29a
+ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55760526"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68306486"
 ---
 # <a name="installing-entity-framework-core"></a>Установка Entity Framework Core
 
@@ -47,7 +47,7 @@ ms.locfileid: "55760526"
 
 ### <a name="visual-studio-nuget-package-manager-dialog"></a>Диалоговое окно диспетчера пакетов NuGet в Visual Studio
 
-* В меню Visual Studio выберите **"Проект" > "Управление пакетами NuGet"**.
+* В меню Visual Studio выберите **"Проект" > "Управление пакетами NuGet"** .
 
 * Нажмите кнопку **Обзор** или откройте вкладку **Обновления**.
 
@@ -57,7 +57,7 @@ ms.locfileid: "55760526"
 
 ### <a name="visual-studio-nuget-package-manager-console"></a>Консоль диспетчера пакетов NuGet в Visual Studio
 
-* В меню Visual Studio выберите **"Сервис" > "Диспетчер пакетов NuGet" > "Консоль диспетчера пакетов"**.
+* В меню Visual Studio выберите **"Сервис" > "Диспетчер пакетов NuGet" > "Консоль диспетчера пакетов"** .
 
 * Чтобы установить поставщик SQL Server, в консоли диспетчера пакетов выполните следующую команду:
 
@@ -94,7 +94,7 @@ ms.locfileid: "55760526"
 
 Команды `dotnet ef` входят в текущие версии пакета SDK для .NET Core, но, чтобы включить их для конкретного проекта, нужно установить пакет `Microsoft.EntityFrameworkCore.Design`:
 
- ``` Console    
+``` Console 
 dotnet add package Microsoft.EntityFrameworkCore.Design 
 ``` 
 
