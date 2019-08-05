@@ -1,17 +1,18 @@
 ---
-title: Начало работы в ASP.NET Core — существующая база данных — Core EF
+title: Приступая к работе с ASP.NET Core — существующая база данных — EF Core
 author: rowanmiller
+description: Приступая к работе с EF Core в ASP.NET Core с существующей базой данных
 ms.date: 08/02/2018
 ms.assetid: 2bc68bea-ff77-4860-bf0b-cf00db6712a0
 uid: core/get-started/aspnetcore/existing-db
-ms.openlocfilehash: c8acb95395968f710e6b896de6c3598cb7b23676
-ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
+ms.openlocfilehash: 6b0ed0a9222644bee31d23234aa27b2084137f4a
+ms.sourcegitcommit: 755a15a789631cc4ea581e2262a2dcc49c219eef
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/06/2019
-ms.locfileid: "54058790"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68497516"
 ---
-# <a name="getting-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>Начало работы с EF Core в ASP.NET Core с существующей базой данных
+# <a name="get-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>Приступая к работе с EF Core в ASP.NET Core с существующей базой данных
 
 В этом руководстве вы создадите приложение ASP.NET Core MVC, которое выполняет базовые операции доступа к данным через платформу Entity Framework Core. Для создания модели Entity Framework используется реконструирование существующей базы данных.
 
@@ -31,7 +32,7 @@ ms.locfileid: "54058790"
 В этом руководстве в качестве существующей базы данных используется база данных **для ведения блогов**, размещенная на локальном экземпляре LocalDb. Если вы уже создали базу данных **Blogging**, работая с другим руководством, пропустите эти шаги.
 
 * Открытие Visual Studio
-* Выберите **Инструменты -> Подключиться к базе данных...**.
+* Выберите **Инструменты -> Подключиться к базе данных...** .
 * Выберите **Microsoft SQL Server** и щелкните **Продолжить**.
 * Введите значение **(localdb)\mssqllocaldb** для параметра **Имя сервера**.
 * Введите значение **master** для параметра **Имя базы данных**, затем щелкните **ОК**.
