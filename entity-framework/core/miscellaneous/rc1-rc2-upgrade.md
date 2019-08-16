@@ -85,7 +85,7 @@ public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 
 ### <a name="testing"></a>Тестирование
 
-Наиболее распространенным сценарием этого является управление областью базы данных в памяти при тестировании. Пример этого с [](testing/index.md) помощью RC2 см. в обновленной статье о тестировании.
+Наиболее распространенным сценарием этого является управление областью базы данных в памяти при тестировании. Пример этого с [тестирование](testing/index.md) помощью RC2 см. в обновленной статье о тестировании.
 
 ### <a name="resolving-internal-services-from-application-service-provider-aspnet-core-projects-only"></a>Разрешение внутренних служб от поставщика службы приложений (только ASP.NET Core проектов)
 
