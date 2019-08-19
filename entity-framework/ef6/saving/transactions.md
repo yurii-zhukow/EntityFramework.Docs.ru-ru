@@ -88,7 +88,7 @@ namespace TransactionsExamples
 ```  
 
 > [!NOTE]
-> Для начала транзакции необходимо, чтобы базовое соединение с хранилищем было открыто. Поэтому при вызове Database. BeginTransaction () откроется подключение, если оно еще не открыто. Если Дбконтексттрансактион открыл соединение, он закроет его при вызове Dispose ().  
+> Для начала транзакции необходимо открытое соединение с используемым хранилищем. Поэтому вызов Database.BeginTransaction() откроет соединение, если оно еще не открыто. В этом случае метод также закроет его при вызове Dispose().  
 
 ### <a name="passing-an-existing-transaction-to-the-context"></a>Передача существующей транзакции в контекст  
 
@@ -97,7 +97,7 @@ namespace TransactionsExamples
 Для этого необходимо определить и использовать конструктор в классе контекста, который наследуется от одного из конструкторов DbContext, использующих i) существующего параметра соединения и II) логического Контекстовнсконнектион.  
 
 > [!NOTE]
-> При вызове в этом сценарии для флага Контекстовнсконнектион должно быть задано значение false. Это важно, так как оно информирует Entity Framework, что не должно закрывать подключение, когда оно выполняется с ним (например, см. строку 4 ниже):  
+> При вызове в этом сценарии для флага Контекстовнсконнектион должно быть задано значение false. Это важно, так как флаг информирует Entity Framework, что закрывать соединение в этом случае не нужно (например, см. строку 4 ниже):  
 
 ``` csharp
 using (var conn = new SqlConnection("..."))
@@ -242,7 +242,7 @@ namespace TransactionsExamples
 
 Объекты SqlConnection и Entity Framework будут использовать внешнюю транзакцию TransactionScope и, следовательно, зафиксированы вместе.  
 
-Начиная с .NET 4.5.1 TransactionScope была обновлена для работы с асинхронными методами с помощью перечисления [трансактионскопеасинкфловоптион](https://msdn.microsoft.com/library/system.transactions.transactionscopeasyncflowoption.aspx) :  
+Начиная с .NET 4.5.1 объект TransactionScope был обновлен для работы также с асинхронными методами с помощью перечисления [TransactionScopeAsyncFlowOption](https://msdn.microsoft.com/library/system.transactions.transactionscopeasyncflowoption.aspx):  
 
 ``` csharp
 using System.Collections.Generic;
