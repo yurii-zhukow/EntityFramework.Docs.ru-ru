@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: b94ac567644a9d98a05a40857cc072c500203370
-ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
+ms.openlocfilehash: 7d97551044ae4a8fc42d1676199da884f3e2994d
+ms.sourcegitcommit: 7b7f774a5966b20d2aed5435a672a1edbe73b6fb
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/14/2019
-ms.locfileid: "59562563"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69565258"
 ---
 <a name="migrations"></a>Миграции
 ==========
@@ -139,7 +139,7 @@ dotnet ef database update
 Иногда бывает удобно добавить миграцию, не внося изменения в модель. В этом случае при добавлении новой миграции создаются файлы кода с пустыми классами. Вы можете настроить ее для выполнения операций, которые не связаны напрямую с моделью EF Core. Ниже приведен ряд вещей, которыми вам может потребоваться управлять.
 
 * Полнотекстовый поиск
-* Функции
+* Функции Azure
 * Хранимые процедуры
 * Триггеры
 * Представления
@@ -191,7 +191,7 @@ dotnet ef migrations script
 ---------------------------
 Некоторым приложениям может потребоваться применить миграции во время выполнения — при запуске или первом выполнении. Для этого можно использовать метод `Migrate()`.
 
-Этот метод основан на службе `IMigrator`, которую можно применять в более сложных сценариях. Для доступа к нему используйте `DbContext.GetService<IMigrator>()`.
+Этот метод основан на службе `IMigrator`, которую можно применять в более сложных сценариях. Для доступа к нему используйте `myDbContext.GetInfrastructure().GetService<IMigrator>()`.
 
 ``` csharp
 myDbContext.Database.Migrate();
@@ -204,4 +204,4 @@ myDbContext.Database.Migrate();
 <a name="next-steps"></a>Следующие шаги
 ----------
 
-Для получения дополнительной информации см. <xref:core/miscellaneous/cli/index>.
+Дополнительные сведения можно найти по адресу: <xref:core/miscellaneous/cli/index>.
