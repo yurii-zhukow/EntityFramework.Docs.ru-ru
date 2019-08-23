@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: 2EBE2CCC-E52D-483F-834C-8877F5EB0C0C
 uid: core/what-is-new/ef-core-3.0/features
-ms.openlocfilehash: 7501a806271c9734e85e31845f260f2d512da077
-ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
+ms.openlocfilehash: a71aa01e81d9830d7b9e6cb01c200851100a15df
+ms.sourcegitcommit: 87e72899d17602f7526d6ccd22f3c8ee844145df
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58867961"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69628426"
 ---
 # <a name="new-features-included-in-ef-core-30-currently-in-preview"></a>Новые функции в EF Core 3.0 (сейчас предоставляются в виде предварительной версии)
 
@@ -65,6 +65,7 @@ public class Order
     public OrderDetails Details { get; set; }
 }
 
+[Owned]
 public class OrderDetails
 {
     public int Id { get; set; }
@@ -72,8 +73,9 @@ public class OrderDetails
 }
 ```
 
-Начиная с EF Core 3.0, если класс `OrderDetails` принадлежит классу `Order` или явно сопоставляется с той же таблицей, можно добавлять класс `Order` без класса `OrderDetails` и все свойства `OrderDetails`, за исключением первичного ключа, будут сопоставляться со столбцами, допускающими значения NULL.
-При отправке запроса EF Core задаст `OrderDetails` значение `null`, если какому-либо его обязательному свойству не задано значение или если отсутствуют необходимые свойства помимо первичного ключа и все свойства имеют значение `null`.
+Начиная с EF Core 3.0, если класс `OrderDetails` принадлежит классу `Order` или явно сопоставляется с той же таблицей, можно добавлять класс `Order` без класса `OrderDetails`, и все свойства `OrderDetails`, за исключением первичного ключа, будут сопоставляться со столбцами, допускающими значения NULL.
+
+При отправке запроса EF Core задаст `OrderDetails` значение `null`, если какому-либо его обязательному свойству не задано значение или если отсутствуют необходимые свойства, помимо первичного ключа, и все свойства имеют значение `null`.
 
 ## <a name="c-80-support"></a>Поддержка C# 8.0
 
