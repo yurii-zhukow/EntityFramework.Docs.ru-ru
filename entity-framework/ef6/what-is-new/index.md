@@ -3,12 +3,12 @@ title: Новые возможности EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 41d1f86b-ce66-4bf2-8963-48514406fb4c
-ms.openlocfilehash: fcd6339f67a1512dd66220c59537d12cf0b22620
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 01dc618954da5dbd12fbd37c2c47701ce251be92
+ms.sourcegitcommit: 0cc9578fd49802789a00c0044b4e57325476ca2e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490302"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70271442"
 ---
 # <a name="whats-new-in-ef6"></a>Новые возможности EF6
 
@@ -44,8 +44,8 @@ ms.locfileid: "45490302"
 - Migrate.exe теперь поддерживает параметр -script [#240](https://github.com/aspnet/EntityFramework6/issues/240).
 - EF6 теперь может работать со значениями ключей, созданными с помощью последовательности в SQL Server [#165](https://github.com/aspnet/EntityFramework6/issues/165).
 - Обновленный список временных ошибок для стратегии выполнения SQL Azure [#83](https://github.com/aspnet/EntityFramework6/issues/83).
-- Ошибка. Повторное выполнение запросов или команд SQL завершается ошибкой The SqlParameter is already contained by another SqlParameterCollection ("Параметр SqlParameter уже содержится в другом объекте SqlParameterCollection") [#81](https://github.com/aspnet/EntityFramework6/issues/81).
-- Ошибка. Часто истекает время ожидания оценки DbQuery.ToString() в отладчике [#73](https://github.com/aspnet/EntityFramework6/issues/73).
+- Ошибка: Повторное выполнение запросов или команд SQL завершается ошибкой "The SqlParameter is already contained by another SqlParameterCollection" (Параметр SqlParameter уже содержится в другом объекте SqlParameterCollection) [#81](https://github.com/aspnet/EntityFramework6/issues/81).
+- Ошибка: Часто истекает время ожидания оценки DbQuery.ToString() в отладчике [#73](https://github.com/aspnet/EntityFramework6/issues/73).
 
 ## <a name="future-releases"></a>Будущие выпуски
 

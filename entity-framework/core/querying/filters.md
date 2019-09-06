@@ -3,12 +3,12 @@ title: Глобальные фильтры запросов — EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: e1cb9f5afc54aaa12e5880ace606277b00911c06
-ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
+ms.openlocfilehash: c9bbb8a5889834ea078ddb7e432863b3d0cf2ffe
+ms.sourcegitcommit: 0cc9578fd49802789a00c0044b4e57325476ca2e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68306474"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70271462"
 ---
 # <a name="global-query-filters"></a>Глобальные фильтры запросов
 
@@ -41,6 +41,9 @@ ms.locfileid: "68306474"
 
 > [!TIP]
 > Обратите внимание на использование поля уровня экземпляра DbContext. `_tenantId` используется для установки текущего клиента. Фильтры на уровне модели будут использовать значение из правильного экземпляра контекста (то есть экземпляра, выполняющего запрос).
+
+> [!NOTE]
+> Сейчас невозможно определить несколько фильтров запросов для одной и той же сущности. Будет применен только последний из них. Однако с помощью логического оператора _AND_ ([`&&` в C#](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/boolean-logical-operators#conditional-logical-and-operator-)) можно определить один фильтр с несколькими условиями.
 
 ## <a name="disabling-filters"></a>Отключение фильтров
 
