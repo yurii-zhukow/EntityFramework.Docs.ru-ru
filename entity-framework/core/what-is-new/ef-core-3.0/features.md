@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: 2EBE2CCC-E52D-483F-834C-8877F5EB0C0C
 uid: core/what-is-new/ef-core-3.0/features
-ms.openlocfilehash: a71aa01e81d9830d7b9e6cb01c200851100a15df
-ms.sourcegitcommit: 87e72899d17602f7526d6ccd22f3c8ee844145df
+ms.openlocfilehash: d61fa884f4669daa220ffc96ae59dd63518e6d5a
+ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69628426"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70921679"
 ---
 # <a name="new-features-included-in-ef-core-30-currently-in-preview"></a>Новые функции в EF Core 3.0 (сейчас предоставляются в виде предварительной версии)
 
@@ -94,15 +94,6 @@ public class OrderDetails
 
 [Типы запросов](xref:core/modeling/query-types), представленные в EF Core 2.1 и учитывающие типы сущностей без ключей в EF Core 3.0, представляют данные, которые можно считать из базы данных, но невозможно изменить.
 Благодаря этой особенности они отлично подходят для представлений базы данных в большинстве сценариев, поэтому мы планируем автоматизировать создание типов сущностей без ключей при реконструировании представлений базы данных.
-
-## <a name="property-bag-entities"></a>Сущности контейнера свойств
-
-[Отслеживание вопроса 13610](https://github.com/aspnet/EntityFrameworkCore/issues/13610) и [9914](https://github.com/aspnet/EntityFrameworkCore/issues/9914)
-
-Работа над этой функцией началась, однако она еще не включена в текущую предварительную версию. 
-
-Эта функция позволяет использовать сущности, хранящие данные в свойствах с индексацией, а также представлять в модели EF Core разные типы сущностей при помощи экземпляров одного и того же класса .NET (потенциально в простейшем виде `Dictionary<string, object>`).
-В будущем эта функция позволит реализовать связи "многие ко многим" без сущности объединения ([вопрос № 1368](https://github.com/aspnet/EntityFrameworkCore/issues/1368)). Это одна из тех возможностей, о которых нас чаще всего просят пользователи EF Core.
 
 ## <a name="ef-63-on-net-core"></a>EF 6.3 на платформе .NET Core
 
