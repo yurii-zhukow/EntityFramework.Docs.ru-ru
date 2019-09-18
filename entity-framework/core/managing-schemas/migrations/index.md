@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: 7d97551044ae4a8fc42d1676199da884f3e2994d
-ms.sourcegitcommit: 7b7f774a5966b20d2aed5435a672a1edbe73b6fb
+ms.openlocfilehash: ffa9a34f13ab29f0ba93f9fd1f469398630604ce
+ms.sourcegitcommit: d01fc19aa42ca34c3bebccbc96ee26d06fcecaa2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/17/2019
-ms.locfileid: "69565258"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71005460"
 ---
 <a name="migrations"></a>Миграции
 ==========
@@ -25,6 +25,9 @@ ms.locfileid: "69565258"
 * [Отмена миграции](#revert-a-migration). Отмените примененные к базе данных изменения.
 * [Создание скриптов SQL](#generate-sql-scripts). Иногда бывает нужно создать скрипт для обновления рабочей базы данных или для устранения неполадок в коде миграции.
 * [Применение миграции во время выполнения](#apply-migrations-at-runtime). Если обновления во время разработки и выполнение скриптов в вашем сценарии работы подходят плохо, вызовите метод `Migrate()`.
+
+> [!TIP]
+> Если `DbContext` находится не в той же сборке, что и начальный проект, можно явным образом указать целевой и начальный проекты в [средствах консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell#target-and-startup-project) или в [средствах .NET Core CLI](xref:core/miscellaneous/cli/dotnet#target-project-and-startup-project).
 
 <a name="install-the-tools"></a>Установка инструментов
 -----------------
@@ -139,7 +142,7 @@ dotnet ef database update
 Иногда бывает удобно добавить миграцию, не внося изменения в модель. В этом случае при добавлении новой миграции создаются файлы кода с пустыми классами. Вы можете настроить ее для выполнения операций, которые не связаны напрямую с моделью EF Core. Ниже приведен ряд вещей, которыми вам может потребоваться управлять.
 
 * Полнотекстовый поиск
-* Функции Azure
+* Функции
 * Хранимые процедуры
 * Триггеры
 * Представления
