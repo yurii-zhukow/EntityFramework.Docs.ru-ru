@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: ddabf825ef23c2ec07efcde390df7d0cf48db33c
-ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
+ms.openlocfilehash: 734acad86e364abbfd1522fe79d4a847b1acfb52
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68306510"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149029"
 ---
 # <a name="configuring-a-dbcontext"></a>Настройка DbContext
 
@@ -191,6 +191,5 @@ Entity Framework Core не поддерживает выполнение нес�
 
 ## <a name="more-reading"></a>Дополнительные материалы
 
-* Дополнительные сведения об использовании EF с ASP.NET Core см. [в статье Начало работы на ASP.NET Core](../get-started/aspnetcore/index.md) .
 * Дополнительные сведения об использовании DI см. в статье [внедрение зависимостей](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) .
 * Дополнительные сведения см. в статье [тестирование](testing/index.md) .
