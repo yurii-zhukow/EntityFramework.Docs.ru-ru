@@ -5,12 +5,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: a6b9cd22-6803-4c6c-a4d4-21147c0a81cb
 uid: efcore-and-ef6/index
-ms.openlocfilehash: ad0807a3cfd62c6c09a97df1a45134db7a538623
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: 3d2f72e64e6846d2d8bb6d4d507e04090287114d
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149060"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71198021"
 ---
 # <a name="compare-ef-core--ef6"></a>Сравнение EF Core и EF6
 
@@ -148,7 +148,7 @@ EF Core предлагает новые функции, которые не бу
 
 Используйте EF Core в новом приложении, если выполнены оба условия:
 * Приложению нужны возможности .NET Core. Дополнительные сведения см. в статье [Выбор между .NET Core и .NET Framework для серверных приложений](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
-* EF Core поддерживает все функции, которые требуются приложению. Если нужная функция отсутствует, ознакомьтесь со [стратегией развития EF Core](xref:core/what-is-new/roadmap), чтобы узнать, будет ли эта функция поддерживаться в будущем.
+* EF Core поддерживает все функции, которые требуются приложению. Если нужная функция отсутствует, ознакомьтесь со [стратегией развития EF Core](xref:core/what-is-new/index), чтобы узнать, будет ли эта функция поддерживаться в будущем. 
 
 Используйте EF6, если выполнены оба условия:
 * Приложение будет работать на Windows и .NET Framework 4.0 или более поздней версии.
