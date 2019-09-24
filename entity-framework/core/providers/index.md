@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 02/23/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/providers/index
-ms.openlocfilehash: 3748496db89c110d55a0876727e33e1f3ec987d9
-ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
+ms.openlocfilehash: 096d68f814e279bd224dfc50111d6576ab5eb223
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58914095"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149238"
 ---
 # <a name="database-providers"></a>Поставщики баз данных
 
@@ -21,10 +21,10 @@ Entity Framework Core поддерживает доступ к множеств�
 
 | Пакет NuGet                                                                                                        | Поддерживаемые ядра СУБД | Программа обслуживания или поставщик                                                           | Примечания и требования | Полезные ссылки                                                                                                                                                                                       |
 |:---------------------------------------------------------------------------------------------------------------------|:---------------------------|:------------------------------------------------------------------------------|:---------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer)    | SQL Server 2008 и выше    | [Проект EF Core](https://github.com/aspnet/EntityFrameworkCore/) (Майкрософт) |                      | [Документы](xref:core/providers/sql-server/index)                                                                                                                                                       |
+| [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer)    | SQL Server 2012 и последующие версии    | [Проект EF Core](https://github.com/aspnet/EntityFrameworkCore/) (Майкрософт) |                      | [Документы](xref:core/providers/sql-server/index)                                                                                                                                                       |
 | [Microsoft.EntityFrameworkCore.Sqlite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite)          | SQLite 3.7 и выше         | [Проект EF Core](https://github.com/aspnet/EntityFrameworkCore/) (Майкрософт) |                      | [Документы](xref:core/providers/sqlite/index)                                                                                                                                                           |
 | [Microsoft.EntityFrameworkCore.InMemory](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory)      | Выполняющаяся в памяти база данных EF Core | [Проект EF Core](https://github.com/aspnet/EntityFrameworkCore/) (Майкрософт) | Только для тестирования     | [Документы](xref:core/providers/in-memory/index)                                                                                                                                                        |
-| [Microsoft.EntityFrameworkCore.Cosmos](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Cosmos)          | Azure Cosmos DB SQL API    | [Проект EF Core](https://github.com/aspnet/EntityFrameworkCore/) (Майкрософт) | Только в предварительной версии         | [Блог](https://blogs.msdn.microsoft.com/dotnet/2018/10/17/announcing-entity-framework-core-2-2-preview-3/)                                                                                         |
+| [Microsoft.EntityFrameworkCore.Cosmos](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Cosmos)          | Azure Cosmos DB SQL API    | [Проект EF Core](https://github.com/aspnet/EntityFrameworkCore/) (Майкрософт) |                      | [Документы](xref:core/providers/cosmos/index)                                                                                         |
 | [Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL)        | PostgreSQL                 | [Команда разработчиков Npgsql](https://github.com/npgsql)                          |                      | [Документы](http://www.npgsql.org/efcore/index.html)                                                                                                                                                    |
 | [Pomelo.EntityFrameworkCore.MySql](https://www.nuget.org/packages/Pomelo.EntityFrameworkCore.MySql)                  | MySQL, MariaDB             | [Проект Pomelo Foundation](https://github.com/PomeloFoundation)              |                      | [Файл сведений](https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MySql/blob/master/README.md)                                                                                               |
 | [Pomelo.EntityFrameworkCore.MyCat](https://www.nuget.org/packages/Pomelo.EntityFrameworkCore.MyCat)                  | Сервер MyCAT               | [Проект Pomelo Foundation](https://github.com/PomeloFoundation)              | Только в предварительном выпуске      | [Файл сведений](https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MyCat/blob/master/README.md)                                                                                               |
@@ -51,10 +51,6 @@ Entity Framework Core поддерживает доступ к множеств�
 Мы ведем разработку поставщика EF Core для SQL API в Cosmos DB.
 Это будет первый разработанный нами полноценный поставщик базы данных, ориентированный на документы, подготовленные нами, а результаты будут способствовать улучшению дизайна будущих выпусков EF Core и, возможно, других нереляционных поставщиков.
 Предварительный просмотр доступен в [коллекции NuGet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Cosmos).
-
-### <a name="oracle-first-party-provider"></a>Основной поставщик Oracle
-Команда разработчиков Oracle .NET опубликовала бета-версию [поставщика Oracle для EF Core](https://www.nuget.org/packages/Oracle.EntityFrameworkCore/).
-Направляйте любые вопросы об этом поставщике, включая сроки выпуска, на [веб-сайт сообщества Oracle](https://community.oracle.com/).
 
 ## <a name="adding-a-database-provider-to-your-application"></a>Добавление поставщика базы данных в приложение
 

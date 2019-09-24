@@ -1,39 +1,169 @@
 ---
 title: Начало работы — EF Core
-author: rowanmiller
-ms.date: 10/27/2016
+author: rick-anderson
+ms.date: 09/17/2019
 ms.assetid: 3c88427c-20c6-42ec-a736-22d3eccd5071
 uid: core/get-started/index
-ms.openlocfilehash: b846d63f2c285a43d60eecfb2be3d460a5d31924
-ms.sourcegitcommit: 064b09431f05848830e145a6cd65cad58881557c
+ms.openlocfilehash: 41ebdcbb3f51c914ee7befb3c1a9c0042e9b43c8
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52552598"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71196900"
 ---
-# <a name="getting-started-with-entity-framework-core"></a>Начало работы с Entity Framework Core
+# <a name="getting-started-with-ef-core"></a>Начало работы с EF Core
 
-## <a name="installing-ef-coreinstallindexmd"></a>[Установка EF Core](install/index.md)
+В этом руководстве вы создадите консольное приложение .NET Core, которое осуществляет доступ к базе данных SQLite с помощью Entity Framework Core.
 
-Сводка по шагам, необходимым для добавления EF Core в приложение в разных платформах и популярных средах IDE.
+Инструкции из этого руководства можно выполнять с помощью Visual Studio 2017 в Windows, а также .NET Core CLI в Windows, macOS или Linux.
 
-## <a name="step-by-step-tutorials"></a>Пошаговые учебники
+[Пример для этой статьи на GitHub](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted).
 
-Для работы с этими вводными руководствами не требуется знание Entity Framework Core или какой-либо определенной интегрированной среды разработки. В них содержатся пошаговые инструкции для создания простого приложения, которое запрашивает и сохраняет данные из базы данных. Мы предоставили учебники для начала работы с различными операционными системами и типами приложений.
+## <a name="prerequisites"></a>Предварительные требования
 
-Entity Framework Core позволяет создать модель на основе существующей базы данных или базу данных на основе модели. Доступны учебники, демонстрирующие оба этих подхода.
+Установите следующее программное обеспечение:
 
-* Консольные приложения .NET Core
-  * [Новая база данных](netcore/new-db-sqlite.md)
-* Приложения ASP.NET Core
-  * [Новая база данных](aspnetcore/new-db.md)
-  * [Существующая база данных](aspnetcore/existing-db.md)
-  * [EF Core и Razor Pages](/aspnet/core/data/ef-rp/intro)
-* Приложения универсальной платформы Windows (UWP)
-  * [Новая база данных](uwp/getting-started.md)
-* Приложения .NET Framework
-  * [Новая база данных](full-dotnet/new-db.md)
-  * [Существующая база данных](full-dotnet/existing-db.md)
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
-> [!NOTE]  
-> Эти руководства и сопутствующие примеры обновлены для использования EF Core 2.1. Но в большинстве случаев приложения, использующие предыдущие выпуски, можно создать с минимальными отступлениями от приведенных инструкций. 
+* [пакет SDK для .NET Core 3.0](https://www.microsoft.com/net/download/core);
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* [Visual Studio 2019 16.3 или последующей версии](https://www.visualstudio.com/downloads/) с этой рабочей нагрузкой:
+  * **Кроссплатформенная разработка .NET Core** (в разделе **Другие наборы инструментов**)
+
+---
+
+## <a name="create-a-new-project"></a>Создание нового проекта
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+``` Console
+dotnet new console -o EFGetStarted
+cd EFGetStarted
+```
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* Открытие Visual Studio
+* Щелкните **Создать проект**.
+* Выберите **Консольное приложение (.NET Core )** с тегом **C#** и щелкните **Далее**.
+* Задайте проекту имя **EFGetStarted** и щелкните **Создать**.
+
+---
+
+## <a name="install-entity-framework-core"></a>Установка Entity Framework Core
+
+Чтобы установить EF Core, установите пакеты целевых поставщиков базы данных EF Core, с которыми вы будете работать. В этом руководстве используется SQLite, так как он работает на всех платформах, поддерживаемых .NET Core. Список доступных поставщиков см. в разделе [Database Providers](../providers/index.md) (Поставщики базы данных).
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+``` Console
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+```
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* Последовательно выберите пункты **Средства > Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
+* Выполните следующие команды:
+
+  ``` PowerShell
+  Install-Package Microsoft.EntityFrameworkCore.Sqlite
+  ```
+
+Совет. Можно также установить пакеты, щелкнув проект правой кнопкой мыши и выбрав **Управление пакетами NuGet**.
+
+---
+
+## <a name="create-the-model"></a>Создание модели
+
+Задайте класс контекста и классы сущностей, составляющие модель.
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+* В каталоге проекта создайте файл **Model.cs** с таким кодом:
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* Щелкните проект правой кнопкой мыши и выберите **Добавить > Класс**.
+* Задайте имя **Model.cs** и щелкните **Добавить**.
+* Замените все содержимое этого файла следующим кодом:
+
+---
+
+[!code-csharp[Main](../../../samples/core/GetStarted/Model.cs)]
+
+В EF Core также можно [реконструировать](../managing-schemas/scaffolding.md) модель из существующей базы данных.
+
+Совет. В реальном приложении каждый класс помещается в отдельный файл, а [строка подключения](../miscellaneous/connection-strings.md) — в файл конфигурации или переменную среды. Для упрощения в этом руководстве все данные содержатся в одном файле.
+
+## <a name="create-the-database"></a>Создание базы данных
+
+В следующих действиях используются [миграции](xref:core/managing-schemas/migrations/index) для создания базы данных.
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+* Выполните следующие команды:
+
+  ``` Console
+  dotnet tool install --global dotnet-ef
+  dotnet add package Microsoft.EntityFrameworkCore.Design
+  dotnet ef migrations add InitialCreate
+  dotnet ef database update
+  ```
+
+  При этом устанавливается [dotnet ef](../miscellaneous/cli/dotnet.md) и пакет конструктора, требуемый для выполнения команды в проекте. Команда `migrations` формирует шаблон миграции для создания начального набора таблиц в модели. Команда `database update` создает базу данных и применяет к ней созданную миграцию.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* В **консоли диспетчера пакетов** выполните следующие команды:
+
+  ``` PowerShell
+  Install-Package Microsoft.EntityFrameworkCore.Tools
+  Add-Migration InitialCreate
+  Update-Database
+  ```
+
+  При этом устанавливаются [средства консоли диспетчера пакетов для EF Core](../miscellaneous/cli/powershell.md). Команда `Add-Migration` формирует шаблон миграции для создания начального набора таблиц в модели. Команда `Update-Database` создает базу данных и применяет к ней созданную миграцию.
+
+---
+
+## <a name="create-read-update--delete"></a>Создание, чтение, обновление и удаление
+
+* Откройте файл *Program.cs* и замените его содержимое следующим кодом:
+
+  [!code-csharp[Main](../../../samples/core/GetStarted/Program.cs)]
+
+## <a name="run-the-app"></a>Запуск приложения
+
+# <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+
+``` Console
+dotnet run
+```
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+В Visual Studio используется неподходящий рабочий каталог при запуске консольных приложений .NET Core (см. [dotnet/project-system#3619](https://github.com/dotnet/project-system/issues/3619)). Это вызывает исключение, информирующее об *отсутствии таблицы (блоги)* . Чтобы обновить рабочий каталог, выполните следующие действия:
+
+* Щелкните проект правой кнопкой мыши и выберите **Изменить файл проекта**.
+* Непосредственно под свойством *TargetFramework* добавьте следующее:
+
+  ``` XML
+  <StartWorkingDirectory>$(MSBuildProjectDirectory)</StartWorkingDirectory>
+  ```
+
+* Сохраните файл.
+
+Теперь можно запустить приложение:
+
+* **"Отладка" > "Запустить без отладки"**
+
+---
+
+# <a name="next-steps"></a>Следующие шаги
+
+* Следуйте инструкциям из [руководства по ASP.NET Core](/aspnet/core/data/ef-rp/intro), чтобы использовать EF Core в веб-приложении.
+* См. сведения о [выражениях запросов LINQ](/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations).
+* [Настройте модель](xref:core/modeling/index), указав [требуемую](xref:core/modeling/required-optional) и [максимальную длину](xref:core/modeling/max-length).
+* Используйте [миграции](xref:core/managing-schemas/migrations/index) для обновления схемы базы данных после изменения модели.

@@ -1,14 +1,14 @@
 ---
 title: Новые возможности EF6
 author: divega
-ms.date: 10/23/2016
+ms.date: 09/12/2019
 ms.assetid: 41d1f86b-ce66-4bf2-8963-48514406fb4c
-ms.openlocfilehash: 01dc618954da5dbd12fbd37c2c47701ce251be92
-ms.sourcegitcommit: 0cc9578fd49802789a00c0044b4e57325476ca2e
+ms.openlocfilehash: 568790d9c9bb7dd2213907bef8fa090710cd3ba0
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271442"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149118"
 ---
 # <a name="whats-new-in-ef6"></a>Новые возможности EF6
 
@@ -16,40 +16,16 @@ ms.locfileid: "70271442"
 Тем не менее мы понимаем, что вам может потребоваться предыдущая версия или вы захотите поэкспериментировать с новыми усовершенствованиями в последнем предварительном выпуске.
 Чтобы установить определенные версии EF, см. сведения в разделе о [получении Entity Framework](~/ef6/fundamentals/install.md).
 
-На этой странице приводятся функции, которые включены в каждый новый выпуск.
+## <a name="ef-630"></a>EF 6.3.0
 
-## <a name="recent-releases"></a>Последние выпуски
+Среда выполнения EF 6.3.0 выпущена в NuGet в октябре 2019 г. Основной целью этого выпуска было упрощение переноса существующих приложений, использующих EF 6, в .NET Core 3.0. Сообществом также было внесено несколько исправлений и усовершенствований. См. сведения о проблемах, устраненных в каждой [контрольной точке](https://github.com/aspnet/EntityFramework6/milestones?state=closed) версии 6.3.0. Ниже перечислены некоторые основные моменты:
 
-### <a name="ef-tools-update-in-visual-studio-2017-157"></a>Обновления инструментов для Entity Framework в Visual Studio 2017 версии 15.7
-
-В мае 2018 г. мы выпустили обновленную версию EF Tools в составе Visual Studio 2017 версии 15.7.
-Она содержит ряд улучшений по частым проблемным вопросам.
-
-- Исправлено несколько ошибок в специальных возможностях пользовательского интерфейса.
-- Создано обходное решение для проблемы с медленной работой SQL Server при создании моделей из существующих баз данных [#4](https://github.com/aspnet/entityframework6/issues/4).
-- Улучшена поддержка обновления моделей большого размера из SQL Server [#185](https://github.com/aspnet/EntityFramework6/issues/185).
-
-Другим улучшением новой версии EF Tools является автоматическая установка среды выполнения EF 6.2 при создании модели в новом проекте. В предыдущих версиях Visual Studio среду выполнения EF 6.2 (а также любую более раннюю версию EF) можно использовать, установив соответствующую версию пакета NuGet.
-
-### <a name="ef-62-runtime"></a>Среда выполнения EF 6.2
-
-Среда выполнения EF 6.2 была выпущена в NuGet в октябре 2017 г.
-Благодаря значительным усилиям нашего сообщества участников, вносящих вклад в разработку ресурсов с открытым исходным кодом, EF 6.2 содержит многочисленные [исправления ошибок](https://github.com/aspnet/entityframework6/issues?utf8=%E2%9C%93&q=is%3Aissue%20milestone%3A6.2.0%20is%3Aclosed%20label%3Aclosed-fixed%20-label%3Aarea-tools%20label%3Atype-bug) и [усовершенствования продуктов](https://github.com/aspnet/entityframework6/issues?utf8=%E2%9C%93&q=is%3Aissue%20milestone%3A6.2.0%20is%3Aclosed%20label%3Aclosed-fixed%20-label%3Aarea-tools%20label%3Atype-enhancement%20).
-
-Далее приведен краткий перечень наиболее важных изменений, затрагивающих среду выполнения EF 6.2.
-
-- Сокращено время запуска за счет загрузки готовых моделей Code First из постоянного кэша [#275](https://github.com/aspnet/EntityFramework6/issues/275).
-- Доступен текучий API для определения индексов [#274](https://github.com/aspnet/EntityFramework6/issues/274).
-- DbFunctions.Like() для написания запросов LINQ, преобразующих LIKE в SQL [#241](https://github.com/aspnet/EntityFramework6/issues/241).
-- Migrate.exe теперь поддерживает параметр -script [#240](https://github.com/aspnet/EntityFramework6/issues/240).
-- EF6 теперь может работать со значениями ключей, созданными с помощью последовательности в SQL Server [#165](https://github.com/aspnet/EntityFramework6/issues/165).
-- Обновленный список временных ошибок для стратегии выполнения SQL Azure [#83](https://github.com/aspnet/EntityFramework6/issues/83).
-- Ошибка: Повторное выполнение запросов или команд SQL завершается ошибкой "The SqlParameter is already contained by another SqlParameterCollection" (Параметр SqlParameter уже содержится в другом объекте SqlParameterCollection) [#81](https://github.com/aspnet/EntityFramework6/issues/81).
-- Ошибка: Часто истекает время ожидания оценки DbQuery.ToString() в отладчике [#73](https://github.com/aspnet/EntityFramework6/issues/73).
-
-## <a name="future-releases"></a>Будущие выпуски
-
-Сведения о следующей версии EF6, см. в нашем [плане выпусков](roadmap.md).
+- Включена поддержка .NET Core 3.0.
+  - Теперь пакет EntityFramework можно использовать с .NET Standard 2.1 наряду с .NET Framework 4.x.
+  - Команды миграции были переписаны для внепроцессного выполнения и поддержки проектов на основе пакета SDK.
+- Включена поддержка SQL Server HierarchyId.
+- Улучшена совместимость с Roslyn и NuGet PackageReference.
+- Добавлен файл Ef6.exe для включения, добавления, создания скриптов и применения миграций из сборок. Он заменяет файл migrate.exe.
 
 ## <a name="past-releases"></a>Прошлые выпуски
 
