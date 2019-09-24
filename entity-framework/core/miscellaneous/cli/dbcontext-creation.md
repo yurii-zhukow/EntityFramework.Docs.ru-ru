@@ -2,39 +2,67 @@
 title: Создание DbContext во время разработки — EF Core
 author: bricelam
 ms.author: bricelam
-ms.date: 10/27/2017
+ms.date: 09/16/2019
 uid: core/miscellaneous/cli/dbcontext-creation
-ms.openlocfilehash: 66fec7605b6ac2da0af1e801f8a1dca0789aea35
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: f83d4b16227d114a1cac1514667484a908fea4ac
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993722"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197573"
 ---
 <a name="design-time-dbcontext-creation"></a>Создание DbContext во время разработки
 ==============================
-Некоторые команды Инструменты EF Core (например, [миграций][1] команды) требуют производный `DbContext` экземпляра во время разработки для сбора сведений о приложении типы сущностей и их сопоставлении схемы базы данных. В большинстве случаев желательно, `DbContext` тем самым созданный настраивается в том, как было бы так же, как [настроен во время выполнения][2].
+Для некоторых команд EF Core инструментов (например, для команд [миграции][1] ) во время разработки необходимо создать производный `DbContext` экземпляр, чтобы получить сведения о типах сущностей приложения и их сопоставлении со схемой базы данных. В большинстве случаев желательно, `DbContext` чтобы созданный таким образом объект был настроен аналогично тому, как он будет [настроен во время выполнения][2].
 
-Существует несколько способов, попробуйте создать средства `DbContext`:
+Существует несколько способов, с помощью которых средства пытаются `DbContext`создать:
 
 <a name="from-application-services"></a>Из служб приложений
 -------------------------
-Если ваш запускаемый проект приложения ASP.NET Core, инструменты попытаться получить объект DbContext у поставщика услуг приложения.
+Если запускаемый проект использует [ASP.NET Core веб-узел][3] или [универсальный узел .NET Core][4], средства пытаются получить объект DbContext от поставщика услуг приложения.
 
-Средства сначала пытаются получить доступ к службе, вызвав `Program.BuildWebHost()` и доступ к `IWebHost.Services` свойство.
+Сначала средства пытаются получить поставщик услуг путем вызова `Program.CreateHostBuilder()`, вызова `Build()`и доступа к `Services` свойству.
+
+``` csharp
+public class Program
+{
+    public static void Main(string[] args)
+        => CreateHostBuilder(args).Build().Run();
+
+    // EF Core uses this method at design time to access the DbContext
+    public static IHostBuilder CreateHostBuilder(string[] args)
+        => Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(
+                webBuilder => webBuilder.UseStartup<Startup>());
+}
+
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+        => services.AddDbContext<ApplicationDbContext>();
+}
+
+public class ApplicationDbContext : DbContext
+{
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+}
+```
 
 > [!NOTE]
-> При создании нового приложения ASP.NET Core 2.0, этот обработчик включается по умолчанию. В предыдущих версиях EF Core и ASP.NET Core, инструменты попытке вызвать `Startup.ConfigureServices` напрямую, чтобы получить поставщик службы приложения, но этот шаблон больше не работает правильно в приложениях ASP.NET Core 2.0. Если вы обновляете приложение ASP.NET Core 1.x на 2.0, вы можете [изменить ваш `Program` класс стоит следовать этому шаблону новый][3].
+> При создании нового ASP.NET Core приложения этот обработчик включается по умолчанию.
 
-`DbContext` Сам и все зависимости в своем конструкторе должны быть зарегистрированы как службы в поставщике служб приложения. Это легко достигается за счет [конструктор в `DbContext` , принимающий экземпляр `DbContextOptions<TContext>` как аргумент][4] и с помощью [`AddDbContext<TContext>` метод][5].
+Сам `DbContext` по себе и все зависимости в конструкторе должны быть зарегистрированы в качестве служб в поставщике услуг приложения. Это можно легко сделать, используя [конструктор `DbContext` , который принимает экземпляр `DbContextOptions<TContext>` ][5] [ `AddDbContext<TContext>` ][6]в качестве аргумента и использует метод.
 
-<a name="using-a-constructor-with-no-parameters"></a>С помощью конструктора без параметров
+<a name="using-a-constructor-with-no-parameters"></a>Использование конструктора без параметров
 --------------------------------------
-DbContext не может быть получен от поставщика службы приложения, средства поиска производные `DbContext` тип внутри проекта. Затем они пытаются создать экземпляр с помощью конструктора без параметров. Это может быть конструктор по умолчанию, если `DbContext` настраивается с помощью [`OnConfiguring`][6] метод.
+Если DbContext невозможно получить от поставщика службы приложений, средства ищут производный `DbContext` тип внутри проекта. Затем они пытаются создать экземпляр с помощью конструктора без параметров. Это может быть конструктор по умолчанию, `DbContext` если настроен [`OnConfiguring`][7] с помощью метода.
 
-<a name="from-a-design-time-factory"></a>Из фабрики во время разработки
+<a name="from-a-design-time-factory"></a>Из фабрики времени разработки
 --------------------------
-Вы также можете перенаправить средства Создание DbContext, реализовав `IDesignTimeDbContextFactory<TContext>` интерфейса: Если класс, реализующий этот интерфейс находится в любом проекте, производные `DbContext` или в проекте запуска приложения, средства обхода другие способы вместо создания DbContext и использование разработки фабрики.
+Вы также можете сообщить средствам, как создать DbContext, реализовав `IDesignTimeDbContextFactory<TContext>` интерфейс: Если класс, реализующий этот интерфейс, находится в том же проекте, что и `DbContext` производный, или в проекте запуска приложения, средства обходят другие способы создания DbContext и используют вместо нее фабрику времени разработки.
 
 ``` csharp
 using Microsoft.EntityFrameworkCore;
@@ -57,14 +85,15 @@ namespace MyProject
 ```
 
 > [!NOTE]
-> `args` Параметра, используемого в данный момент. Существует [проблема][7] отслеживания возможность указывать аргументы во время разработки с помощью средств.
+> `args` Параметр в настоящее время не используется. Существует ошибка [при отслеживании][8] возможности указания аргументов времени разработки из средств.
 
-Во время разработки фабрика может быть особенно полезно в том случае, если вам нужно по-разному настроить DbContext для времени разработки, чем во время выполнения, если `DbContext` конструктор принимает дополнительные параметры не зарегистрированы в функции внедрения Зависимостей, если вы не используете DI вообще или, если для некоторых -либо причине вы не хотите иметь `BuildWebHost` метод в приложении ASP.NET Core `Main` класса.
+Фабрика времени разработки может быть особенно полезной, если необходимо настроить DbContext по-разному для времени разработки, чем во время выполнения, если `DbContext` конструктор принимает дополнительные параметры, не зарегистрированные в di, если вы не используете di вообще или для некоторых Причина, по которой не требуется использовать `BuildWebHost` метод в `Main` классе ASP.NET Core приложения.
 
   [1]: xref:core/managing-schemas/migrations/index
   [2]: xref:core/miscellaneous/configuring-dbcontext
-  [3]: https://docs.microsoft.com/aspnet/core/migration/1x-to-2x/#update-main-method-in-programcs
-  [4]: xref:core/miscellaneous/configuring-dbcontext#constructor-argument
-  [5]: xref:core/miscellaneous/configuring-dbcontext#using-dbcontext-with-dependency-injection
-  [6]: xref:core/miscellaneous/configuring-dbcontext#onconfiguring
-  [7]: https://github.com/aspnet/EntityFrameworkCore/issues/8332
+  [3]: /aspnet/core/fundamentals/host/web-host
+  [4]: /aspnet/core/fundamentals/host/generic-host
+  [5]: xref:core/miscellaneous/configuring-dbcontext#constructor-argument
+  [6]: xref:core/miscellaneous/configuring-dbcontext#using-dbcontext-with-dependency-injection
+  [7]: xref:core/miscellaneous/configuring-dbcontext#onconfiguring
+  [8]: https://github.com/aspnet/EntityFrameworkCore/issues/8332

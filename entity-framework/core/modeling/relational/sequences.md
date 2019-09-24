@@ -1,36 +1,36 @@
 ---
-title: Последовательность — EF Core
+title: Последовательности — EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 94f81a92-3c72-4e14-912a-f99310374e42
 uid: core/modeling/relational/sequences
-ms.openlocfilehash: eb9d9896966af0ad6b778047a1ed6af7358e8eb2
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: ce02b9840e58102a60c1d8eacf6810365104d7d7
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994520"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71196905"
 ---
 # <a name="sequences"></a>Последовательности
 
 > [!NOTE]  
 > Описанная в этом разделе конфигурации применяется к реляционным базам данных в общем случае. Показанные здесь методы расширения будут доступны после установки поставщика реляционной базы данных (посредством общего *пакета Microsoft.EntityFrameworkCore.Relational*).
 
-Последовательность создает последовательных числовых значений в базе данных. Последовательности не связаны с определенной таблицей.
+Последовательность формирует последовательные числовые значения в базе данных. Последовательности не связаны с определенной таблицей.
 
 ## <a name="conventions"></a>Соглашения
 
-По соглашению последовательностей не добавляются в модель.
+В соответствии с соглашением последовательности не вводятся в модель.
 
 ## <a name="data-annotations"></a>Заметки к данным
 
-Вы можете настроить не последовательности с использованием заметок к данным.
+Вы не можете настроить последовательность с помощью заметок к данным.
 
 ## <a name="fluent-api"></a>Текучий API
 
-Fluent API можно использовать для создания последовательности в модели.
+Для создания последовательности в модели можно использовать API-интерфейс Fluent.
 
-<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Samples/Relational/Sequence.cs?highlight=7)] -->
+<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Relational/Sequence.cs?highlight=7)] -->
 ``` csharp
 class MyContext : DbContext
 {
@@ -50,9 +50,9 @@ public class Order
 }
 ```
 
-Также можно настроить дополнительные аспекты последовательности, например ее схему, начальное значение и приращение.
+Можно также настроить дополнительный аспект последовательности, например ее схему, начальное значение и шаг приращения.
 
-<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Samples/Relational/SequenceConfigured.cs?highlight=7,8,9)] -->
+<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Relational/SequenceConfigured.cs?highlight=7,8,9)] -->
 ``` csharp
 class MyContext : DbContext
 {
@@ -67,9 +67,9 @@ class MyContext : DbContext
 }
 ```
 
-Как только вводится последовательности, его можно использовать для формирования значений для свойств в модели. Например, можно использовать [значения по умолчанию](default-values.md) для вставки следующего значения из последовательности.
+После того как последовательность введена, ее можно использовать для создания значений свойств в модели. Например, можно использовать [значения по умолчанию](default-values.md) для вставки следующего значения из последовательности.
 
-<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Samples/Relational/SequenceUsed.cs?highlight=11,12,13)] -->
+<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Relational/SequenceUsed.cs?highlight=11,12,13)] -->
 ``` csharp
 class MyContext : DbContext
 {

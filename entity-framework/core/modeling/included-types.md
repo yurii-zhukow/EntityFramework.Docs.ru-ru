@@ -1,33 +1,33 @@
 ---
-title: Включение и исключение типов — EF Core
+title: Включая &, исключая типы EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: cbe6935e-2679-4b77-8914-a8d772240cf1
 uid: core/modeling/included-types
-ms.openlocfilehash: f533b24312af37634ce4957e43c39ce776bf0bf0
-ms.sourcegitcommit: 87fcaba46535aa351db4bdb1231bd14b40e459b9
+ms.openlocfilehash: ca83b1c432bdf4853dba81e12ec4a739bc8218dc
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59929801"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197373"
 ---
-# <a name="including--excluding-types"></a>Включение и исключение типов
+# <a name="including--excluding-types"></a>Включение & исключением типов
 
-В модели означает EF содержит метаданные о, введите и будет предпринята попытка чтения и записи экземпляров в базе данных, включая тип.
+Включение типа в модель означает, что EF имеет метаданные об этом типе и будет пытаться считывать и записывать экземпляры из базы данных или из нее.
 
 ## <a name="conventions"></a>Соглашения
 
-По соглашению, типов, которые доступны в `DbSet` свойства в контексте, включены в модель. Кроме того, типы, упомянутые в `OnModelCreating` метод также будут включены. Наконец все типы, которые можно найти, рекурсивно, изучение свойства навигации обнаруженных типов также включены в модели.
+По соглашению типы, предоставляемые в `DbSet` свойствах контекста, включаются в модель. Кроме того, также включены типы, упоминаемые `OnModelCreating` в методе. Наконец, все типы, которые обнаруживаются рекурсивным просмотром свойств навигации обнаруженных типов, также включаются в модель.
 
-**Например в следующем примере кода обнаруживаются всех трех типов:**
+**Например, в следующем коде обнаруживаются все три типа:**
 
-* `Blog` так как она предоставляется в `DbSet` свойство контекста
+* `Blog`так как он предоставляется в `DbSet` свойстве контекста
 
-* `Post` Поскольку обнаружения с помощью `Blog.Posts` свойство навигации
+* `Post`так как обнаруживается через `Blog.Posts` свойство навигации
 
-* `AuditEntry` так как оно встречается в `OnModelCreating`
+* `AuditEntry`так как он упоминается в`OnModelCreating`
 
-<!-- [!code-csharp[Main](samples/core/Modeling/Conventions/Samples/IncludedTypes.cs?highlight=3,7,16)] -->
+<!-- [!code-csharp[Main](samples/core/Modeling/Conventions/IncludedTypes.cs?highlight=3,7,16)] -->
 ``` csharp
 class MyContext : DbContext
 {
@@ -66,12 +66,12 @@ public class AuditEntry
 
 ## <a name="data-annotations"></a>Заметки к данным
 
-Чтобы исключить тип из модели можно использовать заметки к данным.
+Заметки к данным можно использовать для исключения типа из модели.
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/IgnoreType.cs?highlight=20)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/IgnoreType.cs?highlight=20)]
 
 ## <a name="fluent-api"></a>Текучий API
 
-Можно использовать Fluent API, чтобы исключить тип из модели.
+API-интерфейс Fluent можно использовать для исключения типа из модели.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/IgnoreType.cs?highlight=12)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/IgnoreType.cs?highlight=12)]

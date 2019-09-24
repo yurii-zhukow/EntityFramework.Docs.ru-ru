@@ -1,36 +1,36 @@
 ---
-title: Вычисляемые столбцы — EF Core
+title: Вычисленные столбцы — EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: e9d81f06-805d-45c9-97c2-3546df654829
 uid: core/modeling/relational/computed-columns
-ms.openlocfilehash: b88efdf69e5100e4eff55f3a41925d2d8e7c3178
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: da106c94698a202744d7cd465aa84d0d72802833
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993957"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197230"
 ---
-# <a name="computed-columns"></a>Вычисляемые столбцы
+# <a name="computed-columns"></a>Вычисленные столбцы
 
 > [!NOTE]  
 > Описанная в этом разделе конфигурации применяется к реляционным базам данных в общем случае. Показанные здесь методы расширения будут доступны после установки поставщика реляционной базы данных (посредством общего *пакета Microsoft.EntityFrameworkCore.Relational*).
 
-Вычисляемый столбец является столбцом, значение которого вычисляется в базе данных. Вычисляемый столбец могут использоваться другие столбцы в таблице, для которого требуется вычислить его значение.
+Вычисляемый столбец — это столбец, значение которого вычисляется в базе данных. Вычисляемый столбец может использовать другие столбцы таблицы для вычисления ее значения.
 
 ## <a name="conventions"></a>Соглашения
 
-По соглашению вычисляемые столбцы не создаются в модели.
+По соглашению, вычисленные столбцы не создаются в модели.
 
 ## <a name="data-annotations"></a>Заметки к данным
 
-Вычисляемые столбцы можно настроить не с заметками к данным.
+Вычисленные столбцы не могут быть настроены с помощью заметок к данным.
 
 ## <a name="fluent-api"></a>Текучий API
 
-Fluent API можно использовать для указания, что свойство должно сопоставляться вычисляемый столбец.
+API-интерфейс Fluent можно использовать для указания того, что свойство должно сопоставляться с вычисляемым столбцом.
 
-<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Samples/Relational/ComputedColumn.cs?highlight=9)] -->
+<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Relational/ComputedColumn.cs?highlight=9)] -->
 ``` csharp
 class MyContext : DbContext
 {

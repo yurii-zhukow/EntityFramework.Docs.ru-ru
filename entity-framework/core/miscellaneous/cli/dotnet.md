@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 07/11/2019
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: 0278353640ea242df9e6ee5278c9dda78bfd341b
-ms.sourcegitcommit: 7b7f774a5966b20d2aed5435a672a1edbe73b6fb
+ms.openlocfilehash: 910136871cce5818b8e70a012e5132259b66e4c1
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/17/2019
-ms.locfileid: "69565264"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197591"
 ---
 # <a name="entity-framework-core-tools-reference---net-cli"></a>Справочник по инструментам Entity Framework Core-.NET CLI
 
@@ -33,7 +33,7 @@ ms.locfileid: "69565264"
 * `dotnet ef`должен быть установлен в качестве глобального или локального средства. Большинство разработчиков будут устанавливаться `dotnet ef` как глобальные средства с помощью следующей команды:
 
   ``` console
-  dotnet tool install --global dotnet-ef --version 3.0.0-*
+  dotnet tool install --global dotnet-ef
   ```
 
   Также можно использовать `dotnet ef` в качестве локального средства. Чтобы использовать его в качестве локального средства, восстановите зависимости проекта, объявляющие его как зависимость инструментария, с помощью [файла манифеста средства](https://github.com/dotnet/cli/issues/10288).
@@ -230,7 +230,7 @@ dotnet ef database update 20180904195021_InitialCreate
 | `-t`            | `--table <TABLE_NAME>`...                | Таблицы, для которых создаются типы сущностей. Чтобы указать несколько таблиц, повторите `-t` операцию `--table` или для каждой из них. Если этот параметр не указан, включаются все таблицы.                |
 |                 | `--use-database-names`                   | Имена таблиц и столбцов следует использовать в точности так, как они отображаются в базе данных. Если этот параметр не указан, имена баз данных изменяются в соответствии с C# соглашениями о стиле имен. |
 
-В следующем примере выполняется формирование шаблонов всех схем и таблиц и помещается новые файлы в папку Models.
+В следующем примере выполняется формирование шаблонов всех схем и таблиц и помещается новые файлы в папку *Models* .
 
 ```console
 dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models

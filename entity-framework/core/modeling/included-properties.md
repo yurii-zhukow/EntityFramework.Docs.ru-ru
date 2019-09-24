@@ -1,32 +1,32 @@
 ---
-title: Включение и исключение свойств — EF Core
+title: Включение & за исключением свойств EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: e9dff604-3469-4a05-8f9e-18ac281d82a9
 uid: core/modeling/included-properties
-ms.openlocfilehash: 022534091bb48e491c8808791a401216a339d7b0
-ms.sourcegitcommit: 87fcaba46535aa351db4bdb1231bd14b40e459b9
+ms.openlocfilehash: cd111af891ef0bbaccf515eed0c1991f105bd362
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59929829"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197422"
 ---
-# <a name="including--excluding-properties"></a>Включение и исключение свойств
+# <a name="including--excluding-properties"></a>Включение & за исключением свойств
 
-Включая свойства в модели означает, что EF содержит метаданные об этом свойстве и будет предпринята попытка чтения и записи значений в базе данных.
+Включение свойства в модель означает, что EF имеет метаданные об этом свойстве и будет пытаться считывать и записывать значения в базу данных.
 
 ## <a name="conventions"></a>Соглашения
 
-По соглашению будут включены свойства getter и setter в модели.
+По соглашению в модель будут включаться открытые свойства с методом считывания и методом задания.
 
 ## <a name="data-annotations"></a>Заметки к данным
 
-Чтобы исключить свойство из модели можно использовать заметки к данным.
+Заметки к данным можно использовать для исключения свойства из модели.
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/IgnoreProperty.cs?highlight=17)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/IgnoreProperty.cs?highlight=17)]
 
 ## <a name="fluent-api"></a>Текучий API
 
-Fluent API можно использовать, чтобы исключить свойство из модели.
+API-интерфейс Fluent можно использовать для исключения свойства из модели.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/IgnoreProperty.cs?highlight=12,13)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/IgnoreProperty.cs?highlight=12,13)]

@@ -1,15 +1,15 @@
 ---
-title: Созданные значения — EF Core
+title: Сформированные значения — EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: eb082011-11a1-41b4-a108-15daafa03e80
 uid: core/modeling/generated-properties
-ms.openlocfilehash: 9ecfa924a0614f327f0bd202cb7dda95bea810af
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: 6b38fd2e540ec29674f1116e7c204052d06ca1bc
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44250703"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197424"
 ---
 # <a name="generated-values"></a>Генерируемые значения
 
@@ -44,11 +44,11 @@ ms.locfileid: "44250703"
 Как и `value generated on add`, в случае со значением, генерируемым при добавлении, если свойству нового экземпляра сущности присвоить какое-то значение, будет вставлено именно это значение, а не генерируемое. Также можно задать явное значение при обновлении Дополнительные сведения см. в статье [Установка явных значений для создаваемых свойств](../saving/explicit-values-generated-properties.md).
 
 > [!WARNING]
-> Способ создания значения для добавленных и измененных сущностей будет зависеть от используемого поставщика базы данных. Поставщики баз данных могут устанавливать атоматическую генерацию значений для некоторых типов свойств, тогда как другие требуют явного указания способа генерации значений.
+> То, как значение создается для добавленных и обновленных сущностей, зависит от используемого поставщика базы данных. Поставщики баз данных могут устанавливать атоматическую генерацию значений для некоторых типов свойств, тогда как другие требуют явного указания способа генерации значений.
 > 
 > Например, при использовании SQL Server свойства `byte[]` , которым установлена генерация значений при добавлении и обновлении и которые отмечены как токены параллелизма, будут иметь тип данных `rowversion` , так что значения будут генерироваться в базе данных. Но если указать, что значение свойства `DateTime` генерируется при добавлении или обновлении, то необходимо указать способ генерации значения. Один из вариантов сделать это — настроить значение по умолчанию для `GETDATE()`(см. статью [Значения по умолчанию](relational/default-values.md)), чтобы генерировать значения для новых строк. Затем для генерации значений при обновлении можно использовать триггеры базы данных (например, как триггер в примере ниже).
 > 
-> [!code-sql[Main](../../../samples/core/Modeling/FluentAPI/Samples/ValueGeneratedOnAddOrUpdate.sql)]
+> [!code-sql[Main](../../../samples/core/Modeling/FluentAPI/ValueGeneratedOnAddOrUpdate.sql)]
 
 ## <a name="conventions"></a>Соглашения
 
@@ -58,18 +58,18 @@ ms.locfileid: "44250703"
 
 ### <a name="no-value-generation-data-annotations"></a>Без генерации значения (заметки к данным)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/ValueGeneratedNever.cs#Sample)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ValueGeneratedNever.cs#Sample)]
 
 ### <a name="value-generated-on-add-data-annotations"></a>Значение, генерируемое при добавлении (заметки к данным)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/ValueGeneratedOnAdd.cs#Sample)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ValueGeneratedOnAdd.cs#Sample)]
 
 > [!WARNING]  
 > Здесь просто сообщается EF, что значения генерируются для добавляемых сущностей. Это не гарантирует, что EF будет использовать реальный механизм для генерации значений. См. в разделе [Значение, генерируемое при добавлении](#value-generated-on-add).
 
 ### <a name="value-generated-on-add-or-update-data-annotations"></a>Значение, генерируемое при добавлении или обновлении (заметки к данным)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/ValueGeneratedOnAddOrUpdate.cs#Sample)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ValueGeneratedOnAddOrUpdate.cs#Sample)]
 
 > [!WARNING]  
 > Здесь просто сообщается EF, что значения генерируются для добавляемых или обновляемых сущностей. Это не гарантирует, что EF будет использовать реальный механизм для генерации значений. Более подробные сведения см. в разделе [Значение, генерируемое при добавлении или обновлении](#value-generated-on-add-or-update) .
@@ -80,18 +80,18 @@ ms.locfileid: "44250703"
 
 ### <a name="no-value-generation-fluent-api"></a>Без генерации значения (текучий API)
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/ValueGeneratedNever.cs#Sample)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ValueGeneratedNever.cs#Sample)]
 
 ### <a name="value-generated-on-add-fluent-api"></a>Значение, генерируемое при добавлении (текучий API)
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/ValueGeneratedOnAdd.cs#Sample)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ValueGeneratedOnAdd.cs#Sample)]
 
 > [!WARNING]  
 > `ValueGeneratedOnAdd()` просто сообщает EF, что значения генерируются для добавляемых сущностей. Это не гарантирует, что EF будет использовать реальный механизм для генерации значений.  См. в разделе [Значение, генерируемое при добавлении](#value-generated-on-add).
 
 ### <a name="value-generated-on-add-or-update-fluent-api"></a>Значение, генерируемое при добавлении или обновлении (текучий API)
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/ValueGeneratedOnAddOrUpdate.cs#Sample)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ValueGeneratedOnAddOrUpdate.cs#Sample)]
 
 > [!WARNING]  
 > Здесь просто сообщается EF, что значения генерируются для добавляемых или обновляемых сущностей. Это не гарантирует, что EF будет использовать реальный механизм для генерации значений. Более подробные сведения см. в разделе [Значение, генерируемое при добавлении или обновлении](#value-generated-on-add-or-update) .
