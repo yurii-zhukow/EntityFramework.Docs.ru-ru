@@ -1,0 +1,549 @@
+- name: Entity Framework
+  href: index.md
+  items:
+    - name: Сравнение EF Core и EF6
+      href: efcore-and-ef6/index.md
+      items:
+        - name: Использование EF6 и Core EF в одном приложении
+          href: efcore-and-ef6/side-by-side.md
+        - name: Перенос приложений из EF6 в EF Core
+          href: efcore-and-ef6/porting/index.md
+          items:
+            - name: Проверка требований
+              href: efcore-and-ef6/porting/ensure-requirements.md
+            - name: Перенос модели на основе EDMX
+              href: efcore-and-ef6/porting/port-edmx.md
+            - name: Перенос модели на основе кода
+              href: efcore-and-ef6/porting/port-code.md
+    - name: Entity Framework Core
+      href: core/index.md
+      items:
+        - name: Новые возможности
+          href: core/what-is-new/index.md
+          items:
+            - name: Стратегия
+              href: core/what-is-new/roadmap.md
+            - name: "EF\_Core\_3.0 (последний выпуск)"
+              href: core/what-is-new/ef-core-3.0/index.md
+              items:
+                - name: Новые функции
+                  href: core/what-is-new/ef-core-3.0/features.md
+                - name: Критические изменения
+                  href: core/what-is-new/ef-core-3.0/breaking-changes.md
+            - name: "EF Core\_2.2"
+              href: core/what-is-new/ef-core-2.2.md
+            - name: EF Core 2.1
+              href: core/what-is-new/ef-core-2.1.md
+            - name: EF Core 2.0
+              href: core/what-is-new/ef-core-2.0.md
+            - name: EF Core 1.1
+              href: core/what-is-new/ef-core-1.1.md
+            - name: EF Core 1.0
+              href: core/what-is-new/ef-core-1.0.md
+            - name: Обновление с предыдущих версий
+              items:
+                - name: "Обновление с версии\_1.0\_RC1 до\_RC2"
+                  href: core/miscellaneous/rc1-rc2-upgrade.md
+                - name: "Обновление с версии\_1.0\_RC2 до\_RTM"
+                  href: core/miscellaneous/rc2-rtm-upgrade.md
+                - name: "Обновление с версии\_1.x до\_2.0"
+                  href: core/miscellaneous/1x-2x-upgrade.md
+        - name: Приступая к работе
+          href: core/get-started/index.md
+          items:
+            - name: Установка EF Core
+              href: core/get-started/install/index.md
+            - name: ⤤ Руководство по ASP.NET Core
+              href: /aspnet/core/data/ef-rp/intro
+        - name: Основы
+          items:
+            - name: Строки подключения
+              href: core/miscellaneous/connection-strings.md
+            - name: Ведение журнала
+              href: core/miscellaneous/logging.md
+            - name: Устойчивость подключений
+              href: core/miscellaneous/connection-resiliency.md
+            - name: Тестирование
+              href: core/miscellaneous/testing/index.md
+              items:
+                - name: Тестирование с помощью SQLite
+                  href: core/miscellaneous/testing/sqlite.md
+                - name: Тестирование с помощью InMemory
+                  href: core/miscellaneous/testing/in-memory.md
+            - name: Настройка DbContext
+              href: core/miscellaneous/configuring-dbcontext.md
+        - name: Создание модели
+          href: core/modeling/index.md
+          items:
+            - name: Включение и исключение типов
+              href: core/modeling/included-types.md
+            - name: Включение и исключение свойств
+              href: core/modeling/included-properties.md
+            - name: Ключи (первичные)
+              href: core/modeling/keys.md
+            - name: Созданные значения
+              href: core/modeling/generated-properties.md
+            - name: Обязательные и дополнительные свойства
+              href: core/modeling/required-optional.md
+            - name: Максимальная длина
+              href: core/modeling/max-length.md
+            - name: Маркеры параллелизма
+              href: core/modeling/concurrency.md
+            - name: Свойства тени
+              href: core/modeling/shadow-properties.md
+            - name: Отношения
+              href: core/modeling/relationships.md
+            - name: Индексы
+              href: core/modeling/indexes.md
+            - name: Альтернативные ключи
+              href: core/modeling/alternate-keys.md
+            - name: Наследование
+              href: core/modeling/inheritance.md
+            - name: Резервные поля
+              href: core/modeling/backing-field.md
+            - name: Преобразования значений
+              href: core/modeling/value-conversions.md
+            - name: Присвоение начальных значений данных
+              href: core/modeling/data-seeding.md
+            - name: Конструкторы типов сущностей
+              href: core/modeling/constructors.md
+            - name: Разделение таблиц
+              href: core/modeling/table-splitting.md
+            - name: Принадлежащие типы сущностей
+              href: core/modeling/owned-entities.md
+            - name: Типы сущностей без ключей
+              href: core/modeling/keyless-entity-types.md
+            - name: Переключение моделей с одинаковым DbContext
+              href: core/modeling/dynamic-model.md
+            - name: "Пространственные данные\_(GIS)"
+              href: core/modeling/spatial.md
+            - name: Моделирование реляционных баз данных
+              href: core/modeling/relational/index.md
+              items:
+                - name: Сопоставление таблиц
+                  href: core/modeling/relational/tables.md
+                - name: Сопоставление столбцов
+                  href: core/modeling/relational/columns.md
+                - name: Типы данных
+                  href: core/modeling/relational/data-types.md
+                - name: Первичные ключи
+                  href: core/modeling/relational/primary-keys.md
+                - name: Схема по умолчанию
+                  href: core/modeling/relational/default-schema.md
+                - name: Вычисляемые столбцы
+                  href: core/modeling/relational/computed-columns.md
+                - name: Последовательности
+                  href: core/modeling/relational/sequences.md
+                - name: Значения по умолчанию
+                  href: core/modeling/relational/default-values.md
+                - name: Индексы
+                  href: core/modeling/relational/indexes.md
+                - name: Ограничения внешнего ключа
+                  href: core/modeling/relational/fk-constraints.md
+                - name: Альтернативные ключи (ограничения уникальности)
+                  href: core/modeling/relational/unique-constraints.md
+                - name: Наследование (реляционная база данных)
+                  href: core/modeling/relational/inheritance.md
+        - name: Управление схемами баз данных
+          href: core/managing-schemas/index.md
+          items:
+            - name: Миграции
+              href: core/managing-schemas/migrations/index.md
+              items:
+                - name: Командные среды
+                  href: core/managing-schemas/migrations/teams.md
+                - name: Пользовательские операции
+                  href: core/managing-schemas/migrations/operations.md
+                - name: Использование отдельного проекта
+                  href: core/managing-schemas/migrations/projects.md
+                - name: Использование нескольких поставщиков
+                  href: core/managing-schemas/migrations/providers.md
+                - name: Настраиваемая таблица журнала
+                  href: core/managing-schemas/migrations/history-table.md
+            - name: API создания и удаления
+              href: core/managing-schemas/ensure-created.md
+            - name: Реконструирование (формирование шаблонов)
+              href: core/managing-schemas/scaffolding.md
+        - name: Запросы к данным
+          href: core/querying/index.md
+          items:
+            - name: Базовый запрос
+              href: core/querying/basic.md
+            - name: Загрузка связанных данных
+              href: core/querying/related-data.md
+            - name: Выполнение в клиенте и на сервере
+              href: core/querying/client-eval.md
+            - name: Сравнение запросов с отслеживанием и без него
+              href: core/querying/tracking.md
+            - name: Необработанные SQL-запросы
+              href: core/querying/raw-sql.md
+            - name: Асинхронные запросы
+              href: core/querying/async.md
+            - name: Принцип работы запроса
+              href: core/querying/overview.md
+            - name: Глобальные фильтры запросов
+              href: core/querying/filters.md
+            - name: Теги запросов
+              href: core/querying/tags.md
+        - name: Сохранение данных
+          href: core/saving/index.md
+          items:
+            - name: Базовое сохранение
+              href: core/saving/basic.md
+            - name: Связанные данные
+              href: core/saving/related-data.md
+            - name: Каскадное удаление
+              href: core/saving/cascade-delete.md
+            - name: Конфликты параллелизма
+              href: core/saving/concurrency.md
+            - name: Транзакции
+              href: core/saving/transactions.md
+            - name: Асинхронное сохранение
+              href: core/saving/async.md
+            - name: Отключенные сущности
+              href: core/saving/disconnected-entities.md
+            - name: Явные значения для создаваемых свойств
+              href: core/saving/explicit-values-generated-properties.md
+        - name: Поддерживаемые реализации .NET
+          href: core/platforms/index.md
+        - name: Поставщики баз данных
+          href: core/providers/index.md
+          items:
+            - name: Microsoft SQL Server
+              href: core/providers/sql-server/index.md
+              items:
+                - name: 'Таблицы, оптимизированные для памяти'
+                  href: core/providers/sql-server/memory-optimized-tables.md
+            - name: SQLite
+              href: core/providers/sqlite/index.md
+              items:
+                - name: Ограничения SQLite
+                  href: core/providers/sqlite/limitations.md
+            - name: Cosmos
+              href: core/providers/cosmos/index.md
+              items:
+                - name: Работа с неструктурированными данными
+                  href: core/providers/cosmos/unstructured-data.md
+                - name: Ограничения Cosmos
+                  href: core/providers/cosmos/limitations.md
+            - name: Использование InMemory (для тестирования)
+              href: core/providers/in-memory/index.md
+            - name: Создание поставщика баз данных
+              href: core/providers/writing-a-provider.md
+            - name: 'Изменения, влияющие на поставщика'
+              href: core/providers/provider-log.md
+        - name: Инструменты и расширения
+          href: core/extensions/index.md
+        - name: Справочник по командной строке
+          href: core/miscellaneous/cli/index.md
+          items:
+            - name: Консоль диспетчера пакетов (Visual Studio)
+              href: core/miscellaneous/cli/powershell.md
+            - name: Интерфейс командной строки .NET Core
+              href: core/miscellaneous/cli/dotnet.md
+            - name: Создание DbContext во время разработки
+              href: core/miscellaneous/cli/dbcontext-creation.md
+            - name: Службы времени разработки
+              href: core/miscellaneous/cli/services.md
+        - name: "⤤ Справочник по API\_EF\_Core"
+          href: 'https://docs.microsoft.com/dotnet/api/?view=efcore-2.1'
+    - name: Entity Framework 6
+      href: ef6/index.md
+      items:
+        - name: Новые возможности
+          href: ef6/what-is-new/index.md
+          items:
+            - name: Прошлые выпуски
+              href: ef6/what-is-new/past-releases.md
+            - name: "Обновление до\_EF6"
+              href: ef6/what-is-new/upgrading-to-ef6.md
+            - name: "Выпуски Visual\_Studio"
+              href: ef6/what-is-new/visual-studio.md
+        - name: Приступая к работе
+          href: ef6/get-started.md
+        - name: Основы
+          href: ef6/fundamentals/index.md
+          items:
+            - name: "Установка Entity\_Framework"
+              href: ef6/fundamentals/install.md
+            - name: Работа с DbContext
+              href: ef6/fundamentals/working-with-dbcontext.md
+            - name: Сведения о связях
+              href: ef6/fundamentals/relationships.md
+            - name: Асинхронные запросы и сохранение
+              href: ef6/fundamentals/async.md
+            - name: Параметр Configuration
+              items:
+                - name: На базе кода
+                  href: ef6/fundamentals/configuring/code-based.md
+                - name: Файл конфигурации
+                  href: ef6/fundamentals/configuring/config-file.md
+                - name: Строки подключения
+                  href: ef6/fundamentals/configuring/connection-strings.md
+                - name: Разрешение зависимостей
+                  href: ef6/fundamentals/configuring/dependency-resolution.md
+            - name: Управление подключениями
+              href: ef6/fundamentals/connection-management.md
+            - name: Устойчивость подключений
+              items:
+                - name: Логика повторных попыток
+                  href: ef6/fundamentals/connection-resiliency/retry-logic.md
+                - name: Проблемы с фиксацией транзакций
+                  href: ef6/fundamentals/connection-resiliency/commit-failures.md
+            - name: Привязка данных
+              items:
+                - name: WinForms
+                  href: ef6/fundamentals/databinding/winforms.md
+                - name: WPF
+                  href: ef6/fundamentals/databinding/wpf.md
+            - name: Отключенные сущности
+              href: ef6/fundamentals/disconnected-entities/index.md
+              items:
+                - name: Самоотслеживающиеся сущности
+                  href: ef6/fundamentals/disconnected-entities/self-tracking-entities/index.md
+                  items:
+                    - name: Пошаговое руководство
+                      href: ef6/fundamentals/disconnected-entities/self-tracking-entities/walkthrough.md
+            - name: Ведение журналов и перехват
+              href: ef6/fundamentals/logging-and-interception.md
+            - name: Производительность
+              items:
+                - name: Вопросы производительности (технический документ)
+                  href: ef6/fundamentals/performance/perf-whitepaper.md
+                - name: Использование NGEN
+                  href: ef6/fundamentals/performance/ngen.md
+                - name: Использование предварительно созданных представлений
+                  href: ef6/fundamentals/performance/pre-generated-views.md
+            - name: Поставщики
+              href: ef6/fundamentals/providers/index.md
+              items:
+                - name: "Модель поставщика\_EF6"
+                  href: ef6/fundamentals/providers/provider-model.md
+                - name: Поставщики и пространственные данные
+                  href: ef6/fundamentals/providers/spatial-support.md
+            - name: Использование прокси
+              href: ef6/fundamentals/proxies.md
+            - name: "Тестирование с\_EF6"
+              items:
+                - name: Использование макетирования
+                  href: ef6/fundamentals/testing/mocking.md
+                - name: Написание собственных имитированных реализаций
+                  href: ef6/fundamentals/testing/writing-test-doubles.md
+                - name: Возможности тестирования с использованием EF4 (статья)
+                  href: ef6/fundamentals/testing/testability-article.md
+        - name: Создание модели
+          href: ef6/modeling/index.md
+          items:
+            - name: "Использование Code\_First"
+              items:
+                - name: Рабочие процессы
+                  items:
+                    - name: Использование новой базы данных
+                      href: ef6/modeling/code-first/workflows/new-database.md
+                    - name: Использование существующей базы данных
+                      href: ef6/modeling/code-first/workflows/existing-database.md
+                - name: Заметки к данным
+                  href: ef6/modeling/code-first/data-annotations.md
+                - name: Наборы DbSet
+                  href: ef6/modeling/code-first/dbsets.md
+                - name: Типы данных
+                  items:
+                    - name: перечислениям;
+                      href: ef6/modeling/code-first/data-types/enums.md
+                    - name: пространственный индекс
+                      href: ef6/modeling/code-first/data-types/spatial.md
+                - name: Соглашения
+                  items:
+                    - name: Встроенные соглашения
+                      href: ef6/modeling/code-first/conventions/built-in.md
+                    - name: Настраиваемые соглашения
+                      href: ef6/modeling/code-first/conventions/custom.md
+                    - name: Модельные соглашения
+                      href: ef6/modeling/code-first/conventions/model.md
+                - name: "Конфигурация с текучим\_API"
+                  items:
+                    - name: Отношения
+                      href: ef6/modeling/code-first/fluent/relationships.md
+                    - name: Типы и свойства
+                      href: ef6/modeling/code-first/fluent/types-and-properties.md
+                    - name: "Операторы using в Visual\_Basic"
+                      href: ef6/modeling/code-first/fluent/vb.md
+                    - name: Сопоставление хранимых процедур
+                      href: ef6/modeling/code-first/fluent/cud-stored-procedures.md
+                - name: Миграции
+                  href: ef6/modeling/code-first/migrations/index.md
+                  items:
+                    - name: Автоматическая миграция
+                      href: ef6/modeling/code-first/migrations/automatic.md
+                    - name: Работа с существующими базами данных
+                      href: ef6/modeling/code-first/migrations/existing-database.md
+                    - name: Настройка журнала миграции
+                      href: ef6/modeling/code-first/migrations/history-customization.md
+                    - name: Использование Migrate.exe
+                      href: ef6/modeling/code-first/migrations/migrate-exe.md
+                    - name: Миграция в командных средах
+                      href: ef6/modeling/code-first/migrations/teams.md
+            - name: "Использование EF\_Designer"
+              items:
+                - name: Рабочие процессы
+                  items:
+                    - name: "Model\_First"
+                      href: ef6/modeling/designer/workflows/model-first.md
+                    - name: "Database\_First"
+                      href: ef6/modeling/designer/workflows/database-first.md
+                - name: Типы данных
+                  items:
+                    - name: Сложные типы
+                      href: ef6/modeling/designer/data-types/complex-types.md
+                    - name: перечислениям;
+                      href: ef6/modeling/designer/data-types/enums.md
+                    - name: пространственный индекс
+                      href: ef6/modeling/designer/data-types/spatial.md
+                - name: Разделение сопоставлений
+                  items:
+                    - name: Разделение сущности
+                      href: ef6/modeling/designer/entity-splitting.md
+                    - name: Разделение таблиц
+                      href: ef6/modeling/designer/table-splitting.md
+                - name: Сопоставление с наследованием
+                  items:
+                    - name: Одна таблица на иерархию
+                      href: ef6/modeling/designer/inheritance/tph.md
+                    - name: Одна таблица на тип
+                      href: ef6/modeling/designer/inheritance/tpt.md
+                - name: Сопоставление хранимых процедур
+                  items:
+                    - name: query
+                      href: ef6/modeling/designer/stored-procedures/query.md
+                    - name: Обновление
+                      href: ef6/modeling/designer/stored-procedures/cud.md
+                - name: Сопоставление связей
+                  href: ef6/modeling/designer/relationships.md
+                - name: Использование нескольких диаграмм
+                  href: ef6/modeling/designer/multiple-diagrams.md
+                - name: Выбор версии среды выполнения
+                  href: ef6/modeling/designer/select-runtime-version.md
+                - name: Создание кода
+                  href: ef6/modeling/designer/codegen/index.md
+                  items:
+                    - name: Прошлые версии ObjectContext
+                      href: ef6/modeling/designer/codegen/legacy-objectcontext.md
+                - name: Дополнительно
+                  items:
+                    - name: "Формат файлов\_EDMX"
+                      items:
+                        - name: Спецификация CSDL
+                          href: ef6/modeling/designer/advanced/edmx/csdl-spec.md
+                        - name: Спецификация MSL
+                          href: ef6/modeling/designer/advanced/edmx/msl-spec.md
+                        - name: Спецификация SSDL
+                          href: ef6/modeling/designer/advanced/edmx/ssdl-spec.md
+                    - name: Определяющий запрос
+                      href: ef6/modeling/designer/advanced/defining-query.md
+                    - name: Несколько результирующих наборов
+                      href: ef6/modeling/designer/advanced/multiple-result-sets.md
+                    - name: Функции с табличными значениями
+                      href: ef6/modeling/designer/advanced/tvfs.md
+                - name: Сочетания клавиш
+                  href: ef6/modeling/designer/keyboard-shortcuts.md
+        - name: Запросы к данным
+          href: ef6/querying/index.md
+          items:
+            - name: Метод загрузки
+              href: ef6/querying/load-method.md
+            - name: Локальные данные
+              href: ef6/querying/local-data.md
+            - name: Отслеживаемые и неотслеживаемые запросы
+              href: ef6/querying/no-tracking.md
+            - name: Использование прямых SQL-запросов
+              href: ef6/querying/raw-sql.md
+            - name: Запрос на получение связанных данных
+              href: ef6/querying/related-data.md
+        - name: Сохранение данных
+          href: ef6/saving/index.md
+          items:
+            - name: Отслеживание изменений
+              items:
+                - name: Автообнаружение изменений
+                  href: ef6/saving/change-tracking/auto-detect-changes.md
+                - name: Состояние сущностей
+                  href: ef6/saving/change-tracking/entity-state.md
+                - name: Значения свойств
+                  href: ef6/saving/change-tracking/property-values.md
+            - name: Обработка конфликтов параллелизма
+              href: ef6/saving/concurrency.md
+            - name: Использование транзакций
+              href: ef6/saving/transactions.md
+            - name: Проверка данных
+              href: ef6/saving/validation.md
+        - name: Дополнительные ресурсы
+          href: ef6/resources/index.md
+          items:
+            - name: Блоги
+              href: ef6/resources/blogs.md
+            - name: Примеры использования
+              href: ef6/resources/case-studies.md
+            - name: Участие
+              href: ef6/resources/contribute.md
+            - name: Получение справки
+              href: ef6/resources/get-help.md
+            - name: Глоссарий
+              href: ef6/resources/glossary.md
+            - name: "Пример базы данных\_School"
+              href: ef6/resources/school-database.md
+            - name: Инструменты и расширения
+              href: ef6/resources/tools.md
+            - name: Лицензии
+              items:
+                - name: EF5
+                  items:
+                    - name: Китайский (упрощенное письмо)
+                      href: ef6/resources/licenses/ef5/chs.md
+                    - name: Китайский (традиционное письмо)
+                      href: ef6/resources/licenses/ef5/cht.md
+                    - name: Немецкий
+                      href: ef6/resources/licenses/ef5/deu.md
+                    - name: Английский
+                      href: ef6/resources/licenses/ef5/enu.md
+                    - name: Испанский
+                      href: ef6/resources/licenses/ef5/esn.md
+                    - name: Французский
+                      href: ef6/resources/licenses/ef5/fra.md
+                    - name: Итальянский
+                      href: ef6/resources/licenses/ef5/ita.md
+                    - name: Японский
+                      href: ef6/resources/licenses/ef5/jpn.md
+                    - name: Корейский
+                      href: ef6/resources/licenses/ef5/kor.md
+                    - name: Русский
+                      href: ef6/resources/licenses/ef5/rus.md
+                - name: EF6
+                  items:
+                    - name: Предварительный выпуск
+                      items:
+                        - name: Коэффициент альфа
+                          href: ef6/resources/licenses/ef6/prerelease/alpha.md
+                        - name: "Бета-версия\_— релиз-кандидат"
+                          href: ef6/resources/licenses/ef6/prerelease/beta-rc.md
+                    - name: Китайский (упрощенное письмо)
+                      href: ef6/resources/licenses/ef6/chs.md
+                    - name: Китайский (традиционное письмо)
+                      href: ef6/resources/licenses/ef6/cht.md
+                    - name: Немецкий
+                      href: ef6/resources/licenses/ef6/deu.md
+                    - name: Английский
+                      href: ef6/resources/licenses/ef6/enu.md
+                    - name: Испанский
+                      href: ef6/resources/licenses/ef6/esn.md
+                    - name: Французский
+                      href: ef6/resources/licenses/ef6/fra.md
+                    - name: Итальянский
+                      href: ef6/resources/licenses/ef6/ita.md
+                    - name: Японский
+                      href: ef6/resources/licenses/ef6/jpn.md
+                    - name: Корейский
+                      href: ef6/resources/licenses/ef6/kor.md
+                    - name: Русский
+                      href: ef6/resources/licenses/ef6/rus.md
+        - name: "⤤ Справочник по API\_EF6"
+          href: 'https://docs.microsoft.com/dotnet/api/?view=entity-framework-6.2.0'
