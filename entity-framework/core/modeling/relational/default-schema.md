@@ -4,33 +4,33 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: e6e58473-9f5e-4a1f-ac0f-b87d2cbb667e
 uid: core/modeling/relational/default-schema
-ms.openlocfilehash: 800551bbadd0a9e8b5eb7070a8ccf6ed2407e3d2
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: ae903ed7200859430aecc55073651236759bc6ce
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995370"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197131"
 ---
 # <a name="default-schema"></a>Схема по умолчанию
 
 > [!NOTE]  
 > Описанная в этом разделе конфигурации применяется к реляционным базам данных в общем случае. Показанные здесь методы расширения будут доступны после установки поставщика реляционной базы данных (посредством общего *пакета Microsoft.EntityFrameworkCore.Relational*).
 
-Схема по умолчанию — схему базы данных, объекты будут созданы в, если схема не настроена явным образом для этого объекта.
+Схема по умолчанию — это схема базы данных, в которой будут создаваться объекты, если схема не настроена явно для этого объекта.
 
 ## <a name="conventions"></a>Соглашения
 
-По соглашению поставщик базы данных будет выбирать наиболее подходящий схемы по умолчанию. Например, Microsoft SQL Server будет использовать `dbo` схемы и SQLite не будет использовать схему (поскольку схемы не поддерживаются в SQLite).
+По соглашению поставщик базы данных будет выбирать наиболее подходящую схему по умолчанию. Например, Microsoft SQL Server будет использовать `dbo` схему, а SQLite не будет использовать схему (поскольку схемы не поддерживаются в SQLite).
 
 ## <a name="data-annotations"></a>Заметки к данным
 
-Не удается установить схему по умолчанию, с помощью заметок к данным.
+Невозможно задать схему по умолчанию с помощью заметок к данным.
 
 ## <a name="fluent-api"></a>Текучий API
 
-Fluent API можно использовать для указания схемы по умолчанию.
+Для указания схемы по умолчанию можно использовать API Fluent.
 
-<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Samples/Relational/DefaultSchema.cs?highlight=7)] -->
+<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Relational/DefaultSchema.cs?highlight=7)] -->
 ``` csharp
 class MyContext : DbContext
 {
