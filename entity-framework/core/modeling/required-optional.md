@@ -1,36 +1,60 @@
 ---
-title: Обязательные/необязательные свойства — EF Core
+title: Обязательные и необязательные свойства — EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: ddaa0a54-9f43-4c34-aae3-f95c96c69842
 uid: core/modeling/required-optional
-ms.openlocfilehash: 7200cd2eeeba2f22365ef09b1f50edd077240130
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: fd9e96e6f79965e63b07c21217edd004fd5c4d54
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149144"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197848"
 ---
-# <a name="required-and-optional-properties"></a><span data-ttu-id="3f53b-102">Обязательные и необязательные свойства</span><span class="sxs-lookup"><span data-stu-id="3f53b-102">Required and Optional Properties</span></span>
+# <a name="required-and-optional-properties"></a><span data-ttu-id="e33d2-102">Обязательные и необязательные свойства</span><span class="sxs-lookup"><span data-stu-id="e33d2-102">Required and Optional Properties</span></span>
 
-<span data-ttu-id="3f53b-103">Свойство считается необязательным, если для него допустимо значение `null`.</span><span class="sxs-lookup"><span data-stu-id="3f53b-103">A property is considered optional if it is valid for it to contain `null`.</span></span> <span data-ttu-id="3f53b-104">Если `null` не является допустимым значением свойства, свойство считается обязательным.</span><span class="sxs-lookup"><span data-stu-id="3f53b-104">If `null` is not a valid value to be assigned to a property then it is considered to be a required property.</span></span>
+<span data-ttu-id="e33d2-103">Свойство считается необязательным, если для него допустимо значение `null`.</span><span class="sxs-lookup"><span data-stu-id="e33d2-103">A property is considered optional if it is valid for it to contain `null`.</span></span> <span data-ttu-id="e33d2-104">Если `null` не является допустимым значением свойства, свойство считается обязательным.</span><span class="sxs-lookup"><span data-stu-id="e33d2-104">If `null` is not a valid value to be assigned to a property then it is considered to be a required property.</span></span>
 
-## <a name="conventions"></a><span data-ttu-id="3f53b-105">Соглашения</span><span class="sxs-lookup"><span data-stu-id="3f53b-105">Conventions</span></span>
+<span data-ttu-id="e33d2-105">При сопоставлении со схемой реляционной базы данных обязательные свойства создаются как столбцы, не допускающие значения NULL, а дополнительные свойства создаются как столбцы, допускающие значение null.</span><span class="sxs-lookup"><span data-stu-id="e33d2-105">When mapping to a relational database schema, required properties are created as non-nullable columns, and optional properties are created as nullable columns.</span></span>
 
-<span data-ttu-id="3f53b-106">По соглашению свойство, тип .NET которого может содержать значение null, будет настроен как необязательный `byte[]`(`string`, `int?`, и т. д.).</span><span class="sxs-lookup"><span data-stu-id="3f53b-106">By convention, a property whose .NET type can contain null will be configured as optional (`string`, `int?`, `byte[]`, etc.).</span></span> <span data-ttu-id="3f53b-107">Свойства, для которых CLR-тип не может иметь значение null, будут настроены как обязательные (`int`, `decimal`, `bool`и т. д.).</span><span class="sxs-lookup"><span data-stu-id="3f53b-107">Properties whose CLR type cannot contain null will be configured as required (`int`, `decimal`, `bool`, etc.).</span></span>
+## <a name="conventions"></a><span data-ttu-id="e33d2-106">Соглашения</span><span class="sxs-lookup"><span data-stu-id="e33d2-106">Conventions</span></span>
 
-> [!NOTE]  
-> <span data-ttu-id="3f53b-108">Свойство, тип .NET которого не может содержать значение null, не может быть настроено как необязательный.</span><span class="sxs-lookup"><span data-stu-id="3f53b-108">A property whose .NET type cannot contain null cannot be configured as optional.</span></span> <span data-ttu-id="3f53b-109">Такое свойство всегда будет расцениваться Entity Framework как обязательное.</span><span class="sxs-lookup"><span data-stu-id="3f53b-109">The property will always be considered required by Entity Framework.</span></span>
+<span data-ttu-id="e33d2-107">По соглашению свойство, тип .NET которого может содержать значение null, будет настроено как необязательный, тогда как свойства, типы .NET которых не могут содержать значение null, будут настроены как обязательные.</span><span class="sxs-lookup"><span data-stu-id="e33d2-107">By convention, a property whose .NET type can contain null will be configured as optional, whereas properties whose .NET type cannot contain null will be configured as required.</span></span> <span data-ttu-id="e33d2-108">Например, все свойства с типами значений .NET (`int`, `decimal`, `bool`и т. д.) настраиваются как обязательные, а все свойства с типами значений .NET`int?`, `decimal?`допускающими значение null (,, `bool?`и т. д.). настроено как необязательное.</span><span class="sxs-lookup"><span data-stu-id="e33d2-108">For example, all properties with .NET value types (`int`, `decimal`, `bool`, etc.) are configured as required, and all properties with nullable .NET value types (`int?`, `decimal?`, `bool?`, etc.) are configured as optional.</span></span>
 
-## <a name="data-annotations"></a><span data-ttu-id="3f53b-110">Заметки к данным</span><span class="sxs-lookup"><span data-stu-id="3f53b-110">Data Annotations</span></span>
+<span data-ttu-id="e33d2-109">C#в 8 появилась новая функция, называемая [ссылочными типами, допускающими значение NULL](/dotnet/csharp/tutorials/nullable-reference-types), которая позволяет создавать заметки для ссылочных типов, указывающих, является ли он допустимым для того, чтобы они содержали значение null.</span><span class="sxs-lookup"><span data-stu-id="e33d2-109">C# 8 introduced a new feature called [nullable reference types](/dotnet/csharp/tutorials/nullable-reference-types), which allows reference types to be annotated, indicating whether it is valid for them to contain null or not.</span></span> <span data-ttu-id="e33d2-110">Эта функция отключена по умолчанию и, если она включена, изменяет поведение EF Core следующим образом:</span><span class="sxs-lookup"><span data-stu-id="e33d2-110">This feature is disabled by default, and if enabled, it modifies EF Core's behavior in the following way:</span></span>
 
-<span data-ttu-id="3f53b-111">Можно использовать заметки к данным, чтобы указать, что свойство является обязательным.</span><span class="sxs-lookup"><span data-stu-id="3f53b-111">You can use Data Annotations to indicate that a property is required.</span></span>
+* <span data-ttu-id="e33d2-111">Если ссылочные типы, допускающие значение null, отключены (по умолчанию), все свойства с ссылочными типами .NET настраиваются как необязательные по соглашению (например `string`,).</span><span class="sxs-lookup"><span data-stu-id="e33d2-111">If nullable reference types are disabled (the default), all properties with .NET reference types are configured as optional by convention (e.g. `string`).</span></span>
+* <span data-ttu-id="e33d2-112">Если ссылочные типы, допускающие значение null, включены, то свойства C# будут настроены на основе допустимости `string?` значений NULL для их типа .NET: будут `string` настроены как необязательные, тогда как они будут настроены как обязательные.</span><span class="sxs-lookup"><span data-stu-id="e33d2-112">If nullable reference types are enabled, properties will be configured based on the C# nullability of their .NET type: `string?` will be configured as optional, whereas `string` will be configured as required.</span></span>
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/Required.cs?highlight=14)]
+<span data-ttu-id="e33d2-113">В следующем примере показан тип сущности с обязательными и необязательными свойствами с отключенной ссылкой, допускающей значение null (по умолчанию) и включенной.</span><span class="sxs-lookup"><span data-stu-id="e33d2-113">The following example shows an entity type with required and optional properties, with the nullable reference feature disabled (the default) and enabled:</span></span>
 
-## <a name="fluent-api"></a><span data-ttu-id="3f53b-112">Текучий API</span><span class="sxs-lookup"><span data-stu-id="3f53b-112">Fluent API</span></span>
+# <a name="without-nullable-reference-types-defaulttabwithout-nrt"></a>[<span data-ttu-id="e33d2-114">Без ссылочных типов, допускающих значения NULL (по умолчанию)</span><span class="sxs-lookup"><span data-stu-id="e33d2-114">Without nullable reference types (default)</span></span>](#tab/without-nrt)
 
-<span data-ttu-id="3f53b-113">Fluent API можно использовать для указания того, что свойство является обязательным.</span><span class="sxs-lookup"><span data-stu-id="3f53b-113">You can use the Fluent API to indicate that a property is required.</span></span>
+[!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/CustomerWithoutNullableReferenceTypes.cs?name=Customer&highlight=4-8)]
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Required.cs?highlight=11-13)]
+# <a name="with-nullable-reference-typestabwith-nrt"></a>[<span data-ttu-id="e33d2-115">С ссылочными типами, допускающими значение null</span><span class="sxs-lookup"><span data-stu-id="e33d2-115">With nullable reference types</span></span>](#tab/with-nrt)
 
+[!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/Customer.cs?name=Customer&highlight=4-6)]
+
+***
+
+<span data-ttu-id="e33d2-116">Рекомендуется использовать ссылочные типы, допускающие значение null, так как она C# передает возможность принимать нулевое значение, выраженную в коде, в модель EF Core и в базу данных, а также устраняет использование заметок к данным в интерфейсе API или аннотациях данных для выражения одной концепции дважды</span><span class="sxs-lookup"><span data-stu-id="e33d2-116">Using nullable reference types is recommended since it flows the nullability expressed in C# code to EF Core's model and to the database, and obviates the use of the Fluent API or Data Annotations to express the same concept twice.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="e33d2-117">Соблюдайте осторожность при включении ссылочных типов, допускающих значение null, в существующем проекте: свойства ссылочного типа, которые ранее были настроены как необязательные, теперь будут настроены как обязательные, если только они не имеют явно заметку null.</span><span class="sxs-lookup"><span data-stu-id="e33d2-117">Exercise caution when enabling nullable reference types on an existing project: reference type properties which were previously configured as optional will now be configured as required, unless they are explicitly annotated to be nullable.</span></span> <span data-ttu-id="e33d2-118">При управлении схемой реляционной базы данных это может привести к созданию миграции, которые изменяют допустимость значений NULL в столбце базы данных.</span><span class="sxs-lookup"><span data-stu-id="e33d2-118">When managing a relational database schema, this may cause migrations to be generated which alter the database column's nullability.</span></span>
+
+<span data-ttu-id="e33d2-119">Дополнительные сведения о ссылочных типах, допускающих значения NULL, и об их использовании с EF Core [см. на специальной странице документации по этой функции](xref:core/miscellaneous/nullable-reference-types).</span><span class="sxs-lookup"><span data-stu-id="e33d2-119">For more information on nullable reference types and how to use them with EF Core, [see the dedicated documentation page for this feature](xref:core/miscellaneous/nullable-reference-types).</span></span>
+
+## <a name="configuration"></a><span data-ttu-id="e33d2-120">Параметр Configuration</span><span class="sxs-lookup"><span data-stu-id="e33d2-120">Configuration</span></span>
+
+<span data-ttu-id="e33d2-121">Свойство, которое было бы необязательным по соглашению, может быть настроено следующим образом:</span><span class="sxs-lookup"><span data-stu-id="e33d2-121">A property that would be optional by convention can be configured to be required as follows:</span></span>
+
+# <a name="data-annotationstabdata-annotations"></a>[<span data-ttu-id="e33d2-122">Заметки к данным</span><span class="sxs-lookup"><span data-stu-id="e33d2-122">Data Annotations</span></span>](#tab/data-annotations)
+
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Required.cs?highlight=14)]
+
+# <a name="fluent-apitabfluent-api"></a>[<span data-ttu-id="e33d2-123">API Fluent</span><span class="sxs-lookup"><span data-stu-id="e33d2-123">Fluent API</span></span>](#tab/fluent-api) 
+
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Required.cs?highlight=11-13)]
+
+***
