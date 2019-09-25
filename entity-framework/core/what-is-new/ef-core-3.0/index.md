@@ -1,19 +1,205 @@
 ---
-title: Новые возможности в EF Core 3.0 — EF Core
+title: Новые функции в Entity Framework Core 3.0
 author: divega
 ms.date: 02/19/2019
-ms.assetid: 8C90C074-0A5B-4567-AF79-799B7BC78062
+ms.assetid: 2EBE2CCC-E52D-483F-834C-8877F5EB0C0C
 uid: core/what-is-new/ef-core-3.0/index
-ms.openlocfilehash: 611689b23bfea7e4597466129b2a0e5d4afb6d96
-ms.sourcegitcommit: d01fc19aa42ca34c3bebccbc96ee26d06fcecaa2
+ms.openlocfilehash: ebebbf286d9d8e06492a3c664799e1127c7dc8c0
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71005574"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197906"
 ---
-# <a name="what-is-new-in-ef-core-30"></a>Новые возможности в EF Core 3.0
+# <a name="new-features-in-entity-framework-core-30"></a>Новые функции в Entity Framework Core 3.0
 
-Платформа EF Core 3.0 доступна в виде [пакетов NuGet на сайте nuget.org](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/). 
+В приведенном ниже списке указаны ключевые новые функции EF Core 3.0.
 
-Она включает в себя [новые функции](xref:core/what-is-new/ef-core-3.0/features) и [критические изменения](xref:core/what-is-new/ef-core-3.0/breaking-changes). 
+EF Core 3.0 — основной выпуск. Он содержит несколько [критических изменений](xref:core/what-is-new/ef-core-3.0/breaking-changes), касающихся улучшений API. Такие изменения могут негативно повлиять на работу существующих приложений.  
 
+## <a name="linq-overhaul"></a>Перепроектирование LINQ 
+
+LINQ позволяет писать запросы к базам данных с помощью любого языка .NET, используя различные типы форматированных данных, функции IntelliSense и проверку типа во время компиляции.
+Однако LINQ также поддерживает написание неограниченного числа сложных запросов, содержащих произвольные выражения (вызовы методов или операции).
+Обработка всех этих комбинаций — основная задача поставщиков LINQ.
+
+В EF Core 3.0 мы переопределили поставщик LINQ, чтобы можно было преобразовать дополнительные шаблоны запросов в SQL. При этом в большинстве случаев создаются более эффективные запросы, а появление неэффективных предотвращается. Новый поставщик LINQ открывает больше возможностей для создания запросов и повышения производительности в будущих выпусках. Использование этого поставщика никак не повлияет на работу существующих приложений и поставщиков данных.
+
+### <a name="restricted-client-evaluation"></a>Ограниченная оценка клиента
+Самое важное изменение разработки внесено в способ обработки выражений LINQ, которые нельзя преобразовать в параметры или в SQL.
+
+В предыдущих версиях система EF Core определяла, какие части запроса можно преобразовать в SQL, и выполняла остальную часть запроса в клиенте.
+Подобное выполнение на стороне клиента иногда дает хороший результат. Но во многих случаях оно может привести к появлению неэффективных запросов.
+
+Например, если системе EF Core 2.2 не удавалось преобразовать предикат в вызов `Where()`, она выполняла инструкцию SQL без фильтра, передавала все строки из базы данных, а затем фильтровала их в памяти:
+
+``` csharp
+var specialCustomers = 
+  context.Customers
+    .Where(c => c.Name.StartsWith(n) && IsSpecialCustomer(c));
+```
+
+Это приемлемо при небольшом количестве строк в базе данных, но может привести к значительным проблемам с производительностью или даже сбою приложения, если база данных содержит большое число строк.
+
+В EF Core 3.0 мы ограничили оценку клиентов, чтобы она осуществлялась только на проекции верхнего уровня (в основном последний вызов `Select()`).
+Когда система EF Core 3.0 обнаруживает выражения, которые нельзя преобразовать в любой другой точке запроса, она создает исключение времени выполнения.
+
+Чтобы оценить условие предиката в клиенте (как в предыдущем примере), разработчикам теперь нужно явно переключить вычисление запроса на LINQ to Objects: 
+
+``` csharp
+var specialCustomers =
+  context.Customers
+    .Where(c => c.Name.StartsWith(n)) 
+    .AsEnumerable() // switches to LINQ to Objects
+    .Where(c => IsSpecialCustomer(c));
+```
+
+Дополнительные сведения о том, как это может повлиять на существующие приложения, см. в [документации по критическим изменениям](xref:core/what-is-new/ef-core-3.0/breaking-changes#linq-queries-are-no-longer-evaluated-on-the-client).
+
+### <a name="single-sql-statement-per-linq-query"></a>Одна инструкция SQL для каждого запроса LINQ
+
+В 3.0 существенно изменен еще один аспект разработки. Теперь для каждого запроса LINQ всегда создается отдельная инструкция SQL. В предыдущих версиях иногда создавалось несколько инструкций SQL. Например, для преобразования вызовов `Include()` к свойствам навигации коллекции и запросов на основе определенных шаблонов с вложенными запросами. В некоторых случаях это было удобно, а для `Include()` даже помогало предотвратить отправку избыточных данных по каналу. Но реализовать такой сценарий было сложно. Это приводило к неэффективному поведению (запросы N+1). Иногда после нескольких запросов возвращались несогласованные данные.
+
+Как и при оценке клиента, если EF Core 3.0 не удается преобразовать запрос LINQ в одну инструкцию SQL, возникает исключение времени выполнения. Но мы реализовали в EF Core возможность преобразовать много распространенных шаблонов, которые использовались для создания нескольких запросов, в один общий запрос с помощью инструкций JOIN.
+
+## <a name="cosmos-db-support"></a>Поддержка Cosmos DB 
+
+Поставщик Cosmos DB для EF Core позволяет разработчикам, знакомым с моделью программирования EF, легко использовать Azure Cosmos DB в качестве базы данных приложения. Мы хотим, чтобы такие преимущества Cosmos DB, как глобальное распределение, постоянная готовность, эластичная масштабируемость и низкая задержка, стали еще доступнее .NET-разработчикам. Поставщик позволяет использовать API-интерфейс SQL в Cosmos DB с большинством функций EF Core, включая автоматическое отслеживание изменений, LINQ и преобразование значений.
+
+Дополнительные сведения см. в [документации по поставщику Cosmos DB](xref:core/providers/cosmos/index).
+
+## <a name="c-80-support"></a>Поддержка C# 8.0
+
+В EF Core 3.0 используются преимущества нескольких [новых функций в C# 8.0](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-8):
+
+### <a name="asynchronous-streams"></a>Асинхронные потоки
+
+Асинхронные результаты запросов теперь предоставляются с помощью нового стандартного интерфейса `IAsyncEnumerable<T>` и могут использоваться с помощью `await foreach`.
+
+``` csharp
+var orders = 
+  from o in context.Orders
+  where o.Status == OrderStatus.Pending
+  select o;
+
+await foreach(var o in orders)
+{
+  Process(o);
+} 
+```
+
+Дополнительные сведения см. в [документации по асинхронным потокам в C#](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-8#asynchronous-streams).
+
+### <a name="nullable-reference-types"></a>Ссылочные типы, допускающие значение null 
+
+Если эта новая функция включена в код, EF Core проверяет допустимость значений NULL в свойствах ссылочного типа и применяет ее к соответствующим столбцам и связям в базе данных. Свойства ссылочных типов, не допускающих значения NULL, обрабатываются так, как если бы в них использовался атрибут заметки к данным `[Required]`.
+
+Например, в указанном ниже классе свойства типа `string?` будут настроены как необязательные, а типа `string` — как обязательные:
+
+``` csharp
+public class Customer
+{
+  public int Id { get; set; }
+  public string FirstName { get; set; }
+  public string LastName { get; set; }
+  public string? MiddleName { get; set; }
+}
+```
+
+Дополнительные сведения см. в статье о [работе со ссылочными типами, допускающими значения NULL](xref:core/miscellaneous/nullable-reference-types), в документации по EF Core.
+
+## <a name="interception-of-database-operations"></a>Перехват операций базы данных
+
+Новый API-интерфейс перехвата в EF Core 3.0 позволяет автоматически вызывать пользовательскую логику, когда в рамках нормальной работы EF Core выполняются низкоуровневые операции с базами данных. Например, при открытии соединений, фиксации транзакций или выполнении команд. 
+
+Как и функции перехвата, использовавшиеся в EF 6, перехватчики позволяют перехватывать операции до или после того, как они происходят. Если перехватить их до выполнения, можно обойти его и предоставить альтернативные результаты на основе логики перехвата. 
+
+Например, для управления текстом команды можно создать `IDbCommandInterceptor`:
+
+``` csharp 
+public class HintCommandInterceptor : DbCommandInterceptor
+{
+  public override InterceptionResult ReaderExecuting(
+    DbCommand command, 
+    CommandEventData eventData, 
+    InterceptionResult result)
+  {
+    // Manipulate the command text, etc. here...
+    command.CommandText += " OPTION (OPTIMIZE FOR UNKNOWN)";
+    return result;
+  }
+}
+``` 
+
+Зарегистрировать перехватчик можно с помощью  `DbContext`:
+
+``` csharp
+services.AddDbContext(b => b
+  .UseSqlServer(connectionString)
+  .AddInterceptors(new HintCommandInterceptor()));
+```
+
+## <a name="reverse-engineering-of-database-views"></a>Реконструирование представлений базы данных
+
+Типы запросов, представляющие данные, которые можно считать из базы данных, но нельзя обновить, переименованы в [типы сущностей без ключей](xref:core/modeling/keyless-entity-types). Так как в большинстве случаев они отлично подходят для сопоставления представлений базы данных, EF Core теперь автоматически создает типы сущностей без ключей при реконструировании представлений баз данных.
+
+Например, с помощью [программы командной строки dotnet для EF](xref:core/miscellaneous/cli/dotnet) можно ввести:
+
+``` console
+dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer
+```
+
+Теперь средство автоматически формирует типы шаблонов для представлений и таблиц без ключей:
+
+``` csharp
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+  modelBuilder.Entity<Names>(entity =>
+  {
+    entity.HasNoKey();
+    entity.ToView("Names");
+  });
+
+  modelBuilder.Entity<Things>(entity =>
+  {
+    entity.HasNoKey();
+  });
+}
+```
+
+## <a name="dependent-entities-sharing-the-table-with-the-principal-are-now-optional"></a>Зависимые сущности, имеющие общую с субъектом таблицу, теперь являются необязательными
+
+Начиная с EF Core 3.0, если класс `OrderDetails` принадлежит классу `Order` или явно сопоставляется с той же таблицей, можно добавлять класс `Order` без класса `OrderDetails`, и все свойства `OrderDetails`, за исключением первичного ключа, будут сопоставляться со столбцами, допускающими значения NULL.
+
+При отправке запроса EF Core задаст `OrderDetails` значение `null`, если какому-либо его обязательному свойству не задано значение или если отсутствуют необходимые свойства, помимо первичного ключа, и все свойства имеют значение `null`.
+
+``` csharp
+public class Order
+{
+    public int Id { get; set; }
+    public int CustomerId { get; set; }
+    public OrderDetails Details { get; set; }
+}
+
+[Owned]
+public class OrderDetails
+{
+    public int Id { get; set; }
+    public string ShippingAddress { get; set; }
+}
+```
+
+## <a name="ef-63-on-net-core"></a>EF 6.3 на платформе .NET Core
+
+Это не совсем функция EF Core 3.0, но мы думаем, что такая возможность важна для многих наших клиентов. 
+
+Мы понимаем, что многие существующие приложения используют предыдущие версии EF и перенос этих приложений на EF Core исключительно для поддержки функций .NET Core может оказаться очень трудоемким. По этой причине мы решили перенести новую версию EF 6 на платформу .NET Core 3.0. 
+
+Дополнительные сведения см. в статье о [новых возможностях EF 6](xref:ef6/what-is-new/index).
+
+## <a name="postponed-features"></a>Отложенные функции
+
+Некоторые функции, первоначально запланированные для EF Core 3.0, были отложены до будущих выпусков:
+
+- Возможность пропускать части модели при миграции (вопрос [№ 2725](https://github.com/aspnet/EntityFrameworkCore/issues/2725)).
+- Сущности контейнера свойств, которым посвящены два отдельных вопроса: [№ 9914](https://github.com/aspnet/EntityFrameworkCore/issues/9914) об общих сущностях и [№ 13610](https://github.com/aspnet/EntityFrameworkCore/issues/13610) о поддержке сопоставления индексированных свойств.
