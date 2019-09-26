@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 01/24/2017
 ms.assetid: b64a606e-ecd9-4807-829a-b6ec05ade33f
 uid: core/saving/async
-ms.openlocfilehash: 6f482a77300ff2930953686751a579b022bf6f77
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 0823b86f0579dd3e42f6bd2aebfb433d3cbe00ab
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997286"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197821"
 ---
 # <a name="asynchronous-saving"></a>Асинхронное сохранение
 
@@ -20,4 +20,4 @@ ms.locfileid: "42997286"
 
 Entity Framework Core предоставляет `DbContext.SaveChangesAsync()` в качестве асинхронной альтернативы `DbContext.SaveChanges()`.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Async/Sample.cs#Sample)]
+[!code-csharp[Main](../../../samples/core/Saving/Async/Sample.cs#Sample)]

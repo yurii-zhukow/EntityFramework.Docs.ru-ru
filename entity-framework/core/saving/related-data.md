@@ -4,19 +4,19 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 07b6680f-ffcf-412c-9857-f997486b386c
 uid: core/saving/related-data
-ms.openlocfilehash: 7349c57c0dccd3c911178641d3b34a478a4f6194
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 45c7b8e4bfa4ce7967ad76ef4a7d4818b0d3aebf
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994748"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197889"
 ---
 # <a name="saving-related-data"></a>Сохранение связанных данных
 
 В дополнение к изолированным сущностям вы также можете использовать связи, определенные в вашей модели.
 
 > [!TIP]  
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/RelatedData/) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/RelatedData/) из репозитория GitHub.
 
 ## <a name="adding-a-graph-of-new-entities"></a>Добавление графа новых сущностей
 
@@ -24,7 +24,7 @@ ms.locfileid: "42994748"
 
 В следующем примере блог и три связанные записи вставляются в базу данных. Записи обнаруживаются и добавляются, потому что они доступны через свойство навигации `Blog.Posts`.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/RelatedData/Sample.cs#AddingGraphOfEntities)]
+[!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#AddingGraphOfEntities)]
 
 > [!TIP]  
 > Используйте свойство EntityEntry.State, чтобы установить состояние только одной сущности. Например, `context.Entry(blog).State = EntityState.Modified`.
@@ -35,7 +35,7 @@ ms.locfileid: "42994748"
 
 В следующем примере вставляется сущность `post`, так как она добавлена в свойство `Posts` сущности `blog`, которая была получена из базы данных.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/RelatedData/Sample.cs#AddingRelatedEntity)]
+[!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#AddingRelatedEntity)]
 
 ## <a name="changing-relationships"></a>Изменение связей
 
@@ -43,7 +43,7 @@ ms.locfileid: "42994748"
 
 В следующем примере сущность `post` обновляется таким образом, чтобы принадлежать к новой сущности `blog`, потому что ее свойство навигации `Blog` указывает на `blog`. Обратите внимание, что `blog` также будет вставлена в базу данных, так как это новая сущность, на которую ссылается свойство навигации сущности, которая уже отслеживается контекстом (`post`).
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/RelatedData/Sample.cs#ChangingRelationships)]
+[!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#ChangingRelationships)]
 
 ## <a name="removing-relationships"></a>Удаление связей
 
@@ -59,4 +59,4 @@ ms.locfileid: "42994748"
 
 В следующем примере каскадное удаление настраивается в связи между `Blog` ​​и `Post`, поэтому сущность `post` удаляется из базы данных.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/RelatedData/Sample.cs#RemovingRelationships)]
+[!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#RemovingRelationships)]

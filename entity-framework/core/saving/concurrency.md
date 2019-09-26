@@ -3,12 +3,12 @@ title: Обработка конфликтов параллелизма — EF C
 author: rowanmiller
 ms.date: 03/03/2018
 uid: core/saving/concurrency
-ms.openlocfilehash: e050b17bfa31a4785161c700bc0355e83162b405
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 4d6ff24e58caa0b228e9c1e4313beda78d1025fc
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993116"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197829"
 ---
 # <a name="handling-concurrency-conflicts"></a>Обработка конфликтов параллелизма
 
@@ -16,7 +16,7 @@ ms.locfileid: "42993116"
 > На этой странице описывается, как работает параллелизм в EF Core и как обрабатывать конфликты параллелизма в вашем приложении. Подробнее о том, как настроить маркеры параллелизма в вашей модели, см. в [этой статье](xref:core/modeling/concurrency).
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Concurrency/) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Concurrency/) из репозитория GitHub.
 
 _Параллелизм базы данных_ относится к ситуациям, в которых несколько процессов или пользователей получают доступ или одновременно изменяют одни и те же данные в базе данных. _Управление параллелизмом_ относится к конкретным механизмам, используемым для обеспечения согласованности данных при наличии одновременных изменений.
 
@@ -71,4 +71,4 @@ WHERE [PersonId] = @p0 AND [LastName] = @p2;
 
 В следующем примере `Person.FirstName` и `Person.LastName` устанавливаются как маркеры параллелизма. В месте, где вы указываете конкретную логику приложения, есть комментарий `// TODO:`, позволяющий выбрать значение, которое нужно сохранить.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Concurrency/Sample.cs?name=ConcurrencyHandlingCode&highlight=34-35)]
+[!code-csharp[Main](../../../samples/core/Saving/Concurrency/Sample.cs?name=ConcurrencyHandlingCode&highlight=34-35)]

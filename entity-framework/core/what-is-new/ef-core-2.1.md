@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 585F90A3-4D5A-4DD1-92D8-5243B14E0FEC
 uid: core/what-is-new/ef-core-2.1
-ms.openlocfilehash: 16600ccbb1194d584fae15671118d9c046f1f637
-ms.sourcegitcommit: 06073f8efde97dd5f540dbfb69f574d8380566fe
+ms.openlocfilehash: 5f97015f0228387574e3a19fb20cae1bdb403410
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67333862"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149173"
 ---
 # <a name="new-features-in-ef-core-21"></a>Новые возможности в EF Core 2.1
 
@@ -81,7 +81,7 @@ modelBuilder.Entity<Post>().HasData(new Post{ Id = 1, Text = "Hello World!" });
 - Сопоставление с запросами, определенными в модели
 - Использование в качестве типа возвращаемого значения для запросов `FromSql()`
 
-Дополнительные сведения об этом см. в [разделе, посвященном типам запросов](xref:core/modeling/query-types).
+Дополнительные сведения об этом см. в [разделе, посвященном типам запросов](xref:core/modeling/keyless-entity-types).
 
 ## <a name="include-for-derived-types"></a>Использование метода Include с производными типами
 В новой версии при написании выражений для метода `Include` можно будет указывать только свойства навигации, определенные для производных типов. Для строго типизированной версии метода `Include` будет поддерживаться либо явное приведение, либо оператор `as`. Кроме того, теперь поддерживается использование ссылок на имена свойств навигации, определенных для производных типов в строковой версии метода `Include`:

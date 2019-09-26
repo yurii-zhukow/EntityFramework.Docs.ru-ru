@@ -5,16 +5,16 @@ ms.author: ansvyryd
 ms.date: 02/26/2018
 ms.assetid: 9F4450C5-1A3F-4BB6-AC19-9FAC64292AAD
 uid: core/modeling/keyless-entity-types
-ms.openlocfilehash: b968ac9602b9aa1f1c1e3181b6b76a64394d70f0
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: e78b9f91fd2505de300ced7b5e73291b5d1ad3b4
+ms.sourcegitcommit: 7bc43f21e7bdd64926314ea949aae689f1911956
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71150791"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266776"
 ---
 # <a name="keyless-entity-types"></a>Типы сущностей без ключей
 > [!NOTE]
-> Это новая возможность в EF Core 2.1. До 3,0 они назывались типами запросов
+> Эта функция была добавлена в EF Core 2,1 под именем типов запросов. В EF Core 3,0 концепция была переименована в типы сущностей без ключей.
 
 В дополнение к обычным типам сущностей модель EF Core может содержать незашифрованные _типы сущностей_, которые можно использовать для выполнения запросов к базе данных, не содержащей значений ключей.
 
@@ -56,7 +56,7 @@ ms.locfileid: "71150791"
 В следующем примере показано, как использовать типы сущностей без ключей для запроса представления базы данных.
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/QueryTypes) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/KeylessEntityTypes) из репозитория GitHub.
 
 Во-первых определим простую модель блога и Post.
 

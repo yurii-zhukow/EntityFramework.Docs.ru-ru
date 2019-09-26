@@ -4,12 +4,12 @@ author: divega
 ms.date: 09/12/2019
 ms.assetid: 41d1f86b-ce66-4bf2-8963-48514406fb4c
 uid: ef6/what-is-new/index
-ms.openlocfilehash: bb7038764644682c2149a8a500f342804d01f3d2
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: c49f4cba0066d1e218f11c3959d96f9cafa913f4
+ms.sourcegitcommit: 7bc43f21e7bdd64926314ea949aae689f1911956
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71198037"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266779"
 ---
 # <a name="whats-new-in-ef6"></a>Новые возможности EF6
 
@@ -22,8 +22,9 @@ ms.locfileid: "71198037"
 Среда выполнения EF 6.3.0 выпущена в NuGet в октябре 2019 г. Основной целью этого выпуска было упрощение переноса существующих приложений, использующих EF 6, в .NET Core 3.0. Сообществом также было внесено несколько исправлений и усовершенствований. См. сведения о проблемах, устраненных в каждой [контрольной точке](https://github.com/aspnet/EntityFramework6/milestones?state=closed) версии 6.3.0. Ниже перечислены некоторые основные моменты:
 
 - Включена поддержка .NET Core 3.0.
-  - Теперь пакет EntityFramework можно использовать с .NET Standard 2.1 наряду с .NET Framework 4.x.
-  - Команды миграции были переписаны для внепроцессного выполнения и поддержки проектов на основе пакета SDK.
+  - Теперь пакет Entity Framework можно использовать для .NET Standard 2.1 наряду с .NET Framework 4.x.
+  - Это означает, что платформа EF 6.3 является кроссплатформенной и поддерживается не только в Windows, но и в других операционных системах, таких как Linux и macOS.
+  - Команды миграции были переписаны: теперь они поддерживают внепроцессное выполнение и проекты на базе пакетов SDK.
 - Включена поддержка SQL Server HierarchyId.
 - Улучшена совместимость с Roslyn и NuGet PackageReference.
 - Добавлена служебная программа `ef6.exe` для включения, добавления, создания скриптов и применения миграций из сборок. Это замена для `migrate.exe`.
@@ -37,12 +38,12 @@ ms.locfileid: "71198037"
 В файле проекта связанные файлы будут выглядеть так:
 
 ``` csproj 
-&lt;ItemGroup&gt;
-  &lt;EntityDeploy Include="..\EdmxDesignHost\Entities.edmx" Link="Model\Entities.edmx" /&gt;
-  &lt;Compile Include="..\EdmxDesignHost\Entities.Context.cs" Link="Model\Entities.Context.cs" /&gt;
-  &lt;Compile Include="..\EdmxDesignHost\Thing.cs" Link="Model\Thing.cs" /&gt;
-  &lt;Compile Include="..\EdmxDesignHost\Person.cs" Link="Model\Person.cs" /&gt;
-&lt;/ItemGroup&gt;
+<ItemGroup>
+  <EntityDeploy Include="..\EdmxDesignHost\Entities.edmx" Link="Model\Entities.edmx" />
+  <Compile Include="..\EdmxDesignHost\Entities.Context.cs" Link="Model\Entities.Context.cs" />
+  <Compile Include="..\EdmxDesignHost\Thing.cs" Link="Model\Thing.cs" />
+  <Compile Include="..\EdmxDesignHost\Person.cs" Link="Model\Person.cs" />
+</ItemGroup>
 ```
 
 Обратите внимание, что EDMX-файл связан с действием сборки EntityDeploy. Это специальная задача MSBuild (теперь включена в пакет EF 6.3), которая добавляет модель EF в целевую сборку в качестве внедренных ресурсов (или копирует ее как файлы в выходную папку в зависимости от параметра обработки артефакта метаданных в EDMX). См. сведения об этом параметре в [примере EDMX .NET Core](https://aka.ms/EdmxDotNetCoreSample).
