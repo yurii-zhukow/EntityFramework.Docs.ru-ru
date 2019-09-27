@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 3f1993c2-cdf5-425b-bac2-a2665a20322b
 uid: core/saving/explicit-values-generated-properties
-ms.openlocfilehash: 00abef4d1208400ff68ced0a241b98b8dc9be5c0
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: d6aa9a0a9ce34e09a39026ad7ea9195b6777858c
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997857"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197858"
 ---
 # <a name="setting-explicit-values-for-generated-properties"></a>Установка явных значений для создаваемых свойств
 
@@ -18,25 +18,25 @@ ms.locfileid: "42997857"
 Могут возникать ситуации, когда вы хотите установить явное значение для создаваемого свойства, вместо того чтобы оно было генерировано.
 
 > [!TIP]  
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/ExplicitValuesGenerateProperties/) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/) из репозитория GitHub.
 
 ## <a name="the-model"></a>Модель
 
 Модель, используемая в этой статье, содержит единственную сущность`Employee`.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/Employee.cs#Sample)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Employee.cs#Sample)]
 
 ## <a name="saving-an-explicit-value-during-add"></a>Сохранение явного значения во время добавления
 
 Свойство `Employee.EmploymentStarted` настроено принимать значения, сгенерированные базой данных для новых сущностей (с использованием значения по умолчанию).
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#EmploymentStarted)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#EmploymentStarted)]
 
 Следующий код вставляет записи о двух сотрудниках в базу данных.
 * Для первого сотрудника значение свойству `Employee.EmploymentStarted` не присваивается, поэтому для `DateTime` остается установленным значение CLR по умолчанию.
 * Для второго сотрудника мы установили явное значение `1-Jan-2000`.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmploymentStarted)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmploymentStarted)]
 
 В выходных данных показано, что база данных создала значение для первого сотрудника, а наше явное значение использовалось для второго.
 
@@ -54,7 +54,7 @@ ms.locfileid: "42997857"
 > [!NOTE]  
 > В нашем журнале заказов есть [запрос на функцию](https://github.com/aspnet/EntityFramework/issues/703), которая позволяет сделать это автоматически в пределах поставщика SQL Server.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmployeeId)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmployeeId)]
 
 Выходные данные показывают, что предоставленные идентификаторы были сохранены в базе данных.
 
@@ -67,23 +67,23 @@ ms.locfileid: "42997857"
 
 Свойство `Employee.LastPayRaise` настроено принимать значения, сгенерированные базой данных во время обновления.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#LastPayRaise)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#LastPayRaise)]
 
 > [!NOTE]  
 > По умолчанию EF Core создаст исключение, если вы попытаетесь сохранить явное значение для свойства, для которого настроено создание во время обновления. Чтобы этого избежать, вам нужно перейти к API метаданных нижнего уровня и установить `AfterSaveBehavior` (как показано выше).
 
 > [!NOTE]  
-> **Изменения в EF Core 2.0**. В предыдущих версиях поведение после сохранения контролировалось с помощью флага `IsReadOnlyAfterSave`. Этот флаг устарел и заменен `AfterSaveBehavior`.
+> **Изменения в EF Core 2.0.** В предыдущих версиях поведение после сохранения контролировалось с помощью флага `IsReadOnlyAfterSave`. Этот флаг устарел и заменен `AfterSaveBehavior`.
 
 Существует также триггер базы данных для генерации значений столбца `LastPayRaise` во время операций `UPDATE`.
 
-[!code-sql[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/employee_UPDATE.sql)]
+[!code-sql[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/employee_UPDATE.sql)]
 
 Следующий код увеличивает зарплату двух сотрудников в базе данных.
 * Для первого сотрудника значение свойству `Employee.LastPayRaise` не присваивается, поэтому оно остается нулевым.
 * Для второго сотрудника мы установили явное значение "неделя назад" (до повышения зарплаты).
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/Sample.cs#LastPayRaise)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#LastPayRaise)]
 
 В выходных данных показано, что база данных создала значение для первого сотрудника, а наше явное значение использовалось для второго.
 

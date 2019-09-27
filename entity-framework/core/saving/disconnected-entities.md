@@ -5,12 +5,12 @@ ms.author: avickers
 ms.date: 10/27/2016
 ms.assetid: 2533b195-d357-4056-b0e0-8698971bc3b0
 uid: core/saving/disconnected-entities
-ms.openlocfilehash: 51367d2619b1943c300f8954123f70b909ad96e7
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 070f2ad396ec21858096c29413ac80bdf8547328
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994403"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197811"
 ---
 # <a name="disconnected-entities"></a>Отключенные сущности
 
@@ -19,7 +19,7 @@ ms.locfileid: "42994403"
 Тем не менее иногда сущности запрашиваются с помощью одного экземпляра контекста, а затем сохраняются с помощью другого экземпляра. Это часто происходит в автономных сценариях, например в веб-приложении, в котором сущности запрашиваются, отправляются клиенту, изменяются, возвращаются назад на сервер в запросе, а затем сохраняются. В этом случае второй экземпляр контекста должен знать, что нужно сделать: добавить новые сущности или обновить имеющиеся.
 
 > [!TIP]  
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Disconnected/) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Disconnected/) из репозитория GitHub.
 
 > [!TIP]
 > EF Core может отслеживать только один экземпляр любой сущности с использованием указанного значения первичного ключа. Наилучший способ избежать этой проблемы — использовать кратковременный контекст для каждой единицы работы, чтобы контекст был пустым при запуске, имел связанные с ним сущности, сохранял эти сущности, а затем удалялся и отклонялся.
@@ -38,11 +38,11 @@ ms.locfileid: "42994403"
 
 Очень просто проверить, задан ли ключ, если известен тип сущности:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#IsItNewSimple)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#IsItNewSimple)]
 
 Однако EF также имеет встроенный способ выполнить это действие для любого типа сущности и ключа:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#IsItNewGeneral)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#IsItNewGeneral)]
 
 > [!TIP]  
 > Ключи задаются сразу же после того, как сущности начинают отслеживаться контекстом, даже если сущность находится в добавленном состоянии. Это помогает при обходе графа сущностей. Кроме того, это позволяет решить, что нужно делать с каждым из них, например, при использовании API TrackGraph. Значение ключа можно использовать только показанным здесь способом, _прежде чем_ будет выполнен вызов для отслеживания сущности.
@@ -55,7 +55,7 @@ ms.locfileid: "42994403"
 
 Запросить сущность можно с помощью метода Find:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#IsItNewQuery)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#IsItNewQuery)]
 
 Мы не может показать в этом документе полный код для передачи флага от клиента. В веб-приложении это часто означает выполнение разных запросов для разных действий или передачу некоторого состояния в запросе, а затем извлечение его в контроллере.
 
@@ -63,11 +63,11 @@ ms.locfileid: "42994403"
 
 Если неизвестно, следует выполнять вставку или обновление, то можно должным образом использовать метод Add или Update:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#InsertAndUpdateSingleEntity)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertAndUpdateSingleEntity)]
 
 Тем не менее, если в сущности используются автоматически созданные значения ключей, в обоих случаях можно использовать метод Update:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#InsertOrUpdateSingleEntity)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertOrUpdateSingleEntity)]
 
 Метод Update обычно помечает сущность для обновления, не для вставки. Тем не менее, если сущность имеет автоматически созданный ключ и значение ключа не было задано, то вместо этого сущность автоматически помечается для вставки.
 
@@ -76,7 +76,7 @@ ms.locfileid: "42994403"
 
 Если в сущности не используются автоматически созданные ключи, то приложение должно решить, следует ли вставить или обновить сущность. Например:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#InsertOrUpdateSingleEntityWithFind)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertOrUpdateSingleEntityWithFind)]
 
 Ниже приведены нужные действия.
 * Если метод Find возвращает значение NULL, то база данных не содержит блогов с этим идентификатором. Поэтому мы вызываем метод Add, чтобы пометить сущность для вставки.
@@ -97,17 +97,17 @@ ms.locfileid: "42994403"
 
 Пример работы с графами — обновление или вставка блога вместе с его коллекцией связанных записей. Если необходимо вставить или обновить все сущности в графе, этот процесс аналогичен описанному выше процессу для одной сущности. Например, граф блогов и записей, созданных таким образом
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#CreateBlogAndPosts)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#CreateBlogAndPosts)]
 
 можно вставить следующим образом:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#InsertGraph)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertGraph)]
 
 Вызов метода Add отметит блог и все записи, которые будут вставлены.
 
 Аналогично, если все сущности в графе необходимо обновить, можно использовать метод Update:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#UpdateGraph)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#UpdateGraph)]
 
 Блог и все записи будут помечены для обновления.
 
@@ -115,26 +115,26 @@ ms.locfileid: "42994403"
 
 Если у вас есть автоматически созданные ключи, можно снова использовать метод Update для операций вставки и обновления, даже если граф содержит сочетание сущностей, для которых требуется выполнить вставку и обновление:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#InsertOrUpdateGraph)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertOrUpdateGraph)]
 
 Метод Update отметит все сущности в графе, блоге или записи для вставки, если для него не задано значения ключа. Все другие записи будут помечены для обновления.
 
 Как и ранее, если не используются автоматически созданные ключи, можно выполнить запрос и некоторую обработку:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#InsertOrUpdateGraphWithFind)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertOrUpdateGraphWithFind)]
 
 ## <a name="handling-deletes"></a>Обработка удалений
 
 Выполнение удаления может оказаться сложной задачей, так как очень часто отсутствие сущности означает, что ее необходимо удалить. Для решения этой проблемы можно выполнить обратимые удаления. Например, пометить сущность как удаленную, а не удалять ее. Таким образом удаление идентично обновлению. Обратимые удаления можно реализовать с помощью [фильтров запросов](xref:core/querying/filters).
 
-Для необратимых удалений обычно используется расширение шаблона запроса, чтобы выполнить действия, которые фактически изменяют граф. Пример:
+Для необратимых удалений обычно используется расширение шаблона запроса, чтобы выполнить действия, которые фактически изменяют граф. Например:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#InsertUpdateOrDeleteGraphWithFind)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertUpdateOrDeleteGraphWithFind)]
 
 ## <a name="trackgraph"></a>TrackGraph
 
 В методах Internally, Add, Attach и Update используется обход графа с определением, выполненным для каждой сущности, независимо от того, следует ли ее пометить как Added (для вставки), Modified (для обновления), Unchanged (не выполнять никаких действий) или Deleted (для удаления). Этот механизм предоставляется через API TrackGraph. Например, предположим, что когда клиент отправляет обратно граф сущностей, он устанавливает некоторые флаги на каждой сущности, указывая, как ее следует обрабатывать. TrackGraph затем может использоваться для обработки этого флага:
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Disconnected/Sample.cs#TrackGraph)]
+[!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#TrackGraph)]
 
 Флаги отображаются только в составе сущности для простоты примера. Обычно флаги входят в состав объекта передачи данных или других состояний, включенных в запросе.
