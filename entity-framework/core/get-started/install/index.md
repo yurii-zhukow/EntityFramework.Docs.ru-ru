@@ -4,12 +4,12 @@ author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: eb808dd9d9b1b214947524cd83999f67be9cc0ff
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: 7bdedf563b7d919ba334db79af73c3eed3ba4129
+ms.sourcegitcommit: 2caec1e63f2ce1d9439ef6193df5a77da2fedd0f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149065"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71317583"
 ---
 # <a name="installing-entity-framework-core"></a>Установка Entity Framework Core
 
@@ -17,7 +17,7 @@ ms.locfileid: "71149065"
 
 * EF Core — это библиотека [.NET Standard 2.1](/dotnet/standard/net-standard). Следовательно, для запуска EF Core требуется реализация .NET, которая поддерживает .NET Standard 2.1. На EF Core также могут ссылаться другие библиотеки .NET Standard 2.1. 
 
-* Например, EF Core можно использовать для разработки приложений, предназначенных для .NET Core. Для создания приложений .NET Core требуется [пакет SDK для .NET Core](https://dotnet.microsoft.com/download). При необходимости также можно использовать среду разработки, например Visual Studio, Visual Studio для Mac или Visual Studio Code. Дополнительные сведения см. в разделе [Приступая к работе с .NET Core](/dotnet/core/get-started).
+* Например, EF Core можно использовать для разработки приложений, предназначенных для .NET Core. Для создания приложений .NET Core требуется [пакет SDK для .NET Core](https://dotnet.microsoft.com/download). При необходимости также можно использовать среду разработки, например [Visual Studio](https://visualstudio.microsoft.com/vs), [Visual Studio для Mac](https://visualstudio.microsoft.com/vs/mac) или [Visual Studio Code](https://code.visualstudio.com). Дополнительные сведения см. в разделе [Приступая к работе с .NET Core](/dotnet/core/get-started).
 
 * EF Core можно использовать для разработки приложений в Windows с использованием Visual Studio. Рекомендуется использовать последнюю версию [Visual Studio](https://visualstudio.microsoft.com/vs).
 
