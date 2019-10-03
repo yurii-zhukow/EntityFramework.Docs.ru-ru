@@ -1,23 +1,19 @@
 ---
-title: Microsoft SQL Server базы данных поставщика — оптимизированных для памяти таблицы — EF Core
+title: Поставщик базы данных Microsoft SQL Server — оптимизированные для памяти таблицы — EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 2e007c82-c6e4-45bb-8129-851b79ec1a0a
 uid: core/providers/sql-server/memory-optimized-tables
-ms.openlocfilehash: 63d2cbf8b69e4f1945ad60914e284fb42c48e8db
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 7383e74b3f83172f9b8e0eaf9bd09d4e187e87f8
+ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995806"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71813498"
 ---
-# <a name="memory-optimized-tables-support-in-sql-server-ef-core-database-provider"></a>Оптимизированные для памяти таблицы поддерживают в поставщик базы данных SQL Server EF Core
+# <a name="memory-optimized-tables-support-in-sql-server-ef-core-database-provider"></a>Поддержка таблиц, оптимизированных для памяти, в поставщике базы данных SQL Server EF Core
 
-> [!NOTE]  
->
-> Эта возможность появилась в EF Core 1.1.
-
-[Оптимизированные для памяти таблиц](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/memory-optimized-tables) — это компонент SQL Server, где вся таблица находится в памяти. Второй копии данных таблицы сохраняется на диске, но только с целью увеличения устойчивости. Данные в таблицах, оптимизированных для памяти только считываются с диска во время восстановления базы данных. Например после перезапуска сервера.
+[Оптимизированные для памяти таблицы](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/memory-optimized-tables) — это функция SQL Server, где вся таблица находится в памяти. Вторая копия табличных данных сохраняется на диске, но только в целях устойчивости. Данные в таблицах, оптимизированных для памяти, считываются с диска только во время восстановления базы данных. Например, после перезапуска сервера.
 
 ## <a name="configuring-a-memory-optimized-table"></a>Настройка оптимизированной для памяти таблицы
 

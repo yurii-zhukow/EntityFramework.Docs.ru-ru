@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 uid: core/querying/raw-sql
-ms.openlocfilehash: ebec5775770c0f1e297eaaf35bf644c605a69afc
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: d8f52edfdf4bd7776ab8d81185c867cbfd7bcf44
+ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197769"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71813596"
 ---
 # <a name="raw-sql-queries"></a>Необработанные SQL-запросы
 
@@ -62,7 +62,6 @@ var blogs = context.Blogs
 
 > [!NOTE]
 > До версии 3.0 `FromSqlRaw` и `FromSqlInterpolated` представляли собой две перегрузки `FromSql`. Дополнительные сведения см. в [разделе о предыдущих версиях](#previous-versions).
-
 
 <!-- [!code-csharp[Main](samples/core/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
@@ -172,6 +171,6 @@ var blogs = context.Blogs
 
 * Обратите внимание, что SQL Server не допускает составления вызовов хранимых процедур, поэтому любая попытка применить дополнительные операторы запроса к такому вызову приведет к формированию недопустимого SQL. Операторы запроса могут быть добавлены после `AsEnumerable()` для выполнения в клиенте.
 
-# <a name="previous-versions"></a>Предыдущие версии
+## <a name="previous-versions"></a>Предыдущие версии
 
 В EF Core версии 2.2 и более ранних версиях существовали две перегрузки `FromSql`, действие которых было аналогично поведению новых `FromSqlRaw` и `FromSqlInterpolated`. Это приводило к случайному вызову метода необработанной строки в тех случаях, когда требовалось вызвать метод интерполированной строки, и наоборот. Это может привести к тому, что запросы не параметризуются, хотя они должны параметризоваться.

@@ -4,12 +4,12 @@ author: divega
 ms.date: 08/13/2017
 ms.assetid: 8BD43C8C-63D9-4F3A-B954-7BC518A1B7DB
 uid: core/miscellaneous/1x-2x-upgrade
-ms.openlocfilehash: 1222f10811914f65822a49e18522c287ece12174
-ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
+ms.openlocfilehash: 42e59b47f569ef6fcf72fc5bd5f94d3e9d807a24
+ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68306491"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71813575"
 ---
 # <a name="upgrading-applications-from-previous-versions-to-ef-core-20"></a>Обновление приложений с предыдущих версий до EF Core 2,0
 
@@ -94,19 +94,19 @@ namespace AspNetCoreDotNetCore2._0App
 
 Примечание. Эти изменения не должны влиять на большую часть кода приложения.
 
-Идентификаторы событий для сообщений, отправленных в [ILogger](https://github.com/aspnet/Logging/blob/dev/src/Microsoft.Extensions.Logging.Abstractions/ILogger.cs) , были изменены в 2,0. Теперь эти идентификаторы событий являются уникальными в рамках всего кода EF Core. Эти сообщения теперь соответствуют стандартному шаблону для структурированного ведения журнала, используемому, например, MVC.
+Идентификаторы событий для сообщений, отправленных в [ILogger](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger) , были изменены в 2,0. Теперь эти идентификаторы событий являются уникальными в рамках всего кода EF Core. Эти сообщения теперь соответствуют стандартному шаблону для структурированного ведения журнала, используемому, например, MVC.
 
-Кроме того, были изменены категории средства ведения журнала. Теперь используется известный набор категорий, доступных через [DbLoggerCategory](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/DbLoggerCategory.cs).
+Кроме того, были изменены категории средства ведения журнала. Теперь используется известный набор категорий, доступных через [DbLoggerCategory](https://github.com/aspnet/EntityFrameworkCore/blob/rel/2.0.0/src/EFCore/DbLoggerCategory.cs).
 
-События [DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) теперь используют те же имена идентификаторов событий, что `ILogger` и соответствующие сообщения. Полезные данные события — это все номинальные типы, производные от [EVENTDATA](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Diagnostics/EventData.cs).
+События [DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) теперь используют те же имена идентификаторов событий, что `ILogger` и соответствующие сообщения. Полезные данные события — это все номинальные типы, производные от [EVENTDATA](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.diagnostics.eventdata).
 
-Идентификаторы событий, типы полезных данных и категории описаны в классах [коривентид](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Diagnostics/CoreEventId.cs) и [релатионалевентид](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore.Relational/Diagnostics/RelationalEventId.cs) .
+Идентификаторы событий, типы полезных данных и категории описаны в классах [коривентид](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.diagnostics.coreeventid) и [релатионалевентид](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.diagnostics.relationaleventid) .
 
 Идентификаторы также перемещены из Microsoft. EntityFrameworkCore. Infrastructure в новое пространство имен Microsoft. EntityFrameworkCore. Diagnostics.
 
 ## <a name="ef-core-relational-metadata-api-changes"></a>EF Core изменения API реляционных метаданных
 
-EF Core 2.0 теперь будет создавать отдельный объект [IModel](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IModel.cs) для каждого из используемых поставщиков. Обычно это является прозрачным для приложения. Это позволило упростить работу с API метаданных более низкого уровня, например, добиться того, что любое обращение к _основным концепциям реляционных метаданных_ всегда осуществляется путем вызова `.Relational` вместо `.SqlServer`, `.Sqlite` и т. д. Например, код 1.1. x выглядит следующим образом:
+EF Core 2.0 теперь будет создавать отдельный объект [IModel](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.imodel) для каждого из используемых поставщиков. Обычно это является прозрачным для приложения. Это позволило упростить работу с API метаданных более низкого уровня, например, добиться того, что любое обращение к _основным концепциям реляционных метаданных_ всегда осуществляется путем вызова `.Relational` вместо `.SqlServer`, `.Sqlite` и т. д. Например, код 1.1. x выглядит следующим образом:
 
 ``` csharp
 var tableName = context.Model.FindEntityType(typeof(User)).SqlServer().TableName;
@@ -118,7 +118,7 @@ var tableName = context.Model.FindEntityType(typeof(User)).SqlServer().TableName
 var tableName = context.Model.FindEntityType(typeof(User)).Relational().TableName;
 ```
 
-Вместо использования методов, таких `ForSqlServerToTable`как, методы расширения теперь доступны для написания условного кода на основе текущего используемого поставщика. Например:
+Вместо использования методов, таких `ForSqlServerToTable`как, методы расширения теперь доступны для написания условного кода на основе текущего используемого поставщика. Пример:
 
 ```C#
 modelBuilder.Entity<User>().ToTable(
@@ -135,7 +135,7 @@ EF Core использует внутренний `IServiceProvider` (конте
 
 ## <a name="in-memory-databases-must-be-named"></a>Базы данных в памяти должны иметь имена
 
-Глобальная неименованная база данных в памяти была удалена, а все базы данных в памяти должны иметь имя. Например:
+Глобальная неименованная база данных в памяти была удалена, а все базы данных в памяти должны иметь имя. Пример:
 
 ``` csharp
 optionsBuilder.UseInMemoryDatabase("MyDatabase");
@@ -145,13 +145,13 @@ optionsBuilder.UseInMemoryDatabase("MyDatabase");
 
 ## <a name="read-only-api-changes"></a>Изменения API только для чтения
 
-`IsReadOnlyBeforeSave`, `IsReadOnlyAfterSave`и `IsStoreGeneratedAlways` были устаревшими и заменены на [бефоресавебехавиор](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IProperty.cs#L39) и [афтерсавебехавиор](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IProperty.cs#L55). Эти поведения применяются к любому свойству (не только к созданным хранилищем свойствам) и определяют, как значение свойства должно использоваться при вставке в строку базы`BeforeSaveBehavior`данных () или при обновлении существующей строки базы`AfterSaveBehavior`данных ().
+`IsReadOnlyBeforeSave`, `IsReadOnlyAfterSave`и `IsStoreGeneratedAlways` были устаревшими и заменены на [бефоресавебехавиор](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.iproperty.beforesavebehavior) и [афтерсавебехавиор](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.iproperty.aftersavebehavior). Эти поведения применяются к любому свойству (не только к созданным хранилищем свойствам) и определяют, как значение свойства должно использоваться при вставке в строку базы`BeforeSaveBehavior`данных () или при обновлении существующей строки базы`AfterSaveBehavior`данных ().
 
-Свойства, помеченные как [валуеженератед. онаддорупдате](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/ValueGenerated.cs) (например, для "вычисленных столбцов"), по умолчанию будут игнорировать любые значения, заданные в данный момент в свойстве. Это означает, что созданное хранилищем значение всегда будет получено независимо от того, было ли значение установлено или изменено для объекта Tracked. Это можно изменить, задав другое `Before\AfterSaveBehavior`значение.
+Свойства, помеченные как [валуеженератед. онаддорупдате](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.metadata.valuegenerated) (например, для "вычисленных столбцов"), по умолчанию будут игнорировать любые значения, заданные в данный момент в свойстве. Это означает, что созданное хранилищем значение всегда будет получено независимо от того, было ли значение установлено или изменено для объекта Tracked. Это можно изменить, задав другое `Before\AfterSaveBehavior`значение.
 
 ## <a name="new-clientsetnull-delete-behavior"></a>Новое поведение при удалении Клиентсетнулл
 
-В предыдущих выпусках [делетебехавиор. restrict](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/DeleteBehavior.cs) имел поведение для сущностей, которые были отслеживанием в контексте `SetNull` , более закрытой соответствующей семантикой. В EF Core 2,0 новое `ClientSetNull` поведение было введено по умолчанию для необязательных связей. Это поведение имеет `SetNull` семантику для отслеживания сущностей и поведения для баз данных, `Restrict` созданных с помощью EF Core. В нашем опыте это наиболее ожидаемое и полезное поведение для отслеживания сущностей и базы данных. `DeleteBehavior.Restrict`Теперь учитывается для отслеживания сущностей, если заданы дополнительные связи.
+В предыдущих выпусках [делетебехавиор. restrict](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.deletebehavior) имел поведение для сущностей, которые были отслеживанием в контексте `SetNull` , более закрытой соответствующей семантикой. В EF Core 2,0 новое `ClientSetNull` поведение было введено по умолчанию для необязательных связей. Это поведение имеет `SetNull` семантику для отслеживания сущностей и поведения для баз данных, `Restrict` созданных с помощью EF Core. В нашем опыте это наиболее ожидаемое и полезное поведение для отслеживания сущностей и базы данных. `DeleteBehavior.Restrict`Теперь учитывается для отслеживания сущностей, если заданы дополнительные связи.
 
 ## <a name="provider-design-time-packages-removed"></a>Пакеты времени разработки поставщика удалены
 
