@@ -1,65 +1,65 @@
 ---
-title: EF6 Database First.
+title: Database First EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: cc6ffdb3-388d-4e79-a201-01ec2577c949
-ms.openlocfilehash: c81025fe7c3ad6398f003f7be2a3f9f072eec327
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: d40cff4ddccf43a394ef4f244653372a5a89b05a
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46284087"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72182454"
 ---
-# <a name="database-first"></a><span data-ttu-id="ea0e0-102">База данных как основа</span><span class="sxs-lookup"><span data-stu-id="ea0e0-102">Database First</span></span>
-<span data-ttu-id="ea0e0-103">Следующее видео и пошаговое руководство познакомят вас с разработкой на основе базы данных в Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-103">This video and step-by-step walkthrough provide an introduction to Database First development using Entity Framework.</span></span> <span data-ttu-id="ea0e0-104">Такой подход дает возможность реконструировать модель по существующей базе.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-104">Database First allows you to reverse engineer a model from an existing database.</span></span> <span data-ttu-id="ea0e0-105">Модель хранится в EDMX-файле (расширение .emdx), и её можно просмотреть и изменить в Entity Framework Designer.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-105">The model is stored in an EDMX file (.edmx extension) and can be viewed and edited in the Entity Framework Designer.</span></span> <span data-ttu-id="ea0e0-106">Классы, с которыми вы взаимодействуете в приложении, автоматически создаются из файла EDMX.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-106">The classes that you interact with in your application are automatically generated from the EDMX file.</span></span>
+# <a name="database-first"></a><span data-ttu-id="bd2d4-102">База данных как основа</span><span class="sxs-lookup"><span data-stu-id="bd2d4-102">Database First</span></span>
+<span data-ttu-id="bd2d4-103">Следующее видео и пошаговое руководство познакомят вас с разработкой на основе базы данных в Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-103">This video and step-by-step walkthrough provide an introduction to Database First development using Entity Framework.</span></span> <span data-ttu-id="bd2d4-104">Такой подход дает возможность реконструировать модель по существующей базе.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-104">Database First allows you to reverse engineer a model from an existing database.</span></span> <span data-ttu-id="bd2d4-105">Модель хранится в EDMX-файле (расширение .emdx), и её можно просмотреть и изменить в Entity Framework Designer.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-105">The model is stored in an EDMX file (.edmx extension) and can be viewed and edited in the Entity Framework Designer.</span></span> <span data-ttu-id="bd2d4-106">Классы, с которыми вы взаимодействуете в приложении, автоматически создаются из файла EDMX.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-106">The classes that you interact with in your application are automatically generated from the EDMX file.</span></span>
 
-## <a name="watch-the-video"></a><span data-ttu-id="ea0e0-107">Просмотрите видео</span><span class="sxs-lookup"><span data-stu-id="ea0e0-107">Watch the video</span></span>
-<span data-ttu-id="ea0e0-108">Это видео предоставляет общие сведения о разработке на основе базы данных в Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-108">This video provides an introduction to Database First development using Entity Framework.</span></span> <span data-ttu-id="ea0e0-109">Такой подход дает возможность реконструировать модель по существующей базе.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-109">Database First allows you to reverse engineer a model from an existing database.</span></span> <span data-ttu-id="ea0e0-110">Модель хранится в EDMX-файле (расширение .emdx), и её можно просмотреть и изменить в Entity Framework Designer.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-110">The model is stored in an EDMX file (.edmx extension) and can be viewed and edited in the Entity Framework Designer.</span></span> <span data-ttu-id="ea0e0-111">Классы, с которыми вы взаимодействуете в приложении, автоматически создаются из файла EDMX.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-111">The classes that you interact with in your application are automatically generated from the EDMX file.</span></span>
+## <a name="watch-the-video"></a><span data-ttu-id="bd2d4-107">Просмотрите видео</span><span class="sxs-lookup"><span data-stu-id="bd2d4-107">Watch the video</span></span>
+<span data-ttu-id="bd2d4-108">Это видео предоставляет общие сведения о разработке на основе базы данных в Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-108">This video provides an introduction to Database First development using Entity Framework.</span></span> <span data-ttu-id="bd2d4-109">Такой подход дает возможность реконструировать модель по существующей базе.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-109">Database First allows you to reverse engineer a model from an existing database.</span></span> <span data-ttu-id="bd2d4-110">Модель хранится в EDMX-файле (расширение .emdx), и её можно просмотреть и изменить в Entity Framework Designer.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-110">The model is stored in an EDMX file (.edmx extension) and can be viewed and edited in the Entity Framework Designer.</span></span> <span data-ttu-id="bd2d4-111">Классы, с которыми вы взаимодействуете в приложении, автоматически создаются из файла EDMX.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-111">The classes that you interact with in your application are automatically generated from the EDMX file.</span></span>
 
-<span data-ttu-id="ea0e0-112">**Представляет**: [Роуэн Миллер (Rowan Miller)](http://romiller.com/)</span><span class="sxs-lookup"><span data-stu-id="ea0e0-112">**Presented By**: [Rowan Miller](http://romiller.com/)</span></span>
+<span data-ttu-id="bd2d4-112">**Представлено**: [Роуэн Миллер](https://romiller.com/)</span><span class="sxs-lookup"><span data-stu-id="bd2d4-112">**Presented By**: [Rowan Miller](https://romiller.com/)</span></span>
 
-<span data-ttu-id="ea0e0-113">**Видео**: [WMV](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.wmv) | [MP4](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-mp4video-databasefirst.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.zip)</span><span class="sxs-lookup"><span data-stu-id="ea0e0-113">**Video**: [WMV](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.wmv) | [MP4](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-mp4video-databasefirst.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.zip)</span></span>
+<span data-ttu-id="bd2d4-113">**Видео**: [WMV](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.wmv) | [MP4](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-mp4video-databasefirst.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.zip)</span><span class="sxs-lookup"><span data-stu-id="bd2d4-113">**Video**: [WMV](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.wmv) | [MP4](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-mp4video-databasefirst.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.zip)</span></span>
 
-## <a name="pre-requisites"></a><span data-ttu-id="ea0e0-114">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="ea0e0-114">Pre-Requisites</span></span>
+## <a name="pre-requisites"></a><span data-ttu-id="bd2d4-114">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="bd2d4-114">Pre-Requisites</span></span>
 
-<span data-ttu-id="ea0e0-115">Для выполнения этого пошагового руководства необходимо иметь по крайней мере Visual Studio 2010 или Visual Studio 2012.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-115">You will need to have at least Visual Studio 2010 or Visual Studio 2012 installed to complete this walkthrough.</span></span>
+<span data-ttu-id="bd2d4-115">Для выполнения инструкций этого пошагового руководства необходимо установить Visual Studio 2010 или Visual Studio 2012.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-115">You will need to have at least Visual Studio 2010 or Visual Studio 2012 installed to complete this walkthrough.</span></span>
 
-<span data-ttu-id="ea0e0-116">Если вы используете Visual Studio 2010, также необходимо будет установить [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c).</span><span class="sxs-lookup"><span data-stu-id="ea0e0-116">If you are using Visual Studio 2010, you will also need to have [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) installed.</span></span>
+<span data-ttu-id="bd2d4-116">Если вы используете Visual Studio 2010, также необходимо будет установить [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c).</span><span class="sxs-lookup"><span data-stu-id="bd2d4-116">If you are using Visual Studio 2010, you will also need to have [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) installed.</span></span>
 
- 
+ 
 
-## <a name="1-create-an-existing-database"></a><span data-ttu-id="ea0e0-117">1. Создание базы данных</span><span class="sxs-lookup"><span data-stu-id="ea0e0-117">1. Create an Existing Database</span></span>
+## <a name="1-create-an-existing-database"></a><span data-ttu-id="bd2d4-117">1. Создание существующей базы данных</span><span class="sxs-lookup"><span data-stu-id="bd2d4-117">1. Create an Existing Database</span></span>
 
-<span data-ttu-id="ea0e0-118">Обычно при ориентировании на существующую базу данных она уже будет создана, но в этом пошаговом руководстве нам нужно создать базу данных для доступа.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-118">Typically when you are targeting an existing database it will already be created, but for this walkthrough we need to create a database to access.</span></span>
+<span data-ttu-id="bd2d4-118">Обычно при ориентировании на существующую базу данных она уже будет создана, но в этом пошаговом руководстве нам нужно создать базу данных для доступа.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-118">Typically when you are targeting an existing database it will already be created, but for this walkthrough we need to create a database to access.</span></span>
 
-<span data-ttu-id="ea0e0-119">Сервер базы данных, который устанавливается вместе с Visual Studio, отличается в зависимости от версии Visual Studio, которую вы установили:</span><span class="sxs-lookup"><span data-stu-id="ea0e0-119">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you have installed:</span></span>
+<span data-ttu-id="bd2d4-119">Сервер базы данных, который устанавливается вместе с Visual Studio, отличается в зависимости от версии Visual Studio, которую вы установили:</span><span class="sxs-lookup"><span data-stu-id="bd2d4-119">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you have installed:</span></span>
 
--   <span data-ttu-id="ea0e0-120">Если вы используете Visual Studio 2010, вы создадите базу данных SQL Express.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-120">If you are using Visual Studio 2010 you'll be creating a SQL Express database.</span></span>
--   <span data-ttu-id="ea0e0-121">Если вы используете Visual Studio 2012, вы создадите базу данных [LocalDB](https://msdn.microsoft.com/library/hh510202(v=sql.110).aspx).</span><span class="sxs-lookup"><span data-stu-id="ea0e0-121">If you are using Visual Studio 2012 then you'll be creating a [LocalDB](https://msdn.microsoft.com/library/hh510202(v=sql.110).aspx) database.</span></span>
+-   <span data-ttu-id="bd2d4-120">Если вы используете Visual Studio 2010, вы создадите базу данных SQL Express.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-120">If you are using Visual Studio 2010 you'll be creating a SQL Express database.</span></span>
+-   <span data-ttu-id="bd2d4-121">Если вы используете Visual Studio 2012, вы создадите базу данных [LocalDB](https://msdn.microsoft.com/library/hh510202(v=sql.110).aspx).</span><span class="sxs-lookup"><span data-stu-id="bd2d4-121">If you are using Visual Studio 2012 then you'll be creating a [LocalDB](https://msdn.microsoft.com/library/hh510202(v=sql.110).aspx) database.</span></span>
 
- 
+ 
 
-<span data-ttu-id="ea0e0-122">Перейдем дальше и создадим базу данных.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-122">Let's go ahead and generate the database.</span></span>
+<span data-ttu-id="bd2d4-122">Перейдем дальше и создадим базу данных.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-122">Let's go ahead and generate the database.</span></span>
 
--   <span data-ttu-id="ea0e0-123">Откройте Visual Studio</span><span class="sxs-lookup"><span data-stu-id="ea0e0-123">Open Visual Studio</span></span>
--   <span data-ttu-id="ea0e0-124">**Вид" —&gt; "Обозреватель сервера**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-124">**View -&gt; Server Explorer**</span></span>
--   <span data-ttu-id="ea0e0-125">Щелкните правой кнопкой мыши на **Подключения к данным -&gt; Добавить подключение…**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-125">Right click on **Data Connections -&gt; Add Connection…**</span></span>
--   <span data-ttu-id="ea0e0-126">Если вы не подключались к базе данных с помощью "Обозревателя сервера" ранее, потребуется выбрать Microsoft SQL Server в качестве источника данных</span><span class="sxs-lookup"><span data-stu-id="ea0e0-126">If you haven’t connected to a database from Server Explorer before you’ll need to select Microsoft SQL Server as the data source</span></span>
+-   <span data-ttu-id="bd2d4-123">Откройте Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bd2d4-123">Open Visual Studio</span></span>
+-   <span data-ttu-id="bd2d4-124">**Вид" —&gt; "Обозреватель сервера**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-124">**View -&gt; Server Explorer**</span></span>
+-   <span data-ttu-id="bd2d4-125">Щелкните правой кнопкой мыши на **Подключения к данным -&gt; Добавить подключение…**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-125">Right click on **Data Connections -&gt; Add Connection…**</span></span>
+-   <span data-ttu-id="bd2d4-126">Если вы не подключались к базе данных с помощью "Обозревателя сервера" ранее, потребуется выбрать Microsoft SQL Server в качестве источника данных</span><span class="sxs-lookup"><span data-stu-id="bd2d4-126">If you haven’t connected to a database from Server Explorer before you’ll need to select Microsoft SQL Server as the data source</span></span>
 
-    ![Выберите источник данных](~/ef6/media/selectdatasource.png)
+    ![Выбор источника данных](~/ef6/media/selectdatasource.png)
 
--   <span data-ttu-id="ea0e0-128">Подключитесь к LocalDB или SQL Express, в зависимости от того, какую из них вы установили, и введите имя базы данных **DatabaseFirst.Blogging**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-128">Connect to either LocalDB or SQL Express, depending on which one you have installed, and enter **DatabaseFirst.Blogging** as the database name</span></span>
+-   <span data-ttu-id="bd2d4-128">Подключитесь к LocalDB или SQL Express, в зависимости от того, какую из них вы установили, и введите имя базы данных **DatabaseFirst.Blogging**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-128">Connect to either LocalDB or SQL Express, depending on which one you have installed, and enter **DatabaseFirst.Blogging** as the database name</span></span>
 
-    ![Подключение SQL Express DF](~/ef6/media/sqlexpressconnectiondf.png)
+    ![DF подключения к SQL Express](~/ef6/media/sqlexpressconnectiondf.png)
 
-    ![Подключение LocalDB DF](~/ef6/media/localdbconnectiondf.png)
+    ![DF подключения LocalDB](~/ef6/media/localdbconnectiondf.png)
 
--   <span data-ttu-id="ea0e0-131">Выберите **ОК**, и вам будет задан вопрос, хотите ли вы создать новую базу данных. Выберите **Да**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-131">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>
+-   <span data-ttu-id="bd2d4-131">Выберите **ОК**, и вам будет задан вопрос, хотите ли вы создать новую базу данных. Выберите **Да**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-131">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>
 
-    ![Создание диалогового окна базы данных](~/ef6/media/createdatabasedialog.png)
+    ![Диалоговое окно создания базы данных](~/ef6/media/createdatabasedialog.png)
 
--   <span data-ttu-id="ea0e0-133">Новая база данных появится в Обозревателе сервера. Щелкните ее правой кнопкой мыши и выберите **Новый запрос**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-133">The new database will now appear in Server Explorer, right-click on it and select **New Query**</span></span>
--   <span data-ttu-id="ea0e0-134">Скопируйте следующий код SQL в новый запрос, а затем щелкните запрос правой кнопкой мыши и выберите **Выполнить**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-134">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>
+-   <span data-ttu-id="bd2d4-133">Новая база данных появится в Обозревателе сервера. Щелкните ее правой кнопкой мыши и выберите **Новый запрос**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-133">The new database will now appear in Server Explorer, right-click on it and select **New Query**</span></span>
+-   <span data-ttu-id="bd2d4-134">Скопируйте следующий код SQL в новый запрос, а затем щелкните запрос правой кнопкой мыши и выберите **Выполнить**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-134">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>
 
 ``` SQL
 CREATE TABLE [dbo].[Blogs] (
@@ -79,78 +79,78 @@ CREATE TABLE [dbo].[Posts] (
 );
 ```
 
-## <a name="2-create-the-application"></a><span data-ttu-id="ea0e0-135">2. Создайте приложение</span><span class="sxs-lookup"><span data-stu-id="ea0e0-135">2. Create the Application</span></span>
+## <a name="2-create-the-application"></a><span data-ttu-id="bd2d4-135">2. Создайте приложение</span><span class="sxs-lookup"><span data-stu-id="bd2d4-135">2. Create the Application</span></span>
 
-<span data-ttu-id="ea0e0-136">Для простоты мы создадим простое консольное приложение, использующее подход, основывающийся на базе данных, для выполнения доступа к данным:</span><span class="sxs-lookup"><span data-stu-id="ea0e0-136">To keep things simple we’re going to build a basic console application that uses the Database First to perform data access:</span></span>
+<span data-ttu-id="bd2d4-136">Для простоты мы создадим простое консольное приложение, использующее подход, основывающийся на базе данных, для выполнения доступа к данным:</span><span class="sxs-lookup"><span data-stu-id="bd2d4-136">To keep things simple we’re going to build a basic console application that uses the Database First to perform data access:</span></span>
 
--   <span data-ttu-id="ea0e0-137">Откройте Visual Studio</span><span class="sxs-lookup"><span data-stu-id="ea0e0-137">Open Visual Studio</span></span>
--   <span data-ttu-id="ea0e0-138">**Файл —&gt; Создать —&gt; Проект…**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-138">**File -&gt; New -&gt; Project…**</span></span>
--   <span data-ttu-id="ea0e0-139">В меню слева выберите **Windows** и **Консольное приложение**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-139">Select **Windows** from the left menu and **Console Application**</span></span>
--   <span data-ttu-id="ea0e0-140">Введите **DatabaseFirstSample** в поле "Имя"</span><span class="sxs-lookup"><span data-stu-id="ea0e0-140">Enter **DatabaseFirstSample** as the name</span></span>
--   <span data-ttu-id="ea0e0-141">Нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-141">Select **OK**</span></span>
+-   <span data-ttu-id="bd2d4-137">Откройте Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bd2d4-137">Open Visual Studio</span></span>
+-   <span data-ttu-id="bd2d4-138">**Файл —&gt; Создать —&gt; Проект…**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-138">**File -&gt; New -&gt; Project…**</span></span>
+-   <span data-ttu-id="bd2d4-139">В меню слева выберите **Windows** и **Консольное приложение**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-139">Select **Windows** from the left menu and **Console Application**</span></span>
+-   <span data-ttu-id="bd2d4-140">Введите **DatabaseFirstSample** в поле "Имя"</span><span class="sxs-lookup"><span data-stu-id="bd2d4-140">Enter **DatabaseFirstSample** as the name</span></span>
+-   <span data-ttu-id="bd2d4-141">Нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-141">Select **OK**</span></span>
 
- 
+ 
 
-## <a name="3-reverse-engineer-model"></a><span data-ttu-id="ea0e0-142">3. Реконструируйте модель</span><span class="sxs-lookup"><span data-stu-id="ea0e0-142">3. Reverse Engineer Model</span></span>
+## <a name="3-reverse-engineer-model"></a><span data-ttu-id="bd2d4-142">3. Реконструируйте модель</span><span class="sxs-lookup"><span data-stu-id="bd2d4-142">3. Reverse Engineer Model</span></span>
 
-<span data-ttu-id="ea0e0-143">Для создания нашей модели мы собираемся использовать конструктор Entity Framework Designer, который входит в состав Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-143">We’re going to make use of Entity Framework Designer, which is included as part of Visual Studio, to create our model.</span></span>
+<span data-ttu-id="bd2d4-143">Для создания нашей модели мы собираемся использовать конструктор Entity Framework Designer, который входит в состав Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-143">We’re going to make use of Entity Framework Designer, which is included as part of Visual Studio, to create our model.</span></span>
 
--   <span data-ttu-id="ea0e0-144">**Проект -&gt; Добавить новый элемент…**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-144">**Project -&gt; Add New Item…**</span></span>
--   <span data-ttu-id="ea0e0-145">Выберите **Данные** в меню слева и затем **Модель ADO.NET EDM**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-145">Select **Data** from the left menu and then **ADO.NET Entity Data Model**</span></span>
--   <span data-ttu-id="ea0e0-146">Введите имя **BloggingModel** и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-146">Enter **BloggingModel** as the name and click **OK**</span></span>
--   <span data-ttu-id="ea0e0-147">Это откроет **Мастер моделей EDM**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-147">This launches the **Entity Data Model Wizard**</span></span>
--   <span data-ttu-id="ea0e0-148">Выберите **Создать из базы данных** и нажмите кнопку **Далее**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-148">Select **Generate from Database** and click **Next**</span></span>
+-   <span data-ttu-id="bd2d4-144">**Проект -&gt; Добавить новый элемент…**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-144">**Project -&gt; Add New Item…**</span></span>
+-   <span data-ttu-id="bd2d4-145">Выберите **Данные** в меню слева и затем **Модель ADO.NET EDM**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-145">Select **Data** from the left menu and then **ADO.NET Entity Data Model**</span></span>
+-   <span data-ttu-id="bd2d4-146">Введите имя **BloggingModel** и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-146">Enter **BloggingModel** as the name and click **OK**</span></span>
+-   <span data-ttu-id="bd2d4-147">Это откроет **Мастер моделей EDM**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-147">This launches the **Entity Data Model Wizard**</span></span>
+-   <span data-ttu-id="bd2d4-148">Выберите **Создать из базы данных** и нажмите кнопку **Далее**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-148">Select **Generate from Database** and click **Next**</span></span>
 
-    ![Мастер, шаг 1](~/ef6/media/wizardstep1.png)
+    ![Шаг 1 мастера](~/ef6/media/wizardstep1.png)
 
--   <span data-ttu-id="ea0e0-150">Выберите соединение с базой данных, созданной в первом разделе, введите **BloggingContext** как имя строки подключения и нажмите кнопку **Далее**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-150">Select the connection to the database you created in the first section, enter **BloggingContext** as the name of the connection string and click **Next**</span></span>
+-   <span data-ttu-id="bd2d4-150">Выберите подключение к базе данных, созданной в первом разделе, введите **BloggingContext** в качестве имени строки подключения и нажмите кнопку **Далее** .</span><span class="sxs-lookup"><span data-stu-id="bd2d4-150">Select the connection to the database you created in the first section, enter **BloggingContext** as the name of the connection string and click **Next**</span></span>
 
-    ![Шаг мастера 2](~/ef6/media/wizardstep2.png)
+    ![Шаг 2 мастера](~/ef6/media/wizardstep2.png)
 
--   <span data-ttu-id="ea0e0-152">Установите флажок рядом с «Таблицы», чтобы импортировать все таблицы и нажмите кнопку «Готово»</span><span class="sxs-lookup"><span data-stu-id="ea0e0-152">Click the checkbox next to ‘Tables’ to import all tables and click ‘Finish’</span></span>
+-   <span data-ttu-id="bd2d4-152">Установите флажок рядом с пунктом "таблицы", чтобы импортировать все таблицы, и нажмите кнопку "Готово".</span><span class="sxs-lookup"><span data-stu-id="bd2d4-152">Click the checkbox next to ‘Tables’ to import all tables and click ‘Finish’</span></span>
 
-    ![Мастер шаг 3](~/ef6/media/wizardstep3.png)
+    ![Шаг 3 мастера](~/ef6/media/wizardstep3.png)
 
- 
+ 
 
-<span data-ttu-id="ea0e0-154">После завершения процесса реконструирования новая модель будет добавлена в проект и откроется для просмотра в Entity Framework Designer.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-154">Once the reverse engineer process completes the new model is added to your project and opened up for you to view in the Entity Framework Designer.</span></span> <span data-ttu-id="ea0e0-155">В проект также будет добавлен файл App.config со сведениями о подключении к базе данных.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-155">An App.config file has also been added to your project with the connection details for the database.</span></span>
+<span data-ttu-id="bd2d4-154">После завершения процесса реконструирования новая модель будет добавлена в проект и откроется для просмотра в Entity Framework Designer.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-154">Once the reverse engineer process completes the new model is added to your project and opened up for you to view in the Entity Framework Designer.</span></span> <span data-ttu-id="bd2d4-155">В проект также будет добавлен файл App.config со сведениями о подключении к базе данных.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-155">An App.config file has also been added to your project with the connection details for the database.</span></span>
 
 ![Начальная модель](~/ef6/media/modelinitial.png)
 
-### <a name="additional-steps-in-visual-studio-2010"></a><span data-ttu-id="ea0e0-157">Дополнительные действия в Visual Studio 2010</span><span class="sxs-lookup"><span data-stu-id="ea0e0-157">Additional Steps in Visual Studio 2010</span></span>
+### <a name="additional-steps-in-visual-studio-2010"></a><span data-ttu-id="bd2d4-157">Дополнительные действия в Visual Studio 2010</span><span class="sxs-lookup"><span data-stu-id="bd2d4-157">Additional Steps in Visual Studio 2010</span></span>
 
-<span data-ttu-id="ea0e0-158">Если вы работаете в Visual Studio 2010, существуют некоторые дополнительные действия, которые необходимо выполнить для обновления до последней версии платформы Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-158">If you are working in Visual Studio 2010 there are some additional steps you need to follow to upgrade to the latest version of Entity Framework.</span></span> <span data-ttu-id="ea0e0-159">Обновление важно, так как оно предоставляет вам доступ к улучшенным API, которые гораздо проще в использовании, а также последние исправления ошибок.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-159">Upgrading is important because it gives you access to an improved API surface, that is much easier to use, as well as the latest bug fixes.</span></span>
+<span data-ttu-id="bd2d4-158">При работе в Visual Studio 2010 необходимо выполнить некоторые дополнительные действия по обновлению до последней версии Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-158">If you are working in Visual Studio 2010 there are some additional steps you need to follow to upgrade to the latest version of Entity Framework.</span></span> <span data-ttu-id="bd2d4-159">Обновление важно, так как оно предоставляет вам доступ к улучшенным API, которые гораздо проще в использовании, а также последние исправления ошибок.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-159">Upgrading is important because it gives you access to an improved API surface, that is much easier to use, as well as the latest bug fixes.</span></span>
 
-<span data-ttu-id="ea0e0-160">Во-первых, нам нужно получить последнюю версию Entity Framework из NuGet.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-160">First up, we need to get the latest version of Entity Framework from NuGet.</span></span>
+<span data-ttu-id="bd2d4-160">Сначала необходимо получить последнюю версию Entity Framework из NuGet.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-160">First up, we need to get the latest version of Entity Framework from NuGet.</span></span>
 
--   <span data-ttu-id="ea0e0-161">\*\*Проект —&gt; Управление пакетами NuGet... \*\* 
-     \*При отсутствии пункта \**Управление пакетами NuGet… \*\* следует установить [последнюю версию NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*</span><span class="sxs-lookup"><span data-stu-id="ea0e0-161">**Project –&gt; Manage NuGet Packages…**
+-   <span data-ttu-id="bd2d4-161">\*\*Проект —&gt; Управление пакетами NuGet... \*\* 
+     \*При отсутствии пункта \**Управление пакетами NuGet… \*\* следует установить [последнюю версию NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*</span><span class="sxs-lookup"><span data-stu-id="bd2d4-161">**Project –&gt; Manage NuGet Packages…**
 *If you don’t have the **Manage NuGet Packages…** option you should install the [latest version of NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*</span></span>
--   <span data-ttu-id="ea0e0-162">Выберите вкладку **В сети**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-162">Select the **Online** tab</span></span>
--   <span data-ttu-id="ea0e0-163">Выберите пакет **EntityFramework**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-163">Select the **EntityFramework** package</span></span>
--   <span data-ttu-id="ea0e0-164">Нажмите кнопку **Установить**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-164">Click **Install**</span></span>
+-   <span data-ttu-id="bd2d4-162">Выберите вкладку **В сети**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-162">Select the **Online** tab</span></span>
+-   <span data-ttu-id="bd2d4-163">Выберите пакет **EntityFramework**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-163">Select the **EntityFramework** package</span></span>
+-   <span data-ttu-id="bd2d4-164">Нажмите кнопку **Установить**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-164">Click **Install**</span></span>
 
-<span data-ttu-id="ea0e0-165">Далее нам нужно переключить нашу модель, чтобы сгенерировать код, который использует API DbContext, появившийся в более поздних версиях Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-165">Next, we need to swap our model to generate code that makes use of the DbContext API, which was introduced in later versions of Entity Framework.</span></span>
+<span data-ttu-id="bd2d4-165">Далее нам нужно переключить нашу модель, чтобы сгенерировать код, который использует API DbContext, появившийся в более поздних версиях Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-165">Next, we need to swap our model to generate code that makes use of the DbContext API, which was introduced in later versions of Entity Framework.</span></span>
 
--   <span data-ttu-id="ea0e0-166">Щелкните правой кнопкой мыши на пустом месте модели в EF Designer и выберите **Добавить элемент создания кода…**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-166">Right-click on an empty spot of your model in the EF Designer and select **Add Code Generation Item…**</span></span>
--   <span data-ttu-id="ea0e0-167">Выберите **Шаблоны в Интернете** из меню слева и выполните поиск **DbContext**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-167">Select **Online Templates** from the left menu and search for **DbContext**</span></span>
--   <span data-ttu-id="ea0e0-168">Выберите **Генератор EF 5.x DbContext для C\#**, введите имя **BloggingModel** и нажмите кнопку **Добавить**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-168">Select the EF **5.x DbContext Generator for C\#**, enter **BloggingModel** as the name and click **Add**</span></span>
+-   <span data-ttu-id="bd2d4-166">Щелкните правой кнопкой мыши на пустом месте модели в EF Designer и выберите **Добавить элемент создания кода…**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-166">Right-click on an empty spot of your model in the EF Designer and select **Add Code Generation Item…**</span></span>
+-   <span data-ttu-id="bd2d4-167">Выберите **Шаблоны в Интернете** из меню слева и выполните поиск **DbContext**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-167">Select **Online Templates** from the left menu and search for **DbContext**</span></span>
+-   <span data-ttu-id="bd2d4-168">Выберите генератор EF **5. x DbContext для C @ no__t-1**, введите **блоггингмодел** в качестве имени и нажмите кнопку **добавить** .</span><span class="sxs-lookup"><span data-stu-id="bd2d4-168">Select the EF **5.x DbContext Generator for C\#**, enter **BloggingModel** as the name and click **Add**</span></span>
 
     ![Шаблон DbContext](~/ef6/media/dbcontexttemplate.png)
 
- 
+ 
 
-## <a name="4-reading--writing-data"></a><span data-ttu-id="ea0e0-170">4. Чтение и запись данных</span><span class="sxs-lookup"><span data-stu-id="ea0e0-170">4. Reading & Writing Data</span></span>
+## <a name="4-reading--writing-data"></a><span data-ttu-id="bd2d4-170">4. Чтение & запись данных</span><span class="sxs-lookup"><span data-stu-id="bd2d4-170">4. Reading & Writing Data</span></span>
 
-<span data-ttu-id="ea0e0-171">Теперь, когда у нас есть модель, настала пора использовать ее для доступа к каким-нибудь данным.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-171">Now that we have a model it’s time to use it to access some data.</span></span> <span data-ttu-id="ea0e0-172">Классы, которые мы будем использовать для доступа к данным, автоматически создаются в зависимости от EDMX-файла.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-172">The classes we are going to use to access data are being automatically generated for you based on the EDMX file.</span></span>
+<span data-ttu-id="bd2d4-171">Теперь, когда у нас есть модель, настала пора использовать ее для доступа к каким-нибудь данным.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-171">Now that we have a model it’s time to use it to access some data.</span></span> <span data-ttu-id="bd2d4-172">Классы, которые мы будем использовать для доступа к данным, автоматически создаются в зависимости от EDMX-файла.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-172">The classes we are going to use to access data are being automatically generated for you based on the EDMX file.</span></span>
 
-<span data-ttu-id="ea0e0-173">*Этот снимок экрана из Visual Studio 2012. Если вы используете Visual Studio 2010, файлы BloggingModel.tt и BloggingModel.Context.tt будут лежать непосредственно в проекте, а не вложены в узел EDMX-файла.*</span><span class="sxs-lookup"><span data-stu-id="ea0e0-173">*This screen shot is from Visual Studio 2012, if you are using Visual Studio 2010 the BloggingModel.tt and BloggingModel.Context.tt files will be directly under your project rather than nested under the EDMX file.*</span></span>
+<span data-ttu-id="bd2d4-173">*Этот снимок экрана из Visual Studio 2012. Если вы используете Visual Studio 2010, файлы BloggingModel.tt и BloggingModel.Context.tt будут лежать непосредственно в проекте, а не вложены в узел EDMX-файла.*</span><span class="sxs-lookup"><span data-stu-id="bd2d4-173">*This screen shot is from Visual Studio 2012, if you are using Visual Studio 2010 the BloggingModel.tt and BloggingModel.Context.tt files will be directly under your project rather than nested under the EDMX file.*</span></span>
 
-![Созданные классы DF](~/ef6/media/generatedclassesdf.png)
+![Создаваемые классы DF](~/ef6/media/generatedclassesdf.png)
 
- 
+ 
 
-<span data-ttu-id="ea0e0-175">Реализуйте метод Main в файле Program.cs так, как показано ниже.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-175">Implement the Main method in Program.cs as shown below.</span></span> <span data-ttu-id="ea0e0-176">Этот код создает новый экземпляр нашего контекста, а затем использует его для вставки новой записи блога.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-176">This code creates a new instance of our context and then uses it to insert a new Blog.</span></span> <span data-ttu-id="ea0e0-177">Затем он использует запрос LINQ для извлечения из базы данных всех записей блога, упорядоченных в алфавитном порядке по названию.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-177">Then it uses a LINQ query to retrieve all Blogs from the database ordered alphabetically by Title.</span></span>
+<span data-ttu-id="bd2d4-175">Реализуйте метод Main в файле Program.cs так, как показано ниже.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-175">Implement the Main method in Program.cs as shown below.</span></span> <span data-ttu-id="bd2d4-176">Этот код создает новый экземпляр нашего контекста, а затем использует его для вставки новой записи блога.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-176">This code creates a new instance of our context and then uses it to insert a new Blog.</span></span> <span data-ttu-id="bd2d4-177">Затем он использует запрос LINQ для извлечения из базы данных всех записей блога, упорядоченных в алфавитном порядке по названию.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-177">Then it uses a LINQ query to retrieve all Blogs from the database ordered alphabetically by Title.</span></span>
 
 ``` csharp
 class Program
@@ -185,24 +185,24 @@ class Program
 }
 ```
 
-<span data-ttu-id="ea0e0-178">Теперь можно запустить приложение и протестировать его.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-178">You can now run the application and test it out.</span></span>
+<span data-ttu-id="bd2d4-178">Теперь можно запустить приложение и протестировать его.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-178">You can now run the application and test it out.</span></span>
 
-```
+```console
 Enter a name for a new Blog: ADO.NET Blog
 All blogs in the database:
 ADO.NET Blog
 Press any key to exit...
 ```
- 
+ 
 
-## <a name="5-dealing-with-database-changes"></a><span data-ttu-id="ea0e0-179">5. Изменения базы данных</span><span class="sxs-lookup"><span data-stu-id="ea0e0-179">5. Dealing with Database Changes</span></span>
+## <a name="5-dealing-with-database-changes"></a><span data-ttu-id="bd2d4-179">5. Работа с изменениями базы данных</span><span class="sxs-lookup"><span data-stu-id="bd2d4-179">5. Dealing with Database Changes</span></span>
 
-<span data-ttu-id="ea0e0-180">Теперь пора внести некоторые изменения в схему нашей базы данных. Когда мы внесём эти изменения, необходимо также обновить нашу модель, чтобы отразить эти изменения.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-180">Now it’s time to make some changes to our database schema, when we make these changes we also need to update our model to reflect those changes.</span></span>
+<span data-ttu-id="bd2d4-180">Теперь пора внести некоторые изменения в схему нашей базы данных. Когда мы внесём эти изменения, необходимо также обновить нашу модель, чтобы отразить эти изменения.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-180">Now it’s time to make some changes to our database schema, when we make these changes we also need to update our model to reflect those changes.</span></span>
 
-<span data-ttu-id="ea0e0-181">Первый шаг — это внесение некоторых изменений в схему базы данных.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-181">The first step is to make some changes to the database schema.</span></span> <span data-ttu-id="ea0e0-182">Мы собираемся добавить таблицу пользователей в схему.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-182">We’re going to add a Users table to the schema.</span></span>
+<span data-ttu-id="bd2d4-181">Первый шаг — это внесение некоторых изменений в схему базы данных.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-181">The first step is to make some changes to the database schema.</span></span> <span data-ttu-id="bd2d4-182">В схему будет добавлена таблица пользователей.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-182">We’re going to add a Users table to the schema.</span></span>
 
--   <span data-ttu-id="ea0e0-183">Щелкните правой кнопкой мыши базу данных **DatabaseFirst.Blogging** в Обозревателе сервера и выберите **Создать запрос**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-183">Right-click on the **DatabaseFirst.Blogging** database in Server Explorer and select **New Query**</span></span>
--   <span data-ttu-id="ea0e0-184">Скопируйте следующий код SQL в новый запрос, а затем щелкните запрос правой кнопкой мыши и выберите **Выполнить**</span><span class="sxs-lookup"><span data-stu-id="ea0e0-184">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>
+-   <span data-ttu-id="bd2d4-183">Щелкните правой кнопкой мыши базу данных **DatabaseFirst.Blogging** в Обозревателе сервера и выберите **Создать запрос**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-183">Right-click on the **DatabaseFirst.Blogging** database in Server Explorer and select **New Query**</span></span>
+-   <span data-ttu-id="bd2d4-184">Скопируйте следующий код SQL в новый запрос, а затем щелкните запрос правой кнопкой мыши и выберите **Выполнить**</span><span class="sxs-lookup"><span data-stu-id="bd2d4-184">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>
 
 ``` SQL
 CREATE TABLE [dbo].[Users]
@@ -212,22 +212,22 @@ CREATE TABLE [dbo].[Users]
 )
 ```
 
-<span data-ttu-id="ea0e0-185">Теперь, когда схема обновлена, пришло время внести изменения в модель.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-185">Now that the schema is updated, it’s time to update the model with those changes.</span></span>
+<span data-ttu-id="bd2d4-185">Теперь, когда схема обновлена, пришло время внести изменения в модель.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-185">Now that the schema is updated, it’s time to update the model with those changes.</span></span>
 
--   <span data-ttu-id="ea0e0-186">Щелкните правой кнопкой мыши пустое место модели в конструкторе EF и выберите «Обновить модель из базы данных...», это приведет к запуску мастера обновления</span><span class="sxs-lookup"><span data-stu-id="ea0e0-186">Right-click on an empty spot of your model in the EF Designer and select ‘Update Model from Database…’, this will launch the Update Wizard</span></span>
--   <span data-ttu-id="ea0e0-187">На вкладке "Добавление" мастера обновления установите флажок рядом с таблицами. Это означает, что мы хотим добавить новые таблицы из схемы.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-187">On the Add tab of the Update Wizard check the box next to Tables, this indicates that we want to add any new tables from the schema.</span></span>
-    <span data-ttu-id="ea0e0-188">*На вкладке "Обновление" отображаются все имеющиеся таблицы в модели, которые будут проверены на изменения во время обновления. На вкладке "Удаление" отображаются все таблицы, которые были удалены из схемы и которые будут удалены из модели как часть обновления. Сведения на этих двух вкладках формируются автоматически и предоставляются только в ознакомительных целях. Изменить какие-либо параметры невозможно.*</span><span class="sxs-lookup"><span data-stu-id="ea0e0-188">*The Refresh tab shows any existing tables in the model that will be checked for changes during the update. The Delete tabs show any tables that have been removed from the schema and will also be removed from the model as part of the update. The information on these two tabs is automatically detected and is provided for informational purposes only, you cannot change any settings.*</span></span>
+-   <span data-ttu-id="bd2d4-186">Щелкните правой кнопкой мыши пустое место в модели в конструкторе EF и выберите "обновить модель из базы данных...", после чего запустится мастер обновления.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-186">Right-click on an empty spot of your model in the EF Designer and select ‘Update Model from Database…’, this will launch the Update Wizard</span></span>
+-   <span data-ttu-id="bd2d4-187">На вкладке "Добавление" мастера обновления установите флажок рядом с таблицами. Это означает, что мы хотим добавить новые таблицы из схемы.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-187">On the Add tab of the Update Wizard check the box next to Tables, this indicates that we want to add any new tables from the schema.</span></span>
+    <span data-ttu-id="bd2d4-188">*На вкладке "Обновление" отображаются все имеющиеся таблицы в модели, которые будут проверены на изменения во время обновления. На вкладке "Удаление" отображаются все таблицы, которые были удалены из схемы и которые будут удалены из модели как часть обновления. Сведения на этих двух вкладках формируются автоматически и предоставляются только в ознакомительных целях. Изменить какие-либо параметры невозможно.*</span><span class="sxs-lookup"><span data-stu-id="bd2d4-188">*The Refresh tab shows any existing tables in the model that will be checked for changes during the update. The Delete tabs show any tables that have been removed from the schema and will also be removed from the model as part of the update. The information on these two tabs is automatically detected and is provided for informational purposes only, you cannot change any settings.*</span></span>
 
-    ![Обновление мастера](~/ef6/media/refreshwizard.png)
+    ![Мастер обновления](~/ef6/media/refreshwizard.png)
 
--   <span data-ttu-id="ea0e0-190">Щелкните "Готово" в мастере обновления</span><span class="sxs-lookup"><span data-stu-id="ea0e0-190">Click Finish on the Update Wizard</span></span>
+-   <span data-ttu-id="bd2d4-190">Нажмите кнопку "Готово" в мастере обновления.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-190">Click Finish on the Update Wizard</span></span>
 
- 
+ 
 
-<span data-ttu-id="ea0e0-191">Теперь модель обновлена. Добавлена новая сущность "Пользователь", которая сопоставляется с таблицей пользователей, которую мы добавили в базу данных.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-191">The model is now updated to include a new User entity that maps to the Users table we added to the database.</span></span>
+<span data-ttu-id="bd2d4-191">Теперь модель обновлена. Добавлена новая сущность "Пользователь", которая сопоставляется с таблицей пользователей, которую мы добавили в базу данных.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-191">The model is now updated to include a new User entity that maps to the Users table we added to the database.</span></span>
 
 ![Модель обновлена](~/ef6/media/modelupdated.png)
 
-## <a name="summary"></a><span data-ttu-id="ea0e0-193">Сводка</span><span class="sxs-lookup"><span data-stu-id="ea0e0-193">Summary</span></span>
+## <a name="summary"></a><span data-ttu-id="bd2d4-193">Сводка</span><span class="sxs-lookup"><span data-stu-id="bd2d4-193">Summary</span></span>
 
-<span data-ttu-id="ea0e0-194">В этом пошаговом руководстве мы рассмотрели разработку на основе базы данных, которая позволяет создать в EF Designer модель, основываясь на существующей базе.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-194">In this walkthrough we looked at Database First development, which allowed us to create a model in the EF Designer based on an existing database.</span></span> <span data-ttu-id="ea0e0-195">Мы использовали эту модель для чтения и записи некоторых данных в базе.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-195">We then used that model to read and write some data from the database.</span></span> <span data-ttu-id="ea0e0-196">Наконец, мы обновили модель для отражения изменений, внесенных в схему базы данных.</span><span class="sxs-lookup"><span data-stu-id="ea0e0-196">Finally, we updated the model to reflect changes we made to the database schema.</span></span>
+<span data-ttu-id="bd2d4-194">В этом пошаговом руководстве мы рассмотрели разработку на основе базы данных, которая позволяет создать в EF Designer модель, основываясь на существующей базе.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-194">In this walkthrough we looked at Database First development, which allowed us to create a model in the EF Designer based on an existing database.</span></span> <span data-ttu-id="bd2d4-195">Мы использовали эту модель для чтения и записи некоторых данных в базе.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-195">We then used that model to read and write some data from the database.</span></span> <span data-ttu-id="bd2d4-196">Наконец, мы обновили модель для отражения изменений, внесенных в схему базы данных.</span><span class="sxs-lookup"><span data-stu-id="bd2d4-196">Finally, we updated the model to reflect changes we made to the database schema.</span></span>

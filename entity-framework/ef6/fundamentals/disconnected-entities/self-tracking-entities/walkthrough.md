@@ -1,63 +1,63 @@
 ---
-title: Самоотслеживающиеся сущности Пошаговое руководство. EF6
+title: Пошаговое руководство для самостоятельного отслеживания сущностей — EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: b21207c9-1d95-4aa3-ae05-bc5fe300dab0
-ms.openlocfilehash: d89c452410d34bea71e8220aae141c3bfca3e1ce
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 9bd644461f50a7eff1006cb8866ca9a3b08b6b8d
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490278"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181718"
 ---
-# <a name="self-tracking-entities-walkthrough"></a><span data-ttu-id="42ca3-102">Самоотслеживающиеся сущности Пошаговое руководство</span><span class="sxs-lookup"><span data-stu-id="42ca3-102">Self-Tracking Entities Walkthrough</span></span>
+# <a name="self-tracking-entities-walkthrough"></a><span data-ttu-id="a3f5a-102">Пошаговое руководство по самостоятельному отслеживанию сущностей</span><span class="sxs-lookup"><span data-stu-id="a3f5a-102">Self-Tracking Entities Walkthrough</span></span>
 > [!IMPORTANT]
-> <span data-ttu-id="42ca3-103">Больше не рекомендуется использовать шаблон сущностей с самостоятельным отслеживанием.</span><span class="sxs-lookup"><span data-stu-id="42ca3-103">We no longer recommend using the self-tracking-entities template.</span></span> <span data-ttu-id="42ca3-104">Он по-прежнему будет доступен только для поддержки существующих приложений.</span><span class="sxs-lookup"><span data-stu-id="42ca3-104">It will only continue to be available to support existing applications.</span></span> <span data-ttu-id="42ca3-105">Если приложению необходимо работать с отключенными графами сущностей, рассмотрите другие варианты, такие как [отслеживаемые сущности](http://trackableentities.github.io/), которые технологически эквивалентны сущностям с самостоятельным отслеживанием, активно разрабатываемым сообществом. Или остановитесь на написании пользовательского кода с помощью API-интерфейсов отслеживания изменений низкого уровня.</span><span class="sxs-lookup"><span data-stu-id="42ca3-105">If your application requires working with disconnected graphs of entities, consider other alternatives such as [Trackable Entities](http://trackableentities.github.io/), which is a technology similar to Self-Tracking-Entities that is more actively developed by the community, or writing custom code using the low-level change tracking APIs.</span></span>
+> <span data-ttu-id="a3f5a-103">Больше не рекомендуется использовать шаблон сущностей с самостоятельным отслеживанием.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-103">We no longer recommend using the self-tracking-entities template.</span></span> <span data-ttu-id="a3f5a-104">Он по-прежнему будет доступен только для поддержки существующих приложений.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-104">It will only continue to be available to support existing applications.</span></span> <span data-ttu-id="a3f5a-105">Если приложению необходимо работать с отключенными графами сущностей, рассмотрите другие варианты, такие как [отслеживаемые сущности](https://trackableentities.github.io/), которые технологически эквивалентны сущностям с самостоятельным отслеживанием, активно разрабатываемым сообществом. Или остановитесь на написании пользовательского кода с помощью API-интерфейсов отслеживания изменений низкого уровня.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-105">If your application requires working with disconnected graphs of entities, consider other alternatives such as [Trackable Entities](https://trackableentities.github.io/), which is a technology similar to Self-Tracking-Entities that is more actively developed by the community, or writing custom code using the low-level change tracking APIs.</span></span>
 
-<span data-ttu-id="42ca3-106">В этом пошаговом руководстве описывается сценарий, в котором службы Windows Communication Foundation (WCF) предоставляет операцию, которая возвращает граф объекта.</span><span class="sxs-lookup"><span data-stu-id="42ca3-106">This walkthrough demonstrates the scenario in which a Windows Communication Foundation (WCF) service exposes an operation that returns an entity graph.</span></span> <span data-ttu-id="42ca3-107">Затем клиентское приложение обрабатывает этот граф и передает изменения операции службы, которая проверяет и сохраняет их в базу данных с помощью Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="42ca3-107">Next, a client application manipulates that graph and submits the modifications to a service operation that validates and saves the updates to a database using Entity Framework.</span></span>
+<span data-ttu-id="a3f5a-106">В этом пошаговом руководстве демонстрируется сценарий, в котором служба Windows Communication Foundation (WCF) предоставляет операцию, которая возвращает граф сущностей.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-106">This walkthrough demonstrates the scenario in which a Windows Communication Foundation (WCF) service exposes an operation that returns an entity graph.</span></span> <span data-ttu-id="a3f5a-107">Затем клиентское приложение манипулирует этим графом и отправляет изменения в операцию службы, которая проверяет и сохраняет обновления в базе данных с помощью Entity Framework.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-107">Next, a client application manipulates that graph and submits the modifications to a service operation that validates and saves the updates to a database using Entity Framework.</span></span>
 
-<span data-ttu-id="42ca3-108">Перед завершением этого пошагового руководства обязательно прочтите статью [сущностей с самостоятельным отслеживанием](index.md) страницы.</span><span class="sxs-lookup"><span data-stu-id="42ca3-108">Before completing this walkthrough make sure you read the [Self-Tracking Entities](index.md) page.</span></span>
+<span data-ttu-id="a3f5a-108">Перед выполнением этого пошагового руководства убедитесь, что вы читаете страницу [сущностей с самостоятельным отслеживанием](index.md) .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-108">Before completing this walkthrough make sure you read the [Self-Tracking Entities](index.md) page.</span></span>
 
-<span data-ttu-id="42ca3-109">В этом пошаговом руководстве выполняются следующие действия.</span><span class="sxs-lookup"><span data-stu-id="42ca3-109">This walkthrough completes the following actions:</span></span>
+<span data-ttu-id="a3f5a-109">В этом пошаговом руководстве выполняются следующие действия.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-109">This walkthrough completes the following actions:</span></span>
 
--   <span data-ttu-id="42ca3-110">Создает базу данных для доступа к.</span><span class="sxs-lookup"><span data-stu-id="42ca3-110">Creates a database to access.</span></span>
--   <span data-ttu-id="42ca3-111">Создает библиотеку классов, которая содержит модель.</span><span class="sxs-lookup"><span data-stu-id="42ca3-111">Creates a class library that contains the model.</span></span>
--   <span data-ttu-id="42ca3-112">Переключений в шаблон генератора сущностей с самостоятельным отслеживанием.</span><span class="sxs-lookup"><span data-stu-id="42ca3-112">Swaps to the Self-Tracking Entity Generator template.</span></span>
--   <span data-ttu-id="42ca3-113">Перемещает классы сущностей в отдельном проекте.</span><span class="sxs-lookup"><span data-stu-id="42ca3-113">Moves the entity classes to a separate project.</span></span>
--   <span data-ttu-id="42ca3-114">Создает службу WCF, которая предоставляет операции для запроса и сохранение объектов.</span><span class="sxs-lookup"><span data-stu-id="42ca3-114">Creates a WCF service that exposes operations to query and save entities.</span></span>
--   <span data-ttu-id="42ca3-115">Создает клиентские приложения (консольное и WPF), которые используют службу.</span><span class="sxs-lookup"><span data-stu-id="42ca3-115">Creates client applications (Console and WPF) that consume the service.</span></span>
+-   <span data-ttu-id="a3f5a-110">Создает базу данных для доступа.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-110">Creates a database to access.</span></span>
+-   <span data-ttu-id="a3f5a-111">Создает библиотеку классов, содержащую модель.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-111">Creates a class library that contains the model.</span></span>
+-   <span data-ttu-id="a3f5a-112">Меняет местами на шаблон генератора сущностей с самостоятельным отслеживанием.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-112">Swaps to the Self-Tracking Entity Generator template.</span></span>
+-   <span data-ttu-id="a3f5a-113">Перемещает классы сущностей в отдельный проект.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-113">Moves the entity classes to a separate project.</span></span>
+-   <span data-ttu-id="a3f5a-114">Создает службу WCF, которая предоставляет операции для запросов и сохранения сущностей.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-114">Creates a WCF service that exposes operations to query and save entities.</span></span>
+-   <span data-ttu-id="a3f5a-115">Создает клиентские приложения (консоль и WPF), которые используют службу.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-115">Creates client applications (Console and WPF) that consume the service.</span></span>
 
-<span data-ttu-id="42ca3-116">Мы будем использовать первой базы данных в этом пошаговом руководстве, но те же методы также применяются Model First.</span><span class="sxs-lookup"><span data-stu-id="42ca3-116">We'll use Database First in this walkthrough but the same techniques apply equally to Model First.</span></span>
+<span data-ttu-id="a3f5a-116">В этом пошаговом руководстве мы будем использовать Database First, но одни и те же методы будут применяться одинаково для Model First.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-116">We'll use Database First in this walkthrough but the same techniques apply equally to Model First.</span></span>
 
-## <a name="pre-requisites"></a><span data-ttu-id="42ca3-117">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="42ca3-117">Pre-Requisites</span></span>
+## <a name="pre-requisites"></a><span data-ttu-id="a3f5a-117">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="a3f5a-117">Pre-Requisites</span></span>
 
-<span data-ttu-id="42ca3-118">Для выполнения этого пошагового руководства требуется последнюю версию Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="42ca3-118">To complete this walkthrough you will need a recent version of Visual Studio.</span></span>
+<span data-ttu-id="a3f5a-118">Для выполнения этого пошагового руководства потребуется последняя версия Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-118">To complete this walkthrough you will need a recent version of Visual Studio.</span></span>
 
-## <a name="create-a-database"></a><span data-ttu-id="42ca3-119">Создание базы данных</span><span class="sxs-lookup"><span data-stu-id="42ca3-119">Create a Database</span></span>
+## <a name="create-a-database"></a><span data-ttu-id="a3f5a-119">Создание базы данных</span><span class="sxs-lookup"><span data-stu-id="a3f5a-119">Create a Database</span></span>
 
-<span data-ttu-id="42ca3-120">Сервер базы данных, который устанавливается вместе с Visual Studio отличается в зависимости от версии Visual Studio, вы установили:</span><span class="sxs-lookup"><span data-stu-id="42ca3-120">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you have installed:</span></span>
+<span data-ttu-id="a3f5a-120">Сервер базы данных, который устанавливается вместе с Visual Studio, отличается в зависимости от версии Visual Studio, которую вы установили:</span><span class="sxs-lookup"><span data-stu-id="a3f5a-120">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you have installed:</span></span>
 
--   <span data-ttu-id="42ca3-121">Если вы используете Visual Studio 2012, а затем вы создадите базу данных LocalDB.</span><span class="sxs-lookup"><span data-stu-id="42ca3-121">If you are using Visual Studio 2012 then you'll be creating a LocalDB database.</span></span>
--   <span data-ttu-id="42ca3-122">Если вы используете Visual Studio 2010 вы создадите базу данных SQL Express.</span><span class="sxs-lookup"><span data-stu-id="42ca3-122">If you are using Visual Studio 2010 you'll be creating a SQL Express database.</span></span>
+-   <span data-ttu-id="a3f5a-121">Если вы используете Visual Studio 2012, то будете создавать базу данных LocalDB.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-121">If you are using Visual Studio 2012 then you'll be creating a LocalDB database.</span></span>
+-   <span data-ttu-id="a3f5a-122">Если вы используете Visual Studio 2010, вы создадите базу данных SQL Express.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-122">If you are using Visual Studio 2010 you'll be creating a SQL Express database.</span></span>
 
-<span data-ttu-id="42ca3-123">Перейдем дальше и создать базу данных.</span><span class="sxs-lookup"><span data-stu-id="42ca3-123">Let's go ahead and generate the database.</span></span>
+<span data-ttu-id="a3f5a-123">Перейдем дальше и создадим базу данных.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-123">Let's go ahead and generate the database.</span></span>
 
--   <span data-ttu-id="42ca3-124">Открытие Visual Studio</span><span class="sxs-lookup"><span data-stu-id="42ca3-124">Open Visual Studio</span></span>
--   <span data-ttu-id="42ca3-125">**Представление —&gt; обозревателя серверов**</span><span class="sxs-lookup"><span data-stu-id="42ca3-125">**View -&gt; Server Explorer**</span></span>
--   <span data-ttu-id="42ca3-126">Щелкните правой кнопкой мыши **подключения к данным -&gt; добавить соединение...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-126">Right click on **Data Connections -&gt; Add Connection…**</span></span>
--   <span data-ttu-id="42ca3-127">Если вы не подключились к базе данных с помощью обозревателя сервера прежде, чем вам нужно будет выбрать **Microsoft SQL Server** как источник данных</span><span class="sxs-lookup"><span data-stu-id="42ca3-127">If you haven’t connected to a database from Server Explorer before you’ll need to select **Microsoft SQL Server** as the data source</span></span>
--   <span data-ttu-id="42ca3-128">Подключение к LocalDB или SQL Express, в зависимости от того, какой из них установки</span><span class="sxs-lookup"><span data-stu-id="42ca3-128">Connect to either LocalDB or SQL Express, depending on which one you have installed</span></span>
--   <span data-ttu-id="42ca3-129">Введите **STESample** имя базы данных</span><span class="sxs-lookup"><span data-stu-id="42ca3-129">Enter **STESample** as the database name</span></span>
--   <span data-ttu-id="42ca3-130">Выберите **ОК** и вам нужно будет Если вы хотите создать новую базу данных, выберите **Да**</span><span class="sxs-lookup"><span data-stu-id="42ca3-130">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>
--   <span data-ttu-id="42ca3-131">Новая база данных появится в обозревателе серверов</span><span class="sxs-lookup"><span data-stu-id="42ca3-131">The new database will now appear in Server Explorer</span></span>
--   <span data-ttu-id="42ca3-132">Если вы используете Visual Studio 2012</span><span class="sxs-lookup"><span data-stu-id="42ca3-132">If you are using Visual Studio 2012</span></span>
-    -   <span data-ttu-id="42ca3-133">Щелкните правой кнопкой мыши, в базе данных в обозревателе серверов и выберите **новый запрос**</span><span class="sxs-lookup"><span data-stu-id="42ca3-133">Right-click on the database in Server Explorer and select **New Query**</span></span>
-    -   <span data-ttu-id="42ca3-134">Скопируйте следующий запрос SQL в новый запрос, а затем щелкните правой кнопкой мыши запрос и выберите **Execute**</span><span class="sxs-lookup"><span data-stu-id="42ca3-134">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>
--   <span data-ttu-id="42ca3-135">Если вы используете Visual Studio 2010</span><span class="sxs-lookup"><span data-stu-id="42ca3-135">If you are using Visual Studio 2010</span></span>
-    -   <span data-ttu-id="42ca3-136">Выберите **тарифный план —&gt; Transact редактор SQL -&gt; новое соединение запроса...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-136">Select **Data -&gt; Transact SQL Editor -&gt; New Query Connection...**</span></span>
-    -   <span data-ttu-id="42ca3-137">Введите **.\\ SQLEXPRESS** имя сервера и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-137">Enter **.\\SQLEXPRESS** as the server name and click **OK**</span></span>
-    -   <span data-ttu-id="42ca3-138">Выберите **STESample** базы данных в раскрывающемся вниз в верхней части редактора запросов</span><span class="sxs-lookup"><span data-stu-id="42ca3-138">Select the **STESample** database from the drop down at the top of the query editor</span></span>
-    -   <span data-ttu-id="42ca3-139">Скопируйте следующий запрос SQL в новый запрос, а затем щелкните правой кнопкой мыши запрос и выберите **Выполнение SQL**</span><span class="sxs-lookup"><span data-stu-id="42ca3-139">Copy the following SQL into the new query, then right-click on the query and select **Execute SQL**</span></span>
+-   <span data-ttu-id="a3f5a-124">Откройте Visual Studio</span><span class="sxs-lookup"><span data-stu-id="a3f5a-124">Open Visual Studio</span></span>
+-   <span data-ttu-id="a3f5a-125">**Вид" —&gt; "Обозреватель сервера**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-125">**View -&gt; Server Explorer**</span></span>
+-   <span data-ttu-id="a3f5a-126">Щелкните правой кнопкой мыши на **Подключения к данным -&gt; Добавить подключение…**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-126">Right click on **Data Connections -&gt; Add Connection…**</span></span>
+-   <span data-ttu-id="a3f5a-127">Если вы не подключились к базе данных из обозреватель сервера, прежде чем нужно будет выбрать **Microsoft SQL Server** в качестве источника данных</span><span class="sxs-lookup"><span data-stu-id="a3f5a-127">If you haven’t connected to a database from Server Explorer before you’ll need to select **Microsoft SQL Server** as the data source</span></span>
+-   <span data-ttu-id="a3f5a-128">Подключение к LocalDB или SQL Express в зависимости от того, какой из установленных служб</span><span class="sxs-lookup"><span data-stu-id="a3f5a-128">Connect to either LocalDB or SQL Express, depending on which one you have installed</span></span>
+-   <span data-ttu-id="a3f5a-129">Введите **стесампле** в качестве имени базы данных</span><span class="sxs-lookup"><span data-stu-id="a3f5a-129">Enter **STESample** as the database name</span></span>
+-   <span data-ttu-id="a3f5a-130">Выберите **ОК**, и вам будет задан вопрос, хотите ли вы создать новую базу данных. Выберите **Да**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-130">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>
+-   <span data-ttu-id="a3f5a-131">Теперь новая база данных появится в обозреватель сервера</span><span class="sxs-lookup"><span data-stu-id="a3f5a-131">The new database will now appear in Server Explorer</span></span>
+-   <span data-ttu-id="a3f5a-132">Если вы используете Visual Studio 2012</span><span class="sxs-lookup"><span data-stu-id="a3f5a-132">If you are using Visual Studio 2012</span></span>
+    -   <span data-ttu-id="a3f5a-133">Щелкните правой кнопкой мыши базу данных в обозреватель сервера и выберите **создать запрос** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-133">Right-click on the database in Server Explorer and select **New Query**</span></span>
+    -   <span data-ttu-id="a3f5a-134">Скопируйте следующий код SQL в новый запрос, а затем щелкните запрос правой кнопкой мыши и выберите **Выполнить**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-134">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>
+-   <span data-ttu-id="a3f5a-135">Если вы используете Visual Studio 2010</span><span class="sxs-lookup"><span data-stu-id="a3f5a-135">If you are using Visual Studio 2010</span></span>
+    -   <span data-ttu-id="a3f5a-136">SELECT **Data-&gt; редактор SQL Transact-&gt; создать соединение с запросом...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-136">Select **Data -&gt; Transact SQL Editor -&gt; New Query Connection...**</span></span>
+    -   <span data-ttu-id="a3f5a-137">Введите **. \\SQLEXPRESS** в качестве имени сервера и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-137">Enter **.\\SQLEXPRESS** as the server name and click **OK**</span></span>
+    -   <span data-ttu-id="a3f5a-138">Выберите базу данных **стесампле** в раскрывающемся списке в верхней части редактора запросов.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-138">Select the **STESample** database from the drop down at the top of the query editor</span></span>
+    -   <span data-ttu-id="a3f5a-139">Скопируйте следующий SQL в новый запрос, щелкните запрос правой кнопкой мыши и выберите команду **выполнить SQL** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-139">Copy the following SQL into the new query, then right-click on the query and select **Execute SQL**</span></span>
 
 ``` SQL
     CREATE TABLE [dbo].[Blogs] (
@@ -83,106 +83,106 @@ ms.locfileid: "45490278"
     INSERT INTO [dbo].[Posts] ([Title], [Content], [BlogId]) VALUES (N'What is New', N'More interesting stuff...', 1)
 ```
 
-## <a name="create-the-model"></a><span data-ttu-id="42ca3-140">Создание модели</span><span class="sxs-lookup"><span data-stu-id="42ca3-140">Create the Model</span></span>
+## <a name="create-the-model"></a><span data-ttu-id="a3f5a-140">Создание модели</span><span class="sxs-lookup"><span data-stu-id="a3f5a-140">Create the Model</span></span>
 
-<span data-ttu-id="42ca3-141">Мы сначала поместить модели в проект.</span><span class="sxs-lookup"><span data-stu-id="42ca3-141">First up, we need a project to put the model in.</span></span>
+<span data-ttu-id="a3f5a-141">Сначала нам нужен проект, в котором будет размещена модель.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-141">First up, we need a project to put the model in.</span></span>
 
--   <span data-ttu-id="42ca3-142">**Файл —&gt; Новинка —&gt; проекта...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-142">**File -&gt; New -&gt; Project...**</span></span>
--   <span data-ttu-id="42ca3-143">Выберите **Visual C\#**  в области слева и затем **библиотеки классов**</span><span class="sxs-lookup"><span data-stu-id="42ca3-143">Select **Visual C\#** from the left pane and then **Class Library**</span></span>
--   <span data-ttu-id="42ca3-144">Введите **STESample** имя и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-144">Enter **STESample** as the name and click **OK**</span></span>
+-   <span data-ttu-id="a3f5a-142">**Файл-&gt; новый проект-&gt;...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-142">**File -&gt; New -&gt; Project...**</span></span>
+-   <span data-ttu-id="a3f5a-143">Выберите **Visual C @ no__t-1** в левой области, а затем **Библиотека классов** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-143">Select **Visual C\#** from the left pane and then **Class Library**</span></span>
+-   <span data-ttu-id="a3f5a-144">Введите **стесампле** в качестве имени и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-144">Enter **STESample** as the name and click **OK**</span></span>
 
-<span data-ttu-id="42ca3-145">Теперь мы создадим простую модель в конструкторе EF для доступа к базе данных:</span><span class="sxs-lookup"><span data-stu-id="42ca3-145">Now we'll create a simple model in the EF Designer to access our database:</span></span>
+<span data-ttu-id="a3f5a-145">Теперь создадим простую модель в конструкторе EF для доступа к нашей базе данных:</span><span class="sxs-lookup"><span data-stu-id="a3f5a-145">Now we'll create a simple model in the EF Designer to access our database:</span></span>
 
--   <span data-ttu-id="42ca3-146">**Проект -&gt; добавить новый элемент...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-146">**Project -&gt; Add New Item...**</span></span>
--   <span data-ttu-id="42ca3-147">Выберите **данных** в области слева и затем **модель EDM ADO.NET**</span><span class="sxs-lookup"><span data-stu-id="42ca3-147">Select **Data** from the left pane and then **ADO.NET Entity Data Model**</span></span>
--   <span data-ttu-id="42ca3-148">Введите **BloggingModel** имя и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-148">Enter **BloggingModel** as the name and click **OK**</span></span>
--   <span data-ttu-id="42ca3-149">Выберите **создать из базы данных** и нажмите кнопку **Далее**</span><span class="sxs-lookup"><span data-stu-id="42ca3-149">Select **Generate from database** and click **Next**</span></span>
--   <span data-ttu-id="42ca3-150">Введите сведения о подключении для базы данных, созданный в предыдущем разделе</span><span class="sxs-lookup"><span data-stu-id="42ca3-150">Enter the connection information for the database that you created in the previous section</span></span>
--   <span data-ttu-id="42ca3-151">Введите **BloggingContext** как имя строки подключения и нажмите кнопку **Далее**</span><span class="sxs-lookup"><span data-stu-id="42ca3-151">Enter **BloggingContext** as the name for the connection string and click **Next**</span></span>
--   <span data-ttu-id="42ca3-152">Установите флажок рядом с полем **таблиц** и нажмите кнопку **Готово**</span><span class="sxs-lookup"><span data-stu-id="42ca3-152">Check the box next to **Tables** and click **Finish**</span></span>
+-   <span data-ttu-id="a3f5a-146">**Проект-&gt; добавить новый элемент...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-146">**Project -&gt; Add New Item...**</span></span>
+-   <span data-ttu-id="a3f5a-147">Выберите **данные** на левой панели, а затем **ADO.NET EDM**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-147">Select **Data** from the left pane and then **ADO.NET Entity Data Model**</span></span>
+-   <span data-ttu-id="a3f5a-148">Введите имя **BloggingModel** и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-148">Enter **BloggingModel** as the name and click **OK**</span></span>
+-   <span data-ttu-id="a3f5a-149">Выберите **создать из базы данных** и нажмите кнопку **Далее** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-149">Select **Generate from database** and click **Next**</span></span>
+-   <span data-ttu-id="a3f5a-150">Введите сведения о подключении для базы данных, созданной в предыдущем разделе.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-150">Enter the connection information for the database that you created in the previous section</span></span>
+-   <span data-ttu-id="a3f5a-151">Введите **BloggingContext** в качестве имени для строки подключения и нажмите кнопку " **Далее** ".</span><span class="sxs-lookup"><span data-stu-id="a3f5a-151">Enter **BloggingContext** as the name for the connection string and click **Next**</span></span>
+-   <span data-ttu-id="a3f5a-152">Установите флажки рядом с **таблицами** и нажмите кнопку **Готово** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-152">Check the box next to **Tables** and click **Finish**</span></span>
 
-## <a name="swap-to-ste-code-generation"></a><span data-ttu-id="42ca3-153">Вы сможете перейти в ШАГЕ создания кода</span><span class="sxs-lookup"><span data-stu-id="42ca3-153">Swap to STE Code Generation</span></span>
+## <a name="swap-to-ste-code-generation"></a><span data-ttu-id="a3f5a-153">Переключение на ТАВИТЬ создание кода</span><span class="sxs-lookup"><span data-stu-id="a3f5a-153">Swap to STE Code Generation</span></span>
 
-<span data-ttu-id="42ca3-154">Теперь нам нужно отключить создание кода по умолчанию и замены для сущностей с самостоятельным отслеживанием.</span><span class="sxs-lookup"><span data-stu-id="42ca3-154">Now we need to disable the default code generation and swap to Self-Tracking Entities.</span></span>
+<span data-ttu-id="a3f5a-154">Теперь необходимо отключить создание кода по умолчанию и переключение на сущности с самостоятельным отслеживанием.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-154">Now we need to disable the default code generation and swap to Self-Tracking Entities.</span></span>
 
-### <a name="if-you-are-using-visual-studio-2012"></a><span data-ttu-id="42ca3-155">Если вы используете Visual Studio 2012</span><span class="sxs-lookup"><span data-stu-id="42ca3-155">If you are using Visual Studio 2012</span></span>
+### <a name="if-you-are-using-visual-studio-2012"></a><span data-ttu-id="a3f5a-155">Если вы используете Visual Studio 2012</span><span class="sxs-lookup"><span data-stu-id="a3f5a-155">If you are using Visual Studio 2012</span></span>
 
--   <span data-ttu-id="42ca3-156">Разверните **BloggingModel.edmx** в **обозревателе решений** и удалить **BloggingModel.tt** и **BloggingModel.Context.tt** 
-     *Это отключит формирование кода по умолчанию*</span><span class="sxs-lookup"><span data-stu-id="42ca3-156">Expand **BloggingModel.edmx** in **Solution Explorer** and delete the **BloggingModel.tt** and **BloggingModel.Context.tt**
+-   <span data-ttu-id="a3f5a-156">Разверните **блоггингмодел. EDMX** в **обозреватель решений** и удалите **BloggingModel.TT** и **BloggingModel.Context.TT**
+    .*это приведет к отключению создания кода по умолчанию* .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-156">Expand **BloggingModel.edmx** in **Solution Explorer** and delete the **BloggingModel.tt** and **BloggingModel.Context.tt**
 *This will disable the default code generation*</span></span>
--   <span data-ttu-id="42ca3-157">Щелкните правой кнопкой мыши пустую область в конструкторе EF и выберите пункт **добавить элемент формирования кода...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-157">Right-click an empty area on the EF Designer surface and select **Add Code Generation Item...**</span></span>
--   <span data-ttu-id="42ca3-158">Выберите **Online** из левой области и выполните поиск **ТАВИТЬ генератор**</span><span class="sxs-lookup"><span data-stu-id="42ca3-158">Select **Online** from the left pane and search for **STE Generator**</span></span>
--   <span data-ttu-id="42ca3-159">Выберите **ТАВИТЬ генератор для C\#**  шаблона, введите **STETemplate** имя и нажмите кнопку **добавить**</span><span class="sxs-lookup"><span data-stu-id="42ca3-159">Select the **STE Generator for C\#** template, enter **STETemplate** as the name and click **Add**</span></span>
--   <span data-ttu-id="42ca3-160">**STETemplate.tt** и **STETemplate.Context.tt** файлы добавляются как вложенные в файле BloggingModel.edmx</span><span class="sxs-lookup"><span data-stu-id="42ca3-160">The **STETemplate.tt** and **STETemplate.Context.tt** files are added nested under the BloggingModel.edmx file</span></span>
+-   <span data-ttu-id="a3f5a-157">Щелкните правой кнопкой мыши пустую область в области конструктора EF и выберите пункт **Добавить элемент создания кода...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-157">Right-click an empty area on the EF Designer surface and select **Add Code Generation Item...**</span></span>
+-   <span data-ttu-id="a3f5a-158">Выберите "в **сети** " в левой области и найдите **генератор тавить** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-158">Select **Online** from the left pane and search for **STE Generator**</span></span>
+-   <span data-ttu-id="a3f5a-159">Выберите **генератор тавить для шаблона C @ no__t-1** , введите в качестве имени **стетемплате** и нажмите кнопку **добавить** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-159">Select the **STE Generator for C\#** template, enter **STETemplate** as the name and click **Add**</span></span>
+-   <span data-ttu-id="a3f5a-160">Файлы **STETemplate.TT** и **STETemplate.Context.TT** добавляются в файл блоггингмодел. edmx.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-160">The **STETemplate.tt** and **STETemplate.Context.tt** files are added nested under the BloggingModel.edmx file</span></span>
 
-### <a name="if-you-are-using-visual-studio-2010"></a><span data-ttu-id="42ca3-161">Если вы используете Visual Studio 2010</span><span class="sxs-lookup"><span data-stu-id="42ca3-161">If you are using Visual Studio 2010</span></span>
+### <a name="if-you-are-using-visual-studio-2010"></a><span data-ttu-id="a3f5a-161">Если вы используете Visual Studio 2010</span><span class="sxs-lookup"><span data-stu-id="a3f5a-161">If you are using Visual Studio 2010</span></span>
 
--   <span data-ttu-id="42ca3-162">Щелкните правой кнопкой мыши пустую область в конструкторе EF и выберите пункт **добавить элемент формирования кода...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-162">Right-click an empty area on the EF Designer surface and select **Add Code Generation Item...**</span></span>
--   <span data-ttu-id="42ca3-163">Выберите **кода** в области слева и затем **генератора сущностей с самостоятельным отслеживанием ADO.NET**</span><span class="sxs-lookup"><span data-stu-id="42ca3-163">Select **Code** from the left pane and then **ADO.NET Self-Tracking Entity Generator**</span></span>
--   <span data-ttu-id="42ca3-164">Введите **STETemplate** имя и нажмите кнопку **добавить**</span><span class="sxs-lookup"><span data-stu-id="42ca3-164">Enter **STETemplate** as the name and click **Add**</span></span>
--   <span data-ttu-id="42ca3-165">**STETemplate.tt** и **STETemplate.Context.tt** файлы добавляются непосредственно в проект</span><span class="sxs-lookup"><span data-stu-id="42ca3-165">The **STETemplate.tt** and **STETemplate.Context.tt** files are added directly to your project</span></span>
+-   <span data-ttu-id="a3f5a-162">Щелкните правой кнопкой мыши пустую область в области конструктора EF и выберите пункт **Добавить элемент создания кода...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-162">Right-click an empty area on the EF Designer surface and select **Add Code Generation Item...**</span></span>
+-   <span data-ttu-id="a3f5a-163">Выберите **код** на левой панели, а затем **ADO.NET самостоятельный Генератор сущностей**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-163">Select **Code** from the left pane and then **ADO.NET Self-Tracking Entity Generator**</span></span>
+-   <span data-ttu-id="a3f5a-164">Введите **стетемплате** в качестве имени и нажмите кнопку **Добавить** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-164">Enter **STETemplate** as the name and click **Add**</span></span>
+-   <span data-ttu-id="a3f5a-165">Файлы **STETemplate.TT** и **STETemplate.Context.TT** добавляются непосредственно в проект.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-165">The **STETemplate.tt** and **STETemplate.Context.tt** files are added directly to your project</span></span>
 
-## <a name="move-entity-types-into-separate-project"></a><span data-ttu-id="42ca3-166">Переместите типы сущностей в отдельном проекте</span><span class="sxs-lookup"><span data-stu-id="42ca3-166">Move Entity Types into Separate Project</span></span>
+## <a name="move-entity-types-into-separate-project"></a><span data-ttu-id="a3f5a-166">Переместить типы сущностей в отдельный проект</span><span class="sxs-lookup"><span data-stu-id="a3f5a-166">Move Entity Types into Separate Project</span></span>
 
-<span data-ttu-id="42ca3-167">Для использования сущностей с самостоятельным отслеживанием в клиентском приложении требуется доступ к классам сущностей, созданные из нашей модели.</span><span class="sxs-lookup"><span data-stu-id="42ca3-167">To use Self-Tracking Entities our client application needs access to the entity classes generated from our model.</span></span> <span data-ttu-id="42ca3-168">Так как мы не хотим предоставлять всю модель в клиентское приложение мы собираемся переместить классы сущностей в отдельном проекте.</span><span class="sxs-lookup"><span data-stu-id="42ca3-168">Because we don't want to expose the whole model to the client application we're going to move the entity classes into a separate project.</span></span>
+<span data-ttu-id="a3f5a-167">Для использования сущностей с самостоятельным отслеживанием клиентскому приложению требуется доступ к классам сущностей, созданным из нашей модели.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-167">To use Self-Tracking Entities our client application needs access to the entity classes generated from our model.</span></span> <span data-ttu-id="a3f5a-168">Так как мы не хотим предоставлять клиентским приложениям всю модель, мы будем перемещать классы сущностей в отдельный проект.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-168">Because we don't want to expose the whole model to the client application we're going to move the entity classes into a separate project.</span></span>
 
-<span data-ttu-id="42ca3-169">Первым шагом является прекращается создание классов сущностей в существующий проект:</span><span class="sxs-lookup"><span data-stu-id="42ca3-169">The first step is to stop generating entity classes in the existing project:</span></span>
+<span data-ttu-id="a3f5a-169">Первым шагом является завершение создания классов сущностей в существующем проекте:</span><span class="sxs-lookup"><span data-stu-id="a3f5a-169">The first step is to stop generating entity classes in the existing project:</span></span>
 
--   <span data-ttu-id="42ca3-170">Щелкните правой кнопкой мыши **STETemplate.tt** в **обозревателе решений** и выберите **свойства**</span><span class="sxs-lookup"><span data-stu-id="42ca3-170">Right-click on **STETemplate.tt** in **Solution Explorer** and select **Properties**</span></span>
--   <span data-ttu-id="42ca3-171">В **свойства** очистить окно **TextTemplatingFileGenerator** из **CustomTool** свойство</span><span class="sxs-lookup"><span data-stu-id="42ca3-171">In the **Properties** window clear **TextTemplatingFileGenerator** from the **CustomTool** property</span></span>
--   <span data-ttu-id="42ca3-172">Разверните **STETemplate.tt** в **обозревателе решений** и удалить все файлы, вложенным в него</span><span class="sxs-lookup"><span data-stu-id="42ca3-172">Expand **STETemplate.tt** in **Solution Explorer** and delete all files nested under it</span></span>
+-   <span data-ttu-id="a3f5a-170">Щелкните правой кнопкой мыши **STETemplate.TT** в **Обозреватель решений** и выберите пункт **Свойства** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-170">Right-click on **STETemplate.tt** in **Solution Explorer** and select **Properties**</span></span>
+-   <span data-ttu-id="a3f5a-171">В окне **свойств** очистите **Тексттемплатингфилеженератор** из свойства **CustomTool** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-171">In the **Properties** window clear **TextTemplatingFileGenerator** from the **CustomTool** property</span></span>
+-   <span data-ttu-id="a3f5a-172">Разверните **STETemplate.TT** в **Обозреватель решений** и удалите все вложенные файлы.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-172">Expand **STETemplate.tt** in **Solution Explorer** and delete all files nested under it</span></span>
 
-<span data-ttu-id="42ca3-173">Затем мы собираемся добавить новый проект и создания классов сущностей в нем</span><span class="sxs-lookup"><span data-stu-id="42ca3-173">Next, we are going to add a new project and generate the entity classes in it</span></span>
+<span data-ttu-id="a3f5a-173">Далее предстоит добавить новый проект и создать в нем классы сущностей.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-173">Next, we are going to add a new project and generate the entity classes in it</span></span>
 
--   <span data-ttu-id="42ca3-174">**Файл —&gt; Add -&gt; проекта...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-174">**File -&gt; Add -&gt; Project...**</span></span>
--   <span data-ttu-id="42ca3-175">Выберите **Visual C\#**  в области слева и затем **библиотеки классов**</span><span class="sxs-lookup"><span data-stu-id="42ca3-175">Select **Visual C\#** from the left pane and then **Class Library**</span></span>
--   <span data-ttu-id="42ca3-176">Введите **STESample.Entities** имя и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-176">Enter **STESample.Entities** as the name and click **OK**</span></span>
--   <span data-ttu-id="42ca3-177">**Проект -&gt; добавить существующий элемент...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-177">**Project -&gt; Add Existing Item...**</span></span>
--   <span data-ttu-id="42ca3-178">Перейдите к **STESample** папки проекта</span><span class="sxs-lookup"><span data-stu-id="42ca3-178">Navigate to the **STESample** project folder</span></span>
--   <span data-ttu-id="42ca3-179">Выберите для просмотра **все файлы (\*.\*)**</span><span class="sxs-lookup"><span data-stu-id="42ca3-179">Select to view **All Files (\*.\*)**</span></span>
--   <span data-ttu-id="42ca3-180">Выберите **STETemplate.tt** файла</span><span class="sxs-lookup"><span data-stu-id="42ca3-180">Select the **STETemplate.tt** file</span></span>
--   <span data-ttu-id="42ca3-181">Щелкните стрелку раскрывающегося списка рядом **добавить** и выберите **добавить как ссылку**</span><span class="sxs-lookup"><span data-stu-id="42ca3-181">Click on the drop down arrow next to the **Add** button and select **Add As Link**</span></span>
+-   <span data-ttu-id="a3f5a-174">**Файл-&gt; Add-&gt; проект...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-174">**File -&gt; Add -&gt; Project...**</span></span>
+-   <span data-ttu-id="a3f5a-175">Выберите **Visual C @ no__t-1** в левой области, а затем **Библиотека классов** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-175">Select **Visual C\#** from the left pane and then **Class Library**</span></span>
+-   <span data-ttu-id="a3f5a-176">Введите **стесампле. Entities** в качестве имени и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-176">Enter **STESample.Entities** as the name and click **OK**</span></span>
+-   <span data-ttu-id="a3f5a-177">**Проект-&gt; добавить существующий элемент...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-177">**Project -&gt; Add Existing Item...**</span></span>
+-   <span data-ttu-id="a3f5a-178">Перейдите в папку проекта **стесампле**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-178">Navigate to the **STESample** project folder</span></span>
+-   <span data-ttu-id="a3f5a-179">Выберите для просмотра **всех файлов (\*. \*)**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-179">Select to view **All Files (\*.\*)**</span></span>
+-   <span data-ttu-id="a3f5a-180">Выберите файл **STETemplate.TT**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-180">Select the **STETemplate.tt** file</span></span>
+-   <span data-ttu-id="a3f5a-181">Щелкните стрелку раскрывающегося списка рядом с кнопкой **Добавить** и выберите **Добавить как ссылку** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-181">Click on the drop down arrow next to the **Add** button and select **Add As Link**</span></span>
 
-    ![Добавление связанного шаблона](~/ef6/media/addlinkedtemplate.png)
+    ![Добавить связанный шаблон](~/ef6/media/addlinkedtemplate.png)
 
-<span data-ttu-id="42ca3-183">Кроме того, мы собираемся убедитесь, что классы сущностей создаются в том же пространстве имен, как контекст.</span><span class="sxs-lookup"><span data-stu-id="42ca3-183">We're also going to make sure the entity classes get generated in the same namespace as the context.</span></span> <span data-ttu-id="42ca3-184">Это просто уменьшает число с помощью инструкций, которые необходимо добавить на протяжении нашего приложения.</span><span class="sxs-lookup"><span data-stu-id="42ca3-184">This just reduces the number of using statements we need to add throughout our application.</span></span>
+<span data-ttu-id="a3f5a-183">Кроме того, мы собираемся убедиться, что классы сущностей создаются в том же пространстве имен, что и контекст.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-183">We're also going to make sure the entity classes get generated in the same namespace as the context.</span></span> <span data-ttu-id="a3f5a-184">Это просто сокращает количество операторов using, которые необходимо добавить в наше приложение.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-184">This just reduces the number of using statements we need to add throughout our application.</span></span>
 
--   <span data-ttu-id="42ca3-185">Щелкните правой кнопкой мыши на связанном **STETemplate.tt** в **обозревателе решений** и выберите **свойства**</span><span class="sxs-lookup"><span data-stu-id="42ca3-185">Right-click on the linked **STETemplate.tt** in **Solution Explorer** and select **Properties**</span></span>
--   <span data-ttu-id="42ca3-186">В **свойства** задайте **пространство имен CustomTool** для **STESample**</span><span class="sxs-lookup"><span data-stu-id="42ca3-186">In the **Properties** window set **Custom Tool Namespace** to **STESample**</span></span>
+-   <span data-ttu-id="a3f5a-185">Щелкните правой кнопкой мыши связанный **STETemplate.TT** в **Обозреватель решений** и выберите **Свойства** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-185">Right-click on the linked **STETemplate.tt** in **Solution Explorer** and select **Properties**</span></span>
+-   <span data-ttu-id="a3f5a-186">В окне **Свойства** задайте для **пространства имен пользовательского инструмента** значение **стесампле** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-186">In the **Properties** window set **Custom Tool Namespace** to **STESample**</span></span>
 
-<span data-ttu-id="42ca3-187">Код, созданный с помощью шаблона ТАВИТЬ будет нужна ссылка на **System.Runtime.Serialization** для компиляции.</span><span class="sxs-lookup"><span data-stu-id="42ca3-187">The code generated by the STE template will need a reference to **System.Runtime.Serialization** in order to compile.</span></span> <span data-ttu-id="42ca3-188">Эта библиотека нужна для WCF **DataContract** и **DataMember** атрибутов, используемых для сериализуемых типов сущности.</span><span class="sxs-lookup"><span data-stu-id="42ca3-188">This library is needed for the WCF **DataContract** and **DataMember** attributes that are used on the serializable entity types.</span></span>
+<span data-ttu-id="a3f5a-187">Для компиляции кода, созданного с помощью шаблона ТАВИТЬ, требуется ссылка на **System. Runtime. Serialization** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-187">The code generated by the STE template will need a reference to **System.Runtime.Serialization** in order to compile.</span></span> <span data-ttu-id="a3f5a-188">Эта библиотека необходима для атрибутов **DATACONTRACT** WCF и **DataMember** , которые используются в сериализуемых типах сущностей.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-188">This library is needed for the WCF **DataContract** and **DataMember** attributes that are used on the serializable entity types.</span></span>
 
--   <span data-ttu-id="42ca3-189">Щелкните правой кнопкой мыши **STESample.Entities** в проекте **обозревателе решений** и выберите **добавить ссылку...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-189">Right click on the **STESample.Entities** project in **Solution Explorer** and select **Add Reference...**</span></span>
-    -   <span data-ttu-id="42ca3-190">В Visual Studio 2012, установите флажок рядом с полем **System.Runtime.Serialization** и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-190">In Visual Studio 2012 - check the box next to **System.Runtime.Serialization** and click **OK**</span></span>
-    -   <span data-ttu-id="42ca3-191">В Visual Studio 2010 — выберите **System.Runtime.Serialization** и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-191">In Visual Studio 2010 - select **System.Runtime.Serialization** and click **OK**</span></span>
+-   <span data-ttu-id="a3f5a-189">Щелкните правой кнопкой мыши проект **стесампле. Entities** в **Обозреватель решений** и выберите команду **Добавить ссылку...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-189">Right click on the **STESample.Entities** project in **Solution Explorer** and select **Add Reference...**</span></span>
+    -   <span data-ttu-id="a3f5a-190">В Visual Studio 2012 установите флажок рядом с **System. Runtime. Serialization** и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-190">In Visual Studio 2012 - check the box next to **System.Runtime.Serialization** and click **OK**</span></span>
+    -   <span data-ttu-id="a3f5a-191">В Visual Studio 2010 выберите **System. Runtime. Serialization** и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-191">In Visual Studio 2010 - select **System.Runtime.Serialization** and click **OK**</span></span>
 
-<span data-ttu-id="42ca3-192">Наконец проект с наш контекст, в нем будет нужна ссылка на типы сущностей.</span><span class="sxs-lookup"><span data-stu-id="42ca3-192">Finally, the project with our context in it will need a reference to the entity types.</span></span>
+<span data-ttu-id="a3f5a-192">Наконец, в проекте с нашим контекстом потребуется ссылка на типы сущностей.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-192">Finally, the project with our context in it will need a reference to the entity types.</span></span>
 
--   <span data-ttu-id="42ca3-193">Щелкните правой кнопкой мыши **STESample** в проекте **обозревателе решений** и выберите **добавить ссылку...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-193">Right click on the **STESample** project in **Solution Explorer** and select **Add Reference...**</span></span>
-    -   <span data-ttu-id="42ca3-194">В Visual Studio 2012 – выберите **решение** в левой области, установите флажок рядом с полем **STESample.Entities** и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-194">In Visual Studio 2012 - select **Solution** from the left pane, check the box next to **STESample.Entities** and click **OK**</span></span>
-    -   <span data-ttu-id="42ca3-195">В Visual Studio 2010 — выберите **проекты** выберите **STESample.Entities** и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-195">In Visual Studio 2010 - select the **Projects** tab, select **STESample.Entities** and click **OK**</span></span>
+-   <span data-ttu-id="a3f5a-193">Щелкните правой кнопкой мыши проект **стесампле** в **Обозреватель решений** и выберите **Добавить ссылку...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-193">Right click on the **STESample** project in **Solution Explorer** and select **Add Reference...**</span></span>
+    -   <span data-ttu-id="a3f5a-194">В Visual Studio 2012 — выберите **решение** в левой области, установите флажок рядом с **стесампле. Entities** и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-194">In Visual Studio 2012 - select **Solution** from the left pane, check the box next to **STESample.Entities** and click **OK**</span></span>
+    -   <span data-ttu-id="a3f5a-195">В Visual Studio 2010 на вкладке **проекты** выберите **стесампле. Entities** и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-195">In Visual Studio 2010 - select the **Projects** tab, select **STESample.Entities** and click **OK**</span></span>
 
 >[!NOTE]
-> <span data-ttu-id="42ca3-196">Другой вариант перемещения типы сущностей в отдельном проекте — перемещение файла шаблона, а не связывая его из расположения по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="42ca3-196">Another option for moving the entity types to a separate project is to move the template file, rather than linking it from its default location.</span></span> <span data-ttu-id="42ca3-197">После этого необходимо обновить **inputFile** переменных в шаблоне, чтобы указать относительный путь в EDMX-файл (в этом примере, которая была бы **.. \\BloggingModel.edmx**).</span><span class="sxs-lookup"><span data-stu-id="42ca3-197">If you do this, you will need to update the **inputFile** variable in the template to provide the relative path to the edmx file (in this example that would be **..\\BloggingModel.edmx**).</span></span>
+> <span data-ttu-id="a3f5a-196">Другим вариантом перемещения типов сущностей в отдельный проект является перемещение файла шаблона вместо его связи с расположением по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-196">Another option for moving the entity types to a separate project is to move the template file, rather than linking it from its default location.</span></span> <span data-ttu-id="a3f5a-197">В этом случае необходимо будет обновить переменную **inputFile** в шаблоне, чтобы указать относительный путь к EDMX-файлу (в этом примере это будет **. \\BloggingModel. EDMX**).</span><span class="sxs-lookup"><span data-stu-id="a3f5a-197">If you do this, you will need to update the **inputFile** variable in the template to provide the relative path to the edmx file (in this example that would be **..\\BloggingModel.edmx**).</span></span>
 
-## <a name="create-a-wcf-service"></a><span data-ttu-id="42ca3-198">Создание службы WCF</span><span class="sxs-lookup"><span data-stu-id="42ca3-198">Create a WCF Service</span></span>
+## <a name="create-a-wcf-service"></a><span data-ttu-id="a3f5a-198">Создание службы WCF</span><span class="sxs-lookup"><span data-stu-id="a3f5a-198">Create a WCF Service</span></span>
 
-<span data-ttu-id="42ca3-199">Пришло время добавить службу WCF для предоставления наши данные, мы начнем с создания проекта.</span><span class="sxs-lookup"><span data-stu-id="42ca3-199">Now it's time to add a WCF Service to expose our data, we'll start by creating the project.</span></span>
+<span data-ttu-id="a3f5a-199">Пришло время добавить службу WCF для предоставления наших данных, мы начнем с создания проекта.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-199">Now it's time to add a WCF Service to expose our data, we'll start by creating the project.</span></span>
 
--   <span data-ttu-id="42ca3-200">**Файл —&gt; Add -&gt; проекта...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-200">**File -&gt; Add -&gt; Project...**</span></span>
--   <span data-ttu-id="42ca3-201">Выберите **Visual C\#**  в области слева и затем **приложение службы WCF**</span><span class="sxs-lookup"><span data-stu-id="42ca3-201">Select **Visual C\#** from the left pane and then **WCF Service Application**</span></span>
--   <span data-ttu-id="42ca3-202">Введите **STESample.Service** имя и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-202">Enter **STESample.Service** as the name and click **OK**</span></span>
--   <span data-ttu-id="42ca3-203">Добавьте ссылку на **System.Data.Entity** сборки</span><span class="sxs-lookup"><span data-stu-id="42ca3-203">Add a reference to the **System.Data.Entity** assembly</span></span>
--   <span data-ttu-id="42ca3-204">Добавьте ссылку на **STESample** и **STESample.Entities** проектов</span><span class="sxs-lookup"><span data-stu-id="42ca3-204">Add a reference to the **STESample** and **STESample.Entities** projects</span></span>
+-   <span data-ttu-id="a3f5a-200">**Файл-&gt; Add-&gt; проект...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-200">**File -&gt; Add -&gt; Project...**</span></span>
+-   <span data-ttu-id="a3f5a-201">Выберите **Visual C @ no__t-1** в левой области, а затем — **приложение службы WCF** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-201">Select **Visual C\#** from the left pane and then **WCF Service Application**</span></span>
+-   <span data-ttu-id="a3f5a-202">Введите **стесампле. Service** в качестве имени и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-202">Enter **STESample.Service** as the name and click **OK**</span></span>
+-   <span data-ttu-id="a3f5a-203">Добавление ссылки на сборку **System. Data. Entity**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-203">Add a reference to the **System.Data.Entity** assembly</span></span>
+-   <span data-ttu-id="a3f5a-204">Добавление ссылки на проекты **стесампле** и **стесампле. Entities**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-204">Add a reference to the **STESample** and **STESample.Entities** projects</span></span>
 
-<span data-ttu-id="42ca3-205">Нам нужно скопировать строку подключения EF для этого проекта, таким образом, найденных во время выполнения.</span><span class="sxs-lookup"><span data-stu-id="42ca3-205">We need to copy the EF connection string to this project so that it is found at runtime.</span></span>
+<span data-ttu-id="a3f5a-205">Нам нужно скопировать строку подключения EF в этот проект, чтобы она была найдена во время выполнения.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-205">We need to copy the EF connection string to this project so that it is found at runtime.</span></span>
 
--   <span data-ttu-id="42ca3-206">Откройте **App.Config** файл \*\* STESample \*\* проект и скопировать **connectionStrings** элемент</span><span class="sxs-lookup"><span data-stu-id="42ca3-206">Open the **App.Config** file for the \*\*STESample \*\*project and copy the **connectionStrings** element</span></span>
--   <span data-ttu-id="42ca3-207">Вставить **connectionStrings** элемент как дочерний элемент элемента **конфигурации** элемент **Web.Config** файл **STESample.Service** проекта</span><span class="sxs-lookup"><span data-stu-id="42ca3-207">Paste the **connectionStrings** element as a child element of the **configuration** element of the **Web.Config** file in the **STESample.Service** project</span></span>
+-   <span data-ttu-id="a3f5a-206">Откройте файл **app. config** для проекта **стесампле **и скопируйте элемент **ConnectionString** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-206">Open the **App.Config** file for the **STESample **project and copy the **connectionStrings** element</span></span>
+-   <span data-ttu-id="a3f5a-207">Вставьте элемент **connectionStrings** в качестве дочернего элемента элемента **конфигурации** файла **Web. config** в проекте **стесампле. Service.**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-207">Paste the **connectionStrings** element as a child element of the **configuration** element of the **Web.Config** file in the **STESample.Service** project</span></span>
 
-<span data-ttu-id="42ca3-208">Пришло время для реализации фактической службы.</span><span class="sxs-lookup"><span data-stu-id="42ca3-208">Now it's time to implement the actual service.</span></span>
+<span data-ttu-id="a3f5a-208">Теперь пора реализовать фактическую службу.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-208">Now it's time to implement the actual service.</span></span>
 
--   <span data-ttu-id="42ca3-209">Откройте **IService1.cs** и замените его содержимое следующим кодом</span><span class="sxs-lookup"><span data-stu-id="42ca3-209">Open **IService1.cs** and replace the contents with the following code</span></span>
+-   <span data-ttu-id="a3f5a-209">Откройте **IService1.CS** и замените содержимое следующим кодом:</span><span class="sxs-lookup"><span data-stu-id="a3f5a-209">Open **IService1.cs** and replace the contents with the following code</span></span>
 
 ``` csharp
     using System.Collections.Generic;
@@ -202,7 +202,7 @@ ms.locfileid: "45490278"
     }
 ```
 
--   <span data-ttu-id="42ca3-210">Откройте **Service1.svc** и замените его содержимое следующим кодом</span><span class="sxs-lookup"><span data-stu-id="42ca3-210">Open **Service1.svc** and replace the contents with the following code</span></span>
+-   <span data-ttu-id="a3f5a-210">Откройте **Service1. svc** и замените содержимое следующим кодом:</span><span class="sxs-lookup"><span data-stu-id="a3f5a-210">Open **Service1.svc** and replace the contents with the following code</span></span>
 
 ``` csharp
     using System;
@@ -255,24 +255,24 @@ ms.locfileid: "45490278"
     }
 ```
 
-## <a name="consume-the-service-from-a-console-application"></a><span data-ttu-id="42ca3-211">Использовать службу в консольном приложении</span><span class="sxs-lookup"><span data-stu-id="42ca3-211">Consume the Service from a Console Application</span></span>
+## <a name="consume-the-service-from-a-console-application"></a><span data-ttu-id="a3f5a-211">Использование службы из консольного приложения</span><span class="sxs-lookup"><span data-stu-id="a3f5a-211">Consume the Service from a Console Application</span></span>
 
-<span data-ttu-id="42ca3-212">Давайте создадим консольное приложение, которое использует нашей службы.</span><span class="sxs-lookup"><span data-stu-id="42ca3-212">Let's create a console application that uses our service.</span></span>
+<span data-ttu-id="a3f5a-212">Давайте создадим консольное приложение, использующее нашу службу.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-212">Let's create a console application that uses our service.</span></span>
 
--   <span data-ttu-id="42ca3-213">**Файл —&gt; Новинка —&gt; проекта...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-213">**File -&gt; New -&gt; Project...**</span></span>
--   <span data-ttu-id="42ca3-214">Выберите **Visual C\#**  в области слева и затем **консольного приложения**</span><span class="sxs-lookup"><span data-stu-id="42ca3-214">Select **Visual C\#** from the left pane and then **Console Application**</span></span>
--   <span data-ttu-id="42ca3-215">Введите **STESample.ConsoleTest** имя и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-215">Enter **STESample.ConsoleTest** as the name and click **OK**</span></span>
--   <span data-ttu-id="42ca3-216">Добавьте ссылку на **STESample.Entities** проекта</span><span class="sxs-lookup"><span data-stu-id="42ca3-216">Add a reference to the **STESample.Entities** project</span></span>
+-   <span data-ttu-id="a3f5a-213">**Файл-&gt; новый проект-&gt;...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-213">**File -&gt; New -&gt; Project...**</span></span>
+-   <span data-ttu-id="a3f5a-214">Выберите **Visual C @ no__t-1** в левой области, а затем **консольное приложение** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-214">Select **Visual C\#** from the left pane and then **Console Application**</span></span>
+-   <span data-ttu-id="a3f5a-215">Введите **стесампле. консолетест** в качестве имени и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-215">Enter **STESample.ConsoleTest** as the name and click **OK**</span></span>
+-   <span data-ttu-id="a3f5a-216">Добавление ссылки на проект **стесампле. Entities**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-216">Add a reference to the **STESample.Entities** project</span></span>
 
-<span data-ttu-id="42ca3-217">Нам нужно ссылку на службу в нашу службу WCF</span><span class="sxs-lookup"><span data-stu-id="42ca3-217">We need a service reference to our WCF service</span></span>
+<span data-ttu-id="a3f5a-217">Нам нужна ссылка на службу для нашей службы WCF.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-217">We need a service reference to our WCF service</span></span>
 
--   <span data-ttu-id="42ca3-218">Щелкните правой кнопкой мыши **STESample.ConsoleTest** в проекте **обозревателе решений** и выберите **добавить ссылку на службу...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-218">Right-click the **STESample.ConsoleTest** project in **Solution Explorer** and select **Add Service Reference...**</span></span>
--   <span data-ttu-id="42ca3-219">Нажмите кнопку **обнаружение**</span><span class="sxs-lookup"><span data-stu-id="42ca3-219">Click **Discover**</span></span>
--   <span data-ttu-id="42ca3-220">Введите **BloggingService** пространства имен и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-220">Enter **BloggingService** as the namespace and click **OK**</span></span>
+-   <span data-ttu-id="a3f5a-218">Щелкните правой кнопкой мыши проект **стесампле. консолетест** в **обозреватель решений** и выберите **Добавление ссылки на службу...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-218">Right-click the **STESample.ConsoleTest** project in **Solution Explorer** and select **Add Service Reference...**</span></span>
+-   <span data-ttu-id="a3f5a-219">Нажмите кнопку **обнаружить** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-219">Click **Discover**</span></span>
+-   <span data-ttu-id="a3f5a-220">Введите **блоггингсервице** в качестве пространства имен и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-220">Enter **BloggingService** as the namespace and click **OK**</span></span>
 
-<span data-ttu-id="42ca3-221">Теперь можно написать код для использования службы.</span><span class="sxs-lookup"><span data-stu-id="42ca3-221">Now we can write some code to consume the service.</span></span>
+<span data-ttu-id="a3f5a-221">Теперь мы можем написать код для использования службы.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-221">Now we can write some code to consume the service.</span></span>
 
--   <span data-ttu-id="42ca3-222">Откройте **Program.cs** и замените его содержимое следующим кодом.</span><span class="sxs-lookup"><span data-stu-id="42ca3-222">Open **Program.cs** and replace the contents with the following code.</span></span>
+-   <span data-ttu-id="a3f5a-222">Откройте **Program.CS** и замените содержимое следующим кодом.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-222">Open **Program.cs** and replace the contents with the following code.</span></span>
 
 ``` csharp
     using STESample.ConsoleTest.BloggingService;
@@ -399,13 +399,13 @@ ms.locfileid: "45490278"
     }
 ```
 
-<span data-ttu-id="42ca3-223">Теперь вы можете запустить приложение и увидеть, как оно работает:</span><span class="sxs-lookup"><span data-stu-id="42ca3-223">You can now run the application to see it in action.</span></span>
+<span data-ttu-id="a3f5a-223">Теперь вы можете запустить приложение и увидеть, как оно работает:</span><span class="sxs-lookup"><span data-stu-id="a3f5a-223">You can now run the application to see it in action.</span></span>
 
--   <span data-ttu-id="42ca3-224">Щелкните правой кнопкой мыши **STESample.ConsoleTest** в проекте **обозревателе решений** и выберите **«Отладка» —&gt; запустить новый экземпляр**</span><span class="sxs-lookup"><span data-stu-id="42ca3-224">Right-click the **STESample.ConsoleTest** project in **Solution Explorer** and select **Debug -&gt; Start new instance**</span></span>
+-   <span data-ttu-id="a3f5a-224">Щелкните правой кнопкой мыши проект **стесампле. консолетест** в **Обозреватель решений** и выберите **Отладка-&gt; запустить новый экземпляр** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-224">Right-click the **STESample.ConsoleTest** project in **Solution Explorer** and select **Debug -&gt; Start new instance**</span></span>
 
-<span data-ttu-id="42ca3-225">При запуске приложения вы увидите следующие выходные данные.</span><span class="sxs-lookup"><span data-stu-id="42ca3-225">You'll see the following output when the application executes.</span></span>
+<span data-ttu-id="a3f5a-225">При выполнении приложения вы увидите следующие выходные данные.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-225">You'll see the following output when the application executes.</span></span>
 
-```
+```console
 Initial Data:
 ADO.NET Blog
 - Intro to EF
@@ -435,24 +435,24 @@ ADO.NET Blog
 Press any key to exit...
 ```
 
-## <a name="consume-the-service-from-a-wpf-application"></a><span data-ttu-id="42ca3-226">Использование службы в приложении WPF</span><span class="sxs-lookup"><span data-stu-id="42ca3-226">Consume the Service from a WPF Application</span></span>
+## <a name="consume-the-service-from-a-wpf-application"></a><span data-ttu-id="a3f5a-226">Использование службы из приложения WPF</span><span class="sxs-lookup"><span data-stu-id="a3f5a-226">Consume the Service from a WPF Application</span></span>
 
-<span data-ttu-id="42ca3-227">Давайте создадим приложение WPF, использующего нашей службы.</span><span class="sxs-lookup"><span data-stu-id="42ca3-227">Let's create a WPF application that uses our service.</span></span>
+<span data-ttu-id="a3f5a-227">Давайте создадим приложение WPF, которое использует нашу службу.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-227">Let's create a WPF application that uses our service.</span></span>
 
--   <span data-ttu-id="42ca3-228">**Файл —&gt; Новинка —&gt; проекта...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-228">**File -&gt; New -&gt; Project...**</span></span>
--   <span data-ttu-id="42ca3-229">Выберите **Visual C\#**  в области слева и затем **приложения WPF**</span><span class="sxs-lookup"><span data-stu-id="42ca3-229">Select **Visual C\#** from the left pane and then **WPF Application**</span></span>
--   <span data-ttu-id="42ca3-230">Введите **STESample.WPFTest** имя и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-230">Enter **STESample.WPFTest** as the name and click **OK**</span></span>
--   <span data-ttu-id="42ca3-231">Добавьте ссылку на **STESample.Entities** проекта</span><span class="sxs-lookup"><span data-stu-id="42ca3-231">Add a reference to the **STESample.Entities** project</span></span>
+-   <span data-ttu-id="a3f5a-228">**Файл-&gt; новый проект-&gt;...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-228">**File -&gt; New -&gt; Project...**</span></span>
+-   <span data-ttu-id="a3f5a-229">Выберите **Visual C @ no__t-1** в левой области, а затем — **приложение WPF**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-229">Select **Visual C\#** from the left pane and then **WPF Application**</span></span>
+-   <span data-ttu-id="a3f5a-230">Введите **стесампле. впфтест** в качестве имени и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-230">Enter **STESample.WPFTest** as the name and click **OK**</span></span>
+-   <span data-ttu-id="a3f5a-231">Добавление ссылки на проект **стесампле. Entities**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-231">Add a reference to the **STESample.Entities** project</span></span>
 
-<span data-ttu-id="42ca3-232">Нам нужно ссылку на службу в нашу службу WCF</span><span class="sxs-lookup"><span data-stu-id="42ca3-232">We need a service reference to our WCF service</span></span>
+<span data-ttu-id="a3f5a-232">Нам нужна ссылка на службу для нашей службы WCF.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-232">We need a service reference to our WCF service</span></span>
 
--   <span data-ttu-id="42ca3-233">Щелкните правой кнопкой мыши **STESample.WPFTest** в проекте **обозревателе решений** и выберите **добавить ссылку на службу...**</span><span class="sxs-lookup"><span data-stu-id="42ca3-233">Right-click the **STESample.WPFTest** project in **Solution Explorer** and select **Add Service Reference...**</span></span>
--   <span data-ttu-id="42ca3-234">Нажмите кнопку **обнаружение**</span><span class="sxs-lookup"><span data-stu-id="42ca3-234">Click **Discover**</span></span>
--   <span data-ttu-id="42ca3-235">Введите **BloggingService** пространства имен и нажмите кнопку **ОК**</span><span class="sxs-lookup"><span data-stu-id="42ca3-235">Enter **BloggingService** as the namespace and click **OK**</span></span>
+-   <span data-ttu-id="a3f5a-233">Щелкните правой кнопкой мыши проект **стесампле. впфтест** в **обозреватель решений** и выберите **Добавление ссылки на службу...**</span><span class="sxs-lookup"><span data-stu-id="a3f5a-233">Right-click the **STESample.WPFTest** project in **Solution Explorer** and select **Add Service Reference...**</span></span>
+-   <span data-ttu-id="a3f5a-234">Нажмите кнопку **обнаружить** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-234">Click **Discover**</span></span>
+-   <span data-ttu-id="a3f5a-235">Введите **блоггингсервице** в качестве пространства имен и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-235">Enter **BloggingService** as the namespace and click **OK**</span></span>
 
-<span data-ttu-id="42ca3-236">Теперь можно написать код для использования службы.</span><span class="sxs-lookup"><span data-stu-id="42ca3-236">Now we can write some code to consume the service.</span></span>
+<span data-ttu-id="a3f5a-236">Теперь мы можем написать код для использования службы.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-236">Now we can write some code to consume the service.</span></span>
 
--   <span data-ttu-id="42ca3-237">Откройте **MainWindow.xaml** и замените его содержимое следующим кодом.</span><span class="sxs-lookup"><span data-stu-id="42ca3-237">Open **MainWindow.xaml** and replace the contents with the following code.</span></span>
+-   <span data-ttu-id="a3f5a-237">Откройте файл **MainWindow. XAML** и замените его содержимое следующим кодом.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-237">Open **MainWindow.xaml** and replace the contents with the following code.</span></span>
 
 ``` xaml
     <Window
@@ -496,7 +496,7 @@ Press any key to exit...
     </Window>
 ```
 
--   <span data-ttu-id="42ca3-238">Откройте код программной части для MainWindow (**MainWindow.xaml.cs**) и замените его содержимое следующим кодом</span><span class="sxs-lookup"><span data-stu-id="42ca3-238">Open the code behind for MainWindow (**MainWindow.xaml.cs**) and replace the contents with the following code</span></span>
+-   <span data-ttu-id="a3f5a-238">Откройте код программной части для MainWindow (**MainWindow.XAML.CS**) и замените содержимое следующим кодом.</span><span class="sxs-lookup"><span data-stu-id="a3f5a-238">Open the code behind for MainWindow (**MainWindow.xaml.cs**) and replace the contents with the following code</span></span>
 
 ``` csharp
     using STESample.WPFTest.BloggingService;
@@ -548,9 +548,9 @@ Press any key to exit...
     }
 ```
 
-<span data-ttu-id="42ca3-239">Теперь вы можете запустить приложение и увидеть, как оно работает:</span><span class="sxs-lookup"><span data-stu-id="42ca3-239">You can now run the application to see it in action.</span></span>
+<span data-ttu-id="a3f5a-239">Теперь вы можете запустить приложение и увидеть, как оно работает:</span><span class="sxs-lookup"><span data-stu-id="a3f5a-239">You can now run the application to see it in action.</span></span>
 
--   <span data-ttu-id="42ca3-240">Щелкните правой кнопкой мыши **STESample.WPFTest** в проекте **обозревателе решений** и выберите **«Отладка» —&gt; запустить новый экземпляр**</span><span class="sxs-lookup"><span data-stu-id="42ca3-240">Right-click the **STESample.WPFTest** project in **Solution Explorer** and select **Debug -&gt; Start new instance**</span></span>
--   <span data-ttu-id="42ca3-241">Можно обрабатывать данные, используя экрана и сохраните его с помощью службы, используя **Сохранить** кнопки</span><span class="sxs-lookup"><span data-stu-id="42ca3-241">You can manipulate the data using the screen and save it via the service using the **Save** button</span></span>
+-   <span data-ttu-id="a3f5a-240">Щелкните правой кнопкой мыши проект **стесампле. впфтест** в **Обозреватель решений** и выберите **Отладка-&gt; запустить новый экземпляр** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-240">Right-click the **STESample.WPFTest** project in **Solution Explorer** and select **Debug -&gt; Start new instance**</span></span>
+-   <span data-ttu-id="a3f5a-241">Вы можете манипулировать данными с помощью экрана и сохранить их через службу с помощью кнопки **сохранить** .</span><span class="sxs-lookup"><span data-stu-id="a3f5a-241">You can manipulate the data using the screen and save it via the service using the **Save** button</span></span>
 
-![WPF главного окна](~/ef6/media/wpf.png)
+![Главное окно WPF](~/ef6/media/wpf.png)
