@@ -3,12 +3,12 @@ title: Поставщики Entity Framework в EF6
 author: divega
 ms.date: 06/27/2018
 ms.assetid: 7BFB7763-CD6C-4520-93A2-7B265F5FA586
-ms.openlocfilehash: f6e34d1273bd1004ce9d1610ce3613068088eb5e
-ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
+ms.openlocfilehash: bf07296503e4bb5d1e13f5f6f29e7118cbbde61d
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/03/2019
-ms.locfileid: "55668743"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181691"
 ---
 # <a name="entity-framework-6-providers"></a>Поставщики Entity Framework 6
 > [!NOTE]
@@ -21,15 +21,15 @@ ms.locfileid: "55668743"
 В число известных перестроенных для EF6 поставщиков входят следующие.
 
 *   **Поставщик Microsoft SQL Server**
-    *   Создан на [базе открытого исходного кода Entity Framework](http://github.com/aspnet/EntityFramework6).
-    *   Поставляется в составе [пакета NuGet для EntityFramework](http://nuget.org/packages/EntityFramework).
+    *   Создан на [базе открытого исходного кода Entity Framework](https://github.com/aspnet/EntityFramework6).
+    *   Поставляется в составе [пакета NuGet для EntityFramework](https://nuget.org/packages/EntityFramework).
 *   **Поставщик Microsoft SQL Server Compact Edition**
-    *   Создан на [базе открытого исходного кода Entity Framework](http://github.com/aspnet/EntityFramework6).
-    *   Поставляется в [пакете NuGet EntityFramework.SqlServerCompact](http://nuget.org/packages/EntityFramework.SqlServerCompact).
-*   [**Поставщики данных Devart dotConnect**](http://www.devart.com/dotconnect/)
-    *   Существуют сторонние поставщики от компании [Devart](http://www.devart.com/) для различных баз данных, включая Oracle, MySQL, PostgreSQL, SQLite, Salesforce, DB2 и SQL Server.
-*   [**Поставщики CData Software**](http://www.cdata.com/ado/)
-    *   Существуют сторонние поставщики от [CData Software](http://www.cdata.com/ado/) для различных хранилищ данных, включая Salesforce, хранилище таблиц Azure, MySql и многие другие.
+    *   Создан на [базе открытого исходного кода Entity Framework](https://github.com/aspnet/EntityFramework6).
+    *   Поставляется в [пакете NuGet EntityFramework.SqlServerCompact](https://nuget.org/packages/EntityFramework.SqlServerCompact).
+*   [**Поставщики данных Devart dotConnect**](https://www.devart.com/dotconnect/)
+    *   Существуют сторонние поставщики от компании [Devart](https://www.devart.com/) для различных баз данных, включая Oracle, MySQL, PostgreSQL, SQLite, Salesforce, DB2 и SQL Server.
+*   [**Поставщики CData Software**](https://www.cdata.com/ado/)
+    *   Существуют сторонние поставщики от [CData Software](https://www.cdata.com/ado/) для различных хранилищ данных, включая Salesforce, хранилище таблиц Azure, MySql и многие другие.
 *   **Поставщик Firebird**
     *   Доступен как [пакет NuGet](https://www.nuget.org/packages/EntityFramework.Firebird/).
 *   **Поставщик Visual Fox Pro**

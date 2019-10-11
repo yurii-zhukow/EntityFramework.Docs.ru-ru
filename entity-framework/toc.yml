@@ -175,8 +175,6 @@
           items:
             - name: Обзор
               href: core/querying/index.md
-            - name: Базовый запрос
-              href: core/querying/basic.md
             - name: Загрузка связанных данных
               href: core/querying/related-data.md
             - name: Выполнение в клиенте и на сервере
@@ -188,7 +186,7 @@
             - name: Асинхронные запросы
               href: core/querying/async.md
             - name: Принцип работы запроса
-              href: core/querying/overview.md
+              href: core/querying/how-query-works.md
             - name: Глобальные фильтры запросов
               href: core/querying/filters.md
             - name: Теги запросов
@@ -367,7 +365,7 @@
                   href: ef6/modeling/code-first/dbsets.md
                 - name: Типы данных
                   items:
-                    - name: перечислениям;
+                    - name: Перечисления
                       href: ef6/modeling/code-first/data-types/enums.md
                     - name: пространственный индекс
                       href: ef6/modeling/code-first/data-types/spatial.md
@@ -415,7 +413,7 @@
                   items:
                     - name: Сложные типы
                       href: ef6/modeling/designer/data-types/complex-types.md
-                    - name: перечислениям;
+                    - name: Перечисления
                       href: ef6/modeling/designer/data-types/enums.md
                     - name: пространственный индекс
                       href: ef6/modeling/designer/data-types/spatial.md

@@ -4,12 +4,12 @@ author: divega
 ms.date: 11/14/2018
 ms.assetid: 998C04F3-676A-4FCF-8450-CFB0457B4198
 uid: core/what-is-new/ef-core-2.2
-ms.openlocfilehash: 79b4efc3aee23e19a9ea1deb6373b9984b77f886
-ms.sourcegitcommit: b3c2b34d5f006ee3b41d6668f16fe7dcad1b4317
+ms.openlocfilehash: 5fcf7c6dfb4d8cb7928ef974af6deb52df7c63eb
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688772"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181375"
 ---
 # <a name="new-features-in-ef-core-22"></a>Новые возможности в EF Core 2.2
 
@@ -21,10 +21,10 @@ ms.locfileid: "51688772"
 
 Поддержка пространственных данных реализована в виде набора пакетов расширений для конкретных поставщиков.
 Каждый из этих пакетов содержит сопоставления для типов и методов NTS с соответствующими пространственными типами и функциями в базе данных.
-Эти расширения доступны для поставщиков баз данных [SQL Server](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite/), [SQLite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite.NetTopologySuite/) и [PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite/) (из [проекта Npgsql](http://www.npgsql.org/)).
+Эти расширения доступны для поставщиков баз данных [SQL Server](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite/), [SQLite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite.NetTopologySuite/) и [PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite/) (из [проекта Npgsql](https://www.npgsql.org/)).
 Пространственные типы можно использовать непосредственно с [поставщиком EF Core для выполняющейся в памяти базы данных](https://docs.microsoft.com/en-us/ef/core/providers/in-memory/) без дополнительных расширений.
 
-После установки расширения для поставщика можно добавлять к сущностям свойства поддерживаемых типов. Пример:
+После установки расширения для поставщика можно добавлять к сущностям свойства поддерживаемых типов. Например:
 
 ``` csharp
 using NetTopologySuite.Geometries;

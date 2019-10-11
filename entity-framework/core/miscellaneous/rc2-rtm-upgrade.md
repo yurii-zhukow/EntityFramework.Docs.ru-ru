@@ -1,63 +1,65 @@
 ---
-title: Обновление с EF Core 1.0 RC2 для RTM-версии — EF Core
+title: Обновление с EF Core 1,0 RC2 до RTM — EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: c3c1940b-136d-45d8-aa4f-cb5040f8980a
 uid: core/miscellaneous/rc2-rtm-upgrade
-ms.openlocfilehash: 1b95b2ab1943dfb541b3a7c873cff3cb4c16d9c1
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e7f121d18931e26e7b5d11842da6da4a9b789efe
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42998323"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181366"
 ---
-# <a name="upgrading-from-ef-core-10-rc2-to-rtm"></a>Обновление с EF Core 1.0 RC2 до RTM
+# <a name="upgrading-from-ef-core-10-rc2-to-rtm"></a>Обновление с EF Core 1,0 от RC2 до RTM
 
-Эта статья содержит руководство по переносу приложения, созданного с помощью пакетов 1.0.0, версия-кандидат 2 RTM.
+В этой статье приводятся рекомендации по перемещению приложения, созданного с помощью пакетов RC2, в 1.0.0 RTM.
 
-## <a name="package-versions"></a>Версии пакетов
+## <a name="package-versions"></a>Версии пакета
 
-Имена пакетов верхнего уровня, которые требуется установить в приложение обычно не изменился между RC2 и RTM.
+Имена пакетов верхнего уровня, которые обычно устанавливаются в приложение, не изменились между RC2 и RTM.
 
-**Вам потребуется обновить установленные пакеты до RTM-версии.**
+**Необходимо обновить установленные пакеты до версий RTM:**
 
-* Пакеты среды выполнения (например, `Microsoft.EntityFrameworkCore.SqlServer`) изменилось с `1.0.0-rc2-final` для `1.0.0`.
+* Пакеты среды выполнения (например, `Microsoft.EntityFrameworkCore.SqlServer`) изменились с `1.0.0-rc2-final` на `1.0.0`.
 
-* `Microsoft.EntityFrameworkCore.Tools` Пакета изменен с `1.0.0-preview1-final` для `1.0.0-preview2-final`. Обратите внимание, что оборудование по-прежнему предварительной версии.
+* Пакет `Microsoft.EntityFrameworkCore.Tools` изменен с `1.0.0-preview1-final` на `1.0.0-preview2-final`. Обратите внимание, что инструментарий по-прежнему является предварительным выпуском.
 
-## <a name="existing-migrations-may-need-maxlength-added"></a>Существующие миграции может потребоваться добавить maxLength
+## <a name="existing-migrations-may-need-maxlength-added"></a>Для существующих миграций может потребоваться добавить maxLength
 
-В версии-кандидата 2, определению столбца в миграции выглядело как `table.Column<string>(nullable: true)` и длину столбца было искать в некоторые метаданные, мы сохраняем в коде для миграции. В версии RTM, длина теперь входит в шаблонном коде `table.Column<string>(maxLength: 450, nullable: true)`.
+В RC2 определение столбца в процессе миграции выглядит так: `table.Column<string>(nullable: true)`, а длина столбца была просмотрена в некоторых метаданных, хранимых в коде для миграции. В RTM длина теперь включается в шаблонный код `table.Column<string>(maxLength: 450, nullable: true)`.
 
-Все существующие миграции, которые были скаффолдинга перед использованием RTM не будет иметь `maxLength` указан аргумент. Это означает, что будет использоваться максимальную длину, поддерживаемую в базе данных (`nvarchar(max)` на сервере SQL Server). Это может быть нормально для некоторых столбцов, но столбцы, являющиеся частью ключа, внешний ключ или индекс должен обновляться по максимальной длиной. По соглашению 450 — Максимальная длина для ключи, внешние ключи и индексированных столбцов. Если вы явным образом настроили длиной в модели, затем следует использовать этой длины, вместо этого.
+Для всех существующих миграций, сформированных до использования RTM, не будет указан аргумент `maxLength`. Это означает, что будет использоваться максимальная длина, поддерживаемая базой данных (`nvarchar(max)` в SQL Server). Это может быть удобно для некоторых столбцов, но столбцы, которые являются частью ключа, внешнего ключа или индекса, должны быть обновлены для включения максимальной длины. По соглашению 450 — это максимальная длина, используемая для ключей, внешних ключей и индексированных столбцов. Если вы явно настроили длину в модели, вместо нее следует использовать эту длину.
 
 **ASP.NET Identity**
 
-Это изменение влияет на проекты, использующие ASP.NET Identity и были созданы из подготовительной-RTM шаблона проекта. Шаблон проекта включает миграции, используемый для создания базы данных. Этот вид миграции необходимо отредактировать для указания максимальной длиной `256` для следующих столбцов.
+Это изменение влияет на проекты, использующие ASP.NET Identity и созданные из шаблона проекта предварительной версии RTM. Шаблон проекта включает миграцию, используемую для создания базы данных. Чтобы указать максимальную длину `256` для следующих столбцов, необходимо изменить эту миграцию.
 
 *  **AspNetRoles**
 
     * name
 
-    * NormalizedName
+    * нормализеднаме
 
 *  **AspNetUsers**
 
    * Адрес эл. почты
 
-   * NormalizedEmail
+   * нормализедемаил
 
-   * NormalizedUserName
+   * нормализедусернаме
 
    * UserName
 
-Не удалось внести это изменение приведет к следующее исключение при первоначальной миграции применяется к базе данных.
+Если не выполнить это изменение, при первоначальной миграции к базе данных будет получено следующее исключение.
 
-    System.Data.SqlClient.SqlException (0x80131904): Column 'NormalizedName' in table 'AspNetRoles' is of a type that is invalid for use as a key column in an index.
+```console
+System.Data.SqlClient.SqlException (0x80131904): Column 'NormalizedName' in table 'AspNetRoles' is of a type that is invalid for use as a key column in an index.
+```
 
-## <a name="net-core-remove-imports-in-projectjson"></a>.NET core: Удаление «import» в project.json
+## <a name="net-core-remove-imports-in-projectjson"></a>.NET Core: Удаление "Imports" в Project. JSON
 
-Если вы для .NET Core с помощью версии-кандидата 2, необходимо добавить `imports` в файл project.json в качестве временного решения для некоторых зависимостей EF Core не поддерживает .NET Standard. Они могут быть удален.
+Если вы намерены ориентироваться на .NET Core с RC2, вам нужно было добавить `imports` в Project. JSON в качестве временного решения для некоторых зависимостей EF Core, не поддерживающих .NET Standard. Теперь их можно удалить.
 
 ``` json
 {
@@ -70,17 +72,19 @@ ms.locfileid: "42998323"
 ```
 
 > [!NOTE]  
-> Начиная с версии 1.0 RTM, [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core) больше не поддерживает `project.json` или разработки приложений .NET Core с помощью Visual Studio 2015. Корпорация Майкрософт рекомендует [выполнить миграцию project.json в формат csproj](https://docs.microsoft.com/dotnet/articles/core/migration/). Если вы используете Visual Studio, мы рекомендуем обновить до [Visual Studio 2017](https://www.visualstudio.com/downloads/).
+> Начиная с версии 1,0 RTM, [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core) больше не поддерживает `project.json` или разработка приложений .NET Core с помощью Visual Studio 2015. Корпорация Майкрософт рекомендует [выполнить миграцию project.json в формат csproj](https://docs.microsoft.com/dotnet/articles/core/migration/). При использовании Visual Studio рекомендуется выполнить обновление до [Visual studio 2017](https://www.visualstudio.com/downloads/).
 
-## <a name="uwp-add-binding-redirects"></a>UWP: Добавить переадресации привязок
+## <a name="uwp-add-binding-redirects"></a>UWP Добавить перенаправления привязок
 
-При попытке выполнения команд EF на результатов проектов универсальной платформы Windows (UWP) следующая ошибка:
+Попытка выполнить команды EF в проектах универсальная платформа Windows (UWP) приводит к следующей ошибке:
 
-    System.IO.FileLoadException: Could not load file or assembly 'System.IO.FileSystem.Primitives, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference.
+```console
+System.IO.FileLoadException: Could not load file or assembly 'System.IO.FileSystem.Primitives, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference.
+```
 
-Необходимо вручную добавить перенаправления привязки в проект универсальной платформы Windows. Создайте файл с именем `App.config` в проекте корневую папку и добавьте перенаправления правильные версии сборок.
+Необходимо вручную добавить перенаправления привязок в проект UWP. Создайте файл с именем `App.config` в корневой папке проекта и добавьте перенаправления к правильным версиям сборки.
 
-``` xml
+```xml
 <configuration>
  <runtime>
    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">

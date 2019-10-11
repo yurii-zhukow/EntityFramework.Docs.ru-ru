@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 01/07/2019
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: 43b98c1f09a89f7e5451e28cbf2f78a2cb1040e5
-ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
+ms.openlocfilehash: 0c9671eb77181d85cd493341cd1abf842d13fb0e
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921765"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181271"
 ---
 # <a name="ef-core-tools--extensions"></a>Инструменты и расширения EF Core
 
@@ -54,7 +54,7 @@ CatFactory — это механизм формирования шаблоно�
 
 Entity Framework Core Generator (efg) — это средство командной строки .NET Core, которое позволяет создавать модели EF Core на основе существующей базы данных, как и `dotnet ef dbcontext scaffold`, но также поддерживает безопасное [повторное создание кода](https://efg.loresoft.com/en/latest/regeneration/) путем замены регионов или путем синтаксического анализа файлов сопоставления. Средство поддерживает формирование моделей представлений, проверку и код средства сопоставления объектов. 
 
-[Руководство](http://www.loresoft.com/Generate-ASP-NET-Web-API)
+[Руководство](https://www.loresoft.com/Generate-ASP-NET-Web-API)
 [Документация](https://efg.loresoft.com/en/latest/)
 
 ## <a name="extensions"></a>Расширения
