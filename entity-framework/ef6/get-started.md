@@ -3,12 +3,12 @@ title: Начало работы с платформой Entity Framework 6 �
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 66ce9113-81d2-480f-8c16-d00ec405b2f7
-ms.openlocfilehash: c25bf16bd2c39530d54b286b7743ceb83c941e4d
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: bf54879ea94e597dfeac3e4bd70571dad290dd9e
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489296"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181394"
 ---
 # <a name="get-started-with-entity-framework-6"></a>Начало работы с платформой Entity Framework 6
 
@@ -35,7 +35,7 @@ ms.locfileid: "45489296"
 
   Вы узнаете, как получить справку от экспертов и сможете сами отвечать на вопросы сообщества.
 
-* [Участие](http://github.com/aspnet/EntityFramework6/)
+* [Участие](https://github.com/aspnet/EntityFramework6/)
 
   В Entity Framework 6 используется модель разработки с открытым исходным кодом. Посетите репозиторий GitHub, чтобы узнать, что поможет улучшить EF.
 

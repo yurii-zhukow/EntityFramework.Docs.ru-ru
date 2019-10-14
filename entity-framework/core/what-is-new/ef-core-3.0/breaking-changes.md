@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 0dd4c5c4aa1a5d241fb48abf1372a678d0f7a7a3
-ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
+ms.openlocfilehash: f7f04efa8fb8ebc1eb06f256b8ccbd3110af47ab
+ms.sourcegitcommit: 705e898b4684e639a57c787fb45c932a27650c2d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813617"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71934886"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>Критические изменения в EF Core 3.0
 Указанные ниже изменения API и поведения могут нарушать работу существующих приложений при их обновлении до версии 3.0.0.
@@ -19,56 +19,58 @@ ms.locfileid: "71813617"
 
 | **Критические изменения**                                                                                               | **Влияние** |
 |:------------------------------------------------------------------------------------------------------------------|------------|
-| [Запросы LINQ больше не вычисляются на клиенте](#linq-queries-are-no-longer-evaluated-on-the-client)         | High       |
-| [EF Core 3.0 больше предназначен для .NET Standard 2.1, а не для .NET Standard 2.0](#netstandard21) | High      |
-| [Программа командной строки EF Core "dotnet ef" больше не входит в пакет SDK для .NET Core](#dotnet-ef) | High      |
-| [DetectChanges учитывает значения ключей, сформированные хранилищем](#dc) | High      |
-| [FromSql, ExecuteSql и ExecuteSqlAsync были переименованы](#fromsql) | High      |
-| [Типы запросов объединяются с типами сущностей](#qt) | High      |
-| [Entity Framework Core больше не является частью общей платформы ASP.NET Core](#no-longer) | Средняя      |
-| [Каскадные удаления теперь по умолчанию выполняются немедленно](#cascade) | Средняя      |
-| [Более четкая семантика DeleteBehavior.Restrict](#deletebehavior) | Средняя      |
-| [Изменение API конфигурации для отношений типа принадлежности](#config) | Средняя      |
-| [Каждое свойство использует создание независимых целочисленных ключей в памяти](#each) | Средняя      |
-| [Запросы без отслеживания больше не выполняют разрешение идентификаторов](#notrackingresolution) | Средняя      |
-| [Изменения API метаданных](#metadata-api-changes) | Средняя      |
-| [Изменения API метаданных с учетом поставщика](#provider) | Средняя      |
-| [Удален метод UseRowNumberForPaging](#urn) | Средняя      |
-| [Методы FromSql можно указать только в корневых элементах запроса](#fromsql) | Low      |
-| [~~Выполнение запроса с ведением журнала на уровне отладки~~ отменено](#qe) | Low      |
-| [Временные значения ключа больше не устанавливаются для экземпляров сущностей](#tkv) | Low      |
-| [Зависимые сущности, имеющие общую с субъектом таблицу, теперь являются необязательными](#de) | Low      |
-| [Все сущности, имеющие общую таблицу со столбцом маркера параллелизма, должны сопоставлять ее со свойством](#aes) | Low      |
-| [Наследуемые свойства из несопоставленных типов теперь сопоставляются с одним столбцом для всех производных типов](#ip) | Low      |
-| [Соглашение для свойства внешнего ключа больше не сопоставляет то же имя, что у свойства субъекта](#fkp) | Low      |
-| [Подключение к базе данных теперь закрывается, если оно больше не используется, до завершения TransactionScope](#dbc) | Low      |
-| [По умолчанию используются резервные поля](#backing-fields-are-used-by-default) | Low      |
-| [Исключение при обнаружении нескольких совместимых резервных полей](#throw-if-multiple-compatible-backing-fields-are-found) | Low      |
-| [Имена свойств, доступных только для полей, должны совпадать с именем поля](#field-only-property-names-should-match-the-field-name) | Low      |
-| [AddDbContext/AddDbContextPool больше не вызывает методы AddLogging и AddMemoryCache](#adddbc) | Low      |
-| [DbContext.Entry теперь выполняет локальную процедуру DetectChanges](#dbe) | Low      |
-| [Ключи массива строк и байтов не формируются клиентом по умолчанию](#string-and-byte-array-keys-are-not-client-generated-by-default) | Low      |
-| [ILoggerFactory теперь является службой с ограниченной областью действия](#ilf) | Low      |
-| [Прокси с отложенной загрузкой больше не предполагают полную загрузку свойств навигации](#lazy-loading-proxies-no-longer-assume-navigation-properties-are-fully-loaded) | Low      |
-| [Создание слишком многих внутренних поставщиков служб теперь по умолчанию является ошибкой](#excessive-creation-of-internal-service-providers-is-now-an-error-by-default) | Low      |
-| [Новое поведение для вызова HasOne/HasMany с одной строкой](#nbh) | Low      |
-| [Тип возвращаемого значения для нескольких асинхронных методов изменен с Task на ValueTask](#rtnt) | Low      |
-| [Заметка Relational:TypeMapping теперь является просто TypeMapping](#rtt) | Low      |
-| [ToTable для производного типа выдает исключение](#totable-on-a-derived-type-throws-an-exception) | Low      |
-| [EF Core больше не отправляет PRAGMA для принудительного применения внешних ключей SQLite](#pragma) | Low      |
-| [Теперь Microsoft.EntityFrameworkCore.Sqlite зависит от SQLitePCLRaw.bundle_e_sqlite3](#sqlite3) | Low      |
-| [Теперь значения Guid хранятся в SQLite в виде значений типа TEXT](#guid) | Low      |
-| [Теперь значения типа Char хранятся в SQLite в виде значений типа TEXT](#char) | Low      |
-| [Идентификаторы миграции теперь создаются с использованием календаря инвариантных языка и региональных параметров](#migid) | Low      |
-| [Сведения о расширении и его метаданные были удалены из интерфейса IDbContextOptionsExtension](#xinfo) | Low      |
-| [Оператор LogQueryPossibleExceptionWithAggregateOperator был переименован](#lqpe) | Low      |
-| [Уточнение API для имен ограничений внешнего ключа](#clarify) | Low      |
-| [Методы IRelationalDatabaseCreator.HasTables/HasTablesAsync стали общедоступными](#irdc2) | Low      |
-| [Microsoft.EntityFrameworkCore.Design теперь является пакетом DevelopmentDependency](#dip) | Low      |
-| [Библиотека SQLitePCL.raw обновлена до версии 2.0.0](#SQLitePCL) | Low      |
-| [Обновление NetTopologySuite до версии 2.0.0](#NetTopologySuite) | Low      |
-| [Множество неоднозначных связей со ссылкой на себя теперь требуют настройки](#mersa) | Low      |
-| [DbFunction.Schema в виде нулевой или пустой строки выполняет настройку для включения в схему по умолчанию для модели](#udf-empty-string) | Low      |
+| [Запросы LINQ больше не вычисляются на клиенте](#linq-queries-are-no-longer-evaluated-on-the-client)         | Высокий       |
+| [EF Core 3.0 больше предназначен для .NET Standard 2.1, а не для .NET Standard 2.0](#netstandard21) | Высокий      |
+| [Программа командной строки EF Core "dotnet ef" больше не входит в пакет SDK для .NET Core](#dotnet-ef) | Высокий      |
+| [DetectChanges учитывает значения ключей, сформированные хранилищем](#dc) | Высокий      |
+| [FromSql, ExecuteSql и ExecuteSqlAsync были переименованы](#fromsql) | Высокий      |
+| [Типы запросов объединяются с типами сущностей](#qt) | Высокий      |
+| [Entity Framework Core больше не является частью общей платформы ASP.NET Core](#no-longer) | Средний      |
+| [Каскадные удаления теперь по умолчанию выполняются немедленно](#cascade) | Средний      |
+| [Безотложная загрузка связанных сущностей теперь происходит в одном запросе](#eager-loading-single-query) | Средний      |
+| [Более четкая семантика DeleteBehavior.Restrict](#deletebehavior) | Средний      |
+| [Изменение API конфигурации для отношений типа принадлежности](#config) | Средний      |
+| [Каждое свойство использует создание независимых целочисленных ключей в памяти](#each) | Средний      |
+| [Запросы без отслеживания больше не выполняют разрешение идентификаторов](#notrackingresolution) | Средний      |
+| [Изменения API метаданных](#metadata-api-changes) | Средний      |
+| [Изменения API метаданных с учетом поставщика](#provider) | Средний      |
+| [Удален метод UseRowNumberForPaging](#urn) | Средний      |
+| [Метод FromSql не поддерживает составление при использовании с хранимой процедурой](#fromsqlsproc) | Средний      |
+| [Методы FromSql можно указать только в корневых элементах запроса](#fromsql) | Низкий      |
+| [~~Выполнение запроса с ведением журнала на уровне отладки~~ отменено](#qe) | Низкий      |
+| [Временные значения ключа больше не устанавливаются для экземпляров сущностей](#tkv) | Низкий      |
+| [Зависимые сущности, имеющие общую с субъектом таблицу, теперь являются необязательными](#de) | Низкий      |
+| [Все сущности, имеющие общую таблицу со столбцом маркера параллелизма, должны сопоставлять ее со свойством](#aes) | Низкий      |
+| [Наследуемые свойства из несопоставленных типов теперь сопоставляются с одним столбцом для всех производных типов](#ip) | Низкий      |
+| [Соглашение для свойства внешнего ключа больше не сопоставляет то же имя, что у свойства субъекта](#fkp) | Низкий      |
+| [Подключение к базе данных теперь закрывается, если оно больше не используется, до завершения TransactionScope](#dbc) | Низкий      |
+| [По умолчанию используются резервные поля](#backing-fields-are-used-by-default) | Низкий      |
+| [Исключение при обнаружении нескольких совместимых резервных полей](#throw-if-multiple-compatible-backing-fields-are-found) | Низкий      |
+| [Имена свойств, доступных только для полей, должны совпадать с именем поля](#field-only-property-names-should-match-the-field-name) | Низкий      |
+| [AddDbContext/AddDbContextPool больше не вызывает методы AddLogging и AddMemoryCache](#adddbc) | Низкий      |
+| [DbContext.Entry теперь выполняет локальную процедуру DetectChanges](#dbe) | Низкий      |
+| [Ключи массива строк и байтов не формируются клиентом по умолчанию](#string-and-byte-array-keys-are-not-client-generated-by-default) | Низкий      |
+| [ILoggerFactory теперь является службой с ограниченной областью действия](#ilf) | Низкий      |
+| [Прокси с отложенной загрузкой больше не предполагают полную загрузку свойств навигации](#lazy-loading-proxies-no-longer-assume-navigation-properties-are-fully-loaded) | Низкий      |
+| [Создание слишком многих внутренних поставщиков служб теперь по умолчанию является ошибкой](#excessive-creation-of-internal-service-providers-is-now-an-error-by-default) | Низкий      |
+| [Новое поведение для вызова HasOne/HasMany с одной строкой](#nbh) | Низкий      |
+| [Тип возвращаемого значения для нескольких асинхронных методов изменен с Task на ValueTask](#rtnt) | Низкий      |
+| [Заметка Relational:TypeMapping теперь является просто TypeMapping](#rtt) | Низкий      |
+| [ToTable для производного типа выдает исключение](#totable-on-a-derived-type-throws-an-exception) | Низкий      |
+| [EF Core больше не отправляет PRAGMA для принудительного применения внешних ключей SQLite](#pragma) | Низкий      |
+| [Теперь Microsoft.EntityFrameworkCore.Sqlite зависит от SQLitePCLRaw.bundle_e_sqlite3](#sqlite3) | Низкий      |
+| [Теперь значения Guid хранятся в SQLite в виде значений типа TEXT](#guid) | Низкий      |
+| [Теперь значения типа Char хранятся в SQLite в виде значений типа TEXT](#char) | Низкий      |
+| [Идентификаторы миграции теперь создаются с использованием календаря инвариантных языка и региональных параметров](#migid) | Низкий      |
+| [Сведения о расширении и его метаданные были удалены из интерфейса IDbContextOptionsExtension](#xinfo) | Низкий      |
+| [Оператор LogQueryPossibleExceptionWithAggregateOperator был переименован](#lqpe) | Низкий      |
+| [Уточнение API для имен ограничений внешнего ключа](#clarify) | Низкий      |
+| [Методы IRelationalDatabaseCreator.HasTables/HasTablesAsync стали общедоступными](#irdc2) | Низкий      |
+| [Microsoft.EntityFrameworkCore.Design теперь является пакетом DevelopmentDependency](#dip) | Низкий      |
+| [Библиотека SQLitePCL.raw обновлена до версии 2.0.0](#SQLitePCL) | Низкий      |
+| [Обновление NetTopologySuite до версии 2.0.0](#NetTopologySuite) | Низкий      |
+| [Множество неоднозначных связей со ссылкой на себя теперь требуют настройки](#mersa) | Низкий      |
+| [DbFunction.Schema в виде нулевой или пустой строки выполняет настройку для включения в схему по умолчанию для модели](#udf-empty-string) | Низкий      |
 
 ### <a name="linq-queries-are-no-longer-evaluated-on-the-client"></a>Запросы LINQ больше не вычисляются на клиенте
 
@@ -209,6 +211,35 @@ context.Products.FromSqlInterpolated(
 **Решение проблемы**
 
 Перейдите на использование новых имен методов.
+
+<a name="fromsqlsproc"></a>
+### <a name="fromsql-method-when-used-with-stored-procedure-cannot-be-composed"></a>Метод FromSql не поддерживает составление при использовании с хранимой процедурой
+
+[Отслеживание вопроса № 15392](https://github.com/aspnet/EntityFrameworkCore/issues/15392)
+
+**Старое поведение**
+
+До версии EF Core 3.0 метод FromSql пытался определить, можно ли выполнить составление для переданного SQL-запроса. Если SQL-запрос не допускал составления, как в случае с хранимой процедурой, вычисление производилось на стороне клиента. В случае с приведенным ниже запросом хранимая процедура выполнялась на сервере, а метод FirstOrDefault — на стороне клиента.
+
+```C#
+context.Products.FromSqlRaw("[dbo].[Ten Most Expensive Products]").FirstOrDefault();
+```
+
+**Новое поведение**
+
+Начиная с версии 3.0 платформа EF Core не пытается анализировать код SQL. Поэтому если вы выполняете составление после метода FromSqlRaw или FromSqlInterpolated, EF Core составляет SQL-запрос, вызывая вложенный запрос. При использовании хранимой процедуры с составлением вы получите исключение, вызванное недопустимым синтаксисом SQL.
+
+**Причина**
+
+EF Core 3.0 не поддерживает автоматическое вычисление на стороне клиента, так как оно было подвержено ошибкам, как описано [здесь](#linq-queries-are-no-longer-evaluated-on-the-client).
+
+**Предотвращение**
+
+Если вы используете хранимую процедуру в методе FromSqlRaw или FromSqlInterpolated, то знаете, что составление для нее невозможно, поэтому вы можете добавить __AsEnumerable или AsAsyncEnumerable__ сразу после вызова метода FromSql, чтобы избежать составления на стороне сервера.
+
+```C#
+context.Products.FromSqlRaw("[dbo].[Ten Most Expensive Products]").AsEnumerable().FirstOrDefault();
+```
 
 <a name="fromsql"></a>
 
@@ -366,6 +397,29 @@ public string Id { get; set; }
 context.ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
 context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 ```
+<a name="eager-loading-single-query"></a>
+### <a name="eager-loading-of-related-entities-now-happens-in-a-single-query"></a>Безотложная загрузка связанных сущностей теперь происходит в одном запросе
+
+[Отслеживание вопроса № 18022](https://github.com/aspnet/EntityFrameworkCore/issues/18022)
+
+**Старое поведение**
+
+До версии 3.0 безотложная загрузка навигаций по коллекциям с помощью операторов `Include` приводила к созданию нескольких запросов к реляционной базе данных, по одной для каждого связанного типа сущности.
+
+**Новое поведение**
+
+Начиная с версии 3.0 платформа EF Core создает один запрос с соединениями к реляционным базам данных.
+
+**Причина**
+
+Отправка нескольких запросов для реализации одного запроса LINQ приводила ко множеству проблем, включая снижение производительности из-за необходимости нескольких циклов обращения к базе данных и проблем с согласованностью данных, так как при каждом запросе состояние базы данных могло быть разным.
+
+**Решение проблемы**
+
+Хотя технически это изменение не является критическим, оно может существенно повлиять на производительность приложения в случае, если один запрос содержит большое число операторов `Include` с навигациями по коллекциям. Дополнительные сведения и указания по повышению эффективности запросов см. в [этом комментарии](https://github.com/aspnet/EntityFrameworkCore/issues/18022#issuecomment-537219137).
+
+**
+
 <a name="deletebehavior"></a>
 ### <a name="deletebehaviorrestrict-has-cleaner-semantics"></a>более четкая семантика DeleteBehavior.Restrict
 
