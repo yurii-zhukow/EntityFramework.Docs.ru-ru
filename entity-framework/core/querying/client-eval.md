@@ -4,12 +4,12 @@ author: smitpatel
 ms.date: 10/03/2019
 ms.assetid: 8b6697cc-7067-4dc2-8007-85d80503d123
 uid: core/querying/client-eval
-ms.openlocfilehash: 3d70324f0b57a0ea9b165b5140a2154001c326f4
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 5cfb05041f04246712fb699f58b407f70a75ce92
+ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181902"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72445965"
 ---
 # <a name="client-vs-server-evaluation"></a>Выполнение в клиенте и на сервере
 
@@ -18,10 +18,10 @@ ms.locfileid: "72181902"
 > [!NOTE]
 > До версии 3.0 платформа Entity Framework Core поддерживала вычисление любой части запроса на стороне клиента. Дополнительные сведения см. в разделе [Предыдущие версии](#previous-versions).
 
-## <a name="client-evaluation-in-the-top-level-projection"></a>Вычисление на стороне клиента в проекции верхнего уровня
-
 > [!TIP]
 > Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) из репозитория GitHub.
+
+## <a name="client-evaluation-in-the-top-level-projection"></a>Вычисление на стороне клиента в проекции верхнего уровня
 
 В приведенном ниже примере вспомогательный метод используется для стандартизации URL-адресов блогов, которые возвращаются из базы данных SQL Server. Так как поставщик SQL Server не знает, как реализован этот метод, его невозможно преобразовать в SQL. Все остальные аспекты запроса выполняются в базе данных, но передача возвращаемого `URL` с помощью этого метода выполняется в клиенте.
 
