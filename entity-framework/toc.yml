@@ -175,22 +175,24 @@
           items:
             - name: Обзор
               href: core/querying/index.md
-            - name: Загрузка связанных данных
-              href: core/querying/related-data.md
             - name: Выполнение в клиенте и на сервере
               href: core/querying/client-eval.md
             - name: Сравнение запросов с отслеживанием и без него
               href: core/querying/tracking.md
-            - name: Необработанные SQL-запросы
-              href: core/querying/raw-sql.md
+            - name: Сложные операторы запросов
+              href: core/querying/complex-query-operators.md
+            - name: Загрузка связанных данных
+              href: core/querying/related-data.md
             - name: Асинхронные запросы
               href: core/querying/async.md
-            - name: Принцип работы запроса
-              href: core/querying/how-query-works.md
+            - name: Необработанные SQL-запросы
+              href: core/querying/raw-sql.md
             - name: Глобальные фильтры запросов
               href: core/querying/filters.md
             - name: Теги запросов
               href: core/querying/tags.md
+            - name: Принцип работы запроса
+              href: core/querying/how-query-works.md
         - name: Сохранение данных
           items:
             - name: Обзор
