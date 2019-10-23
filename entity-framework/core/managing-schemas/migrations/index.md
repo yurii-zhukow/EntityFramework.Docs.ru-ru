@@ -4,15 +4,14 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: ffa9a34f13ab29f0ba93f9fd1f469398630604ce
-ms.sourcegitcommit: d01fc19aa42ca34c3bebccbc96ee26d06fcecaa2
+ms.openlocfilehash: e9c4013d17a2d41772822f77b3ceba15702ffc48
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71005460"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72812062"
 ---
-<a name="migrations"></a>Миграции
-==========
+# <a name="migrations"></a>Миграции
 
 Модель данных в процессе разработки может измениться и перестанет соответствовать базе данных. Вы всегда можете удалить базу данных, и EF создаст для вас новую версию, в точности соответствующую модели, но такая процедура приводит к потере текущих данных. Функция миграции в EF Core позволяет последовательно применять изменения схемы к базе данных, чтобы синхронизировать ее с моделью данных в приложении без потери существующих данных.
 
@@ -29,21 +28,21 @@ ms.locfileid: "71005460"
 > [!TIP]
 > Если `DbContext` находится не в той же сборке, что и начальный проект, можно явным образом указать целевой и начальный проекты в [средствах консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell#target-and-startup-project) или в [средствах .NET Core CLI](xref:core/miscellaneous/cli/dotnet#target-project-and-startup-project).
 
-<a name="install-the-tools"></a>Установка инструментов
------------------
+## <a name="install-the-tools"></a>Установка инструментов
 
 Установите [средства командной строки](xref:core/miscellaneous/cli/index).
+
 * Для Visual Studio мы рекомендуем [Инструменты консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell).
 * Для других сред разработки выберите [Средства интерфейса командной строки .NET Core](xref:core/miscellaneous/cli/dotnet).
 
-<a name="create-a-migration"></a>Создание миграции
-------------------
+## <a name="create-a-migration"></a>Создание миграции
 
 После того, как вы [определите начальную модель](xref:core/modeling/index), можно переходить к созданию базы данных. Чтобы добавить первоначальную миграцию, выполните следующую команду.
 
 ``` powershell
 Add-Migration InitialCreate
 ```
+
 ``` Console
 dotnet ef migrations add InitialCreate
 ```
@@ -59,26 +58,26 @@ dotnet ef migrations add InitialCreate
 > [!TIP]
 > Вы можете свободно перемещать файлы миграций и изменять их пространство имен. Новые миграции создаются в виде элементов того же уровня, что и последняя миграция.
 
-<a name="update-the-database"></a>Обновление базы данных
--------------------
+## <a name="update-the-database"></a>Обновление базы данных
 
 После этого примените миграцию к базе данных, чтобы создать схему.
 
 ``` powershell
 Update-Database
 ```
+
 ``` Console
 dotnet ef database update
 ```
 
-<a name="customize-migration-code"></a>Настройка кода миграции
-------------------------
+## <a name="customize-migration-code"></a>Настройка кода миграции
 
 После внесения изменений в модель EF Core может нарушиться синхронизация схемы базы данных. Чтобы сделать ее актуальной, добавьте еще одну миграцию. Имя миграции можно использовать как сообщение фиксации в системе управления версиями. Например, вы можете выбрать имя *AddProductReviews*, если суть изменений заключается в создании нового класса сущностей для обзоров.
 
 ``` powershell
 Add-Migration AddProductReviews
 ```
+
 ``` Console
 dotnet ef migrations add AddProductReviews
 ```
@@ -133,6 +132,7 @@ migrationBuilder.DropColumn(
 ``` powershell
 Update-Database
 ```
+
 ``` Console
 dotnet ef database update
 ```
@@ -147,37 +147,40 @@ dotnet ef database update
 * Триггеры
 * Представления
 
-<a name="remove-a-migration"></a>Удаление миграции
-------------------
+## <a name="remove-a-migration"></a>Удаление миграции
+
 Иногда, добавив миграцию, вы понимаем, что нужно внести дополнительные изменения в модель EF Core перед ее применением. Для удаления последней миграции используйте приведенную ниже команду.
 
 ``` powershell
 Remove-Migration
 ```
+
 ``` Console
 dotnet ef migrations remove
 ```
 
 Удалив миграцию, вы можете внести в модель дополнительные изменения и снова добавить ее.
 
-<a name="revert-a-migration"></a>Отмена миграции
-------------------
+## <a name="revert-a-migration"></a>Отмена миграции
+
 Если вы уже применили одну миграцию для базы данных или несколько и хотите отменить их, можно использовать ту же команду, что и для применения миграций, но указав имя миграции, к которой надо откатить изменения.
 
 ``` powershell
 Update-Database LastGoodMigration
 ```
+
 ``` Console
 dotnet ef database update LastGoodMigration
 ```
 
-<a name="generate-sql-scripts"></a>Создание скриптов SQL
---------------------
+## <a name="generate-sql-scripts"></a>Создание скриптов SQL
+
 При отладке миграций или их развертывании в рабочей базе данных бывает полезно создать скрипт SQL. Такой скрипт можно дополнительно проверить на точность и настроить в соответствии с потребностями рабочей базы данных. Кроме того, его можно использовать в сочетании с технологией развертывания. Базовая команда имеет следующий вид.
 
 ``` powershell
 Script-Migration
 ```
+
 ``` Console
 dotnet ef migrations script
 ```
@@ -190,8 +193,8 @@ dotnet ef migrations script
 
 При необходимости можно создать **идемпотентный** скрипт. Он применяет миграции только в том случае, если они еще не были применены к базе данных. Это удобно, если точно неизвестно, какая последняя миграция была применена к базе данных, или вы развертываете несколько баз данных, каждая из которых может иметь отдельную миграцию.
 
-<a name="apply-migrations-at-runtime"></a>Применение миграции во время выполнения
----------------------------
+## <a name="apply-migrations-at-runtime"></a>Применение миграции во время выполнения
+
 Некоторым приложениям может потребоваться применить миграции во время выполнения — при запуске или первом выполнении. Для этого можно использовать метод `Migrate()`.
 
 Этот метод основан на службе `IMigrator`, которую можно применять в более сложных сценариях. Для доступа к нему используйте `myDbContext.GetInfrastructure().GetService<IMigrator>()`.
@@ -201,10 +204,10 @@ myDbContext.Database.Migrate();
 ```
 
 > [!WARNING]
+>
 > * Такой подход не является универсальным. Хотя он отлично подходит для приложений с локальной базой данных, большинству приложений требуется более надежная стратегия развертывания, такая как создание скриптов SQL.
 > * Не вызывайте `EnsureCreated()` перед `Migrate()`. `EnsureCreated()` обходит миграции, чтобы создать схему, что приводит к сбою `Migrate()`.
 
-<a name="next-steps"></a>Следующие шаги
-----------
+## <a name="next-steps"></a>Следующие шаги
 
 Дополнительные сведения можно найти по адресу: <xref:core/miscellaneous/cli/index>.
