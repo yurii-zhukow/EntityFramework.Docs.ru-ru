@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 2e007c82-c6e4-45bb-8129-851b79ec1a0a
 uid: core/providers/sql-server/index
-ms.openlocfilehash: f0aa290e8c5166c278f8c9782c4304de5e91f26b
-ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
+ms.openlocfilehash: 1e75bc4bf334b1a60d13a2ec9ef314e3afcf0273
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813505"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72812103"
 ---
 # <a name="microsoft-sql-server-ef-core-database-provider"></a>Поставщик базы данных Microsoft SQL Server EF Core
 
@@ -32,6 +32,9 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 ```
 
 ***
+
+> [!NOTE]
+> Начиная с версии 3.0.0,поставщик ссылается на Microsoft.Data.SqlClient (предыдущие версии зависят от System.Data.SqlClient). Если проект принимает прямую зависимость от SqlClient, убедитесь, что добавлена ссылка на правильный пакет.
 
 ## <a name="supported-database-engines"></a>Поддерживаемые ядра СУБД
 

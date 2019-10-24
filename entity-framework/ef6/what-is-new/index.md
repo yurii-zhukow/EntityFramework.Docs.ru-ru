@@ -4,12 +4,12 @@ author: divega
 ms.date: 09/12/2019
 ms.assetid: 41d1f86b-ce66-4bf2-8963-48514406fb4c
 uid: ef6/what-is-new/index
-ms.openlocfilehash: c49f4cba0066d1e218f11c3959d96f9cafa913f4
-ms.sourcegitcommit: 7bc43f21e7bdd64926314ea949aae689f1911956
+ms.openlocfilehash: 9daae787d0cec0ca536413e6263bb363ba76ff2c
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266779"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72812134"
 ---
 # <a name="whats-new-in-ef6"></a>Новые возможности EF6
 
@@ -25,7 +25,7 @@ ms.locfileid: "71266779"
   - Теперь пакет Entity Framework можно использовать для .NET Standard 2.1 наряду с .NET Framework 4.x.
   - Это означает, что платформа EF 6.3 является кроссплатформенной и поддерживается не только в Windows, но и в других операционных системах, таких как Linux и macOS.
   - Команды миграции были переписаны: теперь они поддерживают внепроцессное выполнение и проекты на базе пакетов SDK.
-- Включена поддержка SQL Server HierarchyId.
+- Поддержка HierarchyId SQL Server.
 - Улучшена совместимость с Roslyn и NuGet PackageReference.
 - Добавлена служебная программа `ef6.exe` для включения, добавления, создания скриптов и применения миграций из сборок. Это замена для `migrate.exe`.
 
