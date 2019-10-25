@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 690c7828cfe5019f4e7ae904c92430fab4726cb9
-ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
+ms.openlocfilehash: b2e3881e3454377dab7851cba999ed6b891def4e
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72446014"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72812122"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>Критические изменения в EF Core 3.0
 Указанные ниже изменения API и поведения могут нарушать работу существующих приложений при их обновлении до версии 3.0.0.
@@ -69,6 +69,7 @@ ms.locfileid: "72446014"
 | [Microsoft.EntityFrameworkCore.Design теперь является пакетом DevelopmentDependency](#dip) | Низкий      |
 | [Библиотека SQLitePCL.raw обновлена до версии 2.0.0](#SQLitePCL) | Низкий      |
 | [Обновление NetTopologySuite до версии 2.0.0](#NetTopologySuite) | Низкий      |
+| [Вместо System.Data.SqlClient используется Microsoft.Data.SqlClient](#SqlClient) | Низкий      |
 | [Множество неоднозначных связей со ссылкой на себя теперь требуют настройки](#mersa) | Низкий      |
 | [DbFunction.Schema в виде нулевой или пустой строки выполняет настройку для включения в схему по умолчанию для модели](#udf-empty-string) | Низкий      |
 
@@ -1626,6 +1627,29 @@ SQLitePCL.raw версии 2.0.0 включает некоторые крити
 **Решение проблемы**
 
 NetTopologySuite версии 2.0.0 включает некоторые критические изменения. Подробные сведения см. в [заметках о выпуске](https://www.nuget.org/packages/NetTopologySuite/2.0.0-pre001).
+
+<a name="SqlClient"></a>
+
+### <a name="microsoftdatasqlclient-is-used-instead-of-systemdatasqlclient"></a>Вместо System.Data.SqlClient используется Microsoft.Data.SqlClient
+
+[Отслеживание вопроса № 15636](https://github.com/aspnet/EntityFrameworkCore/issues/15636)
+
+**Старое поведение**
+
+Пакет Microsoft.EntityFrameworkCore.SqlServer ранее зависел от System.Data.SqlClient.
+
+**Новое поведение**
+
+Мы обновили пакет, и теперь он зависит от Microsoft.Data.SqlClient.
+
+**Причина**
+
+Microsoft.Data.SqlClient теперь является основным разрабатываемым драйвером для доступа к SQL Server вместо System.Data.SqlClient.
+Некоторые важные функции, такие как Always Encrypted, доступны только в Microsoft.Data.SqlClient.
+
+**Решение проблемы**
+
+Если код включает прямую зависимость от System.Data.SqlClient, необходимо изменить код так, чтобы он ссылался на Microsoft.Data.SqlClient. Поскольку API двух пакетов очень хорошо совместимы, достаточно изменить пакет и пространство имен.
 
 <a name="mersa"></a>
 
