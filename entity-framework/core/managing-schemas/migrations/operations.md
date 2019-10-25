@@ -1,30 +1,29 @@
 ---
-title: Операции пользовательских миграции — EF Core
+title: Операции с настраиваемыми миграциями — EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 11/07/2017
 uid: core/managing-schemas/migrations/operations
-ms.openlocfilehash: 93de6ee1b2eda1875188ace6eda299260fbcc1fe
-ms.sourcegitcommit: 082946dcaa1ee5174e692dbfe53adeed40609c6a
+ms.openlocfilehash: bd2bfdc24977a47eaf7a6756a88b758b563d818a
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51028087"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72812041"
 ---
-<a name="custom-migrations-operations"></a><span data-ttu-id="8305f-102">Миграция пользовательских операций</span><span class="sxs-lookup"><span data-stu-id="8305f-102">Custom Migrations Operations</span></span>
-============================
-<span data-ttu-id="8305f-103">MigrationBuilder API дает возможность выполнять различные виды операций во время миграции, но это далеко не исчерпывающий.</span><span class="sxs-lookup"><span data-stu-id="8305f-103">The MigrationBuilder API allows you to perform many different kinds of operations during a migration, but it's far from exhaustive.</span></span> <span data-ttu-id="8305f-104">Тем не менее API также является расширяемой, что позволяет определять собственные операции.</span><span class="sxs-lookup"><span data-stu-id="8305f-104">However, the API is also extensible allowing you to define your own operations.</span></span> <span data-ttu-id="8305f-105">Существует два способа для расширения API: с помощью `Sql()` метод, или определения пользовательских `MigrationOperation` объектов.</span><span class="sxs-lookup"><span data-stu-id="8305f-105">There are two ways to extend the API: Using the `Sql()` method, or by defining custom `MigrationOperation` objects.</span></span>
+# <a name="custom-migrations-operations"></a><span data-ttu-id="73e71-102">Операции пользовательской миграции</span><span class="sxs-lookup"><span data-stu-id="73e71-102">Custom Migrations Operations</span></span>
 
-<span data-ttu-id="8305f-106">Чтобы продемонстрировать, давайте взглянем на реализации операции, которая создает пользователя базы данных с помощью каждого подхода.</span><span class="sxs-lookup"><span data-stu-id="8305f-106">To illustrate, let's look at implementing an operation that creates a database user using each approach.</span></span> <span data-ttu-id="8305f-107">В нашей миграций нам нужно включить написание следующего кода:</span><span class="sxs-lookup"><span data-stu-id="8305f-107">In our migrations, we want to enable writing the following code:</span></span>
+<span data-ttu-id="73e71-103">API Мигратионбуилдер позволяет выполнять различные виды операций во время миграции, но это далеко не все.</span><span class="sxs-lookup"><span data-stu-id="73e71-103">The MigrationBuilder API allows you to perform many different kinds of operations during a migration, but it's far from exhaustive.</span></span> <span data-ttu-id="73e71-104">Однако API также является расширяемым, позволяя определять собственные операции.</span><span class="sxs-lookup"><span data-stu-id="73e71-104">However, the API is also extensible allowing you to define your own operations.</span></span> <span data-ttu-id="73e71-105">Существует два способа расширения API: с помощью метода `Sql()` или путем определения пользовательских объектов `MigrationOperation`.</span><span class="sxs-lookup"><span data-stu-id="73e71-105">There are two ways to extend the API: Using the `Sql()` method, or by defining custom `MigrationOperation` objects.</span></span>
+
+<span data-ttu-id="73e71-106">Чтобы проиллюстрировать это, давайте взглянем на реализацию операции, которая создает пользователя базы данных, используя каждый из подходов.</span><span class="sxs-lookup"><span data-stu-id="73e71-106">To illustrate, let's look at implementing an operation that creates a database user using each approach.</span></span> <span data-ttu-id="73e71-107">В наших переносах мы хотим включить написание следующего кода:</span><span class="sxs-lookup"><span data-stu-id="73e71-107">In our migrations, we want to enable writing the following code:</span></span>
 
 ``` csharp
 migrationBuilder.CreateUser("SQLUser1", "Password");
 ```
 
-<a name="using-migrationbuildersql"></a><span data-ttu-id="8305f-108">С помощью MigrationBuilder.Sql()</span><span class="sxs-lookup"><span data-stu-id="8305f-108">Using MigrationBuilder.Sql()</span></span>
-----------------------------
-<span data-ttu-id="8305f-109">Самый простой способ реализовать пользовательскую операцию, — определить метод расширения, который вызывает `MigrationBuilder.Sql()`.</span><span class="sxs-lookup"><span data-stu-id="8305f-109">The easiest way to implement a custom operation is to define an extension method that calls `MigrationBuilder.Sql()`.</span></span>
-<span data-ttu-id="8305f-110">Ниже приведен пример, который создает соответствующие Transact-SQL.</span><span class="sxs-lookup"><span data-stu-id="8305f-110">Here is an example that generates the appropriate Transact-SQL.</span></span>
+## <a name="using-migrationbuildersql"></a><span data-ttu-id="73e71-108">Использование Мигратионбуилдер. SQL ()</span><span class="sxs-lookup"><span data-stu-id="73e71-108">Using MigrationBuilder.Sql()</span></span>
+
+<span data-ttu-id="73e71-109">Самый простой способ реализовать пользовательскую операцию — определить метод расширения, который вызывает `MigrationBuilder.Sql()`.</span><span class="sxs-lookup"><span data-stu-id="73e71-109">The easiest way to implement a custom operation is to define an extension method that calls `MigrationBuilder.Sql()`.</span></span> <span data-ttu-id="73e71-110">Ниже приведен пример, в котором создается соответствующий Transact-SQL.</span><span class="sxs-lookup"><span data-stu-id="73e71-110">Here is an example that generates the appropriate Transact-SQL.</span></span>
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -34,7 +33,7 @@ static MigrationBuilder CreateUser(
     => migrationBuilder.Sql($"CREATE USER {name} WITH PASSWORD '{password}';");
 ```
 
-<span data-ttu-id="8305f-111">Если миграции необходима поддержка нескольких поставщиков базы данных, можно использовать `MigrationBuilder.ActiveProvider` свойство.</span><span class="sxs-lookup"><span data-stu-id="8305f-111">If your migrations need to support multiple database providers, you can use the `MigrationBuilder.ActiveProvider` property.</span></span> <span data-ttu-id="8305f-112">Ниже приведен пример, которые поддерживают Microsoft SQL Server и PostgreSQL.</span><span class="sxs-lookup"><span data-stu-id="8305f-112">Here's an example supporting both Microsoft SQL Server and PostgreSQL.</span></span>
+<span data-ttu-id="73e71-111">Если для миграции требуется поддержка нескольких поставщиков баз данных, можно использовать свойство `MigrationBuilder.ActiveProvider`.</span><span class="sxs-lookup"><span data-stu-id="73e71-111">If your migrations need to support multiple database providers, you can use the `MigrationBuilder.ActiveProvider` property.</span></span> <span data-ttu-id="73e71-112">Ниже приведен пример, поддерживающий как Microsoft SQL Server, так и PostgreSQL.</span><span class="sxs-lookup"><span data-stu-id="73e71-112">Here's an example supporting both Microsoft SQL Server and PostgreSQL.</span></span>
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -57,11 +56,11 @@ static MigrationBuilder CreateUser(
 }
 ```
 
-<span data-ttu-id="8305f-113">Этот подход работает, только если известно, чтобы каждый поставщик применения вашей пользовательской операции.</span><span class="sxs-lookup"><span data-stu-id="8305f-113">This approach only works if you know every provider where your custom operation will be applied.</span></span>
+<span data-ttu-id="73e71-113">Этот подход работает только в том случае, если вы знакомы с каждым поставщиком, к которому будет применена пользовательская операция.</span><span class="sxs-lookup"><span data-stu-id="73e71-113">This approach only works if you know every provider where your custom operation will be applied.</span></span>
 
-<a name="using-a-migrationoperation"></a><span data-ttu-id="8305f-114">С помощью MigrationOperation</span><span class="sxs-lookup"><span data-stu-id="8305f-114">Using a MigrationOperation</span></span>
----------------------------
-<span data-ttu-id="8305f-115">Для отделения пользовательской операции из SQL, можно определить собственные `MigrationOperation` для его отображения.</span><span class="sxs-lookup"><span data-stu-id="8305f-115">To decouple the custom operation from the SQL, you can define your own `MigrationOperation` to represent it.</span></span> <span data-ttu-id="8305f-116">Операция затем передается поставщику, чтобы можно было определить подходящий код SQL для создания.</span><span class="sxs-lookup"><span data-stu-id="8305f-116">The operation is then passed to the provider so it can determine the appropriate SQL to generate.</span></span>
+## <a name="using-a-migrationoperation"></a><span data-ttu-id="73e71-114">Использование Мигратионоператион</span><span class="sxs-lookup"><span data-stu-id="73e71-114">Using a MigrationOperation</span></span>
+
+<span data-ttu-id="73e71-115">Чтобы отделить пользовательскую операцию от SQL, можно определить собственный `MigrationOperation`, чтобы его представить.</span><span class="sxs-lookup"><span data-stu-id="73e71-115">To decouple the custom operation from the SQL, you can define your own `MigrationOperation` to represent it.</span></span> <span data-ttu-id="73e71-116">Затем операция передается поставщику, чтобы он мог определить соответствующий SQL.</span><span class="sxs-lookup"><span data-stu-id="73e71-116">The operation is then passed to the provider so it can determine the appropriate SQL to generate.</span></span>
 
 ``` csharp
 class CreateUserOperation : MigrationOperation
@@ -71,7 +70,7 @@ class CreateUserOperation : MigrationOperation
 }
 ```
 
-<span data-ttu-id="8305f-117">При таком подходе метод расширения просто нужно добавить одну из этих операций для `MigrationBuilder.Operations`.</span><span class="sxs-lookup"><span data-stu-id="8305f-117">With this approach, the extension method just needs to add one of these operations to `MigrationBuilder.Operations`.</span></span>
+<span data-ttu-id="73e71-117">При таком подходе методу расширения просто требуется добавить одну из этих операций в `MigrationBuilder.Operations`.</span><span class="sxs-lookup"><span data-stu-id="73e71-117">With this approach, the extension method just needs to add one of these operations to `MigrationBuilder.Operations`.</span></span>
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -90,7 +89,7 @@ static MigrationBuilder CreateUser(
 }
 ```
 
-<span data-ttu-id="8305f-118">Этот подход требует каждому поставщику, чтобы знать, как создавать код SQL для этой операции в их `IMigrationsSqlGenerator` службы.</span><span class="sxs-lookup"><span data-stu-id="8305f-118">This approach requires each provider to know how to generate SQL for this operation in their `IMigrationsSqlGenerator` service.</span></span> <span data-ttu-id="8305f-119">Ниже приведен пример переопределения генератор SQL Server для обработки новой операции.</span><span class="sxs-lookup"><span data-stu-id="8305f-119">Here is an example overriding the SQL Server's generator to handle the new operation.</span></span>
+<span data-ttu-id="73e71-118">Этот подход требует, чтобы каждый поставщик знал, как создать SQL для этой операции в своей службе `IMigrationsSqlGenerator`.</span><span class="sxs-lookup"><span data-stu-id="73e71-118">This approach requires each provider to know how to generate SQL for this operation in their `IMigrationsSqlGenerator` service.</span></span> <span data-ttu-id="73e71-119">Ниже приведен пример переопределения генератора SQL Server для управления новой операцией.</span><span class="sxs-lookup"><span data-stu-id="73e71-119">Here is an example overriding the SQL Server's generator to handle the new operation.</span></span>
 
 ``` csharp
 class MyMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator
@@ -135,7 +134,7 @@ class MyMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator
 }
 ```
 
-<span data-ttu-id="8305f-120">Замените обновленный службы генератор миграций sql по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="8305f-120">Replace the default migrations sql generator service with the updated one.</span></span>
+<span data-ttu-id="73e71-120">Замените службу генератора SQL по умолчанию новой.</span><span class="sxs-lookup"><span data-stu-id="73e71-120">Replace the default migrations sql generator service with the updated one.</span></span>
 
 ``` csharp
 protected override void OnConfiguring(DbContextOptionsBuilder options)
