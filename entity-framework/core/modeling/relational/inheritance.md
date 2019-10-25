@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 9a7c5488-aaf4-4b40-b1ff-f435ff30f6ec
 uid: core/modeling/relational/inheritance
-ms.openlocfilehash: a7fb19f9c86d1768967d172c006eb5d894254e0c
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: c660107619470a726fe13ad8eee2850749e6dcd9
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71196935"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72812091"
 ---
 # <a name="inheritance-relational-database"></a>Наследование (реляционная база данных)
 
@@ -99,7 +99,8 @@ modelBuilder.Entity<Blog>()
     .HasMaxLength(200);
 ```
 
-Дискриминатор также можно сопоставить с реальным свойством CLR в сущности. Например:
+Дискриминатор также можно сопоставить с реальным свойством CLR в сущности. Пример:
+
 ```C#
 class MyContext : DbContext
 {
@@ -126,6 +127,7 @@ public class RssBlog : Blog
 ```
 
 Объединяя эти две вещи, можно сопоставлять дискриминатор с реальным свойством и настраивать его:
+
 ```C#
 modelBuilder.Entity<Blog>(b =>
 {

@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: a628795e-64df-4f24-a5e8-76bc261e7ed8
 uid: core/modeling/backing-field
-ms.openlocfilehash: c3ca8bb97992c192672e8c2f2040b0de029df68d
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 288440a4494117fe59d27187e24424c4d2fd44ab
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197477"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72811876"
 ---
 # <a name="backing-fields"></a>Резервные поля
 
@@ -55,12 +55,8 @@ EF можно указать имя поля в `Property(...)` API. Если с
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/BackingFieldNoProperty.cs#Sample)]
 
-Можно также указать имя свойства, отличное от имени поля. Это имя затем используется при создании модели, особенно оно будет использоваться для имени столбца, сопоставленного с в базе данных.
-
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/BackingFieldConceptualProperty.cs#Sample)]
-
-Если в классе сущностей нет свойства, можно использовать `EF.Property(...)` метод в запросе LINQ для ссылки на свойство, которое концептуально является частью модели.
+Если в классе сущностей нет свойства, можно использовать метод `EF.Property(...)` в запросе LINQ для ссылки на свойство, которое концептуально является частью модели.
 
 ``` csharp
-var blogs = db.blogs.OrderBy(b => EF.Property<string>(b, "Url"));
+var blogs = db.blogs.OrderBy(b => EF.Property<string>(b, "_validatedUrl"));
 ```
