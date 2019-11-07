@@ -4,18 +4,18 @@ author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: b4ae13ae1b22bb78c2c0407c0b3da64ee12ff2c1
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: aeb3ed1af8725ed6f92e0c0ba022a89b651bff80
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181200"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655594"
 ---
 # <a name="installing-entity-framework-core"></a>Установка Entity Framework Core
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* EF Core — это библиотека [.NET Standard 2.1](/dotnet/standard/net-standard). Следовательно, для запуска EF Core требуется реализация .NET, которая поддерживает .NET Standard 2.1. На EF Core также могут ссылаться другие библиотеки .NET Standard 2.1. 
+* EF Core — это библиотека [.NET Standard 2.1](/dotnet/standard/net-standard). Следовательно, для запуска EF Core требуется реализация .NET, которая поддерживает .NET Standard 2.1. На EF Core также могут ссылаться другие библиотеки .NET Standard 2.1.
 
 * Например, EF Core можно использовать для разработки приложений, предназначенных для .NET Core. Для создания приложений .NET Core требуется [пакет SDK для .NET Core](https://dotnet.microsoft.com/download). При необходимости также можно использовать среду разработки, например [Visual Studio](https://visualstudio.microsoft.com/vs), [Visual Studio для Mac](https://visualstudio.microsoft.com/vs/mac) или [Visual Studio Code](https://code.visualstudio.com). Дополнительные сведения см. в разделе [Приступая к работе с .NET Core](/dotnet/core/get-started).
 
@@ -64,6 +64,7 @@ ms.locfileid: "72181200"
   ``` PowerShell  
   Install-Package Microsoft.EntityFrameworkCore.SqlServer
   ```
+
 * Чтобы обновить поставщик, используйте команду `Update-Package`.
 
 * Чтобы указать конкретную версию, используйте модификатор `-Version`. Например, чтобы установить пакеты EF Core 2.2.0, добавьте в команды `-Version 2.2.0`.
@@ -76,7 +77,7 @@ ms.locfileid: "72181200"
 
 Доступно два набора инструментов:
 
-* [Инструменты интерфейса командной строки (CLI)](xref:core/miscellaneous/cli/dotnet) .NET Core можно использовать в Windows, Linux и macOS. Эти команды начинаются с `dotnet ef`. 
+* [Инструменты интерфейса командной строки (CLI)](xref:core/miscellaneous/cli/dotnet) .NET Core можно использовать в Windows, Linux и macOS. Эти команды начинаются с `dotnet ef`.
 
 * [Инструменты консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell) работают в Visual Studio в Windows. Эти команды начинаются с глагола, например `Add-Migration`, `Update-Database`.
 
@@ -94,28 +95,28 @@ ms.locfileid: "72181200"
 
 Команды `dotnet ef` входят в текущие версии пакета SDK для .NET Core, но, чтобы включить их для конкретного проекта, нужно установить пакет `Microsoft.EntityFrameworkCore.Design`:
 
-``` Console 
-dotnet add package Microsoft.EntityFrameworkCore.Design 
-``` 
+``` Console
+dotnet add package Microsoft.EntityFrameworkCore.Design
+```
 
 Этот пакет автоматически включается в приложения ASP.NET Core.
 
-> [!IMPORTANT]      
+> [!IMPORTANT]
 > Всегда используйте версии пакетов инструментов, которые соответствуют основному номеру версии для пакетов среды выполнения.
 
 ### <a name="get-the-package-manager-console-tools"></a>Получение инструментов консоли диспетчера пакетов
 
 Чтобы получить инструменты консоли диспетчера пакетов для EF Core, установите пакет `Microsoft.EntityFrameworkCore.Tools`. Например, в Visual Studio:
 
-``` PowerShell  
+``` PowerShell
 Install-Package Microsoft.EntityFrameworkCore.Tools
-``` 
+```
 
 Этот пакет автоматически включается в приложения ASP.NET Core.
 
 ## <a name="upgrading-to-the-latest-ef-core"></a>Обновление до последней версии EF Core
 
-* Каждый раз при выпуске новой версии EF Core мы также выпускаем новую версию поставщиков, которые входят в проект EF Core, например Microsoft.EntityFrameworkCore.SqlServer, Microsoft.EntityFrameworkCore.Sqlite и Microsoft.EntityFrameworkCore.InMemory. Кроме того, можно просто обновить поставщик до новой версии, чтобы получить все улучшения. 
+* Каждый раз при выпуске новой версии EF Core мы также выпускаем новую версию поставщиков, которые входят в проект EF Core, например Microsoft.EntityFrameworkCore.SqlServer, Microsoft.EntityFrameworkCore.Sqlite и Microsoft.EntityFrameworkCore.InMemory. Кроме того, можно просто обновить поставщик до новой версии, чтобы получить все улучшения.
 
 * EF Core вместе с поставщиками SQL Server и поставщиками в памяти включены в текущие версии ASP.NET Core. Чтобы обновить существующее приложение до более новой версии EF Core, всегда обновляйте версию ASP.NET Core.
 
@@ -128,7 +129,7 @@ Install-Package Microsoft.EntityFrameworkCore.Tools
   * Пакеты поставщиков баз данных, используемые во время разработки, например `Microsoft.EntityFrameworkCore.SqlServer.Design`, больше не требуются и не поддерживаются в EF Core 2.0 и более поздних версиях, но они не удаляются автоматически при обновлении других пакетов.
 
   * Инструменты .NET CLI включены в пакет SDK для .NET версии 2.1, поэтому ссылку на этот пакет можно удалить из файла проекта:
-    ```xml
+
+    ``` xml
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     ```
-
