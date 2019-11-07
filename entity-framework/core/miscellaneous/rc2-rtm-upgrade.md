@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: c3c1940b-136d-45d8-aa4f-cb5040f8980a
 uid: core/miscellaneous/rc2-rtm-upgrade
-ms.openlocfilehash: e7f121d18931e26e7b5d11842da6da4a9b789efe
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 779caad7883d13684b389dab7515be44bc42e1ef
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181366"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655819"
 ---
 # <a name="upgrading-from-ef-core-10-rc2-to-rtm"></a>Обновление с EF Core 1,0 от RC2 до RTM
 
@@ -27,37 +27,30 @@ ms.locfileid: "72181366"
 
 ## <a name="existing-migrations-may-need-maxlength-added"></a>Для существующих миграций может потребоваться добавить maxLength
 
-В RC2 определение столбца в процессе миграции выглядит так: `table.Column<string>(nullable: true)`, а длина столбца была просмотрена в некоторых метаданных, хранимых в коде для миграции. В RTM длина теперь включается в шаблонный код `table.Column<string>(maxLength: 450, nullable: true)`.
+В RC2 определение столбца в процессе миграции выглядит так, как `table.Column<string>(nullable: true)`, а длина столбца была просмотрена в некоторых метаданных, которые хранятся в коде, который находится за миграцией. В RTM длина теперь включается в шаблонный код `table.Column<string>(maxLength: 450, nullable: true)`.
 
 Для всех существующих миграций, сформированных до использования RTM, не будет указан аргумент `maxLength`. Это означает, что будет использоваться максимальная длина, поддерживаемая базой данных (`nvarchar(max)` в SQL Server). Это может быть удобно для некоторых столбцов, но столбцы, которые являются частью ключа, внешнего ключа или индекса, должны быть обновлены для включения максимальной длины. По соглашению 450 — это максимальная длина, используемая для ключей, внешних ключей и индексированных столбцов. Если вы явно настроили длину в модели, вместо нее следует использовать эту длину.
 
-**ASP.NET Identity**
+### <a name="aspnet-identity"></a>ASP.NET Identity
 
-Это изменение влияет на проекты, использующие ASP.NET Identity и созданные из шаблона проекта предварительной версии RTM. Шаблон проекта включает миграцию, используемую для создания базы данных. Чтобы указать максимальную длину `256` для следующих столбцов, необходимо изменить эту миграцию.
+Это изменение влияет на проекты, использующие ASP.NET Identity и созданные из шаблона проекта предварительной версии RTM. Шаблон проекта включает миграцию, используемую для создания базы данных. Эту миграцию необходимо изменить, чтобы указать максимальную длину `256` для следующих столбцов.
 
-*  **AspNetRoles**
-
-    * name
-
-    * нормализеднаме
-
-*  **AspNetUsers**
-
-   * Адрес эл. почты
-
-   * нормализедемаил
-
-   * нормализедусернаме
-
-   * UserName
+* **аспнетролес**
+  * Название
+  * нормализеднаме
+* **AspNetUsers**
+  * Адрес эл. почты
+  * нормализедемаил
+  * нормализедусернаме
+  * UserName
 
 Если не выполнить это изменение, при первоначальной миграции к базе данных будет получено следующее исключение.
 
-```console
+``` Console
 System.Data.SqlClient.SqlException (0x80131904): Column 'NormalizedName' in table 'AspNetRoles' is of a type that is invalid for use as a key column in an index.
 ```
 
-## <a name="net-core-remove-imports-in-projectjson"></a>.NET Core: Удаление "Imports" в Project. JSON
+## <a name="net-core-remove-imports-in-projectjson"></a>.NET Core: удаление "Imports" в Project. JSON
 
 Если вы намерены ориентироваться на .NET Core с RC2, вам нужно было добавить `imports` в Project. JSON в качестве временного решения для некоторых зависимостей EF Core, не поддерживающих .NET Standard. Теперь их можно удалить.
 
@@ -72,13 +65,13 @@ System.Data.SqlClient.SqlException (0x80131904): Column 'NormalizedName' in tabl
 ```
 
 > [!NOTE]  
-> Начиная с версии 1,0 RTM, [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core) больше не поддерживает `project.json` или разработка приложений .NET Core с помощью Visual Studio 2015. Корпорация Майкрософт рекомендует [выполнить миграцию project.json в формат csproj](https://docs.microsoft.com/dotnet/articles/core/migration/). При использовании Visual Studio рекомендуется выполнить обновление до [Visual studio 2017](https://www.visualstudio.com/downloads/).
+> Начиная с версии 1,0 RTM, [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core) больше не поддерживает `project.json` или разработку приложений .NET Core с помощью Visual Studio 2015. Корпорация Майкрософт рекомендует [выполнить миграцию project.json в формат csproj](https://docs.microsoft.com/dotnet/articles/core/migration/). При использовании Visual Studio рекомендуется выполнить обновление до [Visual studio 2017](https://www.visualstudio.com/downloads/).
 
-## <a name="uwp-add-binding-redirects"></a>UWP Добавить перенаправления привязок
+## <a name="uwp-add-binding-redirects"></a>UWP: Добавление перенаправлений привязок
 
 Попытка выполнить команды EF в проектах универсальная платформа Windows (UWP) приводит к следующей ошибке:
 
-```console
+```output
 System.IO.FileLoadException: Could not load file or assembly 'System.IO.FileSystem.Primitives, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference.
 ```
 

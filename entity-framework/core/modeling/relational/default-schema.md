@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: e6e58473-9f5e-4a1f-ac0f-b87d2cbb667e
 uid: core/modeling/relational/default-schema
-ms.openlocfilehash: ae903ed7200859430aecc55073651236759bc6ce
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 1579fed007997aa4cf49b4c1290aee86c81c0000
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197131"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655971"
 ---
 # <a name="default-schema"></a>Схема по умолчанию
 
@@ -20,7 +20,7 @@ ms.locfileid: "71197131"
 
 ## <a name="conventions"></a>Соглашения
 
-По соглашению поставщик базы данных будет выбирать наиболее подходящую схему по умолчанию. Например, Microsoft SQL Server будет использовать `dbo` схему, а SQLite не будет использовать схему (поскольку схемы не поддерживаются в SQLite).
+По соглашению поставщик базы данных будет выбирать наиболее подходящую схему по умолчанию. Например, Microsoft SQL Server будет использовать схему `dbo`, а SQLite не будет использовать схему (поскольку схемы не поддерживаются в SQLite).
 
 ## <a name="data-annotations"></a>Заметки к данным
 
@@ -30,15 +30,4 @@ ms.locfileid: "71197131"
 
 Для указания схемы по умолчанию можно использовать API Fluent.
 
-<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Relational/DefaultSchema.cs?highlight=7)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.HasDefaultSchema("blogging");
-    }
-}
-```
+[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/DefaultSchema.cs?name=DefaultSchema&highlight=7)]

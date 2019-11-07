@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 75369266-d2b9-4416-b118-ed238f81f599
 uid: core/modeling/shadow-properties
-ms.openlocfilehash: 5fdc4c50c295f73d0fa5eef3518adf4d3eb95599
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: ab57358dd247e32c4ca0f57d07b4cb98f2b85d29
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197699"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655953"
 ---
 # <a name="shadow-properties"></a>Свойства тени
 
@@ -23,7 +23,7 @@ ms.locfileid: "71197699"
 context.Entry(myBlog).Property("LastUpdated").CurrentValue = DateTime.Now;
 ```
 
-На теневые свойства можно ссылаться в запросах LINQ `EF.Property` с помощью статического метода.
+На теневые свойства в запросах LINQ можно ссылаться с помощью статического метода `EF.Property`.
 
 ``` csharp
 var blogs = context.Blogs
@@ -32,35 +32,11 @@ var blogs = context.Blogs
 
 ## <a name="conventions"></a>Соглашения
 
-Теневые свойства могут создаваться по соглашению при обнаружении связи, но в классе зависимой сущности не найдено свойство внешнего ключа. В этом случае будет введено свойство теневого внешнего ключа. Свойству теневого внешнего ключа будет присвоено имя `<navigation property name><principal key property name>` (Навигация по зависимой сущности, которая указывает на основную сущность, используется для именования). Если имя свойства ключа участника включает имя свойства навигации, то имя будет иметь `<principal key property name>`значение. Если в зависимой сущности нет свойства навигации, в его месте используется имя типа участника.
+Теневые свойства могут создаваться по соглашению при обнаружении связи, но в классе зависимой сущности не найдено свойство внешнего ключа. В этом случае будет введено свойство теневого внешнего ключа. Свойство теневого внешнего ключа будет называться `<navigation property name><principal key property name>` (Навигация по зависимой сущности, которая указывает на основную сущность, используется для именования). Если имя свойства ключа участника содержит имя свойства навигации, то имя будет просто `<principal key property name>`. Если в зависимой сущности нет свойства навигации, в его месте используется имя типа участника.
 
-Например, следующий листинг кода приведет `BlogId` `Post` к тому, что свойство Shadow будет введено в сущность.
+Например, приведенный ниже листинг кода приведет к тому, что в сущность `Post` будет введено свойство `BlogId` Shadow.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/Conventions/ShadowForeignKey.cs)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-    public DbSet<Post> Posts { get; set; }
-}
-
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-
-    public List<Post> Posts { get; set; }
-}
-
-public class Post
-{
-    public int PostId { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
-
-    public Blog Blog { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/ShadowForeignKey.cs?name=Conventions)]
 
 ## <a name="data-annotations"></a>Заметки к данным
 
@@ -68,26 +44,8 @@ public class Post
 
 ## <a name="fluent-api"></a>Текучий API
 
-Для настройки теневых свойств можно использовать API-интерфейс Fluent. После вызова перегрузки `Property` строки можно связать любой из вызовов конфигурации для других свойств.
+Для настройки теневых свойств можно использовать API-интерфейс Fluent. После вызова перегрузки строки `Property` можно связать любой из вызовов конфигурации для других свойств.
 
-Если имя, передаваемое в `Property` метод, совпадает с именем существующего свойства (теневого или определенного для класса сущностей), то код настроит это существующее свойство, а не создаст новое свойство Shadow.
+Если имя, передаваемое в метод `Property`, совпадает с именем существующего свойства (теневого или определенного для класса сущностей), то код настроит это существующее свойство, а не создаст новое свойство Shadow.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/ShadowProperty.cs?highlight=7,8)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Blog>()
-            .Property<DateTime>("LastUpdated");
-    }
-}
-
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ShadowProperty.cs?name=ShadowProperty&highlight=8)]

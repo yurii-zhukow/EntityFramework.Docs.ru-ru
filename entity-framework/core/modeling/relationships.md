@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 0ff736a3-f1b0-4b58-a49c-4a7094bd6935
 uid: core/modeling/relationships
-ms.openlocfilehash: 1e9c62bec47263ef452c7ac425a0bb446f9371d8
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 1e59ce9e19c12aa5564bc8467dcfcb3be8ee8996
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197649"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655678"
 ---
 # <a name="relationships"></a>Отношения
 
@@ -38,21 +38,21 @@ ms.locfileid: "71197649"
 
   * **Обратное свойство навигации:** При обсуждении определенного свойства навигации этот термин относится к свойству навигации на другом конце связи.
 
-В следующем листинге кода показана связь «один ко многим» `Blog` между и`Post`
+В следующем примере кода показана связь «один ко многим» между `Blog` и `Post`
 
-* `Post`является зависимой сущностью
+* `Post` является зависимой сущностью
 
-* `Blog`является основной сущностью
+* `Blog` является субъектом-участником
 
-* `Post.BlogId`является внешним ключом
+* `Post.BlogId` является внешним ключом
 
-* `Blog.BlogId`является основным ключом (в данном случае это первичный ключ, а не альтернативный ключ);
+* `Blog.BlogId` является основным ключом (в данном случае это первичный ключ, а не альтернативный ключ);
 
-* `Post.Blog`является свойством навигации по ссылке
+* `Post.Blog` является свойством навигации по ссылке
 
-* `Blog.Posts`— Это свойство навигации коллекции
+* `Blog.Posts` является свойством навигации коллекции
 
-* `Post.Blog`Свойство обратной навигации `Blog.Posts` (и наоборот)
+* `Post.Blog` является свойством обратной навигации `Blog.Posts` (и наоборот)
 
 [!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/Full.cs#Entities)]
 
@@ -69,7 +69,7 @@ ms.locfileid: "71197649"
 
 * Если между двумя типами обнаружена пара свойств навигации, они будут настроены как обратные свойства навигации одной и той же связи.
 
-* Если зависимая сущность содержит свойство с `<primary key property name>`именем `<navigation property name><primary key property name>`, или `<principal entity name><primary key property name>` , то оно будет настроено как внешний ключ.
+* Если зависимая сущность содержит свойство с именем `<primary key property name>`, `<navigation property name><primary key property name>`или `<principal entity name><primary key property name>` то оно будет настроено как внешний ключ.
 
 [!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/Full.cs?name=Entities&highlight=6,15,16)]
 
@@ -98,7 +98,7 @@ ms.locfileid: "71197649"
 
 ## <a name="data-annotations"></a>Заметки к данным
 
-Существуют две заметки к данным, которые можно использовать для настройки связей, `[ForeignKey]` и `[InverseProperty]`. Они доступны в `System.ComponentModel.DataAnnotations.Schema` пространстве имен.
+Существует две аннотации данных, которые можно использовать для настройки связей, `[ForeignKey]` и `[InverseProperty]`. Они доступны в пространстве имен `System.ComponentModel.DataAnnotations.Schema`.
 
 ### <a name="foreignkey"></a>[Фореигнкэй]
 
@@ -107,7 +107,7 @@ ms.locfileid: "71197649"
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Relationships/ForeignKey.cs?highlight=30)]
 
 > [!TIP]  
-> `[ForeignKey]` Заметку можно поместить в любое свойство навигации в связи. Не требуется переходить к свойству навигации в классе зависимой сущности.
+> `[ForeignKey]` заметку можно поместить в любое свойство навигации в связи. Не требуется переходить к свойству навигации в классе зависимой сущности.
 
 ### <a name="inverseproperty"></a>[Инверсепроперти]
 
@@ -117,13 +117,13 @@ ms.locfileid: "71197649"
 
 ## <a name="fluent-api"></a>Текучий API
 
-Чтобы настроить связь в API Fluent, начните с определения свойств навигации, составляющих связь. `HasOne`или `HasMany` определяет свойство навигации для типа сущности, на котором начинается настройка. Затем вы позвоните в `WithOne` цепочку или `WithMany` для поиска обратной навигации. `HasOne`/`WithOne`используются для свойств навигации по ссылке и `HasMany` / `WithMany` используются для свойств навигации по коллекциям.
+Чтобы настроить связь в API Fluent, начните с определения свойств навигации, составляющих связь. `HasOne` или `HasMany` определяет свойство навигации для типа сущности, на котором начинается настройка. Затем можно связать вызов `WithOne` или `WithMany`, чтобы обозначить обратную навигацию. `HasOne`/`WithOne` используются для свойств навигации по ссылке и `HasMany`/`WithMany` используются для свойств навигации по коллекциям.
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/NoForeignKey.cs?highlight=14-16)]
 
 ### <a name="single-navigation-property"></a>Одно свойство навигации
 
-Если у вас есть только одно свойство навигации, то существуют перегрузки `WithOne` без параметров и. `WithMany` Это указывает на то, что на другом конце связи имеется концептуальная ссылка или коллекция, но в классе сущностей не содержится свойство навигации.
+Если у вас есть только одно свойство навигации, то существуют перегрузки без параметров `WithOne` и `WithMany`. Это указывает на то, что на другом конце связи имеется концептуальная ссылка или коллекция, но в классе сущностей не содержится свойство навигации.
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/OneNavigation.cs?highlight=14-16)]
 
@@ -137,7 +137,7 @@ API-интерфейс Fluent можно использовать для нас�
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CompositeForeignKey.cs?highlight=20)]
 
-`HasForeignKey(...)` Чтобы настроить свойство теневого копирования в качестве внешнего ключа, можно использовать строку перегрузки в. Дополнительные сведения см. в разделе [Свойства тени](shadow-properties.md) . Рекомендуется явно добавить свойство Shadow в модель, прежде чем использовать ее как внешний ключ (как показано ниже).
+Можно использовать перегрузку строк `HasForeignKey(...)`, чтобы настроить свойство теневого копирования в качестве внешнего ключа (Дополнительные сведения см. в разделе [Свойства тени](shadow-properties.md) ). Рекомендуется явно добавить свойство Shadow в модель, прежде чем использовать ее как внешний ключ (как показано ниже).
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ShadowForeignKey.cs#Sample)]
 
@@ -151,83 +151,11 @@ API-интерфейс Fluent можно использовать для нас�
 
 Если требуется, чтобы внешний ключ ссылался на свойство, отличное от первичного ключа, можно использовать API Fluent, чтобы настроить свойство ключа субъекта для связи. Свойство, настраиваемое в качестве ключа участника, будет автоматически настроено в качестве альтернативного ключа (Дополнительные сведения см. в разделе [альтернативные ключи](alternate-keys.md) ).
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Relationships/PrincipalKey.cs?highlight=11)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Car> Cars { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<RecordOfSale>()
-            .HasOne(s => s.Car)
-            .WithMany(c => c.SaleHistory)
-            .HasForeignKey(s => s.CarLicensePlate)
-            .HasPrincipalKey(c => c.LicensePlate);
-    }
-}
-
-public class Car
-{
-    public int CarId { get; set; }
-    public string LicensePlate { get; set; }
-    public string Make { get; set; }
-    public string Model { get; set; }
-
-    public List<RecordOfSale> SaleHistory { get; set; }
-}
-
-public class RecordOfSale
-{
-    public int RecordOfSaleId { get; set; }
-    public DateTime DateSold { get; set; }
-    public decimal Price { get; set; }
-
-    public string CarLicensePlate { get; set; }
-    public Car Car { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/PrincipalKey.cs?name=PrincipalKey&highlight=11)]
 
 В следующем примере кода показано, как настроить составной ключ субъекта.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Relationships/CompositePrincipalKey.cs?highlight=11)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Car> Cars { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<RecordOfSale>()
-            .HasOne(s => s.Car)
-            .WithMany(c => c.SaleHistory)
-            .HasForeignKey(s => new { s.CarState, s.CarLicensePlate })
-            .HasPrincipalKey(c => new { c.State, c.LicensePlate });
-    }
-}
-
-public class Car
-{
-    public int CarId { get; set; }
-    public string State { get; set; }
-    public string LicensePlate { get; set; }
-    public string Make { get; set; }
-    public string Model { get; set; }
-
-    public List<RecordOfSale> SaleHistory { get; set; }
-}
-
-public class RecordOfSale
-{
-    public int RecordOfSaleId { get; set; }
-    public DateTime DateSold { get; set; }
-    public decimal Price { get; set; }
-
-    public string CarState { get; set; }
-    public string CarLicensePlate { get; set; }
-    public Car Car { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CompositePrincipalKey.cs?name=Composite&highlight=11)]
 
 > [!WARNING]  
 > Порядок указания свойств ключа субъекта должен совпадать с порядком, в котором они указаны для внешнего ключа.
@@ -236,39 +164,7 @@ public class RecordOfSale
 
 С помощью API-интерфейса Fluent можно настроить, является ли связь обязательной или необязательной. В конечном итоге это определяет, является ли свойство внешнего ключа обязательным или необязательным. Это наиболее полезно при использовании внешнего ключа теневого состояния. Если у вас есть свойство внешнего ключа в классе сущностей, обязательность связи определяется на основе того, является ли свойство внешнего ключа обязательным или необязательным (Дополнительные сведения см. в разделе [обязательные и необязательные свойства](required-optional.md) ).
 
-<!-- [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/Required.cs?highlight=11)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-    public DbSet<Post> Posts { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Post>()
-            .HasOne(p => p.Blog)
-            .WithMany(b => b.Posts)
-            .IsRequired();
-    }
-}
-
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-
-    public List<Post> Posts { get; set; }
-}
-
-public class Post
-{
-    public int PostId { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
-
-    public Blog Blog { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/Required.cs?name=Required&highlight=11)]
 
 ### <a name="cascade-delete"></a>Каскадное удаление
 
@@ -276,40 +172,7 @@ public class Post
 
 Подробное описание каждого варианта см. в разделе [каскадное удаление](../saving/cascade-delete.md) раздела сохранение данных.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Relationships/CascadeDelete.cs?highlight=11)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-    public DbSet<Post> Posts { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Post>()
-            .HasOne(p => p.Blog)
-            .WithMany(b => b.Posts)
-            .OnDelete(DeleteBehavior.Cascade);
-    }
-}
-
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-
-    public List<Post> Posts { get; set; }
-}
-
-public class Post
-{
-    public int PostId { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
-
-    public int? BlogId { get; set; }
-    public Blog Blog { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CascadeDelete.cs?name=CascadeDelete&highlight=11)]
 
 ## <a name="other-relationship-patterns"></a>Другие шаблоны отношений
 
@@ -317,119 +180,19 @@ public class Post
 
 Связь «один к одному» имеет свойство навигации «ссылка» на обеих сторонах. Они следуют тем же соглашениям, что и отношения "один ко многим", но уникальный индекс вводится в свойство внешнего ключа, чтобы гарантировать, что только один зависимый объект связан с каждым участником.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/Conventions/Relationships/OneToOne.cs?highlight=6,15,16)] -->
-``` csharp
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-
-    public BlogImage BlogImage { get; set; }
-}
-
-public class BlogImage
-{
-    public int BlogImageId { get; set; }
-    public byte[] Image { get; set; }
-    public string Caption { get; set; }
-
-    public int BlogId { get; set; }
-    public Blog Blog { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/OneToOne.cs?name=Property&highlight=6,15,16)]
 
 > [!NOTE]  
 > EF выберет одну из сущностей, которая будет зависимой, исходя из возможности обнаружения свойства внешнего ключа. Если в качестве зависимого объекта выбрана неверная сущность, можно исправить это с помощью API-интерфейса Fluent.
 
-При настройке связи с помощью API-интерфейса Fluent вы используете `HasOne` методы и. `WithOne`
+При настройке связи с помощью API-интерфейса Fluent вы используете методы `HasOne` и `WithOne`.
 
-При настройке внешнего ключа необходимо указать тип зависимой сущности — Обратите внимание на универсальный параметр, предоставленный `HasForeignKey` в приведенном ниже списке. В связи «один ко многим» ясно, что сущность с навигацией по ссылке является зависимой, а она является участником коллекции. Но это не так в связи «один к одному», поэтому необходимо явно определить его.
+При настройке внешнего ключа необходимо указать тип зависимой сущности — Обратите внимание на универсальный параметр, предоставленный для `HasForeignKey` в списке ниже. В связи «один ко многим» ясно, что сущность с навигацией по ссылке является зависимой, а она является участником коллекции. Но это не так в связи «один к одному», поэтому необходимо явно определить его.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Relationships/OneToOne.cs?highlight=11)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-    public DbSet<BlogImage> BlogImages { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Blog>()
-            .HasOne(p => p.BlogImage)
-            .WithOne(i => i.Blog)
-            .HasForeignKey<BlogImage>(b => b.BlogForeignKey);
-    }
-}
-
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-
-    public BlogImage BlogImage { get; set; }
-}
-
-public class BlogImage
-{
-    public int BlogImageId { get; set; }
-    public byte[] Image { get; set; }
-    public string Caption { get; set; }
-
-    public int BlogForeignKey { get; set; }
-    public Blog Blog { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/OneToOne.cs?name=OneToOne&highlight=11)]
 
 ### <a name="many-to-many"></a>Многие ко многим
 
 Связи «многие ко многим» без класса сущности для представления таблицы соединений пока не поддерживаются. Однако можно представить связь «многие ко многим», включив класс сущности для таблицы Join и составляя две отдельные связи «один ко многим».
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Relationships/ManyToMany.cs?highlight=11,12,13,14,16,17,18,19,39,40,41,42,43,44,45,46)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Post> Posts { get; set; }
-    public DbSet<Tag> Tags { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<PostTag>()
-            .HasKey(pt => new { pt.PostId, pt.TagId });
-
-        modelBuilder.Entity<PostTag>()
-            .HasOne(pt => pt.Post)
-            .WithMany(p => p.PostTags)
-            .HasForeignKey(pt => pt.PostId);
-
-        modelBuilder.Entity<PostTag>()
-            .HasOne(pt => pt.Tag)
-            .WithMany(t => t.PostTags)
-            .HasForeignKey(pt => pt.TagId);
-    }
-}
-
-public class Post
-{
-    public int PostId { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
-
-    public List<PostTag> PostTags { get; set; }
-}
-
-public class Tag
-{
-    public string TagId { get; set; }
-
-    public List<PostTag> PostTags { get; set; }
-}
-
-public class PostTag
-{
-    public int PostId { get; set; }
-    public Post Post { get; set; }
-
-    public string TagId { get; set; }
-    public Tag Tag { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ManyToMany.cs?name=ManyToMany&highlight=11,12,13,14,16,17,18,19,39,40,41,42,43,44,45,46)]

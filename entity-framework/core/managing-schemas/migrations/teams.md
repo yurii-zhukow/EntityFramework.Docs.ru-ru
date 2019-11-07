@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/30/2017
 uid: core/managing-schemas/migrations/teams
-ms.openlocfilehash: e6a1b86761a201cbcae34cced7e64f11df37a420
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.openlocfilehash: 6c17c56277821159962884aef72d46c624442e20
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72811980"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655547"
 ---
 # <a name="migrations-in-team-environments"></a>Миграция в командных средах
 
@@ -19,11 +19,13 @@ ms.locfileid: "72811980"
 
 При слиянии миграций из ваших коллег может возникнуть конфликт в файле моментального снимка модели. Если оба изменения не связаны, объединение является тривиальным и две миграции могут сосуществовать. Например, вы можете получить конфликт слияния в конфигурации типа сущности Customer, которая выглядит следующим образом:
 
-    <<<<<<< Mine
-    b.Property<bool>("Deactivated");
-    =======
-    b.Property<int>("LoyaltyPoints");
-    >>>>>>> Theirs
+``` output
+<<<<<<< Mine
+b.Property<bool>("Deactivated");
+=======
+b.Property<int>("LoyaltyPoints");
+>>>>>>> Theirs
+```
 
 Так как оба свойства должны существовать в окончательной модели, завершите слияние, добавив оба свойства. Во многих случаях система управления версиями может автоматически объединять такие изменения.
 
@@ -38,11 +40,13 @@ b.Property<int>("LoyaltyPoints");
 
 Иногда возникает истинный конфликт при объединении модели моментальных снимков модели. Например, вы и ваши коллеги могут переименовать одно и то же свойство.
 
-    <<<<<<< Mine
-    b.Property<string>("Username");
-    =======
-    b.Property<string>("Alias");
-    >>>>>>> Theirs
+``` output
+<<<<<<< Mine
+b.Property<string>("Username");
+=======
+b.Property<string>("Alias");
+>>>>>>> Theirs
+```
 
 Если вы столкнулись с этим видом конфликта, устраните его, повторно создав миграцию. Выполните следующие действия.
 

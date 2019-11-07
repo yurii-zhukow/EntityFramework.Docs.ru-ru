@@ -1,16 +1,16 @@
 ---
 title: Поставщик Azure Cosmos DB — работа с неструктурированными данными — EF Core
+description: Работа с Azure Cosmos DB неструктурированными данными с помощью Entity Framework Core
 author: AndriySvyryd
 ms.author: ansvyryd
-ms.date: 09/12/2019
-ms.assetid: b47d41b6-984f-419a-ab10-2ed3b95e3919
+ms.date: 11/05/2019
 uid: core/providers/cosmos/unstructured-data
-ms.openlocfilehash: 86bb0f7915c8a2561e7d5cd5dffc27474218a112
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: 0bfccbfd3af6e209967004752b5a3947d644544b
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71150773"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655519"
 ---
 # <a name="working-with-unstructured-data-in-ef-core-azure-cosmos-db-provider"></a>Работа с неструктурированными данными в поставщике EF Core Azure Cosmos DB
 
@@ -18,19 +18,18 @@ EF Core был разработан для упрощения работы с д
 
 ## <a name="accessing-the-raw-json"></a>Доступ к необработанному JSON
 
-Доступ к свойствам, которые не отслеживанию, можно получить, EF Core с помощью специального свойства в [теневом состоянии](../../modeling/shadow-properties.md) с именем `"__jObject"` , которое содержит `JObject` данные, полученные из хранилища и данные, которые будут сохранены:
+Доступ к свойствам, которые не отслеживанию, можно получить, EF Core с помощью специального свойства в [теневом состоянии](../../modeling/shadow-properties.md) с именем `"__jObject"`, которое содержит `JObject`, представляющую данные, полученные из хранилища и данные, которые будут сохранены:
 
-[!code-csharp[Unmapped](../../../../samples/core/Cosmos/UnstructuredData/Sample.cs?highlight=21-23&name=Unmapped)]
+[!code-csharp[Unmapped](../../../../samples/core/Cosmos/UnstructuredData/Sample.cs?highlight=23,24&name=Unmapped)]
 
 ``` json
 {
     "Id": 1,
-    "Discriminator": "Order",
+    "PartitionKey": "1",
     "TrackingNumber": null,
-    "id": "Order|1",
+    "id": "1",
     "Address": {
         "ShipsToCity": "London",
-        "Discriminator": "StreetAddress",
         "ShipsToStreet": "221 B Baker St"
     },
     "_rid": "eLMaAK8TzkIBAAAAAAAAAA==",
@@ -43,24 +42,24 @@ EF Core был разработан для упрощения работы с д
 ```
 
 > [!WARNING]
-> `"__jObject"` Свойство является частью инфраструктуры EF Core и должно использоваться только в качестве последнего средства, так как в будущих выпусках, скорее всего, будет происходить другое поведение.
+> Свойство `"__jObject"` является частью инфраструктуры EF Core и должно использоваться только в качестве последнего средства, так как в будущих выпусках это может привести к разным поведениям.
 
 > [!NOTE]
-> Изменения в сущности будут переопределять значения, хранящиеся `"__jObject"` в `SaveChanges`во время.
+> Изменения в сущности будут переопределять значения, хранящиеся в `"__jObject"` во время `SaveChanges`.
 
 ## <a name="using-cosmosclient"></a>Использование Космосклиент
 
-Чтобы полностью отделить от EF Core получить `CosmosClient` объект, который является [частью пакета SDK](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-get-started) для Azure Cosmos DB `DbContext`, из:
+Чтобы отвязаться полностью от EF Core получить объект [космосклиент](/dotnet/api/Microsoft.Azure.Cosmos.CosmosClient) , который входит [в состав пакета SDK для Azure Cosmos DB](/azure/cosmos-db/sql-api-get-started) , из `DbContext`:
 
 [!code-csharp[CosmosClient](../../../../samples/core/Cosmos/UnstructuredData/Sample.cs?highlight=3&name=CosmosClient)]
 
 ## <a name="missing-property-values"></a>Отсутствующие значения свойств
 
-В предыдущем примере мы удалили `"TrackingNumber"` свойство из заказа. Из-за того, как индексирование работает в Cosmos DB, запросы, ссылающиеся на отсутствующее свойство в другом месте, чем в проекции, могут возвращать непредвиденные результаты. Например:
+В предыдущем примере мы удалили свойство `"TrackingNumber"` из заказа. Из-за того, как индексирование работает в Cosmos DB, запросы, ссылающиеся на отсутствующее свойство в другом месте, чем в проекции, могут возвращать непредвиденные результаты. Пример:
 
 [!code-csharp[MissingProperties](../../../../samples/core/Cosmos/UnstructuredData/Sample.cs?name=MissingProperties)]
 
 Отсортированный запрос фактически не возвращает результатов. Это означает, что необходимо всегда заполнять свойства, сопоставленные EF Core при непосредственной работе с хранилищем.
 
 > [!NOTE]
-> Это поведение может измениться в будущих версиях Cosmos. Например, в настоящее время, если политика индексирования определяет составной индекс {ID/? ASC, Траккингнумбер/? ASC)}, затем запрос, имеющий "Order By c.ID ASC, c. дискриминатор __ASC", возвратит элементы__ , у которых отсутствует `"TrackingNumber"` свойство.
+> Это поведение может измениться в будущих версиях Cosmos. Например, в настоящее время, если политика индексирования определяет составной индекс {ID/? ASC, Траккингнумбер/? ASC)}, затем запрос, имеющий "ORDER BY c.Id ASC, c. дискриминатор __ASC", возвратит элементы__ , у которых отсутствует свойство `"TrackingNumber"`.

@@ -1,16 +1,16 @@
 ---
 title: Поставщик Azure Cosmos DB — ограничения — EF Core
+description: Ограничения поставщика Entity Framework Core Azure Cosmos DB
 author: AndriySvyryd
 ms.author: ansvyryd
-ms.date: 09/12/2019
-ms.assetid: 9d02a2cd-484e-4687-b8a8-3748ba46dbc9
+ms.date: 11/05/2019
 uid: core/providers/cosmos/limitations
-ms.openlocfilehash: 8dcc82a68c89e21ad1902a0bbbce8ebbc3535801
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: 2631526b152d6ddcacf25173c8d51e4e3cb24500
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71150767"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655985"
 ---
 # <a name="ef-core-azure-cosmos-db-provider-limitations"></a>Ограничения поставщика EF Core Azure Cosmos DB
 
@@ -20,19 +20,19 @@ ms.locfileid: "71150767"
 
 - Даже если существует только один тип сущности без наследования, сопоставленный с контейнером, он по-прежнему имеет свойство дискриминатора.
 - Типы сущностей с ключами секций неправильно работают в некоторых сценариях
-- `Include`вызовы не поддерживаются
-- `Join`вызовы не поддерживаются
+- вызовы `Include` не поддерживаются
+- вызовы `Join` не поддерживаются
 
 ## <a name="azure-cosmos-db-sdk-limitations"></a>Ограничения пакета SDK для Azure Cosmos DB
 
 - Предоставляются только асинхронные методы
 
 > [!WARNING]
-> Поскольку отсутствуют версии синхронизации методов низкого уровня, EF Core полагается на, в настоящее время соответствующая функциональность реализуется путем вызова `.Wait()` метода на возвращенном. `Task` Это означает, что использование таких `SaveChanges`методов, `ToList` как или, а не их асинхронных аналогов, может привести к взаимоблокировке приложения.
+> Поскольку отсутствуют версии синхронизации методов низкого уровня, EF Core полагается на, в настоящее время соответствующие функции реализуются путем вызова `.Wait()` для возвращаемого `Task`. Это означает, что использование таких методов, как `SaveChanges`или `ToList`, а не их асинхронных аналогов, может привести к взаимоблокировке в приложении.
 
 ## <a name="azure-cosmos-db-limitations"></a>Ограничения Azure Cosmos DB
 
-Вы можете увидеть полный обзор [Azure Cosmos DB поддерживаемых функций](https://docs.microsoft.com/en-us/azure/cosmos-db/modeling-data). это наиболее важные отличия по сравнению с реляционной базой данных.
+Вы можете увидеть полный обзор [Azure Cosmos DB поддерживаемых функций](/azure/cosmos-db/modeling-data). это наиболее важные отличия по сравнению с реляционной базой данных.
 
 - Инициированные клиентом транзакции не поддерживаются.
 - Некоторые запросы между секциями либо не поддерживаются, либо выполняются слишком медленно в зависимости от используемых операторов
