@@ -4,16 +4,17 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 2CB5809E-0EFB-44F6-AF14-9D5BFFFBFF9D
 uid: core/what-is-new/ef-core-2.0
-ms.openlocfilehash: 781578d9de05895cdbc777aa53c3f6d6f9777869
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: 72393e96c195af1df5a169025ca2ce7a7acb16bb
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149051"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73656213"
 ---
 # <a name="new-features-in-ef-core-20"></a>Новые возможности в EF Core 2.0
 
 ## <a name="net-standard-20"></a>.NET Standard 2.0
+
 Сейчас компонент EF Core ориентирован на .NET Standard 2.0, что означает, что он может работать с .NET Core 2.0, .NET Framework 4.6.1 и другими библиотеками, реализующими .NET Standard 2.0.
 Дополнительные сведения о поддерживаемых компонентах см. в разделе [Поддерживаемые реализации .NET](../platforms/index.md) .
 
@@ -32,6 +33,7 @@ modelBuilder.Entity<Product>()
 modelBuilder.Entity<Product>().ToTable("Products");
 modelBuilder.Entity<ProductDetails>().ToTable("Products");
 ```
+
 Дополнительные сведения об этой возможности см. в [разделе, посвященном разделению таблиц](xref:core/modeling/table-splitting).
 
 ### <a name="owned-types"></a>Принадлежащие типы
@@ -65,6 +67,7 @@ public class StreetAddress
     public string City { get; set; }
 }
 ```
+
 Дополнительные сведения об этой возможности см. в [разделе, посвященном собственным типам сущностей](xref:core/modeling/owned-entities).
 
 ### <a name="model-level-query-filters"></a>Фильтры запросов на уровне модели
@@ -92,6 +95,7 @@ public class BloggingContext : DbContext
     }
 }
 ```
+
 Мы определяем фильтр на уровне модели, который реализует мультитенантность и обратимое удаление для экземпляров типа сущности `Post`. Обратите внимание на использование свойства уровня экземпляра DbContext: `TenantId`. Фильтры на уровне модели будут использовать значение из правильного экземпляра контекста (то есть экземпляра контекста, выполняющего запрос).
 
 Можно отключить фильтры для отдельных запросов LINQ с помощью оператора IgnoreQueryFilters().
@@ -298,9 +302,11 @@ public class MyPluralizer : IPluralizer
 ## <a name="others"></a>Другие
 
 ### <a name="move-adonet-sqlite-provider-to-sqlitepclraw"></a>Перемещение поставщика ADO.NET SQLite в SQLitePCL.raw
+
 Это позволяет получить более надежное решение в Microsoft.Data.Sqlite для распространения собственных двоичных файлов SQLite на разных платформах.
 
 ### <a name="only-one-provider-per-model"></a>Всего один поставщик на модель
+
 Значительно расширяет возможности взаимодействия поставщиков с моделью и упрощает использование соглашений, заметок и текучих API с разными поставщиками.
 
 EF Core 2.0 теперь будет создавать отдельный объект [IModel](https://github.com/aspnet/EntityFramework/blob/master/src/EFCore/Metadata/IModel.cs) для каждого из используемых поставщиков. Обычно это является прозрачным для приложения. Это позволило упростить работу с API метаданных более низкого уровня, например, добиться того, что любое обращение к *основным концепциям реляционных метаданных* всегда осуществляется путем вызова `.Relational` вместо `.SqlServer`, `.Sqlite` и т. д.

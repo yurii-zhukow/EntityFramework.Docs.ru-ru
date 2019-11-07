@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 3f1993c2-cdf5-425b-bac2-a2665a20322b
 uid: core/saving/explicit-values-generated-properties
-ms.openlocfilehash: d6aa9a0a9ce34e09a39026ad7ea9195b6777858c
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: ea469b9b7199cc767b2d0da1a5999026f938d087
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197858"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73656259"
 ---
 # <a name="setting-explicit-values-for-generated-properties"></a>Установка явных значений для создаваемых свойств
 
@@ -33,6 +33,7 @@ ms.locfileid: "71197858"
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#EmploymentStarted)]
 
 Следующий код вставляет записи о двух сотрудниках в базу данных.
+
 * Для первого сотрудника значение свойству `Employee.EmploymentStarted` не присваивается, поэтому для `DateTime` остается установленным значение CLR по умолчанию.
 * Для второго сотрудника мы установили явное значение `1-Jan-2000`.
 
@@ -80,6 +81,7 @@ ms.locfileid: "71197858"
 [!code-sql[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/employee_UPDATE.sql)]
 
 Следующий код увеличивает зарплату двух сотрудников в базе данных.
+
 * Для первого сотрудника значение свойству `Employee.LastPayRaise` не присваивается, поэтому оно остается нулевым.
 * Для второго сотрудника мы установили явное значение "неделя назад" (до повышения зарплаты).
 

@@ -4,16 +4,17 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: 4e4ba21cd099daab4db8a8f358800fde26980c14
-ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
+ms.openlocfilehash: bfabe8fd5b0a64edd5d97baff3beab9d712f1c20
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813581"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73654634"
 ---
 # <a name="loading-related-data"></a>Загрузка связанных данных
 
 Entity Framework Core позволяет использовать свойства навигации в модели для загрузки связанных сущностей. Для загрузки связанных данных используются три общих шаблона объектно-реляционного сопоставления (O/RM).
+
 * **Безотложная загрузка** означает, что данные загружены из базы данных как часть исходного запроса.
 * **Явная загрузка** означает, что связанные данные явно загружаются из базы данных позже.
 * **Отложенная загрузка** означает, что связанные данные прозрачно загружаются из базы данных при доступе к свойству навигации.
@@ -57,7 +58,7 @@ Entity Framework Core позволяет использовать свойств
 
 ### <a name="include-on-derived-types"></a>Использование метода Include с производными типами
 
-Вы можете включать связанные данные из навигаций, определенных только с производным типом, используя `Include` и `ThenInclude`. 
+Вы можете включать связанные данные из навигаций, определенных только с производным типом, используя `Include` и `ThenInclude`.
 
 Рассмотрим следующую модель:
 
@@ -95,17 +96,20 @@ public class School
 
 Содержимое навигации `School` всех людей, которые являются учениками, может быть активно загружено с помощью нескольких шаблонов:
 
-- С помощью приведения.
+* С помощью приведения.
+
   ```csharp
   context.People.Include(person => ((Student)person).School).ToList()
   ```
 
-- С помощью оператора `as`.
+* С помощью оператора `as`.
+
   ```csharp
   context.People.Include(person => (person as Student).School).ToList()
   ```
 
-- С помощью перегрузки `Include`, принимающий параметр типа `string`.
+* С помощью перегрузки `Include`, принимающий параметр типа `string`.
+
   ```csharp
   context.People.Include("School").ToList()
   ```
@@ -140,6 +144,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         .UseLazyLoadingProxies()
         .UseSqlServer(myConnectionString);
 ```
+
 При использовании AddDbContext:
 
 ```csharp
