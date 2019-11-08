@@ -2,14 +2,15 @@
 title: Управление схемами баз данных — EF Core
 author: bricelam
 ms.date: 10/30/2017
-ms.openlocfilehash: c1ebe33b5575cab76a54721ef86ecbcb7ff8b98b
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 2da17865cb0192fb3e6e3396e4ca5f31fde9c52a
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994389"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655648"
 ---
 # <a name="managing-database-schemas"></a>Управление схемами баз данных
+
 EF Core предоставляет два основных способа синхронизации схемы базы данных и модели EF Core. Чтобы выбрать один из них, определите, что является истинным — ваша схема базы данных или модель EF Core.
 
 Если истинной должна быть модель EF Core, используйте [миграции][1]. При внесении изменений в модель EF Core этот подход постепенно применяет соответствующие изменения схемы к базе данных, чтобы она оставалась совместимой с вашей моделью EF Core.

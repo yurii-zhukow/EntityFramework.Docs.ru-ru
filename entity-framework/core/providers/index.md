@@ -4,18 +4,19 @@ author: rowanmiller
 ms.date: 02/23/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/providers/index
-ms.openlocfilehash: 24b633d17347c7749a02dee1c04c310c2677ff8c
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 0995c2cb403cf4f0db1462f1e3446a13563a1064
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181352"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73654818"
 ---
 # <a name="database-providers"></a>Поставщики баз данных
 
 Entity Framework Core поддерживает доступ к множеству разных баз данных с использованием библиотек подключаемых модулей, которые называются поставщиками баз данных.
 
 ## <a name="current-providers"></a>Текущие поставщики
+
 > [!IMPORTANT]  
 > Поставщики EF Core поступают из самых разных источников. Не все поставщики разрабатываются в рамках [проекта Entity Framework Core](https://github.com/aspnet/EntityFrameworkCore). Выбирая поставщика, обязательно оцените качество, лицензирование, поддержку и другие показатели на соответствие вашим требованиям. Также обязательно ознакомьтесь подробными сведениями о совместимости версий, представленными в документации по каждому поставщику.
 
@@ -43,18 +44,19 @@ Entity Framework Core поддерживает доступ к множеств�
 | [Devart.Data.PostgreSql.EFCore](https://www.nuget.org/packages/Devart.Data.PostgreSql.EFCore/)                       | PostgreSQL 8.0 и выше     | [DevArt](https://www.devart.com/)                                             | Оплаченный                 | [Документы](https://www.devart.com/dotconnect/postgresql/docs/)                                                                                                                                         |
 | [Devart.Data.SQLite.EFCore](https://www.nuget.org/packages/Devart.Data.SQLite.EFCore/)                               | SQLite 3 и выше           | [DevArt](https://www.devart.com/)                                             | Оплаченный                 | [Документы](https://www.devart.com/dotconnect/sqlite/docs/)                                                                                                                                             |
 | [Devart.Data.MySql.EFCore](https://www.nuget.org/packages/Devart.Data.MySql.EFCore/)                                 | MySQL 5 и выше            | [DevArt](https://www.devart.com/)                                             | Оплаченный                 | [Документы](https://www.devart.com/dotconnect/mysql/docs/)                                                                                                                                              |
+| [FileContextCore](https://www.nuget.org/packages/FileContextCore/)                                 | Хранение данных в файлах            | [Моррис Янацек (Morris Janatzek)](https://github.com/morrisjdev)                                             | Для разработки                 | [Файл сведений](https://github.com/morrisjdev/FileContextCore/blob/master/README.md)                                                                                                                                              |
 
 ## <a name="adding-a-database-provider-to-your-application"></a>Добавление поставщика базы данных в приложение
 
 Большинство поставщиков баз данных для EF Core распространяется в виде пакетов NuGet. Их можно установить следующим образом:
 
-# <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+## <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ``` console
 dotnet add package provider_package_name
 ```
 
-# <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 install-package provider_package_name
