@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 09/26/2018
 ms.assetid: de2e34cd-659b-4cab-b5ed-7a979c6bf120
 uid: core/querying/how-query-works
-ms.openlocfilehash: bc085755f39b1288f092a8b2df892c1bf82a89f1
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: ba0d68469530e6272ffbb51946d7856122a261c7
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72186242"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73656241"
 ---
 # <a name="how-queries-work"></a>Как работают запросы
 
@@ -40,6 +40,7 @@ Entity Framework Core использует LINQ для запроса данны
 При вызове операторов LINQ вы просто создаете представление запроса в памяти. Запрос отправляется в базу данных только после обработки результатов.
 
 Ниже приведены наиболее распространенные операции, которые приводят к отправке запроса в базу данных.
+
 * Итерация результатов в цикле `for`.
 * Использование оператора, например `ToList`, `ToArray`, `Single`, `Count`.
 * Привязка данных результатов запроса к пользовательскому интерфейсу.
