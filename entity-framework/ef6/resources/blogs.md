@@ -15,7 +15,7 @@ ms.locfileid: "72182415"
 
 ## <a name="ef-team-blogs"></a>Блоги группы EF
 
-- Тег блога [.NET: Entity Framework @ no__t-0
+- [Блог .NET — тег: Entity Framework](https://blogs.msdn.microsoft.com/dotnet/tag/entity-framework/)
 - [Блог ADO.NET (больше не используется)](https://blogs.msdn.microsoft.com/adonet/)
 - [Блог по проектированию EF (больше не используется)](https://blogs.msdn.microsoft.com/efdesign/)
 
@@ -24,7 +24,7 @@ ms.locfileid: "72182415"
 - [Артур Виккерс](https://blog.oneunicorn.com/tag/entity-framework/)
 - [Брице Ламбсон](https://www.bricelam.net/)
 - [Диего Вега](https://blogs.msdn.microsoft.com/diego/)
-- [Роуэн Миллер](https://romiller.com/category/entity-framework/)
+- [Роуэн Миллер (Rowan Miller)](https://romiller.com/category/entity-framework/)
 - [Павел Кадлукзка](https://blog.3d-logic.com/category/entity-framework/)
 - [Алекс Джеймс](https://blogs.msdn.microsoft.com/alexj/tag/entity-framework/)
 - [Златко Мичаилов](https://blogs.msdn.microsoft.com/esql/tag/entity-framework/)

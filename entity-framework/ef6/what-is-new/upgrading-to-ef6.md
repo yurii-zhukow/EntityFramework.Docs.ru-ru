@@ -33,18 +33,18 @@ ms.locfileid: "72182103"
 Install-Package EntityFramework
 ```
 
-## <a name="2-ensure-that-assembly-references-to-systemdataentitydll-are-removed"></a>2. Убедитесь, что удалены ссылки на сборку System. Data. Entity. dll.
+## <a name="2-ensure-that-assembly-references-to-systemdataentitydll-are-removed"></a>2. Убедитесь, что ссылки на сборку на System. Data. Entity. DLL удалены
 
 Установка пакета NuGet EF6 должна автоматически удалить все ссылки на System. Data. Entity из вашего проекта.
 
-## <a name="3-swap-any-ef-designer-edmx-models-to-use-ef-6x-code-generation"></a>3. Переключение моделей EF Designer (EDMX) для использования создания кода EF 6. x
+## <a name="3-swap-any-ef-designer-edmx-models-to-use-ef-6x-code-generation"></a>3. переключайте любые модели конструктора EF (EDMX) для использования создания кода EF 6. x
 
 При наличии моделей, созданных с помощью конструктора EF, необходимо обновить шаблоны создания кода, чтобы создать совместимый с EF6 код.
 
 > [!NOTE]
 > В настоящее время в Visual Studio 2012 и 2013 доступны только шаблоны генераторов EF 6. x DbContext.
 
-1. Удаление существующих шаблонов создания кода. Обычно эти файлы имеют имя **@no__t -1edmx_file_name\>.tt** и **\<edmx_file_name @ no__t-5. Context.tt** и будьте вложены в файл EDMX в Обозреватель решений. Можно выбрать шаблоны в обозреватель решений и нажать клавишу **Del** , чтобы удалить их.  
+1. Удаление существующих шаблонов создания кода. Обычно эти файлы имеют имя **\<edmx_file_name\>. TT** и **\<edmx_file_name. Context.tt** и будьте вложены в файл EDMX в Обозреватель решений.\> Можно выбрать шаблоны в обозреватель решений и нажать клавишу **Del** , чтобы удалить их.  
    > [!NOTE]
    > В проектах веб-сайтов шаблоны не будут вложены в файл EDMX, но перечислены вместе с ним в обозреватель решений.  
 
@@ -58,13 +58,13 @@ Install-Package EntityFramework
     - Если вы используете интерфейс ObjectContext API, необходимо выбрать вкладку "в **сети** " и найти **генератор EntityObject EF 6. x**.  
 3. Если вы применили какие-либо настройки к шаблонам создания кода, потребуется повторно применить их к обновленным шаблонам.
 
-## <a name="4-update-namespaces-for-any-core-ef-types-being-used"></a>4. Обновление пространств имен для всех используемых основных типов EF
+## <a name="4-update-namespaces-for-any-core-ef-types-being-used"></a>4. Обновите пространства имен для всех используемых основных типов EF.
 
 Пространства имен для типов DbContext и Code First не изменились. Это означает, что для многих приложений, использующих EF 4,1 или более поздней версии, не нужно ничего менять.
 
 Такие типы, как ObjectContext, ранее находились в System. Data. Entity. dll, были перемещены в новые пространства имен. Это означает, что может потребоваться обновить директивы *using* или *Import* для создания EF6.
 
-Общее правило изменения пространства имен заключается в том, что любой тип в System. Data. * перемещается в System. Data. Entity. Core. *. Иными словами, просто вставьте **Entity. Core.** После System. Data. Пример:
+Общее правило изменения пространства имен заключается в том, что любой тип в System. Data. * перемещается в System. Data. Entity. Core. *. Иными словами, просто вставьте **Entity. Core.** После System. Data. Например:
 
 - System. Data. Ентитексцептион = > System. Data. **Entity. Core**. ентитексцептион  
 - System. Data. objects. ObjectContext = > System. Data. **Entity. Core**. Objects. ObjectContext  
