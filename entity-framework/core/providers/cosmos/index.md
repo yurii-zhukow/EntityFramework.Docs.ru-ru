@@ -5,23 +5,23 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/index
-ms.openlocfilehash: 6cac695288d9ba84968b7fab6361f55e9b51be67
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 162e5d387bcbfbf1e90baf27fc62dd2ed562ae58
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656089"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824546"
 ---
 # <a name="ef-core-azure-cosmos-db-provider"></a>Поставщик EF Core для Azure Cosmos DB
 
->[!NOTE]
+> [!NOTE]
 > Этот поставщик является новым в EF Core 3.0.
 
 Этот поставщик базы данных позволяет использовать Entity Framework Core с Azure Cosmos DB. Работы над этим поставщиком ведутся в рамках [проекта Entity Framework Core](https://github.com/aspnet/EntityFrameworkCore).
 
 Перед чтением этого раздела мы настоятельно рекомендуем ознакомиться с [документацией по Azure Cosmos DB](/azure/cosmos-db/introduction).
 
->[!NOTE]
+> [!NOTE]
 > Этот поставщик работает только с API SQL Azure Cosmos DB.
 
 ## <a name="install"></a>Установка
@@ -30,7 +30,7 @@ ms.locfileid: "73656089"
 
 ## <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
-``` console
+```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.Cosmos
 ```
 
@@ -89,7 +89,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 
 [!code-csharp[PartitionKey](../../../../samples/core/Cosmos/ModelBuilding/OrderContext.cs?name=PartitionKey)]
 
->[!NOTE]
+> [!NOTE]
 >Свойство ключа секции может иметь любой тип, если он [преобразован в строку](xref:core/modeling/value-conversions).
 
 После настройки свойство ключа секции всегда должно иметь значение, отличное от NULL. При выдаче запроса можно добавить условие, чтобы сделать единую секцию.

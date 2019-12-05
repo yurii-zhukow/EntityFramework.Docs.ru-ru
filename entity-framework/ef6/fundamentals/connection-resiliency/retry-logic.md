@@ -1,14 +1,14 @@
 ---
 title: Отказоустойчивость подключения и логика повторных попыток — EF6
-author: divega
-ms.date: 10/23/2016
+author: AndriySvyryd
+ms.date: 11/20/2019
 ms.assetid: 47d68ac1-927e-4842-ab8c-ed8c8698dff2
-ms.openlocfilehash: a01216c3399ca4a04943563435eacd0047337a5f
-ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
+ms.openlocfilehash: 50e65bed32d0cfcf42746da0d632f9e990424b97
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68306577"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824837"
 ---
 # <a name="connection-resiliency-and-retry-logic"></a>Отказоустойчивость подключения и логика повторных попыток
 > [!NOTE]
@@ -124,77 +124,14 @@ using (var db = new BloggingContext())
 
 Это не поддерживается при использовании стратегии повторного выполнения, поскольку EF не знает о каких-либо предыдущих операциях и способах их повторить. Например, если произошел сбой во втором вызове SaveChanges, то EF больше не будет иметь требуемых сведений для повторного выполнения первого вызова SaveChanges.  
 
-### <a name="workaround-suspend-execution-strategy"></a>Решение Стратегия выполнения приостановки  
+### <a name="solution-manually-call-execution-strategy"></a>Решение. Стратегия выполнения вызова вручную  
 
-Одним из возможных решений этой проблемы является приостановка повторной стратегии выполнения для фрагмента кода, который должен использовать инициированную пользователем транзакцию. Проще всего это сделать, добавив флаг Суспендексекутионстратеги в класс конфигурации на основе кода и изменив лямбда-выражение стратегии выполнения, чтобы оно возвращало стратегию выполнения по умолчанию (без повторной привязки) при установке флага.  
-
-``` csharp
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.SqlServer;
-using System.Runtime.Remoting.Messaging;
-
-namespace Demo
-{
-    public class MyConfiguration : DbConfiguration
-    {
-        public MyConfiguration()
-        {
-            this.SetExecutionStrategy("System.Data.SqlClient", () => SuspendExecutionStrategy
-              ? (IDbExecutionStrategy)new DefaultExecutionStrategy()
-              : new SqlAzureExecutionStrategy());
-        }
-
-        public static bool SuspendExecutionStrategy
-        {
-            get
-            {
-                return (bool?)CallContext.LogicalGetData("SuspendExecutionStrategy") ?? false;
-            }
-            set
-            {
-                CallContext.LogicalSetData("SuspendExecutionStrategy", value);
-            }
-        }
-    }
-}
-```  
-
-Обратите внимание, что мы используем CallContext для хранения значения флага. Это обеспечивает аналогичную функциональность для локального хранилища потоков, но может быть использована для асинхронного кода, включая асинхронный запрос и сохранение с Entity Framework.  
-
-Теперь можно приостановить стратегию выполнения для раздела кода, который использует инициированную пользователем транзакцию.  
-
-``` csharp
-using (var db = new BloggingContext())
-{
-    MyConfiguration.SuspendExecutionStrategy = true;
-
-    using (var trn = db.Database.BeginTransaction())
-    {
-        db.Blogs.Add(new Blog { Url = "http://msdn.com/data/ef" });
-        db.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/adonet" });
-        db.SaveChanges();
-
-        db.Blogs.Add(new Blog { Url = "http://twitter.com/efmagicunicorns" });
-        db.SaveChanges();
-
-        trn.Commit();
-    }
-
-    MyConfiguration.SuspendExecutionStrategy = false;
-}
-```  
-
-### <a name="workaround-manually-call-execution-strategy"></a>Решение Вызов стратегии выполнения вручную  
-
-Кроме того, можно использовать стратегию выполнения вручную и присвоить ей весь набор логики для выполнения, чтобы она могла повторить все, если одна из операций завершается ошибкой. Нам по-прежнему нужно приостановить стратегию выполнения с использованием показанного выше метода, чтобы любые контексты, используемые в повторяемом блоке кода, не пытались повторить попытку.  
+Решение состоит в том, чтобы вручную использовать стратегию выполнения и дать ей весь набор логики для выполнения, чтобы он мог повторить все, если одна из операций завершается ошибкой. При выполнении стратегии выполнения, производной от Дбексекутионстратеги, она приостанавливает неявную стратегию выполнения, используемую в SaveChanges.  
 
 Обратите внимание, что все контексты должны быть созданы в блоке кода для повторной попытки. Это гарантирует, что мы начинаем с чистого состояния для каждой повторной попытки.  
 
 ``` csharp
 var executionStrategy = new SqlAzureExecutionStrategy();
-
-MyConfiguration.SuspendExecutionStrategy = true;
 
 executionStrategy.Execute(
     () =>
@@ -214,6 +151,4 @@ executionStrategy.Execute(
             }
         }
     });
-
-MyConfiguration.SuspendExecutionStrategy = false;
 ```  

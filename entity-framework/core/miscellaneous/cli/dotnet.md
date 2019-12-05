@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 07/11/2019
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: 29434c26a503fabb16b43ee8f0c36136a0b5b745
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.openlocfilehash: 5686d28e6847797130476cd858bd3fb611620140
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72811972"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824479"
 ---
 # <a name="entity-framework-core-tools-reference---net-cli"></a>Справочник по инструментам Entity Framework Core-.NET CLI
 
@@ -33,17 +33,17 @@ ms.locfileid: "72811972"
 
 * `dotnet ef` должен быть установлен в качестве глобального или локального средства. Большинство разработчиков устанавливают `dotnet ef` как глобальное средство с помощью следующей команды:
 
-  ``` console
+  ```dotnetcli
   dotnet tool install --global dotnet-ef
   ```
 
   Можно также использовать `dotnet ef` в качестве локального средства. Чтобы использовать его в качестве локального средства, восстановите зависимости проекта, объявляющие его как зависимость инструментария, с помощью [файла манифеста средства](https://github.com/dotnet/cli/issues/10288).
 
-* Установите [пакет SDK для .NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)). Пакет SDK должен быть установлен, даже если у вас установлена последняя версия Visual Studio.
+* Установите [пакет SDK для .NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0). Пакет SDK должен быть установлен, даже если у вас установлена последняя версия Visual Studio.
 
 * Установите последнюю версию пакета `Microsoft.EntityFrameworkCore.Design`.
 
-  ``` Console
+  ```dotnetcli
   dotnet add package Microsoft.EntityFrameworkCore.Design
   ```
 
@@ -61,7 +61,7 @@ ms.locfileid: "72811972"
 
 * Установите последнюю версию стабильного пакета `Microsoft.EntityFrameworkCore.Design`.
 
-  ``` Console
+  ```dotnetcli
   dotnet add package Microsoft.EntityFrameworkCore.Design
   ```
 
@@ -75,7 +75,7 @@ ms.locfileid: "72811972"
 
 * Установите последнюю версию пакета `Microsoft.EntityFrameworkCore.Design` версии 1. x, например:
 
-  ```console
+  ```dotnetcli
   dotnet add package Microsoft.EntityFrameworkCore.Design -v 1.1.6
   ```
 
@@ -105,7 +105,7 @@ ms.locfileid: "72811972"
 
 Выполните следующие команды, чтобы убедиться, что средства EF Core CLI установлены правильно:
 
-  ``` Console
+  ```dotnetcli
   dotnet restore
   dotnet ef
   ```
@@ -175,7 +175,7 @@ Entity Framework Core .NET Command-line Tools 2.1.3-rtm-32065
 
 Удаляет базу данных.
 
-Параметры:
+Настройки.
 
 |                   | Параметр                   | Описание                                              |
 |:------------------|:-------------------------|:---------------------------------------------------------|
@@ -194,7 +194,7 @@ Entity Framework Core .NET Command-line Tools 2.1.3-rtm-32065
 
 В следующих примерах база данных обновляется до указанной миграции. В первом случае используется имя миграции, а во втором используется идентификатор миграции:
 
-```console
+```dotnetcli
 dotnet ef database update InitialCreate
 dotnet ef database update 20180904195021_InitialCreate
 ```
@@ -218,7 +218,7 @@ dotnet ef database update 20180904195021_InitialCreate
 | `<CONNECTION>` | Строка подключения к базе данных. Для проектов ASP.NET Core 2. x значение может быть *Name =\<имя строки подключения >* . В этом случае имя берется из источников конфигурации, настроенных для проекта. |
 | `<PROVIDER>`   | Используемый поставщик. Обычно это имя пакета NuGet, например: `Microsoft.EntityFrameworkCore.SqlServer`.                                                                                           |
 
-Параметры:
+Настройки.
 
 |                 | Параметр                                   | Описание                                                                                                                                                                    |
 |:----------------|:-----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -233,13 +233,13 @@ dotnet ef database update 20180904195021_InitialCreate
 
 В следующем примере выполняется формирование шаблонов всех схем и таблиц и помещается новые файлы в папку *Models* .
 
-```console
+```dotnetcli
 dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models
 ```
 
 Следующий пример формирует только выбранные таблицы и создает контекст в отдельной папке с указанным именем:
 
-```console
+```dotnetcli
 dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -t Blog -t Post --context-dir Context -c BlogContext
 ```
 
@@ -253,7 +253,7 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 |:---------|:---------------------------|
 | `<NAME>` | Имя миграции. |
 
-Параметры:
+Настройки.
 
 |                   | Параметр                             | Описание                                                                                                      |
 |:------------------|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------|
@@ -267,7 +267,7 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 
 Удаляет последнюю миграцию (выполняет откат изменений кода, выполненных для миграции).
 
-Параметры:
+Настройки.
 
 |                   | Параметр    | Описание                                                                     |
 |:------------------|:----------|:--------------------------------------------------------------------------------|
@@ -281,10 +281,10 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 
 | Аргумент | Описание                                                                                                                                                   |
 |:---------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `<FROM>` | Начало миграции. Миграция может быть идентифицирована по имени или по ИДЕНТИФИКАТОРу. Число 0 — это особый случай, который означает *перед первой миграцией*. Значение по умолчанию — 0. |
+| `<FROM>` | Начало миграции. Миграция может быть идентифицирована по имени или по ИДЕНТИФИКАТОРу. Число 0 — это особый случай, который означает *перед первой миграцией*. Значение по умолчанию равно 0. |
 | `<TO>`   | Завершение миграции. По умолчанию используется последняя миграция.                                                                                                         |
 
-Параметры:
+Настройки.
 
 |                   | Параметр            | Описание                                                        |
 |:------------------|:------------------|:-------------------------------------------------------------------|
@@ -293,13 +293,13 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 
 В следующем примере создается скрипт для миграции InitialCreate:
 
-```console
+```dotnetcli
 dotnet ef migrations script 0 InitialCreate
 ```
 
 В следующем примере создается скрипт для всех миграций после миграции InitialCreate.
 
-```console
+```dotnetcli
 dotnet ef migrations script 20180904195021_InitialCreate
 ```
 

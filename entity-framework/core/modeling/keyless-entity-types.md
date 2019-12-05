@@ -1,16 +1,16 @@
 ---
 title: Типы сущностей без ключей — EF Core
+description: Настройка типов сущностей без ключей с помощью Entity Framework Core
 author: AndriySvyryd
 ms.author: ansvyryd
-ms.date: 02/26/2018
-ms.assetid: 9F4450C5-1A3F-4BB6-AC19-9FAC64292AAD
+ms.date: 9/13/2019
 uid: core/modeling/keyless-entity-types
-ms.openlocfilehash: 3dbc2700fc9bb277eb90885dfc2506c250ae21f1
-ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
+ms.openlocfilehash: 129e24b154ba32583435aeb742dbf478350344e8
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72445944"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824660"
 ---
 # <a name="keyless-entity-types"></a>Типы сущностей без ключей
 
