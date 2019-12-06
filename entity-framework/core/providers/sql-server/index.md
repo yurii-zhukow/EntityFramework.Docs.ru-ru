@@ -1,19 +1,20 @@
 ---
 title: Поставщик базы данных Microsoft SQL Server — EF Core
-author: rowanmiller
-ms.date: 10/27/2016
-ms.assetid: 2e007c82-c6e4-45bb-8129-851b79ec1a0a
+description: Документация для поставщика базы данных, которая позволяет использовать Entity Framework Core с Microsoft SQL Server
+author: AndriySvyryd
+ms.author: ansvyryd
+ms.date: 11/05/2019
 uid: core/providers/sql-server/index
-ms.openlocfilehash: dd352b81da05fa8ea8970495f20947bd109edf65
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 18a69789ff4ae013c1d60bb6d34ca5c27ee285c2
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655899"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824775"
 ---
 # <a name="microsoft-sql-server-ef-core-database-provider"></a>Поставщик базы данных Microsoft SQL Server EF Core
 
-Этот поставщик базы данных позволяет использовать Entity Framework Core с Microsoft SQL Server (включая SQL Azure). Работы над этим поставщиком ведутся в рамках [проекта Entity Framework Core](https://github.com/aspnet/EntityFrameworkCore).
+Этот поставщик базы данных позволяет использовать Entity Framework Core с Microsoft SQL Server (включая базу данных SQL Azure). Работы над этим поставщиком ведутся в рамках [проекта Entity Framework Core](https://github.com/aspnet/EntityFrameworkCore).
 
 ## <a name="install"></a>Установка
 
@@ -21,7 +22,7 @@ ms.locfileid: "73655899"
 
 ## <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
-``` console
+```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 ```
 
@@ -34,7 +35,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 ***
 
 > [!NOTE]
-> Начиная с версии 3.0.0,поставщик ссылается на Microsoft.Data.SqlClient (предыдущие версии зависят от System.Data.SqlClient). Если проект принимает прямую зависимость от SqlClient, убедитесь, что добавлена ссылка на правильный пакет.
+> Начиная с версии 3.0.0,поставщик ссылается на Microsoft.Data.SqlClient (предыдущие версии зависят от System.Data.SqlClient). Если проект принимает прямую зависимость от SqlClient, убедитесь, что добавлена ссылка на пакет Microsoft.Data.SqlClient.
 
 ## <a name="supported-database-engines"></a>Поддерживаемые ядра СУБД
 
