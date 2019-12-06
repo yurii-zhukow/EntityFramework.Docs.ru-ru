@@ -225,6 +225,8 @@
                   href: core/providers/sql-server/index.md
                 - name: 'Таблицы, оптимизированные для памяти'
                   href: core/providers/sql-server/memory-optimized-tables.md
+                - name: Указание параметров базы данных SQL Azure
+                  href: core/providers/sql-server/azure-sql-database.md
             - name: SQLite
               items:
                 - name: Обзор
