@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 2CB5809E-0EFB-44F6-AF14-9D5BFFFBFF9D
 uid: core/what-is-new/ef-core-2.0
-ms.openlocfilehash: 72393e96c195af1df5a169025ca2ce7a7acb16bb
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 83f6b819409d502dba17a678d44a0746a4a77f4b
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656213"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824875"
 ---
 # <a name="new-features-in-ef-core-20"></a>Новые возможности в EF Core 2.0
 
@@ -91,12 +91,12 @@ public class BloggingContext : DbContext
     {
         modelBuilder.Entity<Post>().HasQueryFilter(
             p => !p.IsDeleted
-            && p.TenantId == this.TenantId );
+            && p.TenantId == this.TenantId);
     }
 }
 ```
 
-Мы определяем фильтр на уровне модели, который реализует мультитенантность и обратимое удаление для экземпляров типа сущности `Post`. Обратите внимание на использование свойства уровня экземпляра DbContext: `TenantId`. Фильтры на уровне модели будут использовать значение из правильного экземпляра контекста (то есть экземпляра контекста, выполняющего запрос).
+Мы определяем фильтр на уровне модели, который реализует мультитенантность и обратимое удаление для экземпляров типа сущности `Post`. Обратите внимание на использование свойства уровня экземпляра `DbContext`: `TenantId`. Фильтры на уровне модели будут использовать значение из правильного экземпляра контекста (то есть экземпляра контекста, выполняющего запрос).
 
 Можно отключить фильтры для отдельных запросов LINQ с помощью оператора IgnoreQueryFilters().
 
@@ -119,7 +119,7 @@ public class BloggingContext : DbContext
     [DbFunction]
     public static int PostReadCount(int blogId)
     {
-        throw new Exception();
+        throw new NotImplementedException();
     }
 }
 ```
@@ -135,8 +135,8 @@ var query =
 
 Следует отметить несколько аспектов.
 
-- По соглашению, имя метода используется в качестве имени функции (в данном случае пользовательской) при создании кода SQL, но вы можете переопределить имя и схему во время регистрации метод.
-- Сейчас поддерживаются только скалярные функции.
+- По соглашению имя метода используется в качестве имени функции (в данном случае пользовательской) при создании кода SQL, но вы можете переопределить имя и схему во время регистрации метода.
+- В настоящее время поддерживаются только скалярные функции.
 - Необходимо создать сопоставимую функцию в базе данных. Она не создается при миграциях EF Core.
 
 ### <a name="self-contained-type-configuration-for-code-first"></a>Настройка самодостаточных типов для Code First
@@ -146,11 +146,11 @@ var query =
 ``` csharp
 class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
-  public void Configure(EntityTypeBuilder<Customer> builder)
-  {
-     builder.HasKey(c => c.AlternateKey);
-     builder.Property(c => c.Name).HasMaxLength(200);
-   }
+    public void Configure(EntityTypeBuilder<Customer> builder)
+    {
+        builder.HasKey(c => c.AlternateKey);
+        builder.Property(c => c.Name).HasMaxLength(200);
+    }
 }
 
 ...
@@ -270,7 +270,7 @@ var aCustomers =
 
 ## <a name="database-management"></a>Управление базами данных
 
-### <a name="pluralization-hook-for-dbcontext-scaffolding"></a>Обработчик преобразования во множественную форму для формирования DbContext
+### <a name="pluralization-hook-for-dbcontext-scaffolding"></a>Обработчик преобразования во множественную форму для формирования шаблонов DbContext
 
 В EF Core 2.0 появилась новая служба *IPluralizer*, используемая для преобразования имен типов сущности в единственное число и имен DbSet — во множественное. Реализация по умолчанию является холостой, то есть это просто обработчик, куда можно подключить свой собственный преобразователь во множественное число.
 
