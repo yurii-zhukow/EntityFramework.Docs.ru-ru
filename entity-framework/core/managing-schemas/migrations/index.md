@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: 7de465d483ab2c183c7f37d08c84de00ef113651
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.openlocfilehash: dc0c1ae1a03c98c6f230557dc0bdd4d29ec191dd
+ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824500"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75502205"
 ---
 # <a name="migrations"></a>Миграции
 
@@ -39,13 +39,13 @@ ms.locfileid: "74824500"
 
 После того, как вы [определите начальную модель](xref:core/modeling/index), можно переходить к созданию базы данных. Чтобы добавить первоначальную миграцию, выполните следующую команду.
 
-## <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+### <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef migrations add InitialCreate
 ```
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+### <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 Add-Migration InitialCreate
@@ -68,13 +68,13 @@ Add-Migration InitialCreate
 
 После этого примените миграцию к базе данных, чтобы создать схему.
 
-## <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+### <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef database update
 ```
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+### <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 Update-Database
@@ -86,13 +86,13 @@ Update-Database
 
 После внесения изменений в модель EF Core может нарушиться синхронизация схемы базы данных. Чтобы сделать ее актуальной, добавьте еще одну миграцию. Имя миграции можно использовать как сообщение фиксации в системе управления версиями. Например, вы можете выбрать имя *AddProductReviews*, если суть изменений заключается в создании нового класса сущностей для обзоров.
 
-## <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+### <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef migrations add AddProductReviews
 ```
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+### <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 Add-Migration AddProductReviews
@@ -147,13 +147,13 @@ migrationBuilder.DropColumn(
 
 Примените миграцию к базе данных с помощью соответствующей команды.
 
-## <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+### <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef database update
 ```
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+### <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 Update-Database
@@ -175,13 +175,13 @@ Update-Database
 
 Иногда, добавив миграцию, вы понимаем, что нужно внести дополнительные изменения в модель EF Core перед ее применением. Для удаления последней миграции используйте приведенную ниже команду.
 
-## <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+### <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef migrations remove
 ```
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+### <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 Remove-Migration
@@ -195,13 +195,13 @@ Remove-Migration
 
 Если вы уже применили одну миграцию для базы данных или несколько и хотите отменить их, можно использовать ту же команду, что и для применения миграций, но указав имя миграции, к которой надо откатить изменения.
 
-## <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+### <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef database update LastGoodMigration
 ```
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+### <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 Update-Database LastGoodMigration
@@ -213,13 +213,13 @@ Update-Database LastGoodMigration
 
 При отладке миграций или их развертывании в рабочей базе данных бывает полезно создать скрипт SQL. Такой скрипт можно дополнительно проверить на точность и настроить в соответствии с потребностями рабочей базы данных. Кроме того, его можно использовать в сочетании с технологией развертывания. Базовая команда имеет следующий вид.
 
-## <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+### <a name="net-core-clitabdotnet-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef migrations script
 ```
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+### <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 Script-Migration
@@ -252,4 +252,4 @@ myDbContext.Database.Migrate();
 
 ## <a name="next-steps"></a>Следующие шаги
 
-Дополнительные сведения можно найти по адресу: <xref:core/miscellaneous/cli/index>.
+Для получения дополнительной информации см. <xref:core/miscellaneous/cli/index>.
