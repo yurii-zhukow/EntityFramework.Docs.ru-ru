@@ -4,12 +4,12 @@ author: rick-anderson
 ms.date: 09/17/2019
 ms.assetid: 3c88427c-20c6-42ec-a736-22d3eccd5071
 uid: core/get-started/index
-ms.openlocfilehash: d46c4bb9ac6c8f718b4da5ecd82d54710d41935f
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.openlocfilehash: 8aea40b9caaf454bc06d4991fd403e1ad0ff9b93
+ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824487"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75502023"
 ---
 # <a name="getting-started-with-ef-core"></a>Начало работы с EF Core
 
@@ -23,11 +23,11 @@ ms.locfileid: "74824487"
 
 Установите следующее программное обеспечение:
 
-## <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 * [пакет SDK для .NET Core 3.0](https://www.microsoft.com/net/download/core);
 
-## <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [Visual Studio 2019 16.3 или последующей версии](https://www.visualstudio.com/downloads/) с этой рабочей нагрузкой:
   * **Кроссплатформенная разработка .NET Core** (в разделе **Другие наборы инструментов**)
@@ -36,14 +36,14 @@ ms.locfileid: "74824487"
 
 ## <a name="create-a-new-project"></a>Создание нового проекта
 
-## <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet new console -o EFGetStarted
 cd EFGetStarted
 ```
 
-## <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Открытие Visual Studio
 * Щелкните **Создать проект**.
@@ -56,13 +56,13 @@ cd EFGetStarted
 
 Чтобы установить EF Core, установите пакеты целевых поставщиков базы данных EF Core, с которыми вы будете работать. В этом руководстве используется SQLite, так как он работает на всех платформах, поддерживаемых .NET Core. Список доступных поставщиков см. в разделе [Database Providers](../providers/index.md) (Поставщики базы данных).
 
-## <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 ```
 
-## <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Последовательно выберите пункты **Средства > Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
 * Выполните следующие команды:
@@ -79,11 +79,11 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
 Задайте класс контекста и классы сущностей, составляющие модель.
 
-## <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 * В каталоге проекта создайте файл **Model.cs** с таким кодом:
 
-## <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Щелкните проект правой кнопкой мыши и выберите **Добавить > Класс**.
 * Задайте имя **Model.cs** и щелкните **Добавить**.
@@ -101,7 +101,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
 В следующих действиях используются [миграции](xref:core/managing-schemas/migrations/index) для создания базы данных.
 
-## <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 * Выполните следующие команды:
 
@@ -114,7 +114,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
   При этом устанавливается [dotnet ef](../miscellaneous/cli/dotnet.md) и пакет конструктора, требуемый для выполнения команды в проекте. Команда `migrations` формирует шаблон миграции для создания начального набора таблиц в модели. Команда `database update` создает базу данных и применяет к ней созданную миграцию.
 
-## <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * В **консоли диспетчера пакетов** выполните следующие команды:
 
@@ -136,13 +136,13 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
 ## <a name="run-the-app"></a>Запуск приложения
 
-## <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
+### <a name="net-core-clitabnetcore-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet run
 ```
 
-## <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+### <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 В Visual Studio используется неподходящий рабочий каталог при запуске консольных приложений .NET Core (см. [dotnet/project-system#3619](https://github.com/dotnet/project-system/issues/3619)). Это вызывает исключение, информирующее об *отсутствии таблицы (блоги)* . Чтобы обновить рабочий каталог, выполните следующие действия:
 
@@ -165,5 +165,5 @@ dotnet run
 
 * Следуйте инструкциям из [руководства по ASP.NET Core](/aspnet/core/data/ef-rp/intro), чтобы использовать EF Core в веб-приложении.
 * См. сведения о [выражениях запросов LINQ](/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations).
-* [Настройте модель](xref:core/modeling/index), указав [требуемую](xref:core/modeling/required-optional) и [максимальную длину](xref:core/modeling/max-length).
+* [Настройте модель](xref:core/modeling/index), указав [требуемую](xref:core/modeling/entity-properties#required-and-optional-properties) и [максимальную длину](xref:core/modeling/entity-properties#maximum-length).
 * Используйте [миграции](xref:core/managing-schemas/migrations/index) для обновления схемы базы данных после изменения модели.
