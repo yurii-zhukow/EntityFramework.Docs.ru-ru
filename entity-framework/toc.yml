@@ -79,18 +79,14 @@
           items:
             - name: Обзор
               href: core/modeling/index.md
-            - name: Включение и исключение типов
-              href: core/modeling/included-types.md
-            - name: Включение и исключение свойств
-              href: core/modeling/included-properties.md
-            - name: Ключи (первичные)
+            - name: Типы сущностей
+              href: core/modeling/entity-types.md
+            - name: Свойства сущности
+              href: core/modeling/entity-properties.md
+            - name: Клавиши
               href: core/modeling/keys.md
             - name: Созданные значения
               href: core/modeling/generated-properties.md
-            - name: Обязательные и дополнительные свойства
-              href: core/modeling/required-optional.md
-            - name: Максимальная длина
-              href: core/modeling/max-length.md
             - name: Маркеры параллелизма
               href: core/modeling/concurrency.md
             - name: Свойства тени
@@ -99,10 +95,10 @@
               href: core/modeling/relationships.md
             - name: Индексы
               href: core/modeling/indexes.md
-            - name: Альтернативные ключи
-              href: core/modeling/alternate-keys.md
             - name: Наследование
               href: core/modeling/inheritance.md
+            - name: Последовательности
+              href: core/modeling/sequences.md
             - name: Резервные поля
               href: core/modeling/backing-field.md
             - name: Преобразования значений
@@ -119,36 +115,13 @@
               href: core/modeling/keyless-entity-types.md
             - name: Переключение моделей с одинаковым DbContext
               href: core/modeling/dynamic-model.md
-            - name: "Пространственные данные\_(GIS)"
+            - name: Пространственные данные
+              displayName: GIS
               href: core/modeling/spatial.md
             - name: Моделирование реляционных баз данных
               items:
                 - name: Обзор
                   href: core/modeling/relational/index.md
-                - name: Сопоставление таблиц
-                  href: core/modeling/relational/tables.md
-                - name: Сопоставление столбцов
-                  href: core/modeling/relational/columns.md
-                - name: Типы данных
-                  href: core/modeling/relational/data-types.md
-                - name: Первичные ключи
-                  href: core/modeling/relational/primary-keys.md
-                - name: Схема по умолчанию
-                  href: core/modeling/relational/default-schema.md
-                - name: Вычисляемые столбцы
-                  href: core/modeling/relational/computed-columns.md
-                - name: Последовательности
-                  href: core/modeling/relational/sequences.md
-                - name: Значения по умолчанию
-                  href: core/modeling/relational/default-values.md
-                - name: Индексы
-                  href: core/modeling/relational/indexes.md
-                - name: Ограничения внешнего ключа
-                  href: core/modeling/relational/fk-constraints.md
-                - name: Альтернативные ключи (ограничения уникальности)
-                  href: core/modeling/relational/unique-constraints.md
-                - name: Наследование (реляционная база данных)
-                  href: core/modeling/relational/inheritance.md
         - name: Управление схемами баз данных
           items:
             - name: Обзор
@@ -303,7 +276,7 @@
               href: ef6/fundamentals/connection-management.md
             - name: Устойчивость подключений
               items:
-                - name: Логика повторных попыток
+                - name: Логика повтора
                   href: ef6/fundamentals/connection-resiliency/retry-logic.md
                 - name: Проблемы с фиксацией транзакций
                   href: ef6/fundamentals/connection-resiliency/commit-failures.md
@@ -371,7 +344,7 @@
                   items:
                     - name: Перечисления
                       href: ef6/modeling/code-first/data-types/enums.md
-                    - name: пространственный индекс
+                    - name: Пространственные данные
                       href: ef6/modeling/code-first/data-types/spatial.md
                 - name: Соглашения
                   items:
@@ -419,7 +392,7 @@
                       href: ef6/modeling/designer/data-types/complex-types.md
                     - name: Перечисления
                       href: ef6/modeling/designer/data-types/enums.md
-                    - name: пространственный индекс
+                    - name: Пространственные данные
                       href: ef6/modeling/designer/data-types/spatial.md
                 - name: Разделение сопоставлений
                   items:
@@ -465,7 +438,7 @@
                       href: ef6/modeling/designer/advanced/defining-query.md
                     - name: Несколько результирующих наборов
                       href: ef6/modeling/designer/advanced/multiple-result-sets.md
-                    - name: Функции с табличными значениями
+                    - name: Функции с табличным значением
                       href: ef6/modeling/designer/advanced/tvfs.md
                 - name: Сочетания клавиш
                   href: ef6/modeling/designer/keyboard-shortcuts.md
@@ -505,7 +478,7 @@
           items:
             - name: Блоги
               href: ef6/resources/blogs.md
-            - name: Примеры использования
+            - name: Конкретные случаи
               href: ef6/resources/case-studies.md
             - name: Участие
               href: ef6/resources/contribute.md
