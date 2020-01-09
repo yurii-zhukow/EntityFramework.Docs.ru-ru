@@ -5,12 +5,12 @@ ms.author: bricelam
 ms.date: 11/01/2018
 ms.assetid: 2BDE29FC-4161-41A0-841E-69F51CCD9341
 uid: core/modeling/spatial
-ms.openlocfilehash: 335d4f3a601624f7c994b7dcacefe4ef6798beb3
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 8dae1ab949c77ffa08904b12a5716b729e6913a1
+ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655602"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75502244"
 ---
 # <a name="spatial-data"></a>Пространственные данные
 
@@ -30,7 +30,7 @@ Microsoft.EntityFrameworkCore.Sqlite    | [Microsoft. EntityFrameworkCore. SQLit
 Microsoft.EntityFrameworkCore.InMemory  | [неттопологисуите](https://www.nuget.org/packages/NetTopologySuite)
 Npgsql.EntityFrameworkCore.PostgreSQL   | [Npgsql. EntityFrameworkCore. PostgreSQL. Неттопологисуите](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite)
 
-## <a name="reverse-engineering"></a>Реконструирование
+## <a name="reverse-engineering"></a>реконструирование;
 
 Пространственные пакеты NuGet также включают модели [реконструирования](../managing-schemas/scaffolding.md) с пространственными свойствами, но ***перед*** запуском `Scaffold-DbContext` или `dotnet ef dbcontext scaffold`необходимо установить пакет. В противном случае вы получите предупреждения о том, что не удается найти сопоставления типов для столбцов, и столбцы будут пропущены.
 
@@ -48,8 +48,8 @@ optionsBuilder.UseSqlServer(
 
 Существует несколько типов пространственных данных. Используемый тип зависит от типов фигур, которые вы хотите разрешить. Ниже приведена иерархия типов NTS, которые можно использовать для свойств в модели. Они находятся в пространстве имен `NetTopologySuite.Geometries`.
 
-* Объект
-  * Point
+* Geometry
+  * отчетов
   * LineString
   * Polygon
   * GeometryCollection
@@ -213,7 +213,7 @@ var currentCountry = db.Countries
 
 ### <a name="geography-or-geometry"></a>География или геометрические объекты
 
-По умолчанию пространственные свойства сопоставляются со столбцами `geography` в SQL Server. Чтобы использовать `geometry`, [Настройте тип столбца](xref:core/modeling/relational/data-types) в модели.
+По умолчанию пространственные свойства сопоставляются со столбцами `geography` в SQL Server. Чтобы использовать `geometry`, [Настройте тип столбца](xref:core/modeling/entity-properties#column-data-types) в модели.
 
 ### <a name="geography-polygon-rings"></a>Кольца географических многоугольников
 
