@@ -1,57 +1,47 @@
 ---
 title: Маркеры параллелизма — EF Core
-author: rowanmiller
-ms.date: 03/03/2018
+author: AndriySvyryd
+ms.date: 01/03/2020
 ms.assetid: bc8b1cb0-befe-4b67-8004-26e6c5f69385
 uid: core/modeling/concurrency
-ms.openlocfilehash: db768c1de99000be91d33764ccd3c3924237f8bb
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 8a5f3aa09c2a83d5be0998a11ef2ee8100437514
+ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197455"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75781148"
 ---
-# <a name="concurrency-tokens"></a><span data-ttu-id="06557-102">Маркеры параллелизма</span><span class="sxs-lookup"><span data-stu-id="06557-102">Concurrency Tokens</span></span>
+# <a name="concurrency-tokens"></a><span data-ttu-id="6e6c2-102">Маркеры параллелизма</span><span class="sxs-lookup"><span data-stu-id="6e6c2-102">Concurrency Tokens</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="06557-103">На этой странице приведена документация по настройке маркеров параллелизма.</span><span class="sxs-lookup"><span data-stu-id="06557-103">This page documents how to configure concurrency tokens.</span></span> <span data-ttu-id="06557-104">См. раздел [Обработка конфликтов параллелизма](../saving/concurrency.md) для подробного объяснения того, как работает управление параллелизмом в EF Core и примеры обработки конфликтов параллелизма в приложении.</span><span class="sxs-lookup"><span data-stu-id="06557-104">See [Handling Concurrency Conflicts](../saving/concurrency.md) for a detailed explanation of how concurrency control works on EF Core and examples of how to handle concurrency conflicts in your application.</span></span>
+> <span data-ttu-id="6e6c2-103">На этой странице приведена документация по настройке маркеров параллелизма.</span><span class="sxs-lookup"><span data-stu-id="6e6c2-103">This page documents how to configure concurrency tokens.</span></span> <span data-ttu-id="6e6c2-104">См. раздел [Обработка конфликтов параллелизма](../saving/concurrency.md) для подробного объяснения того, как работает управление параллелизмом в EF Core и примеры обработки конфликтов параллелизма в приложении.</span><span class="sxs-lookup"><span data-stu-id="6e6c2-104">See [Handling Concurrency Conflicts](../saving/concurrency.md) for a detailed explanation of how concurrency control works on EF Core and examples of how to handle concurrency conflicts in your application.</span></span>
 
-<span data-ttu-id="06557-105">Свойства, настроенные как маркеры параллелизма, используются для реализации управления оптимистичным параллелизмом.</span><span class="sxs-lookup"><span data-stu-id="06557-105">Properties configured as concurrency tokens are used to implement optimistic concurrency control.</span></span>
+<span data-ttu-id="6e6c2-105">Свойства, настроенные как маркеры параллелизма, используются для реализации управления оптимистичным параллелизмом.</span><span class="sxs-lookup"><span data-stu-id="6e6c2-105">Properties configured as concurrency tokens are used to implement optimistic concurrency control.</span></span>
 
-## <a name="conventions"></a><span data-ttu-id="06557-106">Соглашения</span><span class="sxs-lookup"><span data-stu-id="06557-106">Conventions</span></span>
+## <a name="configuration"></a><span data-ttu-id="6e6c2-106">Конфигурация</span><span class="sxs-lookup"><span data-stu-id="6e6c2-106">Configuration</span></span>
 
-<span data-ttu-id="06557-107">По соглашению свойства никогда не настраиваются в качестве маркеров параллелизма.</span><span class="sxs-lookup"><span data-stu-id="06557-107">By convention, properties are never configured as concurrency tokens.</span></span>
+### <a name="data-annotationstabdata-annotations"></a>[<span data-ttu-id="6e6c2-107">Заметки к данным</span><span class="sxs-lookup"><span data-stu-id="6e6c2-107">Data Annotations</span></span>](#tab/data-annotations)
 
-## <a name="data-annotations"></a><span data-ttu-id="06557-108">Заметки к данным</span><span class="sxs-lookup"><span data-stu-id="06557-108">Data Annotations</span></span>
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Concurrency.cs?name=Concurrency&highlight=5)]
 
-<span data-ttu-id="06557-109">Заметки к данным можно использовать для настройки свойства как маркера параллелизма.</span><span class="sxs-lookup"><span data-stu-id="06557-109">You can use the Data Annotations to configure a property as a concurrency token.</span></span>
+### <a name="fluent-apitabfluent-api"></a>[<span data-ttu-id="6e6c2-108">API Fluent</span><span class="sxs-lookup"><span data-stu-id="6e6c2-108">Fluent API</span></span>](#tab/fluent-api)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Concurrency.cs#ConfigureConcurrencyAnnotations)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Concurrency.cs?name=Concurrency&highlight=5)]
 
-## <a name="fluent-api"></a><span data-ttu-id="06557-110">Текучий API</span><span class="sxs-lookup"><span data-stu-id="06557-110">Fluent API</span></span>
+***
 
-<span data-ttu-id="06557-111">API-интерфейс Fluent можно использовать для настройки свойства как маркера параллелизма.</span><span class="sxs-lookup"><span data-stu-id="06557-111">You can use the Fluent API to configure a property as a concurrency token.</span></span>
+## <a name="timestamprowversion"></a><span data-ttu-id="6e6c2-109">Timestamp/rowversion</span><span class="sxs-lookup"><span data-stu-id="6e6c2-109">Timestamp/rowversion</span></span>
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Concurrency.cs#ConfigureConcurrencyFluent)]
+<span data-ttu-id="6e6c2-110">Timestamp/rowversion — это свойство, для которого новое значение автоматически создается базой данных при каждой вставке или обновлении строки.</span><span class="sxs-lookup"><span data-stu-id="6e6c2-110">A timestamp/rowversion is a property for which a new value is automatically generated by the database every time a row is inserted or updated.</span></span> <span data-ttu-id="6e6c2-111">Свойство также обрабатывается как маркер параллелизма, гарантируя, что вы получаете исключение, если обновляемая строка изменилась с момента запроса.</span><span class="sxs-lookup"><span data-stu-id="6e6c2-111">The property is also treated as a concurrency token, ensuring that you get an exception if a row you are updating has changed since you queried it.</span></span> <span data-ttu-id="6e6c2-112">Точные сведения зависят от используемого поставщика базы данных. для SQL Server обычно используется свойство *Byte []* , которое будет настроено как столбец типа *ROWVERSION* в базе данных.</span><span class="sxs-lookup"><span data-stu-id="6e6c2-112">The precise details depend on the database provider being used; for SQL Server, a *byte[]* property is usually used, which will be set up as a *ROWVERSION* column in the database.</span></span>
 
-## <a name="timestamprow-version"></a><span data-ttu-id="06557-112">Метка времени/версия строки</span><span class="sxs-lookup"><span data-stu-id="06557-112">Timestamp/row version</span></span>
+<span data-ttu-id="6e6c2-113">Можно настроить свойство как timestamp/rowversion следующим образом:</span><span class="sxs-lookup"><span data-stu-id="6e6c2-113">You can configure a property to be a timestamp/rowversion as follows:</span></span>
 
-<span data-ttu-id="06557-113">Отметка времени — это свойство, в котором база данных создает новое значение при каждой вставке или обновлении строки.</span><span class="sxs-lookup"><span data-stu-id="06557-113">A timestamp is a property where a new value is generated by the database every time a row is inserted or updated.</span></span> <span data-ttu-id="06557-114">Свойство также обрабатывается как маркер параллелизма.</span><span class="sxs-lookup"><span data-stu-id="06557-114">The property is also treated as a concurrency token.</span></span> <span data-ttu-id="06557-115">Это гарантирует, что вы получите исключение, если кто-то другой изменил строку, которую вы пытаетесь обновить, с момента запроса данных.</span><span class="sxs-lookup"><span data-stu-id="06557-115">This ensures you will get an exception if anyone else has modified a row that you are trying to update since you queried for the data.</span></span>
+### <a name="data-annotationstabdata-annotations"></a>[<span data-ttu-id="6e6c2-114">Заметки к данным</span><span class="sxs-lookup"><span data-stu-id="6e6c2-114">Data Annotations</span></span>](#tab/data-annotations)
 
-<span data-ttu-id="06557-116">Как это достигается при использовании поставщика базы данных.</span><span class="sxs-lookup"><span data-stu-id="06557-116">How this is achieved is up to the database provider being used.</span></span> <span data-ttu-id="06557-117">Для SQL Server метка времени обычно используется для свойства *Byte []* , которое будет настроено как столбец *ROWVERSION* в базе данных.</span><span class="sxs-lookup"><span data-stu-id="06557-117">For SQL Server, timestamp is usually used on a *byte[]* property, which will be setup as a *ROWVERSION* column in the database.</span></span>
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Timestamp.cs?name=Timestamp&highlight=7)]
 
-### <a name="conventions"></a><span data-ttu-id="06557-118">Соглашения</span><span class="sxs-lookup"><span data-stu-id="06557-118">Conventions</span></span>
+### <a name="fluent-apitabfluent-api"></a>[<span data-ttu-id="6e6c2-115">API Fluent</span><span class="sxs-lookup"><span data-stu-id="6e6c2-115">Fluent API</span></span>](#tab/fluent-api)
 
-<span data-ttu-id="06557-119">По соглашению свойства никогда не настраиваются как метки времени.</span><span class="sxs-lookup"><span data-stu-id="06557-119">By convention, properties are never configured as timestamps.</span></span>
+<span data-ttu-id="6e6c2-116">[! код-CSharp [Main] (.. /.. /.. /Самплес/коре/моделинг/флуентапи/тиместамп.КС? Name = timestamp & выделение = 9, 17]</span><span class="sxs-lookup"><span data-stu-id="6e6c2-116">[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Timestamp.cs?name=Timestamp&highlight=9,17]</span></span>
 
-### <a name="data-annotations"></a><span data-ttu-id="06557-120">Заметки к данным</span><span class="sxs-lookup"><span data-stu-id="06557-120">Data Annotations</span></span>
-
-<span data-ttu-id="06557-121">Для настройки свойства в качестве метки времени можно использовать заметки к данным.</span><span class="sxs-lookup"><span data-stu-id="06557-121">You can use Data Annotations to configure a property as a timestamp.</span></span>
-
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Timestamp.cs#ConfigureTimestampAnnotations)]
-
-### <a name="fluent-api"></a><span data-ttu-id="06557-122">Текучий API</span><span class="sxs-lookup"><span data-stu-id="06557-122">Fluent API</span></span>
-
-<span data-ttu-id="06557-123">Для настройки свойства в качестве метки времени можно использовать API-интерфейс Fluent.</span><span class="sxs-lookup"><span data-stu-id="06557-123">You can use the Fluent API to configure a property as a timestamp.</span></span>
-
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Timestamp.cs#ConfigureTimestampFluent)]
+***
