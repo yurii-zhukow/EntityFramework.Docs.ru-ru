@@ -53,7 +53,7 @@
               href: core/get-started/index.md
             - name: Установка EF Core
               href: core/get-started/install/index.md
-            - name: ⤤ Руководство по ASP.NET Core
+            - name: Руководство по ASP.NET Core >>
               href: /aspnet/core/data/ef-rp/intro
         - name: Основы
           items:
@@ -118,10 +118,6 @@
             - name: Пространственные данные
               displayName: GIS
               href: core/modeling/spatial.md
-            - name: Моделирование реляционных баз данных
-              items:
-                - name: Обзор
-                  href: core/modeling/relational/index.md
         - name: Управление схемами баз данных
           items:
             - name: Обзор
@@ -234,8 +230,8 @@
               href: core/miscellaneous/cli/dbcontext-creation.md
             - name: Службы времени разработки
               href: core/miscellaneous/cli/services.md
-        - name: "⤤ Справочник по API\_EF\_Core"
-          href: 'https://docs.microsoft.com/dotnet/api/?view=efcore-2.1'
+        - name: "Справочник по API\_EF\_Core >>"
+          href: /dotnet/api/?view=efcore-3.1
     - name: Entity Framework 6
       items:
         - name: Обзор
@@ -542,5 +538,5 @@
                       href: ef6/resources/licenses/ef6/kor.md
                     - name: Русский
                       href: ef6/resources/licenses/ef6/rus.md
-        - name: "⤤ Справочник по API\_EF6"
+        - name: "Справочник по API\_EF6 >>"
           href: 'https://docs.microsoft.com/dotnet/api/?view=entity-framework-6.2.0'

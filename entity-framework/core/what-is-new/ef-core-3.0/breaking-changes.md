@@ -3,12 +3,12 @@ title: Критические изменения в EF Core 3.0 — EF Core
 author: ajcvickers
 ms.date: 12/03/2019
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: d614103169837238810fabd0a8889043c851ef14
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.openlocfilehash: cac166e9e194e512de7d730d27c061e6deaf5191
+ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824864"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75502231"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>Критические изменения в EF Core 3.0
 
@@ -17,7 +17,7 @@ ms.locfileid: "74824864"
 
 ## <a name="summary"></a>Сводка
 
-| **Критические изменения**                                                                                               | **Влияние** |
+| **Критическое изменение**                                                                                               | **Влияние** |
 |:------------------------------------------------------------------------------------------------------------------|------------|
 | [Запросы LINQ больше не вычисляются на клиенте](#linq-queries-are-no-longer-evaluated-on-the-client)         | Высокий       |
 | [EF Core 3.0 больше предназначен для .NET Standard 2.1, а не для .NET Standard 2.0](#netstandard21) | Высокий      |
@@ -188,7 +188,7 @@ ms.locfileid: "74824864"
 **Новое поведение**
 
 Начиная с EF Core 3.0 используйте `FromSqlRaw`, `ExecuteSqlRaw` и `ExecuteSqlRawAsync` для создания параметризованного запроса, где параметры передаются отдельно из строки запроса.
-Например:
+Пример:
 
 ```csharp
 context.Products.FromSqlRaw(
@@ -197,7 +197,7 @@ context.Products.FromSqlRaw(
 ```
 
 Используйте `FromSqlInterpolated`, `ExecuteSqlInterpolated` и `ExecuteSqlInterpolatedAsync` для создания параметризованного запроса, где параметры передаются как часть интерполированной строки запроса.
-Например:
+Пример:
 
 ```csharp
 context.Products.FromSqlInterpolated(
@@ -236,7 +236,7 @@ context.Products.FromSqlRaw("[dbo].[Ten Most Expensive Products]").FirstOrDefaul
 
 EF Core 3.0 не поддерживает автоматическое вычисление на стороне клиента, так как оно было подвержено ошибкам, как описано [здесь](#linq-queries-are-no-longer-evaluated-on-the-client).
 
-**Предотвращение**
+**Устранение рисков**
 
 Если вы используете хранимую процедуру в методе FromSqlRaw или FromSqlInterpolated, то знаете, что составление для нее невозможно, поэтому вы можете добавить __AsEnumerable или AsAsyncEnumerable__ сразу после вызова метода FromSql, чтобы избежать составления на стороне сервера.
 
@@ -273,7 +273,7 @@ context.Products.FromSqlRaw("[dbo].[Ten Most Expensive Products]").AsEnumerable(
 
 **Старое поведение**
 
-До EF Core 3.0 один и тот же экземпляр сущности будет использоваться для каждого вхождения сущности с заданным типом и ИД. Это соответствует поведению запросов отслеживания. Например, запрос
+До EF Core 3.0 один и тот же экземпляр сущности будет использоваться для каждого вхождения сущности с заданным типом и ИД. Это соответствует поведению запросов отслеживания. Например, следующий запрос:
 
 ```csharp
 var results = context.Products.Include(e => e.Category).AsNoTracking().ToList();
@@ -393,8 +393,8 @@ public string Id { get; set; }
 
 **Решение проблемы**
 
-Для восстановления прежнего поведения можно использовать параметры `context.ChangedTracker`.
-Например:
+Для восстановления прежнего поведения можно использовать параметры `context.ChangeTracker`.
+Пример:
 
 ```csharp
 context.ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
@@ -487,7 +487,7 @@ context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 **Новое поведение**
 
 Начиная с EF Core 3.0 существует текучий API для настройки свойства навигации для владельца с помощью `WithOwner()`.
-Например:
+Пример:
 
 ```csharp
 modelBuilder.Entity<Order>.OwnsOne(e => e.Details).WithOwner(e => e.Order);
@@ -495,7 +495,7 @@ modelBuilder.Entity<Order>.OwnsOne(e => e.Details).WithOwner(e => e.Order);
 
 Конфигурация, связанная с отношением между владельцем и принадлежащим объектом, теперь должна быть включена в цепочку после `WithOwner()` по аналогии с настройкой других отношений.
 При этом конфигурация для принадлежащего типа сама будет включена в цепочку после `OwnsOne()/OwnsMany()`.
-Например:
+Пример:
 
 ```csharp
 modelBuilder.Entity<Order>.OwnsOne(e => e.Details, eb =>
@@ -741,7 +741,7 @@ public class Order
 
 Начиная с версии 3.0 система EF Core не будет пытаться использовать свойства для внешних ключей по соглашению, если они имеют такое же имя, что и свойство субъекта.
 Шаблоны имени типа субъекта, сцепленного с именем свойства субъекта, и имени навигации, сцепленного с именем свойства субъекта, по-прежнему совпадают.
-Например:
+Пример:
 
 ```csharp
 public class Customer
@@ -877,7 +877,7 @@ using (new TransactionScope())
 **Решение проблемы**
 
 Поведение, характерное для версий до 3.0, можно восстановить, настроив режим доступа в `ModelBuilder`.
-Например:
+Пример:
 
 ```csharp
 modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruction);
@@ -1137,7 +1137,7 @@ public string Id { get; set; }
 
 При возникновении этой ошибки правильнее всего выявить первопричину и остановить создание такого большого числа внутренних поставщиков служб.
 Тем не менее эту ошибку можно преобразовать обратно в предупреждение (или игнорировать) с помощью конфигурации для `DbContextOptionsBuilder`.
-Например:
+Пример:
 
 ```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -1156,7 +1156,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 **Старое поведение**
 
 До версии EF Core 3.0 интерпретация кода с вызовом `HasOne` или `HasMany` с одной строкой была очень нечеткой.
-Например:
+Пример:
 ```csharp
 modelBuilder.Entity<Samurai>().HasOne("Entrance").WithOne();
 ```
@@ -1178,7 +1178,7 @@ modelBuilder.Entity<Samurai>().HasOne("Entrance").WithOne();
 Это приведет к нарушению работы только тех приложений, которые явно настраивают отношения с помощью строк для имен типов и не указывают явно свойство навигации.
 Такой подход используется нечасто.
 Прежнее поведение можно реализовать с помощью явной передачи значения `null` для имени свойства навигации.
-Например:
+Пример:
 
 ```csharp
 modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
@@ -1568,7 +1568,7 @@ SET MigrationId = CONCAT(LEFT(MigrationId, 4)  - 543, SUBSTRING(MigrationId, 4, 
 
 **Старое поведение**
 
-До EF Core 3.0 имена ограничений внешнего ключа назывались просто именами. Например:
+До EF Core 3.0 имена ограничений внешнего ключа назывались просто именами. Пример:
 
 ```csharp
 var constraintName = myForeignKey.Name;
@@ -1576,7 +1576,7 @@ var constraintName = myForeignKey.Name;
 
 **Новое поведение**
 
-Начиная с EF Core 3.0 имена ограничений внешнего ключа называются "имя ограничения". Например:
+Начиная с EF Core 3.0 имена ограничений внешнего ключа называются "имя ограничения". Пример:
 
 ```csharp
 var constraintName = myForeignKey.ConstraintName;
@@ -1632,7 +1632,7 @@ var constraintName = myForeignKey.ConstraintName;
 
 **Решение проблемы**
 
-Если вам необходимо создать ссылку на этот пакет, чтобы переопределить поведение EF Core во время разработки, вы можете обновить метаданные элемента PackageReference в своем проекте. Если ссылка на пакет указывается транзитивно через Microsoft.EntityFrameworkCore.Tools, вам нужно добавить явную ссылку PackageReference на пакет для изменения его метаданных.
+Если вам необходимо создать ссылку на этот пакет, чтобы переопределить поведение EF Core во время разработки, вы можете обновить метаданные элемента PackageReference в своем проекте.
 
 ``` xml
 <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
@@ -1641,6 +1641,8 @@ var constraintName = myForeignKey.ConstraintName;
   <!--<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
 </PackageReference>
 ```
+
+Если ссылка на пакет указывается транзитивно через Microsoft.EntityFrameworkCore.Tools, вам нужно добавить явную ссылку PackageReference на пакет для изменения его метаданных. Такую явную ссылку необходимо добавить в любой проект, где требуются типы из пакета.
 
 <a name="SQLitePCL"></a>
 
@@ -1717,7 +1719,7 @@ Microsoft.Data.SqlClient теперь является основным разр
 
 **Старое поведение**
 
-Тип сущности с множеством однонаправленных свойств навигации, ссылающихся на себя, и с соответствующими внешними ключами некорректно настраивался как единая связь. Например:
+Тип сущности с множеством однонаправленных свойств навигации, ссылающихся на себя, и с соответствующими внешними ключами некорректно настраивался как единая связь. Пример:
 
 ```csharp
 public class User 
@@ -1740,7 +1742,7 @@ public class User
 
 **Решение проблемы**
 
-Выполняйте полную настройку связи. Например:
+Выполняйте полную настройку связи. Пример:
 
 ```csharp
 modelBuilder
