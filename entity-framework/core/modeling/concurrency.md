@@ -1,15 +1,15 @@
 ---
 title: Маркеры параллелизма — EF Core
-author: rowanmiller
-ms.date: 03/03/2018
+author: AndriySvyryd
+ms.date: 01/03/2020
 ms.assetid: bc8b1cb0-befe-4b67-8004-26e6c5f69385
 uid: core/modeling/concurrency
-ms.openlocfilehash: db768c1de99000be91d33764ccd3c3924237f8bb
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 8a5f3aa09c2a83d5be0998a11ef2ee8100437514
+ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197455"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75781148"
 ---
 # <a name="concurrency-tokens"></a>Маркеры параллелизма
 
@@ -18,40 +18,30 @@ ms.locfileid: "71197455"
 
 Свойства, настроенные как маркеры параллелизма, используются для реализации управления оптимистичным параллелизмом.
 
-## <a name="conventions"></a>Соглашения
+## <a name="configuration"></a>Конфигурация
 
-По соглашению свойства никогда не настраиваются в качестве маркеров параллелизма.
+### <a name="data-annotationstabdata-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
-## <a name="data-annotations"></a>Заметки к данным
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Concurrency.cs?name=Concurrency&highlight=5)]
 
-Заметки к данным можно использовать для настройки свойства как маркера параллелизма.
+### <a name="fluent-apitabfluent-api"></a>[API Fluent](#tab/fluent-api)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Concurrency.cs#ConfigureConcurrencyAnnotations)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Concurrency.cs?name=Concurrency&highlight=5)]
 
-## <a name="fluent-api"></a>Текучий API
+***
 
-API-интерфейс Fluent можно использовать для настройки свойства как маркера параллелизма.
+## <a name="timestamprowversion"></a>Timestamp/rowversion
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Concurrency.cs#ConfigureConcurrencyFluent)]
+Timestamp/rowversion — это свойство, для которого новое значение автоматически создается базой данных при каждой вставке или обновлении строки. Свойство также обрабатывается как маркер параллелизма, гарантируя, что вы получаете исключение, если обновляемая строка изменилась с момента запроса. Точные сведения зависят от используемого поставщика базы данных. для SQL Server обычно используется свойство *Byte []* , которое будет настроено как столбец типа *ROWVERSION* в базе данных.
 
-## <a name="timestamprow-version"></a>Метка времени/версия строки
+Можно настроить свойство как timestamp/rowversion следующим образом:
 
-Отметка времени — это свойство, в котором база данных создает новое значение при каждой вставке или обновлении строки. Свойство также обрабатывается как маркер параллелизма. Это гарантирует, что вы получите исключение, если кто-то другой изменил строку, которую вы пытаетесь обновить, с момента запроса данных.
+### <a name="data-annotationstabdata-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
-Как это достигается при использовании поставщика базы данных. Для SQL Server метка времени обычно используется для свойства *Byte []* , которое будет настроено как столбец *ROWVERSION* в базе данных.
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Timestamp.cs?name=Timestamp&highlight=7)]
 
-### <a name="conventions"></a>Соглашения
+### <a name="fluent-apitabfluent-api"></a>[API Fluent](#tab/fluent-api)
 
-По соглашению свойства никогда не настраиваются как метки времени.
+[! код-CSharp [Main] (.. /.. /.. /Самплес/коре/моделинг/флуентапи/тиместамп.КС? Name = timestamp & выделение = 9, 17]
 
-### <a name="data-annotations"></a>Заметки к данным
-
-Для настройки свойства в качестве метки времени можно использовать заметки к данным.
-
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Timestamp.cs#ConfigureTimestampAnnotations)]
-
-### <a name="fluent-api"></a>Текучий API
-
-Для настройки свойства в качестве метки времени можно использовать API-интерфейс Fluent.
-
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Timestamp.cs#ConfigureTimestampFluent)]
+***
