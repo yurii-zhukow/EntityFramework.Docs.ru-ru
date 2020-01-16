@@ -3,12 +3,12 @@ title: Критические изменения в EF Core 3.0 — EF Core
 author: ajcvickers
 ms.date: 12/03/2019
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: cac166e9e194e512de7d730d27c061e6deaf5191
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.openlocfilehash: 0626ffe98843fbf5ee0e2de4b269da6c395c07f6
+ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502231"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75781226"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>Критические изменения в EF Core 3.0
 
@@ -1028,7 +1028,7 @@ modelBuilder
 
 **Решение проблемы**
 
-Вызовите `ChgangeTracker.DetectChanges()` явным образом перед вызовом `Entry`, чтобы обеспечить поведение, предшествовавшее выходу версии 3.0.
+Вызовите `ChangeTracker.DetectChanges()` явным образом перед вызовом `Entry`, чтобы обеспечить поведение, предшествовавшее выходу версии 3.0.
 
 ### <a name="string-and-byte-array-keys-are-not-client-generated-by-default"></a>Ключи массива строк и байтов не формируются клиентом по умолчанию
 
