@@ -19,10 +19,16 @@
       items:
         - name: Обзор
           href: core/index.md
-        - name: Новые возможности
+        - name: Выпуски и планирование
           items:
             - name: Обзор
               href: core/what-is-new/index.md
+            - name: Процесс планирования выпусков
+              href: core/what-is-new/release-planning.md
+            - name: EF Core 5.0
+              items:
+                - name: Общий план
+                  href: core/what-is-new/ef-core-5.0/plan.md
             - name: "EF Core\_3.0"
               items:
                 - name: Новые функции
