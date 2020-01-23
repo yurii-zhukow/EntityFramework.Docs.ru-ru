@@ -3,12 +3,12 @@ title: Глобальные фильтры запросов — EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: c9bbb8a5889834ea078ddb7e432863b3d0cf2ffe
-ms.sourcegitcommit: 0cc9578fd49802789a00c0044b4e57325476ca2e
+ms.openlocfilehash: f4ee9b77411290249e763f9cb8492eea61803e91
+ms.sourcegitcommit: f2a38c086291699422d8b28a72d9611d1b24ad0d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271462"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76124396"
 ---
 # <a name="global-query-filters"></a>Глобальные фильтры запросов
 
@@ -55,5 +55,4 @@ ms.locfileid: "70271462"
 
 Глобальные фильтры запросов имеют следующие ограничения:
 
-* Фильтры не должны содержать ссылки на свойства навигации.
 * Фильтры можно определить только для корневого типа сущности в иерархии наследования.
