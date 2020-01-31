@@ -5,12 +5,12 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/unstructured-data
-ms.openlocfilehash: 0bfccbfd3af6e209967004752b5a3947d644544b
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 69f979d46174ff56310b334f28438ac271f45155
+ms.sourcegitcommit: b3cf5d2e3cb170b9916795d1d8c88678269639b1
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655519"
+ms.lasthandoff: 01/30/2020
+ms.locfileid: "76888100"
 ---
 # <a name="working-with-unstructured-data-in-ef-core-azure-cosmos-db-provider"></a>Работа с неструктурированными данными в поставщике EF Core Azure Cosmos DB
 
@@ -55,11 +55,11 @@ EF Core был разработан для упрощения работы с д
 
 ## <a name="missing-property-values"></a>Отсутствующие значения свойств
 
-В предыдущем примере мы удалили свойство `"TrackingNumber"` из заказа. Из-за того, как индексирование работает в Cosmos DB, запросы, ссылающиеся на отсутствующее свойство в другом месте, чем в проекции, могут возвращать непредвиденные результаты. Пример:
+В предыдущем примере мы удалили свойство `"TrackingNumber"` из заказа. Из-за того, как индексирование работает в Cosmos DB, запросы, ссылающиеся на отсутствующее свойство в другом месте, чем в проекции, могут возвращать непредвиденные результаты. Например:
 
 [!code-csharp[MissingProperties](../../../../samples/core/Cosmos/UnstructuredData/Sample.cs?name=MissingProperties)]
 
 Отсортированный запрос фактически не возвращает результатов. Это означает, что необходимо всегда заполнять свойства, сопоставленные EF Core при непосредственной работе с хранилищем.
 
 > [!NOTE]
-> Это поведение может измениться в будущих версиях Cosmos. Например, в настоящее время, если политика индексирования определяет составной индекс {ID/? ASC, Траккингнумбер/? ASC)}, затем запрос, имеющий "ORDER BY c.Id ASC, c. дискриминатор __ASC", возвратит элементы__ , у которых отсутствует свойство `"TrackingNumber"`.
+> Это поведение может измениться в будущих версиях Cosmos. Например, в настоящее время, если политика индексирования определяет составной индекс {ID/? ASC, Траккингнумбер/? ASC)}, затем запрос с предложением ORDER BY c.Id ASC, c. дискриминатор __ASC "возвратит__ элементы, у которых отсутствует свойство `"TrackingNumber"`.
