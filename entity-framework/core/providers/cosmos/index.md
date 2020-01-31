@@ -5,12 +5,12 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/index
-ms.openlocfilehash: 6903aab4911f7478afe3d8987a791ae1c5ccebce
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.openlocfilehash: 7451ce6e8d5d7078b3f56a6865aa7698e6fc63ca
+ms.sourcegitcommit: b3cf5d2e3cb170b9916795d1d8c88678269639b1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502218"
+ms.lasthandoff: 01/30/2020
+ms.locfileid: "76888126"
 ---
 # <a name="ef-core-azure-cosmos-db-provider"></a>Поставщик EF Core для Azure Cosmos DB
 
@@ -52,7 +52,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 [!code-csharp[Configuration](../../../../samples/core/Cosmos/ModelBuilding/OrderContext.cs?name=Configuration)]
 
 > [!WARNING]
-> Для простоты конечная точка и ключ здесь включены в сам код, но в рабочем приложении необходимо обеспечить их [безопасное хранение](/aspnet/core/security/app-secrets#secret-manager).
+> Для простоты конечная точка и ключ здесь заданы в коде, но в рабочем приложении необходимо обеспечить их [безопасное хранение](/aspnet/core/security/app-secrets#secret-manager).
 
 В этом примере `Order` представляет собой простую сущность, ссылающуюся на `StreetAddress` [зависимого типа](../../modeling/owned-entities.md).
 

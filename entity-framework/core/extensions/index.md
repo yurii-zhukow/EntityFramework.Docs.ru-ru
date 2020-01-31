@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 12/17/2019
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: bab725afffe1fbf9f8c0abeef58579ac9dc842d2
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.openlocfilehash: 99f59153a452a2f4aad5811110ebc5b5da7717ef
+ms.sourcegitcommit: b3cf5d2e3cb170b9916795d1d8c88678269639b1
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502086"
+ms.lasthandoff: 01/30/2020
+ms.locfileid: "76888041"
 ---
 # <a name="ef-core-tools--extensions"></a>Инструменты и расширения EF Core
 
@@ -31,6 +31,12 @@ LLBLGen Pro — решение для моделирования сущност�
 Entity Developer — мощный конструктор ORM для ADO.NET Entity Framework, NHibernate, LinqConnect, Telerik Data Access и LINQ to SQL. Он поддерживает визуальное проектирование моделей EF Core с использованием подходов Model First и Database First и создание кода C# или Visual Basic. Для EF Core: 2.
 
 [Веб-сайт](https://www.devart.com/entitydeveloper/)
+
+### <a name="nhydrate-orm-for-entity-framework"></a>Использование nHydrate ORM для Entity Framework
+
+ORM создает строго типизированные расширяемые классы для Entity Framework. Созданный код представляет собой Entity Framework Core. Различий при этом нет. Это не замена EF или пользовательского ORM. Это визуальный слой моделирования, который позволяет команде управлять сложными схемами баз данных. Он поддерживает программное обеспечение SCM, например Git, обеспечивая доступ многих пользователей к модели с минимальными конфликтами. Установщик отслеживает изменения модели и создает скрипты обновления. Для EF Core: 3.
+
+[Сайт GitHub](https://github.com/nHydrate/nHydrate)
 
 ### <a name="ef-core-power-tools"></a>EF Core Power Tools
 
@@ -163,3 +169,9 @@ NeinLinq расширяет возможности поставщиков LINQ, 
 Расширены возможности DbContext за счет таких высокопроизводительных пакетных операций, как BulkSaveChanges, BulkInsert, BulkUpdate, BulkDelete, BulkMerge и других. Для EF Core: 2, 3.
 
 [Веб-сайт](https://entityframework-extensions.net/)
+
+### <a name="expressionify"></a>Expressionify
+
+Позволяет вызывать методы расширения в лямбда-выражениях LINQ. Для EF Core: 3.1
+
+[Репозиторий GitHub](https://github.com/ClaveConsulting/Expressionify)
