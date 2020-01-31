@@ -21,7 +21,7 @@
           href: core/index.md
         - name: Выпуски и планирование
           items:
-            - name: Обзор
+            - name: Текущие и запланированные выпуски (путеводитель)
               href: core/what-is-new/index.md
             - name: Процесс планирования выпусков
               href: core/what-is-new/release-planning.md
