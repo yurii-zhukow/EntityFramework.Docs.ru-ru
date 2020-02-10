@@ -19,9 +19,9 @@
       items:
         - name: Обзор
           href: core/index.md
-        - name: Выпуски и планирование
+        - name: Выпуски и планирование (дорожная карта)
           items:
-            - name: Текущие и запланированные выпуски (путеводитель)
+            - name: Текущие и запланированные выпуски
               href: core/what-is-new/index.md
             - name: Процесс планирования выпусков
               href: core/what-is-new/release-planning.md
@@ -29,6 +29,8 @@
               items:
                 - name: Общий план
                   href: core/what-is-new/ef-core-5.0/plan.md
+                - name: Новые возможности
+                  href: core/what-is-new/ef-core-5.0/whatsnew.md
             - name: "EF Core\_3.0"
               items:
                 - name: Новые функции
