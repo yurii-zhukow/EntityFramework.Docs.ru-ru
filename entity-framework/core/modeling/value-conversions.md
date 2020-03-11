@@ -5,11 +5,11 @@ ms.date: 02/19/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 uid: core/modeling/value-conversions
 ms.openlocfilehash: 93774bc1bc3887f982faeac151825a6643c1107c
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73654783"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414557"
 ---
 # <a name="value-conversions"></a>Преобразования значений
 
@@ -18,7 +18,7 @@ ms.locfileid: "73654783"
 
 Преобразователи значений позволяют преобразовывать значения свойств при чтении из базы данных или записи в нее. Это преобразование может быть из одного значения другого типа (например, для шифрования строк) или из значения одного типа в значение другого типа (например, преобразование перечисляемых значений в строки базы данных и из них).
 
-## <a name="fundamentals"></a>Основы
+## <a name="fundamentals"></a>Основные сведения
 
 Преобразователи значений указываются в терминах `ModelClrType` и `ProviderClrType`. Тип модели — это тип .NET свойства в типе сущности. Тип поставщика — это тип .NET, понятный поставщику базы данных. Например, чтобы сохранить перечисления в виде строк в базе данных, тип модели является типом перечисления, а тип поставщика — `String`. Эти два типа могут быть одинаковыми.
 
@@ -83,7 +83,7 @@ modelBuilder
 
 ## <a name="built-in-converters"></a>Встроенные преобразователи
 
-EF Core поставляется с набором предварительно определенных классов `ValueConverter`, которые находятся в пространстве имен `Microsoft.EntityFrameworkCore.Storage.ValueConversion`. Эти особые значения приведены ниже.
+EF Core поставляется с набором предварительно определенных классов `ValueConverter`, которые находятся в пространстве имен `Microsoft.EntityFrameworkCore.Storage.ValueConversion`. а именно:
 
 * `BoolToZeroOneConverter`-bool равно нулю и одному
 * `BoolToStringConverter`-bool для строк, таких как "Y" и "N"

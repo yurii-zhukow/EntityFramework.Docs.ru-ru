@@ -6,11 +6,11 @@ ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/unstructured-data
 ms.openlocfilehash: 69f979d46174ff56310b334f28438ac271f45155
-ms.sourcegitcommit: b3cf5d2e3cb170b9916795d1d8c88678269639b1
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2020
-ms.locfileid: "76888100"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414551"
 ---
 # <a name="working-with-unstructured-data-in-ef-core-azure-cosmos-db-provider"></a>Работа с неструктурированными данными в поставщике EF Core Azure Cosmos DB
 
@@ -55,7 +55,7 @@ EF Core был разработан для упрощения работы с д
 
 ## <a name="missing-property-values"></a>Отсутствующие значения свойств
 
-В предыдущем примере мы удалили свойство `"TrackingNumber"` из заказа. Из-за того, как индексирование работает в Cosmos DB, запросы, ссылающиеся на отсутствующее свойство в другом месте, чем в проекции, могут возвращать непредвиденные результаты. Например:
+В предыдущем примере мы удалили свойство `"TrackingNumber"` из заказа. Из-за того, как индексирование работает в Cosmos DB, запросы, ссылающиеся на отсутствующее свойство в другом месте, чем в проекции, могут возвращать непредвиденные результаты. Пример:
 
 [!code-csharp[MissingProperties](../../../../samples/core/Cosmos/UnstructuredData/Sample.cs?name=MissingProperties)]
 

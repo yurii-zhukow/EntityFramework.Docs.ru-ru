@@ -5,11 +5,11 @@ ms.author: bricelam
 ms.date: 09/16/2019
 uid: core/miscellaneous/cli/dbcontext-creation
 ms.openlocfilehash: f44f0648678af5a70e5171d69692bde1c1d5e0eb
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655525"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414221"
 ---
 # <a name="design-time-dbcontext-creation"></a>Создание DbContext во время разработки
 
@@ -36,14 +36,14 @@ ms.locfileid: "73655525"
 
 ## <a name="from-a-design-time-factory"></a>Из фабрики времени разработки
 
-Вы также можете сообщить средствам, как создать DbContext, реализовав интерфейс `IDesignTimeDbContextFactory<TContext>`: Если класс, реализующий этот интерфейс, находится в том же проекте, что и производный `DbContext`, или в проекте запуска приложения, средства обходят другие способы создания DbContext и использования фабрики времени разработки.
+Вы также можете сообщить средствам, как создать DbContext, реализовав интерфейс `IDesignTimeDbContextFactory<TContext>`: Если класс, реализующий этот интерфейс, находится в том же проекте, что и производный `DbContext`, или в проекте запуска приложения, средства обходят другие способы создания DbContext и используют вместо этого фабрику времени разработки.
 
 [!code-csharp[Main](../../../../samples/core/Miscellaneous/CommandLine/BloggingContextFactory.cs)]
 
 > [!NOTE]
 > Параметр `args` в настоящее время не используется. Существует ошибка [при отслеживании][8] возможности указания аргументов времени разработки из средств.
 
-Фабрика времени разработки может быть особенно полезной, если необходимо настроить DbContext по-разному для времени разработки, чем во время выполнения, если `DbContext` конструктор принимает дополнительные параметры, не зарегистрированные в DI, если вы не используете DI вообще или по какой-то причине предпочитаете не использовать метод `BuildWebHost` в классе `Main` приложения ASP.NET Core.
+Фабрика времени разработки может быть особенно полезной, если необходимо настроить DbContext по-разному для времени разработки, чем во время выполнения, если `DbContext` конструктор принимает дополнительные параметры, не зарегистрированные в DI, если вы не используете функцию Onon или по какой-либо причине не хотите использовать метод `BuildWebHost` в классе `Main` приложения ASP.NET Core.
 
   [1]: xref:core/managing-schemas/migrations/index
   [2]: xref:core/miscellaneous/configuring-dbcontext

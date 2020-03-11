@@ -5,13 +5,13 @@ ms.date: 10/27/2016
 ms.assetid: aeb0f5f8-b212-4f89-ae83-c642a5190ba0
 uid: core/miscellaneous/connection-strings
 ms.openlocfilehash: ed89d6d09b15b0dea7fd8bc3ff3e3f631495ecb7
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149105"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414095"
 ---
-# <a name="connection-strings"></a>Строки подключения
+# <a name="connection-strings"></a>Строки соединения
 
 Большинству поставщиков баз данных для подключения к базе данных требуется определенная форма строки подключения. Иногда эта строка подключения содержит конфиденциальную информацию, которую необходимо защитить. Также может потребоваться изменить строку подключения при перемещении приложения между средами, такими как разработка, тестирование и производство.
 
@@ -31,9 +31,9 @@ ms.locfileid: "71149105"
 ```
 
 > [!TIP]  
-> `providerName` Параметр не требуется для EF Core строк подключения, хранящихся в файле App. config, так как поставщик базы данных настраивается с помощью кода.
+> Параметр `providerName` не требуется для строк подключения EF Core, хранящихся в файле App. config, так как поставщик базы данных настраивается с помощью кода.
 
-Затем можно прочитать строку подключения с помощью `ConfigurationManager` API в `OnConfiguring` методе контекста. Может потребоваться добавить ссылку на `System.Configuration` сборку платформы, чтобы иметь возможность использовать этот API.
+Затем можно прочитать строку подключения с помощью `ConfigurationManager` API в методе `OnConfiguring` контекста. Чтобы использовать этот API, может потребоваться добавить ссылку на сборку `System.Configuration` Framework.
 
 ``` csharp
 public class BloggingContext : DbContext
@@ -67,7 +67,7 @@ public class BloggingContext : DbContext
 
 ## <a name="aspnet-core"></a>ASP.NET Core
 
-В ASP.NET Core система конфигурации очень гибка, и строка подключения может храниться в среде, `appsettings.json`в переменной среды, в хранилище секретов пользователя или в другом источнике конфигурации. Дополнительные сведения см. в [разделе "Конфигурация" документации по ASP.NET Core](https://docs.asp.net/en/latest/fundamentals/configuration.html) . В следующем примере показана строка подключения, хранимая в `appsettings.json`.
+В ASP.NET Core система конфигурации очень гибка, и строка подключения может храниться в `appsettings.json`, переменной среды, хранилище секретов пользователя или другом источнике конфигурации. Дополнительные сведения см. в [разделе "Конфигурация" документации по ASP.NET Core](https://docs.asp.net/en/latest/fundamentals/configuration.html) . В следующем примере показана строка подключения, хранящаяся в `appsettings.json`.
 
 ``` json
 {
@@ -77,7 +77,7 @@ public class BloggingContext : DbContext
 }
 ```
 
-Контекст обычно настраивается в `Startup.cs` со строкой подключения, которая считывается из конфигурации. Обратите `GetConnectionString()` внимание, что метод выполняет поиск значения конфигурации, `ConnectionStrings:<connection string name>`раздел которого имеет значение. Чтобы использовать этот метод расширения, необходимо импортировать пространство имен [Microsoft. Extensions. Configuration](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration) .
+Контекст обычно настраивается в `Startup.cs` со строкой подключения, которая считывается из конфигурации. Обратите внимание, что метод `GetConnectionString()` ищет значение конфигурации, ключ которого `ConnectionStrings:<connection string name>`. Чтобы использовать этот метод расширения, необходимо импортировать пространство имен [Microsoft. Extensions. Configuration](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration) .
 
 ``` csharp
 public void ConfigureServices(IServiceCollection services)

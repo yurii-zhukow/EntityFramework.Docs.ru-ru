@@ -5,18 +5,18 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/06/2019
 uid: core/modeling/owned-entities
-ms.openlocfilehash: 30b91b6e66b6c0f516d1ba12485304b52770cbef
-ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
+ms.openlocfilehash: da4a459fbc40010fc14190204c8ed66fe0495b84
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75781239"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413987"
 ---
 # <a name="owned-entity-types"></a>Принадлежащие типы сущностей
 
 EF Core позволяет моделировать типы сущностей, которые могут отображаться только в свойствах навигации других типов сущностей. Они называются _типами собственных сущностей_. Сущность, содержащая принадлежащий тип сущности, является ее _владельцем_.
 
-Собственные сущности по сути являются частью владельца и не могут существовать без них, они похожи на [статистические выражения](https://martinfowler.com/bliki/DDD_Aggregate.html). Это означает, что принадлежащий тип является определением зависимой стороны связи с владельцем.
+Собственные сущности по сути являются частью владельца и не могут существовать без них, они похожи на [статистические выражения](https://martinfowler.com/bliki/DDD_Aggregate.html). Это означает, что принадлежащая сущность является определением на зависимой стороне связи с владельцем.
 
 ## <a name="explicit-configuration"></a>Явная конфигурация
 
@@ -38,7 +38,7 @@ EF Core позволяет моделировать типы сущностей,
 
 [!code-csharp[OwnsOneString](../../../samples/core/Modeling/OwnedEntities/OwnedEntityContext.cs?name=OwnsOneString)]
 
-См. [полный пример проекта](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Modeling/OwnedEntities) для получения дополнительных контекстов.
+См. [полный пример проекта](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Modeling/OwnedEntities) для получения дополнительных контекстов.
 
 ## <a name="implicit-keys"></a>Неявные ключи
 

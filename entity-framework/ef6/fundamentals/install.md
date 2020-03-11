@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 122c38a2-f9e8-4ecc-9c72-a83bc9af7814
 ms.openlocfilehash: 2bdec6a9be228fbe934d0f46aa1bfafdfb2c971c
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181737"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78416099"
 ---
 # <a name="get-entity-framework"></a>Установка Entity Framework
 Entity Framework состоит из средств EF для Visual Studio и среды выполнения EF.
@@ -45,7 +45,7 @@ Install-Package EntityFramework
 Install-Package EntityFramework -Version <number>
 ```
 
-Обратите внимание, что `<number>` представляет конкретную версию EF для установки. Например, 6.2.0 — это версия Number для EF 6,2.   
+Обратите внимание, что `<number>` представляет определенную версию EF для установки. Например, 6.2.0 — это версия Number для EF 6,2.   
 
 Среды выполнения EF до 4,1 были частью .NET Framework и не могут быть установлены отдельно.
 

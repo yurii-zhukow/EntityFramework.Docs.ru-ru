@@ -4,21 +4,21 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 9554ed25-c5c1-43be-acad-5da37739697f
 ms.openlocfilehash: 2e0092b526278597e8477d47eeb642598647bb91
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182480"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415205"
 ---
 # <a name="designer-query-stored-procedures"></a>Хранимые процедуры запроса конструктора
 В этом пошаговом руководстве показано, как использовать Entity Framework Designer (конструктор EF) для импорта хранимых процедур в модель, а затем вызывать импортированные хранимые процедуры для получения результатов. 
 
-Обратите внимание, что Code First не поддерживает сопоставление с хранимыми процедурами или функциями. Однако можно вызывать хранимые процедуры или функции с помощью метода System. Data. Entity. DbSet. SqlQuery. Например:
+Обратите внимание, что Code First не поддерживает сопоставление с хранимыми процедурами или функциями. Однако можно вызывать хранимые процедуры или функции с помощью метода System. Data. Entity. DbSet. SqlQuery. Пример:
 ``` csharp
 var query = context.Products.SqlQuery("EXECUTE [dbo].[GetAllProducts]")`;
 ```
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 Для выполнения данного пошагового руководства требуется:
 
@@ -31,7 +31,7 @@ var query = context.Products.SqlQuery("EXECUTE [dbo].[GetAllProducts]")`;
 -   Выберите **файл —&gt; создать&gt; проект**
 -   В левой области щелкните **Visual C\#** , а затем выберите шаблон **консоли** .
 -   В качестве имени введите **ефвисспрокссампле** .
--   Нажмите кнопку **ОК**.
+-   Выберите **OK**.
 
 ## <a name="create-a-model"></a>Создание модели
 

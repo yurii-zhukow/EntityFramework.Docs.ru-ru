@@ -5,11 +5,11 @@ ms.date: 08/13/2017
 ms.assetid: 8BD43C8C-63D9-4F3A-B954-7BC518A1B7DB
 uid: core/miscellaneous/1x-2x-upgrade
 ms.openlocfilehash: b27c09fdb6210dd7c6aa0c8bc912a8bd183c16b9
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824428"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414233"
 ---
 # <a name="upgrading-applications-from-previous-versions-to-ef-core-20"></a>Обновление приложений с предыдущих версий до EF Core 2,0
 
@@ -118,7 +118,7 @@ var tableName = context.Model.FindEntityType(typeof(User)).SqlServer().TableName
 var tableName = context.Model.FindEntityType(typeof(User)).Relational().TableName;
 ```
 
-Вместо использования методов, таких как `ForSqlServerToTable`, методы расширения теперь доступны для написания условного кода на основе текущего используемого поставщика. Например:
+Вместо использования методов, таких как `ForSqlServerToTable`, методы расширения теперь доступны для написания условного кода на основе текущего используемого поставщика. Пример:
 
 ```csharp
 modelBuilder.Entity<User>().ToTable(
@@ -135,7 +135,7 @@ EF Core использует внутреннее `IServiceProvider` (конте
 
 ## <a name="in-memory-databases-must-be-named"></a>Базы данных в памяти должны иметь имена
 
-Глобальная неименованная база данных в памяти была удалена, а все базы данных в памяти должны иметь имя. Например:
+Глобальная неименованная база данных в памяти была удалена, а все базы данных в памяти должны иметь имя. Пример:
 
 ``` csharp
 optionsBuilder.UseInMemoryDatabase("MyDatabase");

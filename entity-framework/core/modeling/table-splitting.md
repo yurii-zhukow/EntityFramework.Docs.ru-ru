@@ -5,12 +5,12 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 01/03/2020
 uid: core/modeling/table-splitting
-ms.openlocfilehash: c38d3ee0efa82f84a1051017ae40c9f3fdd57f1f
-ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
+ms.openlocfilehash: de24f8903af79ebd7f68e6b74288257883c1fa8d
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75781174"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414701"
 ---
 # <a name="table-splitting"></a>Разделение таблиц
 
@@ -33,9 +33,9 @@ EF Core позволяет сопоставлять две или более с�
 [!code-csharp[TableSplittingConfiguration](../../../samples/core/Modeling/TableSplitting/TableSplittingContext.cs?name=TableSplitting)]
 
 > [!TIP]
-> См. [полный пример проекта](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Modeling/TableSplitting) для получения дополнительных контекстов.
+> См. [полный пример проекта](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Modeling/TableSplitting) для получения дополнительных контекстов.
 
-## <a name="usage"></a>Метрики
+## <a name="usage"></a>Использование
 
 Сохранение и запрос сущностей с помощью разбиения таблицы выполняется так же, как и для других сущностей:
 

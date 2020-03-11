@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 1097cb00-15f5-453d-90ed-bff9403d23e3
 ms.openlocfilehash: 863f1b4551bd62160915eba90fee7ba6c49c169c
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181594"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413897"
 ---
 # <a name="provider-support-for-spatial-types"></a>Поддержка пространственных типов в поставщике
 Entity Framework поддерживает работу с пространственными данными с помощью классов заданное DbGeography или заданное DbGeometry. Эти классы полагаются на функциональность базы данных, предлагаемую поставщиком Entity Framework. Не все поставщики поддерживают пространственные данные и могут иметь дополнительные предварительные требования, например установку сборок пространственных типов. Ниже приведены дополнительные сведения о поддержке пространственных типов для поставщиков.  

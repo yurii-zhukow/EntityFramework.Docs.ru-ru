@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 2eda668b-1e5d-487d-9a8c-0e3beef03fcb
 ms.openlocfilehash: efd646348d8a18bbeed2d0a0e708d4d36eb26eac
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182430"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414485"
 ---
 # <a name="local-data"></a>Локальные данные
 При выполнении запроса LINQ непосредственно к DbSet будет всегда отправляться запрос к базе данных, но можно получить доступ к данным, находящихся в памяти, с помощью свойства DbSet. local. Кроме того, можно получить доступ к дополнительной информации EF, которая отслеживает сущности с помощью методов DbContext. Entry и DbContext. ChangeTracker .s. Методы, представленные в этом разделе, также применимы к моделям, созданным с помощью Code First и конструктора EF.  

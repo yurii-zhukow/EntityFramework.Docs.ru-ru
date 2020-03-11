@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 452f17c3-9f26-4de4-9894-8bc036e23b0f
 ms.openlocfilehash: f5e7532e6c0b473d8ce77cbd11e3e673b0af6cbe
-ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921783"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415013"
 ---
 # <a name="designer-table-splitting"></a>Разделение таблиц конструктора
 В этом пошаговом руководстве показано, как сопоставлять несколько типов сущностей с одной таблицей путем изменения модели с помощью Entity Framework Designer (конструктор EF).
@@ -19,7 +19,7 @@ ms.locfileid: "70921783"
 
 ![Конструктор EF](~/ef6/media/efdesigner.png)
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 Для выполнения данного пошагового руководства требуется:
 
@@ -31,7 +31,7 @@ ms.locfileid: "70921783"
 В этом пошаговом руководстве используется Visual Studio 2012.
 
 -   Откройте Visual Studio 2012.
--   В меню **Файл** выберите пункт **Создать**, а затем команду **Проект**.
+-   В меню **Файл** укажите **Создать**, затем нажмите **Проект**.
 -   В левой области щелкните Visual C\#, а затем выберите шаблон Консольное приложение.
 -   Введите **таблесплиттингсампле** в качестве имени проекта и нажмите кнопку **ОК**.
 

@@ -6,11 +6,11 @@ ms.date: 12/10/2019
 ms.assetid: e9dff604-3469-4a05-8f9e-18ac281d82a9
 uid: core/modeling/entity-properties
 ms.openlocfilehash: b67603fbffd1f1c8506bc21f8972c851eb8eef29
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502429"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414569"
 ---
 # <a name="entity-properties"></a>Свойства объекта
 
@@ -22,11 +22,11 @@ ms.locfileid: "75502429"
 
 Конкретные свойства можно исключить следующим образом.
 
-### <a name="data-annotationstabdata-annotations"></a>[Заметки к данным](#tab/data-annotations)
+### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/IgnoreProperty.cs?name=IgnoreProperty&highlight=6)]
 
-### <a name="fluent-apitabfluent-api"></a>[API Fluent](#tab/fluent-api)
+### <a name="fluent-api"></a>[API Fluent](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/IgnoreProperty.cs?name=IgnoreProperty&highlight=3,4)]
 
@@ -38,11 +38,11 @@ ms.locfileid: "75502429"
 
 Если вы предпочитаете настроить столбцы с разными именами, можно сделать следующее:
 
-### <a name="data-annotationstabdata-annotations"></a>[Заметки к данным](#tab/data-annotations)
+### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ColumnName.cs?Name=ColumnName&highlight=3)]
 
-### <a name="fluent-apitabfluent-api"></a>[API Fluent](#tab/fluent-api)
+### <a name="fluent-api"></a>[API Fluent](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ColumnName.cs?Name=ColumnName&highlight=3-5)]
 
@@ -56,11 +56,11 @@ ms.locfileid: "75502429"
 
 Можно также настроить столбцы, указав для столбца точный тип данных. Например, следующий код настраивает `Url` как строку, не поддерживающую Юникод, с максимальной длиной `200` и `Rating` как десятичную с точностью `5` и масштабом `2`:
 
-### <a name="data-annotationstabdata-annotations"></a>[Заметки к данным](#tab/data-annotations)
+### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ColumnDataType.cs?name=ColumnDataType&highlight=4,6)]
 
-### <a name="fluent-apitabfluent-api"></a>[API Fluent](#tab/fluent-api)
+### <a name="fluent-api"></a>[API Fluent](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ColumnDataType.cs?name=ColumnDataType&highlight=5-6)]
 
@@ -75,11 +75,11 @@ ms.locfileid: "75502429"
 
 В следующем примере Настройка максимальной длины 500 приведет к созданию в SQL Server столбца типа `nvarchar(500)`.
 
-#### <a name="data-annotationstabdata-annotations"></a>[Заметки к данным](#tab/data-annotations)
+#### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/MaxLength.cs?name=MaxLength&highlight=4)]
 
-#### <a name="fluent-apitabfluent-api"></a>[API Fluent](#tab/fluent-api)
+#### <a name="fluent-api"></a>[API Fluent](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/MaxLength.cs?name=MaxLength&highlight=3-5)]
 
@@ -87,9 +87,9 @@ ms.locfileid: "75502429"
 
 ## <a name="required-and-optional-properties"></a>Обязательные и необязательные свойства
 
-Свойство считается необязательным, если для него допустимо значение `null`. Если `null` не является допустимым значением свойства, свойство считается обязательным. При сопоставлении со схемой реляционной базы данных обязательные свойства создаются как столбцы, не допускающие значения NULL, а дополнительные свойства создаются как столбцы, допускающие значение null.
+Свойство считается необязательным, если оно является допустимым для того, чтобы оно содержало `null`. Если `null` не является допустимым значением для присвоения свойству, оно считается обязательным свойством. При сопоставлении со схемой реляционной базы данных обязательные свойства создаются как столбцы, не допускающие значения NULL, а дополнительные свойства создаются как столбцы, допускающие значение null.
 
-### <a name="conventions"></a>Обозначения
+### <a name="conventions"></a>Соглашения
 
 По соглашению свойство, тип .NET которого может содержать значение null, будет настроено как необязательный, тогда как свойства, типы .NET которых не могут содержать значение null, будут настроены как обязательные. Например, все свойства с типами значений .NET (`int`, `decimal`, `bool`и т. д.) настраиваются как обязательные, а все свойства с типами значений .NET, допускающими значение null (`int?`, `decimal?`, `bool?`и т. д.), настраиваются как необязательные.
 
@@ -100,11 +100,11 @@ C#в 8 появилась новая функция, называемая [сс�
 
 В следующем примере показан тип сущности с обязательными и необязательными свойствами с отключенной ссылкой, допускающей значение null (по умолчанию) и включенной.
 
-#### <a name="without-nullable-reference-types-defaulttabwithout-nrt"></a>[Без ссылочных типов, допускающих значения NULL (по умолчанию)](#tab/without-nrt)
+#### <a name="without-nullable-reference-types-default"></a>[Без ссылочных типов, допускающих значения NULL (по умолчанию)](#tab/without-nrt)
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/CustomerWithoutNullableReferenceTypes.cs?name=Customer&highlight=4-8)]
 
-#### <a name="with-nullable-reference-typestabwith-nrt"></a>[С ссылочными типами, допускающими значение null](#tab/with-nrt)
+#### <a name="with-nullable-reference-types"></a>[С ссылочными типами, допускающими значение null](#tab/with-nrt)
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/Customer.cs?name=Customer&highlight=4-6)]
 
@@ -121,11 +121,11 @@ C#в 8 появилась новая функция, называемая [сс�
 
 Свойство, которое было бы необязательным по соглашению, может быть настроено следующим образом:
 
-#### <a name="data-annotationstabdata-annotations"></a>[Заметки к данным](#tab/data-annotations)
+#### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Required.cs?name=Required&highlight=4)]
 
-#### <a name="fluent-apitabfluent-api"></a>[API Fluent](#tab/fluent-api)
+#### <a name="fluent-api"></a>[API Fluent](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Required.cs?name=Required&highlight=3-5)]
 

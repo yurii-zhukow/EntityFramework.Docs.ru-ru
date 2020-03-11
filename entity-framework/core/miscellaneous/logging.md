@@ -4,17 +4,17 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f6e35c6d-45b7-4258-be1d-87c1bb67438d
 uid: core/miscellaneous/logging
-ms.openlocfilehash: 1a3863ee5f508c1fd393d4ec2c25c46ab8634f00
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.openlocfilehash: e8adc39ec01ff75112b03446a488df6199cc7041
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502101"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414089"
 ---
-# <a name="logging"></a>Ведение журнала
+# <a name="logging"></a>Logging
 
 > [!TIP]  
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Logging) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Logging) из репозитория GitHub.
 
 ## <a name="aspnet-core-applications"></a>ASP.NET Core приложения
 
@@ -33,11 +33,11 @@ EF Core автоматически интегрируется с механиз�
 
 После установки соответствующих пакетов приложение должно создать одноэлементный или глобальный экземпляр LoggerFactory. Например, с помощью средства ведения журнала консоли:
 
-### <a name="version-30tabv3"></a>[Версия 3,0](#tab/v3)
+### <a name="version-3x"></a>[Версия 3.x](#tab/v3)
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContext.cs#DefineLoggerFactory)]
 
-### <a name="version-2xtabv2"></a>[Версия 2.x](#tab/v2)
+### <a name="version-2x"></a>[Версия 2.x](#tab/v2)
 
 > [!NOTE]
 > В следующем примере кода используется конструктор `ConsoleLoggerProvider`, который является устаревшим в версии 2,2 и заменен в 3,0. Можно спокойно пропускать и подавлять предупреждения при использовании 2,2.
@@ -49,7 +49,7 @@ public static readonly LoggerFactory MyLoggerFactory
 
 ***
 
-Затем этот одноэлементный или глобальный экземпляр должен быть зарегистрирован в EF Core на `DbContextOptionsBuilder`. Например:
+Затем этот одноэлементный или глобальный экземпляр должен быть зарегистрирован в EF Core на `DbContextOptionsBuilder`. Пример:
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContext.cs#RegisterLoggerFactory)]
 
@@ -58,13 +58,13 @@ public static readonly LoggerFactory MyLoggerFactory
 
 ## <a name="filtering-what-is-logged"></a>Фильтрация регистрируемых
 
-Приложение может контролировать, что регистрируется, настроив фильтр на Илогжерпровидер. Например:
+Приложение может контролировать, что регистрируется, настроив фильтр на Илогжерпровидер. Пример:
 
-### <a name="version-30tabv3"></a>[Версия 3,0](#tab/v3)
+### <a name="version-3x"></a>[Версия 3.x](#tab/v3)
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContextWithFiltering.cs#DefineLoggerFactory)]
 
-### <a name="version-2xtabv2"></a>[Версия 2.x](#tab/v2)
+### <a name="version-2x"></a>[Версия 2.x](#tab/v2)
 
 > [!NOTE]
 > В следующем примере кода используется конструктор `ConsoleLoggerProvider`, который является устаревшим в версии 2,2 и заменен в 3,0. Можно спокойно пропускать и подавлять предупреждения при использовании 2,2.

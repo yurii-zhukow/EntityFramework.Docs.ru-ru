@@ -6,11 +6,11 @@ ms.date: 11/01/2018
 ms.assetid: 2BDE29FC-4161-41A0-841E-69F51CCD9341
 uid: core/modeling/spatial
 ms.openlocfilehash: 5b45f83ca7f02665f52ccfe16b5af506a6046a62
-ms.sourcegitcommit: f2a38c086291699422d8b28a72d9611d1b24ad0d
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76124435"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414707"
 ---
 # <a name="spatial-data"></a>Пространственные данные
 
@@ -30,7 +30,7 @@ Microsoft.EntityFrameworkCore.Sqlite    | [Microsoft. EntityFrameworkCore. SQLit
 Microsoft.EntityFrameworkCore.InMemory  | [неттопологисуите](https://www.nuget.org/packages/NetTopologySuite)
 Npgsql.EntityFrameworkCore.PostgreSQL   | [Npgsql. EntityFrameworkCore. PostgreSQL. Неттопологисуите](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite)
 
-## <a name="reverse-engineering"></a>реконструирование;
+## <a name="reverse-engineering"></a>Реконструирование
 
 Пространственные пакеты NuGet также включают модели [реконструирования](../managing-schemas/scaffolding.md) с пространственными свойствами, но ***перед*** запуском `Scaffold-DbContext` или `dotnet ef dbcontext scaffold`необходимо установить пакет. В противном случае вы получите предупреждения о том, что не удается найти сопоставления типов для столбцов, и столбцы будут пропущены.
 
@@ -49,9 +49,9 @@ optionsBuilder.UseSqlServer(
 Существует несколько типов пространственных данных. Используемый тип зависит от типов фигур, которые вы хотите разрешить. Ниже приведена иерархия типов NTS, которые можно использовать для свойств в модели. Они находятся в пространстве имен `NetTopologySuite.Geometries`.
 
 * Geometry
-  * отчетов
+  * Точка
   * LineString
-  * Polygon
+  * Многоугольник
   * GeometryCollection
     * MultiPoint
     * MultiLineString
@@ -207,7 +207,7 @@ var currentCountry = db.Countries
     .FirstOrDefault(c => c.Border.Contains(currentLocation));
 ```
 
-## <a name="sql-server"></a>SQL Server
+## <a name="sql-server"></a>SQL Server
 
 Если вы используете SQL Server, необходимо учитывать некоторые дополнительные моменты.
 

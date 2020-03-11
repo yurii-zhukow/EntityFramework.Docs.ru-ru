@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 989ea862-e936-4c85-926a-8cfbef5df5b8
 ms.openlocfilehash: 34866ddbbf81f090a064af148a612dd354ae9401
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824809"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415673"
 ---
 # <a name="using-migrateexe"></a>Использование программы Migrate. exe
 Code First Migrations можно использовать для обновления базы данных в Visual Studio, но ее также можно выполнить с помощью программы командной строки Migrate. exe. На этой странице дается краткий обзор использования программы Migration. exe для выполнения миграции в базе данных.

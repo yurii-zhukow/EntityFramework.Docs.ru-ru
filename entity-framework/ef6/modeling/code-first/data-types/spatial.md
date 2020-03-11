@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: d617aed1-15f2-48a9-b187-186991c666e3
 ms.openlocfilehash: 018f480c1f0f1e74fc9f7a8950a6880e96f1facc
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182647"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415787"
 ---
 # <a name="spatial---code-first"></a>Пространственный Code First
 > [!NOTE]
@@ -24,7 +24,7 @@ ms.locfileid: "72182647"
 
 Существует два основных типа пространственных данных: geography и geometry. Тип данных geography хранит данные эллиптических (например, координаты широты и долготы GPS). Тип данных geometry представляет евклидово (плоскую) систему координат.
 
-## <a name="watch-the-video"></a>Просмотрите видео
+## <a name="watch-the-video"></a>Просмотреть видео
 В этом видео показано, как сопоставлять пространственные типы с Entity Framework Code First. В нем также показано, как использовать запрос LINQ для поиска расстояния между двумя расположениями.
 
 **Представлено**: Julia Корнич
@@ -76,7 +76,7 @@ public class University
 1.  В обозреватель решений щелкните правой кнопкой мыши имя проекта.
 2.  Выберите **Управление пакетами NuGet...**
 3.  В диалоговом окне Управление пакетами NuGet выберите вкладку в **Интернете** и выберите пакет **EntityFramework** .
-4.  Нажмите кнопку **Установить**
+4.  Нажмите кнопку **Установить**.
 
 Обратите внимание, что в дополнение к сборке EntityFramework также добавляется ссылка на сборку System. ComponentModel.
 
