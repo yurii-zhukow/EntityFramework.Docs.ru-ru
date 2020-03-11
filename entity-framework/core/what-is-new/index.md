@@ -1,15 +1,15 @@
 ---
 title: Выпуски и планирование EF Core
 author: ajcvickers
-ms.date: 01/29/2020
+ms.date: 03/03/2020
 ms.assetid: C21F89EE-FB08-4ED9-A2A0-76CB7656E6E4
 uid: core/what-is-new/index
-ms.openlocfilehash: 0704b624a50d0736fefbb5633e9e7e657499a703
-ms.sourcegitcommit: b3cf5d2e3cb170b9916795d1d8c88678269639b1
+ms.openlocfilehash: 2c41f65d1fead8430a39c6230a0f22506686504e
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/30/2020
-ms.locfileid: "76888071"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413209"
 ---
 # <a name="ef-core-releases-and-planning"></a>Выпуски и планирование EF Core
 
@@ -17,8 +17,8 @@ ms.locfileid: "76888071"
 
 | Выпуск | Целевая платформа | Поддержка до | Ссылки
 |:--------|------------------|-----------------|------
-| [EF Core 3.1](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/3.1.1) | .NET Standard 2.0 | 3 декабря 2022 г. (LTS) | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-3-1-and-entity-framework-6-4/)
-| [EF Core 3.0](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/3.0.1) | .NET Standard 2.1 | 3 марта 2020 г. | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-ef-core-3-0-and-ef-6-3-general-availability/) / [Критические изменения](ef-core-3.0/breaking-changes.md)
+| [EF Core 3.1](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/3.1.2) | .NET Standard 2.0 | 3 декабря 2022 г. (LTS) | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-3-1-and-entity-framework-6-4/)
+| ~~[EF Core 3.0](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/3.0.3)~~ | .NET Standard 2.1 | Срок действия истек 3 марта 2020 г. | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-ef-core-3-0-and-ef-6-3-general-availability/) / [Критические изменения](ef-core-3.0/breaking-changes.md)
 | ~~[EF Core 2.2](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/2.2.6)~~ | .NET Standard 2.0 | Срок действия истек 23 декабря 2019 г. | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-2-2/)
 | [EF Core 2.1](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/2.1.14) | .NET Standard 2.0 | 21 августа 2021 г. (LTS) | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-2-1/)
 | ~~[EF Core 2.0](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/2.0.3)~~ | .NET Standard 2.0 | Срок действия истек 1 октября 2018 г. | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-2-0/)
