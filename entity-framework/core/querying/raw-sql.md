@@ -4,19 +4,19 @@ author: smitpatel
 ms.date: 10/08/2019
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 uid: core/querying/raw-sql
-ms.openlocfilehash: b7087771f1a9e8ee5e044cfea367d74a0b1c1d35
-ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
+ms.openlocfilehash: a54bb67c0fce9d621382f6372e70fe4cdca48a20
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72445922"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413717"
 ---
 # <a name="raw-sql-queries"></a>Необработанные SQL-запросы
 
 Entity Framework Core позволяет вам переходить на уровень необработанных SQL-запросов при работе с реляционной базой данных. Необработанные SQL-запросы полезны, если запрос невозможно выразить с помощью LINQ. Они также полезны, если использование запроса LINQ приводит к отправке неэффективного SQL-запроса. Необработанные SQL-запросы могут возвращать обычные типы сущностей или [типы сущностей без ключей](xref:core/modeling/keyless-entity-types), которые являются частью модели.
 
 > [!TIP]  
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying/) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying/) из репозитория GitHub.
 
 ## <a name="basic-raw-sql-queries"></a>Основные необработанные SQL-запросы
 

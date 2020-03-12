@@ -4,12 +4,12 @@ author: smitpatel
 ms.date: 10/03/2019
 ms.assetid: 8b6697cc-7067-4dc2-8007-85d80503d123
 uid: core/querying/client-eval
-ms.openlocfilehash: 5cfb05041f04246712fb699f58b407f70a75ce92
-ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
+ms.openlocfilehash: e01bd146c4dfe7a8d36b641cb52ae366fddd8239
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72445965"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413789"
 ---
 # <a name="client-vs-server-evaluation"></a>Выполнение в клиенте и на сервере
 
@@ -19,7 +19,7 @@ ms.locfileid: "72445965"
 > До версии 3.0 платформа Entity Framework Core поддерживала вычисление любой части запроса на стороне клиента. Дополнительные сведения см. в разделе [Предыдущие версии](#previous-versions).
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying) из репозитория GitHub.
 
 ## <a name="client-evaluation-in-the-top-level-projection"></a>Вычисление на стороне клиента в проекции верхнего уровня
 

@@ -3,12 +3,12 @@ title: Новые возможности EF Core 5.0
 author: ajcvickers
 ms.date: 01/29/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew.md
-ms.openlocfilehash: e858379cc46abbef999fd32a3685e1d522524889
-ms.sourcegitcommit: 89567d08c9d8bf9c33bb55a62f17067094a4065a
+ms.openlocfilehash: 65d7bd43e8a00c77fd6091a74c677635710d03e3
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77052020"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413849"
 ---
 # <a name="whats-new-in-ef-core-50"></a>Новые возможности EF Core 5.0
 
@@ -30,7 +30,7 @@ ms.locfileid: "77052020"
 
 Предварительная документация включена в раздел с описанием [еженедельного состояния EF на 5 декабря 2019 г](https://github.com/dotnet/efcore/issues/15403#issuecomment-562332863).
 
-Дополнительная документация отслеживается по проблеме [#2085](https://github.com/aspnet/EntityFramework.Docs/issues/2085).
+Дополнительная документация отслеживается по проблеме [#2085](https://github.com/dotnet/EntityFramework.Docs/issues/2085).
 
 ### <a name="simple-way-to-get-generated-sql"></a>Простой способ получения созданного кода SQL
 
@@ -38,7 +38,7 @@ ms.locfileid: "77052020"
 
 Предварительная документация включена в раздел с описанием [еженедельного состояния EF на 9 января 2020 г](https://github.com/dotnet/efcore/issues/19549#issuecomment-572823246).
 
-Дополнительная документация отслеживается по проблеме [#1331](https://github.com/aspnet/EntityFramework.Docs/issues/1331).
+Дополнительная документация отслеживается по проблеме [#1331](https://github.com/dotnet/EntityFramework.Docs/issues/1331).
 
 ### <a name="enhanced-debug-views"></a>Улучшенные представления отладки
 
@@ -48,7 +48,7 @@ ms.locfileid: "77052020"
 
 Предварительная документация включена в раздел с описанием [еженедельного состояния EF на 12 декабря 2019 г](https://github.com/dotnet/efcore/issues/15403#issuecomment-565196206).
 
-Дополнительная документация отслеживается по проблеме [#2086](https://github.com/aspnet/EntityFramework.Docs/issues/2086).
+Дополнительная документация отслеживается по проблеме [#2086](https://github.com/dotnet/EntityFramework.Docs/issues/2086).
 
 ### <a name="connection-or-connection-string-can-be-changed-on-initialized-dbcontext"></a>Возможность изменения подключения или строки подключения в инициализированном DbContext
 
@@ -56,7 +56,7 @@ ms.locfileid: "77052020"
 Кроме того, подключение или строку подключения можно изменить в экземпляре контекста.
 Это позволяет одному и тому же экземпляру контекста динамически подключаться к разным базам данных.
 
-Документация отслеживается по проблеме [#2075](https://github.com/aspnet/EntityFramework.Docs/issues/2075).
+Документация отслеживается по проблеме [#2075](https://github.com/dotnet/EntityFramework.Docs/issues/2075).
 
 ### <a name="change-tracking-proxies"></a>Прокси-серверы отслеживания изменений
 
@@ -64,7 +64,7 @@ ms.locfileid: "77052020"
 Затем они сообщают об изменениях значений свойств сущности напрямую в EF Core, что позволяет не выполнять проверку на наличие изменений.
 Однако прокси-серверы имеют собственный набор ограничений, поэтому они предназначены не для всех.
 
-Документация отслеживается по проблеме [#2076](https://github.com/aspnet/EntityFramework.Docs/issues/2076).
+Документация отслеживается по проблеме [#2076](https://github.com/dotnet/EntityFramework.Docs/issues/2076).
 
 ### <a name="improved-handling-of-database-null-semantics"></a>Улучшенная обработка семантики значений NULL в базе данных
 
@@ -73,14 +73,14 @@ ms.locfileid: "77052020"
 EF Core по умолчанию преобразует запросы так, чтобы они использовали семантику значений NULL C#.
 В EF Core 5.0 эффективность таких преобразований значительно повышена.
 
-Документация отслеживается по проблеме [#1612](https://github.com/aspnet/EntityFramework.Docs/issues/1612).
+Документация отслеживается по проблеме [#1612](https://github.com/dotnet/EntityFramework.Docs/issues/1612).
 
 ### <a name="indexer-properties"></a>Свойства индексатора
 
 EF Core 5.0 поддерживает сопоставление свойств индексатора C#.
 Это позволяет сущностям выступать в качестве контейнеров свойств, в которых столбцы сопоставляются с именованными свойствами в контейнере.
 
-Документация отслеживается по проблеме [#2018](https://github.com/aspnet/EntityFramework.Docs/issues/2018).
+Документация отслеживается по проблеме [#2018](https://github.com/dotnet/EntityFramework.Docs/issues/2018).
 
 ### <a name="generation-of-check-constraints-for-enum-mappings"></a>Создание ограничений CHECK для сопоставлений перечислений
 
@@ -91,14 +91,14 @@ EF Core 5.0 поддерживает сопоставление свойств
 MyEnumColumn VARCHAR(10) NOT NULL CHECK (MyEnumColumn IN('Useful', 'Useless', 'Unknown'))
 ```
 
-Документация отслеживается по проблеме [#2082](https://github.com/aspnet/EntityFramework.Docs/issues/2082).
+Документация отслеживается по проблеме [#2082](https://github.com/dotnet/EntityFramework.Docs/issues/2082).
 
 ### <a name="query-translations-for-more-datetime-constructs"></a>Преобразования запросов для дополнительных конструкций DateTime
 
 Теперь запросы, содержащие новую конструкцию DateTime, поддерживают преобразование.
 Кроме того, функция DateDiffWeek SQL Server является сопоставляемой.
 
-Документация отслеживается по проблеме [#2079](https://github.com/aspnet/EntityFramework.Docs/issues/2079).
+Документация отслеживается по проблеме [#2079](https://github.com/dotnet/EntityFramework.Docs/issues/2079).
 
 ### <a name="query-translations-for-more-byte-array-constructs"></a>Преобразования запросов для дополнительных конструкций массивов байтов
 
@@ -106,7 +106,7 @@ MyEnumColumn VARCHAR(10) NOT NULL CHECK (MyEnumColumn IN('Useful', 'Useless', 'U
 
 Предварительная документация включена в раздел с описанием [еженедельного состояния EF на 5 декабря 2019 г](https://github.com/dotnet/efcore/issues/15403#issuecomment-562332863).
 
-Дополнительная документация отслеживается по проблеме [#2079](https://github.com/aspnet/EntityFramework.Docs/issues/2079).
+Дополнительная документация отслеживается по проблеме [#2079](https://github.com/dotnet/EntityFramework.Docs/issues/2079).
 
 ### <a name="query-translation-for-reverse"></a>Преобразование запросов, использующих Reverse
 
@@ -117,7 +117,7 @@ MyEnumColumn VARCHAR(10) NOT NULL CHECK (MyEnumColumn IN('Useful', 'Useless', 'U
 context.Employees.OrderBy(e => e.EmployeeID).Reverse()
 ```
 
-Документация отслеживается по проблеме [#2079](https://github.com/aspnet/EntityFramework.Docs/issues/2079).
+Документация отслеживается по проблеме [#2079](https://github.com/dotnet/EntityFramework.Docs/issues/2079).
 
 ### <a name="query-translation-for-bitwise-operators"></a>Преобразование запросов для побитовых операторов
 
@@ -127,10 +127,10 @@ context.Employees.OrderBy(e => e.EmployeeID).Reverse()
 context.Orders.Where(o => ~o.OrderID == negatedId)
 ```
 
-Документация отслеживается по проблеме [#2079](https://github.com/aspnet/EntityFramework.Docs/issues/2079).
+Документация отслеживается по проблеме [#2079](https://github.com/dotnet/EntityFramework.Docs/issues/2079).
 
 ### <a name="query-translation-for-strings-on-cosmos"></a>Преобразование запросов для строк в Cosmos
 
 Запросы, использующие строковые методы Contains, StartsWith и EndsWith, теперь преобразуются при использовании поставщика Azure Cosmos DB.
 
-Документация отслеживается по проблеме [#2079](https://github.com/aspnet/EntityFramework.Docs/issues/2079).
+Документация отслеживается по проблеме [#2079](https://github.com/dotnet/EntityFramework.Docs/issues/2079).

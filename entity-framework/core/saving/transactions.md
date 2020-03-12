@@ -4,19 +4,19 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d3e6515b-8181-482c-a790-c4a6778748c1
 uid: core/saving/transactions
-ms.openlocfilehash: 952cb891d145a47666f1d506ec00f066be9f245d
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 390d89398ebfdf015804749e71ff0b61d3f278d3
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73654754"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413621"
 ---
 # <a name="using-transactions"></a>Использование транзакций
 
 Транзакции позволяют обрабатывать несколько операций с базой данных атомарным способом. Если транзакция зафиксирована, все операции успешно применяются к базе данных. Если транзакция отменяется, ни одна из операций не применяется к базе данных.
 
 > [!TIP]  
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Transactions/) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/Transactions/) из репозитория GitHub.
 
 ## <a name="default-transaction-behavior"></a>Поведение транзакции по умолчанию
 

@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 09f0b9e623e69ed8d6a66f00eb466d55bc8ad5e4
-ms.sourcegitcommit: f2a38c086291699422d8b28a72d9611d1b24ad0d
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76124345"
----
 ## <a name="entity-framework-docs"></a>Документация по Entity Framework
 
 Этот проект содержит исходный код для документации по EF Core и EF6, расположенной в [docs.microsoft.com/ef](https://docs.microsoft.com/ef/). 

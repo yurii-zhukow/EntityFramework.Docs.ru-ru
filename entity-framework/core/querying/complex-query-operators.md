@@ -4,19 +4,19 @@ author: smitpatel
 ms.date: 10/03/2019
 ms.assetid: 2e187a2a-4072-4198-9040-aaad68e424fd
 uid: core/querying/complex-query-operators
-ms.openlocfilehash: 350a7fa6a3ee1de16bad4b63e10842f9356a1b60
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 44c2695ea003da043925740a52596fd27da638f8
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72186236"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413777"
 ---
 # <a name="complex-query-operators"></a>Сложные операторы запросов
 
 В языке LINQ есть множество сложных операторов, которые объединяют несколько источников данных или производят сложную обработку. Не для всех операторов LINQ есть подходящие преобразования на стороне сервера. Иногда запрос в одной форме преобразуется на сервере, но в другой — не преобразуется, даже если результат совпадает. На этой странице описываются некоторые сложные операторы и их поддерживаемые варианты. В будущих выпусках, возможно, будет поддерживаться больше шаблонов и будут добавлены соответствующие преобразования. Также важно иметь в виду, что поддержка преобразований зависит от поставщика. Запрос, который преобразуется в SqlServer, может не работать в базах данных SQLite.
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying) из репозитория GitHub.
 
 ## <a name="join"></a>Join
 
