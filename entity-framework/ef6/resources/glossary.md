@@ -5,11 +5,11 @@ ms.date: 10/23/2016
 ms.assetid: 3f05ffdd-49bc-499c-9732-4a368bf5d2d7
 uid: ef6/resources/glossary
 ms.openlocfilehash: df0da4a68b3d2c882d9673417ee5fe335eccae2b
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656158"
+ms.lasthandoff: 03/15/2020
+ms.locfileid: "79402147"
 ---
 # <a name="entity-framework-glossary"></a>Глоссарий Entity Framework
 ## <a name="code-first"></a>Code First
@@ -21,7 +21,7 @@ ms.locfileid: "73656158"
 ## <a name="convention-code-first"></a>Соглашение (Code First)
 Правило, которое Entity Framework использует, чтобы вывести форму модели из классов.
 
-## <a name="database-first"></a>Database First
+## <a name="database-first"></a>База данных как основа
 Создание модели Entity Framework с помощью конструктора EF, нацеленного на существующую базу данных.
 
 ## <a name="eager-loading"></a>Безотложная загрузка
@@ -30,10 +30,10 @@ ms.locfileid: "73656158"
 ## <a name="ef-designer"></a>Конструктор EF
 Визуальный конструктор в Visual Studio, позволяющий создавать Entity Frameworkную модель с помощью прямоугольников и линий.
 
-## <a name="entity"></a>Объект
+## <a name="entity"></a>Сущность
 Класс или объект, представляющий данные приложения, такие как клиенты, продукты и заказы.
 
-## <a name="entity-data-model"></a>EDM (модель данных с использованием сущностей)
+## <a name="entity-data-model"></a>Модель EDM (модель «сущность-данные»)
 Модель, описывающая сущности и связи между ними. EF использует EDM для описания концептуальной модели, относительно которой программы разработчика. EDM строится на модели отношений сущностей, представленной Dr. Питер Чен. Изначально модель EDM была разработана с основной целью стать общей моделью данных в наборе технологий разработки и сервера от корпорации Майкрософт. EDM также используется как часть протокола OData.
 
 ## <a name="explicit-loading"></a>Явная загрузка
