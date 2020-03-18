@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 79a2a10cae9f8a5541bca132e407d4abbe95e093
-ms.sourcegitcommit: 87fcaba46535aa351db4bdb1231bd14b40e459b9
-ms.translationtype: HT
-ms.contentlocale: ru-RU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59929890"
----
 # <a name="contributing-to-the-entity-framework-documentation"></a>Участие в разработке документации по Entity Framework
 
 Далее описывается процесс участия в создании статей и примеров кода для документации по Entity Framework. Это могут быть простые действия по исправлению опечаток или сложная процедура написания статьей.
@@ -18,8 +10,8 @@ ms.locfileid: "59929890"
 
 Потребуется базовое представление о [Git и GitHub.com](https://guides.github.com/activities/hello-world/).
 
-* Создайте [запрос](https://github.com/aspnet/EntityFramework.Docs/issues/new), описывающий, что нужно сделать, например изменить существующую статью или создать новую. Дождитесь одобрения от команды EF, прежде чем тратить время.
-* Создайте вилку репозитория [aspnet/EntityFramework.Docs](https://github.com/aspnet/EntityFramework.Docs/) и создайте ветвь для изменений.
+* Создайте [запрос](https://github.com/dotnet/EntityFramework.Docs/issues/new), описывающий, что нужно сделать, например изменить существующую статью или создать новую. Дождитесь одобрения от команды EF, прежде чем тратить время.
+* Создайте вилку репозитория [aspnet/EntityFramework.Docs](https://github.com/dotnet/EntityFramework.Docs/) и создайте ветвь для изменений.
 * Отправьте запрос на вытягивание с вашими изменениями в главную ветвь.
 * Ответьте на обратную связь по запросу на вытягивание.
 
