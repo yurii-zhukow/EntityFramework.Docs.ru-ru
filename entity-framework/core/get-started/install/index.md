@@ -4,18 +4,18 @@ author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: 987b6f38954c291f88b5167fa9b061853b15a6cb
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: 6575b1ac028f8b67b49ca7f4e49d6f19500be98f
+ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412859"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80136169"
 ---
 # <a name="installing-entity-framework-core"></a>Установка Entity Framework Core
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-* EF Core — это библиотека [.NET Standard 2.1](/dotnet/standard/net-standard). Следовательно, для запуска EF Core требуется реализация .NET, которая поддерживает .NET Standard 2.1. На EF Core также могут ссылаться другие библиотеки .NET Standard 2.1.
+* EF Core — это библиотека [.NET Standard 2.0](/dotnet/standard/net-standard). Для запуска EF Core требуется реализация .NET, которая поддерживает .NET Standard 2.0. На EF Core также могут ссылаться другие библиотеки .NET Standard 2.0.
 
 * Например, EF Core можно использовать для разработки приложений, предназначенных для .NET Core. Для создания приложений .NET Core требуется [пакет SDK для .NET Core](https://dotnet.microsoft.com/download). При необходимости также можно использовать среду разработки, например [Visual Studio](https://visualstudio.microsoft.com/vs), [Visual Studio для Mac](https://visualstudio.microsoft.com/vs/mac) или [Visual Studio Code](https://code.visualstudio.com). Дополнительные сведения см. в разделе [Приступая к работе с .NET Core](/dotnet/core/get-started).
 
