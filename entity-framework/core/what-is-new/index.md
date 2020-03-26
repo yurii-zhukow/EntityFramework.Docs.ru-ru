@@ -4,12 +4,12 @@ author: ajcvickers
 ms.date: 03/03/2020
 ms.assetid: C21F89EE-FB08-4ED9-A2A0-76CB7656E6E4
 uid: core/what-is-new/index
-ms.openlocfilehash: 2c41f65d1fead8430a39c6230a0f22506686504e
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: 7b58b4de0eb8d9575f77e0b147da017eabad1867
+ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78413209"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80136208"
 ---
 # <a name="ef-core-releases-and-planning"></a>Выпуски и планирование EF Core
 
@@ -57,10 +57,12 @@ ms.locfileid: "78413209"
 
 ### <a name="get-it-now"></a>Получить сейчас
 
-Пакеты EF Core 5.0 **теперь доступны** как [ежедневные сборки](https://github.com/aspnet/AspNetCore/blob/master/docs/DailyBuilds.md). 
+Пакеты EF Core 5.0 **теперь доступны** как
 
-Использование ежедневных сборок — это отличный способ найти проблемы и отправить отзыв как можно скорее.
+* [ежедневные сборки](https://github.com/dotnet/aspnetcore/blob/master/docs/DailyBuilds.md).
+  * Содержат все последние функции и исправления ошибок. В целом очень стабильны. Для каждой сборки выполнено более 57 000 тестов.
+* [Предварительные версии NuGet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore)
+  * Отстают от ежедневных сборок, но тестируются для работы с соответствующими предварительными версиями ASP.NET Core и .NET Core.
+
+Использование предварительных версий и ежедневных сборок — это отличный способ найти проблемы и отправить отзыв как можно скорее.
 Чем раньше мы получим обратную связь, тем больше вероятность, что мы примем меры до следующего официального выпуска.
-Мы усердно работаем над тем, чтобы поддерживать ежедневные сборки в работоспособном состоянии, выполняя свыше 56 000 тестов для каждой сборки на каждой платформе.
-
-Пакеты предварительной версии будут поставляться в NuGet позднее в этом году.

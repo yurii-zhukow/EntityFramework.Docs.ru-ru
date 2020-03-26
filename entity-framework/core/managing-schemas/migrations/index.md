@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: dc0c1ae1a03c98c6f230557dc0bdd4d29ec191dd
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: 190057daed61c58c1f89ee8d775913458e413a50
+ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412849"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80136200"
 ---
 # <a name="migrations"></a>Миграции
 
@@ -215,15 +215,43 @@ Update-Database LastGoodMigration
 
 ### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
+#### <a name="basic-usage"></a>Основное использование
 ```dotnetcli
 dotnet ef migrations script
 ```
 
+#### <a name="with-from-to-implied"></a>С from (в подразумеваемую миграцию)
+Будет создан скрипт SQL из этой миграции в последнюю миграцию.
+```dotnetcli
+dotnet ef migrations script 20190725054716_Add_new_tables
+```
+
+#### <a name="with-from-and-to"></a>С from и to
+Будет создан скрипт SQL из миграции `from`в указанную миграцию `to`.
+```dotnetcli
+dotnet ef migrations script 20190725054716_Add_new_tables 20190829031257_Add_audit_table
+```
+Для создания скрипта отката можно использовать значение `from`, более новое, чем `to`. *Обязательно учитывайте возможные сценарии потери данных.*
+
 ### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
+#### <a name="basic-usage"></a>Основное использование
 ``` powershell
 Script-Migration
 ```
+
+#### <a name="with-from-to-implied"></a>С from (в подразумеваемую миграцию)
+Будет создан скрипт SQL из этой миграции в последнюю миграцию.
+```powershell
+Script-Migration 20190725054716_Add_new_tables
+```
+
+#### <a name="with-from-and-to"></a>С from и to
+Будет создан скрипт SQL из миграции `from`в указанную миграцию `to`.
+```powershell
+Script-Migration 20190725054716_Add_new_tables 20190829031257_Add_audit_table
+```
+Для создания скрипта отката можно использовать значение `from`, более новое, чем `to`. *Обязательно учитывайте возможные сценарии потери данных.*
 
 ***
 
