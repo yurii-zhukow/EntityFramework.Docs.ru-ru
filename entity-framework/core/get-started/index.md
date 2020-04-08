@@ -5,10 +5,10 @@ ms.date: 09/17/2019
 ms.assetid: 3c88427c-20c6-42ec-a736-22d3eccd5071
 uid: core/get-started/index
 ms.openlocfilehash: 0e7a1ee159cdf5b72448fe6d73c972975b1ab95b
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78412869"
 ---
 # <a name="getting-started-with-ef-core"></a>Начало работы с EF Core
@@ -54,7 +54,7 @@ cd EFGetStarted
 
 ## <a name="install-entity-framework-core"></a>Установка Entity Framework Core
 
-Чтобы установить EF Core, установите пакеты целевых поставщиков базы данных EF Core, с которыми вы будете работать. В этом руководстве используется система SQLite, так как она работает на всех платформах, поддерживаемых .NET Core. Список доступных поставщиков см. в разделе [Database Providers](../providers/index.md) (Поставщики базы данных).
+Чтобы установить EF Core, установите пакеты целевых поставщиков базы данных EF Core, с которыми вы будете работать. В этом руководстве используется SQLite, так как он работает на всех платформах, поддерживаемых .NET Core. Список доступных поставщиков см. в разделе [Database Providers](../providers/index.md) (Поставщики базы данных).
 
 ### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 

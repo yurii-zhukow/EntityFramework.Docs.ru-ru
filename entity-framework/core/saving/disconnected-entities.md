@@ -6,10 +6,10 @@ ms.date: 10/27/2016
 ms.assetid: 2533b195-d357-4056-b0e0-8698971bc3b0
 uid: core/saving/disconnected-entities
 ms.openlocfilehash: 421531e68ac98c0553938f1c24892701f22fef3c
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413657"
 ---
 # <a name="disconnected-entities"></a>Отключенные сущности
@@ -77,7 +77,7 @@ ms.locfileid: "78413657"
 > [!TIP]  
 > Это поведение появилось в EF Core 2.0. Для более ранних выпусков всегда необходимо явно выбрать метод Add или Update.
 
-Если в сущности не используются автоматически созданные ключи, то приложение должно решить, следует ли вставить или обновить сущность. Пример:
+Если в сущности не используются автоматически созданные ключи, то приложение должно решить, следует ли вставить или обновить сущность. Например:
 
 [!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertOrUpdateSingleEntityWithFind)]
 

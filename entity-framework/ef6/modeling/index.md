@@ -4,17 +4,17 @@ author: divega
 ms.date: 07/05/2018
 ms.assetid: 4890228E-CEA1-4595-B8AD-CA81253F8767
 ms.openlocfilehash: bd9843a93121f53518a307c9d2d43b68ae03369c
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413469"
 ---
 # <a name="creating-a-model"></a>Создание модели
 
 Модель EF хранит сведения о сопоставлении классов и свойств приложений с таблицами и столбцами баз данных. Модель EF можно создать двумя способами.
 
-- **С помощью Code First**: разработчик пишет код, чтобы указать модель. Во время выполнения EF создает модели и сопоставления на основе классов сущностей и дополнительной конфигурации модели, предоставленных разработчиком.
+- **С помощью Code First**: разработчик пишет код, чтобы указать модель. Во время выполнения EF создает модели и сопоставления на основе классов сущностей и дополнительной конфигурации модели, предоставленных разработчиком.
 
 - **С помощью Entity Framework Designer**: разработчик рисует поля и строки для указания модели с помощью Entity Framework Designer. Результирующая модель хранится в виде XML-файла с расширением EDMX. Объекты предметной области приложения обычно создаются автоматически на основе концептуальной модели.
 
@@ -28,11 +28,11 @@ ms.locfileid: "78413469"
 | **Я создаю базу данных**          | [Используйте **Code First** для определения модели в коде, а затем создайте базу данных.](~/ef6/modeling/code-first/workflows/new-database.md)           | [Используйте **Model First** для определения модели с помощью полей и строк, а затем создайте базу данных.](~/ef6/modeling/designer/workflows/model-first.md)   |
 | **Мне требуется доступ к существующей базе данных** | [Используйте **Code First** для создания модели на основе кода, которая сопоставляется с существующей базой данных.](~/ef6/modeling/code-first/workflows/existing-database.md) | [Используйте **Database First** для создания модели полей и строк, которая сопоставляется с существующей базой данных.](~/ef6/modeling/designer/workflows/database-first.md) |
 
-### <a name="watch-the-video-what-ef-workflow-should-i-use"></a>Посмотрите видео: выбор подходящего рабочего процесса EF.
+### <a name="watch-the-video-what-ef-workflow-should-i-use"></a>Просмотрите видео о выборе подходящего рабочего процесса EF.
 
 В этом коротком видеоролике объясняются различия рабочих процессов и приводятся советы по выбору оптимального процесса.
 
-**Представлено:** [Роуэн Миллер (Rowan Miller)](https://romiller.com/)
+**Представляет**: [Роуэн Миллер (Rowan Miller)](https://romiller.com/)
 
 ![Выбор рабочего процесса](../media/whichworkflow-thumb.png) [WMV](https://download.microsoft.com/download/8/F/8/8F81F4CD-3678-4229-8D79-0C63FFA3C595/HDI_ITPro_Technet_winvideo_ChoseYourWorkflow.wmv) | [MP4](https://download.microsoft.com/download/8/F/8/8F81F4CD-3678-4229-8D79-0C63FFA3C595/HDI_ITPro_Technet_mp4video_ChoseYourWorkflow.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/8/F/8/8F81F4CD-3678-4229-8D79-0C63FFA3C595/HDI_ITPro_Technet_winvideo_ChoseYourWorkflow.zip)
 

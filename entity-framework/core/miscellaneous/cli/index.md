@@ -5,10 +5,10 @@ ms.author: bricelam
 ms.date: 09/19/2018
 uid: core/miscellaneous/cli/index
 ms.openlocfilehash: 237192c55ea3542521a7a292ac8550d72e4ef82c
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78412819"
 ---
 # <a name="entity-framework-core-tools-reference"></a>Справочник по инструментам Entity Framework Core
@@ -21,7 +21,7 @@ ms.locfileid: "78412819"
 
 Оба варианта инструментов предоставляют одинаковую функциональность. При разработке в Visual Studio мы рекомендуем использовать инструменты **консоли диспетчера пакетов**, так как они лучше интегрированы.
 
-## <a name="next-steps"></a>Следующие шаги
+## <a name="next-steps"></a>Дальнейшие действия
 
 * [Справочник по инструментам консоли диспетчера пакетов EF Core](powershell.md)
 * [Справочник по инструментам EF Core — .NET CLI](dotnet.md)

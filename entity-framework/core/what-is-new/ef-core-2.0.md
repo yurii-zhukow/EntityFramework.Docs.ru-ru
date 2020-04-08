@@ -5,10 +5,10 @@ ms.date: 02/20/2018
 ms.assetid: 2CB5809E-0EFB-44F6-AF14-9D5BFFFBFF9D
 uid: core/what-is-new/ef-core-2.0
 ms.openlocfilehash: 83f6b819409d502dba17a678d44a0746a4a77f4b
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413579"
 ---
 # <a name="new-features-in-ef-core-20"></a>Новые возможности в EF Core 2.0
@@ -133,7 +133,7 @@ var query =
     select p;
 ```
 
-Следует отметить несколько аспектов.
+Обратите внимание на несколько моментов:
 
 - По соглашению имя метода используется в качестве имени функции (в данном случае пользовательской) при создании кода SQL, но вы можете переопределить имя и схему во время регистрации метода.
 - В настоящее время поддерживаются только скалярные функции.
@@ -158,7 +158,7 @@ class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 builder.ApplyConfiguration(new CustomerConfiguration());
 ```
 
-## <a name="high-performance"></a>Высокая производительность
+## <a name="high-performance"></a>высокопроизводительная
 
 ### <a name="dbcontext-pooling"></a>Создание пулов DbContext
 
@@ -211,7 +211,7 @@ using (var db = new CustomerContext())
 
 EF Core поддерживает автоматическое формирование значений ключа посредством разнообразных механизмов. При использовании этой функции значение создается, если для свойства ключа задано значение по умолчанию для среды CLR, которое обычно равно нулю или NULL. Это означает, что граф сущностей можно передать в `DbContext.Attach` или `DbSet.Attach`, и EF Core пометит сущности, для которых ключ уже задан, как `Unchanged`, а сущности без набора ключей — как `Added`. Это упрощает вложение смешанных графов из новых и существующих сущностей при использовании сформированных ключей. `DbContext.Update`и `DbSet.Update` работают аналогично, за исключением того, что сущности с набором ключей помечаются как `Modified` вместо `Unchanged`.
 
-## <a name="query"></a>query
+## <a name="query"></a>Запрос
 
 ### <a name="improved-linq-translation"></a>Усовершенствованное преобразование LINQ
 
@@ -225,7 +225,7 @@ EF Core поддерживает автоматическое формирова
 
 В C# 6 появилась интерполяция строк, позволяющая внедрять выражения C# непосредственно в строковые литералы, что очень удобно для создания строк во время выполнения. В EF Core 2.0 мы добавили специальную поддержку интерполированных строк в два основных API, принимающих необработанные строки SQL: `FromSql` и `ExecuteSqlCommand`. Это обеспечивает безопасное использование интерполяции строк C#. То есть этот механизм защищает от типичных ошибок внедрения кода SQL, которые могут возникнуть при динамическом формировании кода SQL во время выполнения.
 
-Пример:
+Например:
 
 ``` csharp
 var city = "London";
@@ -299,7 +299,7 @@ public class MyPluralizer : IPluralizer
 }
 ```
 
-## <a name="others"></a>Другие
+## <a name="others"></a>Прочее
 
 ### <a name="move-adonet-sqlite-provider-to-sqlitepclraw"></a>Перемещение поставщика ADO.NET SQLite в SQLitePCL.raw
 

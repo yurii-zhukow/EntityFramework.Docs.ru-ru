@@ -4,10 +4,10 @@ author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
 ms.openlocfilehash: 9262ff7970b0502945480c673315071cbc3f44b9
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413765"
 ---
 # <a name="global-query-filters"></a>Глобальные фильтры запросов

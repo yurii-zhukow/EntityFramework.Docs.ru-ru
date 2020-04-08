@@ -5,10 +5,10 @@ ms.date: 10/27/2016
 ms.assetid: C7FE8C85-445A-4F0C-97EC-CC3F7F1D6F5E
 uid: core/what-is-new/ef-core-1.1
 ms.openlocfilehash: d582712ed62443318f4b9e209511fb2a557d667e
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413591"
 ---
 # <a name="new-features-in-ef-core-11"></a>Новые возможности в EF Core 1.1
@@ -23,13 +23,13 @@ ms.locfileid: "78413591"
 
 Вы можете указать, что сопоставленная с таблицей сущность оптимизирована для памяти. Если вы используете EF Core для создания и обслуживания базы данных на основе используемой модели (с помощью миграций или `Database.EnsureCreated()`), то для таких сущностей будет создана оптимизированная для памяти таблица.
 
-## <a name="change-tracking"></a>Change tracking
+## <a name="change-tracking"></a>отслеживание изменений
 
 ### <a name="additional-change-tracking-apis-from-ef6"></a>Дополнительные API из EF6 для отслеживания изменений
 
 Например, `Reload`, `GetModifiedProperties`, `GetDatabaseValues` и т. п.
 
-## <a name="query"></a>query
+## <a name="query"></a>Запрос
 
 ### <a name="explicit-loading"></a>Явная загрузка
 
@@ -39,9 +39,9 @@ ms.locfileid: "78413591"
 
 Предоставляет простой способ получить сущность по значению первичного ключа.
 
-## <a name="other"></a>Другой
+## <a name="other"></a>Другие
 
-### <a name="connection-resiliency"></a>Устойчивость подключений
+### <a name="connection-resiliency"></a>Устойчивость подключения
 
 Автоматически выполняет повторные попытки для неудачных обращений к базе данных. Это особенно полезно при подключении к базе данных SQL Azure, для которой характерны временные сбои.
 

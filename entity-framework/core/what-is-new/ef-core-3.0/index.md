@@ -5,10 +5,10 @@ ms.date: 02/19/2019
 ms.assetid: 2EBE2CCC-E52D-483F-834C-8877F5EB0C0C
 uid: core/what-is-new/ef-core-3.0/index
 ms.openlocfilehash: ebc676930ffc396aa70bb8afb91cf5a0cd43e04d
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413199"
 ---
 # <a name="new-features-in-entity-framework-core-30"></a>Новые функции в Entity Framework Core 3.0

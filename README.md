@@ -12,15 +12,15 @@
 
 * Найдите файл для изменения в этом репозитории и щелкните его, чтобы открыть.
 
-![изображение](https://user-images.githubusercontent.com/1430078/64454137-10199400-d09f-11e9-9d1a-b7fdca2c518e.png)
+![image](https://user-images.githubusercontent.com/1430078/64454137-10199400-d09f-11e9-9d1a-b7fdca2c518e.png)
 
 * Нажмите кнопку изменения (✏️) для редактирования в веб-браузере.
 
-![изображение](https://user-images.githubusercontent.com/1430078/64454321-85856480-d09f-11e9-85a6-1c93bc6611e2.png)
+![image](https://user-images.githubusercontent.com/1430078/64454321-85856480-d09f-11e9-85a6-1c93bc6611e2.png)
 
-* По завершении добавьте заголовок и описание, а затем используйте параметр "Create a new branch and start a pull request" (Создайте ветвь для и запустите запрос на вытягивание).
+* По завершении добавьте заголовок и описание, а затем используйте параметр "Create a new branch and start a pull request" предложения.
 
-![изображение](https://user-images.githubusercontent.com/1430078/64454455-dac17600-d09f-11e9-922b-0346117011f5.png)
+![image](https://user-images.githubusercontent.com/1430078/64454455-dac17600-d09f-11e9-922b-0346117011f5.png)
 
 (Обратите внимание, что можно также клонировать этот репозиторий и выполнить запрос на вытягивание GitHub обычным образом.)
 
@@ -30,6 +30,6 @@
 
 ## <a name="microsoft-open-source-code-of-conduct"></a>Правила поведения при работе с открытым кодом, принятые в проектах корпорации Майкрософт
 
-Этот проект делается в соответствии с [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/)
-Дополнительные сведения см. в [вопросах и ответах по правилам поведения](https://opensource.microsoft.com/codeofconduct/faq/). С любыми дополнительными вопросами или комментариями обратитесь по адресу [opencode@microsoft.com](mailto:opencode@microsoft.com).
+В рамках этого проекта действуют [правила поведения в отношении продуктов с открытым исходным кодом Майкрософт](https://opensource.microsoft.com/codeofconduct/).
+Дополнительные сведения:[вопросы и ответы по правилам поведения](https://opensource.microsoft.com/codeofconduct/faq/). С любыми другими вопросами или комментариями обращайтесь по адресу[opencode@microsoft.com](mailto:opencode@microsoft.com).
 

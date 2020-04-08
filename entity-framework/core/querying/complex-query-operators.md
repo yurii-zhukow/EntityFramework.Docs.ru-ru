@@ -5,10 +5,10 @@ ms.date: 10/03/2019
 ms.assetid: 2e187a2a-4072-4198-9040-aaad68e424fd
 uid: core/querying/complex-query-operators
 ms.openlocfilehash: 44c2695ea003da043925740a52596fd27da638f8
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413777"
 ---
 # <a name="complex-query-operators"></a>Сложные операторы запросов
@@ -112,12 +112,12 @@ ORDER BY [p].[AuthorId]
 
 EF Core поддерживает следующие статистические операторы:
 
-- Метод Average
+- Среднее
 - Count
 - LongCount
-- Максимум
-- Минимум
-- Sum
+- Max
+- Min
+- SUM
 
 ## <a name="left-join"></a>Левое соединение
 

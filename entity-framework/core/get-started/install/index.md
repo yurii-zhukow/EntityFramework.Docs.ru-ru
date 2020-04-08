@@ -5,15 +5,15 @@ ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
 ms.openlocfilehash: 6575b1ac028f8b67b49ca7f4e49d6f19500be98f
-ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "80136169"
 ---
 # <a name="installing-entity-framework-core"></a>Установка Entity Framework Core
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>предварительные требования
 
 * EF Core — это библиотека [.NET Standard 2.0](/dotnet/standard/net-standard). Для запуска EF Core требуется реализация .NET, которая поддерживает .NET Standard 2.0. На EF Core также могут ссылаться другие библиотеки .NET Standard 2.0.
 
@@ -33,7 +33,7 @@ ms.locfileid: "80136169"
 
 Установить или обновить пакеты NuGet можно в интерфейсе командной строки (CLI) .NET Core, а также в диалоговом окне или консоли диспетчера пакетов Visual Studio.
 
-### <a name="net-core-cli"></a>Интерфейс командной строки .NET Core
+### <a name="net-core-cli"></a>.NET Core CLI
 
 * Чтобы установить или обновить поставщик EF Core SQL Server, выполните следующую команду интерфейса командной строки .NET Core в командной строке операционной системы:
 

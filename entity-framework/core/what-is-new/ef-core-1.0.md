@@ -5,10 +5,10 @@ ms.date: 10/27/2016
 ms.assetid: 20A25111-AEBE-4BC2-83A5-3F651952DF72
 uid: core/what-is-new/ef-core-1.0
 ms.openlocfilehash: 2cd2a54d75ed3f0caa8b674dfb56babcfcc13592
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413597"
 ---
 # <a name="features-included-in-ef-core-10"></a>Возможности, добавленные в версии EF Core 1.0
@@ -61,7 +61,7 @@ ms.locfileid: "78413597"
 
 Позволяет определить в модели объекты последовательностей.
 
-### <a name="unique-constraints"></a>Ограничения UNIQUE
+### <a name="unique-constraints"></a>Ограничения уникальности
 
 Позволяет определить альтернативные ключи и связи, использующие такие ключи.
 
@@ -81,7 +81,7 @@ ms.locfileid: "78413597"
 
 Обнаруживает в модели неправильные соотношения и предоставляет полезные сообщения об ошибках.
 
-## <a name="change-tracking"></a>Change tracking
+## <a name="change-tracking"></a>отслеживание изменений
 
 ### <a name="snapshot-change-tracking"></a>Отслеживание изменений по моментальному снимку
 
@@ -105,7 +105,7 @@ ms.locfileid: "78413597"
 
 Изменения экземпляров сущности могут сохраняться в базу данных.
 
-### <a name="optimistic-concurrency"></a>Оптимистическая блокировка
+### <a name="optimistic-concurrency"></a>Оптимистический параллелизм
 
 Защита от перезаписи изменений, внесенных другим пользователем после получения данных из базы данных.
 
@@ -117,11 +117,11 @@ ms.locfileid: "78413597"
 
 Означает, что `SaveChanges` всегда является атомарной (то есть либо завершается успешно полностью, либо не вносит никаких изменений в базу данных). Также для транзакций предоставлены специальные API, которые позволяют совместно использовать транзакции в нескольких экземплярах контекста и т. д.
 
-### <a name="relational-batching-of-statements"></a>Реляционный: Пакетная обработка инструкций
+### <a name="relational-batching-of-statements"></a>Реляционные базы данных: пакетная обработка инструкций
 
 Повышает производительность, выполняя несколько команд INSERT/UPDATE/DELETE за одно обращение к базе данных.
 
-## <a name="query"></a>query
+## <a name="query"></a>Запрос
 
 ### <a name="basic-linq-support"></a>Базовая поддержка LINQ
 
@@ -163,7 +163,7 @@ ms.locfileid: "78413597"
 
 ## <a name="database-providers"></a>Поставщики баз данных
 
-### <a name="sql-server"></a>SQL Server
+### <a name="sql-server"></a>SQL Server
 
 Позволяет подключаться к Microsoft SQL Server 2008 и более новых версий.
 
@@ -171,7 +171,7 @@ ms.locfileid: "78413597"
 
 Позволяет подключаться к базе данных SQLite 3.
 
-### <a name="in-memory"></a>Выполнение в памяти
+### <a name="in-memory"></a>В памяти
 
 Позволяет легко выполнять тестирование без подключения к настоящим базам данных.
 

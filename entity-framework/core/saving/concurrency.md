@@ -4,10 +4,10 @@ author: rowanmiller
 ms.date: 03/03/2018
 uid: core/saving/concurrency
 ms.openlocfilehash: a1d1a5a11d482f9104691aa3c072dbd1c548e9f1
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413651"
 ---
 # <a name="handling-concurrency-conflicts"></a>Обработка конфликтов параллелизма

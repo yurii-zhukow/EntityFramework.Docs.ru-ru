@@ -5,10 +5,10 @@ ms.date: 11/14/2018
 ms.assetid: 73C7A627-C8E9-452D-9CD5-AFCC8FEFE395
 uid: core/querying/tags
 ms.openlocfilehash: e8415b237df45ce652dcd152013f4f12a992aed7
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413831"
 ---
 # <a name="query-tags"></a>Теги запросов
@@ -94,5 +94,5 @@ ORDER BY [f].[Location].STDistance(@__myLocation_0) DESC
 
 ## <a name="known-limitations"></a>Известные ограничения
 
-**Теги запросов не поддерживают параметризацию:** EF Core всегда обрабатывает теги в запросе LINQ как строковые литералы, которые включаются в сгенерированный код SQL.
+**Теги запросов не поддерживают параметризацию** — EF Core всегда обрабатывает теги в запросе LINQ как строковые литералы, которые включаются в сгенерированный запрос SQL.
 Скомпилированные запросы, принимающие теги запросов в качестве параметров, не допускаются.
