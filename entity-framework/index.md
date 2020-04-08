@@ -6,10 +6,10 @@ ms.date: 10/27/2016
 ms.assetid: 6bb12583-c39a-454c-8d83-d2a2793ca9ef
 uid: index
 ms.openlocfilehash: 1643e3c9d1b8565155ebc1c04713a40883d03a07
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78412919"
 ---
 <div id="main" class="v2">
@@ -24,7 +24,7 @@ ms.locfileid: "78412919"
                         <ul id="entityfmwk1" class="cardsC">
                             <li>
                                 <div class="container intro">
-                                    <p>Entity Framework является объектно-реляционным модулем сопоставления (O/RM), который позволяет разработчикам .NET работать с базой данных, используя объекты .NET. Это устраняет необходимость в большей части кода для доступа к данным, который разработчикам обычно приходится писать.</p>
+                                    <p>Механизм Entity Framework является модулем объектно-реляционного сопоставления, который позволяет разработчикам .NET работать с базой данных с помощью объектов .NET. Это исключает необходимость в большинстве кодов доступа к данным, которые обычно требуется писать разработчикам.</p>
                                 </div>
                             </li>
                             <li>
@@ -111,7 +111,7 @@ ms.locfileid: "78412919"
                 <a href="#efcore">EF Core</a>
                 <ul id="efcore">
                     <li>
-                        <a href="#efcore-all">все</a>
+                        <a href="#efcore-all">Все</a>
                         <ul id="efcore-all" class="cardsF">
                             <li>
                                 <div class="container intro">
@@ -277,7 +277,7 @@ ms.locfileid: "78412919"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Справочник по интерфейсам API</h3>
+                                                    <h3>Справочник по API</h3>
                                                     <p>Просмотрите список интерфейсов Entity Framework 6, упорядоченный по пространствам имен.</p>
                                                 </div>
                                             </div>
