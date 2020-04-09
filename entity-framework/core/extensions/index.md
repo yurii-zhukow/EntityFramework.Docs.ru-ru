@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 12/17/2019
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: 99f59153a452a2f4aad5811110ebc5b5da7717ef
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: e3806f7161fecfe66450d3e08f97caf3d2c84cf3
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412999"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80634242"
 ---
 # <a name="ef-core-tools--extensions"></a>Инструменты и расширения EF Core
 
@@ -175,3 +175,14 @@ NeinLinq расширяет возможности поставщиков LINQ, 
 Позволяет вызывать методы расширения в лямбда-выражениях LINQ. Для EF Core: 3.1
 
 [Репозиторий GitHub](https://github.com/ClaveConsulting/Expressionify)
+
+### <a name="xlinq"></a>XLinq
+
+Технология языка интегрированных запросов (LINQ) для реляционных баз данных. Позволяет писать строго типизированные запросы на C#. Для EF Core: 3.1
+
+- Полная поддержка C# для создания запросов: лямбда-выражения с множеством инструкций, переменные, функции и т. д.
+- Отсутствие семантического разрыва с SQL. XLinq объявляет инструкции SQL (такие как `SELECT`, `FROM`, `WHERE`) как методы первого класса C#, сочетая привычный синтаксис с IntelliSense, безопасностью типов и рефакторингом.
+
+В результате SQL становится просто еще одной библиотекой классов, предоставляющей свой API локально, буквально являясь *"языком интегрированного SQL"* .
+
+[Веб-сайт](http://xlinq.live/)

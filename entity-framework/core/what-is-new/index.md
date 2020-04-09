@@ -1,15 +1,15 @@
 ---
 title: Выпуски и планирование EF Core
+description: Сведения о текущих выпусках EF Core, а также о графике и планах на будущие выпуски.
 author: ajcvickers
 ms.date: 03/03/2020
-ms.assetid: C21F89EE-FB08-4ED9-A2A0-76CB7656E6E4
 uid: core/what-is-new/index
-ms.openlocfilehash: 7b58b4de0eb8d9575f77e0b147da017eabad1867
-ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
+ms.openlocfilehash: 89687417685f291b44dcb250c96c5c9fa57da80f
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80136208"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80634266"
 ---
 # <a name="ef-core-releases-and-planning"></a>Выпуски и планирование EF Core
 
@@ -17,7 +17,7 @@ ms.locfileid: "80136208"
 
 | Выпуск | Целевая платформа | Поддержка до | Ссылки
 |:--------|------------------|-----------------|------
-| [EF Core 3.1](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/3.1.2) | .NET Standard 2.0 | 3 декабря 2022 г. (LTS) | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-3-1-and-entity-framework-6-4/)
+| [EF Core 3.1](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/3.1.3) | .NET Standard 2.0 | 3 декабря 2022 г. (LTS) | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-3-1-and-entity-framework-6-4/)
 | ~~[EF Core 3.0](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/3.0.3)~~ | .NET Standard 2.1 | Срок действия истек 3 марта 2020 г. | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-ef-core-3-0-and-ef-6-3-general-availability/) / [Критические изменения](ef-core-3.0/breaking-changes.md)
 | ~~[EF Core 2.2](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/2.2.6)~~ | .NET Standard 2.0 | Срок действия истек 23 декабря 2019 г. | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-2-2/)
 | [EF Core 2.1](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/2.1.14) | .NET Standard 2.0 | 21 августа 2021 г. (LTS) | [Объявление](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-2-1/)
