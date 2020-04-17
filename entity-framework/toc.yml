@@ -1,5 +1,5 @@
 - name: Entity Framework
-  href: index.md
+  href: index.yml
   items:
     - name: Сравнение EF Core и EF6
       items:
@@ -33,7 +33,7 @@
                   href: core/what-is-new/ef-core-5.0/whatsnew.md
             - name: "EF Core\_3.0"
               items:
-                - name: новые функции;
+                - name: Новые функции
                   href: core/what-is-new/ef-core-3.0/index.md
                 - name: Критические изменения
                   href: core/what-is-new/ef-core-3.0/breaking-changes.md
@@ -63,13 +63,13 @@
               href: core/get-started/install/index.md
             - name: Руководство по ASP.NET Core >>
               href: /aspnet/core/data/ef-rp/intro
-        - name: Основные сведения
+        - name: Основы
           items:
             - name: Строки подключения
               href: core/miscellaneous/connection-strings.md
-            - name: Logging
+            - name: Ведение журнала
               href: core/miscellaneous/logging.md
-            - name: Устойчивость подключения
+            - name: Устойчивость подключений
               href: core/miscellaneous/connection-resiliency.md
             - name: Тестирование
               items:
@@ -91,7 +91,7 @@
               href: core/modeling/entity-types.md
             - name: Свойства сущности
               href: core/modeling/entity-properties.md
-            - name: Ключи
+            - name: Клавиши
               href: core/modeling/keys.md
             - name: Созданные значения
               href: core/modeling/generated-properties.md
@@ -99,13 +99,13 @@
               href: core/modeling/concurrency.md
             - name: Свойства тени
               href: core/modeling/shadow-properties.md
-            - name: Связи
+            - name: Отношения
               href: core/modeling/relationships.md
             - name: Индексы
               href: core/modeling/indexes.md
             - name: Наследование
               href: core/modeling/inheritance.md
-            - name: Последовательности;
+            - name: Последовательности
               href: core/modeling/sequences.md
             - name: Резервные поля
               href: core/modeling/backing-field.md
@@ -182,7 +182,7 @@
               href: core/saving/cascade-delete.md
             - name: Конфликты параллелизма
               href: core/saving/concurrency.md
-            - name: Transactions
+            - name: Транзакции
               href: core/saving/transactions.md
             - name: Асинхронное сохранение
               href: core/saving/async.md
@@ -232,7 +232,7 @@
               href: core/miscellaneous/cli/index.md
             - name: Консоль диспетчера пакетов (Visual Studio)
               href: core/miscellaneous/cli/powershell.md
-            - name: .NET Core CLI
+            - name: Интерфейс командной строки .NET Core
               href: core/miscellaneous/cli/dotnet.md
             - name: Создание DbContext во время разработки
               href: core/miscellaneous/cli/dbcontext-creation.md
@@ -256,7 +256,7 @@
               href: ef6/what-is-new/visual-studio.md
         - name: Начало работы
           href: ef6/get-started.md
-        - name: Основные сведения
+        - name: Основы
           items:
             - name: "Установка Entity\_Framework"
               href: ef6/fundamentals/install.md
@@ -266,7 +266,7 @@
               href: ef6/fundamentals/relationships.md
             - name: Асинхронные запросы и сохранение
               href: ef6/fundamentals/async.md
-            - name: Конфигурация
+            - name: Параметр Configuration
               items:
                 - name: На базе кода
                   href: ef6/fundamentals/configuring/code-based.md
@@ -278,7 +278,7 @@
                   href: ef6/fundamentals/configuring/dependency-resolution.md
             - name: Управление соединениями
               href: ef6/fundamentals/connection-management.md
-            - name: Устойчивость подключения
+            - name: Устойчивость подключений
               items:
                 - name: Логика повторных попыток
                   href: ef6/fundamentals/connection-resiliency/retry-logic.md
@@ -348,7 +348,7 @@
                   items:
                     - name: Перечисления
                       href: ef6/modeling/code-first/data-types/enums.md
-                    - name: пространственный индекс
+                    - name: Пространственные данные
                       href: ef6/modeling/code-first/data-types/spatial.md
                 - name: Соглашения
                   items:
@@ -360,7 +360,7 @@
                       href: ef6/modeling/code-first/conventions/model.md
                 - name: "Конфигурация с текучим\_API"
                   items:
-                    - name: Связи
+                    - name: Отношения
                       href: ef6/modeling/code-first/fluent/relationships.md
                     - name: Типы и свойства
                       href: ef6/modeling/code-first/fluent/types-and-properties.md
@@ -396,7 +396,7 @@
                       href: ef6/modeling/designer/data-types/complex-types.md
                     - name: Перечисления
                       href: ef6/modeling/designer/data-types/enums.md
-                    - name: пространственный индекс
+                    - name: Пространственные данные
                       href: ef6/modeling/designer/data-types/spatial.md
                 - name: Разделение сопоставлений
                   items:
@@ -412,9 +412,9 @@
                       href: ef6/modeling/designer/inheritance/tpt.md
                 - name: Сопоставление хранимых процедур
                   items:
-                    - name: Запрос
+                    - name: query
                       href: ef6/modeling/designer/stored-procedures/query.md
-                    - name: Update
+                    - name: Обновление
                       href: ef6/modeling/designer/stored-procedures/cud.md
                 - name: Сопоставление связей
                   href: ef6/modeling/designer/relationships.md
@@ -444,7 +444,7 @@
                       href: ef6/modeling/designer/advanced/multiple-result-sets.md
                     - name: Функции с табличным значением
                       href: ef6/modeling/designer/advanced/tvfs.md
-                - name: сочетания клавиш
+                - name: Сочетания клавиш
                   href: ef6/modeling/designer/keyboard-shortcuts.md
         - name: Данные запросов
           items:
@@ -464,7 +464,7 @@
           items:
             - name: Обзор
               href: ef6/saving/index.md
-            - name: отслеживание изменений
+            - name: Change tracking
               items:
                 - name: Автообнаружение изменений
                   href: ef6/saving/change-tracking/auto-detect-changes.md
