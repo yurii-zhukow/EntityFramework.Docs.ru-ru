@@ -4,12 +4,12 @@ description: Обзор новых возможностей в EF Core 5.0
 author: ajcvickers
 ms.date: 03/30/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew.md
-ms.openlocfilehash: c047a308cadf44eea577dcab29b68b36942a50df
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: c902988920e3b1a6039808fe0658fc19dee2728a
+ms.sourcegitcommit: 387cbd8109c0fc5ce6bdc85d0dec1aed72ad4c33
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80634280"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82103078"
 ---
 # <a name="whats-new-in-ef-core-50"></a>Новые возможности EF Core 5.0
 
@@ -20,6 +20,106 @@ ms.locfileid: "80634280"
 В плане описываются общие темы для EF Core 5.0, в том числе все, что планируется включить перед выпуском окончательной версии.
 
 Мы будем добавлять ссылки на официальную документацию по мере ее публикации.
+
+## <a name="preview-3"></a>Предварительная версия 3
+
+### <a name="filtered-include"></a>Включение с фильтрацией
+
+Метод Include теперь поддерживает фильтрацию включенных сущностей.
+Пример:
+
+```CSharp
+var blogs = context.Blogs
+    .Include(e => e.Posts.Where(p => p.Title.Contains("Cheese")))
+    .ToList();
+```
+
+Этот запрос возвращает блоги со всеми связанными записями, но только в том случае, если заголовок записи содержит Cheese.
+
+Для сокращения числа включаемых сущностей также можно использовать методы Skip и Take.
+Пример:
+ 
+```CSharp
+var blogs = context.Blogs
+    .Include(e => e.Posts.OrderByDescending(post => post.Title).Take(5)))
+    .ToList();
+```
+Этот запрос возвратит блоги, включив не более пяти записей для каждого блога.
+
+Подробные сведения см. в [документации по методу Include](xref:core/querying/related-data#filtered-include).
+
+### <a name="new-modelbuilder-api-for-navigation-properties"></a>Новый API ModelBuilder для свойств навигации
+
+Свойства навигации главным образом настраиваются при [определении связей](xref:core/modeling/relationships).
+Однако новый метод `Navigation` можно использовать в случаях, когда свойства навигации требуют дополнительной настройки.
+Например, чтобы задать резервное поле для навигации, если не удалось найти поле по соглашению:
+
+```CSharp
+modelBuilder.Entity<Blog>().Navigation(e => e.Posts).HasField("_myposts");
+```
+
+Обратите внимание, что API `Navigation` не является заменой для конфигурации связи.
+Вместо этого он допускает дополнительную настройку свойств навигации в уже обнаруженных или определенных связях.
+
+Документация отслеживается по проблеме [#2302](https://github.com/dotnet/EntityFramework.Docs/issues/2302).
+
+### <a name="new-command-line-parameters-for-namespaces-and-connection-strings"></a>Новые параметры командной строки для пространств имен и строк подключения 
+
+Теперь можно указывать пространства имен в командной строке во время миграции и формирования шаблонов.
+Это можно сделать, например, затем, чтобы реконструировать базу данных, поместив в нее классы контекста и модели в различных пространствах имен: 
+
+```
+dotnet ef dbcontext scaffold "connection string" Microsoft.EntityFrameworkCore.SqlServer --context-namespace "My.Context" --namespace "My.Model"
+```
+
+Кроме того, теперь можно передать строку подключения команде `database-update`.
+
+```
+dotnet ef database update --connection "connection string"
+```
+
+Аналогичные параметры также были добавлены в команды PowerShell, используемые в консоли диспетчера пакетов VS.
+
+Документация отслеживается по проблеме [#2303](https://github.com/dotnet/EntityFramework.Docs/issues/2303).
+
+### <a name="enabledetailederrors-has-returned"></a>Возвращение EnableDetailedErrors
+
+По соображениям производительности EF не выполняет дополнительные проверки на NULL при считывании значений из базы данных.
+Это может привести к возникновению исключений при обнаружении непредвиденных значений NULL, для которых будет сложно определить причину.
+
+При использовании `EnableDetailedErrors` будет добавлена дополнительная проверка на NULL для запросов, чтобы облегчить определение причин этих ошибок за счет небольшого снижения производительности.  
+
+Пример:
+```CSharp
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder
+        .EnableDetailedErrors()
+        .EnableSensitiveDataLogging() // Often also useful with EnableDetailedErrors 
+        .UseSqlServer(Your.SqlServerConnectionString);
+```
+
+Документация отслеживается по проблеме [#955](https://github.com/dotnet/EntityFramework.Docs/issues/955).
+
+### <a name="cosmos-partition-keys"></a>Ключи секций Cosmos
+
+Теперь можно указать в запросе ключ секции, используемый для данного запроса.
+Пример:
+
+```CSharp
+await context.Set<Customer>()
+             .WithPartitionKey(myPartitionKey)
+             .FirstAsync();
+```
+
+Документация отслеживается по проблеме [#2199](https://github.com/dotnet/EntityFramework.Docs/issues/2199).
+
+### <a name="support-for-the-sql-server-datalength-function"></a>Поддержка функции DATALENGTH SQL Server
+
+К ней можно обратиться с помощью нового метода `EF.Functions.DataLength`.
+Пример:
+```CSharp
+var count = context.Orders.Count(c => 100 < EF.Functions.DataLength(c.OrderDate));
+``` 
 
 ## <a name="preview-2"></a>Предварительная версия 2
 

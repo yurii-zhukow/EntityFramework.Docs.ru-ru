@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: 915aaa41beb495a046f2d6260e9c3b174d5f3031
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: bfd6e161ed7f7bf96e61946f94c8eeadd24a72f5
+ms.sourcegitcommit: 144edccf9b29a7ffad119c235ac9808ec1a46193
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413723"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81434192"
 ---
 # <a name="loading-related-data"></a>Загрузка связанных данных
 
@@ -55,6 +55,27 @@ Entity Framework Core позволяет использовать свойств
 
 > [!CAUTION]
 > Начиная с версии 3.0.0, каждый `Include` приведет к добавлению дополнительного JOIN в запросы SQL, создаваемые реляционными поставщиками, тогда как предыдущие версии создавали дополнительные SQL-запросы. Это может значительно изменить производительность запросов к лучшему или к худшему. В частности, может возникнуть потребность разделения запросов LINQ с чрезмерно большим числом операторов `Include` на несколько отдельных запросов LINQ, чтобы избежать проблемы декартова взрыва.
+
+### <a name="filtered-include"></a>Включение с фильтрацией
+
+> [!NOTE]
+> Эта возможность появилась в EF Core 5.0.
+
+При применении Include для загрузки связанных данных можно применить определенные перечислимые операции к включенной навигации коллекции, что позволяет фильтровать и сортировать результаты.
+
+Поддерживаются операции: `Where`, `OrderBy`, `OrderByDescending`, `ThenBy`, `ThenByDescending`, `Skip` и `Take`.
+
+Такие операции должны применяться к навигации коллекции в лямбда-выражении, переданном в метод Include, как показано в примере ниже:
+
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#FilteredInclude)]
+
+Каждая включаемая навигация позволяет выполнять только один уникальный набор операций фильтра. В тех случаях, когда для данной навигации по коллекции применяются несколько операций Include (`blog.Posts` в приведенных ниже примерах), операции фильтрации можно указывать только в одном из них: 
+
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#MultipleLeafIncludesFiltered1)]
+
+Кроме того, можно применить идентичные операции для каждой навигации, которая включается несколько раз:
+
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#MultipleLeafIncludesFiltered2)]
 
 ### <a name="include-on-derived-types"></a>Использование метода Include с производными типами
 
@@ -314,7 +335,7 @@ public static class PocoLoadingExtensions
 
 Некоторые платформы сериализации не допускают такие циклы. Например Json.NET вызовет следующее исключение при обнаружении цикла.
 
-> Newtonsoft.Json.JsonSerializationException: самоссылающийся цикл обнаружен для свойства "Blog" с типом MyApplication.Models.Blog.
+> Newtonsoft.Json.JsonSerializationException: обнаружен самоссылающийся цикл для свойства "Blog" с типом "MyApplication.Models.Blog".
 
 Если вы используете ASP.NET Core, вы можете настроить Json.NET для игнорирования циклов, которые он находит в графе объектов. Это делается в методе `ConfigureServices(...)` в `Startup.cs`.
 
