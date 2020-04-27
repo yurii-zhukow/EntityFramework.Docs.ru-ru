@@ -1,0 +1,173 @@
+### YamlMime:Hub
+title: Документация по Entity Framework
+summary: Entity Framework Core — это современный модуль сопоставления "объект — база данных" для .NET. Он поддерживает запросы LINQ, отслеживание изменений, обновления и миграции схемы. EF Core работает с многими базами данных, включая базы данных SQL (локальные и в Azure), SQLite, MySQL, PostgreSQL и Azure Cosmos DB.
+brand: dotnet
+metadata:
+  title: Документация по Entity Framework
+  description: Научитесь использовать Entity Framework Core — современный модуль сопоставления объектов и баз данных для .NET, поддерживающий запросы LINQ, отслеживание изменений, обновления и миграцию схем. Изучайте руководства, примеры кода, основные понятия, справочник по API и многое другое.
+  ms.product: entity-framework
+  ms.topic: hub-page
+  author: WadePickett
+  ms.author: wpickett
+  ms.date: 04/15/2020
+  ms.openlocfilehash: bfb96b06a2832b489e194fede0c04efebcc7496d
+  ms.sourcegitcommit: 387cbd8109c0fc5ce6bdc85d0dec1aed72ad4c33
+  ms.translationtype: HT
+  ms.contentlocale: ru-RU
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82103104"
+highlightedContent:
+  items:
+  - title: Entity Framework Core
+    itemType: get-started
+    url: core/get-started/index.md
+  - title: Хранение и извлечение реляционных данных с помощью Entity Framework Core
+    itemType: learn
+    url: /learn/modules/persist-data-ef-core/
+  - title: Выпуски и платформы
+    itemType: whats-new
+    url: core/what-is-new/index.md
+  - title: Поддерживаемые базы данных
+    itemType: overview
+    url: core/providers/index.md
+  - title: Выберите подходящую вам версию
+    itemType: overview
+    url: efcore-and-ef6/index.md
+  - title: Обозреватель справки по API
+    itemType: reference
+    url: https://docs.microsoft.com/dotnet/api/?view=efcore-3.1
+additionalContent:
+  sections:
+  - title: Разработка с использованием Entity Framework Core
+    items:
+    - title: Создание первого приложения
+      links:
+      - url: core/get-started/index.md
+        text: Консольное приложение .NET Core для доступа через EF Core к SQLite
+      - url: /aspnet/core/data/ef-rp/
+        text: Веб приложение Razor Pages на базе ASP.NET Core для доступа через EF Core к SQL Server LocalDB или SQLite
+      - url: /aspnet/core/data/ef-mvc/
+        text: Веб-приложение ASP.NET Core MVC для доступа через EF Core к SQL Server
+    - title: Основы
+      links:
+      - url: core/miscellaneous/connection-strings.md
+        text: Строки подключения
+      - url: core/miscellaneous/logging.md
+        text: Ведение журнала
+      - url: core/miscellaneous/connection-resiliency.md
+        text: Устойчивость подключений
+      - url: core/miscellaneous/testing/index.md
+        text: Тестирование
+      - url: core/miscellaneous/configuring-dbcontext.md
+        text: Настройка DbContext
+      - url: core/miscellaneous/nullable-reference-types.md
+        text: Ссылочные типы, допускающие значение null
+    - title: Создание модели
+      links:
+      - url: core/modeling/index.md
+        text: Обзор
+      - url: core/modeling/entity-types.md
+        text: Типы сущностей
+      - url: core/modeling/entity-properties.md
+        text: Свойства сущности
+      - url: core/modeling/keys.md
+        text: Клавиши
+      - url: core/modeling/generated-properties.md
+        text: Созданные значения
+      - url: core/modeling/relationships.md
+        text: Отношения
+      - url: core/modeling/data-seeding.md
+        text: Присвоение начальных значений данных
+      - url: core/modeling/owned-entities.md
+        text: Принадлежащие типы сущностей
+      - url: core/modeling/keyless-entity-types.md
+        text: Типы сущностей без ключей
+    - title: query
+      links:
+      - url: core/querying/index.md
+        text: Обзор
+      - url: core/querying/client-eval.md
+        text: Вычисление на клиенте и сервере
+      - url: core/querying/tracking.md
+        text: Отслеживаемые и неотслеживаемые запросы
+      - url: core/querying/complex-query-operators.md
+        text: Сложные операторы запросов
+      - url: core/querying/related-data.md
+        text: Загрузка связанных данных
+      - url: core/querying/async.md
+        text: Асинхронные запросы
+      - url: core/querying/raw-sql.md
+        text: Необработанные SQL-запросы
+      - url: core/querying/filters.md
+        text: Глобальные фильтры запросов
+    - title: Управление схемами базы данных
+      links:
+      - url: core/managing-schemas/index.md
+        text: Обзор
+      - url: core/managing-schemas/migrations/index.md
+        text: Общие сведения о переносе
+      - url: core/managing-schemas/migrations/teams.md
+        text: Миграция командных сред
+      - url: core/managing-schemas/migrations/operations.md
+        text: Миграция — пользовательские операции
+      - url: core/managing-schemas/migrations/projects.md
+        text: Миграция — использование отдельного проекта
+      - url: core/managing-schemas/migrations/providers.md
+        text: Миграция — множество поставщиков
+      - url: core/managing-schemas/migrations/history-table.md
+        text: Миграция — настраиваемая таблица журнала
+      - url: core/managing-schemas/ensure-created.md
+        text: API создания и удаления
+      - url: core/managing-schemas/scaffolding.md
+        text: Реконструирование (формирование шаблонов)
+    - title: Сохранение данных
+      links:
+      - url: core/saving/index.md
+        text: Обзор
+      - url: core/saving/basic.md
+        text: Базовое сохранение
+      - url: core/saving/related-data.md
+        text: Связанные данные
+      - url: core/saving/cascade-delete.md
+        text: Каскадное удаление
+      - url: core/saving/concurrency.md
+        text: Конфликты параллелизма
+      - url: core/saving/transactions.md
+        text: Транзакции
+      - url: core/saving/async.md
+        text: Асинхронное сохранение
+      - url: core/saving/disconnected-entities.md
+        text: Отключенные сущности
+    - title: Поддерживаемые базы данных
+      links:
+      - url: core/providers/sql-server/index.md
+        text: SQL Server
+      - url: core/providers/sqlite/index.md
+        text: SQLite
+      - url: http://www.npgsql.org/efcore/index.html
+        text: PostgreSQL
+      - url: https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MySql
+        text: MySQL и MariaDB
+      - url: core/providers/cosmos/index.md
+        text: API SQL Cosmos DB
+      - url: core/providers/in-memory/index.md
+        text: Выполнение в памяти (тестирование)
+      - url: core/providers/index.md
+        text: Все текущие поставщики баз данных
+    - title: Справочник по командной строке
+      links:
+      - url: core/miscellaneous/cli/index.md
+        text: Обзор
+      - url: core/miscellaneous/cli/powershell.md
+        text: Консоль диспетчера пакетов (Visual Studio)
+      - url: core/miscellaneous/cli/dotnet.md
+        text: Интерфейс командной строки .NET Core
+      - url: core/miscellaneous/cli/dbcontext-creation.md
+        text: Создание DbContext во время разработки
+      - url: core/miscellaneous/cli/services.md
+        text: Службы времени разработки
+    - title: Предыдущие версии
+      links:
+      - url: ef6/get-started.md
+        text: Entity Framework 6
+  footer: Примите участие в создании документации по Entity Framework. Ознакомьтесь с нашим [руководством для соавторов](https://github.com/dotnet/EntityFramework.Docs/blob/master/CONTRIBUTING.md).

@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: 2EBE2CCC-E52D-483F-834C-8877F5EB0C0C
 uid: core/what-is-new/ef-core-3.0/index
-ms.openlocfilehash: ebc676930ffc396aa70bb8afb91cf5a0cd43e04d
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 39684cdcc17e3baa4b77cf29d54b626294771332
+ms.sourcegitcommit: 387cbd8109c0fc5ce6bdc85d0dec1aed72ad4c33
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413199"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82103143"
 ---
 # <a name="new-features-in-entity-framework-core-30"></a>Новые функции в Entity Framework Core 3.0
 
@@ -113,15 +113,15 @@ public class Customer
 
 Как и функции перехвата, использовавшиеся в EF 6, перехватчики позволяют перехватывать операции до или после того, как они происходят. Если перехватить их до выполнения, можно обойти его и предоставить альтернативные результаты на основе логики перехвата.
 
-Например, для управления текстом команды можно создать `IDbCommandInterceptor`:
+Например, для управления текстом команды можно создать `DbCommandInterceptor`:
 
 ``` csharp
 public class HintCommandInterceptor : DbCommandInterceptor
 {
-    public override InterceptionResult ReaderExecuting(
+    public override InterceptionResult<DbDataReader> ReaderExecuting(
         DbCommand command,
         CommandEventData eventData,
-        InterceptionResult result)
+        InterceptionResult<DbDataReader> result)
     {
         // Manipulate the command text, etc. here...
         command.CommandText += " OPTION (OPTIMIZE FOR UNKNOWN)";
