@@ -3,12 +3,12 @@ title: Поддерживаемые реализации .NET — EF Core
 author: bricelam
 ms.date: 03/03/2020
 uid: core/platforms/index
-ms.openlocfilehash: 693d4cae85eddf86d01e17084415147c52a008c7
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 2738645596a325a1a43fd5b2164e370dd8c5893e
+ms.sourcegitcommit: 144edccf9b29a7ffad119c235ac9808ec1a46193
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413069"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81434127"
 ---
 # <a name="net-implementations-supported-by-ef-core"></a>Реализации .NET, поддерживаемые EF Core
 
@@ -73,4 +73,4 @@ ms.locfileid: "78413069"
 
 ## <a name="report-issues"></a>Сообщить о проблеме
 
-Если какое-либо сочетание работает неправильно, мы рекомендуем добавить новые вопросы в [средство отслеживания вопросов EF Core](https://github.com/aspnet/entityframeworkcore/issues/new). Для проблем, относящихся к Xamarin, используйте средство отслеживания проблем [Xamarin.Android](https://github.com/xamarin/xamarin-android/issues/new) или [Xamarin.iOS](https://github.com/xamarin/xamarin-macios/issues/new).
+Если какое-либо сочетание компонентов не работает должным образом, рекомендуем создать проблему на [трекере EF Core](https://github.com/aspnet/entityframeworkcore/issues/new). Для проблем, относящихся к Xamarin, используйте средство отслеживания проблем [Xamarin.Android](https://github.com/xamarin/xamarin-android/issues/new) или [Xamarin.iOS](https://github.com/xamarin/xamarin-macios/issues/new).

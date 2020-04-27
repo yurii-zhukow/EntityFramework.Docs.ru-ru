@@ -4,12 +4,12 @@ author: rick-anderson
 ms.date: 09/17/2019
 ms.assetid: 3c88427c-20c6-42ec-a736-22d3eccd5071
 uid: core/get-started/index
-ms.openlocfilehash: 0e7a1ee159cdf5b72448fe6d73c972975b1ab95b
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 7ace80bf326395d3b68f3e745100cd45356d7973
+ms.sourcegitcommit: 144edccf9b29a7ffad119c235ac9808ec1a46193
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78412869"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81434101"
 ---
 # <a name="getting-started-with-ef-core"></a>Начало работы с EF Core
 
@@ -95,7 +95,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
 В EF Core также можно [реконструировать](../managing-schemas/scaffolding.md) модель из существующей базы данных.
 
-Совет. В реальном приложении каждый класс помещается в отдельный файл, а [строка подключения](../miscellaneous/connection-strings.md) — в файл конфигурации или переменную среды. Для упрощения в этом руководстве все данные содержатся в одном файле.
+Совет. Эта программа намеренно упрощена для наглядности. В приложениях для рабочей среды не следует хранить [строки подключений](../miscellaneous/connection-strings.md) в коде. Возможно, также будет лучше поместить каждый класс C# в отдельный файл.
 
 ## <a name="create-the-database"></a>Создание базы данных
 
