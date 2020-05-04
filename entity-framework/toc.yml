@@ -73,8 +73,12 @@
               href: core/miscellaneous/connection-resiliency.md
             - name: Тестирование
               items:
-                - name: Обзор
+                - name: "Тестирование кода, использующего EF\_Core"
                   href: core/miscellaneous/testing/index.md
+                - name: "Пример тестирования EF\_Core"
+                  href: core/miscellaneous/testing/testing-sample.md
+                - name: Совместное использование баз данных в тестах
+                  href: core/miscellaneous/testing/sharing-databases.md
                 - name: Работа с SQLite
                   href: core/miscellaneous/testing/sqlite.md
                 - name: Тестирование с помощью InMemory
@@ -111,6 +115,8 @@
               href: core/modeling/backing-field.md
             - name: Преобразования значений
               href: core/modeling/value-conversions.md
+            - name: Функции сравнения значений
+              href: core/modeling/value-comparers.md
             - name: Присвоение начальных значений данных
               href: core/modeling/data-seeding.md
             - name: Конструкторы типов сущностей

@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: 190057daed61c58c1f89ee8d775913458e413a50
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 99bb420d95cb86443b63ba05ce9e6b4ab838eff9
+ms.sourcegitcommit: 79e460f76b6664e1da5886d102bd97f651d2ffff
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80136200"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82538457"
 ---
 # <a name="migrations"></a>Миграции
 
@@ -62,7 +62,20 @@ Add-Migration InitialCreate
 Метка времени в именах файлов позволяет расположить их в хронологическом порядке, чтобы вы могли отслеживать ход изменений.
 
 > [!TIP]
-> Вы можете свободно перемещать файлы миграций и изменять их пространство имен. Новые миграции создаются в виде элементов того же уровня, что и последняя миграция.
+> Вы можете свободно перемещать файлы миграций и изменять их пространство имен вручную. Новые миграции создаются в виде элементов того же уровня, что и последняя миграция.
+> 
+> Кроме того, можно использовать параметр `-Namespace` (консоль диспетчера пакетов) или `--namespace` (.NET Core CLI), чтобы указать пространство имен во время создания.
+> ### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+> 
+> ```dotnetcli
+> dotnet ef migrations add InitialCreate --namespace Your.Namespace
+> ```
+> 
+> ### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
+> 
+> ``` powershell
+> Add-Migration InitialCreate -Namespace Your.Namespace
+> ```
 
 ## <a name="update-the-database"></a>Обновление базы данных
 
