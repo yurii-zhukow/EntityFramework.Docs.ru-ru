@@ -556,7 +556,7 @@ public class OrderDetails
     public string ShippingAddress { get; set; }
 }
 ```
-До выхода EF Core 3.0, если класс `OrderDetails` принадлежал классу `Order` или явно сопоставлялся с этой же таблицей, при добавлении нового класса `OrderDetails` всегда требовался экземпляр `Order`.
+До выхода EF Core 3.0, если класс `OrderDetails` принадлежал классу `Order` или явно сопоставлялся с этой же таблицей, при добавлении нового класса `Order` всегда требовался экземпляр `OrderDetails`.
 
 
 **Новое поведение**
