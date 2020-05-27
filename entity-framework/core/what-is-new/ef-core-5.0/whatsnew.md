@@ -2,14 +2,14 @@
 title: Новые возможности EF Core 5.0
 description: Обзор новых возможностей в EF Core 5.0
 author: ajcvickers
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew.md
-ms.openlocfilehash: c902988920e3b1a6039808fe0658fc19dee2728a
-ms.sourcegitcommit: 387cbd8109c0fc5ce6bdc85d0dec1aed72ad4c33
+ms.openlocfilehash: fcb2eb8df99a06eaf3459835347a4027a363b86b
+ms.sourcegitcommit: 59e3d5ce7dfb284457cf1c991091683b2d1afe9d
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103078"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83672854"
 ---
 # <a name="whats-new-in-ef-core-50"></a>Новые возможности EF Core 5.0
 
@@ -20,6 +20,38 @@ ms.locfileid: "82103078"
 В плане описываются общие темы для EF Core 5.0, в том числе все, что планируется включить перед выпуском окончательной версии.
 
 Мы будем добавлять ссылки на официальную документацию по мере ее публикации.
+
+## <a name="preview-4"></a>Предварительная версия 4
+
+### <a name="configure-database-precisionscale-in-model"></a>Настройка точности и масштаба для базы данных в модели
+
+Теперь можно указать точность и масштаб для свойства с помощью построителя модели.
+Пример:
+
+```CSharp
+modelBuilder
+    .Entity<Blog>()
+    .Property(b => b.Numeric)
+    .HasPrecision(16, 4);
+```
+
+Точность и масштаб по-прежнему можно задать, используя полный тип базы данных, например "decimal(16,4)". 
+
+Документация отслеживается по проблеме [#527](https://github.com/dotnet/EntityFramework.Docs/issues/527).
+
+### <a name="specify-sql-server-index-fill-factor"></a>Указание коэффициента заполнения индекса SQL Server
+
+Теперь при создании индекса в SQL Server можно указать коэффициент заполнения.
+Пример:
+
+```CSharp
+modelBuilder
+    .Entity<Customer>()
+    .HasIndex(e => e.Name)
+    .HasFillFactor(90);
+```
+
+Документация отслеживается по проблеме [#2378](https://github.com/dotnet/EntityFramework.Docs/issues/2378).
 
 ## <a name="preview-3"></a>Предварительная версия 3
 
@@ -61,7 +93,7 @@ modelBuilder.Entity<Blog>().Navigation(e => e.Posts).HasField("_myposts");
 Обратите внимание, что API `Navigation` не является заменой для конфигурации связи.
 Вместо этого он допускает дополнительную настройку свойств навигации в уже обнаруженных или определенных связях.
 
-Документация отслеживается по проблеме [#2302](https://github.com/dotnet/EntityFramework.Docs/issues/2302).
+См. [документацию по настройке свойств навигации](xref:core/modeling/relationships#configuring-navigation-properties).
 
 ### <a name="new-command-line-parameters-for-namespaces-and-connection-strings"></a>Новые параметры командной строки для пространств имен и строк подключения 
 
@@ -72,15 +104,18 @@ modelBuilder.Entity<Blog>().Navigation(e => e.Posts).HasField("_myposts");
 dotnet ef dbcontext scaffold "connection string" Microsoft.EntityFrameworkCore.SqlServer --context-namespace "My.Context" --namespace "My.Model"
 ```
 
+Подробные сведения см. в документации по [миграции](xref:core/managing-schemas/migrations/index#namespaces) и [реконструированию](xref:core/managing-schemas/scaffolding#directories-and-namespaces).
+
+---
 Кроме того, теперь можно передать строку подключения команде `database-update`.
 
 ```
 dotnet ef database update --connection "connection string"
 ```
 
-Аналогичные параметры также были добавлены в команды PowerShell, используемые в консоли диспетчера пакетов VS.
+Подробные сведения см. в [документации по средствам](xref:core/miscellaneous/cli/dotnet#dotnet-ef-database-update).
 
-Документация отслеживается по проблеме [#2303](https://github.com/dotnet/EntityFramework.Docs/issues/2303).
+Аналогичные параметры также были добавлены в команды PowerShell, используемые в консоли диспетчера пакетов VS.
 
 ### <a name="enabledetailederrors-has-returned"></a>Возвращение EnableDetailedErrors
 
