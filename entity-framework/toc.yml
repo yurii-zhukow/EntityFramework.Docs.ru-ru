@@ -31,6 +31,8 @@
                   href: core/what-is-new/ef-core-5.0/plan.md
                 - name: Новые возможности
                   href: core/what-is-new/ef-core-5.0/whatsnew.md
+                - name: Критические изменения
+                  href: core/what-is-new/ef-core-5.0/breaking-changes.md
             - name: "EF Core\_3.0"
               items:
                 - name: Новые функции
@@ -87,6 +89,8 @@
               href: core/miscellaneous/configuring-dbcontext.md
             - name: 'Ссылочные типы, допускающие значение null'
               href: core/miscellaneous/nullable-reference-types.md
+            - name: Параметры сортировки и учет регистра
+              href: core/miscellaneous/collations-and-case-sensitivity.md
         - name: Создание модели
           items:
             - name: Обзор
