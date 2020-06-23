@@ -2,14 +2,14 @@
 title: Новые возможности EF Core 5.0
 description: Обзор новых возможностей в EF Core 5.0
 author: ajcvickers
-ms.date: 05/11/2020
+ms.date: 06/02/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew.md
-ms.openlocfilehash: fcb2eb8df99a06eaf3459835347a4027a363b86b
-ms.sourcegitcommit: 59e3d5ce7dfb284457cf1c991091683b2d1afe9d
+ms.openlocfilehash: 45d851a4b08a26dda0c24e20c79f42964fa4fae4
+ms.sourcegitcommit: 1f0f93c66b2b50e03fcbed90260e94faa0279c46
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83672854"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418949"
 ---
 # <a name="whats-new-in-ef-core-50"></a>Новые возможности EF Core 5.0
 
@@ -20,6 +20,117 @@ ms.locfileid: "83672854"
 В плане описываются общие темы для EF Core 5.0, в том числе все, что планируется включить перед выпуском окончательной версии.
 
 Мы будем добавлять ссылки на официальную документацию по мере ее публикации.
+
+## <a name="preview-5"></a>Предварительная версия 5
+
+### <a name="database-collations"></a>Параметры сортировки баз данных
+
+Модель EF теперь позволяет указывать параметры сортировки по умолчанию для базы данных.
+Это будет передаваться в создаваемые миграции для задания параметров сортировки при создании базы данных.
+Пример:
+
+```CSharp
+modelBuilder.UseCollation("German_PhoneBook_CI_AS");
+```
+
+Затем функция миграции формирует следующий код для создания базы данных в SQL Server:
+
+```sql
+CREATE DATABASE [Test]
+COLLATE German_PhoneBook_CI_AS;
+```
+
+Можно также указать параметры сортировки, которые будут использоваться для конкретных столбцов.
+Пример:
+
+```CSharp
+ modelBuilder
+     .Entity<User>()
+     .Property(e => e.Name)
+     .UseCollation("German_PhoneBook_CI_AS");
+```
+
+Если функция миграции не используется, параметры сортировки реконструируются из базы данных при формировании шаблонов DbContext.
+
+Наконец, `EF.Functions.Collate()` позволяет использовать различные параметры сортировки для нерегламентированных запросов.
+Пример:
+
+```CSharp
+context.Users.Single(e => EF.Functions.Collate(e.Name, "French_CI_AS") == "Jean-Michel Jarre");
+```
+
+Будет создан следующий запрос для SQL Server:
+
+```sql
+SELECT TOP(2) [u].[Id], [u].[Name]
+FROM [Users] AS [u]
+WHERE [u].[Name] COLLATE French_CI_AS = N'Jean-Michel Jarre'
+```
+
+Обратите внимание, что нерегламентированные параметры сортировки следует использовать с осторожностью, так как они могут негативно повлиять на производительность базы данных.
+
+Это документируется в проблеме [#2273](https://github.com/dotnet/EntityFramework.Docs/issues/2273).
+
+### <a name="flow-arguments-into-idesigntimedbcontextfactory"></a>Передача аргументов в интерфейс IDesignTimeDbContextFactory
+
+Теперь можно передавать аргументы из командной строки в метод `CreateDbContext` интерфейса [IDesignTimeDbContextFactory](https://docs.microsoft.com/dotnet/api/microsoft.entityframeworkcore.design.idesigntimedbcontextfactory-1?view=efcore-3.1). Например, чтобы указать, что используется сборка для разработки, можно передать в командной строке настраиваемый аргумент, например `dev`:
+
+```
+dotnet ef migrations add two --verbose --dev
+``` 
+
+Затем этот аргумент будет передан в фабрику, где его можно использовать для управления созданием и инициализацией контекста.
+Пример:
+
+```CSharp
+public class MyDbContextFactory : IDesignTimeDbContextFactory<SomeDbContext>
+{
+    public SomeDbContext CreateDbContext(string[] args) 
+        => new SomeDbContext(args.Contains("--dev"));
+}
+```
+
+Это документируется в проблеме [#2419](https://github.com/dotnet/EntityFramework.Docs/issues/2419).
+
+### <a name="no-tracking-queries-with-identity-resolution"></a>Запросы без отслеживания с разрешением идентификаторов
+
+Теперь можно настроить запросы без отслеживания на выполнение разрешения идентификаторов.
+Например, следующий запрос будет создавать новый экземпляр Blog для каждого объекта Post, даже если у каждого Blog один и тот же первичный ключ. 
+
+```CSharp
+context.Posts.AsNoTracking().Include(e => e.Blog).ToList();
+```
+
+Однако за счет того, что этот запрос обычно выполняется немного медленнее и всегда использует больше памяти, его можно изменить так, чтобы создавался только один экземпляр Blog:
+
+```CSharp
+context.Posts.AsNoTracking().PerformIdentityResolution().Include(e => e.Blog).ToList();
+```
+
+Обратите внимание, что этот вариант подходит только для запросов без отслеживания, так как все запросы с отслеживанием уже действуют таким образом. Кроме того, после проверки API будет изменен синтаксис `PerformIdentityResolution`.
+См. [#19877](https://github.com/dotnet/efcore/issues/19877#issuecomment-637371073).
+
+Это документируется в проблеме [#1895](https://github.com/dotnet/EntityFramework.Docs/issues/1895).
+
+### <a name="stored-persisted-computed-columns"></a>Сохраняемые вычисляемые столбцы
+
+Большинство баз данных позволяют сохранять значения вычисляемых столбцов после вычислений.
+Хотя для этого требуется место на диске, вычисляемый столбец вычисляется только один раз при обновлении, а не при каждом получении его значения.
+Это также позволяет индексировать столбец для некоторых баз данных.
+
+EF Core 5.0 поддерживает настройку вычисляемых столбцов как сохраняемых.
+Пример:
+ 
+```CSharp
+modelBuilder
+    .Entity<User>()
+    .Property(e => e.SomethingComputed)
+    .HasComputedColumnSql("my sql", stored: true);
+```
+
+### <a name="sqlite-computed-columns"></a>Вычисляемые столбцы SQLite
+
+EF Core теперь поддерживает вычисляемые столбцы в базах данных SQLite.
 
 ## <a name="preview-4"></a>Предварительная версия 4
 
@@ -50,8 +161,6 @@ modelBuilder
     .HasIndex(e => e.Name)
     .HasFillFactor(90);
 ```
-
-Документация отслеживается по проблеме [#2378](https://github.com/dotnet/EntityFramework.Docs/issues/2378).
 
 ## <a name="preview-3"></a>Предварительная версия 3
 
