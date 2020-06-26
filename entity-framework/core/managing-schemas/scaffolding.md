@@ -5,12 +5,12 @@ ms.author: bricelam
 ms.date: 11/13/2018
 ms.assetid: 6263EF7D-4989-42E6-BDEE-45DA770342FB
 uid: core/managing-schemas/scaffolding
-ms.openlocfilehash: cb20120154101a9b92b4bf2bc06d20b1dafe88c1
-ms.sourcegitcommit: 59e3d5ce7dfb284457cf1c991091683b2d1afe9d
+ms.openlocfilehash: 2422e7455dc4ef52f0a9d3bdaebfa02f62e6d50f
+ms.sourcegitcommit: ebfd3382fc583bc90f0da58e63d6e3382b30aa22
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83672967"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85370605"
 ---
 # <a name="reverse-engineering"></a> Реконструирование
 
@@ -22,7 +22,7 @@ ms.locfileid: "83672967"
 
 Вам также потребуется установить соответствующий [поставщик базы данных](xref:core/providers/index) для схемы базы данных, которую необходимо реконструировать.
 
-## <a name="connection-string"></a>Строка подключения.
+## <a name="connection-string"></a>Строка подключения
 
 Первым аргументом команды является строка подключения к базе данных. Эти средства будут использовать эту строку соединения для чтения схемы базы данных.
 
@@ -85,11 +85,11 @@ Scaffold-DbContext ... -Tables Artist, Album
 
 ## <a name="preserving-names"></a>Сохранение имен
 
-Имена таблиц и столбцов устраняются, чтобы лучше соответствовать соглашениям об именовании .NET для типов и свойств по умолчанию. При указании параметра `-UseDatabaseNames` в PMC или `--use-database-names` в интерфейсе командной строки будет отключено такое поведение, что позволит сохранить исходные имена баз данных максимально точно. Недопустимые идентификаторы .NET по-прежнему будут исправлены, а синтезированные имена, такие как свойства навигации, по-прежнему будут соответствовать соглашениям об именовании .NET.
+Имена таблиц и столбцов устраняются, чтобы лучше соответствовать соглашениям об именовании .NET для типов и свойств по умолчанию. При указании параметра `-UseDatabaseNames` в PMC или `--use-database-names` в .NET Core CLI будет отключено это поведение по мере возможности. Недопустимые идентификаторы .NET по-прежнему будут исправлены, а синтезированные имена, такие как свойства навигации, по-прежнему будут соответствовать соглашениям об именовании .NET.
 
 ## <a name="fluent-api-or-data-annotations"></a>API Fluent или заметки к данным
 
-Типы сущностей настраиваются с помощью API Fluent по умолчанию. `-DataAnnotations`Вместо этого укажите (PMC) или `--data-annotations` (CLI) использование заметок к данным, если это возможно.
+Типы сущностей настраиваются с помощью API Fluent по умолчанию. Укажите `-DataAnnotations` вместо них (PMC) или `--data-annotations` (.NET Core CLI) использование заметок к данным, если это возможно.
 
 Например, с помощью API Fluent будет сформирован шаблон:
 
@@ -109,7 +109,7 @@ public string Title { get; set; }
 
 ## <a name="dbcontext-name"></a>Имя DbContext
 
-Шаблонное имя класса DbContext по умолчанию будет именем базы данных с суффиксом *context* . Чтобы указать другую, используйте `-Context` в PMC и `--context` CLI.
+Шаблонное имя класса DbContext по умолчанию будет именем базы данных с суффиксом *context* . Чтобы указать другую, используйте `-Context` в PMC и `--context` в .NET Core CLI.
 
 ## <a name="directories-and-namespaces"></a>Каталоги и пространства имен
 

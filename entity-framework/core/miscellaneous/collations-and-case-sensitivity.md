@@ -4,13 +4,13 @@ description: Настройка параметров сортировки и у�
 author: roji
 ms.date: 04/27/2020
 ms.assetid: bde4e0ee-fba3-4813-a849-27049323d301
-uid: core/miscellaneous/collations-and-case-sensitivity.md
-ms.openlocfilehash: 1c9344b8e96142645f55e8d830dfd350dc10aa96
-ms.sourcegitcommit: 92d54fe3702e0c92e198334da22bacb42e9842b1
+uid: core/miscellaneous/collations-and-case-sensitivity
+ms.openlocfilehash: b3874847922cb39aa57d50813e6e50ff7db72eb9
+ms.sourcegitcommit: ebfd3382fc583bc90f0da58e63d6e3382b30aa22
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84666183"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85370569"
 ---
 # <a name="collations-and-case-sensitivity"></a>Параметры сортировки и чувствительность к регистру
 
