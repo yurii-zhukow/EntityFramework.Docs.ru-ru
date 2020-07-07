@@ -3,12 +3,11 @@ title: Глобальные фильтры запросов — EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: f6c59bcbab31edcbed22079a1320c060ce08c6f7
-ms.sourcegitcommit: 92d54fe3702e0c92e198334da22bacb42e9842b1
-ms.translationtype: HT
+ms.openlocfilehash: 233289b0c50e15f4555b342bc654211ce04c24d3
+ms.sourcegitcommit: ebfd3382fc583bc90f0da58e63d6e3382b30aa22
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84664134"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85370465"
 ---
 # <a name="global-query-filters"></a>Глобальные фильтры запросов
 
@@ -52,7 +51,7 @@ ms.locfileid: "84664134"
 > [!NOTE]
 > EF Core сейчас не обнаруживает циклы в определениях глобальных фильтров запросов, поэтому при определении циклов следует соблюдать особую осторожность. Их некорректное указание может делать циклы бесконечными при преобразовании запроса.
 
-## <a name="accessing-entity-with-query-filter-using-reqiured-navigation"></a>Доступ к сущности с фильтром запроса с помощью обязательной навигации
+## <a name="accessing-entity-with-query-filter-using-required-navigation"></a>Доступ к сущности с фильтром запроса с помощью обязательной навигации
 
 > [!CAUTION]
 > Использование обязательной навигации для доступа к сущности, для которой определен глобальный фильтр запросов, может привести к непредвиденным результатам. 

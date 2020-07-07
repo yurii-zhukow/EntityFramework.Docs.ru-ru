@@ -4,12 +4,11 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: bfd6e161ed7f7bf96e61946f94c8eeadd24a72f5
-ms.sourcegitcommit: 144edccf9b29a7ffad119c235ac9808ec1a46193
-ms.translationtype: HT
+ms.openlocfilehash: 86b9d08377ea8295b746e5f0217a408edcfe1517
+ms.sourcegitcommit: ebfd3382fc583bc90f0da58e63d6e3382b30aa22
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81434192"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85370477"
 ---
 # <a name="loading-related-data"></a>Загрузка связанных данных
 
@@ -76,6 +75,18 @@ Entity Framework Core позволяет использовать свойств
 Кроме того, можно применить идентичные операции для каждой навигации, которая включается несколько раз:
 
 [!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#MultipleLeafIncludesFiltered2)]
+
+> [!CAUTION]
+> При отслеживании запросов результаты включения с фильтрацией могут быть неожиданными из-за [исправления навигации](tracking.md). Все связанные сущности, которые были запрошены ранее и сохранены в средстве отслеживания изменений, будут представлены в результатах запроса включения с фильтрацией, даже если они не соответствуют требованиям фильтра. При использовании в таких ситуациях включения с фильтрацией рассмотрите возможность работы с запросами `NoTracking` или повторного создания DbContext.
+
+Пример.
+
+```csharp
+var orders = context.Orders.Where(o => o.Id > 1000).ToList();
+
+// customer entities will have references to all orders where Id > 1000, rathat than > 5000
+var filtered = context.Customers.Include(c => c.Orders.Where(o => o.Id > 5000)).ToList();
+```
 
 ### <a name="include-on-derived-types"></a>Использование метода Include с производными типами
 
