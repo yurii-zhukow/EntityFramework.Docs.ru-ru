@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: aeb0f5f8-b212-4f89-ae83-c642a5190ba0
 uid: core/miscellaneous/connection-strings
-ms.openlocfilehash: 062a7f292d16deb3840fd116f270edb11c6e0687
-ms.sourcegitcommit: 59e3d5ce7dfb284457cf1c991091683b2d1afe9d
+ms.openlocfilehash: e955e93723fc371170641b0b3209cca014ef1c26
+ms.sourcegitcommit: 31536e52b838a84680d2e93e5bb52fb16df72a97
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83672919"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86238155"
 ---
 # <a name="connection-strings"></a>Строки соединения
 
@@ -17,7 +17,7 @@ ms.locfileid: "83672919"
 
 ## <a name="winforms--wpf-applications"></a>Приложения WinForms & WPF
 
-В приложениях WinForms, WPF и ASP.NET 4 есть предпринятая и проверенная схема строки подключения. Строка подключения должна быть добавлена в файл App. config приложения (Web. config, если используется ASP.NET). Если строка подключения содержит конфиденциальную информацию, например имя пользователя и пароль, содержимое файла конфигурации можно защитить с помощью [диспетчера секретов](/aspnet/core/security/app-secrets#secret-manager).
+В приложениях WinForms, WPF и ASP.NET 4 есть предпринятая и проверенная схема строки подключения. Строка подключения должна быть добавлена в файл App.config приложения (Web.config при использовании ASP.NET). Если строка подключения содержит конфиденциальную информацию, например имя пользователя и пароль, содержимое файла конфигурации можно защитить с помощью [диспетчера секретов](/aspnet/core/security/app-secrets#secret-manager).
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -31,7 +31,7 @@ ms.locfileid: "83672919"
 ```
 
 > [!TIP]  
-> `providerName`Параметр не требуется для EF Core строк подключения, хранящихся в файле App. config, так как поставщик базы данных настраивается с помощью кода.
+> `providerName`Параметр не требуется для EF Core строк подключения, хранящихся в App.config, так как поставщик базы данных настраивается с помощью кода.
 
 Затем можно прочитать строку подключения с помощью `ConfigurationManager` API в `OnConfiguring` методе контекста. Может потребоваться добавить ссылку на `System.Configuration` сборку платформы, чтобы иметь возможность использовать этот API.
 
@@ -65,7 +65,7 @@ public class BloggingContext : DbContext
 }
 ```
 
-## <a name="aspnet-core"></a>ASP.NET Core
+## <a name="aspnet-core"></a>ASP.NET Core
 
 В ASP.NET Core система конфигурации очень гибка, и строка подключения может храниться в `appsettings.json` среде, в переменной среды, в хранилище секретов пользователя или в другом источнике конфигурации. Дополнительные сведения см. в [разделе "Конфигурация" документации по ASP.NET Core](/aspnet/core/fundamentals/configuration) .
 
@@ -73,7 +73,7 @@ public class BloggingContext : DbContext
 
 ```dotnetcli
 dotnet user-secrets set ConnectionStrings.YourDatabaseAlias "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=YourDatabase"
-dotnet ef dbcontext scaffold Name=YourDatabaseAlias Microsoft.EntityFrameworkCore.SqlServer
+dotnet ef dbcontext scaffold Name=ConnectionStrings.YourDatabaseAlias Microsoft.EntityFrameworkCore.SqlServer
 ```
 
 В следующем примере показана строка подключения, хранимая в `appsettings.json` .
@@ -86,7 +86,7 @@ dotnet ef dbcontext scaffold Name=YourDatabaseAlias Microsoft.EntityFrameworkCor
 }
 ```
 
-Затем контекст обычно настраивается в `Startup.cs` со строкой подключения, которая считывается из конфигурации. Обратите внимание, что `GetConnectionString()` метод выполняет поиск значения конфигурации, раздел которого имеет значение `ConnectionStrings:<connection string name>` . Чтобы использовать этот метод расширения, необходимо импортировать пространство имен [Microsoft. Extensions. Configuration](/dotnet/api/microsoft.extensions.configuration) .
+Затем контекст обычно настраивается в `Startup.cs` со строкой подключения, которая считывается из конфигурации. Обратите внимание, что `GetConnectionString()` метод выполняет поиск значения конфигурации, раздел которого имеет значение `ConnectionStrings:<connection string name>` . Чтобы использовать этот метод расширения, необходимо импортировать пространство имен [Microsoft.Extensions.Configфигурации](/dotnet/api/microsoft.extensions.configuration) .
 
 ``` csharp
 public void ConfigureServices(IServiceCollection services)
