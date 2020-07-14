@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 04/11/2020
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: 47a5601e996afab9c0aa0538a2a2b47f204f7753
-ms.sourcegitcommit: ebfd3382fc583bc90f0da58e63d6e3382b30aa22
+ms.openlocfilehash: 5b7945bd24ac19a82b08f4d5709555cf53485f4c
+ms.sourcegitcommit: 31536e52b838a84680d2e93e5bb52fb16df72a97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85370360"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86238259"
 ---
 # <a name="ef-core-tools--extensions"></a>Инструменты и расширения EF Core
 
@@ -157,6 +157,12 @@ NeinLinq расширяет возможности поставщиков LINQ, 
 
 [Репозиторий GitHub](https://github.com/SteffenMangold/EntityFrameworkCore.Cacheable)
 
+### <a name="entityframeworkcorencache"></a>EntityFrameworkCore.NCache
+
+Поставщик Entity Framework Core NCache является распределенным поставщиком кэша второго уровня для кэширования результатов запросов. Распределенная архитектура NCache повышает уровень его масштабируемости и высокой доступности. Для EF Core: 2.
+
+[Веб-сайт](https://www.alachisoft.com/ncache/ef-core-cache.html)
+
 ### <a name="entity-framework-plus"></a>Entity Framework Plus
 
 Расширены возможности DbContext за счет таких функций, как добавление фильтра, аудит, кэширование, пакетная обработка будущих запросов, пакетное удаление, пакетное обновление и многое другое. Для EF Core: 2, 3.
@@ -224,3 +230,9 @@ LINQ-расширения Entity Framework Core 3.1 для поддержки �
 Включает поддержку расширенных функций SQL, таких как выражения CTE, массовое копирование, табличные указания, оконные функции, временные таблицы и операции создания, обновления и удаления на стороне базы данных.
 
 [Репозиторий GitHub](https://github.com/linq2db/linq2db.EntityFrameworkCore)
+
+### <a name="efcoresoftdelete"></a>EFCore.SoftDelete
+
+Реализация для обратимого удаления сущностей. Для EF Core: 3.
+
+[NuGet](https://www.nuget.org/packages/EFCore.SoftDelete)
