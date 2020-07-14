@@ -1,51 +1,59 @@
 ---
-title: Миграции — EF Core
+title: Обзор миграций — EF Core
 author: bricelam
 ms.author: bricelam
-ms.date: 10/05/2018
+ms.date: 05/06/2020
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: c87864b3430d3cd42729c13ddde33c0cd9de9308
-ms.sourcegitcommit: 59e3d5ce7dfb284457cf1c991091683b2d1afe9d
+ms.openlocfilehash: 8539a8da6f0051d3737efc583f0adfaf05fb2d3d
+ms.sourcegitcommit: 31536e52b838a84680d2e93e5bb52fb16df72a97
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83672987"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86238233"
 ---
-# <a name="migrations"></a><span data-ttu-id="5be84-102">Миграции</span><span class="sxs-lookup"><span data-stu-id="5be84-102">Migrations</span></span>
+# <a name="migrations-overview"></a><span data-ttu-id="cd7c1-102">Обзор миграций</span><span class="sxs-lookup"><span data-stu-id="cd7c1-102">Migrations Overview</span></span>
 
-<span data-ttu-id="5be84-103">Модель данных в процессе разработки может измениться и перестанет соответствовать базе данных.</span><span class="sxs-lookup"><span data-stu-id="5be84-103">A data model changes during development and gets out of sync with the database.</span></span> <span data-ttu-id="5be84-104">Вы всегда можете удалить базу данных, и EF создаст для вас новую версию, в точности соответствующую модели, но такая процедура приводит к потере текущих данных.</span><span class="sxs-lookup"><span data-stu-id="5be84-104">You can drop the database and let EF create a new one that matches the model, but this procedure results in the loss of data.</span></span> <span data-ttu-id="5be84-105">Функция миграции в EF Core позволяет последовательно применять изменения схемы к базе данных, чтобы синхронизировать ее с моделью данных в приложении без потери существующих данных.</span><span class="sxs-lookup"><span data-stu-id="5be84-105">The migrations feature in EF Core provides a way to incrementally update the database schema to keep it in sync with the application's data model while preserving existing data in the database.</span></span>
+<span data-ttu-id="cd7c1-103">В реальных проектах модели данных изменяются по мере реализации функций. При добавлении или изменении новых сущностей или свойств схемы базы данных должны быть соответствующим образом изменены для синхронизации с приложением.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-103">In real world projects, data models change as features get implemented: new entities or properties are added and removed, and database schemas needs to be changed accordingly to be kept in sync with the application.</span></span> <span data-ttu-id="cd7c1-104">Функция миграции в EF Core позволяет последовательно применять изменения схемы к базе данных, чтобы синхронизировать ее с моделью данных в приложении без потери существующих данных.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-104">The migrations feature in EF Core provides a way to incrementally update the database schema to keep it in sync with the application's data model while preserving existing data in the database.</span></span>
 
-<span data-ttu-id="5be84-106">Миграции включают средства командной строки и API-интерфейсы, которые помогают в решении следующих задач:</span><span class="sxs-lookup"><span data-stu-id="5be84-106">Migrations includes command-line tools and APIs that help with the following tasks:</span></span>
+<span data-ttu-id="cd7c1-105">В общем миграции работают следующим образом.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-105">At a high level, migrations function in the following way:</span></span>
 
-* <span data-ttu-id="5be84-107">[Создание миграции](#create-a-migration).</span><span class="sxs-lookup"><span data-stu-id="5be84-107">[Create a migration](#create-a-migration).</span></span> <span data-ttu-id="5be84-108">Создайте код, который обновляет базу данных для синхронизации с набором изменений модели данных.</span><span class="sxs-lookup"><span data-stu-id="5be84-108">Generate code that can update the database to sync it with a set of model changes.</span></span>
-* <span data-ttu-id="5be84-109">[Обновление базы данных](#update-the-database).</span><span class="sxs-lookup"><span data-stu-id="5be84-109">[Update the database](#update-the-database).</span></span> <span data-ttu-id="5be84-110">Примените ожидающие миграции, чтобы обновить схему базы данных.</span><span class="sxs-lookup"><span data-stu-id="5be84-110">Apply pending migrations to update the database schema.</span></span>
-* <span data-ttu-id="5be84-111">[Настройка кода миграции](#customize-migration-code).</span><span class="sxs-lookup"><span data-stu-id="5be84-111">[Customize migration code](#customize-migration-code).</span></span> <span data-ttu-id="5be84-112">Иногда созданный код приходится изменять или дополнять.</span><span class="sxs-lookup"><span data-stu-id="5be84-112">Sometimes the generated code needs to be modified or supplemented.</span></span>
-* <span data-ttu-id="5be84-113">[Удаление миграции](#remove-a-migration).</span><span class="sxs-lookup"><span data-stu-id="5be84-113">[Remove a migration](#remove-a-migration).</span></span> <span data-ttu-id="5be84-114">Удалите созданный код.</span><span class="sxs-lookup"><span data-stu-id="5be84-114">Delete the generated code.</span></span>
-* <span data-ttu-id="5be84-115">[Отмена миграции](#revert-a-migration).</span><span class="sxs-lookup"><span data-stu-id="5be84-115">[Revert a migration](#revert-a-migration).</span></span> <span data-ttu-id="5be84-116">Отмените примененные к базе данных изменения.</span><span class="sxs-lookup"><span data-stu-id="5be84-116">Undo the database changes.</span></span>
-* <span data-ttu-id="5be84-117">[Создание скриптов SQL](#generate-sql-scripts).</span><span class="sxs-lookup"><span data-stu-id="5be84-117">[Generate SQL scripts](#generate-sql-scripts).</span></span> <span data-ttu-id="5be84-118">Иногда бывает нужно создать скрипт для обновления рабочей базы данных или для устранения неполадок в коде миграции.</span><span class="sxs-lookup"><span data-stu-id="5be84-118">You might need a script to update a production database or to troubleshoot migration code.</span></span>
-* <span data-ttu-id="5be84-119">[Применение миграции во время выполнения](#apply-migrations-at-runtime).</span><span class="sxs-lookup"><span data-stu-id="5be84-119">[Apply migrations at runtime](#apply-migrations-at-runtime).</span></span> <span data-ttu-id="5be84-120">Если обновления во время разработки и выполнение скриптов в вашем сценарии работы подходят плохо, вызовите метод `Migrate()`.</span><span class="sxs-lookup"><span data-stu-id="5be84-120">When design-time updates and running scripts aren't the best options, call the `Migrate()` method.</span></span>
+* <span data-ttu-id="cd7c1-106">При появлении изменения модели данных разработчик использует средства EF Core, чтобы добавить соответствующую миграцию с описанием обновлений, необходимых для синхронизации схемы базы данных. EF Core сравнивает текущую модель с моментальным снимком старой модели для определения различий и создает исходные файлы миграции. Файлы можно отслеживать в системе управления версиями проекта, как и любые другие исходные файлы.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-106">When a data model change is introduced, the developer uses EF Core tools to add a corresponding migration describing the updates necessary to keep the database schema in sync. EF Core compares the current model against a snapshot of the old model to determine the differences, and generates migration source files; the files can be tracked in your project's source control like any other source file.</span></span>
+* <span data-ttu-id="cd7c1-107">Созданную миграцию можно применять к базе данных различными способами.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-107">Once a new migration has been generated, it can be applied to a database in various ways.</span></span> <span data-ttu-id="cd7c1-108">EF Core записывает все примененные миграции в специальную таблицу журнала, из которой будет ясно, какие миграции были применены, а какие нет.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-108">EF Core records all applied migrations in a special history table, allowing it to know which migrations have been applied and which haven't.</span></span>
 
-> [!TIP]
-> <span data-ttu-id="5be84-121">Если `DbContext` находится не в той же сборке, что и начальный проект, можно явным образом указать целевой и начальный проекты в [средствах консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell#target-and-startup-project) или в [средствах .NET Core CLI](xref:core/miscellaneous/cli/dotnet#target-project-and-startup-project).</span><span class="sxs-lookup"><span data-stu-id="5be84-121">If the `DbContext` is in a different assembly than the startup project, you can explicitly specify the target and startup projects in either the [Package Manager Console tools](xref:core/miscellaneous/cli/powershell#target-and-startup-project) or the [.NET Core CLI tools](xref:core/miscellaneous/cli/dotnet#target-project-and-startup-project).</span></span>
+<span data-ttu-id="cd7c1-109">Оставшаяся часть этой страницы представляет собой пошаговое руководство для начинающих по использованию миграций.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-109">The rest of this page is a step-by-step beginner's guide for using migrations.</span></span> <span data-ttu-id="cd7c1-110">Дополнительные сведения см. на других страницах этого раздела.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-110">Consult the other pages in this section for more in-depth information.</span></span>
 
-## <a name="install-the-tools"></a><span data-ttu-id="5be84-122">Установка инструментов</span><span class="sxs-lookup"><span data-stu-id="5be84-122">Install the tools</span></span>
+## <a name="getting-started"></a><span data-ttu-id="cd7c1-111">Начало работы</span><span class="sxs-lookup"><span data-stu-id="cd7c1-111">Getting started</span></span>
 
-<span data-ttu-id="5be84-123">Установите [средства командной строки](xref:core/miscellaneous/cli/index).</span><span class="sxs-lookup"><span data-stu-id="5be84-123">Install the [command-line tools](xref:core/miscellaneous/cli/index):</span></span>
+<span data-ttu-id="cd7c1-112">Предположим, что вы только что завершили создание первого приложения EF Core, которое содержит следующую простую модель:</span><span class="sxs-lookup"><span data-stu-id="cd7c1-112">Let's assume you've just completed your first EF Core application, which contains the following simple model:</span></span>
 
-* <span data-ttu-id="5be84-124">Для Visual Studio мы рекомендуем [Инструменты консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell).</span><span class="sxs-lookup"><span data-stu-id="5be84-124">For Visual Studio, we recommend the [Package Manager Console tools](xref:core/miscellaneous/cli/powershell).</span></span>
-* <span data-ttu-id="5be84-125">Для других сред разработки выберите [Средства интерфейса командной строки .NET Core](xref:core/miscellaneous/cli/dotnet).</span><span class="sxs-lookup"><span data-stu-id="5be84-125">For other development environments, choose the [.NET Core CLI tools](xref:core/miscellaneous/cli/dotnet).</span></span>
+```c#
+public class Blog
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
+```
 
-## <a name="create-a-migration"></a><span data-ttu-id="5be84-126">Создание миграции</span><span class="sxs-lookup"><span data-stu-id="5be84-126">Create a migration</span></span>
+<span data-ttu-id="cd7c1-113">Во время разработки вы, возможно, использовали [API-интерфейсы создания и удаления](xref:core/managing-schemas/ensure-created) для быстрой итерации и необходимого изменения модели. Но теперь, когда приложение будет выпущено в рабочую среду, вам нужен способ безопасного развертывания схемы без удаления всей базы данных.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-113">During development, you may have used the [Create and Drop APIs](xref:core/managing-schemas/ensure-created) to iterate quickly, changing your model as needed; but now that your application is going to production, you need a way to safely evolve the schema without dropping the entire database.</span></span>
 
-<span data-ttu-id="5be84-127">После того, как вы [определите начальную модель](xref:core/modeling/index), можно переходить к созданию базы данных.</span><span class="sxs-lookup"><span data-stu-id="5be84-127">After you've [defined your initial model](xref:core/modeling/index), it's time to create the database.</span></span> <span data-ttu-id="5be84-128">Чтобы добавить первоначальную миграцию, выполните следующую команду.</span><span class="sxs-lookup"><span data-stu-id="5be84-128">To add an initial migration, run the following command.</span></span>
+### <a name="install-the-tools"></a><span data-ttu-id="cd7c1-114">Установка инструментов</span><span class="sxs-lookup"><span data-stu-id="cd7c1-114">Install the tools</span></span>
 
-### <a name="net-core-cli"></a>[<span data-ttu-id="5be84-129">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="5be84-129">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
+<span data-ttu-id="cd7c1-115">Во-первых, необходимо установить [средства командной строки EF Core](xref:core/miscellaneous/cli/index):</span><span class="sxs-lookup"><span data-stu-id="cd7c1-115">First, you'll have to install the [EF Core command-line tools](xref:core/miscellaneous/cli/index):</span></span>
+
+* <span data-ttu-id="cd7c1-116">Обычно рекомендуется использовать [средства интерфейса командной строки .NET](xref:core/miscellaneous/cli/dotnet), которые работают на всех платформах.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-116">We generally recommend using the [.NET Core CLI tools](xref:core/miscellaneous/cli/dotnet), which work on all platforms.</span></span>
+* <span data-ttu-id="cd7c1-117">Если вы привыкли работать в Visual Studio или знакомы с миграциями EF6, можно также использовать [средства консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell).</span><span class="sxs-lookup"><span data-stu-id="cd7c1-117">If you're more comfortable working inside Visual Studio or have experience with EF6 migrations, you can also use the [Package Manager Console tools](xref:core/miscellaneous/cli/powershell).</span></span>
+
+### <a name="create-your-first-migration"></a><span data-ttu-id="cd7c1-118">Создание первой миграции</span><span class="sxs-lookup"><span data-stu-id="cd7c1-118">Create your first migration</span></span>
+
+<span data-ttu-id="cd7c1-119">Теперь все готово к добавлению первой миграции.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-119">You're now ready to add your first migration!</span></span> <span data-ttu-id="cd7c1-120">Укажите EF Core создать миграцию с именем **InitialCreate**:</span><span class="sxs-lookup"><span data-stu-id="cd7c1-120">Instruct EF Core to create a migration named **InitialCreate**:</span></span>
+
+#### <a name="net-core-cli"></a>[<span data-ttu-id="cd7c1-121">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="cd7c1-121">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef migrations add InitialCreate
 ```
 
-### <a name="visual-studio"></a>[<span data-ttu-id="5be84-130">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5be84-130">Visual Studio</span></span>](#tab/vs)
+#### <a name="visual-studio"></a>[<span data-ttu-id="cd7c1-122">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cd7c1-122">Visual Studio</span></span>](#tab/vs)
 
 ``` powershell
 Add-Migration InitialCreate
@@ -53,45 +61,18 @@ Add-Migration InitialCreate
 
 ***
 
-<span data-ttu-id="5be84-131">В каталог **Migrations** проекта добавляются три файла.</span><span class="sxs-lookup"><span data-stu-id="5be84-131">Three files are added to your project under the **Migrations** directory:</span></span>
+<span data-ttu-id="cd7c1-123">EF Core создаст в проекте каталог с именем **Migrations** и добавит несколько файлов.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-123">EF Core will create a directory called **Migrations** in your project, and generate some files.</span></span> <span data-ttu-id="cd7c1-124">Рекомендуется проверить, какие именно файлы созданы в EF Core, и, возможно, исправить их, но сейчас мы это делать не будем.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-124">It's a good idea to inspect what exactly EF Core generated - and possibly amend it - but we'll skip over that for now.</span></span>
 
-* <span data-ttu-id="5be84-132">**XXXXXXXXXXXXXX_InitialCreate.cs** — главный файл миграций.</span><span class="sxs-lookup"><span data-stu-id="5be84-132">**XXXXXXXXXXXXXX_InitialCreate.cs**--The main migrations file.</span></span> <span data-ttu-id="5be84-133">Содержит операции, необходимые для применения миграции (в `Up()`) и ее отмены (в `Down()`).</span><span class="sxs-lookup"><span data-stu-id="5be84-133">Contains the operations necessary to apply the migration (in `Up()`) and to revert it (in `Down()`).</span></span>
-* <span data-ttu-id="5be84-134">**XXXXXXXXXXXXXX_InitialCreate.Designer.cs** — файл метаданных миграций.</span><span class="sxs-lookup"><span data-stu-id="5be84-134">**XXXXXXXXXXXXXX_InitialCreate.Designer.cs**--The migrations metadata file.</span></span> <span data-ttu-id="5be84-135">Содержит сведения, используемые EF.</span><span class="sxs-lookup"><span data-stu-id="5be84-135">Contains information used by EF.</span></span>
-* <span data-ttu-id="5be84-136">**MyContextModelSnapshot.cs** — моментальный снимок текущей модели.</span><span class="sxs-lookup"><span data-stu-id="5be84-136">**MyContextModelSnapshot.cs**--A snapshot of your current model.</span></span> <span data-ttu-id="5be84-137">Используется для определения появившихся изменений при добавлении следующей миграции.</span><span class="sxs-lookup"><span data-stu-id="5be84-137">Used to determine what changed when adding the next migration.</span></span>
+### <a name="create-your-database-and-schema"></a><span data-ttu-id="cd7c1-125">Создание базы данных и схемы</span><span class="sxs-lookup"><span data-stu-id="cd7c1-125">Create your database and schema</span></span>
 
-<span data-ttu-id="5be84-138">Метка времени в именах файлов позволяет расположить их в хронологическом порядке, чтобы вы могли отслеживать ход изменений.</span><span class="sxs-lookup"><span data-stu-id="5be84-138">The timestamp in the filename helps keep them ordered chronologically so you can see the progression of changes.</span></span>
+<span data-ttu-id="cd7c1-126">На этом этапе в EF можно создать базу данных и схему из миграции.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-126">At this point you can have EF create your database and create your schema from the migration.</span></span> <span data-ttu-id="cd7c1-127">Это можно сделать с помощью следующих средств:</span><span class="sxs-lookup"><span data-stu-id="cd7c1-127">This can be done via the following:</span></span>
 
-### <a name="namespaces"></a><span data-ttu-id="5be84-139">Пространства имен</span><span class="sxs-lookup"><span data-stu-id="5be84-139">Namespaces</span></span>
-
-<span data-ttu-id="5be84-140">Вы можете свободно перемещать файлы миграций и изменять их пространство имен вручную.</span><span class="sxs-lookup"><span data-stu-id="5be84-140">You are free to move Migrations files and change their namespace manually.</span></span> <span data-ttu-id="5be84-141">Новые миграции создаются в виде элементов того же уровня, что и последняя миграция.</span><span class="sxs-lookup"><span data-stu-id="5be84-141">New migrations are created as siblings of the last migration.</span></span>
-
-<span data-ttu-id="5be84-142">Кроме того, можно использовать параметр `-Namespace` (консоль диспетчера пакетов) или `--namespace` (.NET Core CLI), чтобы указать пространство имен во время создания.</span><span class="sxs-lookup"><span data-stu-id="5be84-142">Alternatively you can use `-Namespace` (Package Manager Console) or `--namespace` (.NET Core CLI) to specify the namespace at generation time.</span></span>
-
-### <a name="net-core-cli"></a>[<span data-ttu-id="5be84-143">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="5be84-143">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
-
-```dotnetcli
-dotnet ef migrations add InitialCreate --namespace Your.Namespace
-```
-
-### <a name="visual-studio"></a>[<span data-ttu-id="5be84-144">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5be84-144">Visual Studio</span></span>](#tab/vs)
-
-``` powershell
-Add-Migration InitialCreate -Namespace Your.Namespace
-```
-
-***
-
-## <a name="update-the-database"></a><span data-ttu-id="5be84-145">Обновление базы данных</span><span class="sxs-lookup"><span data-stu-id="5be84-145">Update the database</span></span>
-
-<span data-ttu-id="5be84-146">После этого примените миграцию к базе данных, чтобы создать схему.</span><span class="sxs-lookup"><span data-stu-id="5be84-146">Next, apply the migration to the database to create the schema.</span></span>
-
-### <a name="net-core-cli"></a>[<span data-ttu-id="5be84-147">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="5be84-147">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
+#### <a name="net-core-cli"></a>[<span data-ttu-id="cd7c1-128">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="cd7c1-128">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef database update
 ```
-
-### <a name="visual-studio"></a>[<span data-ttu-id="5be84-148">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5be84-148">Visual Studio</span></span>](#tab/vs)
+#### <a name="visual-studio"></a>[<span data-ttu-id="cd7c1-129">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cd7c1-129">Visual Studio</span></span>](#tab/vs)
 
 ``` powershell
 Update-Database
@@ -99,78 +80,49 @@ Update-Database
 
 ***
 
-## <a name="customize-migration-code"></a><span data-ttu-id="5be84-149">Настройка кода миграции</span><span class="sxs-lookup"><span data-stu-id="5be84-149">Customize migration code</span></span>
+<span data-ttu-id="cd7c1-130">Вот и все — ваше приложение готово к работе в новой базе данных, и вам не пришлось писать ни одной строки кода SQL.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-130">That's all there is to it - your application is ready to run on your new database, and you didn't need to write a single line of SQL.</span></span> <span data-ttu-id="cd7c1-131">Обратите внимание, что такой способ применения миграций идеально подходит для локальной разработки и хуже подходит для рабочих сред. Дополнительные сведения см. на странице [применения миграций](xref:core/managing-schemas/migrations/applying).</span><span class="sxs-lookup"><span data-stu-id="cd7c1-131">Note that this way of applying migrations is ideal for local development, but is less suitable for production environments - see the [Applying Migrations page](xref:core/managing-schemas/migrations/applying) for more info.</span></span>
 
-<span data-ttu-id="5be84-150">После внесения изменений в модель EF Core может нарушиться синхронизация схемы базы данных. Чтобы сделать ее актуальной, добавьте еще одну миграцию.</span><span class="sxs-lookup"><span data-stu-id="5be84-150">After making changes to your EF Core model, the database schema might be out of sync. To bring it up to date, add another migration.</span></span> <span data-ttu-id="5be84-151">Имя миграции можно использовать как сообщение фиксации в системе управления версиями.</span><span class="sxs-lookup"><span data-stu-id="5be84-151">The migration name can be used like a commit message in a version control system.</span></span> <span data-ttu-id="5be84-152">Например, вы можете выбрать имя *AddProductReviews*, если суть изменений заключается в создании нового класса сущностей для обзоров.</span><span class="sxs-lookup"><span data-stu-id="5be84-152">For example, you might choose a name like *AddProductReviews* if the change is a new entity class for reviews.</span></span>
+### <a name="evolving-your-model"></a><span data-ttu-id="cd7c1-132">Развитие модели</span><span class="sxs-lookup"><span data-stu-id="cd7c1-132">Evolving your model</span></span>
 
-### <a name="net-core-cli"></a>[<span data-ttu-id="5be84-153">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="5be84-153">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
+<span data-ttu-id="cd7c1-133">Прошло несколько дней. Вам дали задание добавить в блоги метку времени создания.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-133">A few days have passed, and you're asked to add a creation timestamp to your blogs.</span></span> <span data-ttu-id="cd7c1-134">Вы внесли необходимые изменения в приложения, и теперь модель выглядит следующим образом:</span><span class="sxs-lookup"><span data-stu-id="cd7c1-134">You've done the necessary changes to your application, and your model now looks like this:</span></span>
 
-```dotnetcli
-dotnet ef migrations add AddProductReviews
+```c#
+public class Blog
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public DateTime CreatedTimestamp { get; set; }
+}
 ```
 
-### <a name="visual-studio"></a>[<span data-ttu-id="5be84-154">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5be84-154">Visual Studio</span></span>](#tab/vs)
+<span data-ttu-id="cd7c1-135">Но модель и рабочая база данных не синхронизированы, поэтому необходимо добавить новый столбец в схему базы данных.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-135">Your model and your production database are now out of sync - we must add a new column to your database schema.</span></span> <span data-ttu-id="cd7c1-136">Создадим новую миграцию для этой задачи:</span><span class="sxs-lookup"><span data-stu-id="cd7c1-136">Let's create a new migration for this:</span></span>
+
+#### <a name="net-core-cli"></a>[<span data-ttu-id="cd7c1-137">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="cd7c1-137">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
+
+```dotnetcli
+dotnet ef migrations add AddBlogCreatedTimestamp
+```
+
+#### <a name="visual-studio"></a>[<span data-ttu-id="cd7c1-138">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cd7c1-138">Visual Studio</span></span>](#tab/vs)
 
 ``` powershell
-Add-Migration AddProductReviews
+Add-Migration AddBlogCreatedTimestamp
 ```
 
 ***
 
-<span data-ttu-id="5be84-155">После создания кода миграции проверьте, правильно ли он создан. Если потребуется, добавьте, удалите или измените любые операции для правильного применения изменений.</span><span class="sxs-lookup"><span data-stu-id="5be84-155">Once the migration is scaffolded (code generated for it), review the code for accuracy and add, remove or modify any operations required to apply it correctly.</span></span>
+<span data-ttu-id="cd7c1-139">Обратите внимание, что миграциям задается описательное имя, чтобы в дальнейшем упростить чтение и понимание журнала проекта.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-139">Note that we give migrations a descriptive name, to make it easier to understand the project history later.</span></span>
 
-<span data-ttu-id="5be84-156">Например, миграция может содержать следующие операции.</span><span class="sxs-lookup"><span data-stu-id="5be84-156">For example, a migration might contain the following operations:</span></span>
+<span data-ttu-id="cd7c1-140">Так как это не первая миграция проекта, теперь перед добавлением столбца EF Core сравнивает обновленную модель с моментальным снимком старой модели. Моментальный снимок модели — это один из файлов, созданных EF Core при добавлении миграции и возвращенных в систему управления версиями.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-140">Since this isn't the project's first migration, EF Core now compares your updated model against a snapshot of the old model, before the column was added; the model snapshot is one of the files generated by EF Core when you add a migration, and is checked into source control.</span></span> <span data-ttu-id="cd7c1-141">На основе этого сравнения EF Core обнаруживает, что был добавлен столбец, и добавляет соответствующую миграцию.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-141">Based on that comparison, EF Core detects that a column has been added, and adds the appropriate migration.</span></span>
 
-``` csharp
-migrationBuilder.DropColumn(
-    name: "FirstName",
-    table: "Customer");
+<span data-ttu-id="cd7c1-142">Теперь можно применить миграцию, как и раньше:</span><span class="sxs-lookup"><span data-stu-id="cd7c1-142">You can now apply your migration as before:</span></span>
 
-migrationBuilder.DropColumn(
-    name: "LastName",
-    table: "Customer");
-
-migrationBuilder.AddColumn<string>(
-    name: "Name",
-    table: "Customer",
-    nullable: true);
-```
-
-<span data-ttu-id="5be84-157">Хотя эти операции обеспечивают совместимость схемы базы данных, они не сохраняют существующие имена клиентов.</span><span class="sxs-lookup"><span data-stu-id="5be84-157">While these operations make the database schema compatible, they don't preserve the existing customer names.</span></span> <span data-ttu-id="5be84-158">Чтобы улучшить миграцию, перепишите ее следующим образом.</span><span class="sxs-lookup"><span data-stu-id="5be84-158">To make it better, rewrite it as follows.</span></span>
-
-``` csharp
-migrationBuilder.AddColumn<string>(
-    name: "Name",
-    table: "Customer",
-    nullable: true);
-
-migrationBuilder.Sql(
-@"
-    UPDATE Customer
-    SET Name = FirstName + ' ' + LastName;
-");
-
-migrationBuilder.DropColumn(
-    name: "FirstName",
-    table: "Customer");
-
-migrationBuilder.DropColumn(
-    name: "LastName",
-    table: "Customer");
-```
-
-> [!TIP]
-> <span data-ttu-id="5be84-159">Процесс создания новой миграции предупреждает, если операция может привести к потере данных (например, содержит удаление столбца).</span><span class="sxs-lookup"><span data-stu-id="5be84-159">The migration scaffolding process warns when an operation might result in data loss (like dropping a column).</span></span> <span data-ttu-id="5be84-160">Увидев это предупреждение, проверьте точность кода миграции с особой тщательностью.</span><span class="sxs-lookup"><span data-stu-id="5be84-160">If you see that warning, be especially sure to review the migrations code for accuracy.</span></span>
-
-<span data-ttu-id="5be84-161">Примените миграцию к базе данных с помощью соответствующей команды.</span><span class="sxs-lookup"><span data-stu-id="5be84-161">Apply the migration to the database using the appropriate command.</span></span>
-
-### <a name="net-core-cli"></a>[<span data-ttu-id="5be84-162">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="5be84-162">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
+#### <a name="net-core-cli"></a>[<span data-ttu-id="cd7c1-143">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="cd7c1-143">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef database update
 ```
-
-### <a name="visual-studio"></a>[<span data-ttu-id="5be84-163">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5be84-163">Visual Studio</span></span>](#tab/vs)
+#### <a name="visual-studio"></a>[<span data-ttu-id="cd7c1-144">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cd7c1-144">Visual Studio</span></span>](#tab/vs)
 
 ``` powershell
 Update-Database
@@ -178,123 +130,8 @@ Update-Database
 
 ***
 
-### <a name="empty-migrations"></a><span data-ttu-id="5be84-164">Пустые миграции</span><span class="sxs-lookup"><span data-stu-id="5be84-164">Empty migrations</span></span>
+<span data-ttu-id="cd7c1-145">Обратите внимание, что на этот раз EF обнаруживает, что база данных уже существует.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-145">Note that this time, EF detects that the database already exists.</span></span> <span data-ttu-id="cd7c1-146">Кроме того, когда была применена первая миграция, этот факт был записан в специальную таблицу журнала миграций в базе данных, что позволяет EF автоматически применять только новую миграцию.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-146">In addition, when our first migration was applied above, this fact was recorded in a special migrations history table in your database; this allows EF to automatically apply only the new migration.</span></span>
 
-<span data-ttu-id="5be84-165">Иногда бывает удобно добавить миграцию, не внося изменения в модель.</span><span class="sxs-lookup"><span data-stu-id="5be84-165">Sometimes it's useful to add a migration without making any model changes.</span></span> <span data-ttu-id="5be84-166">В этом случае при добавлении новой миграции создаются файлы кода с пустыми классами.</span><span class="sxs-lookup"><span data-stu-id="5be84-166">In this case, adding a new migration creates code files with empty classes.</span></span> <span data-ttu-id="5be84-167">Вы можете настроить ее для выполнения операций, которые не связаны напрямую с моделью EF Core.</span><span class="sxs-lookup"><span data-stu-id="5be84-167">You can customize this migration to perform operations that don't directly relate to the EF Core model.</span></span> <span data-ttu-id="5be84-168">Ниже приведен ряд вещей, которыми вам может потребоваться управлять.</span><span class="sxs-lookup"><span data-stu-id="5be84-168">Some things you might want to manage this way are:</span></span>
+### <a name="next-steps"></a><span data-ttu-id="cd7c1-147">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="cd7c1-147">Next steps</span></span>
 
-* <span data-ttu-id="5be84-169">Полнотекстовый поиск</span><span class="sxs-lookup"><span data-stu-id="5be84-169">Full-Text Search</span></span>
-* <span data-ttu-id="5be84-170">Функции</span><span class="sxs-lookup"><span data-stu-id="5be84-170">Functions</span></span>
-* <span data-ttu-id="5be84-171">Хранимые процедуры</span><span class="sxs-lookup"><span data-stu-id="5be84-171">Stored procedures</span></span>
-* <span data-ttu-id="5be84-172">Триггеры</span><span class="sxs-lookup"><span data-stu-id="5be84-172">Triggers</span></span>
-* <span data-ttu-id="5be84-173">Представления</span><span class="sxs-lookup"><span data-stu-id="5be84-173">Views</span></span>
-
-## <a name="remove-a-migration"></a><span data-ttu-id="5be84-174">Удаление миграции</span><span class="sxs-lookup"><span data-stu-id="5be84-174">Remove a migration</span></span>
-
-<span data-ttu-id="5be84-175">Иногда, добавив миграцию, вы понимаем, что нужно внести дополнительные изменения в модель EF Core перед ее применением.</span><span class="sxs-lookup"><span data-stu-id="5be84-175">Sometimes you add a migration and realize you need to make additional changes to your EF Core model before applying it.</span></span> <span data-ttu-id="5be84-176">Для удаления последней миграции используйте приведенную ниже команду.</span><span class="sxs-lookup"><span data-stu-id="5be84-176">To remove the last migration, use this command.</span></span>
-
-### <a name="net-core-cli"></a>[<span data-ttu-id="5be84-177">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="5be84-177">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
-
-```dotnetcli
-dotnet ef migrations remove
-```
-
-### <a name="visual-studio"></a>[<span data-ttu-id="5be84-178">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5be84-178">Visual Studio</span></span>](#tab/vs)
-
-``` powershell
-Remove-Migration
-```
-
-***
-
-<span data-ttu-id="5be84-179">Удалив миграцию, вы можете внести в модель дополнительные изменения и снова добавить ее.</span><span class="sxs-lookup"><span data-stu-id="5be84-179">After removing the migration, you can make the additional model changes and add it again.</span></span>
-
-## <a name="revert-a-migration"></a><span data-ttu-id="5be84-180">Отмена миграции</span><span class="sxs-lookup"><span data-stu-id="5be84-180">Revert a migration</span></span>
-
-<span data-ttu-id="5be84-181">Если вы уже применили одну миграцию для базы данных или несколько и хотите отменить их, можно использовать ту же команду, что и для применения миграций, но указав имя миграции, к которой надо откатить изменения.</span><span class="sxs-lookup"><span data-stu-id="5be84-181">If you already applied a migration (or several migrations) to the database but need to revert it, you can use the same command to apply migrations, but specify the name of the migration you want to roll back to.</span></span>
-
-### <a name="net-core-cli"></a>[<span data-ttu-id="5be84-182">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="5be84-182">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
-
-```dotnetcli
-dotnet ef database update LastGoodMigration
-```
-
-### <a name="visual-studio"></a>[<span data-ttu-id="5be84-183">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5be84-183">Visual Studio</span></span>](#tab/vs)
-
-``` powershell
-Update-Database LastGoodMigration
-```
-
-***
-
-## <a name="generate-sql-scripts"></a><span data-ttu-id="5be84-184">Создание скриптов SQL</span><span class="sxs-lookup"><span data-stu-id="5be84-184">Generate SQL scripts</span></span>
-
-<span data-ttu-id="5be84-185">При отладке миграций или их развертывании в рабочей базе данных бывает полезно создать скрипт SQL.</span><span class="sxs-lookup"><span data-stu-id="5be84-185">When debugging your migrations or deploying them to a production database, it's useful to generate a SQL script.</span></span> <span data-ttu-id="5be84-186">Такой скрипт можно дополнительно проверить на точность и настроить в соответствии с потребностями рабочей базы данных.</span><span class="sxs-lookup"><span data-stu-id="5be84-186">The script can then be further reviewed for accuracy and tuned to fit the needs of a production database.</span></span> <span data-ttu-id="5be84-187">Кроме того, его можно использовать в сочетании с технологией развертывания.</span><span class="sxs-lookup"><span data-stu-id="5be84-187">The script can also be used in conjunction with a deployment technology.</span></span> <span data-ttu-id="5be84-188">Базовая команда имеет следующий вид.</span><span class="sxs-lookup"><span data-stu-id="5be84-188">The basic command is as follows.</span></span>
-
-### <a name="net-core-cli"></a>[<span data-ttu-id="5be84-189">Интерфейс командной строки .NET Core</span><span class="sxs-lookup"><span data-stu-id="5be84-189">.NET Core CLI</span></span>](#tab/dotnet-core-cli)
-
-#### <a name="basic-usage"></a><span data-ttu-id="5be84-190">Основное использование</span><span class="sxs-lookup"><span data-stu-id="5be84-190">Basic Usage</span></span>
-```dotnetcli
-dotnet ef migrations script
-```
-
-#### <a name="with-from-to-implied"></a><span data-ttu-id="5be84-191">С from (в подразумеваемую миграцию)</span><span class="sxs-lookup"><span data-stu-id="5be84-191">With From (to implied)</span></span>
-<span data-ttu-id="5be84-192">Будет создан скрипт SQL из этой миграции в последнюю миграцию.</span><span class="sxs-lookup"><span data-stu-id="5be84-192">This will generate a SQL script from this migration to the latest migration.</span></span>
-```dotnetcli
-dotnet ef migrations script 20190725054716_Add_new_tables
-```
-
-#### <a name="with-from-and-to"></a><span data-ttu-id="5be84-193">С from и to</span><span class="sxs-lookup"><span data-stu-id="5be84-193">With From and To</span></span>
-<span data-ttu-id="5be84-194">Будет создан скрипт SQL из миграции `from`в указанную миграцию `to`.</span><span class="sxs-lookup"><span data-stu-id="5be84-194">This will generate a SQL script from the `from` migration to the specified `to` migration.</span></span>
-```dotnetcli
-dotnet ef migrations script 20190725054716_Add_new_tables 20190829031257_Add_audit_table
-```
-<span data-ttu-id="5be84-195">Для создания скрипта отката можно использовать значение `from`, более новое, чем `to`.</span><span class="sxs-lookup"><span data-stu-id="5be84-195">You can use a `from` that is newer than the `to` in order to generate a rollback script.</span></span> <span data-ttu-id="5be84-196">*Обязательно учитывайте возможные сценарии потери данных.*</span><span class="sxs-lookup"><span data-stu-id="5be84-196">*Please take note of potential data loss scenarios.*</span></span>
-
-### <a name="visual-studio"></a>[<span data-ttu-id="5be84-197">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5be84-197">Visual Studio</span></span>](#tab/vs)
-
-#### <a name="basic-usage"></a><span data-ttu-id="5be84-198">Основное использование</span><span class="sxs-lookup"><span data-stu-id="5be84-198">Basic Usage</span></span>
-``` powershell
-Script-Migration
-```
-
-#### <a name="with-from-to-implied"></a><span data-ttu-id="5be84-199">С from (в подразумеваемую миграцию)</span><span class="sxs-lookup"><span data-stu-id="5be84-199">With From (to implied)</span></span>
-<span data-ttu-id="5be84-200">Будет создан скрипт SQL из этой миграции в последнюю миграцию.</span><span class="sxs-lookup"><span data-stu-id="5be84-200">This will generate a SQL script from this migration to the latest migration.</span></span>
-```powershell
-Script-Migration 20190725054716_Add_new_tables
-```
-
-#### <a name="with-from-and-to"></a><span data-ttu-id="5be84-201">С from и to</span><span class="sxs-lookup"><span data-stu-id="5be84-201">With From and To</span></span>
-<span data-ttu-id="5be84-202">Будет создан скрипт SQL из миграции `from`в указанную миграцию `to`.</span><span class="sxs-lookup"><span data-stu-id="5be84-202">This will generate a SQL script from the `from` migration to the specified `to` migration.</span></span>
-```powershell
-Script-Migration 20190725054716_Add_new_tables 20190829031257_Add_audit_table
-```
-<span data-ttu-id="5be84-203">Для создания скрипта отката можно использовать значение `from`, более новое, чем `to`.</span><span class="sxs-lookup"><span data-stu-id="5be84-203">You can use a `from` that is newer than the `to` in order to generate a rollback script.</span></span> <span data-ttu-id="5be84-204">*Обязательно учитывайте возможные сценарии потери данных.*</span><span class="sxs-lookup"><span data-stu-id="5be84-204">*Please take note of potential data loss scenarios.*</span></span>
-
-***
-
-<span data-ttu-id="5be84-205">Для этой команды доступно несколько параметров.</span><span class="sxs-lookup"><span data-stu-id="5be84-205">There are several options to this command.</span></span>
-
-<span data-ttu-id="5be84-206">Миграция **from** должна быть последней миграцией, применяемой к базе данных перед выполнением скрипта.</span><span class="sxs-lookup"><span data-stu-id="5be84-206">The **from** migration should be the last migration applied to the database before running the script.</span></span> <span data-ttu-id="5be84-207">Если не было применено ни одной миграции, укажите `0` (это значение по умолчанию).</span><span class="sxs-lookup"><span data-stu-id="5be84-207">If no migrations have been applied, specify `0` (this is the default).</span></span>
-
-<span data-ttu-id="5be84-208">Миграция **to** является последней миграцией, применяемой к базе данных после выполнения скрипта.</span><span class="sxs-lookup"><span data-stu-id="5be84-208">The **to** migration is the last migration that will be applied to the database after running the script.</span></span> <span data-ttu-id="5be84-209">По умолчанию она является последней миграцией в проекте.</span><span class="sxs-lookup"><span data-stu-id="5be84-209">This defaults to the last migration in your project.</span></span>
-
-<span data-ttu-id="5be84-210">При необходимости можно создать **идемпотентный** скрипт.</span><span class="sxs-lookup"><span data-stu-id="5be84-210">An **idempotent** script can optionally be generated.</span></span> <span data-ttu-id="5be84-211">Он применяет миграции только в том случае, если они еще не были применены к базе данных.</span><span class="sxs-lookup"><span data-stu-id="5be84-211">This script only applies migrations if they haven't already been applied to the database.</span></span> <span data-ttu-id="5be84-212">Это удобно, если точно неизвестно, какая последняя миграция была применена к базе данных, или вы развертываете несколько баз данных, каждая из которых может иметь отдельную миграцию.</span><span class="sxs-lookup"><span data-stu-id="5be84-212">This is useful if you don't exactly know what the last migration applied to the database was or if you are deploying to multiple databases that may each be at a different migration.</span></span>
-
-## <a name="apply-migrations-at-runtime"></a><span data-ttu-id="5be84-213">Применение миграции во время выполнения</span><span class="sxs-lookup"><span data-stu-id="5be84-213">Apply migrations at runtime</span></span>
-
-<span data-ttu-id="5be84-214">Некоторым приложениям может потребоваться применить миграции во время выполнения — при запуске или первом выполнении.</span><span class="sxs-lookup"><span data-stu-id="5be84-214">Some apps may want to apply migrations at runtime during startup or first run.</span></span> <span data-ttu-id="5be84-215">Для этого можно использовать метод `Migrate()`.</span><span class="sxs-lookup"><span data-stu-id="5be84-215">Do this using the `Migrate()` method.</span></span>
-
-<span data-ttu-id="5be84-216">Этот метод основан на службе `IMigrator`, которую можно применять в более сложных сценариях.</span><span class="sxs-lookup"><span data-stu-id="5be84-216">This method builds on top of the `IMigrator` service, which can be used for more advanced scenarios.</span></span> <span data-ttu-id="5be84-217">Для доступа к нему используйте `myDbContext.GetInfrastructure().GetService<IMigrator>()`.</span><span class="sxs-lookup"><span data-stu-id="5be84-217">Use `myDbContext.GetInfrastructure().GetService<IMigrator>()` to access it.</span></span>
-
-``` csharp
-myDbContext.Database.Migrate();
-```
-
-> [!WARNING]
->
-> * <span data-ttu-id="5be84-218">Такой подход не является универсальным.</span><span class="sxs-lookup"><span data-stu-id="5be84-218">This approach isn't for everyone.</span></span> <span data-ttu-id="5be84-219">Хотя он отлично подходит для приложений с локальной базой данных, большинству приложений требуется более надежная стратегия развертывания, такая как создание скриптов SQL.</span><span class="sxs-lookup"><span data-stu-id="5be84-219">While it's great for apps with a local database, most applications will require more robust deployment strategy like generating SQL scripts.</span></span>
-> * <span data-ttu-id="5be84-220">Не вызывайте `EnsureCreated()` перед `Migrate()`.</span><span class="sxs-lookup"><span data-stu-id="5be84-220">Don't call `EnsureCreated()` before `Migrate()`.</span></span> <span data-ttu-id="5be84-221">`EnsureCreated()` обходит миграции, чтобы создать схему, что приводит к сбою `Migrate()`.</span><span class="sxs-lookup"><span data-stu-id="5be84-221">`EnsureCreated()` bypasses Migrations to create the schema, which causes `Migrate()` to fail.</span></span>
-
-## <a name="next-steps"></a><span data-ttu-id="5be84-222">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="5be84-222">Next steps</span></span>
-
-<span data-ttu-id="5be84-223">Для получения дополнительной информации см. <xref:core/miscellaneous/cli/index>.</span><span class="sxs-lookup"><span data-stu-id="5be84-223">For more information, see <xref:core/miscellaneous/cli/index>.</span></span>
+<span data-ttu-id="cd7c1-148">Приведенные выше сведения были лишь кратким описанием миграций.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-148">The above was only a brief introduction to migrations.</span></span> <span data-ttu-id="cd7c1-149">Дополнительную информацию об [управлении миграциями](xref:core/managing-schemas/migrations/managing), [применении миграций](xref:core/managing-schemas/migrations/applying) и т. д. можно найти на других страницах документации.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-149">Please consult the other documentation pages to learn more about [managing migrations](xref:core/managing-schemas/migrations/managing), [applying them](xref:core/managing-schemas/migrations/applying), and other aspects.</span></span> <span data-ttu-id="cd7c1-150">В [справочнике по инструментам .NET Core CLI](xref:core/miscellaneous/cli/index) также содержатся полезные сведения о различных командах.</span><span class="sxs-lookup"><span data-stu-id="cd7c1-150">The [.NET Core CLI tool reference](xref:core/miscellaneous/cli/index) also contains useful information on the different commands</span></span>

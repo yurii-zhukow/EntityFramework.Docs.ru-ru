@@ -144,6 +144,10 @@
               items:
                 - name: Обзор
                   href: core/managing-schemas/migrations/index.md
+                - name: Управление миграциями
+                  href: core/managing-schemas/migrations/managing.md
+                - name: Применение миграций
+                  href: core/managing-schemas/migrations/applying.md
                 - name: Командные среды
                   href: core/managing-schemas/migrations/teams.md
                 - name: Пользовательские операции
@@ -158,7 +162,7 @@
               href: core/managing-schemas/ensure-created.md
             - name: Реконструирование (формирование шаблонов)
               href: core/managing-schemas/scaffolding.md
-        - name: Данные запросов
+        - name: Запросы данных
           items:
             - name: Обзор
               href: core/querying/index.md
@@ -456,7 +460,7 @@
                       href: ef6/modeling/designer/advanced/tvfs.md
                 - name: Сочетания клавиш
                   href: ef6/modeling/designer/keyboard-shortcuts.md
-        - name: Данные запросов
+        - name: Запросы данных
           items:
             - name: Обзор
               href: ef6/querying/index.md
