@@ -2,14 +2,14 @@
 title: Новые возможности EF Core 5.0
 description: Обзор новых возможностей в EF Core 5.0
 author: ajcvickers
-ms.date: 06/02/2020
+ms.date: 07/20/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew
-ms.openlocfilehash: 304ed74fe344b43177525113c70b7be7bb0ac5ed
-ms.sourcegitcommit: 31536e52b838a84680d2e93e5bb52fb16df72a97
+ms.openlocfilehash: d42b2811d07516e9febedbc51fcb206000d38371
+ms.sourcegitcommit: 51148929e3889c48227d96c95c4e310d53a3d2c9
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86238337"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86873387"
 ---
 # <a name="whats-new-in-ef-core-50"></a>Новые возможности EF Core 5.0
 
@@ -18,6 +18,148 @@ ms.locfileid: "86238337"
 Эта страница не является аналогом статьи о [планировании для EF Core 5.0](xref:core/what-is-new/ef-core-5.0/plan). В плане описываются общие темы для EF Core 5.0, в том числе все, что планируется включить перед выпуском окончательной версии.
 
 Мы будем добавлять ссылки на официальную документацию по мере ее публикации.
+
+## <a name="preview-7"></a>предварительная версия 7
+
+### <a name="dbcontextfactory"></a>DbContextFactory
+
+В EF Core 5.0 введены методы `AddDbContextFactory` и `AddPooledDbContextFactory` для регистрации производства с целью создания экземпляров DbContext в контейнере внедрения зависимостей приложения. Пример:
+
+```csharp
+services.AddDbContextFactory<SomeDbContext>(b =>
+    b.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Test"));
+```
+
+Службы приложений, такие как контроллеры ASP.NET Core, могут затем использовать `IDbContextFactory<TContext>` в конструкторе службы. Пример:
+
+```csharp
+public class MyController
+{
+    private readonly IDbContextFactory<SomeDbContext> _contextFactory;
+
+    public MyController(IDbContextFactory<SomeDbContext> contextFactory)
+    {
+        _contextFactory = contextFactory;
+    }
+}
+```
+
+После этого по мере необходимости можно создавать и использовать экземпляры DbContext. Пример:
+
+```csharp
+public void DoSomehing()
+{
+    using (var context = _contextFactory.CreateDbContext())
+    {
+        // ...            
+    }
+}
+```
+
+Обратите внимание, что созданные таким образом экземпляры DbContext _не_ управляются поставщиком служб приложения и поэтому должны удаляться приложением. Такое разделение очень полезно для приложений Blazor, в которых рекомендуется использовать `IDbContextFactory`, но может быть полезно и в других сценариях.
+
+Экземпляры DbContext можно объединять в пул путем вызова `AddPooledDbContextFactory`. Объединение в пул выполняется так же, как для `AddDbContextPool`, и имеет те же ограничения.
+
+Документация отслеживается по проблеме [#2523](https://github.com/dotnet/EntityFramework.Docs/issues/2523).
+
+### <a name="reset-dbcontext-state"></a>Сброс состояния DbContext
+
+В EF Core 5.0 появился метод `ChangeTracker.Clear()`, который очищает DbContext всех отслеживаемых сущностей. Обычно это не требуется, если выполняется рекомендация по созданию нового экземпляра контекста с кратким сроком существования для каждой единицы работы. Однако если необходимо сбросить состояние экземпляра DbContext, то использование нового метода `Clear()` является более производительным и надежным подходом, чем массовое отсоединение всех сущностей.  
+
+Документация отслеживается по проблеме [#2524](https://github.com/dotnet/EntityFramework.Docs/issues/2524).
+
+### <a name="new-pattern-for-store-generated-defaults"></a>Новый шаблон для значений по умолчанию, создаваемых хранилищем
+
+EF Core позволяет явно задать значение для столбца, у которого может быть ограничение на значение по умолчанию. В качестве индикатора для этого в EF Core используется значение, принятое по умолчанию для типа свойства в CLR. Если значение отлично от значения CLR по умолчанию, оно будет вставлено. В противном случае используется значение по умолчанию для базы данных.
+
+Это создает проблемы для типов, для которых значение CLR по умолчанию является неподходящим индикатором, особенно для свойств `bool`. В таких случаях EF Core 5.0 теперь допускает значение NULL для резервного поля. Пример:
+
+```csharp
+public class Blog
+{
+    private bool? _isValid;
+
+    public bool IsValid
+    {
+        get => _isValid ?? false;
+        set => _isValid = value;
+    }
+}
+```
+
+Обратите внимание, что резервное поле допускает значение NULL, а общедоступное свойство — нет. В результате значение индикатора может быть `null`, и это не влияет на общую контактную зону типа сущности. Если `IsValid` не задается, используется значение по умолчанию для базы данных, так как значением резервного поля остается NULL. Если задается `true` или `false`, это значение сохраняется явным образом в базе данных.
+
+Документация отслеживается по проблеме [#2525](https://github.com/dotnet/EntityFramework.Docs/issues/2525).
+
+### <a name="cosmos-partition-keys"></a>Ключи секций Cosmos
+
+EF Core позволяет включать ключ секции Cosmos в модель EF. Пример:
+
+```csharp
+modelBuilder.Entity<Customer>().HasPartitionKey(b => b.AlternateKey)
+```
+
+Начиная с предварительной версии 7 ключ секции включается в первичный ключ типа сущности и используется для повышения производительности некоторых запросов.
+
+Документация отслеживается по проблеме [#2471](https://github.com/dotnet/EntityFramework.Docs/issues/2471).
+
+### <a name="cosmos-configuration"></a>Конфигурация Cosmos
+
+В EF Core 5.0 улучшена настройка Cosmos и подключений Cosmos.
+
+Ранее в EF Core требовалось явно указывать конечную точку и ключ при подключении к базе данных Cosmos. В EF Core 5.0 вместо этого можно использовать строку подключения. Кроме того, в EF Core 5.0 можно явно задавать экземпляр класса WebProxy. Пример:
+
+```csharp
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder
+        .UseCosmos("my-cosmos-connection-string", "MyDb",
+            cosmosOptionsBuilder =>
+            {
+                cosmosOptionsBuilder.WebProxy(myProxyInstance);
+            });
+```
+
+Кроме того, теперь также можно настраивать множество других значений времени ожидания, ограничений и т. д. Пример:
+
+```csharp
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder
+        .UseCosmos("my-cosmos-connection-string", "MyDb",
+            cosmosOptionsBuilder =>
+            {
+                cosmosOptionsBuilder.LimitToEndpoint();
+                cosmosOptionsBuilder.RequestTimeout(requestTimeout);
+                cosmosOptionsBuilder.OpenTcpConnectionTimeout(timeout);
+                cosmosOptionsBuilder.IdleTcpConnectionTimeout(timeout);
+                cosmosOptionsBuilder.GatewayModeMaxConnectionLimit(connectionLimit);
+                cosmosOptionsBuilder.MaxTcpConnectionsPerEndpoint(connectionLimit);
+                cosmosOptionsBuilder.MaxRequestsPerTcpConnection(requestLimit);
+            });
+```
+
+Наконец, режимом соединения по умолчанию теперь является `ConnectionMode.Gateway`, что, как правило, обеспечивает большую совместимость.
+
+Документация отслеживается по проблеме [#2471](https://github.com/dotnet/EntityFramework.Docs/issues/2471).
+
+### <a name="scaffold-dbcontext-now-singularizes"></a>Формирование шаблонов DbContext теперь производится в форме единственного числа
+
+Ранее при формировании шаблона DbContext на основе существующей базы данных в EF Core создавались имена типов сущностей, совпадающие с именами таблиц в базе данных. Например, для таблиц `People` и `Addresses` создавались типы сущностей с именами `People` и `Addresses`.
+
+В предыдущих выпусках это поведение можно было настраивать путем регистрации службы преобразования во множественную форму. Теперь в EF Core 5.0 в качестве службы преобразования во множественную форму по умолчанию используется пакет [Humanizer](https://www.nuget.org/packages/Humanizer.Core/). Это означает, что таблицы `People` и `Addresses` теперь будут реконструированы в типы сущностей с именами `Person` и `Address`.
+
+### <a name="savepoints"></a>Точки сохранения
+
+EF Core теперь поддерживает [точки сохранения](/SQL/t-sql/language-elements/save-transaction-transact-sql?view=sql-server-ver15#remarks) для лучшего контроля над транзакциями, выполняющими несколько операций.
+
+Точки сохранения можно создавать, освобождать и откатывать вручную. Пример:
+
+```csharp
+context.Database.CreateSavepoint("MySavePoint"); 
+```
+
+Кроме того, при неудачном выполнении `SaveChanges` в EF Core теперь выполняется откат к последней точке сохранения. Это позволяет повторно выполнять вызов SaveChanges без повторного выполнения всей транзакции.
+
+Документация отслеживается по проблеме [#2429](https://github.com/dotnet/EntityFramework.Docs/issues/2429).
 
 ## <a name="preview-6"></a>предварительная версия 6
 
