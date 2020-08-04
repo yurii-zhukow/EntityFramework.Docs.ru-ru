@@ -5,12 +5,12 @@ author: roji
 ms.date: 04/27/2020
 ms.assetid: bde4e0ee-fba3-4813-a849-27049323d301
 uid: core/miscellaneous/collations-and-case-sensitivity
-ms.openlocfilehash: b3874847922cb39aa57d50813e6e50ff7db72eb9
-ms.sourcegitcommit: ebfd3382fc583bc90f0da58e63d6e3382b30aa22
+ms.openlocfilehash: 46a13d341c1b721bb243ee2b205bdc2f4d7e7aee
+ms.sourcegitcommit: 949faaba02e07e44359e77d7935f540af5c32093
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85370569"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87526450"
 ---
 # <a name="collations-and-case-sensitivity"></a>Параметры сортировки и чувствительность к регистру
 
@@ -68,11 +68,11 @@ WHERE [c].[Name] COLLATE SQL_Latin1_General_CP1_CS_AS = N'John'
 
 В .NET равенство по строкам учитывает регистр по умолчанию: `s1 == s2` выполняет порядковое сравнение, которое требует идентичности строк. Поскольку параметры сортировки баз данных по умолчанию могут различаться, и, поскольку для использования индексов желательно простое равенство, EF Core не пытается преобразовать простое равенство в базу данных с учетом регистра. равенство в C# преобразуется непосредственно в равенство SQL, которое может быть или не учитываться с учетом регистра в зависимости от используемой базы данных и ее конфигурации параметров сортировки.
 
-Кроме того, .NET предоставляет перегрузки для [`string.Equals`](https://docs.microsoft.com/dotnet/api/system.string.equals#System_String_Equals_System_String_System_StringComparison_) принятия [`StringComparison`](https://docs.microsoft.com/dotnet/api/system.stringcomparison) перечисления, что позволяет указывать чувствительность к регистру и культуру для сравнения. По разработке EF Core отменяет перевод этих перегрузок в SQL, и попытка использовать их приведет к исключению. В одном случае EF Core не знает, какие параметры сортировки с учетом регистра или без учета регистра следует использовать. Что более важно, применение параметров сортировки в большинстве случаев предотвращает использование индексов, значительно влияя на производительность для очень простой и часто используемой конструкции .NET. Чтобы принудительно использовать сравнение с учетом регистра или без учета регистра, укажите параметры сортировки явно с помощью, `EF.Functions.Collate` как [описано выше](#explicit-collations-and-indexes).
+Кроме того, .NET предоставляет перегрузки для [`string.Equals`](/dotnet/api/system.string.equals#System_String_Equals_System_String_System_StringComparison_) принятия [`StringComparison`](/dotnet/api/system.stringcomparison) перечисления, что позволяет указывать чувствительность к регистру и культуру для сравнения. По разработке EF Core отменяет перевод этих перегрузок в SQL, и попытка использовать их приведет к исключению. В одном случае EF Core не знает, какие параметры сортировки с учетом регистра или без учета регистра следует использовать. Что более важно, применение параметров сортировки в большинстве случаев предотвращает использование индексов, значительно влияя на производительность для очень простой и часто используемой конструкции .NET. Чтобы принудительно использовать сравнение с учетом регистра или без учета регистра, укажите параметры сортировки явно с помощью, `EF.Functions.Collate` как [описано выше](#explicit-collations-and-indexes).
 
 ## <a name="database-specific-information"></a>Сведения, относящиеся к базе данных
 
-* [SQL Server документация по параметрам сортировки](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support).
-* [Документация Microsoft. Data. SQLite по параметрам сортировки](https://docs.microsoft.com/dotnet/standard/data/sqlite/collation).
+* [SQL Server документация по параметрам сортировки](/sql/relational-databases/collations/collation-and-unicode-support).
+* [Документация Microsoft. Data. SQLite по параметрам сортировки](/dotnet/standard/data/sqlite/collation).
 * [PostgreSQL документация по параметрам сортировки](https://www.postgresql.org/docs/current/collation.html).
 * [Документация MySQL по параметрам сортировки](https://dev.mysql.com/doc/refman/en/charset-general.html).

@@ -3,19 +3,19 @@ title: Привязка данных с помощью WPF-EF6
 author: divega
 ms.date: 05/19/2020
 ms.assetid: e90d48e6-bea7785-47ef-b756-7b89cce4daf0
-ms.openlocfilehash: c8e9e9a0810d8192e5184abbc7df2e74e4ee7edb
-ms.sourcegitcommit: 59e3d5ce7dfb284457cf1c991091683b2d1afe9d
+ms.openlocfilehash: baeb75b1ee386ca58013048bcc31ea4074604673
+ms.sourcegitcommit: 949faaba02e07e44359e77d7935f540af5c32093
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83672905"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87526853"
 ---
 # <a name="databinding-with-wpf"></a>Привязка данных с помощью WPF
 
 > [!IMPORTANT]
 > **Этот документ является допустимым для WPF только на .NET Framework**
 >
-> В этом документе описывается привязка данных для WPF на .NET Framework. Для новых проектов .NET Core рекомендуется использовать [EF Core](/ef/core) вместо Entity Framework 6. Документация по DataBinding в EF Core выполняется в [#778е проблем](https://github.com/dotnet/EntityFramework.Docs/issues/778).
+> В этом документе описывается привязка данных для WPF на .NET Framework. Для новых проектов .NET Core рекомендуется использовать [EF Core](/ef/core) вместо Entity Framework 6. Документация по DataBinding в EF Core: [Начало работы с WPF](/ef/core/get-started/wpf).
 
 В этом пошаговом руководстве показано, как привязать типы POCO к элементам управления WPF в форме "основной/подробности". Приложение использует Entity Framework API-интерфейсы для заполнения объектов данными из базы данных, трассировки изменений и сохранения данных в базе данных.
 
@@ -202,7 +202,7 @@ ms.locfileid: "83672905"
 
     ![Выбор объектов](~/ef6/media/chooseyourobjects.png)
 
-После завершения процесса реконструирования новая модель добавляется в проект и открывается для просмотра в Entity Framework Designer. Файл App. config также был добавлен в проект со сведениями о соединении для базы данных.
+После завершения процесса реконструирования новая модель добавляется в проект и открывается для просмотра в Entity Framework Designer. В проект также добавлен файл App.config с подробными сведениями о соединении для базы данных.
 
 #### <a name="additional-steps-in-visual-studio-2010"></a>Дополнительные действия в Visual Studio 2010
 
