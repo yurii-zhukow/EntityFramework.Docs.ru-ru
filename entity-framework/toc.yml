@@ -65,6 +65,8 @@
               href: core/get-started/install/index.md
             - name: Руководство по ASP.NET Core >>
               href: /aspnet/core/data/ef-rp/intro
+            - name: Руководство по .NET Core WPF
+              href: core/get-started/wpf.md
             - name: Учебник по Xamarin
               href: core/get-started/xamarin.md
         - name: Основы
@@ -164,7 +166,7 @@
               href: core/managing-schemas/ensure-created.md
             - name: Реконструирование (формирование шаблонов)
               href: core/managing-schemas/scaffolding.md
-        - name: Запросы данных
+        - name: Данные запросов
           items:
             - name: Обзор
               href: core/querying/index.md
@@ -258,7 +260,7 @@
           href: /dotnet/api/?view=efcore-3.1
     - name: Entity Framework 6
       items:
-        - name: Обзор
+        - name: Общие сведения
           href: ef6/index.md
         - name: Новые возможности
           items:
@@ -462,7 +464,7 @@
                       href: ef6/modeling/designer/advanced/tvfs.md
                 - name: Сочетания клавиш
                   href: ef6/modeling/designer/keyboard-shortcuts.md
-        - name: Запросы данных
+        - name: Данные запросов
           items:
             - name: Обзор
               href: ef6/querying/index.md
