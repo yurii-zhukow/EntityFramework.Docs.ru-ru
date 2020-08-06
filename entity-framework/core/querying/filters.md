@@ -3,11 +3,12 @@ title: Глобальные фильтры запросов — EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: 233289b0c50e15f4555b342bc654211ce04c24d3
-ms.sourcegitcommit: ebfd3382fc583bc90f0da58e63d6e3382b30aa22
+ms.openlocfilehash: 57d81919dedb853d2a41066f76ec20685ae41d6b
+ms.sourcegitcommit: 949faaba02e07e44359e77d7935f540af5c32093
+ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85370465"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87526905"
 ---
 # <a name="global-query-filters"></a>Глобальные фильтры запросов
 
@@ -42,7 +43,7 @@ ms.locfileid: "85370465"
 > Обратите внимание на использование поля уровня экземпляра DbContext. `_tenantId` используется для установки текущего клиента. Фильтры на уровне модели будут использовать значение из правильного экземпляра контекста (то есть экземпляра, выполняющего запрос).
 
 > [!NOTE]
-> Сейчас невозможно определить несколько фильтров запросов для одной и той же сущности. Будет применен только последний из них. Однако с помощью логического оператора _AND_ ([`&&` в C#](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/boolean-logical-operators#conditional-logical-and-operator-)) можно определить один фильтр с несколькими условиями.
+> Сейчас невозможно определить несколько фильтров запросов для одной и той же сущности. Будет применен только последний из них. Однако с помощью логического оператора _AND_ ([`&&` в C#](/dotnet/csharp/language-reference/operators/boolean-logical-operators#conditional-logical-and-operator-)) можно определить один фильтр с несколькими условиями.
 
 ## <a name="use-of-navigations"></a>Использование свойств навигации
 
