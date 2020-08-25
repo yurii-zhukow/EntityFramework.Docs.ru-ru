@@ -4,12 +4,12 @@ author: roji
 ms.date: 09/09/2019
 ms.assetid: bde4e0ee-fba3-4813-a849-27049323d301
 uid: core/miscellaneous/nullable-reference-types
-ms.openlocfilehash: 3acd446d64a94ffecb12c181e3910528d2293448
-ms.sourcegitcommit: 51148929e3889c48227d96c95c4e310d53a3d2c9
+ms.openlocfilehash: 7d262ab9fb45535b626ce8d503b31a5e9a4630d3
+ms.sourcegitcommit: 6f7af3f138bf7c724cbdda261f97e5cf7035e8d7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/21/2020
-ms.locfileid: "86873361"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88847570"
 ---
 # <a name="working-with-nullable-reference-types"></a>Работа с ссылочными типами, допускающими значение null
 
@@ -26,9 +26,11 @@ ms.locfileid: "86873361"
 
 ## <a name="dbcontext-and-dbset"></a>DbContext и DbSet
 
-Если ссылочные типы, допускающие значение null, включены, компилятор C# выдает предупреждения для любого неинициализированного свойства, не допускающего значения NULL, так как они будут содержать значение null. В результате, как правило, при наличии неинициализированных свойств DbSet в контексте типа будет выдаваться предупреждение. Чтобы устранить эту проблему, сделайте свойства DbSet свойствами только для чтения и инициализируйте их следующим образом:
+Если ссылочные типы, допускающие значение null, включены, компилятор C# выдает предупреждения для любого неинициализированного свойства, не допускающего значения NULL, так как они будут содержать значение null. В результате, как правило, при наличии неинициализированных свойств DbSet в контексте типа будет выдаваться предупреждение. Это можно исправить следующим образом.
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/NullableReferenceTypesContext.cs?name=Context&highlight=3-4)]
+
+Другой стратегией является использование автосвойств, не допускающих значения NULL, но для инициализации их в NULL с помощью оператора NULL-терпим отношению (!), чтобы не выводить предупреждение компилятора. Конструктор DbContext гарантирует, что все свойства DbSet будут инициализированы, и на них не будет наблюдаться значение null.
 
 ## <a name="non-nullable-properties-and-initialization"></a>Свойства и инициализация, не допускающая значения NULL
 
