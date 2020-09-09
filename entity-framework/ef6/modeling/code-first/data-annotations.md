@@ -1,14 +1,16 @@
 ---
 title: Заметки к данным Code First — EF6
+description: Code First заметок к данным в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 80abefbd-23c9-4fce-9cd3-520e5df9856e
-ms.openlocfilehash: 17370b83aee9974161b1771e8a1dc99c2de27f0f
-ms.sourcegitcommit: 6f7af3f138bf7c724cbdda261f97e5cf7035e8d7
+uid: ef6/modeling/code-first/data-annotations
+ms.openlocfilehash: 37b2872b5fb40cf0dc346554b2cbb9e3fffd6bdc
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88847622"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89617348"
 ---
 # <a name="code-first-data-annotations"></a>Заметки к данным Code First
 > [!NOTE]
@@ -51,7 +53,7 @@ Code First предоставляет два способа добавления
 
  
 
-## <a name="key"></a>Ключ
+## <a name="key"></a>Клавиши
 
 Entity Framework полагается на каждую сущность, имеющую значение ключа, используемое для отслеживания сущностей. Одно из соглашений Code First является неявными свойствами ключа; Code First будет искать свойство с именем "ID" или сочетание имени класса и "ID", например "Блогид". Это свойство будет сопоставляться с первичным ключевым столбцом в базе данных.
 
@@ -135,7 +137,7 @@ Entity Framework поддерживает составные ключи — Пе
     }
 ```
 
-## <a name="required"></a>Обязательно
+## <a name="required"></a>Обязательное значение
 
 `Required`Заметка сообщает EF, что требуется определенное свойство.
 
@@ -391,7 +393,7 @@ Entity Framework поддерживает составные ключи — Пе
 ## <a name="relationship-attributes-inverseproperty-and-foreignkey"></a>Атрибуты отношений: Инверсепроперти и Фореигнкэй
 
 > [!NOTE]
-> На этой странице содержатся сведения о настройке связей в модели Code First с помощью заметок к данным. Общие сведения о связях в EF и доступе к данным и управлении ими с помощью связей см. в разделе [связи & свойства навигации](~/ef6/fundamentals/relationships.md). *
+> На этой странице содержатся сведения о настройке связей в модели Code First с помощью заметок к данным. Общие сведения о связях в EF и доступе к данным и управлении ими с помощью связей см. в разделе [связи & свойства навигации](xref:ef6/fundamentals/relationships). *
 
 Первое соглашение Code позаботится о наиболее распространенных отношениях в модели, но в некоторых случаях требуется помощь.
 

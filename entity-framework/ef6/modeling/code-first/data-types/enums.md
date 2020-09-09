@@ -1,14 +1,16 @@
 ---
 title: Поддержка перечисления-Code First-EF6
+description: Поддержка перечисления — Code First в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 77a42501-27c9-4f4b-96df-26c128021467
-ms.openlocfilehash: 1cecbf7065367deb3d202977fe39187bd907d824
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+uid: ef6/modeling/code-first/data-types/enums
+ms.openlocfilehash: 2ed5cd73f8477469d3651ef4bf9f79ce80598ee7
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78415793"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89617177"
 ---
 # <a name="enum-support---code-first"></a>Поддержка перечисления — Code First
 > [!NOTE]
@@ -16,7 +18,7 @@ ms.locfileid: "78415793"
 
 В этом видео и пошаговом руководстве показано, как использовать типы Enum с Entity Framework Code First. В нем также показано, как использовать перечисления в запросе LINQ.
 
-В этом пошаговом руководстве будет использоваться Code First для создания новой базы данных, но можно также использовать [Code First для сопоставлений с существующей базой данных](~/ef6/modeling/code-first/workflows/existing-database.md).
+В этом пошаговом руководстве будет использоваться Code First для создания новой базы данных, но можно также использовать [Code First для сопоставлений с существующей базой данных](xref:ef6/modeling/code-first/workflows/existing-database).
 
 Поддержка перечисления появилась в Entity Framework 5. Чтобы использовать новые функции, такие как перечисления, пространственные типы данных и функции, возвращающие табличное значение, необходимо выбрать .NET Framework 4,5. Visual Studio 2012 нацелена на .NET 4,5 по умолчанию.
 
@@ -27,7 +29,7 @@ ms.locfileid: "78415793"
 
 **Представлено**: Julia Корнич
 
-**Видео**: [WMV](https://download.microsoft.com/download/A/5/8/A583DEE8-FD5C-47EE-A4E1-966DDF39D1DA/HDI-ITPro-MSDN-winvideo-enumwithcodefirst.wmv) | [MP4](https://download.microsoft.com/download/A/5/8/A583DEE8-FD5C-47EE-A4E1-966DDF39D1DA/HDI-ITPro-MSDN-mp4video-enumwithcodefirst.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/A/5/8/A583DEE8-FD5C-47EE-A4E1-966DDF39D1DA/HDI-ITPro-MSDN-winvideo-enumwithcodefirst.zip)
+**Видео**: [WMV](https://download.microsoft.com/download/A/5/8/A583DEE8-FD5C-47EE-A4E1-966DDF39D1DA/HDI-ITPro-MSDN-winvideo-enumwithcodefirst.wmv)  |  [MP4](https://download.microsoft.com/download/A/5/8/A583DEE8-FD5C-47EE-A4E1-966DDF39D1DA/HDI-ITPro-MSDN-mp4video-enumwithcodefirst.m4v)  |  [WMV (ZIP)](https://download.microsoft.com/download/A/5/8/A583DEE8-FD5C-47EE-A4E1-966DDF39D1DA/HDI-ITPro-MSDN-winvideo-enumwithcodefirst.zip)
 
 ## <a name="pre-requisites"></a>Предварительные требования
 
@@ -39,7 +41,7 @@ ms.locfileid: "78415793"
 
 1.  Откройте Visual Studio 2012
 2.  В меню **файл** наведите указатель мыши на пункт **создать**и выберите **проект** .
-3.  В левой области щелкните **Visual C\#** , а затем выберите шаблон **консоли** .
+3.  В левой области щелкните **Visual C \# **, а затем выберите шаблон **консоли** .
 4.  Введите **енумкодефирст** в качестве имени проекта и нажмите кнопку **ОК** .
 
 ## <a name="define-a-new-model-using-code-first"></a>Определение новой модели с помощью Code First
@@ -69,16 +71,16 @@ public partial class Department
 
 ## <a name="define-the-dbcontext-derived-type"></a>Определение производного типа DbContext
 
-В дополнение к определению сущностей необходимо определить класс, производный от DbContext и предоставляющий DbSet&lt;&gt; свойств. Свойства DbSet&lt;ости&gt; позволяют контексту понять, какие типы необходимо включить в модель.
+В дополнение к определению сущностей необходимо определить класс, производный от DbContext и предоставляющий свойства DbSet&lt;TEntity&gt;. Свойства DbSet&lt;TEntity&gt; позволяют контексту определить, какие типы необходимо включить в модель.
 
-Экземпляр производного типа DbContext управляет объектами сущностей во время выполнения, включая заполнение объектов данными из базы данных, отслеживание изменений и сохранение данных в базе данных.
+Экземпляр производного типа DbContext управляет объектами сущностей во время выполнения, в частности заполняет объекты данными из базы данных, отслеживает изменения и сохраняет данные в базе данных.
 
 Типы DbContext и DbSet определены в сборке EntityFramework. Мы добавим ссылку на эту библиотеку DLL с помощью пакета NuGet EntityFramework.
 
 1.  В обозреватель решений щелкните правой кнопкой мыши имя проекта.
 2.  Выберите **Управление пакетами NuGet...**
 3.  В диалоговом окне Управление пакетами NuGet выберите вкладку в **Интернете** и выберите пакет **EntityFramework** .
-4.  Нажмите кнопку **Установить**.
+4.  Щелкните **Установить**.
 
 Обратите внимание, что в дополнение к сборке EntityFramework также добавляются ссылки на System. ComponentModel. и сборки System. Data. Entity.
 
@@ -131,16 +133,16 @@ DepartmentID: 1 Name: English
 
 При первом запуске приложения Entity Framework создает базу данных. Поскольку на компьютере установлен Visual Studio 2012, база данных будет создана на экземпляре LocalDB. По умолчанию Entity Framework имя базы данных после полного имени производного контекста (для этого примера это **енумкодефирст. енумтестконтекст**). В последующих случаях будет использоваться существующая база данных.  
 
-Обратите внимание, что при внесении изменений в модель после создания базы данных следует использовать Code First Migrations для обновления схемы базы данных. Пример использования миграций см. в разделе [Code First к новой базе данных](~/ef6/modeling/code-first/workflows/new-database.md) .
+Обратите внимание, что при внесении изменений в модель после создания базы данных следует использовать Code First Migrations для обновления схемы базы данных. Пример использования миграций см. в разделе [Code First к новой базе данных](xref:ef6/modeling/code-first/workflows/new-database) .
 
 Чтобы просмотреть базу данных и данные, выполните следующие действия.
 
-1.  В главном меню Visual Studio 2012 выберите **View** -&gt; **Обозреватель объектов SQL Server**.
+1.  В главном меню Visual Studio 2012 выберите **Просмотреть**  - &gt; **Обозреватель объектов SQL Server**.
 2.  Если LocalDB отсутствует в списке серверов, щелкните правой кнопкой мыши на **SQL Server** и выберите **Добавить SQL Server** использовать **проверку подлинности Windows** по умолчанию для подключения к экземпляру LocalDB.
 3.  Разверните узел LocalDB.
 4.  Unfold папку **databases** , чтобы увидеть новую базу данных, и перейдите к таблице **Department** . Обратите внимание, что Code First не создает таблицу, сопоставленную с типом перечисления.
 5.  Чтобы просмотреть данные, щелкните таблицу правой кнопкой мыши и выберите **Просмотр данных** .
 
-## <a name="summary"></a>Сводка
+## <a name="summary"></a>Итоги
 
 В этом пошаговом руководстве мы рассмотрели, как использовать типы Enum с Entity Framework Code First. 

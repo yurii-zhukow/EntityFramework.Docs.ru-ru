@@ -1,15 +1,16 @@
 ---
 title: Преобразования значений — EF Core
+description: Настройка преобразователей значений в модели Entity Framework Core
 author: ajcvickers
 ms.date: 02/19/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 uid: core/modeling/value-conversions
-ms.openlocfilehash: 93774bc1bc3887f982faeac151825a6643c1107c
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: 79e54392bf5503b4b651f25ce6e5fc63d418df90
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78414557"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89616670"
 ---
 # <a name="value-conversions"></a>Преобразования значений
 
@@ -18,15 +19,15 @@ ms.locfileid: "78414557"
 
 Преобразователи значений позволяют преобразовывать значения свойств при чтении из базы данных или записи в нее. Это преобразование может быть из одного значения другого типа (например, для шифрования строк) или из значения одного типа в значение другого типа (например, преобразование перечисляемых значений в строки базы данных и из них).
 
-## <a name="fundamentals"></a>Основные сведения
+## <a name="fundamentals"></a>Основы
 
-Преобразователи значений указываются в терминах `ModelClrType` и `ProviderClrType`. Тип модели — это тип .NET свойства в типе сущности. Тип поставщика — это тип .NET, понятный поставщику базы данных. Например, чтобы сохранить перечисления в виде строк в базе данных, тип модели является типом перечисления, а тип поставщика — `String`. Эти два типа могут быть одинаковыми.
+Преобразователи значений указываются в терминах `ModelClrType` и `ProviderClrType` . Тип модели — это тип .NET свойства в типе сущности. Тип поставщика — это тип .NET, понятный поставщику базы данных. Например, чтобы сохранить перечисления в виде строк в базе данных, тип модели является типом перечисления, а тип поставщика — `String` . Эти два типа могут быть одинаковыми.
 
-Преобразования определяются с помощью двух деревьев выражений `Func`: одно из `ModelClrType` в `ProviderClrType` и другое из `ProviderClrType` в `ModelClrType`. Деревья выражений используются, чтобы их можно было скомпилировать в код доступа к базе данных для эффективного преобразования. Для сложных преобразований дерево выражений может быть простым вызовом метода, который выполняет преобразование.
+Преобразования определяются с помощью двух `Func` деревьев выражений: одно из `ModelClrType` в `ProviderClrType` , а другое — от `ProviderClrType` до `ModelClrType` . Деревья выражений используются, чтобы их можно было скомпилировать в код доступа к базе данных для эффективного преобразования. Для сложных преобразований дерево выражений может быть простым вызовом метода, который выполняет преобразование.
 
 ## <a name="configuring-a-value-converter"></a>Настройка преобразователя значений
 
-Преобразования значений определяются в свойствах `OnModelCreating` `DbContext`. Например, рассмотрим перечисление и тип сущности, определенный как:
+Преобразования значений определяются для свойств в `OnModelCreating` `DbContext` . Например, рассмотрим перечисление и тип сущности, определенный как:
 
 ``` csharp
 public class Rider
@@ -44,7 +45,7 @@ public enum EquineBeast
 }
 ```
 
-Затем можно определить преобразования в `OnModelCreating` для хранения значений перечисления в виде строк (например, "Донкэй", "Муле",...) в базе данных:
+Затем можно определить преобразования в `OnModelCreating` для хранения значений перечисления в виде строк (например, "донкэй", "Муле",...) в базе данных:
 
 ``` csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -59,11 +60,11 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 ```
 
 > [!NOTE]  
-> Значение `null` никогда не будет передано преобразователю значений. Это упрощает реализацию преобразований и позволяет им совместно использовать свойства, допускающие значения NULL и не допускающие значения NULL.
+> `null`Значение никогда не будет передано преобразователю значений. Это упрощает реализацию преобразований и позволяет им совместно использовать свойства, допускающие значения NULL и не допускающие значения NULL.
 
 ## <a name="the-valueconverter-class"></a>Класс ValueConverter
 
-Вызов `HasConversion`, как показано выше, создаст экземпляр `ValueConverter` и установит его в свойстве. Вместо этого `ValueConverter` можно создать явным образом. Пример:
+Вызов `HasConversion` , как показано выше, создаст `ValueConverter` экземпляр и установит его в свойстве. `ValueConverter`Вместо этого можно создать явно. Пример:
 
 ``` csharp
 var converter = new ValueConverter<EquineBeast, string>(
@@ -83,31 +84,31 @@ modelBuilder
 
 ## <a name="built-in-converters"></a>Встроенные преобразователи
 
-EF Core поставляется с набором предварительно определенных классов `ValueConverter`, которые находятся в пространстве имен `Microsoft.EntityFrameworkCore.Storage.ValueConversion`. а именно:
+EF Core поставляется с набором предварительно определенных `ValueConverter` классов, найденных в `Microsoft.EntityFrameworkCore.Storage.ValueConversion` пространстве имен. А именно:
 
-* `BoolToZeroOneConverter`-bool равно нулю и одному
-* `BoolToStringConverter`-bool для строк, таких как "Y" и "N"
-* `BoolToTwoValuesConverter`-bool для любых двух значений
-* массив `BytesToStringConverter` байт в строку в кодировке Base64
-* `CastingConverter`-преобразования, для которых требуется только приведение типов
-* `CharToStringConverter`-char в строку одиночных символов
-* `DateTimeOffsetToBinaryConverter`-DateTimeOffset в двоично-закодированное 64-разрядное значение
-* `DateTimeOffsetToBytesConverter`-DateTimeOffset в массив байтов
-* `DateTimeOffsetToStringConverter`-DateTimeOffset в строку
-* `DateTimeToBinaryConverter`-DateTime в 64-разрядное значение, включая DateTimeKind
-* `DateTimeToStringConverter`-DateTime в строку
-* `DateTimeToTicksConverter`-DateTime в такты
-* Перечисление `EnumToNumberConverter` в базовое число
-* `EnumToStringConverter` перечисление в строку
-* `GuidToBytesConverter`-GUID массива байтов
-* `GuidToStringConverter`-GUID в строку
-* `NumberToBytesConverter`-любое числовое значение в массив байтов
-* `NumberToStringConverter`-любое числовое значение в строку
-* `StringToBytesConverter` — строка в UTF8-байт
-* `TimeSpanToStringConverter` TimeSpan в строку
-* `TimeSpanToTicksConverter` с интервалом до тактов
+* `BoolToZeroOneConverter` -Bool — ноль и один
+* `BoolToStringConverter` -Bool для строк, таких как "Y" и "N"
+* `BoolToTwoValuesConverter` -Bool для любых двух значений
+* `BytesToStringConverter` — Массив байтов в строку в кодировке Base64
+* `CastingConverter` — Преобразования, для которых требуется только приведение типов
+* `CharToStringConverter` -Char — строка одиночного символа
+* `DateTimeOffsetToBinaryConverter` -DateTimeOffset в двоично-закодированное 64-разрядное значение
+* `DateTimeOffsetToBytesConverter` -DateTimeOffset в массив байтов
+* `DateTimeOffsetToStringConverter` -DateTimeOffset в строку
+* `DateTimeToBinaryConverter` -DateTime в 64-разрядное значение, включая DateTimeKind
+* `DateTimeToStringConverter` -DateTime в строку
+* `DateTimeToTicksConverter` -DateTime — такты
+* `EnumToNumberConverter` -Перечислить в базовое число
+* `EnumToStringConverter` -Enum в строку
+* `GuidToBytesConverter` -GUID в массив байтов
+* `GuidToStringConverter` -GUID в строку
+* `NumberToBytesConverter` — Любое числовое значение массива байтов
+* `NumberToStringConverter` — Любое числовое значение в строке
+* `StringToBytesConverter` — Строка — UTF8-байт
+* `TimeSpanToStringConverter` -TimeSpan до строки
+* `TimeSpanToTicksConverter` -TimeSpan — такты
 
-Обратите внимание, что в этот список включен `EnumToStringConverter`. Это означает, что нет необходимости явно указывать преобразование, как показано выше. Вместо этого просто используйте встроенный преобразователь:
+Обратите внимание, что `EnumToStringConverter` включен в этот список. Это означает, что нет необходимости явно указывать преобразование, как показано выше. Вместо этого просто используйте встроенный преобразователь:
 
 ``` csharp
 var converter = new EnumToStringConverter<EquineBeast>();
@@ -143,13 +144,13 @@ public class Rider
 }
 ```
 
-Затем значения перечисления будут сохранены в базе данных в виде строк без дополнительной настройки в `OnModelCreating`.
+Затем значения перечисления будут сохранены в базе данных в виде строк без дополнительной настройки в `OnModelCreating` .
 
 ## <a name="limitations"></a>Ограничения
 
 Существует несколько известных текущих ограничений системы преобразования значений:
 
-* Как отмечалось выше, `null` не может быть преобразован.
+* Как отмечалось выше, `null` невозможно преобразовать.
 * В настоящее время невозможно распределить преобразование одного свойства в несколько столбцов или наоборот.
 * Использование преобразований значений может повлиять на способность EF Core перевести выражения в SQL. В таких случаях будет зарегистрировано предупреждение.
 Удаление этих ограничений рассматривается в будущем выпуске.

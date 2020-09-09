@@ -1,22 +1,24 @@
 ---
 title: Поддержка пространственных типов в поставщике — EF6
+description: Поддержка пространственных типов в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 1097cb00-15f5-453d-90ed-bff9403d23e3
-ms.openlocfilehash: 863f1b4551bd62160915eba90fee7ba6c49c169c
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+uid: ef6/fundamentals/providers/spatial-support
+ms.openlocfilehash: 060d662aa8f03ea3510bd6b1fb7bdf904585efab
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78413897"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89615798"
 ---
 # <a name="provider-support-for-spatial-types"></a>Поддержка пространственных типов в поставщике
 Entity Framework поддерживает работу с пространственными данными с помощью классов заданное DbGeography или заданное DbGeometry. Эти классы полагаются на функциональность базы данных, предлагаемую поставщиком Entity Framework. Не все поставщики поддерживают пространственные данные и могут иметь дополнительные предварительные требования, например установку сборок пространственных типов. Ниже приведены дополнительные сведения о поддержке пространственных типов для поставщиков.  
 
 Дополнительные сведения об использовании пространственных типов в приложении можно найти в двух пошаговых руководствах: один для Code First, другой — для Database First или Model First.  
 
-- [Типы пространственных данных в Code First](~/ef6/modeling/code-first/data-types/spatial.md)  
-- [Типы пространственных данных в конструкторе EF](~/ef6/modeling/designer/data-types/spatial.md)  
+- [Типы пространственных данных в Code First](xref:ef6/modeling/code-first/data-types/spatial)  
+- [Типы пространственных данных в конструкторе EF](xref:ef6/modeling/designer/data-types/spatial)  
 
 ## <a name="ef-releases-that-support-spatial-types"></a>Выпуски EF, поддерживающие пространственные типы  
 
@@ -52,8 +54,8 @@ Entity Framework поддерживает работу с пространств
 
 ## <a name="prerequisites-for-spatial-types-with-microsoft-sql-server"></a>Необходимые условия для пространственных типов с Microsoft SQL Server  
 
-SQL Server пространственной поддержки зависит от SQL Server типов SqlGeography и SqlGeometry низкого уровня. Эти типы находятся в сборке Microsoft. SqlServer. types. dll, и эта сборка не поставляется как часть EF или как часть .NET Framework.  
+SQL Server пространственной поддержки зависит от SQL Server типов SqlGeography и SqlGeometry низкого уровня. Эти типы находятся в Microsoft.SqlServer.Types.dll сборке, и эта сборка не поставляется как часть EF или как часть .NET Framework.  
 
-При установке Visual Studio часто также устанавливается версия SQL Server, которая включает в себя установку Microsoft. SqlServer. types. dll.  
+При установке Visual Studio часто также устанавливается версия SQL Server, которая включает в себя установку Microsoft.SqlServer.Types.dll.  
 
-Если SQL Server не установлен на компьютере, где вы хотите использовать пространственные типы, или если пространственные типы были исключены из установки SQL Server, необходимо установить их вручную. Типы можно установить с помощью `SQLSysClrTypes.msi`, который входит в состав Microsoft SQL Server пакета дополнительных компонентов. Пространственные типы SQL Server относятся к конкретной версии, поэтому рекомендуем [выполнить поиск по запросу "пакет компонентов SQL Server"](https://www.microsoft.com/search/result.aspx?q=sql+server+feature+pack) в центре загрузки Майкрософт, а затем выбрать и скачать параметр, соответствующий используемой версии SQL Server.
+Если SQL Server не установлен на компьютере, где вы хотите использовать пространственные типы, или если пространственные типы были исключены из установки SQL Server, необходимо установить их вручную. Типы можно установить с помощью `SQLSysClrTypes.msi` , который входит в состав Microsoft SQL Server пакета дополнительных компонентов. Пространственные типы SQL Server относятся к конкретной версии, поэтому рекомендуем [выполнить поиск по запросу "пакет компонентов SQL Server"](https://www.microsoft.com/search/result.aspx?q=sql+server+feature+pack) в центре загрузки Майкрософт, а затем выбрать и скачать параметр, соответствующий используемой версии SQL Server.
