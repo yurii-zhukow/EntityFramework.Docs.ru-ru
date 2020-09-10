@@ -4,12 +4,12 @@ description: Обзор новых возможностей в EF Core 5.0
 author: ajcvickers
 ms.date: 07/20/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew
-ms.openlocfilehash: f822e3ae776778749a654377cbd9d9814ca40972
-ms.sourcegitcommit: 12d257db4786487a0c28e9ddd79f176f7cf6edb1
+ms.openlocfilehash: b4551a3c593694b104a750d500d81eb170a83dc0
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89043601"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89618608"
 ---
 # <a name="whats-new-in-ef-core-50"></a>Новые возможности EF Core 5.0
 
@@ -41,7 +41,7 @@ public class Pet : Animal
 
 public class Cat : Pet
 {
-    public string EdcuationLevel { get; set; }
+    public string EducationLevel { get; set; }
 }
 
 public class Dog : Pet
@@ -492,7 +492,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 ### <a name="savepoints"></a>Точки сохранения
 
-EF Core теперь поддерживает [точки сохранения](/SQL/t-sql/language-elements/save-transaction-transact-sql?view=sql-server-ver15#remarks) для лучшего контроля над транзакциями, выполняющими несколько операций.
+EF Core теперь поддерживает [точки сохранения](/sql/t-sql/language-elements/save-transaction-transact-sql#remarks) для лучшего контроля над транзакциями, выполняющими несколько операций.
 
 Точки сохранения можно создавать, освобождать и откатывать вручную. Пример:
 
@@ -738,7 +738,7 @@ dotnet ef dbcontext scaffold "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog
 Scaffold-DbContext 'Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Chinook' Microsoft.EntityFrameworkCore.SqlServer -NoOnConfiguring
 ```
 
-Обратите внимание, что рекомендуется использовать [именованную строку подключения и защищенное хранилище, такое как секреты пользователей](/core/managing-schemas/scaffolding?tabs=vs#configuration-and-user-secrets).
+Обратите внимание, что рекомендуется использовать [именованную строку подключения и защищенное хранилище, такое как секреты пользователей](xref:core/managing-schemas/scaffolding#configuration-and-user-secrets).
 
 ### <a name="translations-for-firstordefault-on-strings"></a>Преобразования для FirstOrDefault в строках
 
@@ -846,7 +846,7 @@ WHERE [u].[Name] COLLATE French_CI_AS = N'Jean-Michel Jarre'
 
 ### <a name="flow-arguments-into-idesigntimedbcontextfactory"></a>Передача аргументов в интерфейс IDesignTimeDbContextFactory
 
-Теперь можно передавать аргументы из командной строки в метод `CreateDbContext` интерфейса [IDesignTimeDbContextFactory](/dotnet/api/microsoft.entityframeworkcore.design.idesigntimedbcontextfactory-1?view=efcore-3.1). Например, чтобы указать, что используется сборка для разработки, можно передать в командной строке настраиваемый аргумент, например `dev`:
+Теперь можно передавать аргументы из командной строки в метод `CreateDbContext` интерфейса [IDesignTimeDbContextFactory](/dotnet/api/microsoft.entityframeworkcore.design.idesigntimedbcontextfactory-1). Например, чтобы указать, что используется сборка для разработки, можно передать в командной строке настраиваемый аргумент, например `dev`:
 
 ```
 dotnet ef migrations add two --verbose --dev
@@ -968,7 +968,7 @@ modelBuilder.Entity<Blog>().Navigation(e => e.Posts).HasField("_myposts");
 
 Теперь можно указывать пространства имен в командной строке во время миграции и формирования шаблонов. Это можно сделать, например, затем, чтобы реконструировать базу данных, поместив в нее классы контекста и модели в различных пространствах имен:
 
-```
+```dotnetcli
 dotnet ef dbcontext scaffold "connection string" Microsoft.EntityFrameworkCore.SqlServer --context-namespace "My.Context" --namespace "My.Model"
 ```
 
@@ -977,7 +977,7 @@ dotnet ef dbcontext scaffold "connection string" Microsoft.EntityFrameworkCore.S
 ---
 Кроме того, теперь можно передать строку подключения команде `database-update`.
 
-```
+```dotnetcli
 dotnet ef database update --connection "connection string"
 ```
 
@@ -992,6 +992,7 @@ dotnet ef database update --connection "connection string"
 При использовании `EnableDetailedErrors` будет добавлена дополнительная проверка на NULL для запросов, чтобы облегчить определение причин этих ошибок за счет небольшого снижения производительности.
 
 Пример:
+
 ```CSharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder
@@ -1017,6 +1018,7 @@ await context.Set<Customer>()
 ### <a name="support-for-the-sql-server-datalength-function"></a>Поддержка функции DATALENGTH SQL Server
 
 К ней можно обратиться с помощью нового метода `EF.Functions.DataLength`. Пример:
+
 ```CSharp
 var count = context.Orders.Count(c => 100 < EF.Functions.DataLength(c.OrderDate));
 ```
@@ -1047,7 +1049,7 @@ public class Blog
 
 ### <a name="complete-discriminator-mapping"></a>Завершение сопоставления дискриминатора
 
-EF Core использует столбец дискриминатора для [сопоставления TPH в иерархии наследования](/ef/core/modeling/inheritance). Некоторые улучшения производительности будут поддерживаться до тех пор, пока EF Core будут известны все возможные значения для дискриминатора. Теперь эти улучшения реализованы в EF Core 5.0.
+EF Core использует столбец дискриминатора для [сопоставления TPH в иерархии наследования](xref:core/modeling/inheritance). Некоторые улучшения производительности будут поддерживаться до тех пор, пока EF Core будут известны все возможные значения для дискриминатора. Теперь эти улучшения реализованы в EF Core 5.0.
 
 Например, в предыдущих версиях EF Core всегда создавался следующий код SQL для запроса, возвращающего все типы в иерархии:
 
@@ -1117,7 +1119,7 @@ public class Address
 
 ### <a name="change-tracking-proxies"></a>Прокси-серверы отслеживания изменений
 
-Теперь EF Core может создавать прокси-серверы среды выполнения, которые автоматически реализуют интерфейсы [INotifyPropertyChanging](/dotnet/api/system.componentmodel.inotifypropertychanging?view=netcore-3.1) и [INotifyPropertyChanged](/dotnet/api/system.componentmodel.inotifypropertychanged?view=netcore-3.1). Затем они сообщают об изменениях значений свойств сущности напрямую в EF Core, что позволяет не выполнять проверку на наличие изменений. Однако прокси-серверы имеют собственный набор ограничений, поэтому они предназначены не для всех.
+Теперь EF Core может создавать прокси-серверы среды выполнения, которые автоматически реализуют интерфейсы [INotifyPropertyChanging](/dotnet/api/system.componentmodel.inotifypropertychanging) и [INotifyPropertyChanged](/dotnet/api/system.componentmodel.inotifypropertychanged). Затем они сообщают об изменениях значений свойств сущности напрямую в EF Core, что позволяет не выполнять проверку на наличие изменений. Однако прокси-серверы имеют собственный набор ограничений, поэтому они предназначены не для всех.
 
 Документация отслеживается по проблеме [#2076](https://github.com/dotnet/EntityFramework.Docs/issues/2076).
 
@@ -1175,7 +1177,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 builder.Entity<Customer>().Property(c => c.ETag).IsEtagConcurrency();
 ```
 
-Затем SaveChanges генерирует исключение `DbUpdateConcurrencyException` при конфликте параллелизма, которое [можно обработать](/ef/core/saving/concurrency) для реализации повторных попыток и т. д.
+Затем SaveChanges генерирует исключение `DbUpdateConcurrencyException` при конфликте параллелизма, которое [можно обработать](xref:core/saving/concurrency) для реализации повторных попыток и т. д.
 
 Документация отслеживается по проблеме [#2099](https://github.com/dotnet/EntityFramework.Docs/issues/2099).
 
