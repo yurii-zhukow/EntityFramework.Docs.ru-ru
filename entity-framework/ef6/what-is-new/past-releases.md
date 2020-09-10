@@ -1,15 +1,16 @@
 ---
 title: Предыдущие выпуски Entity Framework-EF6
+description: Предыдущие выпуски Entity Framework
 author: divega
 ms.date: 09/12/2019
 ms.assetid: 1060bb99-765f-4f32-aaeb-d6635d3dbd3e
 uid: ef6/what-is-new/past-releases
-ms.openlocfilehash: b7181334cd125c5cbf296d5b3674c0b5f087f438
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: e9dce5c545027658a98b375e7ffa15ebbb77369c
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/15/2020
-ms.locfileid: "79402123"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619738"
 ---
 # <a name="past-releases-of-entity-framework"></a>Предыдущие выпуски Entity Framework
 
@@ -69,7 +70,7 @@ ms.locfileid: "79402123"
 ## <a name="ef-612"></a>EF 6.1.2
 Среда выполнения EF 6.1.2 была выпущена в NuGet в декабре 2014.
 В основном эта версия относится к исправлениям ошибок. Мы также приняли несколько значимых изменений членов сообщества:
-- **Параметры кэша запросов можно настроить из файла App/Web. Configuration.**
+- **Параметры кэша запросов можно настроить в файле App/web.configфигурации**
     ``` xml
     <entityFramework>
       <queryCache size='1000' cleaningIntervalInSeconds='-1'/>
@@ -87,12 +88,12 @@ ms.locfileid: "79402123"
 Среда выполнения EF 6.1.0 была выпущена в NuGet в марте 2014.
 Это дополнительное обновление включает значительное количество новых функций:
 
-- **Консолидация инструментов** обеспечивает единообразный способ создания новой модели EF. Эта функция [расширяет возможности мастера ADO.NET EDM для поддержки создания моделей Code First](~/ef6/modeling/code-first/workflows/existing-database.md), включая реконструирование из существующей базы данных. Эти функции ранее были доступны по качеству бета-версии в средствах EF Power Tools.
-- **[Обработка ошибок фиксации транзакций](~/ef6/fundamentals/connection-resiliency/commit-failures.md)** предоставляет коммитфаилурехандлер, который позволяет использовать вновь появившуюся возможность перехвата операций транзакций. Коммитфаилурехандлер позволяет выполнять автоматическое восстановление после сбоев соединения, в то же самое фиксирует транзакцию.
-- **[Индексаттрибуте](~/ef6/modeling/code-first/data-annotations.md)** позволяет указать индексы, размещая атрибут `[Index]` в свойстве (или свойствах) в модели Code First. Code First создаст соответствующий индекс в базе данных.
+- **Консолидация инструментов** обеспечивает единообразный способ создания новой модели EF. Эта функция [расширяет возможности мастера ADO.NET EDM для поддержки создания моделей Code First](xref:ef6/modeling/code-first/workflows/existing-database), включая реконструирование из существующей базы данных. Эти функции ранее были доступны по качеству бета-версии в средствах EF Power Tools.
+- **[Обработка ошибок фиксации транзакций](xref:ef6/fundamentals/connection-resiliency/commit-failures)** предоставляет коммитфаилурехандлер, который позволяет использовать вновь появившуюся возможность перехвата операций транзакций. Коммитфаилурехандлер позволяет выполнять автоматическое восстановление после сбоев соединения, в то же самое фиксирует транзакцию.
+- **[Индексаттрибуте](xref:ef6/modeling/code-first/data-annotations)** позволяет указать индексы, размещая `[Index]` атрибут в свойстве (или свойствах) в модели Code First. Code First создаст соответствующий индекс в базе данных.
 - **Открытый API сопоставления** предоставляет доступ к информации EF о том, как свойства и типы сопоставляются со столбцами и таблицами в базе данных. В прошлых выпусках этот API был внутренним.
-- **[Возможность настройки перехватчиков с помощью файла App/Web. config](~/ef6/fundamentals/configuring/config-file.md)** позволяет добавлять перехватчики без повторной компиляции приложения.
-- **System. Data. Entity. Infrastructure. перехват. датабаселогжер**— это новый перехватчик, который упрощает запись всех операций базы данных в файл. В сочетании с предыдущим компонентом это позволяет легко [переключать ведение журнала операций базы данных для развернутого приложения](~/ef6/fundamentals/configuring/config-file.md)без необходимости перекомпиляции.
+- **[Возможность настройки перехватчиков с помощью файла App/Web.config](xref:ef6/fundamentals/configuring/config-file)** позволяет добавлять перехватчики без повторной компиляции приложения.
+- **System. Data. Entity. Infrastructure. перехват. датабаселогжер**— это новый перехватчик, который упрощает запись всех операций базы данных в файл. В сочетании с предыдущим компонентом это позволяет легко [переключать ведение журнала операций базы данных для развернутого приложения](xref:ef6/fundamentals/configuring/config-file)без необходимости перекомпиляции.
 - Было улучшено **Обнаружение изменений в модели миграции** , чтобы формировать более точные шаблоны. также улучшена производительность процесса обнаружения изменений.
 - **Улучшения производительности** , включая уменьшение количества операций с базой данных во время инициализации, оптимизацию для сравнения значений NULL в запросах LINQ, более быстрое создание представления (создание модели), а также более эффективная материализация отслеживаний сущностей с несколькими ассоциациями.
 
@@ -110,23 +111,23 @@ ms.locfileid: "79402123"
 Среда выполнения EF 6.0.0 была выпущена в NuGet в октябре 2013.
 Это первая версия, в которой полная среда выполнения EF включена в [пакет NuGet EntityFramework](https://www.nuget.org/packages/EntityFramework/) , который не зависит от битов EF, которые являются частью .NET Framework.
 Перемещение оставшихся частей среды выполнения в пакет NuGet требовало определенного количества критических изменений для существующего кода.
-Дополнительные сведения о ручных действиях, необходимых для обновления, см. в разделе об [обновлении до Entity Framework 6](upgrading-to-ef6.md) .
+Дополнительные сведения о ручных действиях, необходимых для обновления, см. в разделе об [обновлении до Entity Framework 6](xref:ef6/what-is-new/upgrading-to-ef6) .
 
 Этот выпуск включает множество новых функций.
 Следующие функции работают для моделей, созданных с помощью Code First или конструктора EF:
 
-- При **[выполнении асинхронного запроса и сохранении](~/ef6/fundamentals/async.md)** добавлена поддержка асинхронных шаблонов на основе задач, которые появились в .NET 4,5.
-- **[Устойчивость подключений](~/ef6/fundamentals/connection-resiliency/retry-logic.md)** обеспечивает автоматическое восстановление после временных сбоев подключения.
-- **[Конфигурация на основе кода](~/ef6/fundamentals/configuring/code-based.md)** дает возможность выполнять настройку, которая традиционно выполнялась в файле конфигурации — в коде.
-- **[Разрешение зависимостей](~/ef6/fundamentals/configuring/dependency-resolution.md)** предоставляет поддержку для шаблона локатора служб, и мы рассмотрели некоторые функциональные возможности, которые можно заменить пользовательскими реализациями.
-- **[Ведение журнала перехвата/SQL](~/ef6/fundamentals/logging-and-interception.md)** предоставляет низкоуровневые строительные блоки для перехвата операций EF с помощью простого ведения журнала SQL, основанного на верхнем уровне.
-- **Улучшения тестирования** облегчают создание тестовых значений Double для DbContext и DbSet при [использовании инфраструктуры макетирования](~/ef6/fundamentals/testing/mocking.md) или [написании собственных тестовых двойной точности](~/ef6/fundamentals/testing/writing-test-doubles.md).
-- **[Теперь DbContext можно создать с помощью уже открытого DbConnection,](~/ef6/fundamentals/connection-management.md)** который позволяет использовать сценарии, где было бы полезно, если подключение было открыто при создании контекста (например, совместное использование соединения между компонентами, где невозможно гарантировать состояние подключения).
-- **[Улучшенная поддержка транзакций](~/ef6/saving/transactions.md)** обеспечивает поддержку транзакции, внешней для платформы, а также улучшенные способы создания транзакции в среде.
+- При **[выполнении асинхронного запроса и сохранении](xref:ef6/fundamentals/async)** добавлена поддержка асинхронных шаблонов на основе задач, которые появились в .NET 4,5.
+- **[Устойчивость подключений](xref:ef6/fundamentals/connection-resiliency/retry-logic)** обеспечивает автоматическое восстановление после временных сбоев подключения.
+- **[Конфигурация на основе кода](xref:ef6/fundamentals/configuring/code-based)** дает возможность выполнять настройку, которая традиционно выполнялась в файле конфигурации — в коде.
+- **[Разрешение зависимостей](xref:ef6/fundamentals/configuring/dependency-resolution)** предоставляет поддержку для шаблона локатора служб, и мы рассмотрели некоторые функциональные возможности, которые можно заменить пользовательскими реализациями.
+- **[Ведение журнала перехвата/SQL](xref:ef6/fundamentals/logging-and-interception)** предоставляет низкоуровневые строительные блоки для перехвата операций EF с помощью простого ведения журнала SQL, основанного на верхнем уровне.
+- **Улучшения тестирования** облегчают создание тестовых значений Double для DbContext и DbSet при [использовании инфраструктуры макетирования](xref:ef6/fundamentals/testing/mocking) или [написании собственных тестовых двойной точности](xref:ef6/fundamentals/testing/writing-test-doubles).
+- **[Теперь DbContext можно создать с помощью уже открытого DbConnection,](xref:ef6/fundamentals/connection-management)** который позволяет использовать сценарии, где было бы полезно, если подключение было открыто при создании контекста (например, совместное использование соединения между компонентами, где невозможно гарантировать состояние подключения).
+- **[Улучшенная поддержка транзакций](xref:ef6/saving/transactions)** обеспечивает поддержку транзакции, внешней для платформы, а также улучшенные способы создания транзакции в среде.
 - **Перечисления, пространственные и улучшенная производительность в .net 4,0** — перемещение основных компонентов, которые использовались в .NET Framework в пакет NuGet EF. Теперь мы можем предлагать поддержку перечисления, пространственные типы данных и улучшения производительности от EF5 в .NET 4,0.
 - **Улучшенная производительность перечислимых элементов. содержит в запросах LINQ**.
-- **Улучшенное время прогрева (создание представления)** , особенно для больших моделей.
-- **Подключаемый модуль множественного преобразования &amp; службы**несамостоятельных совпадений.
+- **Улучшенное время прогрева (создание представления)**, особенно для больших моделей.
+- **Подключаемый модуль множественного &amp; преобразования Служба**несамостоятельных совпадений.
 - Теперь поддерживаются **пользовательские реализации Equals или GetHashCode** в классах сущностей.
 - **DbSet. AddRange/ремоверанже** предоставляет оптимизированный способ добавления или удаления нескольких сущностей из набора.
 - **Дбчанжетраккер. HasChanges** предоставляет простой и эффективный способ сохранения ожидающих изменений, которые необходимо сохранить в базе данных.
@@ -134,13 +135,13 @@ ms.locfileid: "79402123"
 
 Следующие функции применимы только к Code First:
 
-- **[Пользовательские соглашения Code First](~/ef6/modeling/code-first/conventions/custom.md)** позволяют создавать собственные соглашения, чтобы избежать повторяющихся настроек. Мы предоставляем простой API для упрощенных соглашений, а также некоторые более сложные стандартные блоки, позволяющие создавать более сложные соглашения.
-- Теперь поддерживается **[сопоставление Code First для вставки, обновления и удаления хранимых процедур](~/ef6/modeling/code-first/fluent/cud-stored-procedures.md)** .
-- **[Сценарии миграции идемпотентными](~/ef6/modeling/code-first/migrations/index.md)** позволяют создавать скрипты SQL, которые могут обновлять базу данных в любой версии вплоть до последней версии.
-- **[Настраиваемая таблица журналов миграции](~/ef6/modeling/code-first/migrations/history-customization.md)** позволяет настроить определение таблицы журнала миграции. Это особенно полезно для поставщиков баз данных, для которых требуется указать соответствующие типы данных и т. д., чтобы таблица журнала миграции работала правильно.
+- **[Пользовательские соглашения Code First](xref:ef6/modeling/code-first/conventions/custom)** позволяют создавать собственные соглашения, чтобы избежать повторяющихся настроек. Мы предоставляем простой API для упрощенных соглашений, а также некоторые более сложные стандартные блоки, позволяющие создавать более сложные соглашения.
+- Теперь поддерживается **[сопоставление Code First для вставки, обновления и удаления хранимых процедур](xref:ef6/modeling/code-first/fluent/cud-stored-procedures)** .
+- **[Сценарии миграции идемпотентными](xref:ef6/modeling/code-first/migrations/index)** позволяют создавать скрипты SQL, которые могут обновлять базу данных в любой версии вплоть до последней версии.
+- **[Настраиваемая таблица журналов миграции](xref:ef6/modeling/code-first/migrations/history-customization)** позволяет настроить определение таблицы журнала миграции. Это особенно полезно для поставщиков баз данных, для которых требуется указать соответствующие типы данных и т. д., чтобы таблица журнала миграции работала правильно.
 - В **нескольких контекстах на одну базу данных** удаляется предыдущее ограничение одной Code First модели на базу данных при использовании миграции или когда Code First автоматически создает базу данных.
-- **[Дбмоделбуилдер. хасдефаултсчема](~/ef6/modeling/code-first/fluent/types-and-properties.md)** — это новый API Code First, который позволяет настроить схему базы данных по умолчанию для Code Firstной модели в одном месте. Ранее схема Code First по умолчанию жестко запрограммирована на &quot;dbo&quot; и единственным способом настройки схемы, в которой таблица принадлежала к ToTable API.
-- **Метод дбмоделбуилдер. Configurations. аддфромассембли** позволяет легко добавлять все классы конфигурации, определенные в сборке, при использовании классов конфигурации с API-интерфейсом Code First Fluent.
+- **[Дбмоделбуилдер. хасдефаултсчема](xref:ef6/modeling/code-first/fluent/types-and-properties)** — это новый API Code First, который позволяет настроить схему базы данных по умолчанию для Code Firstной модели в одном месте. Ранее схема Code First по умолчанию была жестко запрограммирована на &quot; dbo &quot; , и единственный способ настройки схемы, в которой таблица принадлежала к, — через API ToTable.
+- **DbModelBuilder.Configуратионс. Метод Аддфромассембли** позволяет легко добавлять все классы конфигурации, определенные в сборке, при использовании классов конфигурации с API-интерфейсом Code First Fluent.
 - С помощью **[пользовательских операций миграции](https://romiller.com/2013/02/27/ef6-writing-your-own-code-first-migration-operations/)** можно добавить дополнительные операции, которые будут использоваться при переносе на основе кода.
 - **Уровень изоляции транзакций по умолчанию изменен на READ_COMMITTED_SNAPSHOT** для баз данных, созданных с помощью Code First, что обеспечивает более масштабируемость и меньше взаимоблокировок.
 - **Сущности и сложные типы теперь могут быть нестединсиде классами**.
@@ -155,64 +156,64 @@ ms.locfileid: "79402123"
 
 -   [Запись выпуска EF 5](https://blogs.msdn.com/b/adonet/archive/2012/08/15/ef5-released.aspx)
 -   Новые возможности в EF5
-    -   [Поддержка перечисления в Code First](~/ef6/modeling/code-first/data-types/enums.md)
-    -   [Поддержка перечисления в конструкторе EF](~/ef6/modeling/designer/data-types/enums.md)
-    -   [Типы пространственных данных в Code First](~/ef6/modeling/code-first/data-types/spatial.md)
-    -   [Типы пространственных данных в конструкторе EF](~/ef6/modeling/designer/data-types/spatial.md)
-    -   [Поддержка пространственных типов в поставщике](~/ef6/fundamentals/providers/spatial-support.md)
-    -   [Функции с табличными значениями](~/ef6/modeling/designer/advanced/tvfs.md)
-    -   [Несколько диаграмм на модель](~/ef6/modeling/designer/multiple-diagrams.md)
+    -   [Поддержка перечисления в Code First](xref:ef6/modeling/code-first/data-types/enums)
+    -   [Поддержка перечисления в конструкторе EF](xref:ef6/modeling/designer/data-types/enums)
+    -   [Типы пространственных данных в Code First](xref:ef6/modeling/code-first/data-types/spatial)
+    -   [Типы пространственных данных в конструкторе EF](xref:ef6/modeling/designer/data-types/spatial)
+    -   [Поддержка пространственных типов в поставщике](xref:ef6/fundamentals/providers/spatial-support)
+    -   [Функции с табличными значениями](xref:ef6/modeling/designer/advanced/tvfs)
+    -   [Несколько диаграмм на модель](xref:ef6/modeling/designer/multiple-diagrams)
 -   Настройка модели
-    -   [Создание модели](~/ef6/modeling/index.md)
-    -   [Подключения и модели](~/ef6/fundamentals/configuring/connection-strings.md)
-    -   [Вопросы производительности](~/ef6/fundamentals/performance/perf-whitepaper.md)
-    -   [Работа с Microsoft SQL Azure](~/ef6/fundamentals/connection-resiliency/retry-logic.md)
-    -   [Параметры файла конфигурации](~/ef6/fundamentals/configuring/config-file.md)
-    -   [Глоссарий](~/ef6/resources/glossary.md)
+    -   [Создание модели](xref:ef6/modeling/index)
+    -   [Подключения и модели](xref:ef6/fundamentals/configuring/connection-strings)
+    -   [Вопросы производительности](xref:ef6/fundamentals/performance/perf-whitepaper)
+    -   [Работа с Microsoft SQL Azure](xref:ef6/fundamentals/connection-resiliency/retry-logic)
+    -   [Параметры файла конфигурации](xref:ef6/fundamentals/configuring/config-file)
+    -   [Словарь терминов](xref:ef6/resources/glossary)
     -   Code First
-        -   [Code First к новой базе данных (пошаговое руководство и видео)](~/ef6/modeling/code-first/workflows/new-database.md)
-        -   [Code First к существующей базе данных (пошаговое руководство и видео)](~/ef6/modeling/code-first/workflows/existing-database.md)
-        -   [Соглашения](~/ef6/modeling/code-first/conventions/built-in.md)
-        -   [Заметки к данным](~/ef6/modeling/code-first/data-annotations.md)
-        -   [API-интерфейсы Fluent — Настройка и сопоставление свойств & типов](~/ef6/modeling/code-first/fluent/types-and-properties.md)
-        -   [API Fluent — Настройка связей](~/ef6/modeling/code-first/fluent/relationships.md)
-        -   [API Fluent с VB.NET](~/ef6/modeling/code-first/fluent/vb.md)
-        -   [Code First Migrations](~/ef6/modeling/code-first/migrations/index.md)
-        -   [Автоматическое Code First Migrations](~/ef6/modeling/code-first/migrations/automatic.md)
-        -   [Миграция. exe](~/ef6/modeling/code-first/migrations/migrate-exe.md)
-        -   [Определение Дбсетс](~/ef6/modeling/code-first/dbsets.md)
+        -   [Code First к новой базе данных (пошаговое руководство и видео)](xref:ef6/modeling/code-first/workflows/new-database)
+        -   [Code First к существующей базе данных (пошаговое руководство и видео)](xref:ef6/modeling/code-first/workflows/existing-database)
+        -   [Соглашения](xref:ef6/modeling/code-first/conventions/built-in)
+        -   [Заметки к данным](xref:ef6/modeling/code-first/data-annotations)
+        -   [API-интерфейсы Fluent — Настройка и сопоставление свойств & типов](xref:ef6/modeling/code-first/fluent/types-and-properties)
+        -   [API Fluent — Настройка связей](xref:ef6/modeling/code-first/fluent/relationships)
+        -   [API Fluent с VB.NET](xref:ef6/modeling/code-first/fluent/vb)
+        -   [Code First Migrations](xref:ef6/modeling/code-first/migrations/index)
+        -   [Автоматическое Code First Migrations](xref:ef6/modeling/code-first/migrations/automatic)
+        -   [Migrate.exe](xref:ef6/modeling/code-first/migrations/migrate-exe)
+        -   [Определение Дбсетс](xref:ef6/modeling/code-first/dbsets)
     -   Конструктор EF
-        -   [Model First (пошаговое руководство и видео)](~/ef6/modeling/designer/workflows/model-first.md)
-        -   [Database First (пошаговое руководство и видео)](~/ef6/modeling/designer/workflows/database-first.md)
-        -   [Сложные типы](~/ef6/modeling/designer/data-types/complex-types.md)
-        -   [Связи и связи](~/ef6/modeling/designer/relationships.md)
-        -   [Шаблон наследования TPT](~/ef6/modeling/designer/inheritance/tpt.md)
-        -   [Шаблон наследования «подтаблица»](~/ef6/modeling/designer/inheritance/tph.md)
-        -   [Запрос с хранимыми процедурами](~/ef6/modeling/designer/stored-procedures/query.md)
-        -   [Хранимые процедуры с несколькими результирующими наборами](~/ef6/modeling/designer/advanced/multiple-result-sets.md)
-        -   [Вставка, обновление & удаление с помощью хранимых процедур](~/ef6/modeling/designer/stored-procedures/cud.md)
-        -   [Сопоставьте сущность с несколькими таблицами (разделение сущностей)](~/ef6/modeling/designer/entity-splitting.md)
-        -   [Сопоставьте несколько сущностей с одной таблицей (разделение таблицы)](~/ef6/modeling/designer/table-splitting.md)
-        -   [Определение запросов](~/ef6/modeling/designer/advanced/defining-query.md)
-        -   [Шаблоны создания кода](~/ef6/modeling/designer/codegen/index.md)
-        -   [Возврат к контексту ObjectContext](~/ef6/modeling/designer/codegen/legacy-objectcontext.md)
+        -   [Model First (пошаговое руководство и видео)](xref:ef6/modeling/designer/workflows/model-first)
+        -   [Database First (пошаговое руководство и видео)](xref:ef6/modeling/designer/workflows/database-first)
+        -   [Сложные типы](xref:ef6/modeling/designer/data-types/complex-types)
+        -   [Связи и связи](xref:ef6/modeling/designer/relationships)
+        -   [Шаблон наследования TPT](xref:ef6/modeling/designer/inheritance/tpt)
+        -   [Шаблон наследования «подтаблица»](xref:ef6/modeling/designer/inheritance/tph)
+        -   [Запрос с хранимыми процедурами](xref:ef6/modeling/designer/stored-procedures/query)
+        -   [Хранимые процедуры с несколькими результирующими наборами](xref:ef6/modeling/designer/advanced/multiple-result-sets)
+        -   [Вставка, обновление & удаление с помощью хранимых процедур](xref:ef6/modeling/designer/stored-procedures/cud)
+        -   [Сопоставьте сущность с несколькими таблицами (разделение сущностей)](xref:ef6/modeling/designer/entity-splitting)
+        -   [Сопоставьте несколько сущностей с одной таблицей (разделение таблицы)](xref:ef6/modeling/designer/table-splitting)
+        -   [Определение запросов](xref:ef6/modeling/designer/advanced/defining-query)
+        -   [Шаблоны создания кода](xref:ef6/modeling/designer/codegen/index)
+        -   [Возврат к контексту ObjectContext](xref:ef6/modeling/designer/codegen/legacy-objectcontext)
 -   Использование модели
-    -   [Работа с DbContext](~/ef6/fundamentals/working-with-dbcontext.md)
-    -   [Запрос и поиск сущностей](~/ef6/querying/index.md)
-    -   [Работа с связями](~/ef6/fundamentals/relationships.md)
-    -   [Загрузка связанных сущностей](~/ef6/querying/related-data.md)
-    -   [Работа с локальными данными](~/ef6/querying/local-data.md)
-    -   [N-уровневые приложения](~/ef6/fundamentals/disconnected-entities/index.md)
-    -   [Необработанные SQL-запросы](~/ef6/querying/raw-sql.md)
-    -   [Шаблоны оптимистичного параллелизма](~/ef6/saving/concurrency.md)
-    -   [Работа с учетными записями-посредниками](~/ef6/fundamentals/proxies.md)
-    -   [Автоматическое обнаружение изменений](~/ef6/saving/change-tracking/auto-detect-changes.md)
-    -   [Запросы без отслеживания](~/ef6/querying/no-tracking.md)
-    -   [Метод Load](~/ef6/querying/load-method.md)
-    -   [Добавление и присоединение и состояния сущностей](~/ef6/saving/change-tracking/entity-state.md)
-    -   [Работа со значениями свойств](~/ef6/saving/change-tracking/property-values.md)
-    -   [Привязка данных с помощью WPF (Windows Presentation Foundation)](~/ef6/fundamentals/databinding/wpf.md)
-    -   [Привязка данных с помощью WinForms (Windows Forms)](~/ef6/fundamentals/databinding/winforms.md)
+    -   [Работа с DbContext](xref:ef6/fundamentals/working-with-dbcontext)
+    -   [Запрос и поиск сущностей](xref:ef6/querying/index)
+    -   [Общие сведения о работе со связями](xref:ef6/fundamentals/relationships)
+    -   [Загрузка связанных сущностей](xref:ef6/querying/related-data)
+    -   [Работа с локальными данными](xref:ef6/querying/local-data)
+    -   [N-уровневые приложения](xref:ef6/fundamentals/disconnected-entities/index)
+    -   [Необработанные запросы SQL](xref:ef6/querying/raw-sql)
+    -   [Шаблоны оптимистичного параллелизма](xref:ef6/saving/concurrency)
+    -   [Работа с учетными записями-посредниками](xref:ef6/fundamentals/proxies)
+    -   [Автоматическое обнаружение изменений](xref:ef6/saving/change-tracking/auto-detect-changes)
+    -   [Запросы без отслеживания](xref:ef6/querying/no-tracking)
+    -   [Метод Load](xref:ef6/querying/load-method)
+    -   [Добавление и присоединение и состояния сущностей](xref:ef6/saving/change-tracking/entity-state)
+    -   [Работа со значениями свойств](xref:ef6/saving/change-tracking/property-values)
+    -   [Привязка данных с помощью WPF (Windows Presentation Foundation)](xref:ef6/fundamentals/databinding/wpf)
+    -   [Привязка данных с помощью WinForms (Windows Forms)](xref:ef6/fundamentals/databinding/winforms)
 
 ## <a name="ef-431"></a>EF 4.3.1
 Среда выполнения EF 4.3.1 была выпущена в NuGet в феврале 2012 в ближайшее время после EF 4.3.0.

@@ -1,21 +1,22 @@
 ---
 title: Справочник по средствам EF Core (.NET CLI) — EF Core
+description: Справочное руководство по средствам .NET Core CLI Entity Framework Core
 author: bricelam
 ms.author: bricelam
 ms.date: 07/11/2019
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: 8ff2f3481c7f0c255def3272ca53370faba33e95
-ms.sourcegitcommit: 31536e52b838a84680d2e93e5bb52fb16df72a97
+ms.openlocfilehash: b5f4941b1a1cf5674d9cc998dd0aed0c0469ff27
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86238181"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619435"
 ---
 # <a name="entity-framework-core-tools-reference---net-core-cli"></a>Справочник по инструментам Entity Framework Core — .NET Core CLI
 
-Средства интерфейса командной строки (CLI) для Entity Framework Core выполнения задач разработки во время разработки. Например, они создают [миграции](/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-2.0), применяют миграции и создают код для модели на основе существующей базы данных. Команды представляют собой расширение кросс-платформенной команды [DotNet](/dotnet/core/tools) , которая является частью [пакет SDK для .NET Core](https://www.microsoft.com/net/core). Эти средства работают с проектами .NET Core.
+Средства интерфейса командной строки (CLI) для Entity Framework Core выполнения задач разработки во время разработки. Например, они создают [миграции](/aspnet/core/data/ef-mvc/migrations), применяют миграции и создают код для модели на основе существующей базы данных. Команды представляют собой расширение кросс-платформенной команды [DotNet](/dotnet/core/tools) , которая является частью [пакет SDK для .NET Core](https://www.microsoft.com/net/core). Эти средства работают с проектами .NET Core.
 
-Если вы используете Visual Studio, вместо этого рекомендуется использовать [средства консоли диспетчера пакетов](powershell.md) :
+Если вы используете Visual Studio, вместо этого рекомендуется использовать [средства консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell) :
 
 * Они автоматически работают с текущим проектом, выбранным в **консоли диспетчера пакетов** , без необходимости переключать каталоги вручную.
 * Они автоматически открывают файлы, созданные командой после завершения команды.
@@ -31,7 +32,7 @@ ms.locfileid: "86238181"
 
 ### <a name="ef-core-3x"></a>EF Core 3. x
 
-* `dotnet ef`должен быть установлен в качестве глобального или локального средства. Большинство разработчиков будут устанавливаться `dotnet ef` как глобальные средства с помощью следующей команды:
+* `dotnet ef` должен быть установлен в качестве глобального или локального средства. Большинство разработчиков будут устанавливаться `dotnet ef` как глобальные средства с помощью следующей команды:
 
   ```dotnetcli
   dotnet tool install --global dotnet-ef
@@ -39,7 +40,7 @@ ms.locfileid: "86238181"
 
   Также можно использовать `dotnet ef` в качестве локального средства. Чтобы использовать его в качестве локального средства, восстановите зависимости проекта, объявляющие его как зависимость инструментария, с помощью [файла манифеста средства](https://github.com/dotnet/cli/issues/10288).
 
-* Установите [пакета SDK для .NET Core](https://www.microsoft.com/net/download/core).
+* Установите [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core).
 
 * Установите последнюю версию `Microsoft.EntityFrameworkCore.Design` пакета.
 
@@ -198,7 +199,7 @@ Entity Framework Core .NET Command-line Tools 2.1.3-rtm-32065
 
 Параметры:
 
-| Параметр                                    | Описание:                                                                                                                                        |
+| Параметр                                    | Описание                                                                                                                                        |
 |:------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------|
 |  <nobr>`--connection <CONNECTION>`</nobr> | Строка подключения к базе данных. По умолчанию используется значение, заданное в `AddDbContext` или `OnConfiguring` . (Доступно из EF Core 5.0.0/выше.) |
 
