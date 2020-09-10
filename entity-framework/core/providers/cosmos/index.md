@@ -5,12 +5,12 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/index
-ms.openlocfilehash: 74284bf78f404e376436a1ef5d5933186c85ae49
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 0d88e0a4876755656626621fd9a4ca01d18b5b64
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413059"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619314"
 ---
 # <a name="ef-core-azure-cosmos-db-provider"></a>Поставщик EF Core для Azure Cosmos DB
 
@@ -54,7 +54,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 > [!WARNING]
 > Для простоты конечная точка и ключ здесь заданы в коде, но в рабочем приложении необходимо обеспечить их [безопасное хранение](/aspnet/core/security/app-secrets#secret-manager).
 
-В этом примере `Order` представляет собой простую сущность, ссылающуюся на `StreetAddress` [зависимого типа](../../modeling/owned-entities.md).
+В этом примере `Order` представляет собой простую сущность, ссылающуюся на `StreetAddress` [зависимого типа](xref:core/modeling/owned-entities).
 
 [!code-csharp[Order](../../../../samples/core/Cosmos/ModelBuilding/Order.cs?name=Order)]
 
@@ -65,7 +65,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 [!code-csharp[HelloCosmos](../../../../samples/core/Cosmos/ModelBuilding/Sample.cs?name=HelloCosmos)]
 
 > [!IMPORTANT]
-> Путем вызова [EnsureCreatedAsync](/dotnet/api/Microsoft.EntityFrameworkCore.Storage.IDatabaseCreator.EnsureCreatedAsync) вы создадите требуемые контейнеры и вставите [начальные данные](../../modeling/data-seeding.md), если они есть в модели. Но `EnsureCreatedAsync` следует вызывать только во время развертывания, а не в рабочем режиме, так как это может вызвать проблемы с производительностью.
+> Путем вызова [EnsureCreatedAsync](/dotnet/api/Microsoft.EntityFrameworkCore.Storage.IDatabaseCreator.EnsureCreatedAsync) вы создадите требуемые контейнеры и вставите [начальные данные](xref:core/modeling/data-seeding), если они есть в модели. Но `EnsureCreatedAsync` следует вызывать только во время развертывания, а не в рабочем режиме, так как это может вызвать проблемы с производительностью.
 
 ## <a name="cosmos-specific-model-customization"></a>Настройка моделей для Cosmos
 
@@ -77,13 +77,13 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 
 [!code-csharp[Container](../../../../samples/core/Cosmos/ModelBuilding/OrderContext.cs?name=Container)]
 
-Чтобы определить тип сущности элемента, EF Core добавляет значение дискриминатора, даже если у элемента нет производных типов сущности. Имя и значение дискриминатора [можно изменить](../../modeling/inheritance.md).
+Чтобы определить тип сущности элемента, EF Core добавляет значение дискриминатора, даже если у элемента нет производных типов сущности. Имя и значение дискриминатора [можно изменить](xref:core/modeling/inheritance).
 
 Если в том же контейнере не будут храниться другие типы сущностей, дискриминатор можно удалить, вызвав [HasNoDiscriminator](/dotnet/api/Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder.HasNoDiscriminator).
 
 [!code-csharp[NoDiscriminator](../../../../samples/core/Cosmos/ModelBuilding/OrderContext.cs?name=NoDiscriminator)]
 
-### <a name="partition-keys"></a>Ключи секций
+### <a name="partition-keys"></a>Ключи секции
 
 По умолчанию EF Core создаст контейнеры с ключом секции, равным `"__partitionKey"`, не предоставляя для него значения при вставке элементов. Но чтобы полностью использовать возможности производительности Azure Cosmos, следует использовать [тщательно выбранный ключ секции](/azure/cosmos-db/partition-data). Его можно настроить, вызвав [HasPartitionKey](/dotnet/api/Microsoft.EntityFrameworkCore.CosmosEntityTypeBuilderExtensions.HasPartitionKey).
 
@@ -164,7 +164,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 
 ## <a name="working-with-disconnected-entities"></a>Работа с отключенными сущностями
 
-Каждый элемент должен иметь значение `id`, уникальное для определенного ключа секции. По умолчанию EF Core создает значение, объединяя дискриминатор и значения первичного ключа с помощью символа | в качестве разделителя. Значения ключа создаются, только если сущность принимает состояние `Added`. Это может вызвать проблему при [присоединении сущностей](../../saving/disconnected-entities.md), если у них нет свойства `id` для типа .NET, чтобы хранить значение.
+Каждый элемент должен иметь значение `id`, уникальное для определенного ключа секции. По умолчанию EF Core создает значение, объединяя дискриминатор и значения первичного ключа с помощью символа | в качестве разделителя. Значения ключа создаются, только если сущность принимает состояние `Added`. Это может вызвать проблему при [присоединении сущностей](xref:core/saving/disconnected-entities), если у них нет свойства `id` для типа .NET, чтобы хранить значение.
 
 Чтобы обойти это ограничение, можно создать и задать значение `id` вручную или пометить сущность как добавленную первой, а затем придать ей нужное состояние:
 
