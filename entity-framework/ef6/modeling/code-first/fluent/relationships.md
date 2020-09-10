@@ -1,18 +1,20 @@
 ---
 title: Интерфейсы API Fluent — взаимосвязи — EF6
+description: Связи API Fluent в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: fd73b4f8-16d5-40f1-9640-885ceafe67a1
-ms.openlocfilehash: 05f282c02699f8bf3c71197ac5e01000f1855917
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+uid: ef6/modeling/code-first/fluent/relationships
+ms.openlocfilehash: 8cc56f7341df6da7f60f649308ea7042ef23b537
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78415763"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89617001"
 ---
 # <a name="fluent-api---relationships"></a>Взаимосвязи API Fluent
 > [!NOTE]
-> На этой странице содержатся сведения о настройке связей в модели Code First с помощью API Fluent. Общие сведения о связях в EF и доступе к данным и управлении ими с помощью связей см. в разделе [связи & свойства навигации](~/ef6/fundamentals/relationships.md).  
+> На этой странице содержатся сведения о настройке связей в модели Code First с помощью API Fluent. Общие сведения о связях в EF и доступе к данным и управлении ими с помощью связей см. в разделе [связи & свойства навигации](xref:ef6/fundamentals/relationships).  
 
 При работе с Code First вы определяете модель, определяя классы CLR домена. По умолчанию Entity Framework использует соглашения Code First, чтобы сопоставлять классы с схемой базы данных. Если используются соглашения об именовании Code First, в большинстве случаев можно полагаться на Code First, чтобы настроить связи между таблицами на основе внешних ключей и свойств навигации, определенных в классах. Если вы не соответствуете соглашениям при определении классов или хотите изменить способ работы соглашений, можно использовать API-интерфейс Fluent или заметки к данным для настройки классов таким образом, чтобы Code First могли сопоставлять связи между таблицами.  
 
@@ -95,8 +97,8 @@ modelBuilder.Entity<Instructor>()
 
 Эти правила каскадного удаления можно удалить с помощью:  
 
-modelBuilder. Conventions. Remove\<Онетоманикаскадеделетеконвентион\>()  
-modelBuilder. Conventions. Remove\<Манитоманикаскадеделетеконвентион\>()  
+modelBuilder. Conventions. Remove \<OneToManyCascadeDeleteConvention\> ()  
+modelBuilder. Conventions. Remove \<ManyToManyCascadeDeleteConvention\> ()  
 
 Следующий код настраивает требуемую связь, а затем отключает каскадное удаление.  
 

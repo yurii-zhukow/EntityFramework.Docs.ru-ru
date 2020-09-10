@@ -1,14 +1,16 @@
 ---
 title: Строки подключения и модели — EF6
+description: Строки подключения и модели в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 294bb138-978f-4fe2-8491-fdf3cd3c60c4
-ms.openlocfilehash: 2c9f084107e4de7f5439bf0082b46a3b538496e0
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+uid: ef6/fundamentals/configuring/connection-strings
+ms.openlocfilehash: 2203d7f2168dc9d4ae5a6b1914742c7c2b6fbf77
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78415955"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89618438"
 ---
 # <a name="connection-strings-and-models"></a>Строки подключения и модели
 В этом разделе описано, как Entity Framework обнаруживает, какое подключение к базе данных следует использовать, и как его можно изменить. В этом разделе рассматриваются модели, созданные с помощью Code First и конструктора EF.  
@@ -44,7 +46,7 @@ Visual Studio 2010 включает SQL Express по умолчанию, а Visu
 
 ## <a name="use-code-first-with-connection-by-convention-and-specified-database-name"></a>Использование Code First с подключением по соглашению и указанным именем базы данных  
 
-Если вы еще не выполнили какие-либо другие настройки в приложении, то вызов конструктора строк для DbContext с именем базы данных, которое вы хотите использовать, приведет к запуску DbContext в режиме Code First с подключением к базе данных, созданным по соглашению с базой данных Это имя. Пример:  
+Если вы не выполнили какие-либо другие настройки в приложении, то вызов конструктора строк для DbContext с именем базы данных, которое вы хотите использовать, приведет к запуску DbContext в режиме Code First с подключением к базе данных, созданным по соглашению с базой данных этого имени. Пример:  
 
 ``` csharp  
 public class BloggingContext : DbContext
@@ -58,9 +60,9 @@ public class BloggingContext : DbContext
 
 В этом примере DbContext использует "Блоггингдатабасе" в качестве имени базы данных и создает строку подключения для этой базы данных с помощью SQL Express (устанавливается вместе с Visual Studio 2010) или LocalDB (устанавливается вместе с Visual Studio 2012). Если установлены оба варианта, будет использоваться SQL Express.  
 
-## <a name="use-code-first-with-connection-string-in-appconfigwebconfig-file"></a>Использование Code First со строкой подключения в файле App. config/Web. config  
+## <a name="use-code-first-with-connection-string-in-appconfigwebconfig-file"></a>Использование Code First со строкой подключения в файле app.config или web.config  
 
-Вы можете указать строку подключения в файле App. config или Web. config. Пример:  
+Вы можете указать строку подключения в app.config или web.config файле. Пример:  
 
 ``` xml  
 <configuration>
@@ -86,7 +88,7 @@ public class BloggingContext : DbContext
 }
 ```  
 
-Кроме того, можно использовать форму "имя =\<имя строки подключения\>" для строки, передаваемой конструктору DbContext. Пример:  
+Кроме того, можно использовать форму "Name = \<connection string name\> " для строки, передаваемой конструктору DbContext. Пример:  
 
 ``` csharp  
 public class BloggingContext : DbContext
@@ -100,11 +102,11 @@ public class BloggingContext : DbContext
 
 Эта форма явно делает то, что строка подключения будет найдена в файле конфигурации. Если строка подключения с данным именем не найдена, будет выдано исключение.  
 
-## <a name="databasemodel-first-with-connection-string-in-appconfigwebconfig-file"></a>База данных/Model First со строкой подключения в файле App. config/Web. config  
+## <a name="databasemodel-first-with-connection-string-in-appconfigwebconfig-file"></a>База данных/Model First со строкой подключения в файле app.config или web.config  
 
 Модели, созданные с помощью конструктора EF, отличаются от Code First тем, что модель уже существует и не создается из кода при запуске приложения. Модель обычно существует в файле EDMX в проекте.  
 
-Конструктор добавит строку подключения EF в файл App. config или Web. config. Эта строка подключения является особой в том, что она содержит сведения о том, как найти информацию в файле EDMX. Пример:  
+Конструктор добавит строку подключения EF в app.config или web.config файл. Эта строка подключения является особой в том, что она содержит сведения о том, как найти информацию в файле EDMX. Пример:  
 
 ``` xml  
 <configuration>  

@@ -1,14 +1,16 @@
 ---
 title: Работа с прокси-серверами — EF6
+description: Работа с учетными записями-посредниками в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 869ee4dc-06f1-471d-8e0e-0a1a2bc59c30
-ms.openlocfilehash: 8f7d2e8b41ece28efe8d1df3b0679e6e4510d64a
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+uid: ef6/fundamentals/proxies
+ms.openlocfilehash: 26493ecf1a894a1cd421f574de38678661f324a0
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78415991"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89618365"
 ---
 # <a name="working-with-proxies"></a>Работа с учетными записями-посредниками
 При создании экземпляров типов сущностей POCO Entity Framework часто создает экземпляры динамически создаваемого производного типа, который выступает в качестве прокси-сервера для сущности. Этот прокси-сервер переопределяет некоторые виртуальные свойства сущности, чтобы вставлять обработчики для выполнения действий автоматически при обращении к свойству. Например, этот механизм используется для поддержки отложенной загрузки связей. Методы, представленные в этом разделе, также применимы к моделям, созданным с помощью Code First и конструктора EF.  

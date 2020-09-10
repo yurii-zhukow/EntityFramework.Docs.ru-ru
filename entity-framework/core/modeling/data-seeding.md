@@ -1,16 +1,17 @@
 ---
 title: Заполнение данных — EF Core
+description: Использование заполнения данных для заполнения базы данных начальным набором данных с помощью Entity Framework Core
 author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/02/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 uid: core/modeling/data-seeding
-ms.openlocfilehash: 5c056c600f696ad1443ddb7b8c95c4b0ead06d21
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: cdf189a4d2ec00f2bb094045541a98d1a66ffefc
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78414575"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619383"
 ---
 # <a name="data-seeding"></a>Присвоение начальных значений данных
 
@@ -32,7 +33,7 @@ ms.locfileid: "78414575"
 > [!NOTE]
 > Миграция учитывает изменения модели только при определении того, какая операция должна быть выполнена, чтобы получить начальные данные в требуемое состояние. Поэтому любые изменения данных, выполненные за пределами миграции, могут быть потеряны или вызывать ошибку.
 
-В качестве примера вы настроите начальные данные для `Blog` в `OnModelCreating`:
+В качестве примера вы настроите начальные данные для `Blog` в `OnModelCreating` :
 
 [!code-csharp[BlogSeed](../../../samples/core/Modeling/DataSeeding/DataSeedingContext.cs?name=BlogSeed)]
 
@@ -55,7 +56,7 @@ ms.locfileid: "78414575"
 > [!TIP]
 > Если необходимо применить миграции в рамках автоматизированного развертывания, можно [создать скрипт SQL](xref:core/managing-schemas/migrations/index#generate-sql-scripts) , который можно просмотреть перед выполнением.
 
-Кроме того, можно использовать `context.Database.EnsureCreated()` для создания новой базы данных, содержащей начальные данные, например для тестовой базы данных или при использовании поставщика в памяти или любой другой базы данных, не являющейся реляционной. Обратите внимание, что если база данных уже существует, `EnsureCreated()` не будет обновлять схему или начальные данные в базе данных. Для реляционных баз данных не следует вызывать `EnsureCreated()`, если планируется использовать миграции.
+Кроме того, можно использовать `context.Database.EnsureCreated()` для создания новой базы данных, содержащей начальные данные, например для тестовой базы данных или при использовании поставщика в памяти или любой базы данных, не являющейся реляционной. Обратите внимание, что если база данных уже существует, `EnsureCreated()` не будет обновлять схему или начальные данные в базе данных. Для реляционных баз данных не следует вызывать, `EnsureCreated()` Если планируется использовать миграции.
 
 ### <a name="limitations-of-model-seed-data"></a>Ограничения данных начального значения модели
 
@@ -76,13 +77,13 @@ ms.locfileid: "78414575"
 
 ## <a name="manual-migration-customization"></a>Настройка миграции вручную
 
-При добавлении миграции изменения данных, указанных в `HasData`, преобразуются в вызовы `InsertData()`, `UpdateData()`и `DeleteData()`. Одним из способов обойти некоторые ограничения `HasData` является ручное добавление этих вызовов или [пользовательских операций](xref:core/managing-schemas/migrations/operations) в процесс миграции.
+При добавлении миграции изменения данных, указанных в, `HasData` преобразуются в вызовы методов `InsertData()` , `UpdateData()` и `DeleteData()` . Одним из способов обхода некоторых ограничений `HasData` является ручное добавление этих вызовов или [пользовательских операций](xref:core/managing-schemas/migrations/operations) в процесс миграции.
 
 [!code-csharp[CustomInsert](../../../samples/core/Modeling/DataSeeding/Migrations/20181102235626_Initial.cs?name=CustomInsert)]
 
 ## <a name="custom-initialization-logic"></a>Пользовательская логика инициализации
 
-Простой и эффективный способ выполнения заполнения данных заключается в использовании [`DbContext.SaveChanges()`](xref:core/saving/index) до начала выполнения главной логики приложения.
+Простой и эффективный способ выполнения заполнения данных — использовать [`DbContext.SaveChanges()`](xref:core/saving/index) перед началом выполнения основной логики приложения.
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataSeeding/Program.cs?name=CustomSeeding)]
 

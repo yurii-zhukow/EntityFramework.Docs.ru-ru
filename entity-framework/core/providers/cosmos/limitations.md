@@ -1,16 +1,16 @@
 ---
 title: Поставщик Azure Cosmos DB — ограничения — EF Core
-description: Ограничения поставщика Entity Framework Core Azure Cosmos DB
+description: Ограничения поставщика Entity Framework Core Azure Cosmos DB по сравнению с другими поставщиками
 author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/limitations
-ms.openlocfilehash: 2631526b152d6ddcacf25173c8d51e4e3cb24500
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: 0b8edd9ac5fa3d684498efe222ce11a0356040b8
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78414563"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619273"
 ---
 # <a name="ef-core-azure-cosmos-db-provider-limitations"></a>Ограничения поставщика EF Core Azure Cosmos DB
 
@@ -20,15 +20,15 @@ ms.locfileid: "78414563"
 
 - Даже если существует только один тип сущности без наследования, сопоставленный с контейнером, он по-прежнему имеет свойство дискриминатора.
 - Типы сущностей с ключами секций неправильно работают в некоторых сценариях
-- вызовы `Include` не поддерживаются
-- вызовы `Join` не поддерживаются
+- `Include` вызовы не поддерживаются
+- `Join` вызовы не поддерживаются
 
 ## <a name="azure-cosmos-db-sdk-limitations"></a>Ограничения пакета SDK для Azure Cosmos DB
 
 - Предоставляются только асинхронные методы
 
 > [!WARNING]
-> Поскольку отсутствуют версии синхронизации методов низкого уровня, EF Core полагается на, в настоящее время соответствующие функции реализуются путем вызова `.Wait()` для возвращаемого `Task`. Это означает, что использование таких методов, как `SaveChanges`или `ToList`, а не их асинхронных аналогов, может привести к взаимоблокировке в приложении.
+> Поскольку отсутствуют версии синхронизации методов низкого уровня, EF Core полагается на, в настоящее время соответствующая функциональность реализуется путем вызова метода `.Wait()` на возвращенном `Task` . Это означает, что использование таких методов `SaveChanges` , как или, `ToList` а не их асинхронных аналогов, может привести к взаимоблокировке приложения.
 
 ## <a name="azure-cosmos-db-limitations"></a>Ограничения Azure Cosmos DB
 

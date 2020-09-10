@@ -1,20 +1,22 @@
 ---
 title: Автоматическая Code First Migrations-EF6
+description: Автоматическое Code First Migrations в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 0eb86787-2161-4cb4-9cb8-67c5d6e95650
-ms.openlocfilehash: 2713afaf09707b7696e90464aac9945c2d82d274
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+uid: ef6/modeling/code-first/migrations/automatic
+ms.openlocfilehash: 541adf5aed517685b54d675730996c12ff0c824a
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78415703"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89618084"
 ---
 # <a name="automatic-code-first-migrations"></a>Автоматическое Code First Migrations
 Автоматическая миграция позволяет использовать Code First Migrations без файла кода в проекте для каждого внесенного изменения. Не все изменения могут быть применены автоматически. Например, для переименования столбцов требуется использовать перенос на основе кода.
 
 > [!NOTE]
-> В этой статье предполагается, что вы умеете использовать Code First Migrations в основных сценариях. В противном случае необходимо прочитать [Code First migrations](~/ef6/modeling/code-first/migrations/index.md) , прежде чем продолжить.
+> В этой статье предполагается, что вы умеете использовать Code First Migrations в основных сценариях. В противном случае необходимо прочитать [Code First migrations](xref:ef6/modeling/code-first/migrations/index) , прежде чем продолжить.
 
 ## <a name="recommendation-for-team-environments"></a>Рекомендации для сред группы
 
@@ -97,7 +99,7 @@ ms.locfileid: "78415703"
     public string Url { get; set; }
 ```
 
-Если бы вы выполняли приложение еще раз, вы получите исключение InvalidOperationException, сообщающее *, что модель резервного копирования контекста "BlogContext" изменилась с момента создания базы данных. Рекомендуется использовать Code First Migrations для обновления базы данных (* [ *http://go.microsoft.com/fwlink/?LinkId=238269* ](https://go.microsoft.com/fwlink/?LinkId=238269) *).*
+Если бы вы выполняли приложение еще раз, вы получите исключение InvalidOperationException, сообщающее *, что модель резервного копирования контекста "BlogContext" изменилась с момента создания базы данных. Для обновления базы данных () рекомендуется использовать Code First Migrations* [*http://go.microsoft.com/fwlink/?LinkId=238269*](https://go.microsoft.com/fwlink/?LinkId=238269) *.*
 
 Как видно из исключения, пора приступить к использованию Code First Migrations. Поскольку мы хотим использовать автоматические миграции, мы будем указывать параметр **– енаблеаутоматикмигратионс** .
 
@@ -209,6 +211,6 @@ ms.locfileid: "78415703"
 
 -   Выполните команду **обновления базы данных** в консоли диспетчера пакетов.
 
-## <a name="summary"></a>Сводка
+## <a name="summary"></a>Итоги
 
 В этом пошаговом руководстве вы узнали, как использовать автоматические миграции для отправки изменений модели в базу данных. Кроме того, вы узнали, как сформировать шаблоны и выполнять переносы на основе кода между автоматической миграцией, когда требуется больший контроль.

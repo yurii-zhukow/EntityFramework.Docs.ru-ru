@@ -1,14 +1,16 @@
 ---
 title: Связи, свойства навигации и внешние ключи — EF6
+description: Связи, свойства навигации и внешние ключи в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 8a21ae73-6d9b-4b50-838a-ec1fddffcf37
-ms.openlocfilehash: 5807f7aeeb68328821cf45ac4f8c28efa17ed399
-ms.sourcegitcommit: 92d54fe3702e0c92e198334da22bacb42e9842b1
+uid: ef6/fundamentals/relationships
+ms.openlocfilehash: 63349d9a81065ea4e15a5f97ef5298cb3dc67339
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84664199"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89618391"
 ---
 # <a name="relationships-navigation-properties-and-foreign-keys"></a>Связи, свойства навигации и внешние ключи
 
@@ -67,8 +69,8 @@ public class Department
 
 В оставшейся части этой страницы описывается, как получить доступ к данным и управлять ими с помощью связей. Сведения о настройке связей в модели см. на следующих страницах.
 
--   Сведения о настройке связей в Code First см. в разделе [заметки к данным](~/ef6/modeling/code-first/data-annotations.md) и [API Fluent — связи](~/ef6/modeling/code-first/fluent/relationships.md).
--   Сведения о настройке связей с помощью Entity Framework Designer см. в разделе [связи с конструктором EF](~/ef6/modeling/designer/relationships.md).
+-   Сведения о настройке связей в Code First см. в разделе [заметки к данным](xref:ef6/modeling/code-first/data-annotations) и [API Fluent — связи](xref:ef6/modeling/code-first/fluent/relationships).
+-   Сведения о настройке связей с помощью Entity Framework Designer см. в разделе [связи с конструктором EF](xref:ef6/modeling/designer/relationships).
 
 ## <a name="creating-and-modifying-relationships"></a>Создание и изменение связей
 
@@ -94,7 +96,7 @@ public class Department
   course.Department = department;
   ```
 
-- Чтобы удалить связь, задайте для свойства навигации значение `null` . При работе с Entity Framework, основанной на .NET 4,0, необходимо загрузить связанный элемент, прежде чем присвоить ему значение null. Пример.   
+- Чтобы удалить связь, задайте для свойства навигации значение `null` . При работе с Entity Framework, основанной на .NET 4,0, необходимо загрузить связанный элемент, прежде чем присвоить ему значение null. Пример:   
   ``` csharp
   context.Entry(course).Reference(c => c.Department).Load();
   course.Department = null;
@@ -129,7 +131,7 @@ public class Department
 
 ## <a name="synchronizing-the-changes-between-the-foreign-keys-and-navigation-properties"></a>Синхронизация изменений между внешними ключами и свойствами навигации
 
-При изменении связи объектов, присоединенных к контексту с помощью одного из описанных выше методов, Entity Framework необходимо синхронизировать внешние ключи, ссылки и коллекции. Entity Framework автоматически управляет этой синхронизацией (также называется исправлением связи) для сущностей POCO с прокси-серверами. Дополнительные сведения см. в разделе [Работа с учетными записями-посредниками](~/ef6/fundamentals/proxies.md).
+При изменении связи объектов, присоединенных к контексту с помощью одного из описанных выше методов, Entity Framework необходимо синхронизировать внешние ключи, ссылки и коллекции. Entity Framework автоматически управляет этой синхронизацией (также называется исправлением связи) для сущностей POCO с прокси-серверами. Дополнительные сведения см. в разделе [Работа с учетными записями-посредниками](xref:ef6/fundamentals/proxies).
 
 При использовании сущностей POCO без прокси-серверов необходимо убедиться в том, что метод **DetectChanges** вызывается для синхронизации связанных объектов в контексте. Обратите внимание, что следующие интерфейсы API автоматически активируют вызов **DetectChanges** .
 
@@ -144,11 +146,11 @@ public class Department
 -   `DbContext.GetValidationErrors`
 -   `DbContext.Entry`
 -   `DbChangeTracker.Entries`
--   Выполнение запроса LINQ к элементу`DbSet`
+-   Выполнение запроса LINQ к элементу `DbSet`
 
 ## <a name="loading-related-objects"></a>Загрузка связанных объектов
 
-В Entity Framework свойства навигации обычно используются для загрузки сущностей, связанных с возвращаемой сущностью, с помощью заданной ассоциации. Дополнительные сведения см. в разделе [Загрузка связанных объектов](~/ef6/querying/related-data.md).
+В Entity Framework свойства навигации обычно используются для загрузки сущностей, связанных с возвращаемой сущностью, с помощью заданной ассоциации. Дополнительные сведения см. в разделе [Загрузка связанных объектов](xref:ef6/querying/related-data).
 
 > [!NOTE]
 > В сопоставлении на основе внешнего ключа при загрузке связанного конечного элемента зависимого объекта связанный объект загружается на основе значения внешнего ключа зависимого объекта, находящегося на момент загрузки в памяти:
@@ -173,7 +175,7 @@ public class Department
 
 При работе с сущностями, участвующими в проверке и разрешении параллелизма, рекомендуется всегда использовать связь по внешнему ключу.
 
-Дополнительные сведения см. в разделе [Обработка конфликтов параллелизма](~/ef6/saving/concurrency.md).
+Дополнительные сведения см. в разделе [Обработка конфликтов параллелизма](xref:ef6/saving/concurrency).
 
 ## <a name="working-with-overlapping-keys"></a>Работа с перекрывающимися ключами
 

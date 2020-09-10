@@ -1,19 +1,20 @@
 ---
 title: Операции с настраиваемыми миграциями — EF Core
+description: Управление пользовательскими и необработанными миграциями SQL для управления схемой базы данных с помощью Entity Framework Core
 author: bricelam
 ms.author: bricelam
 ms.date: 11/07/2017
 uid: core/managing-schemas/migrations/operations
-ms.openlocfilehash: bd2bfdc24977a47eaf7a6756a88b758b563d818a
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: 708894d8d567a4644be3a4ace98cc837465710e0
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78414329"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89617951"
 ---
 # <a name="custom-migrations-operations"></a>Операции пользовательской миграции
 
-API Мигратионбуилдер позволяет выполнять различные виды операций во время миграции, но это далеко не все. Однако API также является расширяемым, позволяя определять собственные операции. Существует два способа расширения API: с помощью метода `Sql()` или путем определения пользовательских объектов `MigrationOperation`.
+API Мигратионбуилдер позволяет выполнять различные виды операций во время миграции, но это далеко не все. Однако API также является расширяемым, позволяя определять собственные операции. Существует два способа расширения API: с помощью `Sql()` метода или путем определения пользовательских `MigrationOperation` объектов.
 
 Чтобы проиллюстрировать это, давайте взглянем на реализацию операции, которая создает пользователя базы данных, используя каждый из подходов. В наших переносах мы хотим включить написание следующего кода:
 
@@ -23,7 +24,7 @@ migrationBuilder.CreateUser("SQLUser1", "Password");
 
 ## <a name="using-migrationbuildersql"></a>Использование Мигратионбуилдер. SQL ()
 
-Самый простой способ реализовать пользовательскую операцию — определить метод расширения, который вызывает `MigrationBuilder.Sql()`. Ниже приведен пример, в котором создается соответствующий Transact-SQL.
+Самый простой способ реализовать пользовательскую операцию — определить метод расширения, который вызывает `MigrationBuilder.Sql()` . Ниже приведен пример, в котором создается соответствующий Transact-SQL.
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -33,7 +34,7 @@ static MigrationBuilder CreateUser(
     => migrationBuilder.Sql($"CREATE USER {name} WITH PASSWORD '{password}';");
 ```
 
-Если для миграции требуется поддержка нескольких поставщиков баз данных, можно использовать свойство `MigrationBuilder.ActiveProvider`. Ниже приведен пример, поддерживающий как Microsoft SQL Server, так и PostgreSQL.
+Если для миграции требуется поддержка нескольких поставщиков баз данных, можно использовать `MigrationBuilder.ActiveProvider` свойство. Ниже приведен пример, поддерживающий как Microsoft SQL Server, так и PostgreSQL.
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -60,7 +61,7 @@ static MigrationBuilder CreateUser(
 
 ## <a name="using-a-migrationoperation"></a>Использование Мигратионоператион
 
-Чтобы отделить пользовательскую операцию от SQL, можно определить собственный `MigrationOperation`, чтобы его представить. Затем операция передается поставщику, чтобы он мог определить соответствующий SQL.
+Чтобы отделить пользовательскую операцию от SQL, можно определить собственную `MigrationOperation` для ее представления. Затем операция передается поставщику, чтобы он мог определить соответствующий SQL.
 
 ``` csharp
 class CreateUserOperation : MigrationOperation
@@ -70,7 +71,7 @@ class CreateUserOperation : MigrationOperation
 }
 ```
 
-При таком подходе методу расширения просто требуется добавить одну из этих операций в `MigrationBuilder.Operations`.
+При таком подходе методу расширения просто нужно добавить одну из этих операций в `MigrationBuilder.Operations` .
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -89,7 +90,7 @@ static MigrationBuilder CreateUser(
 }
 ```
 
-Этот подход требует, чтобы каждый поставщик знал, как создать SQL для этой операции в своей службе `IMigrationsSqlGenerator`. Ниже приведен пример переопределения генератора SQL Server для управления новой операцией.
+Этот подход требует, чтобы каждый поставщик знал, как создать SQL для этой операции в своей `IMigrationsSqlGenerator` службе. Ниже приведен пример переопределения генератора SQL Server для управления новой операцией.
 
 ``` csharp
 class MyMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator

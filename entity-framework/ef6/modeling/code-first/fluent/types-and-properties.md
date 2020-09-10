@@ -1,19 +1,21 @@
 ---
 title: API-интерфейс Fluent — Настройка и сопоставление свойств и типов — EF6
+description: API-интерфейс Fluent — Настройка и сопоставление свойств и типов в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 648ed274-c501-4630-88e0-d728ab5c4057
-ms.openlocfilehash: 7371cc99142ccf8fc6bea237d7d58d1e67fcecec
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+uid: ef6/modeling/code-first/fluent/types-and-properties
+ms.openlocfilehash: d49da416b2df5828fce5618cc196e22dfbc2bd34
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78415757"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89618061"
 ---
 # <a name="fluent-api---configuring-and-mapping-properties-and-types"></a>API-интерфейс Fluent — Настройка и сопоставление свойств и типов
 При работе с Entity Framework Code First поведением по умолчанию является привязка классов POCO к таблицам с помощью набора соглашений, помогут в EF. Однако иногда вы не можете следовать этим соглашениям и не хотите сопоставлять сущности с другими условиями.  
 
-Существует два основных способа настройки EF для использования чего-либо, кроме соглашений, а именно [заметок](~/ef6/modeling/code-first/data-annotations.md) или API Fluent системы EFS. Заметки охватывают только подмножество функций API Fluent, поэтому существуют сценарии сопоставления, которые не могут быть достигнуты с помощью заметок. В этой статье показано, как использовать API Fluent для настройки свойств.  
+Существует два основных способа настройки EF для использования чего-либо, кроме соглашений, а именно [заметок](xref:ef6/modeling/code-first/data-annotations) или API Fluent системы EFS. Заметки охватывают только подмножество функций API Fluent, поэтому существуют сценарии сопоставления, которые не могут быть достигнуты с помощью заметок. В этой статье показано, как использовать API Fluent для настройки свойств.  
 
 Наиболее часто доступ к интерфейсу API для первого интерфейса Fluent, переопределяя метод [OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating.aspx) на производном [DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext.aspx). Следующие примеры предназначены для демонстрации выполнения различных задач с помощью API-интерфейса Fluent и позволяют скопировать код и настроить его в соответствии с моделью. Если вы хотите увидеть модель, которую можно использовать с параметром "как есть", она указана в конце этой статьи.  
 
@@ -29,7 +31,7 @@ modelBuilder.HasDefaultSchema("sales");
 
 ### <a name="custom-conventions-ef6-onwards"></a>Пользовательские соглашения (EF6)  
 
-Начиная с EF6 можно создавать собственные соглашения для дополнения к Code First. Дополнительные сведения см. в разделе [Custom Code First Conventions](~/ef6/modeling/code-first/conventions/custom.md).  
+Начиная с EF6 можно создавать собственные соглашения для дополнения к Code First. Дополнительные сведения см. в разделе [Custom Code First Conventions](xref:ef6/modeling/code-first/conventions/custom).  
 
 ## <a name="property-mapping"></a>Сопоставление свойств  
 
@@ -100,7 +102,7 @@ modelBuilder
     .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute()));
 ```  
 
-Полный список параметров, доступных в **индексаттрибуте**, см. в разделе *index* статьи [Code First Data Annotations](~/ef6/modeling/code-first/data-annotations.md). Это включает в себя настройку имени индекса, создание уникальных индексов и создание индексов с несколькими столбцами.  
+Полный список параметров, доступных в **индексаттрибуте**, см. в разделе *index* статьи [Code First Data Annotations](xref:ef6/modeling/code-first/data-annotations). Это включает в себя настройку имени индекса, создание уникальных индексов и создание индексов с несколькими столбцами.  
 
 Можно указать несколько аннотаций индекса для одного свойства, передав массив **индексаттрибуте** в конструктор **индексаннотатион**.  
 
@@ -321,7 +323,7 @@ modelBuilder.Entity<OfficeAssignment>().ToTable("Instructor");
 
 ### <a name="mapping-an-entity-type-to-insertupdatedelete-stored-procedures-ef6-onwards"></a>Сопоставление типа сущности для вставки, обновления и удаления хранимых процедур (EF6)  
 
-Начиная с EF6 можно сопоставлять сущности для использования хранимых процедур для вставки обновлений и удаления. Дополнительные сведения см. в разделе [Code First вставки, обновления и удаления хранимых процедур](~/ef6/modeling/code-first/fluent/cud-stored-procedures.md).  
+Начиная с EF6 можно сопоставлять сущности для использования хранимых процедур для вставки обновлений и удаления. Дополнительные сведения см. в разделе [Code First вставки, обновления и удаления хранимых процедур](xref:ef6/modeling/code-first/fluent/cud-stored-procedures).  
 
 ## <a name="model-used-in-samples"></a>Модель, используемая в примерах  
 
