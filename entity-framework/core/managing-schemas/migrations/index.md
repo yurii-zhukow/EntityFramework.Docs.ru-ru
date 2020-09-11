@@ -1,15 +1,16 @@
 ---
 title: Обзор миграций — EF Core
+description: Общие сведения об использовании миграций для управления схемами базы данных с помощью Entity Framework Core
 author: bricelam
 ms.author: bricelam
 ms.date: 05/06/2020
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: 8539a8da6f0051d3737efc583f0adfaf05fb2d3d
-ms.sourcegitcommit: 31536e52b838a84680d2e93e5bb52fb16df72a97
+ms.openlocfilehash: f1197fb869c33c34672d20e9b727cd187c9c5601
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86238233"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619478"
 ---
 # <a name="migrations-overview"></a>Обзор миграций
 

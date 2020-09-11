@@ -1,13 +1,15 @@
 ---
 title: Управление схемами баз данных — EF Core
+description: Общие сведения о стратегиях управления схемами базы данных с помощью Entity Framework Core
 author: bricelam
 ms.date: 10/30/2017
-ms.openlocfilehash: 2da17865cb0192fb3e6e3396e4ca5f31fde9c52a
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+uid: core/managing-schemas/index
+ms.openlocfilehash: e4f8c82125534e9e7e0c2de552bce336a544a2aa
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78412739"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619496"
 ---
 # <a name="managing-database-schemas"></a>Управление схемами баз данных
 
@@ -20,7 +22,6 @@ EF Core предоставляет два основных способа син
 > [!NOTE]
 > [API создания и удаления][3] также позволяют создать схему базы данных из модели EF Core. Но они предназначены главным образом для тестирования, создания прототипов и других сценариев, где допустимо удаление базы данных.
 
-
-  [1]: migrations/index.md
-  [2]: scaffolding.md
-  [3]: ensure-created.md
+  [1]: xref:core/managing-schemas/migrations/index
+  [2]: xref:core/managing-schemas/scaffolding
+  [3]: xref:core/managing-schemas/ensure-created

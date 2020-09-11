@@ -1,15 +1,16 @@
 ---
 title: Начало работы — EF Core
+description: Руководство. Начало работы с Entity Framework Core
 author: rick-anderson
 ms.date: 09/17/2019
 ms.assetid: 3c88427c-20c6-42ec-a736-22d3eccd5071
 uid: core/get-started/index
-ms.openlocfilehash: 7181df6ee73b09f196940178ffed38d96b075258
-ms.sourcegitcommit: ebfd3382fc583bc90f0da58e63d6e3382b30aa22
+ms.openlocfilehash: e33a18c8d3d72078eaaeba9c8cf0a1afca0cb66c
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85370322"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89618006"
 ---
 # <a name="getting-started-with-ef-core"></a>Начало работы с EF Core
 
@@ -54,7 +55,7 @@ cd EFGetStarted
 
 ## <a name="install-entity-framework-core"></a>Установка Entity Framework Core
 
-Чтобы установить EF Core, установите пакеты целевых поставщиков базы данных EF Core, с которыми вы будете работать. В этом руководстве используется SQLite, так как он работает на всех платформах, поддерживаемых .NET Core. Список доступных поставщиков см. в разделе [Database Providers](../providers/index.md) (Поставщики базы данных).
+Чтобы установить EF Core, установите пакеты целевых поставщиков базы данных EF Core, с которыми вы будете работать. В этом руководстве используется SQLite, так как он работает на всех платформах, поддерживаемых .NET Core. Список доступных поставщиков см. в разделе [Database Providers](xref:core/providers/index) (Поставщики базы данных).
 
 ### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/netcore-cli)
 
@@ -93,9 +94,9 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
 [!code-csharp[Main](../../../samples/core/GetStarted/Model.cs)]
 
-В EF Core также можно [реконструировать](../managing-schemas/scaffolding.md) модель из существующей базы данных.
+В EF Core также можно [реконструировать](xref:core/managing-schemas/scaffolding) модель из существующей базы данных.
 
-Совет. Эта программа намеренно упрощена для наглядности. В приложениях для рабочей среды не следует хранить [строки подключений](../miscellaneous/connection-strings.md) в коде. Возможно, также будет лучше поместить каждый класс C# в отдельный файл.
+Совет. Эта программа намеренно упрощена для наглядности. В приложениях для рабочей среды не следует хранить [строки подключений](xref:core/miscellaneous/connection-strings) в коде. Возможно, также будет лучше поместить каждый класс C# в отдельный файл.
 
 ## <a name="create-the-database"></a>Создание базы данных
 
@@ -112,7 +113,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
   dotnet ef database update
   ```
 
-  При этом устанавливается [dotnet ef](../miscellaneous/cli/dotnet.md) и пакет конструктора, требуемый для выполнения команды в проекте. Команда `migrations` формирует шаблон миграции для создания начального набора таблиц в модели. Команда `database update` создает базу данных и применяет к ней созданную миграцию.
+  При этом устанавливается [dotnet ef](xref:core/miscellaneous/cli/dotnet) и пакет конструктора, требуемый для выполнения команды в проекте. Команда `migrations` формирует шаблон миграции для создания начального набора таблиц в модели. Команда `database update` создает базу данных и применяет к ней созданную миграцию.
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -124,7 +125,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
   Update-Database
   ```
 
-  При этом устанавливаются [средства консоли диспетчера пакетов для EF Core](../miscellaneous/cli/powershell.md). Команда `Add-Migration` формирует шаблон миграции для создания начального набора таблиц в модели. Команда `Update-Database` создает базу данных и применяет к ней созданную миграцию.
+  При этом устанавливаются [средства консоли диспетчера пакетов для EF Core](xref:core/miscellaneous/cli/powershell). Команда `Add-Migration` формирует шаблон миграции для создания начального набора таблиц в модели. Команда `Update-Database` создает базу данных и применяет к ней созданную миграцию.
 
 ---
 

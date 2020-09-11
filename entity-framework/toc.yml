@@ -33,30 +33,28 @@
                   href: core/what-is-new/ef-core-5.0/whatsnew.md
                 - name: Критические изменения
                   href: core/what-is-new/ef-core-5.0/breaking-changes.md
-            - name: "EF Core\_3.0"
+            - name: "EF\_Core\_3.x"
               items:
                 - name: Новые функции
-                  href: core/what-is-new/ef-core-3.0/index.md
+                  href: core/what-is-new/ef-core-3.x/index.md
                 - name: Критические изменения
-                  href: core/what-is-new/ef-core-3.0/breaking-changes.md
-            - name: "EF Core\_2.2"
-              href: core/what-is-new/ef-core-2.2.md
+                  href: core/what-is-new/ef-core-3.x/breaking-changes.md
             - name: EF Core 2.1
               href: core/what-is-new/ef-core-2.1.md
-            - name: EF Core 2.0
-              href: core/what-is-new/ef-core-2.0.md
-            - name: EF Core 1.1
-              href: core/what-is-new/ef-core-1.1.md
-            - name: EF Core 1.0
-              href: core/what-is-new/ef-core-1.0.md
-            - name: Обновление с предыдущих версий
+            - name: Не поддерживается
               items:
-                - name: "Обновление с версии\_1.0\_RC1 до\_RC2"
-                  href: core/miscellaneous/rc1-rc2-upgrade.md
-                - name: "Обновление с версии\_1.0\_RC2 до\_RTM"
-                  href: core/miscellaneous/rc2-rtm-upgrade.md
-                - name: "Обновление с версии\_1.x до\_2.0"
-                  href: core/miscellaneous/1x-2x-upgrade.md
+                - name: "EF Core\_2.2"
+                  href: core/what-is-new/ef-core-2.2.md
+                - name: EF Core 2.0
+                  items:
+                    - name: новые функции;
+                      href: core/what-is-new/ef-core-2.0/index.md
+                    - name: "Обновление с версии\_1.x"
+                      href: core/what-is-new/ef-core-2.0/upgrade.md
+                - name: EF Core 1.1
+                  href: core/what-is-new/ef-core-1.1.md
+                - name: EF Core 1.0
+                  href: core/what-is-new/ef-core-1.0.md
         - name: Начало работы
           items:
             - name: Руководство по EF Core
@@ -75,6 +73,8 @@
           items:
             - name: Строки подключения
               href: core/miscellaneous/connection-strings.md
+            - name: Асинхронное программирование
+              href: core/miscellaneous/async.md
             - name: Ведение журнала
               href: core/miscellaneous/logging.md
             - name: Устойчивость подключений
@@ -180,8 +180,6 @@
               href: core/querying/complex-query-operators.md
             - name: Загрузка связанных данных
               href: core/querying/related-data.md
-            - name: Асинхронные запросы
-              href: core/querying/async.md
             - name: Необработанные SQL-запросы
               href: core/querying/raw-sql.md
             - name: Глобальные фильтры запросов
@@ -204,8 +202,6 @@
               href: core/saving/concurrency.md
             - name: Транзакции
               href: core/saving/transactions.md
-            - name: Асинхронное сохранение
-              href: core/saving/async.md
             - name: Отключенные сущности
               href: core/saving/disconnected-entities.md
             - name: Явные значения для создаваемых свойств
@@ -220,6 +216,8 @@
               items:
                 - name: Обзор
                   href: core/providers/sql-server/index.md
+                - name: Индексы
+                  href: core/providers/sql-server/indexes.md
                 - name: 'Таблицы, оптимизированные для памяти'
                   href: core/providers/sql-server/memory-optimized-tables.md
                 - name: Указание параметров базы данных SQL Azure

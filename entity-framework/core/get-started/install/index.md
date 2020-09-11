@@ -1,19 +1,20 @@
 ---
 title: Установка Entity Framework Core — EF Core
+description: Инструкции по установке для Entity Framework Core
 author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: 6575b1ac028f8b67b49ca7f4e49d6f19500be98f
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 1cc6f8f73739e61adefb375ee37a830933903470
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80136169"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89617990"
 ---
 # <a name="installing-entity-framework-core"></a>Установка Entity Framework Core
 
-## <a name="prerequisites"></a>предварительные требования
+## <a name="prerequisites"></a>Предварительные требования
 
 * EF Core — это библиотека [.NET Standard 2.0](/dotnet/standard/net-standard). Для запуска EF Core требуется реализация .NET, которая поддерживает .NET Standard 2.0. На EF Core также могут ссылаться другие библиотеки .NET Standard 2.0.
 
@@ -33,7 +34,7 @@ ms.locfileid: "80136169"
 
 Установить или обновить пакеты NuGet можно в интерфейсе командной строки (CLI) .NET Core, а также в диалоговом окне или консоли диспетчера пакетов Visual Studio.
 
-### <a name="net-core-cli"></a>.NET Core CLI
+### <a name="net-core-cli"></a>Интерфейс командной строки .NET Core
 
 * Чтобы установить или обновить поставщик EF Core SQL Server, выполните следующую команду интерфейса командной строки .NET Core в командной строке операционной системы:
 
@@ -47,7 +48,7 @@ ms.locfileid: "80136169"
 
 ### <a name="visual-studio-nuget-package-manager-dialog"></a>Диалоговое окно диспетчера пакетов NuGet в Visual Studio
 
-* В меню Visual Studio выберите **"Проект" > "Управление пакетами NuGet"** .
+* В меню Visual Studio выберите **"Проект" > "Управление пакетами NuGet"**.
 
 * Нажмите кнопку **Обзор** или откройте вкладку **Обновления**.
 
@@ -57,7 +58,7 @@ ms.locfileid: "80136169"
 
 ### <a name="visual-studio-nuget-package-manager-console"></a>Консоль диспетчера пакетов NuGet в Visual Studio
 
-* В меню Visual Studio выберите **"Сервис" > "Диспетчер пакетов NuGet" > "Консоль диспетчера пакетов"** .
+* В меню Visual Studio выберите **"Сервис" > "Диспетчер пакетов NuGet" > "Консоль диспетчера пакетов"**.
 
 * Чтобы установить поставщик SQL Server, в консоли диспетчера пакетов выполните следующую команду:
 

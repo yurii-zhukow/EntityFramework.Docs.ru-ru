@@ -1,15 +1,16 @@
 ---
 title: Перенос приложений из EF6 в EF Core — EF
+description: Общие сведения о переносе приложения с Entity Framework 6 в Entity Framework Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 826b58bd-77b0-4bbc-bfcd-24d1ed3a8f38
 uid: efcore-and-ef6/porting/index
-ms.openlocfilehash: 77096b9bffba6b8c2a3d7bfb0c2e41e2d170a7db
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 132934df2ef7929372c4a092635c5c97227983f9
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78412929"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619687"
 ---
 # <a name="porting-from-ef6-to-ef-core"></a>Перенос приложений из EF6 в EF Core
 
@@ -23,7 +24,7 @@ ms.locfileid: "78412929"
 
 Убедитесь, что EF Core обладает всеми функциями, которые нужны для использования в приложении. Ознакомьтесь с [подробным сравнением набора функций](xref:efcore-and-ef6/index) EF Core и EF6. Если отсутствуют необходимые функции, перед выполнением переноса в EF Core убедитесь, что вы можете компенсировать их отсутствие.
 
-## <a name="behavior-changes"></a>Изменения в поведении
+## <a name="behavior-changes"></a>Изменения в работе
 
 Это не исчерпывающий список некоторых изменений в поведении между EF6 и EF Core. Эти факторы важно учитывать при переносе своего приложения, так как его поведение может измениться. После перехода на EF Core такие изменения не будут отображаться как ошибки компиляции.
 

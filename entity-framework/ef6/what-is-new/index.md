@@ -1,21 +1,22 @@
 ---
 title: Новые возможности EF6
+description: Новые возможности в Entity Framework 6
 author: divega
 ms.date: 09/12/2019
 ms.assetid: 41d1f86b-ce66-4bf2-8963-48514406fb4c
 uid: ef6/what-is-new/index
-ms.openlocfilehash: e0367aeefd682434bf520301776bcff4f0e72e06
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 71854e0a7009b35742a70724210708a284f50a3d
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80136141"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619765"
 ---
 # <a name="whats-new-in-ef6"></a>Новые возможности EF6
 
 Корпорация Майкрософт настоятельно рекомендует использовать последнюю выпущенную версию Entity Framework, чтобы вы могли использовать новые функции с высочайшим уровнем надежности.
 Тем не менее мы понимаем, что вам может потребоваться предыдущая версия или вы захотите поэкспериментировать с новыми усовершенствованиями в последнем предварительном выпуске.
-Чтобы установить определенные версии EF, см. сведения в разделе о [получении Entity Framework](~/ef6/fundamentals/install.md).
+Чтобы установить определенные версии EF, см. сведения в разделе о [получении Entity Framework](xref:ef6/fundamentals/install).
 
 ## <a name="ef-640"></a>EF 6.4.0
 
@@ -56,4 +57,4 @@ ms.locfileid: "80136141"
 
 ## <a name="past-releases"></a>Прошлые выпуски
 
-На странице [прошлых выпусков](past-releases.md) содержится архив всех предыдущих версий EF и основных функций, которые были представлены в каждом выпуске.
+На странице [прошлых выпусков](xref:ef6/what-is-new/past-releases) содержится архив всех предыдущих версий EF и основных функций, которые были представлены в каждом выпуске.

@@ -1,15 +1,16 @@
 ---
 title: Поставщик базы данных SQLite — EF Core
+description: Сведения о поставщике базы данных SQLite Entity Framework Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 3e2f7698-fec2-4cec-9e2d-2e3e0074120c
 uid: core/providers/sqlite/index
-ms.openlocfilehash: e8c3d675322b163fdf1e2e7e01f3815e28f427a2
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 8620f0e37825368cb3d7965a05118ab1297fb9e8
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413139"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89616559"
 ---
 # <a name="sqlite-ef-core-database-provider"></a>Поставщик базы данных SQLite EF Core
 
@@ -39,4 +40,4 @@ Install-Package Microsoft.EntityFrameworkCore.Sqlite
 
 ## <a name="limitations"></a>Ограничения
 
-Сведения о некоторых важных ограничениях поставщика SQLite см. в статье [Ограничения SQLite](limitations.md).
+Сведения о некоторых важных ограничениях поставщика SQLite см. в статье [Ограничения SQLite](xref:core/providers/sqlite/limitations).
