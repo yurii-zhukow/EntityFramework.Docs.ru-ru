@@ -1,15 +1,16 @@
 ---
 title: Перенос из EF6 в EF Core — перенос модели на основе кода — EF
+description: Конкретные сведения о переносе приложения модели на основе кода Entity Framework 6 в Entity Framework Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 2dce1a50-7d84-4856-abf6-2763dd9be99d
 uid: efcore-and-ef6/porting/port-code
-ms.openlocfilehash: 0a99eac2091c07d8bcf7d4e5e4bdc2afcaeee810
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: d3920e6132576e3a93dd0ffb9dac1412b6e511aa
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413861"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619618"
 ---
 # <a name="porting-an-ef6-code-based-model-to-ef-core"></a>Перенос модели на основе кода EF6 в EF Core
 
@@ -17,7 +18,7 @@ ms.locfileid: "78413861"
 
 ## <a name="install-ef-core-nuget-packages"></a>Установка пакетов NuGet EF Core
 
-Чтобы использовать EF Core, установите пакет NuGet для нужного поставщика базы данных. Например, при ориентации на SQL Server нужно установить `Microsoft.EntityFrameworkCore.SqlServer`. Дополнительные сведения см. в разделе [Поставщики баз данных](../../core/providers/index.md).
+Чтобы использовать EF Core, установите пакет NuGet для нужного поставщика базы данных. Например, при ориентации на SQL Server нужно установить `Microsoft.EntityFrameworkCore.SqlServer`. Дополнительные сведения см. в разделе [Поставщики баз данных](xref:core/providers/index).
 
 Если планируется использовать миграции, следует также установить пакет `Microsoft.EntityFrameworkCore.Tools`.
 
@@ -29,7 +30,7 @@ ms.locfileid: "78413861"
 
 ## <a name="context-configuration-connection-etc"></a>Конфигурация контекста (подключение и т. п.)
 
-Как описано в процедуре [проверки работы EF Core для приложения](ensure-requirements.md), EF Core использует меньше логики при обнаружении базы данных для подключения. Вам потребуется переопределить метод `OnConfiguring` в производном контексте и использовать API для конкретного поставщика базы данных для настройки подключения к базе данных.
+Как описано в процедуре [проверки работы EF Core для приложения](xref:efcore-and-ef6/porting/index), EF Core использует меньше логики при обнаружении базы данных для подключения. Вам потребуется переопределить метод `OnConfiguring` в производном контексте и использовать API для конкретного поставщика базы данных для настройки подключения к базе данных.
 
 Большинство приложений EF6 хранят строку подключения в файле `App/Web.config` приложения. В EF Core для считывания этой строки подключения используется API `ConfigurationManager`. Чтобы использовать этот API, может потребоваться добавить ссылку на сборку платформы `System.Configuration`.
 
