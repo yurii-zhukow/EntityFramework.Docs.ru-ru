@@ -1,18 +1,19 @@
 ---
 title: Планирование для Entity Framework Core 5.0
+description: Функции, запланированные в Entity Framework Core 5.0
 author: ajcvickers
 ms.date: 08/22/2020
 uid: core/what-is-new/ef-core-5.0/plan
-ms.openlocfilehash: a0d41d6df844c9ca2c8a2dc8ba50ca669e23dced
-ms.sourcegitcommit: 6f7af3f138bf7c724cbdda261f97e5cf7035e8d7
+ms.openlocfilehash: 5ac7a48a70959b625b7c602ee48dc08a360bee73
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88847583"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89618668"
 ---
 # <a name="plan-for-entity-framework-core-50"></a>Планирование для Entity Framework Core 5.0
 
-Как было описано в [процессе планирования](xref:core/what-is-new/release_planning), мы собрали сведения от заинтересованных лиц в предварительный план для выпуска EF Core 5.0.
+Как было описано в [процессе планирования](xref:core/what-is-new/release-planning), мы собрали сведения от заинтересованных лиц в предварительный план для выпуска EF Core 5.0.
 
 > [!IMPORTANT]
 > Этот план отражает все еще продолжающиеся работы. Ничего из приведенного здесь не является обязательством. Этот план является отправной точкой и будет расширяться по мере обучения. Могут быть включены некоторые вещи, пока не запланированные для версии 5.0, и исключены некоторые вещи, уже запланированные для этой версии.
@@ -309,4 +310,4 @@ EF Core 5.0 будет содержать некоторые [критичес
 
 ## <a name="suggestions"></a>Предложения
 
-Нам важно ваше мнение о планировании. Лучший способ указать важность проблемы — проголосовать за нее на GitHub. Эти данные будут учитываться в [процессе планирования](xref:core/what-is-new/release_planning) для следующего выпуска.
+Нам важно ваше мнение о планировании. Лучший способ указать важность проблемы — проголосовать за нее на GitHub. Эти данные будут учитываться в [процессе планирования](xref:core/what-is-new/release-planning) для следующего выпуска.

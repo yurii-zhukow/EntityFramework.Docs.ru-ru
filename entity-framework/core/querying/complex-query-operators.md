@@ -1,15 +1,16 @@
 ---
 title: Сложные операторы запросов — EF Core
+description: Подробные сведения о более сложных операторах запросов LINQ при использовании Entity Framework Core
 author: smitpatel
 ms.date: 10/03/2019
 ms.assetid: 2e187a2a-4072-4198-9040-aaad68e424fd
 uid: core/querying/complex-query-operators
-ms.openlocfilehash: 44c2695ea003da043925740a52596fd27da638f8
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 61a46361cc4bc1635174aaf2ca3260fa67fc6aaf
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413777"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89616439"
 ---
 # <a name="complex-query-operators"></a>Сложные операторы запросов
 
@@ -112,10 +113,10 @@ ORDER BY [p].[AuthorId]
 
 EF Core поддерживает следующие статистические операторы:
 
-- Среднее
-- Count
+- Средний
+- Счетчик
 - LongCount
-- Max
+- Макс.
 - Min
 - SUM
 

@@ -1,15 +1,16 @@
 ---
 title: Сохранение связанных данных — EF Core
+description: Сведения о сохранении графов связанных сущностей и управлении связями в Entity Framework Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 07b6680f-ffcf-412c-9857-f997486b386c
 uid: core/saving/related-data
-ms.openlocfilehash: 86d32b6172ee21c12a15e9ed4bb0142afc99c8bd
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 118d5933dd543a03bbe16fd8be1f00b7304e39c4
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413615"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89618885"
 ---
 # <a name="saving-related-data"></a>Сохранение связанных данных
 
@@ -53,9 +54,9 @@ ms.locfileid: "78413615"
 
 По умолчанию для обязательных связей настроено поведение каскадного удаления, и дочерняя или зависимая сущность будет удалена из базы данных. Для необязательных связей каскадное удаление по умолчанию не настроено, но для свойства внешнего ключа будет установлено значение null.
 
-Дополнительные сведения о настройке обязательных и необязательных связей см. в [этом разделе](../modeling/relationships.md#required-and-optional-relationships).
+Дополнительные сведения о настройке обязательных и необязательных связей см. в [этом разделе](xref:core/modeling/relationships#required-and-optional-relationships).
 
-Дополнительные сведения о том, как работают поведения каскадного удаления, как они могут быть настроены явно и как они выбираются по соглашению, см. в [этой статье](cascade-delete.md).
+Дополнительные сведения о том, как работают поведения каскадного удаления, как они могут быть настроены явно и как они выбираются по соглашению, см. в [этой статье](xref:core/saving/cascade-delete).
 
 В следующем примере каскадное удаление настраивается в связи между `Blog` ​​и `Post`, поэтому сущность `post` удаляется из базы данных.
 

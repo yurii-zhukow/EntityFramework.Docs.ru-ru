@@ -1,15 +1,16 @@
 ---
 title: Начало работы с EF Core и Xamarin — EF Core
+description: Руководство по началу работы с Xamarin для создания мобильных приложений с помощью Entity Framework Core
 author: codemillmatt
 ms.date: 07/07/2020
 ms.author: masoucou
 uid: core/get-started/xamarin
-ms.openlocfilehash: 14fe61e0ddd648f824bfe3c1c91a58af91b1c2d4
-ms.sourcegitcommit: d85263b5d5d665dbaf94de8832e2917bce048b34
+ms.openlocfilehash: b4a7e2260337d74329d309e9db32fe97a2131d73
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86452997"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89619296"
 ---
 # <a name="getting-started-with-ef-core-and-xamarin"></a>Начало работы с EF Core и Xamarin
 

@@ -1,15 +1,16 @@
 ---
 title: Базовое сохранение — EF Core
+description: Основные сведения о добавлении, обновлении и удалении данных с помощью Entity Framework Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 850d842e-3fad-4ef2-be17-053768e97b9e
 uid: core/saving/basic
-ms.openlocfilehash: 066d67d6104316832a33f5a3648f1f2fa6cc9c50
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 21a9be10d081591a7d3b33a8e9cc48552c95fb6c
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413687"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89617429"
 ---
 # <a name="basic-save"></a>Базовое сохранение
 
@@ -25,7 +26,7 @@ ms.locfileid: "78413687"
 [!code-csharp[Main](../../../samples/core/Saving/Basics/Sample.cs#Add)]
 
 > [!TIP]  
-> Методы Add, Attach и Update работают с полным графом переданных им сущностей, как описано в статье [Сохранение связанных данных](related-data.md). В качестве альтернативы свойство EntityEntry.State можно использовать для установки состояния только одной сущности. Например, `context.Entry(blog).State = EntityState.Modified`.
+> Методы Add, Attach и Update работают с полным графом переданных им сущностей, как описано в статье [Сохранение связанных данных](xref:core/saving/related-data). В качестве альтернативы свойство EntityEntry.State можно использовать для установки состояния только одной сущности. Например, `context.Entry(blog).State = EntityState.Modified`.
 
 ## <a name="updating-data"></a>Обновление данных
 

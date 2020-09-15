@@ -1,19 +1,20 @@
 ---
 title: Установка явных значений для создаваемых свойств — EF Core
+description: Сведения о явном задании значений для свойств, настроенных как созданные с помощью Entity Framework Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 3f1993c2-cdf5-425b-bac2-a2665a20322b
 uid: core/saving/explicit-values-generated-properties
-ms.openlocfilehash: 43c4ab3c2a60645cdeff2a6cc40ce979f832f2fd
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: 6a10e8d8c056ab66226f229dcb8b032ff83f06fe
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413633"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89617245"
 ---
 # <a name="setting-explicit-values-for-generated-properties"></a>Установка явных значений для создаваемых свойств
 
-Создаваемое свойство — это свойство, значение которого создается (либо EF, либо базой данных), когда сущность добавляется или обновляется. Дополнительные сведения о создаваемых свойствах см. в [этой статье](../modeling/generated-properties.md).
+Создаваемое свойство — это свойство, значение которого создается (либо EF, либо базой данных), когда сущность добавляется или обновляется. Дополнительные сведения о создаваемых свойствах см. в [этой статье](xref:core/modeling/generated-properties).
 
 Могут возникать ситуации, когда вы хотите установить явное значение для создаваемого свойства, вместо того чтобы оно было генерировано.
 

@@ -1,15 +1,16 @@
 ---
 title: Новые возможности в Core EF 1.0 (EF Core)
+description: Изменения и улучшения в Entity Framework Core 1.0
 author: divega
 ms.date: 10/27/2016
 ms.assetid: 20A25111-AEBE-4BC2-83A5-3F651952DF72
 uid: core/what-is-new/ef-core-1.0
-ms.openlocfilehash: 2cd2a54d75ed3f0caa8b674dfb56babcfcc13592
-ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
+ms.openlocfilehash: adde26095a11016796f6bd616978c3ccc0fe4c18
+ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "78413597"
+ms.lasthandoff: 09/09/2020
+ms.locfileid: "89618845"
 ---
 # <a name="features-included-in-ef-core-10"></a>Возможности, добавленные в версии EF Core 1.0
 
@@ -105,7 +106,7 @@ ms.locfileid: "78413597"
 
 Изменения экземпляров сущности могут сохраняться в базу данных.
 
-### <a name="optimistic-concurrency"></a>Оптимистический параллелизм
+### <a name="optimistic-concurrency"></a>Оптимистическая блокировка
 
 Защита от перезаписи изменений, внесенных другим пользователем после получения данных из базы данных.
 
@@ -177,4 +178,4 @@ ms.locfileid: "78413597"
 
 ### <a name="3rd-party-providers"></a>Сторонние поставщики
 
-Поддерживаются несколько поставщиков других ядер СУБД. Полный их список можно найти в статье [Database Providers](../providers/index.md) (Поставщики баз данных).
+Поддерживаются несколько поставщиков других ядер СУБД. Полный их список можно найти в статье [Database Providers](xref:core/providers/index) (Поставщики баз данных).
