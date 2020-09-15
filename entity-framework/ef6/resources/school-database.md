@@ -3,39 +3,38 @@ title: Образец базы данных School — EF6
 description: Образец базы данных School для Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: e83a6a06-e63b-4530-8656-614bf609b12b
 uid: ef6/resources/school-database
-ms.openlocfilehash: c1576bdeaa3247c7c5c8fd5547c8402b4e301402
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 38dfbf074200617f11d70ef1d8cead69223135b3
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89620007"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90073812"
 ---
-# <a name="school-sample-database"></a><span data-ttu-id="5b770-103">Пример базы данных School</span><span class="sxs-lookup"><span data-stu-id="5b770-103">School Sample Database</span></span>
-<span data-ttu-id="5b770-104">В этом разделе содержатся схема и данные для базы данных School.</span><span class="sxs-lookup"><span data-stu-id="5b770-104">This topic contains the schema and data for the School database.</span></span> <span data-ttu-id="5b770-105">Пример базы данных School используется в различных местах по всей Entity Frameworkной документации.</span><span class="sxs-lookup"><span data-stu-id="5b770-105">The sample School database is used in various places throughout the Entity Framework documentation.</span></span>  
+# <a name="school-sample-database"></a><span data-ttu-id="7e898-103">Пример базы данных School</span><span class="sxs-lookup"><span data-stu-id="7e898-103">School Sample Database</span></span>
+<span data-ttu-id="7e898-104">В этом разделе содержатся схема и данные для базы данных School.</span><span class="sxs-lookup"><span data-stu-id="7e898-104">This topic contains the schema and data for the School database.</span></span> <span data-ttu-id="7e898-105">Пример базы данных School используется в различных местах по всей Entity Frameworkной документации.</span><span class="sxs-lookup"><span data-stu-id="7e898-105">The sample School database is used in various places throughout the Entity Framework documentation.</span></span>  
 
 > [!NOTE]
-> <span data-ttu-id="5b770-106">Сервер базы данных, устанавливаемый с Visual Studio, отличается в зависимости от используемой версии Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="5b770-106">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you use.</span></span> <span data-ttu-id="5b770-107">Дополнительные сведения о том, что следует использовать, см. в [выпусках Visual Studio](xref:ef6/what-is-new/visual-studio) .</span><span class="sxs-lookup"><span data-stu-id="5b770-107">See [Visual Studio Releases](xref:ef6/what-is-new/visual-studio) for details on what to use.</span></span>  
+> <span data-ttu-id="7e898-106">Сервер базы данных, устанавливаемый с Visual Studio, отличается в зависимости от используемой версии Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="7e898-106">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you use.</span></span> <span data-ttu-id="7e898-107">Дополнительные сведения о том, что следует использовать, см. в [выпусках Visual Studio](xref:ef6/what-is-new/visual-studio) .</span><span class="sxs-lookup"><span data-stu-id="7e898-107">See [Visual Studio Releases](xref:ef6/what-is-new/visual-studio) for details on what to use.</span></span>  
 
-<span data-ttu-id="5b770-108">Ниже приведены шаги по созданию базы данных.</span><span class="sxs-lookup"><span data-stu-id="5b770-108">Here are the steps to create the database:</span></span>
+<span data-ttu-id="7e898-108">Ниже приведены шаги по созданию базы данных.</span><span class="sxs-lookup"><span data-stu-id="7e898-108">Here are the steps to create the database:</span></span>
 
-- <span data-ttu-id="5b770-109">Открытие Visual Studio</span><span class="sxs-lookup"><span data-stu-id="5b770-109">Open Visual Studio</span></span>  
-- <span data-ttu-id="5b770-110">**Просмотр**  ->  **Обозреватель сервера**</span><span class="sxs-lookup"><span data-stu-id="5b770-110">**View** -> **Server Explorer**</span></span>  
-- <span data-ttu-id="5b770-111">Щелкните правой кнопкой мыши **подключения**  ->  **к данным добавить подключение...**</span><span class="sxs-lookup"><span data-stu-id="5b770-111">Right click on **Data Connections** -> **Add Connection…**</span></span>  
-- <span data-ttu-id="5b770-112">Если вы не подключились к базе данных из обозреватель сервера, прежде чем нужно будет выбрать **Microsoft SQL Server** в качестве источника данных</span><span class="sxs-lookup"><span data-stu-id="5b770-112">If you haven’t connected to a database from Server Explorer before you’ll need to select **Microsoft SQL Server** as the data source</span></span>  
-- <span data-ttu-id="5b770-113">Подключение к LocalDB или SQL Express в зависимости от того, какой из установленных служб</span><span class="sxs-lookup"><span data-stu-id="5b770-113">Connect to either LocalDB or SQL Express, depending on which one you have installed</span></span>  
-- <span data-ttu-id="5b770-114">Введите **School** в качестве имени базы данных</span><span class="sxs-lookup"><span data-stu-id="5b770-114">Enter **School** as the database name</span></span>  
-- <span data-ttu-id="5b770-115">Нажмите кнопку **ОК** , и появится запрос на создание новой базы данных, выберите **Да** .</span><span class="sxs-lookup"><span data-stu-id="5b770-115">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>  
-- <span data-ttu-id="5b770-116">Теперь новая база данных появится в обозреватель сервера</span><span class="sxs-lookup"><span data-stu-id="5b770-116">The new database will now appear in Server Explorer</span></span>  
-- <span data-ttu-id="5b770-117">Если вы используете Visual Studio 2012 или более поздней версии</span><span class="sxs-lookup"><span data-stu-id="5b770-117">If you are using Visual Studio 2012 or newer</span></span>
-    - <span data-ttu-id="5b770-118">Щелкните правой кнопкой мыши базу данных в обозревателе сервера и выберите действие **Создать запрос**.</span><span class="sxs-lookup"><span data-stu-id="5b770-118">Right-click on the database in Server Explorer and select **New Query**</span></span>  
-    - <span data-ttu-id="5b770-119">Скопируйте следующий SQL в новый запрос, щелкните запрос правой кнопкой мыши и выберите команду **выполнить** .</span><span class="sxs-lookup"><span data-stu-id="5b770-119">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>  
-- <span data-ttu-id="5b770-120">Если вы используете Visual Studio 2010</span><span class="sxs-lookup"><span data-stu-id="5b770-120">If you are using Visual Studio 2010</span></span>  
-    - <span data-ttu-id="5b770-121">Выберите **данные**  ->  **Редактор SQL**данных  ->  **создать соединение с запросом...**</span><span class="sxs-lookup"><span data-stu-id="5b770-121">Select **Data** -> **Transact SQL Editor** -> **New Query Connection...**</span></span>  
-    - <span data-ttu-id="5b770-122">Введите **.\SQLEXPRESS** в качестве имени сервера и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="5b770-122">Enter **.\SQLEXPRESS** as the server name and click **OK**</span></span>  
-    - <span data-ttu-id="5b770-123">Выберите базу данных **стесампле** в раскрывающемся списке в верхней части редактора запросов.</span><span class="sxs-lookup"><span data-stu-id="5b770-123">Select the **STESample** database from the drop down at the top of the query editor</span></span>  
-    - <span data-ttu-id="5b770-124">Скопируйте следующий SQL в новый запрос, щелкните запрос правой кнопкой мыши и выберите команду **выполнить SQL** .</span><span class="sxs-lookup"><span data-stu-id="5b770-124">Copy the following SQL into the new query, then right-click on the query and select **Execute SQL**</span></span>  
+- <span data-ttu-id="7e898-109">Открытие Visual Studio</span><span class="sxs-lookup"><span data-stu-id="7e898-109">Open Visual Studio</span></span>  
+- <span data-ttu-id="7e898-110">**Просмотр**  ->  **Обозреватель сервера**</span><span class="sxs-lookup"><span data-stu-id="7e898-110">**View** -> **Server Explorer**</span></span>  
+- <span data-ttu-id="7e898-111">Щелкните правой кнопкой мыши **подключения**  ->  **к данным добавить подключение...**</span><span class="sxs-lookup"><span data-stu-id="7e898-111">Right click on **Data Connections** -> **Add Connection…**</span></span>  
+- <span data-ttu-id="7e898-112">Если вы не подключились к базе данных из обозреватель сервера, прежде чем нужно будет выбрать **Microsoft SQL Server** в качестве источника данных</span><span class="sxs-lookup"><span data-stu-id="7e898-112">If you haven’t connected to a database from Server Explorer before you’ll need to select **Microsoft SQL Server** as the data source</span></span>  
+- <span data-ttu-id="7e898-113">Подключение к LocalDB или SQL Express в зависимости от того, какой из установленных служб</span><span class="sxs-lookup"><span data-stu-id="7e898-113">Connect to either LocalDB or SQL Express, depending on which one you have installed</span></span>  
+- <span data-ttu-id="7e898-114">Введите **School** в качестве имени базы данных</span><span class="sxs-lookup"><span data-stu-id="7e898-114">Enter **School** as the database name</span></span>  
+- <span data-ttu-id="7e898-115">Нажмите кнопку **ОК** , и появится запрос на создание новой базы данных, выберите **Да** .</span><span class="sxs-lookup"><span data-stu-id="7e898-115">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>  
+- <span data-ttu-id="7e898-116">Теперь новая база данных появится в обозреватель сервера</span><span class="sxs-lookup"><span data-stu-id="7e898-116">The new database will now appear in Server Explorer</span></span>  
+- <span data-ttu-id="7e898-117">Если вы используете Visual Studio 2012 или более поздней версии</span><span class="sxs-lookup"><span data-stu-id="7e898-117">If you are using Visual Studio 2012 or newer</span></span>
+    - <span data-ttu-id="7e898-118">Щелкните правой кнопкой мыши базу данных в обозревателе сервера и выберите действие **Создать запрос**.</span><span class="sxs-lookup"><span data-stu-id="7e898-118">Right-click on the database in Server Explorer and select **New Query**</span></span>  
+    - <span data-ttu-id="7e898-119">Скопируйте следующий SQL в новый запрос, щелкните запрос правой кнопкой мыши и выберите команду **выполнить** .</span><span class="sxs-lookup"><span data-stu-id="7e898-119">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>  
+- <span data-ttu-id="7e898-120">Если вы используете Visual Studio 2010</span><span class="sxs-lookup"><span data-stu-id="7e898-120">If you are using Visual Studio 2010</span></span>  
+    - <span data-ttu-id="7e898-121">Выберите **данные**  ->  **Редактор SQL**данных  ->  **создать соединение с запросом...**</span><span class="sxs-lookup"><span data-stu-id="7e898-121">Select **Data** -> **Transact SQL Editor** -> **New Query Connection...**</span></span>  
+    - <span data-ttu-id="7e898-122">Введите **.\SQLEXPRESS** в качестве имени сервера и нажмите кнопку **ОК** .</span><span class="sxs-lookup"><span data-stu-id="7e898-122">Enter **.\SQLEXPRESS** as the server name and click **OK**</span></span>  
+    - <span data-ttu-id="7e898-123">Выберите базу данных **стесампле** в раскрывающемся списке в верхней части редактора запросов.</span><span class="sxs-lookup"><span data-stu-id="7e898-123">Select the **STESample** database from the drop down at the top of the query editor</span></span>  
+    - <span data-ttu-id="7e898-124">Скопируйте следующий SQL в новый запрос, щелкните запрос правой кнопкой мыши и выберите команду **выполнить SQL** .</span><span class="sxs-lookup"><span data-stu-id="7e898-124">Copy the following SQL into the new query, then right-click on the query and select **Execute SQL**</span></span>  
 
 ``` SQL  
 SET ANSI_NULLS ON
