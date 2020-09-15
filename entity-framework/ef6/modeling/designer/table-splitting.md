@@ -3,14 +3,13 @@ title: Разделение таблиц конструктора — EF6
 description: Разделение таблиц конструктора в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 452f17c3-9f26-4de4-9894-8bc036e23b0f
 uid: ef6/modeling/designer/table-splitting
-ms.openlocfilehash: 55642d7c3b4efc7467e8a40e68b4144728df270f
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 6fdb5050ab4d3860184f19ea056a0f2257e20a3c
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89620380"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90073114"
 ---
 # <a name="designer-table-splitting"></a>Разделение таблиц конструктора
 В этом пошаговом руководстве показано, как сопоставлять несколько типов сущностей с одной таблицей путем изменения модели с помощью Entity Framework Designer (конструктор EF).
@@ -21,7 +20,7 @@ ms.locfileid: "89620380"
 
 ![Конструктор EF](~/ef6/media/efdesigner.png)
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Предварительные условия
 
 Для выполнения данного пошагового руководства требуется:
 

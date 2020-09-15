@@ -3,14 +3,13 @@ title: Пространственный-Code First — EF6
 description: Пространственный Code First в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: d617aed1-15f2-48a9-b187-186991c666e3
 uid: ef6/modeling/code-first/data-types/spatial
-ms.openlocfilehash: 8c2d47a66979a228fdc4902857df999a21945547
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 5d18624cdcef8db3e604277aeef1c3a2d05bfcab
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89618160"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90073968"
 ---
 # <a name="spatial---code-first"></a>Пространственный Code First
 > [!NOTE]
@@ -152,6 +151,6 @@ The closest University to you is: School of Fine Art.
 4.  Unfold папку **databases** , чтобы увидеть новую базу данных, и перейдите к таблице **университетов** .
 5.  Чтобы просмотреть данные, щелкните таблицу правой кнопкой мыши и выберите **Просмотр данных** .
 
-## <a name="summary"></a>Итоги
+## <a name="summary"></a>Сводка
 
 В этом пошаговом руководстве мы рассмотрели использование пространственных типов с Entity Framework Code First. 

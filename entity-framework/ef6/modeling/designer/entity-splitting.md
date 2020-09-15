@@ -3,14 +3,13 @@ title: Разделение сущностей конструктора — EF6
 description: Разделение сущностей конструктора в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: aa2dd48a-1f0e-49dd-863d-d6b4f5834832
 uid: ef6/modeling/designer/entity-splitting
-ms.openlocfilehash: d3be4e54d4bcd3ca253d8970c612acddf48dbaf4
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: fa25629bae1a35b2d792e2b890e87db6c99c37ab
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89620521"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90073140"
 ---
 # <a name="designer-entity-splitting"></a>Разделение сущностей конструктора
 В этом пошаговом руководстве показано, как сопоставлять тип сущности с двумя таблицами путем изменения модели с помощью Entity Framework Designer (конструктор EF). Сущность можно сопоставить с несколькими таблицами, если в таблицах имеется общий ключ. Основные понятия, которые применяются для сопоставления типа сущности с двумя таблицами, легко распространить на сопоставление типа сущности более чем с двумя таблицами.
@@ -19,7 +18,7 @@ ms.locfileid: "89620521"
 
 ![Конструктор EF](~/ef6/media/efdesigner.png)
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Предварительные условия
 
 Visual Studio 2012 или Visual Studio 2010, Ultimate, Premium, Professional или Web Express Edition.
 

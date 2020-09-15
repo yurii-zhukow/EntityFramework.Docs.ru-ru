@@ -3,14 +3,13 @@ title: Хранимые процедуры запросов конструкто
 description: Хранимые процедуры запроса конструктора в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 9554ed25-c5c1-43be-acad-5da37739697f
 uid: ef6/modeling/designer/stored-procedures/query
-ms.openlocfilehash: c647516e1c6ea010c791df6857782b2304ceed1c
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 4976c7d4f788e6e9524055a508f9c906b47c9ebb
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89620359"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90073205"
 ---
 # <a name="designer-query-stored-procedures"></a>Хранимые процедуры запроса конструктора
 В этом пошаговом руководстве показано, как использовать Entity Framework Designer (конструктор EF) для импорта хранимых процедур в модель, а затем вызывать импортированные хранимые процедуры для получения результатов. 
@@ -20,7 +19,7 @@ ms.locfileid: "89620359"
 var query = context.Products.SqlQuery("EXECUTE [dbo].[GetAllProducts]")`;
 ```
 
-## <a name="prerequisites"></a>Предварительные требования
+## <a name="prerequisites"></a>Предварительные условия
 
 Для выполнения данного пошагового руководства требуется:
 

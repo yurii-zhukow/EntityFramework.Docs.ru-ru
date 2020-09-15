@@ -3,14 +3,13 @@ title: Конструктор пространственного-EF-EF6
 description: Конструктор пространственного-EF в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 06baa6e1-d680-4a95-845b-81305c87a962
 uid: ef6/modeling/designer/data-types/spatial
-ms.openlocfilehash: 10430d6a043182e5536dfad148dc4158cf4c96c9
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 6524e3d2be6d5028ab12d6bfd7c65ce3a232a07a
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89620491"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90073088"
 ---
 # <a name="spatial---ef-designer"></a>Конструктор пространственного-EF
 > [!NOTE]
@@ -128,6 +127,6 @@ The closest University to you is: School of Fine Art.
 
 Чтобы просмотреть данные в базе данных, щелкните правой кнопкой мыши имя базы данных в обозреватель объектов SQL Server и выберите **Обновить**. Затем щелкните правой кнопкой мыши таблицу и выберите **Просмотр данных**.
 
-## <a name="summary"></a>Итоги
+## <a name="summary"></a>Сводка
 
 В этом пошаговом руководстве мы рассмотрели, как сопоставлять пространственные типы с помощью Entity Framework Designer и как использовать пространственные типы в коде. 

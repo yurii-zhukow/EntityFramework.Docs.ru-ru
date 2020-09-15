@@ -3,13 +3,12 @@ title: Проверка — EF6
 description: Проверка в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 77d6a095-c0d0-471e-80b9-8f9aea6108b2
-ms.openlocfilehash: 0e0f5c581681e7b21b6591ade1541d774e7280bc
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 29f5e22d7f2e388d6e8271a35d10bbf6e318eafa
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89619816"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90073695"
 ---
 # <a name="data-validation"></a>Проверка данных
 > [!NOTE]
@@ -236,7 +235,7 @@ foreach (var validationResult in db.GetValidationErrors())
   - Проверка на уровне свойств для свойств сложного типа
   - Проверка на уровне типа для сложного типа, включая `IValidatableObject` проверку сложного типа
 
-## <a name="summary"></a>Итоги
+## <a name="summary"></a>Сводка
 
 API проверки в Entity Framework очень хорошо играет с проверкой на стороне клиента в MVC, но не нужно полагаться на проверку на стороне клиента. Entity Framework позаботится о проверке на стороне сервера для заметок к данным или конфигураций, примененных с помощью API Code First Fluent.
 

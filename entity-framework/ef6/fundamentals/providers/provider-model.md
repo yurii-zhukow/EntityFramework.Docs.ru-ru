@@ -3,14 +3,13 @@ title: Модель поставщика Entity Framework 6 — EF6
 description: Модель поставщика Entity Framework 6 в Entity Framework 6
 author: divega
 ms.date: 06/27/2018
-ms.assetid: 066832F0-D51B-4655-8BE7-C983C557E0E4
 uid: ef6/fundamentals/providers/provider-model
-ms.openlocfilehash: af5522a5f8cf03fbf2725f7cf85673c3aa43aa27
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 4fc45ba5fe916253be348182196be236729d685d
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89618376"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90074020"
 ---
 # <a name="the-entity-framework-6-provider-model"></a>Модель поставщика Entity Framework 6
 

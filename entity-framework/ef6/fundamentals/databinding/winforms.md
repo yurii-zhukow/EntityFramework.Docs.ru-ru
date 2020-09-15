@@ -3,14 +3,13 @@ title: Привязка данных с помощью WinForms-EF6
 description: Привязка данных с помощью WinForms в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 80fc5062-2f1c-4dbd-ab6e-b99496784b36
 uid: ef6/fundamentals/databinding/winforms
-ms.openlocfilehash: 934ea2ae488a7df128746a0607037d85e9b23771
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: b316aea0a36edc8586a81427825ed4ee11fc9ef3
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89616335"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90073231"
 ---
 # <a name="databinding-with-winforms"></a>Привязка данных с помощью WinForms
 В этом пошаговом руководстве показано, как привязать типы POCO к элементам управления Window Forms (WinForms) в форме "основной/подробности". Приложение использует Entity Framework для заполнения объектов данными из базы данных, трассировки изменений и сохранения данных в базе данных.

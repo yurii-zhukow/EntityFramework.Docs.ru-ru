@@ -3,14 +3,13 @@ title: Несколько диаграмм на модель — EF6
 description: Несколько схем на модель в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: b95db5c8-de8d-43bd-9ccc-5df6a5e25e1b
 uid: ef6/modeling/designer/multiple-diagrams
-ms.openlocfilehash: 5ecda72af6430222864c62aea24cf85893436f56
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: d934a1b709c93fe8e6b57d40dd874b564885b19f
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89620430"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90073335"
 ---
 # <a name="multiple-diagrams-per-model"></a>Несколько диаграмм на модель
 > [!NOTE]
@@ -79,6 +78,6 @@ ms.locfileid: "89620430"
 
 ![Изменить цвет](~/ef6/media/color.png)
 
-## <a name="summary"></a>Итоги
+## <a name="summary"></a>Сводка
 
 В этом разделе мы рассмотрели разделение модели на несколько диаграмм, а также способ указания другого цвета для сущности с помощью Entity Framework Designer. 

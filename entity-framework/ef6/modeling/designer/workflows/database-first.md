@@ -3,14 +3,13 @@ title: Database First EF6
 description: Database First в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: cc6ffdb3-388d-4e79-a201-01ec2577c949
 uid: ef6/modeling/designer/workflows/database-first
-ms.openlocfilehash: 095fc6d6882df306816e65995ff314f1a0e7178a
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 412d83b37ed5f3e2b863dca0913746e61ecdef76
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89620443"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90073179"
 ---
 # <a name="database-first"></a>Database First
 В этом видео и пошаговом руководстве представлены общие сведения о Database First разработке с помощью Entity Framework. Database First позволяет реконструировать модель из существующей базы данных. Модель хранится в EDMX-файле (расширение EDMX) и может быть просмотрена и изменена в Entity Framework Designer. Классы, с которыми вы взаимодействуете в приложении, автоматически создаются из файла EDMX.
@@ -229,6 +228,6 @@ CREATE TABLE [dbo].[Users]
 
 ![Модель обновлена](~/ef6/media/modelupdated.png)
 
-## <a name="summary"></a>Итоги
+## <a name="summary"></a>Сводка
 
 В этом пошаговом руководстве мы рассматривали Database Firstную разработку, которая позволила нам создать модель в конструкторе EF на основе существующей базы данных. Затем мы использовали эту модель для чтения и записи данных из базы данных. Наконец, мы обновили модель, чтобы отразить изменения, внесенные в схему базы данных.

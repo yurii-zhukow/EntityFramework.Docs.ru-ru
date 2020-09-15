@@ -3,14 +3,13 @@ title: Автоматическая Code First Migrations-EF6
 description: Автоматическое Code First Migrations в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 0eb86787-2161-4cb4-9cb8-67c5d6e95650
 uid: ef6/modeling/code-first/migrations/automatic
-ms.openlocfilehash: 541adf5aed517685b54d675730996c12ff0c824a
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: e7bd9ff7d9dcecb7fecf213306047a53fc04135c
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89618084"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90072568"
 ---
 # <a name="automatic-code-first-migrations"></a>Автоматическое Code First Migrations
 Автоматическая миграция позволяет использовать Code First Migrations без файла кода в проекте для каждого внесенного изменения. Не все изменения могут быть применены автоматически. Например, для переименования столбцов требуется использовать перенос на основе кода.
@@ -99,7 +98,7 @@ ms.locfileid: "89618084"
     public string Url { get; set; }
 ```
 
-Если бы вы выполняли приложение еще раз, вы получите исключение InvalidOperationException, сообщающее *, что модель резервного копирования контекста "BlogContext" изменилась с момента создания базы данных. Для обновления базы данных () рекомендуется использовать Code First Migrations* [*http://go.microsoft.com/fwlink/?LinkId=238269*](https://go.microsoft.com/fwlink/?LinkId=238269) *.*
+Если бы вы запустили приложение снова, оно выдало бы исключение InvalidOperationException с сообщением: *Модель, поддерживающая контекст BlogContext, изменилась с момента создания базы данных. Попробуйте обновить базу данных с помощью Code First Migrations (* [ *http://go.microsoft.com/fwlink/?LinkId=238269* ](https://go.microsoft.com/fwlink/?LinkId=238269) *).*
 
 Как видно из исключения, пора приступить к использованию Code First Migrations. Поскольку мы хотим использовать автоматические миграции, мы будем указывать параметр **– енаблеаутоматикмигратионс** .
 
@@ -211,6 +210,6 @@ ms.locfileid: "89618084"
 
 -   Выполните команду **обновления базы данных** в консоли диспетчера пакетов.
 
-## <a name="summary"></a>Итоги
+## <a name="summary"></a>Сводка
 
 В этом пошаговом руководстве вы узнали, как использовать автоматические миграции для отправки изменений модели в базу данных. Кроме того, вы узнали, как сформировать шаблоны и выполнять переносы на основе кода между автоматической миграцией, когда требуется больший контроль.

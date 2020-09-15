@@ -3,14 +3,13 @@ title: Заметки к данным Code First — EF6
 description: Code First заметок к данным в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 80abefbd-23c9-4fce-9cd3-520e5df9856e
 uid: ef6/modeling/code-first/data-annotations
-ms.openlocfilehash: 37b2872b5fb40cf0dc346554b2cbb9e3fffd6bdc
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: dd91ddf674f2235190e50beb847e569a898ad59b
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89617348"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90074068"
 ---
 # <a name="code-first-data-annotations"></a>Заметки к данным Code First
 > [!NOTE]
@@ -53,7 +52,7 @@ Code First предоставляет два способа добавления
 
  
 
-## <a name="key"></a>Клавиши
+## <a name="key"></a>Key
 
 Entity Framework полагается на каждую сущность, имеющую значение ключа, используемое для отслеживания сущностей. Одно из соглашений Code First является неявными свойствами ключа; Code First будет искать свойство с именем "ID" или сочетание имени класса и "ID", например "Блогид". Это свойство будет сопоставляться с первичным ключевым столбцом в базе данных.
 
@@ -137,7 +136,7 @@ Entity Framework поддерживает составные ключи — Пе
     }
 ```
 
-## <a name="required"></a>Обязательное значение
+## <a name="required"></a>Обязательно
 
 `Required`Заметка сообщает EF, что требуется определенное свойство.
 
@@ -460,7 +459,7 @@ Entity Framework поддерживает составные ключи — Пе
 
  
 
-## <a name="summary"></a>Итоги
+## <a name="summary"></a>Сводка
 
 Аннотации данных не только позволяют описать клиентскую и серверную проверку в первых классах кода, но они также позволяют улучшать и даже исправлять предположения о том, что код сначала будет делаться с вашими классами в соответствии с его соглашениями. С помощью аннотаций к данным можно не только создать схему базы данных, но и связать сначала классы Code с уже существующей базой данных.
 
