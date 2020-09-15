@@ -3,14 +3,13 @@ title: Code First Migrations в средах группы — EF6
 description: Code First Migrations в средах Team в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 4c2d9a95-de6f-4e97-9738-c1f8043eff69
 uid: ef6/modeling/code-first/migrations/teams
-ms.openlocfilehash: ec382ecb0b7c99e57447ee50119fc3699fe1f324
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: c3f12788f2aba85f54dc062bdb6a7919be47b56d
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89617048"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90072230"
 ---
 # <a name="code-first-migrations-in-team-environments"></a>Code First Migrations в командных средах
 > [!NOTE]
@@ -177,7 +176,7 @@ ms.locfileid: "89617048"
 
 ![Обновленные метаданные](~/ef6/media/updatedmetadata.png)
 
-## <a name="summary"></a>Итоги
+## <a name="summary"></a>Сводка
 
 При использовании Code First Migrations в среде группы возникают некоторые сложности. Тем не менее, основное представление о том, как работает миграция, и некоторые простые подходы к устранению конфликтов слияния позволяют легко преодолеть эти трудности.
 

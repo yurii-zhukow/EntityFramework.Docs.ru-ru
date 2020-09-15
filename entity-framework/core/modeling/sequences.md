@@ -3,14 +3,13 @@ title: Последовательности — EF Core
 description: Настройка последовательностей в модели Entity Framework Core
 author: roji
 ms.date: 12/18/2019
-ms.assetid: 94f81a92-3c72-4e14-912a-f99310374e42
 uid: core/modeling/sequences
-ms.openlocfilehash: 1a212f3944ca95ebc7675ff29b2687c82fdf7fc7
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 8848a7237934091c1253ec61a37eea1c4326d1cb
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89619078"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90071398"
 ---
 # <a name="sequences"></a>Последовательности
 
@@ -19,7 +18,7 @@ ms.locfileid: "89619078"
 
 Последовательность формирует уникальные последовательные числовые значения в базе данных. Последовательности не связаны с определенной таблицей, и можно настроить несколько таблиц для вывода значений из одной и той же последовательности.
 
-## <a name="basic-usage"></a>Базовое использование
+## <a name="basic-usage"></a>Основное использование
 
 В модели можно настроить последовательность, а затем использовать ее для создания значений свойств.
 

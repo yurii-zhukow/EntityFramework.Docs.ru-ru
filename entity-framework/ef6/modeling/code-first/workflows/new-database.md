@@ -3,14 +3,13 @@ title: Code First в новую базу данных — EF6
 description: Code First в новую базу данных в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 2df6cb0a-7d8b-4e28-9d05-e2b9a90125af
 uid: ef6/modeling/code-first/workflows/new-database
-ms.openlocfilehash: 4e927bab07ae7a9719c46655e10685b59d0b65dc
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 96d76162383149c045178954196e1294331918a8
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89616881"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90070371"
 ---
 # <a name="code-first-to-a-new-database"></a>Создание базы данных с помощью Code First
 В этом видео и пошаговом руководстве представлены общие сведения о Code First разработке, предназначенной для новой базы данных. Этот сценарий включает в себя целевую базу данных, которая не существует и Code First создаст, или пустую базу данных, в которую Code First добавит новые таблицы. Code First позволяет определить модель с помощью \# классов C или VB.NET. Дополнительную конфигурацию можно также выполнить с помощью атрибутов в классах и свойствах или с помощью API Fluent.
@@ -369,6 +368,6 @@ public class BloggingContext : DbContext
 
 ![Схема с переименованным отображаемым именем](~/ef6/media/schemawithdisplaynamerenamed.png)
 
-## <a name="summary"></a>Итоги
+## <a name="summary"></a>Сводка
 
 В этом пошаговом руководстве мы рассматривали Code Firstную разработку с помощью новой базы данных. Мы определили модель, используя классы, которые затем использовали эту модель для создания базы данных, хранения и извлечения данных. После создания базы данных мы использовали Code First Migrations, чтобы изменить схему по мере развития нашей модели. Мы также увидели, как настроить модель с помощью заметок к данным и API Fluent.

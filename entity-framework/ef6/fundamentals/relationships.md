@@ -3,14 +3,13 @@ title: Связи, свойства навигации и внешние клю�
 description: Связи, свойства навигации и внешние ключи в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 8a21ae73-6d9b-4b50-838a-ec1fddffcf37
 uid: ef6/fundamentals/relationships
-ms.openlocfilehash: 63349d9a81065ea4e15a5f97ef5298cb3dc67339
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 65caacfbd860b5b896695c208b55b9c66d11255d
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89618391"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90072256"
 ---
 # <a name="relationships-navigation-properties-and-foreign-keys"></a>Связи, свойства навигации и внешние ключи
 

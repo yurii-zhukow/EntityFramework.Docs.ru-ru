@@ -3,14 +3,13 @@ title: Параметры файла конфигурации — EF6
 description: Параметры файла конфигурации в Entity Framework 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: 000044c6-1d32-4cf7-ae1f-ea21d86ebf8f
 uid: ef6/fundamentals/configuring/config-file
-ms.openlocfilehash: ac257c0da8da4dff852ec24f7de91c62c68f92d8
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: b407ae7d64df18f6a8d80aa13703a8c243c6f3a2
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89618488"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90070722"
 ---
 # <a name="configuration-file-settings"></a>Параметры файла конфигурации
 Entity Framework позволяет указать несколько параметров из файла конфигурации. В целом EF соответствует принципу "соглашение над конфигурацией". все параметры, обсуждаемые в этой записи, имеют поведение по умолчанию. вам нужно только изменить параметр, когда значение по умолчанию больше не соответствует вашим требованиям.  

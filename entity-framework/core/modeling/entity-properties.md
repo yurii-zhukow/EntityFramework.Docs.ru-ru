@@ -3,14 +3,13 @@ title: Свойства сущности — EF Core
 description: Настройка и сопоставьте свойства сущности с помощью Entity Framework Core
 author: lajones
 ms.date: 05/27/2020
-ms.assetid: e9dff604-3469-4a05-8f9e-18ac281d82a9
 uid: core/modeling/entity-properties
-ms.openlocfilehash: d4e4c50d8c7febf5e42e9aa39352c0bb6a6bd409
-ms.sourcegitcommit: 31536e52b838a84680d2e93e5bb52fb16df72a97
+ms.openlocfilehash: 3b76454bde153d3a6ddd035cefa00a55f47d2d7b
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86238220"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90071502"
 ---
 # <a name="entity-properties"></a>Свойства сущности
 

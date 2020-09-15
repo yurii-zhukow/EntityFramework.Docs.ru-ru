@@ -3,14 +3,13 @@ title: Рекомендации по производительности для
 description: Рекомендации по производительности для Entity Framework 4, 5 и 6
 author: divega
 ms.date: 10/23/2016
-ms.assetid: d6d5a465-6434-45fa-855d-5eb48c61a2ea
 uid: ef6/fundamentals/performance/perf-whitepaper
-ms.openlocfilehash: 9d70eab61caace02f59f3c555ef416c45d4f8f45
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 65584382df3d510f314a576f41c5dee3d2e718e7
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89616168"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90070540"
 ---
 # <a name="performance-considerations-for-ef-4-5-and-6"></a>Вопросы производительности для EF 4, 5 и 6
 Дэвид Обандо, Деттинжер и др.
@@ -250,7 +249,7 @@ Entity Framework имеет следующие формы встроенного
 |:-----------------------------------------------------------------------|:-------------|:-----------|:-------------|:-----------|
 | Перечисление всех запросов 18723                                          | 124          | 125,4      | 124,3        | 125,3      |
 | Предотвращение очистки (только первые 800 запросов, независимо от сложности)  | 41,7         | 5.5        | 40,5         | 5,4        |
-| Только запросы Аггрегатингсубтоталс (Total 178, что позволяет избежать очистки); | 39,5         | 4,5        | 38,1         | 4,6        |
+| Только запросы Аггрегатингсубтоталс (Total 178, что позволяет избежать очистки); | 39,5         | 4,5        | 38,1         | 4.6        |
 
 *Все значения времени в секундах.*
 
@@ -1511,7 +1510,7 @@ namespace QueryComparison
 Простой запрос уточняющего запроса без агрегатов
 
 -   Число: 16232
--   Пример.
+-   Пример:
 
 ``` xml
   <Query complexity="Lookup">
@@ -1524,7 +1523,7 @@ namespace QueryComparison
 Стандартный запрос BI с несколькими агрегатами, но без промежуточных итогов (один запрос)
 
 -   Число: 2313
--   Пример.
+-   Пример:
 
 ``` xml
   <Query complexity="SingleAggregating">
@@ -1545,7 +1544,7 @@ namespace QueryComparison
 Запрос бизнес-аналитики с агрегатами и промежуточными итогами (через UNION ALL)
 
 -   Число: 178
--   Пример.
+-   Пример:
 
 ``` xml
   <Query complexity="AggregatingSubtotals">
