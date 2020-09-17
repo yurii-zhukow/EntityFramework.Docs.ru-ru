@@ -3,14 +3,13 @@ title: Сложные операторы запросов — EF Core
 description: Подробные сведения о более сложных операторах запросов LINQ при использовании Entity Framework Core
 author: smitpatel
 ms.date: 10/03/2019
-ms.assetid: 2e187a2a-4072-4198-9040-aaad68e424fd
 uid: core/querying/complex-query-operators
-ms.openlocfilehash: 61a46361cc4bc1635174aaf2ca3260fa67fc6aaf
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 57157fa1593c9e5fe54e5fbe6b2c58eca3d4b0e7
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89616439"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90071164"
 ---
 # <a name="complex-query-operators"></a>Сложные операторы запросов
 
