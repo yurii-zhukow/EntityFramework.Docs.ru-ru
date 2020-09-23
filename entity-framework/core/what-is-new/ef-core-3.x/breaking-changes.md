@@ -4,12 +4,12 @@ description: Полный список критических изменений
 author: ajcvickers
 ms.date: 09/05/2020
 uid: core/what-is-new/ef-core-3.x/breaking-changes
-ms.openlocfilehash: 644e61994dab4e9993c6a78792ff584c57fbe48a
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: e348cb630d91ebe4536b73b9a7bd9a7b6a46db79
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89620691"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90072243"
 ---
 # <a name="breaking-changes-included-in-ef-core-3x"></a>Критические изменения в EF Core 3.x
 
@@ -178,7 +178,7 @@ ms.locfileid: "89620691"
     $ dotnet tool install --global dotnet-ef
   ```
 
-Это средство можно получить в виде локального инструмента при восстановлении зависимостей проекта, в котором оно объявляется как соответствующая зависимость, с помощью [файла манифеста средства](https://github.com/dotnet/cli/issues/10288).
+Это средство можно получить в виде локального инструмента при восстановлении зависимостей проекта, в котором оно объявляется как соответствующая зависимость, с помощью [файла манифеста средства](/dotnet/core/tools/global-tools#install-a-local-tool).
 
 <a name="fromsql"></a>
 ### <a name="fromsql-executesql-and-executesqlasync-have-been-renamed"></a>FromSql, ExecuteSql и ExecuteSqlAsync были переименованы
@@ -478,6 +478,9 @@ context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 * **`DbQuery<>`** — вместо него следует использовать `DbSet<>`.
 * **`DbContext.Query<>()`** — вместо него следует использовать `DbContext.Set<>()`.
 * **`IQueryTypeConfiguration<TQuery>`**  — вместо него следует использовать `IEntityTypeConfiguration<TEntity>`**.
+
+> [!NOTE]
+> Из-за [проблемы в версиях 3.x](https://github.com/dotnet/efcore/issues/19537) при запросе сущностей без ключей, все свойства которых имеют значение `null`, возвращается `null` вместо сущности. Если эта проблема затрагивает ваш сценарий, также добавьте логику для обработки `null` в результатах.
 
 <a name="config"></a>
 ### <a name="configuration-api-for-owned-type-relationships-has-changed"></a>Изменение API конфигурации для отношений принадлежащего типа

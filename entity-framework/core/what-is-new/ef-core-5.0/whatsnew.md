@@ -2,22 +2,664 @@
 title: Новые возможности EF Core 5.0
 description: Обзор новых возможностей в EF Core 5.0
 author: ajcvickers
-ms.date: 07/20/2020
+ms.date: 09/10/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew
-ms.openlocfilehash: b4551a3c593694b104a750d500d81eb170a83dc0
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 0605d021b46066c6af7b631c99e86c0e53caa8db
+ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89618608"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90070761"
 ---
 # <a name="whats-new-in-ef-core-50"></a>Новые возможности EF Core 5.0
 
-Сейчас EF Core 5.0 находится на стадии разработки. На этой странице представлен обзор интересных изменений, появившихся в каждой предварительной версии.
+Все функции, запланированные в EF Core 5.0, реализованы. На этой странице представлен обзор интересных изменений, появившихся в каждой предварительной версии.
 
 Эта страница не является аналогом статьи о [планировании для EF Core 5.0](xref:core/what-is-new/ef-core-5.0/plan). В плане описываются общие темы для EF Core 5.0, в том числе все, что планируется включить перед выпуском окончательной версии.
 
-Мы будем добавлять ссылки на официальную документацию по мере ее публикации.
+## <a name="rc1"></a>RC1
+
+### <a name="many-to-many"></a>"Много ко многим"
+
+В EF Core 5.0 поддерживаются связи "многие ко многим" без явного сопоставления таблицы соединения.
+
+Например, рассмотрим такие типы сущностей:
+
+```C#
+public class Post
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public ICollection<Tag> Tags { get; set; }
+}
+
+public class Tag
+{
+    public int Id { get; set; }
+    public string Text { get; set; }
+    public ICollection<Post> Posts { get; set; }
+}
+```
+
+Обратите внимание, что `Post` содержит коллекцию `Tags`, а `Tag` содержит коллекцию `Posts`. В соответствии с соглашением в EF Core 5.0 это распознается как отношение "многие ко многим". Поэтому код в `OnModelCreating` не требуется:
+
+```C#
+public class BlogContext : DbContext
+{
+    public DbSet<Post> Posts { get; set; }
+    public DbSet<Blog> Blogs { get; set; }
+}
+```
+
+Если для создания базы данных используются миграции (или `EnsureCreated`), EF Core автоматически создает таблицу соединения. Например, в SQL Server для этой модели EF Core создает:
+
+```sql
+CREATE TABLE [Posts] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Posts] PRIMARY KEY ([Id])
+);
+
+CREATE TABLE [Tag] (
+    [Id] int NOT NULL IDENTITY,
+    [Text] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tag] PRIMARY KEY ([Id])
+);
+
+CREATE TABLE [PostTag] (
+    [PostsId] int NOT NULL,
+    [TagsId] int NOT NULL,
+    CONSTRAINT [PK_PostTag] PRIMARY KEY ([PostsId], [TagsId]),
+    CONSTRAINT [FK_PostTag_Posts_PostsId] FOREIGN KEY ([PostsId]) REFERENCES [Posts] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_PostTag_Tag_TagsId] FOREIGN KEY ([TagsId]) REFERENCES [Tag] ([Id]) ON DELETE CASCADE
+);
+
+CREATE INDEX [IX_PostTag_TagsId] ON [PostTag] ([TagsId]);
+```
+
+Создание и связывание сущностей `Blog` и `Post` приводит к автоматическому обновлению таблицы соединения. Пример:
+
+```C#
+var beginnerTag = new Tag {Text = "Beginner"};
+var advancedTag = new Tag {Text = "Advanced"};
+var efCoreTag = new Tag {Text = "EF Core"};
+
+context.AddRange(
+    new Post {Name = "EF Core 101", Tags = new List<Tag> {beginnerTag, efCoreTag}},
+    new Post {Name = "Writing an EF database provider", Tags = new List<Tag> {advancedTag, efCoreTag}},
+    new Post {Name = "Savepoints in EF Core", Tags = new List<Tag> {beginnerTag, efCoreTag}});
+
+context.SaveChanges();
+```
+
+После вставки записей и тегов EF автоматически создаст строки в таблице соединения. Например, в SQL Server.
+
+```sql
+SET NOCOUNT ON;
+INSERT INTO [PostTag] ([PostsId], [TagsId])
+VALUES (@p6, @p7),
+(@p8, @p9),
+(@p10, @p11),
+(@p12, @p13),
+(@p14, @p15),
+(@p16, @p17);
+```
+
+Включение и другие операции запросов выполняются так же, как для любой другой связи. Пример:
+
+```C#
+foreach (var post in context.Posts.Include(e => e.Tags))
+{
+    Console.Write($"Post \"{post.Name}\" has tags");
+
+    foreach (var tag in post.Tags)
+    {
+        Console.Write($" '{tag.Text}'");
+    }
+}
+```
+
+Создаваемый код SQL автоматически использует таблицу соединения, чтобы вернуть все связанные теги:
+
+```sql
+SELECT [p].[Id], [p].[Name], [t0].[PostsId], [t0].[TagsId], [t0].[Id], [t0].[Text]
+FROM [Posts] AS [p]
+LEFT JOIN (
+    SELECT [p0].[PostsId], [p0].[TagsId], [t].[Id], [t].[Text]
+    FROM [PostTag] AS [p0]
+    INNER JOIN [Tag] AS [t] ON [p0].[TagsId] = [t].[Id]
+) AS [t0] ON [p].[Id] = [t0].[PostsId]
+ORDER BY [p].[Id], [t0].[PostsId], [t0].[TagsId], [t0].[Id]
+```
+
+В отличие от EF6, EF Core позволяет полностью настраивать таблицу соединения. Например, приведенный ниже код настраивает связь "многие ко многим", которая также содержит навигацию на сущность соединения и в которой сущность соединения содержит свойство полезной нагрузки.
+
+```c#
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder
+        .Entity<Community>()
+        .HasMany(e => e.Members)
+        .WithMany(e => e.Memberships)
+        .UsingEntity<PersonCommunity>(
+            b => b.HasOne(e => e.Member).WithMany().HasForeignKey(e => e.MembersId),
+            b => b.HasOne(e => e.Membership).WithMany().HasForeignKey(e => e.MembershipsId))
+        .Property(e => e.MemberSince).HasDefaultValueSql("CURRENT_TIMESTAMP");
+}
+```
+
+### <a name="map-entity-types-to-queries"></a>Сопоставление типов сущностей с запросами
+
+Типы сущностей обычно сопоставляются с таблицами или представлениями так, что EF Core будет извлекать содержимое таблицы или представления при запросе соответствующего типа. EF Core 5.0 позволяет сопоставить тип сущности с "определяющим запросом". (Эта возможность частично поддерживалось в предыдущих версиях, но была значительно улучшена и имеет другой синтаксис в EF Core 5.0.)
+
+Например, рассмотрим две таблицы: одна с актуальными записями, а другая — с устаревшими. Таблица с актуальными записями содержит ряд дополнительных столбцов, но для приложения необходимо объединить актуальные и устаревшие записи и сопоставить их с типом сущности со всеми необходимыми свойствами:
+
+```c#
+public class Post
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Category { get; set; }
+    public int BlogId { get; set; }
+    public Blog Blog { get; set; }
+}
+```
+
+В EF Core 5.0 можно использовать `ToSqlQuery`, чтобы сопоставить этот тип сущности с запросом, который извлекает и объединяет строки из обеих таблиц:
+
+```c#
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Post>().ToSqlQuery(
+        @"SELECT Id, Name, Category, BlogId FROM posts
+          UNION ALL
+          SELECT Id, Name, ""Legacy"", BlogId from legacy_posts");
+}
+```
+
+Обратите внимание, что в таблице `legacy_posts` нет столбца `Category`, поэтому мы создадим значение по умолчанию для всех устаревших записей.
+
+Затем этот тип сущности можно использовать обычным образом для запросов LINQ. Например, если выбран диапазон 10.0.0.0/20 для виртуальной сети, для пространства клиентских адресов можно выбрать 10.1.0.0/24. Запрос LINQ:
+
+```c#
+var posts = context.Posts.Where(e => e.Blog.Name.Contains("Unicorn")).ToList();
+```
+
+Создает следующий код SQL в SQLite:
+
+```sql
+SELECT "p"."Id", "p"."BlogId", "p"."Category", "p"."Name"
+FROM (
+    SELECT Id, Name, Category, BlogId FROM posts
+    UNION ALL
+    SELECT Id, Name, "Legacy", BlogId from legacy_posts
+) AS "p"
+INNER JOIN "Blogs" AS "b" ON "p"."BlogId" = "b"."Id"
+WHERE ('Unicorn' = '') OR (instr("b"."Name", 'Unicorn') > 0)
+```
+
+Обратите внимание, что запрос, настроенный для типа сущности, используется в качестве отправной точки для составления полного запроса LINQ.
+
+### <a name="event-counters"></a>Счетчики событий
+
+[Счетчики событий .NET](https://devblogs.microsoft.com/dotnet/introducing-diagnostics-improvements-in-net-core-3-0/) позволяют эффективно предоставлять метрики производительности из приложения. В EF Core 5.0 счетчики событий включены в категорию `Microsoft.EntityFrameworkCore`. Пример:
+
+```
+dotnet counters monitor Microsoft.EntityFrameworkCore -p 49496
+```
+
+Эта команда предписывает счетчикам dotnet начать сбор событий EF Core для процесса 49496. В консоли будут выведены выходные данные следующего вида:
+
+```
+[Microsoft.EntityFrameworkCore]
+    Active DbContexts                                               1
+    Execution Strategy Operation Failures (Count / 1 sec)           0
+    Execution Strategy Operation Failures (Total)                   0
+    Optimistic Concurrency Failures (Count / 1 sec)                 0
+    Optimistic Concurrency Failures (Total)                         0
+    Queries (Count / 1 sec)                                     1,755
+    Queries (Total)                                            98,402
+    Query Cache Hit Rate (%)                                      100
+    SaveChanges (Count / 1 sec)                                     0
+    SaveChanges (Total)                                             1
+```
+
+### <a name="property-bags"></a>Контейнеры свойств
+
+В EF Core 5.0 один тип CLR может быть сопоставлен с несколькими различными типами сущностей. Такие типы называются общими типами сущностей. Эта возможность в сочетании со свойствами индексатора (включенным в предварительную версию 1) позволяет использовать контейнеры свойств как тип сущности.
+
+Например, в приведенном ниже DbContext тип BCL `Dictionary<string, object>` настраивается как общий тип сущности для продуктов и категорий.
+
+```c#
+public class ProductsContext : DbContext
+{
+    public DbSet<Dictionary<string, object>> Products => Set<Dictionary<string, object>>("Product");
+    public DbSet<Dictionary<string, object>> Categories => Set<Dictionary<string, object>>("Category");
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.SharedTypeEntity<Dictionary<string, object>>("Category", b =>
+        {
+            b.IndexerProperty<string>("Description");
+            b.IndexerProperty<int>("Id");
+            b.IndexerProperty<string>("Name").IsRequired();
+        });
+
+        modelBuilder.SharedTypeEntity<Dictionary<string, object>>("Product", b =>
+        {
+            b.IndexerProperty<int>("Id");
+            b.IndexerProperty<string>("Name").IsRequired();
+            b.IndexerProperty<string>("Description");
+            b.IndexerProperty<decimal>("Price");
+            b.IndexerProperty<int?>("CategoryId");
+
+            b.HasOne("Category", null).WithMany();
+        });
+    }
+}
+```
+
+Объекты словаря ("контейнеры свойств") теперь можно добавлять в контекст как экземпляры сущности и сохранять. Пример:
+
+```c#
+var beverages = new Dictionary<string, object>
+{
+    ["Name"] = "Beverages",
+    ["Description"] = "Stuff to sip on"
+};
+
+context.Categories.Add(beverages);
+
+context.SaveChanges();
+```
+
+Затем эти сущности можно запрашивать и обновлять обычным образом:
+
+```c#
+var foods = context.Categories.Single(e => e["Name"] == "Foods");
+var marmite = context.Products.Single(e => e["Name"] == "Marmite");
+
+marmite["CategoryId"] = foods["Id"];
+marmite["Description"] = "Yummy when spread _thinly_ on buttered Toast!";
+
+context.SaveChanges();
+```
+
+### <a name="savechanges-interception-and-events"></a>Перехват и события SaveChanges
+
+В EF Core 5.0 появились события .NET и перехватчик EF Core, запускаемый при вызове SaveChanges.
+
+События просты в использовании, например:
+
+```c#
+context.SavingChanges += (sender, args) =>
+{
+    Console.WriteLine($"Saving changes for {((DbContext)sender).Database.GetConnectionString()}");
+};
+
+context.SavedChanges += (sender, args) =>
+{
+    Console.WriteLine($"Saved {args.EntitiesSavedCount} changes for {((DbContext)sender).Database.GetConnectionString()}");
+};
+```
+
+Обратите внимание на указанные ниже моменты.
+* Отправителем события является экземпляр `DbContext`.
+* Аргументы события `SavedChanges` содержат число сущностей, сохраненных в базе данных.
+
+Перехватчик определяется `ISaveChangesInterceptor`, но часто удобнее наследовать его от `SaveChangesInterceptor`, чтобы не приходилось реализовывать каждый метод. Пример:
+
+```c#
+public class MySaveChangesInterceptor : SaveChangesInterceptor
+{
+    public override InterceptionResult<int> SavingChanges(
+        DbContextEventData eventData,
+        InterceptionResult<int> result)
+    {
+        Console.WriteLine($"Saving changes for {eventData.Context.Database.GetConnectionString()}");
+
+        return result;
+    }
+
+    public override ValueTask<InterceptionResult<int>> SavingChangesAsync(
+        DbContextEventData eventData,
+        InterceptionResult<int> result,
+        CancellationToken cancellationToken = new CancellationToken())
+    {
+        Console.WriteLine($"Saving changes asynchronously for {eventData.Context.Database.GetConnectionString()}");
+
+        return new ValueTask<InterceptionResult<int>>(result);
+    }
+}
+```
+
+Обратите внимание на указанные ниже моменты.
+* Перехватчик имеет как синхронные, так и асинхронные методы. Это может быть полезно, если требуется выполнить асинхронный ввод-вывод, например запись на сервер аудита.
+* Перехватчик позволяет пропустить метод SaveChanges, используя механизм `InterceptionResult`, общий для всех перехватчиков.
+
+Недостаток перехватчиков заключается в том, что они должны регистрироваться в объекте DbContext при его создании. Пример:
+
+```c#
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder
+            .AddInterceptors(new MySaveChangesInterceptor())
+            .UseSqlite("Data Source = test.db");
+```
+
+События же, напротив, могут регистрироваться в экземпляре DbContext в любое время.
+
+### <a name="exclude-tables-from-migrations"></a>Исключение таблиц из миграций
+
+Иногда полезно иметь один тип сущности, сопоставленный в нескольких экземплярах DbContext. Это особенно справедливо при использовании [ограниченных контекстов](https://www.martinfowler.com/bliki/BoundedContext.html), для каждого из которых часто используется отдельный тип DbContext.
+
+Например, тип `User` может требоваться как для контекста авторизации, так и для контекста отчетов. При внесении изменения в тип `User` миграции для обоих экземпляров DbContext будут пытаться обновить базу данных. Чтобы избежать этого, модель для одного из контекстов можно настроить так, чтобы таблица исключалась из миграций.
+
+В приведенном ниже коде `AuthorizationContext` создает миграции для изменений в таблице `Users`, а `ReportingContext` не создает, благодаря чему предотвращаются конфликты миграций.
+
+```C#
+public class AuthorizationContext : DbContext
+{
+    public DbSet<User> Users { get; set; }
+}
+
+public class ReportingContext : DbContext
+{
+    public DbSet<User> Users { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>().ToTable("Users", t => t.ExcludeFromMigrations());
+    }
+}
+```
+
+### <a name="required-11-dependents"></a>Обязательные зависимости "один к одному"
+
+В EF Core 3.1 зависимая сторона связи "один к одному" всегда считалась необязательной. Это было особенно очевидно при использовании принадлежащих сущностей. Например, рассмотрим следующую модель и конфигурацию:
+
+```c#
+public class Person
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public Address HomeAddress { get; set; }
+    public Address WorkAddress { get; set; }
+}
+
+public class Address
+{
+    public string Line1 { get; set; }
+    public string Line2 { get; set; }
+    public string City { get; set; }
+    public string Region { get; set; }
+    public string Country { get; set; }
+    public string Postcode { get; set; }
+}
+```
+
+```c#
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Person>(b =>
+    {
+        b.OwnsOne(e => e.HomeAddress,
+            b =>
+            {
+                b.Property(e => e.Line1).IsRequired();
+                b.Property(e => e.City).IsRequired();
+                b.Property(e => e.Region).IsRequired();
+                b.Property(e => e.Postcode).IsRequired();
+            });
+
+        b.OwnsOne(e => e.WorkAddress);
+    });
+}
+```
+
+В результате миграции создают следующую таблицу для SQLite:
+
+```sql
+CREATE TABLE "People" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_People" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NULL,
+    "HomeAddress_Line1" TEXT NULL,
+    "HomeAddress_Line2" TEXT NULL,
+    "HomeAddress_City" TEXT NULL,
+    "HomeAddress_Region" TEXT NULL,
+    "HomeAddress_Country" TEXT NULL,
+    "HomeAddress_Postcode" TEXT NULL,
+    "WorkAddress_Line1" TEXT NULL,
+    "WorkAddress_Line2" TEXT NULL,
+    "WorkAddress_City" TEXT NULL,
+    "WorkAddress_Region" TEXT NULL,
+    "WorkAddress_Country" TEXT NULL,
+    "WorkAddress_Postcode" TEXT NULL
+);
+```
+
+Обратите внимание, что все столбцы допускают значение NULL, даже несмотря на то, что некоторые свойства `HomeAddress` настроены как обязательные. Кроме того, если все столбцы домашнего или рабочего адреса имеют значение NULL, при запросе `Person` EF Core оставит свойства `HomeAddress` и (или) `WorkAddress` со значением NULL вместо задания пустого экземпляра `Address`.
+
+В EF Core 5.0 навигацию `HomeAddress` теперь можно настроить как обязательную зависимость. Пример:
+
+```c#
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Person>(b =>
+    {
+        b.OwnsOne(e => e.HomeAddress,
+            b =>
+            {
+                b.Property(e => e.Line1).IsRequired();
+                b.Property(e => e.City).IsRequired();
+                b.Property(e => e.Region).IsRequired();
+                b.Property(e => e.Postcode).IsRequired();
+            });
+        b.Navigation(e => e.HomeAddress).IsRequired();
+
+        b.OwnsOne(e => e.WorkAddress);
+    });
+}
+```
+
+Таблица, создаваемая миграциями, теперь будет включать столбцы, не допускающие значения NULL, для обязательных свойств требуемой зависимости:
+
+```sql
+CREATE TABLE "People" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_People" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NULL,
+    "HomeAddress_Line1" TEXT NOT NULL,
+    "HomeAddress_Line2" TEXT NULL,
+    "HomeAddress_City" TEXT NOT NULL,
+    "HomeAddress_Region" TEXT NOT NULL,
+    "HomeAddress_Country" TEXT NULL,
+    "HomeAddress_Postcode" TEXT NOT NULL,
+    "WorkAddress_Line1" TEXT NULL,
+    "WorkAddress_Line2" TEXT NULL,
+    "WorkAddress_City" TEXT NULL,
+    "WorkAddress_Region" TEXT NULL,
+    "WorkAddress_Country" TEXT NULL,
+    "WorkAddress_Postcode" TEXT NULL
+);
+```
+
+Кроме того, EF Core теперь будет вызывать исключение при попытке сохранить владельца, который имеет обязательную зависимость со значением NULL. В этом примере EF Core выдает исключение при попытке сохранить `Person` со значением NULL для `HomeAddress`.
+
+Наконец, EF Core будет по-прежнему создавать экземпляр обязательной зависимости, даже если все ее столбцы имеют значения NULL.
+
+### <a name="options-for-migration-generation"></a>Варианты создания миграции
+
+В EF Core 5.0 улучшен контроль над созданием миграций в различных целях. Обеспечены следующие возможности:
+
+* определение того, создается ли миграция для скрипта или для немедленного выполнения;
+* определение того, создается ли идемпотентный скрипт;
+* определение того, должен ли скрипт исключать инструкции транзакций (см. раздел _Скрипты миграции с транзакциями_ ниже).
+
+Это поведение задается перечислением `MigrationsSqlGenerationOptions`, которое теперь можно передать в `IMigrator.GenerateScript`.
+
+Кроме того, улучшено создание идемпотентных скриптов с вызовами `EXEC` в SQL Server, когда это необходимо. Аналогичные улучшения доступны для скриптов, создаваемых другими поставщиками баз данных, включая PostgreSQL.
+
+### <a name="migrations-scripts-with-transactions"></a>Скрипты миграции с транзакциями
+
+Скрипты SQL, создаваемые миграциями, теперь содержат инструкции для начала и фиксации транзакций, необходимых для миграции. Например, приведенный ниже скрипт миграции был создан на основе двух миграций. Обратите внимание, что каждая миграция теперь применяется внутри транзакции.
+
+```sql
+BEGIN TRANSACTION;
+GO
+
+CREATE TABLE [Groups] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Groups] PRIMARY KEY ([Id])
+);
+GO
+
+CREATE TABLE [Members] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    [GroupId] int NULL,
+    CONSTRAINT [PK_Members] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Members_Groups_GroupId] FOREIGN KEY ([GroupId]) REFERENCES [Groups] ([Id]) ON DELETE NO ACTION
+);
+GO
+
+CREATE INDEX [IX_Members_GroupId] ON [Members] ([GroupId]);
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200910194835_One', N'6.0.0-alpha.1.20460.2');
+GO
+
+COMMIT;
+GO
+
+BEGIN TRANSACTION;
+GO
+
+EXEC sp_rename N'[Groups].[Name]', N'GroupName', N'COLUMN';
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20200910195234_Two', N'6.0.0-alpha.1.20460.2');
+GO
+
+COMMIT;
+```
+
+Как было упомянуто в предыдущем разделе, такое использование транзакций можно отключить, если транзакции должны обрабатываться по-другому.
+
+### <a name="see-pending-migrations"></a>См. раздел, посвященный ожидающим выполнения транзакциям.
+
+Эту функцию предоставил участник сообщества [@Psypher9](https://github.com/Psypher9). Большое спасибо за публикацию!
+
+Команда `dotnet ef migrations list` теперь показывает, какие миграции еще не были применены к базе данных. Пример:
+
+```
+ajcvickers@avickers420u:~/AllTogetherNow/Daily$ dotnet ef migrations list
+Build started...
+Build succeeded.
+20200910201647_One
+20200910201708_Two
+20200910202050_Three (Pending)
+ajcvickers@avickers420u:~/AllTogetherNow/Daily$
+```
+
+Кроме того, теперь есть команда `Get-Migration` для консоли диспетчера пакетов с аналогичной функциональностью.
+
+### <a name="modelbuilder-api-for-value-comparers"></a>API ModelBuilder для функций сравнения значений
+
+В EF Core для правильного обнаружения изменений свойств пользовательских изменяемых типов [требуется функция сравнения значений](xref:core/modeling/value-comparers). Теперь ее можно указать в процессе настройки преобразования значения для типа. Пример:
+
+```c#
+modelBuilder
+    .Entity<EntityType>()
+    .Property(e => e.MyProperty)
+    .HasConversion(
+        v => JsonSerializer.Serialize(v, null),
+        v => JsonSerializer.Deserialize<List<int>>(v, null),
+        new ValueComparer<List<int>>(
+            (c1, c2) => c1.SequenceEqual(c2),
+            c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
+            c => c.ToList()));
+```
+
+### <a name="entityentry-trygetvalue-methods"></a>Методы EntityEntry TryGetValue
+
+Эту функцию предоставил участник сообщества [@m4ss1m0g](https://github.com/m4ss1m0g). Большое спасибо за публикацию!
+
+Метод `TryGetValue` был добавлен в `EntityEntry.CurrentValues` и `EntityEntry.OriginalValues`. Это позволяет запрашивать значение свойства, не проверяя предварительно, сопоставлено ли свойство в модели EF. Пример:
+
+```c#
+if (entry.CurrentValues.TryGetValue(propertyName, out var value))
+{
+    Console.WriteLine(value);
+}
+```
+
+### <a name="default-max-batch-size-for-sql-server"></a>Максимальный размер пакета по умолчанию для SQL Server
+
+Начиная с EF Core 5.0 максимальный размер пакета по умолчанию для SaveChanges в SQL Server равен 42. Как хорошо известно, это также ответ на главный вопрос жизни, вселенной и вообще. Однако, вероятно, это совпадение, так как данное значение было получено в результате [анализа производительности пакетной обработки](https://github.com/dotnet/efcore/issues/9270). Не думаем, что мы нашли окончательный ответ, хотя вполне возможно, что Земля была создана лишь с целью познать, почему SQL Server работает именно так.
+
+### <a name="default-environment-to-development"></a>Использование среды разработки по умолчанию
+
+Программы командной строки EF Core теперь автоматически задают для переменных среды `ASPNETCORE_ENVIRONMENT` _и_ `DOTNET_ENVIRONMENT` значение Development. Это обеспечивает согласованную работу при использовании универсального узла и ASP.NET Core во время разработки. См. описание проблемы [№ 19903](https://github.com/dotnet/efcore/issues/19903).
+
+### <a name="better-migrations-column-ordering"></a>Оптимизация порядка столбцов при миграции
+
+Столбцы для несопоставленных базовых классов теперь упорядочиваются после столбцов для сопоставленных типов сущностей. Обратите внимание, что это касается только новых создаваемых таблиц. Порядок столбцов для существующих таблиц не меняется. См. описание проблемы [№ 11314](https://github.com/dotnet/efcore/issues/11314).
+
+### <a name="query-improvements"></a>Улучшения запросов
+
+В EF Core 5.0 RC1 появились дополнительные улучшения преобразования запросов.
+
+* Преобразование `is` в Cosmos — см. описание проблемы [№ 16391](https://github.com/dotnet/efcore/issues/16391).
+* Сопоставленные пользователем функции теперь можно аннотировать для управления распространением значений NULL — см. описание проблемы [№ 19609](https://github.com/dotnet/efcore/issues/19609).
+* Поддержка преобразования GroupBy с условными статистическими выражениями — см. описание проблемы [№ 11711](https://github.com/dotnet/efcore/issues/11711).
+* Преобразование оператора Distinct с групповым элементом перед статистическим выражением — см. описание проблемы [№ 17376](https://github.com/dotnet/efcore/issues/17376).
+
+### <a name="model-building-for-fields"></a>Формирование модели для полей
+
+Наконец, в EF Core RC1 теперь можно использовать лямбда-методы в ModelBuilder как для полей, так и для свойств. Например, если свойства вам по какой-либо причине не нравятся и вы хотите использовать открытые поля, теперь такие поля можно сопоставить с помощью построителей лямбда-выражений:
+
+```c#
+public class Post
+{
+    public int Id;
+    public string Name;
+    public string Category;
+    public int BlogId;
+    public Blog Blog;
+}
+
+public class Blog
+{
+    public int Id;
+    public string Name;
+    public ICollection<Post> Posts;
+}
+```
+
+```c#
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Blog>(b =>
+    {
+        b.Property(e => e.Id);
+        b.Property(e => e.Name);
+    });
+
+    modelBuilder.Entity<Post>(b =>
+    {
+        b.Property(e => e.Id);
+        b.Property(e => e.Name);
+        b.Property(e => e.Category);
+        b.Property(e => e.BlogId);
+        b.HasOne(e => e.Blog).WithMany(e => e.Posts);
+    });
+}
+```
+
+Однако, хотя такая возможность и имеется, мы не рекомендуем пользоваться ею. Кроме того, обратите внимание, что возможности сопоставления полей в EF Core не были расширены. Просто вместо строковых методов, которые раньше требовались всегда, теперь можно использовать лямбда-методы. Это бывает полезно нечасто, так как поля редко являются открытыми.
 
 ## <a name="preview-8"></a>предварительная версия 8
 
