@@ -4,12 +4,12 @@ description: Использование устойчивости подключ�
 author: rowanmiller
 ms.date: 11/15/2016
 uid: core/miscellaneous/connection-resiliency
-ms.openlocfilehash: f4077672a9234bf66dc488d7450f437452e542b6
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 25b754334edd15532780cb4e40682bc211620c76
+ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071710"
+ms.lasthandoff: 09/24/2020
+ms.locfileid: "91210297"
 ---
 # <a name="connection-resiliency"></a>Устойчивость подключений
 
@@ -107,3 +107,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 > [!NOTE]
 > Убедитесь, что контекст, используемый для проверки, имеет стратегию выполнения, определенную, так как соединение, скорее всего, снова завершится сбоем во время проверки, если оно завершилось сбоем во время фиксации транзакции.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+* [Устранение временных ошибок подключения в базе данных SQL Azure и SQL Управляемый экземпляр](/azure/azure-sql/database/troubleshoot-common-connectivity-issues)

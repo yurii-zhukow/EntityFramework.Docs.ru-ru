@@ -3,45 +3,44 @@ title: Справочник по средствам EF Core (.NET CLI) — EF Co
 description: Справочное руководство по средствам .NET Core CLI Entity Framework Core
 author: bricelam
 ms.author: bricelam
-ms.date: 09/09/2020
+ms.date: 09/17/2020
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: a3fa73bf7f9173cbd49dffdabeacc98d5c35ac14
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: ee1caebcda93f627d285878f8594688a0f08c194
+ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071840"
+ms.lasthandoff: 09/24/2020
+ms.locfileid: "91210397"
 ---
 # <a name="entity-framework-core-tools-reference---net-core-cli"></a>Справочник по инструментам Entity Framework Core — .NET Core CLI
 
 Средства интерфейса командной строки (CLI) для Entity Framework Core выполнения задач разработки во время разработки. Например, они создают [миграции](/aspnet/core/data/ef-mvc/migrations), применяют миграции и создают код для модели на основе существующей базы данных. Команды представляют собой расширение кросс-платформенной команды [DotNet](/dotnet/core/tools) , которая является частью [пакет SDK для .NET Core](https://www.microsoft.com/net/core). Эти средства работают с проектами .NET Core.
 
-Если вы используете Visual Studio, вместо этого рекомендуется использовать [средства консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell) :
+При использовании Visual Studio рассмотрите возможность использования [средств консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell) вместо средств CLI. Средства консоли диспетчера пакетов автоматически:
 
-* Они автоматически работают с текущим проектом, выбранным в **консоли диспетчера пакетов** , без необходимости переключать каталоги вручную.
-* Они автоматически открывают файлы, созданные командой после завершения команды.
+* Работает с текущим проектом, выбранным в **консоли диспетчера пакетов** , без необходимости переключать каталоги вручную.
+* Открывает файлы, созданные командой после завершения команды.
+* Обеспечивает заполнение по клавише TAB команд, параметров, имен проектов, контекстных типов и имен миграции.
 
 ## <a name="installing-the-tools"></a>Установка инструментов
 
 Процедура установки зависит от типа и версии проекта.
 
-* EF Core 3.x
+* EF Core 3. x и 5. x
 * ASP.NET Core версии 2,1 и более поздних
 * EF Core 2. x
-* EF Core 1. x
 
-### <a name="ef-core-3x"></a>EF Core 3.x
+### <a name="ef-core-3x-and-5x"></a>EF Core 3. x и 5. x
 
-* `dotnet ef` должен быть установлен в качестве глобального или локального средства. Большинство разработчиков будут устанавливаться `dotnet ef` как глобальные средства с помощью следующей команды:
+* `dotnet ef` должен быть установлен в качестве глобального или локального средства. Большинство разработчиков предпочитают устанавливать `dotnet ef` в качестве глобального средства, используя следующую команду:
 
   ```dotnetcli
   dotnet tool install --global dotnet-ef
   ```
 
-  Также можно использовать `dotnet ef` в качестве локального средства. Чтобы использовать его в качестве локального средства, восстановите зависимости проекта, объявляющие его как зависимость инструментария, с помощью [файла манифеста средства](/dotnet/core/tools/global-tools#install-a-local-tool).
+  `dotnet ef` также может использоваться в качестве локального средства. Чтобы использовать его в качестве локального средства, восстановите зависимости проекта, объявляющие его как зависимость инструментария, с помощью [файла манифеста средства](/dotnet/core/tools/global-tools#install-a-local-tool).
 
 * Установите [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core).
-
 * Установите последнюю версию `Microsoft.EntityFrameworkCore.Design` пакета.
 
   ```dotnetcli
@@ -50,7 +49,7 @@ ms.locfileid: "90071840"
 
 ### <a name="aspnet-core-21"></a>ASP.NET Core 2.1 +
 
-* Установите текущую [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core). Это нужно сделать, даже если у вас установлена последняя версия Visual Studio 2017.
+* Установите текущую [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core). Пакет SDK должен быть установлен, даже если у вас установлена последняя версия Visual Studio.
 
   Это все, что необходимо для ASP.NET Core 2.1 +, так как `Microsoft.EntityFrameworkCore.Design` пакет включен в [метапакет Microsoft. AspNetCore. app](/aspnet/core/fundamentals/metapackage-app).
 
@@ -65,42 +64,6 @@ ms.locfileid: "90071840"
   ```dotnetcli
   dotnet add package Microsoft.EntityFrameworkCore.Design
   ```
-
-### <a name="ef-core-1x"></a>EF Core 1. x
-
-* Установите пакет SDK для .NET Core версию 2.1.200. Более поздние версии несовместимы с инструментами CLI для EF Core 1,0 и 1,1.
-
-* Настройте приложение для использования версии пакета SDK 2.1.200, изменив ее [global.jsв](/dotnet/core/tools/global-json) файле. Этот файл обычно включается в каталог решения (один над проектом).
-
-* Измените файл проекта и добавьте его `Microsoft.EntityFrameworkCore.Tools.DotNet` в качестве `DotNetCliToolReference` элемента. Укажите последнюю версию версии 1. x, например: 1.1.6. См. пример файла проекта в конце этого раздела.
-
-* Установите последнюю версию пакета версии 1. x `Microsoft.EntityFrameworkCore.Design` , например:
-
-  ```dotnetcli
-  dotnet add package Microsoft.EntityFrameworkCore.Design -v 1.1.6
-  ```
-
-  После добавления ссылок на пакеты файл проекта выглядит примерно так:
-
-  ``` xml
-  <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-      <OutputType>Exe</OutputType>
-      <TargetFramework>netcoreapp1.1</TargetFramework>
-    </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design"
-                        Version="1.1.6"
-                         PrivateAssets="All" />
-    </ItemGroup>
-    <ItemGroup>
-       <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet"
-                              Version="1.1.6" />
-    </ItemGroup>
-  </Project>
-  ```
-
-  Ссылка на пакет с `PrivateAssets="All"` недоступна для проектов, ссылающихся на этот проект. Это ограничение особенно полезно для пакетов, которые обычно используются только во время разработки.
 
 ### <a name="verify-installation"></a>Проверка установки
 
@@ -127,9 +90,9 @@ Entity Framework Core .NET Command-line Tools 2.1.3-rtm-32065
 <Usage documentation follows, not shown.>
 ```
 
-## <a name="updating-the-tools"></a>Обновление средств
+## <a name="update-the-tools"></a>Обновление средств
 
-Используйте `dotnet tool update --global dotnet-ef` для обновления глобальных средств до последней доступной версии, если средства, установленные локально в проекте, используются `dotnet tool update dotnet-ef` . Установите определенную версию, добавив `--version <VERSION>` к команде. Дополнительные сведения см. в разделе " [Обновление](/dotnet/core/tools/dotnet-tool-update) " документации по инструменту DotNet.
+Используйте `dotnet tool update --global dotnet-ef` для обновления глобальных средств до последней доступной версии. Если средства, установленные локально в проекте, используются `dotnet tool update dotnet-ef` . Установите определенную версию, добавив `--version <VERSION>` к команде. Дополнительные сведения см. в разделе " [Обновление](/dotnet/core/tools/dotnet-tool-update) " документации по инструменту DotNet.
 
 ## <a name="using-the-tools"></a>Использование средств
 
