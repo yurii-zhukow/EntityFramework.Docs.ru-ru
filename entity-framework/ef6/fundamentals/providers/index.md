@@ -4,12 +4,12 @@ description: Использование поставщиков Entity Framework 
 author: divega
 ms.date: 06/27/2018
 uid: ef6/fundamentals/providers/index
-ms.openlocfilehash: bb573cb0666556de8fb37802f465af97fc40673a
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 7d448f749448e35702c2440717593221324508fa
+ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073153"
+ms.lasthandoff: 09/24/2020
+ms.locfileid: "91210332"
 ---
 # <a name="entity-framework-6-providers"></a>Поставщики Entity Framework 6
 > [!NOTE]
@@ -41,6 +41,8 @@ ms.locfileid: "90073153"
     *   Npgsql доступен как [пакет NuGet](https://www.nuget.org/packages/EntityFramework6.Npgsql/).
 *   **Oracle**
     *   ODP.NET доступен как [пакет NuGet](https://www.nuget.org/packages/Oracle.ManagedDataAccess.EntityFramework/).
+*   **SQLite**
+    *   System.Data.SQLite доступен в виде [пакета NuGet](https://www.nuget.org/packages/System.Data.SQLite/)
 
 Обратите внимание, что при включении в этот список не указывается уровень функциональности или поддержки для данного поставщика. Это значит только то, что стала доступной сборка для EF6.
 

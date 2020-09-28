@@ -2,15 +2,14 @@
 title: Поставщик EF Core для Azure Cosmos DB
 description: Документация для поставщика базы данных, которая позволяет использовать Entity Framework Core с API SQL Azure Cosmos DB
 author: AndriySvyryd
-ms.author: ansvyryd
-ms.date: 11/05/2019
+ms.date: 09/14/2020
 uid: core/providers/cosmos/index
-ms.openlocfilehash: 188c5b10aefa784715c0bbf2d50337d65c21fd62
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 94ba29f3f2643e8f563a460e17dce9d15cb7c2df
+ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071372"
+ms.lasthandoff: 09/24/2020
+ms.locfileid: "91210345"
 ---
 # <a name="ef-core-azure-cosmos-db-provider"></a>Поставщик EF Core для Azure Cosmos DB
 
@@ -66,6 +65,18 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 
 > [!IMPORTANT]
 > Путем вызова [EnsureCreatedAsync](/dotnet/api/Microsoft.EntityFrameworkCore.Storage.IDatabaseCreator.EnsureCreatedAsync) вы создадите требуемые контейнеры и вставите [начальные данные](xref:core/modeling/data-seeding), если они есть в модели. Но `EnsureCreatedAsync` следует вызывать только во время развертывания, а не в рабочем режиме, так как это может вызвать проблемы с производительностью.
+
+## <a name="cosmos-options"></a>Параметры Cosmos
+
+Можно также настроить поставщик Cosmos DB с помощью одной строки подключения и указать другие параметры для настройки подключения:
+
+[!code-csharp[Configuration](../../../../samples/core/Cosmos/ModelBuilding/OptionsContext.cs?name=Configuration)]
+
+> [!NOTE]
+> Большинство из этих параметров являются новыми в EF Core Cosmos 5.0.
+
+> [!TIP]
+> Подробное описание каждого из указанных выше параметров см. в [документации по параметрам Azure Cosmos DB](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions).
 
 ## <a name="cosmos-specific-model-customization"></a>Настройка моделей для Cosmos
 
