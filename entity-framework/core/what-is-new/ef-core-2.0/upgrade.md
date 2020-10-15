@@ -1,15 +1,15 @@
 ---
 title: Обновление предыдущих версий до EF Core 2 — EF Core
 description: Инструкции и замечания по обновлению до Entity Framework Core 2.0
-author: divega
+author: ajcvickers
 ms.date: 08/13/2017
 uid: core/what-is-new/ef-core-2.0/upgrade
-ms.openlocfilehash: bdc0cfe8c0be4a83f8c78ba2ac66bb1e18cea0f7
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: c7c736629209da99f191ceb0d4000d19f40414b9
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072347"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063443"
 ---
 # <a name="upgrading-applications-from-previous-versions-to-ef-core-20"></a>Обновление приложений с предыдущих версий до EF Core 2.0
 
@@ -37,7 +37,7 @@ ms.locfileid: "90072347"
 
 В шаблоне по умолчанию для ASP.NET Core 2.0 добавлен новый обработчик времени разработки. Статический метод `Program.BuildWebHost` позволяет EF Core получить доступ к поставщику службы приложения во время разработки. При обновлении приложения ASP.NET Core 1. x необходимо обновить класс `Program`, чтобы он выглядел следующим образом.
 
-``` csharp
+```csharp
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
@@ -108,13 +108,13 @@ namespace AspNetCoreDotNetCore2._0App
 
 EF Core 2.0 теперь будет создавать отдельный объект [IModel](/dotnet/api/microsoft.entityframeworkcore.metadata.imodel) для каждого из используемых поставщиков. Обычно это является прозрачным для приложения. Это позволило упростить работу с API метаданных более низкого уровня, например, добиться того, что любое обращение к _основным концепциям реляционных метаданных_ всегда осуществляется путем вызова `.Relational` вместо `.SqlServer`, `.Sqlite` и т. д. Поэтому следующий код 1.1.x
 
-``` csharp
+```csharp
 var tableName = context.Model.FindEntityType(typeof(User)).SqlServer().TableName;
 ```
 
 теперь следует писать так:
 
-``` csharp
+```csharp
 var tableName = context.Model.FindEntityType(typeof(User)).Relational().TableName;
 ```
 
@@ -137,7 +137,7 @@ EF Core использует внутренний `IServiceProvider` (конт�
 
 Глобальные неименованные базы данных в памяти были удалены, и теперь все базы данных в памяти должны иметь имя. Пример:
 
-``` csharp
+```csharp
 optionsBuilder.UseInMemoryDatabase("MyDatabase");
 ```
 
@@ -161,7 +161,7 @@ optionsBuilder.UseInMemoryDatabase("MyDatabase");
 
 Чтобы включить `Scaffold-DbContext` или `dotnet ef dbcontext scaffold` в EF Core 2.0, достаточно сослаться только на один пакет поставщика.
 
-``` xml
+```xml
 <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer"
     Version="2.0.0" />
 <PackageReference Include="Microsoft.EntityFrameworkCore.Tools"

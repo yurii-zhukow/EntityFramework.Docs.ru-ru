@@ -1,15 +1,15 @@
 ---
 title: Новые возможности в EF Core 2.2 — EF Core
 description: Изменения и улучшения в Entity Framework Core 2.2
-author: divega
+author: ajcvickers
 ms.date: 11/14/2018
 uid: core/what-is-new/ef-core-2.2
-ms.openlocfilehash: 68e3cbd5c7345330a47f1457c9b096fee5dd49e9
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: ca71c7479254b25fe932e6abf43fe0fd8f1781b3
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072333"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065697"
 ---
 # <a name="new-features-in-ef-core-22"></a>Новые возможности в EF Core 2.2
 
@@ -27,7 +27,7 @@ ms.locfileid: "90072333"
 
 После установки расширения для поставщика можно добавлять к сущностям свойства поддерживаемых типов. Пример:
 
-``` csharp
+```csharp
 using NetTopologySuite.Geometries;
 
 namespace MyApp
@@ -36,7 +36,7 @@ namespace MyApp
   {
     [Key]
     public string Name { get; set; }
-  
+
     [Required]
     public Point Location { get; set; }
   }
@@ -45,7 +45,7 @@ namespace MyApp
 
 Затем можно сохранить сущности с пространственными данными:
 
-``` csharp
+```csharp
 using (var context = new MyDbContext())
 {
     context.Add(
@@ -60,11 +60,11 @@ using (var context = new MyDbContext())
 
 Вы можете выполнять запросы к базе денных на основе пространственных данных и операций с ними:
 
-``` csharp
-  var nearestFriends =
-      (from f in context.Friends
-      orderby f.Location.Distance(myLocation) descending
-      select f).Take(5).ToList();
+```csharp
+var nearestFriends =
+    (from f in context.Friends
+    orderby f.Location.Distance(myLocation) descending
+    select f).Take(5).ToList();
 ```
 
 Дополнительные сведения об этой возможности см. в [документации по пространственному типу](xref:core/modeling/spatial).
@@ -85,7 +85,7 @@ using (var context = new MyDbContext())
 
 Эту возможность можно использовать, вызвав новый API OwnsMany():
 
-``` csharp
+```csharp
 modelBuilder.Entity<Customer>().OwnsMany(c => c.Addresses);
 ```
 
@@ -98,16 +98,16 @@ modelBuilder.Entity<Customer>().OwnsMany(c => c.Addresses);
 Чтобы воспользоваться преимуществами тегов запросов, можно пометить запрос LINQ с помощью нового метода TagWith().
 Использование пространственного запроса из предыдущего примера:
 
-``` csharp
-  var nearestFriends =
-      (from f in context.Friends.TagWith(@"This is my spatial query!")
-      orderby f.Location.Distance(myLocation) descending
-      select f).Take(5).ToList();
+```csharp
+var nearestFriends =
+    (from f in context.Friends.TagWith(@"This is my spatial query!")
+    orderby f.Location.Distance(myLocation) descending
+    select f).Take(5).ToList();
 ```
 
 Запрос LINQ будет преобразован в следующий запрос SQL:
 
-``` sql
+```sql
 -- This is my spatial query!
 
 SELECT TOP(@__p_1) [f].[Name], [f].[Location]

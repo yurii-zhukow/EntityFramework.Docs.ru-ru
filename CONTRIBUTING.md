@@ -33,13 +33,13 @@
 
 Для отображения всего файла кода в виде фрагмента:
 
-``` none
+```none
 [!code-csharp[Main](../../../samples/core/saving/Program.cs)]
 ```
 
 Для подготовки к просмотру части файла как фрагмента с помощью номеров строк:
 
-``` none
+```none
 [!code-csharp[Main](../../../samples/core/saving/Program.cs?range=1-10]
 ```
 
@@ -47,13 +47,13 @@
 
 Для подготовки области C# с именем "snippet_Example":
 
-``` none
+```none
 [!code-csharp[Main](../../../samples/core/saving/Program.cs?name=snippet_Example)]
 ```
 
 Чтобы выделить выбранные строки в готовом для просмотра фрагменте кода (обычно выделяются желтым цветом):
 
-``` none
+```none
 [!code-csharp[Main](../../../samples/core/saving/Program.cs?name=snippet_Example&highlight=1-3,10,20-25)]
 ```
 
@@ -69,7 +69,7 @@
 * Добавьте DocFX в PATH.
 * В окне командной строки перейдите в клонированный репозиторий (который содержит файл *docfx.json*) и выполните следующую команду:
 
-   ``` console
+   ```console
    docfx -t default --serve
    ```
 
@@ -82,7 +82,7 @@
 * Извлеките в `\bin\docfx`.
 * Создайте псевдоним для **docfx**:
 
-  ``` console
+  ```console
   function docfx {
     mono $HOME/bin/docfx/docfx.exe
   }
@@ -94,6 +94,6 @@
 
 * Выполните команду **docfx** в клонированном репозитории, чтобы создать сайт, и **docfx-serve**, чтобы просмотреть сайт по адресу `http://localhost:8080`.
 
-## <a name="voice-and-tone"></a>Стиль
+## <a name="voice-and-tone"></a>Стиль и тон
 
 Наши документы должны быть понятными для самой широкой аудитории. С этой целью мы разработали рекомендации по стилю и просим наших авторов следовать им. Дополнительные сведения см. в разделе [Рекомендации по стилю](https://github.com/dotnet/docs/blob/master/styleguide/voice-tone.md) в репозитории .NET.

@@ -1,15 +1,15 @@
 ---
 title: Новые возможности в Core EF 1.0 (EF Core)
 description: Изменения и улучшения в Entity Framework Core 1.0
-author: divega
+author: ajcvickers
 ms.date: 10/27/2016
 uid: core/what-is-new/ef-core-1.0
-ms.openlocfilehash: 898f243bace7f38ffb6b216af0bd9249d73f2fe4
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 4066dced67a54770664b9b1348adb6ac2622ce1a
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072464"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062936"
 ---
 # <a name="features-included-in-ef-core-10"></a>Возможности, добавленные в версии EF Core 1.0
 

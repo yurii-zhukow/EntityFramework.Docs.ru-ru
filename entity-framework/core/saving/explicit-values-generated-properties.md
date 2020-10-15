@@ -1,15 +1,15 @@
 ---
 title: Установка явных значений для создаваемых свойств — EF Core
 description: Сведения о явном задании значений для свойств, настроенных как созданные с помощью Entity Framework Core
-author: rowanmiller
+author: ajcvickers
 ms.date: 10/27/2016
 uid: core/saving/explicit-values-generated-properties
-ms.openlocfilehash: efaa87356a78c4ec7e11d57c1effad776bd01cba
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: b3a31d8139b244bec72347cf20600b6c2b65c7d2
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072490"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063001"
 ---
 # <a name="setting-explicit-values-for-generated-properties"></a>Установка явных значений для создаваемых свойств
 
@@ -17,7 +17,7 @@ ms.locfileid: "90072490"
 
 Могут возникать ситуации, когда вы хотите установить явное значение для создаваемого свойства, вместо того чтобы оно было генерировано.
 
-> [!TIP]  
+> [!TIP]
 > Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/) из репозитория GitHub.
 
 ## <a name="the-model"></a>Модель
@@ -41,7 +41,7 @@ ms.locfileid: "90072490"
 
 В выходных данных показано, что база данных создала значение для первого сотрудника, а наше явное значение использовалось для второго.
 
-``` Console
+```output
 1: John Doe, 1/26/2017 12:00:00 AM
 2: Jane Doe, 1/1/2000 12:00:00 AM
 ```
@@ -52,14 +52,14 @@ ms.locfileid: "90072490"
 
 Для большинства ситуаций описанный выше подход будет работать для ключевых свойств. Однако, чтобы вставить явные значения в столбец SQL Server `IDENTITY`, вам необходимо вручную включить `IDENTITY_INSERT` перед вызовом `SaveChanges()`.
 
-> [!NOTE]  
+> [!NOTE]
 > В нашем журнале заказов есть [запрос на функцию](https://github.com/aspnet/EntityFramework/issues/703), которая позволяет сделать это автоматически в пределах поставщика SQL Server.
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmployeeId)]
 
 Выходные данные показывают, что предоставленные идентификаторы были сохранены в базе данных.
 
-``` Console
+```output
 100: John Doe
 101: Jane Doe
 ```
@@ -70,11 +70,8 @@ ms.locfileid: "90072490"
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#LastPayRaise)]
 
-> [!NOTE]  
+> [!NOTE]
 > По умолчанию EF Core создаст исключение, если вы попытаетесь сохранить явное значение для свойства, для которого настроено создание во время обновления. Чтобы этого избежать, вам нужно перейти к API метаданных нижнего уровня и установить `AfterSaveBehavior` (как показано выше).
-
-> [!NOTE]  
-> **Изменения в EF Core 2.0**. В предыдущих версиях поведение после сохранения контролировалось с помощью флага `IsReadOnlyAfterSave`. Этот флаг устарел и заменен `AfterSaveBehavior`.
 
 Существует также триггер базы данных для генерации значений столбца `LastPayRaise` во время операций `UPDATE`.
 
@@ -89,7 +86,7 @@ ms.locfileid: "90072490"
 
 В выходных данных показано, что база данных создала значение для первого сотрудника, а наше явное значение использовалось для второго.
 
-``` Console
+```output
 1: John Doe, 1/26/2017 12:00:00 AM
 2: Jane Doe, 1/19/2017 12:00:00 AM
 ```

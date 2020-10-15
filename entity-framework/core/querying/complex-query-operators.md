@@ -4,27 +4,27 @@ description: Подробные сведения о более сложных о
 author: smitpatel
 ms.date: 10/03/2019
 uid: core/querying/complex-query-operators
-ms.openlocfilehash: 57157fa1593c9e5fe54e5fbe6b2c58eca3d4b0e7
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 03375e6c46a68a719df82572333f0a57e7de6262
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071164"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062624"
 ---
 # <a name="complex-query-operators"></a>Сложные операторы запросов
 
 В языке LINQ есть множество сложных операторов, которые объединяют несколько источников данных или производят сложную обработку. Не для всех операторов LINQ есть подходящие преобразования на стороне сервера. Иногда запрос в одной форме преобразуется на сервере, но в другой — не преобразуется, даже если результат совпадает. На этой странице описываются некоторые сложные операторы и их поддерживаемые варианты. В будущих выпусках, возможно, будет поддерживаться больше шаблонов и будут добавлены соответствующие преобразования. Также важно иметь в виду, что поддержка преобразований зависит от поставщика. Запрос, который преобразуется в SqlServer, может не работать в базах данных SQLite.
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying/ComplexQuery) из репозитория GitHub.
 
 ## <a name="join"></a>Join
 
 Оператор Join в LINQ позволяет соединять два источника данных на основе селектора ключа для каждого источника, создавая кортеж значений при совпадении ключей. В реляционных базах данных он естественным образом преобразуется в `INNER JOIN`. Если оператор Join в LINQ имеет внешний и внутренний селекторы ключей, база данных требует одного условия соединения. Таким образом, EF Core создает условие соединения, сравнивая внешний и внутренний селекторы ключей на равенство. Кроме того, если селекторы ключей являются анонимными типами, EF Core создает условие соединения для покомпонентного сравнения на равенство.
 
-[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#Join)]
+[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#Join)]
 
-```SQL
+```sql
 SELECT [p].[PersonId], [p].[Name], [p].[PhotoId], [p0].[PersonPhotoId], [p0].[Caption], [p0].[Photo]
 FROM [PersonPhoto] AS [p0]
 INNER JOIN [Person] AS [p] ON [p0].[PersonPhotoId] = [p].[PhotoId]
@@ -34,9 +34,9 @@ INNER JOIN [Person] AS [p] ON [p0].[PersonPhotoId] = [p].[PhotoId]
 
 Оператор GroupJoin в LINQ позволяет соединять два источника данных, так же как оператор JOIN, но создает группу внутренних значений для соответствующих внешних элементов. Выполнение приведенного ниже запроса дает результат `Blog` & `IEnumerable<Post>`. Так как базы данных (особенно реляционные) обычно не позволяют представлять коллекцию объектов на стороне клиента, GroupJoin во многих случаях не преобразуется на сервере. Для выполнения GroupJoin без специального селектора требуется получить все данные с сервера (первый запрос ниже). Но если селектор ограничивает выбор данных, то получение всех данных с сервера может вызвать проблемы с производительностью (второй запрос ниже). Вот почему EF Core не преобразует оператор GroupJoin.
 
-[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#GroupJoin)]
+[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#GroupJoin)]
 
-[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#GroupJoinComposed)]
+[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#GroupJoinComposed)]
 
 ## <a name="selectmany"></a>SelectMany
 
@@ -46,9 +46,9 @@ INNER JOIN [Person] AS [p] ON [p0].[PersonPhotoId] = [p].[PhotoId]
 
 Если селектор коллекции не ссылается на элементы во внешнем источнике, результатом является декартово произведение обоих источников данных. В реляционных базах данных такой оператор преобразуется в `CROSS JOIN`.
 
-[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#SelectManyConvertedToCrossJoin)]
+[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#SelectManyConvertedToCrossJoin)]
 
-```SQL
+```sql
 SELECT [b].[BlogId], [b].[OwnerId], [b].[Rating], [b].[Url], [p].[PostId], [p].[AuthorId], [p].[BlogId], [p].[Content], [p].[Rating], [p].[Title]
 FROM [Blogs] AS [b]
 CROSS JOIN [Posts] AS [p]
@@ -58,9 +58,9 @@ CROSS JOIN [Posts] AS [p]
 
 Если в селекторе коллекции есть предложение WHERE, которое ссылается на внешний элемент, то EF Core преобразует его в соединение базы данных и использует предикат в качестве условия соединения. Обычно такое бывает при использовании свойства навигации по коллекции для внешнего элемента в качестве селектора коллекции. Если коллекция для внешнего элемента пуста, то для него результаты отсутствуют. Но если к селектору коллекции применяется `DefaultIfEmpty`, внешний элемент соединяется со значением внутреннего элемента по умолчанию. В связи с этим различием запросы такого типа преобразуются в `INNER JOIN` при отсутствии `DefaultIfEmpty` и в `LEFT JOIN`, если `DefaultIfEmpty` применяется.
 
-[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#SelectManyConvertedToJoin)]
+[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#SelectManyConvertedToJoin)]
 
-```SQL
+```sql
 SELECT [b].[BlogId], [b].[OwnerId], [b].[Rating], [b].[Url], [p].[PostId], [p].[AuthorId], [p].[BlogId], [p].[Content], [p].[Rating], [p].[Title]
 FROM [Blogs] AS [b]
 INNER JOIN [Posts] AS [p] ON [b].[BlogId] = [p].[BlogId]
@@ -74,9 +74,9 @@ LEFT JOIN [Posts] AS [p] ON [b].[BlogId] = [p].[BlogId]
 
 Если селектор коллекции ссылается на внешний элемент, который не входит в предложение WHERE (как в случае выше), он не преобразуется в соединение базы данных. Поэтому необходимо оценить селектор коллекции для каждого внешнего элемента. Во многих реляционных базах данных такой оператор преобразуется в операции `APPLY`. Если коллекция для внешнего элемента пуста, то для него результаты отсутствуют. Но если к селектору коллекции применяется `DefaultIfEmpty`, внешний элемент соединяется со значением внутреннего элемента по умолчанию. В связи с этим различием запросы такого типа преобразуются в `CROSS APPLY` при отсутствии `DefaultIfEmpty` и в `OUTER APPLY`, если `DefaultIfEmpty` применяется. Некоторые базы данных, такие как SQLite, не поддерживают операторы `APPLY`, поэтому запросы такого типа могут не преобразовываться.
 
-[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#SelectManyConvertedToApply)]
+[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#SelectManyConvertedToApply)]
 
-```SQL
+```sql
 SELECT [b].[BlogId], [b].[OwnerId], [b].[Rating], [b].[Url], ([b].[Url] + N'=>') + [p].[Title] AS [p]
 FROM [Blogs] AS [b]
 CROSS APPLY [Posts] AS [p]
@@ -90,9 +90,9 @@ OUTER APPLY [Posts] AS [p]
 
 Операторы GroupBy в LINQ создают результат типа `IGrouping<TKey, TElement>`, где `TKey` и `TElement` могут быть произвольного типа. Кроме того, `IGrouping` реализует интерфейс `IEnumerable<TElement>`. Это означает, что после группирования можно производить композицию с помощью любого оператора LINQ. Так как ни одна структура базы данных не может представлять `IGrouping`, в большинстве случаев операторы GroupBy не преобразуются. Если к каждой группе применяется статистический оператор, возвращающий скалярное значение, в реляционных базах данных его можно преобразовать в оператор SQL `GROUP BY`. Применение оператора SQL `GROUP BY` также ограничено. Он требует выполнять группирование только по скалярным значениям. Проекция может содержать только ключевые столбцы группирования или любое статистическое выражение, примененное к столбцу. EF Core распознает этот шаблон и преобразует его на стороне сервера, как показано в следующем примере:
 
-[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#GroupBy)]
+[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#GroupBy)]
 
-```SQL
+```sql
 SELECT [p].[AuthorId] AS [Key], COUNT(*) AS [Count]
 FROM [Posts] AS [p]
 GROUP BY [p].[AuthorId]
@@ -100,9 +100,9 @@ GROUP BY [p].[AuthorId]
 
 EF Core также преобразует запросы, в которых статистический оператор, выполняющий действия над группированием, включен в оператор LINQ Where или OrderBy (либо другое упорядочение). Для предложения WHERE в SQL используется предложение `HAVING`. Часть запроса перед применением оператора GroupBy может быть любым сложным запросом, который может быть преобразован на стороне сервера. Кроме того, после применения статистических операторов к запросу группирования для удаления группирований из результирующего источника этот запрос можно использовать для композиции, как и любой другой запрос.
 
-[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#GroupByFilter)]
+[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#GroupByFilter)]
 
-```SQL
+```sql
 SELECT [p].[AuthorId] AS [Key], COUNT(*) AS [Count]
 FROM [Posts] AS [p]
 GROUP BY [p].[AuthorId]
@@ -123,9 +123,9 @@ EF Core поддерживает следующие статистические
 
 Хотя в LINQ нет оператора левого соединения, в запросах к реляционным базам данных левое соединение используется часто. Определенный шаблон в запросах LINQ дает тот же результат, что и оператор `LEFT JOIN` на сервере. EF Core распознает такой шаблон и создает эквивалентный оператор `LEFT JOIN` на стороне сервера. Шаблон предполагает создание соединения GroupJoin между двумя источниками данных и последующее преобразование группирования в плоскую структуру с помощью оператора SelectMany с DefaultIfEmpty, применяемого к источнику группирования, для сопоставления со значением NULL, когда во внутреннем источнике нет соответствующего элемента. В приведенном ниже примере показано, как выглядит этот шаблон и какой результат он дает.
 
-[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#LeftJoin)]
+[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#LeftJoin)]
 
-```SQL
+```sql
 SELECT [b].[BlogId], [b].[OwnerId], [b].[Rating], [b].[Url], [p].[PostId], [p].[AuthorId], [p].[BlogId], [p].[Content], [p].[Rating], [p].[Title]
 FROM [Blogs] AS [b]
 LEFT JOIN [Posts] AS [p] ON [b].[BlogId] = [p].[BlogId]

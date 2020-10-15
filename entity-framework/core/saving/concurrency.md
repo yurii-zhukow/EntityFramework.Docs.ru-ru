@@ -1,15 +1,15 @@
 ---
 title: Обработка конфликтов параллелизма — EF Core
 description: Управление конфликтами при одновременном обновлении одних и тех же данных при использовании Entity Framework Core
-author: rowanmiller
+author: ajcvickers
 ms.date: 03/03/2018
 uid: core/saving/concurrency
-ms.openlocfilehash: 7e3781879b39e6c30a0c981b5e0b74baf2b2863b
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: b596a99db431331bb12a28fc6ddc06f1c941b67c
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89617306"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063027"
 ---
 # <a name="handling-concurrency-conflicts"></a>Обработка конфликтов параллелизма
 
@@ -40,7 +40,7 @@ EF Core реализует _оптимистичный контроль пара
 
 Например, мы можем настроить `LastName` в `Person` как маркер параллелизма. Тогда любая операция обновления для пользователя будет содержать проверку параллелизма в предложении `WHERE`:
 
-``` sql
+```sql
 UPDATE [Person] SET [FirstName] = @p1
 WHERE [PersonId] = @p0 AND [LastName] = @p2;
 ```
@@ -70,4 +70,4 @@ WHERE [PersonId] = @p0 AND [LastName] = @p2;
 
 В следующем примере `Person.FirstName` и `Person.LastName` устанавливаются как маркеры параллелизма. В месте, где вы указываете конкретную логику приложения, есть комментарий `// TODO:`, позволяющий выбрать значение, которое нужно сохранить.
 
-[!code-csharp[Main](../../../samples/core/Saving/Concurrency/Sample.cs?name=ConcurrencyHandlingCode&highlight=34-35)]
+[!code-csharp[Main](../../../samples/core/Saving/Concurrency/Sample.cs?name=ConcurrencyHandlingCode&highlight=33-34)]

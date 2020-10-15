@@ -4,12 +4,12 @@ description: Рекомендации по одновременному испо
 author: ajcvickers
 ms.date: 01/23/2019
 uid: efcore-and-ef6/side-by-side
-ms.openlocfilehash: a9a8ab0ec77acf0fb1d1b1408d5711a6c8fa6664
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 68549009868a63f50d34ea8829de55574c891d19
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073530"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064202"
 ---
 # <a name="using-ef-core-and-ef6-in-the-same-application"></a>Использование EF Core и EF6 в одном приложении
 
@@ -17,7 +17,7 @@ EF Core и EF6 можно использовать в одном приложе�
 
 Некоторые типы имеют одинаковые имена в EF Core и EF6, различаясь только пространством имен, что может усложнить параллельное использование EF Core и EF6 в одном файле кода. Эту неоднозначность можно легко устранить с помощью директив псевдонима пространства имен. Пример:
 
-``` csharp
+```csharp
 using Microsoft.EntityFrameworkCore; // use DbContext for EF Core
 using EF6 = System.Data.Entity; // use EF6.DbContext for the EF6 version
 ```

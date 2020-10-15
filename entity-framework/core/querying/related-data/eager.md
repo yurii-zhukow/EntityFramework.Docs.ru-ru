@@ -4,12 +4,12 @@ description: Безотложная загрузка связанных данн
 author: roji
 ms.date: 9/8/2020
 uid: core/querying/related-data/eager
-ms.openlocfilehash: 5ac15a85b28f21588639f34cbaa9ef76f366f7b5
-ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
+ms.openlocfilehash: 97ec45a0f8bfecce4d4a59e5d1c36c0268d96052
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91210471"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062580"
 ---
 # <a name="eager-loading-of-related-data"></a>Безотложная загрузка связанных данных
 
@@ -17,32 +17,32 @@ ms.locfileid: "91210471"
 
 Вы можете использовать метод `Include`, чтобы указать связанные данные, которые будут включены в результаты запроса. В следующем примере блоги, возвращенные в результатах, будут иметь свойство `Posts`, заполненное соответствующими записями.
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs#SingleInclude)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#SingleInclude)]
 
 > [!TIP]
 > EF Core автоматически исправляет свойства навигации для других сущностей, которые были ранее загружены в экземпляр контекста. Даже если данные для свойства навигации не включены явно, свойство все равно можно заполнить при условии, что ранее были загружены некоторые или все связанные сущности.
 
 Связанные данные из нескольких связей можно включить в один запрос.
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs#MultipleIncludes)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#MultipleIncludes)]
 
 ## <a name="including-multiple-levels"></a>Включение нескольких уровней
 
 Вы можете детализировать отношения, чтобы включить несколько уровней связанных данных, используя метод `ThenInclude`. В следующем примере загружаются все блоги, связанные с ними записи и автор каждой записи.
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs#SingleThenInclude)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#SingleThenInclude)]
 
 Вы можете связать в цепочку несколько вызовов `ThenInclude`, чтобы продолжить включение уровней связанных данных.
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs#MultipleThenIncludes)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#MultipleThenIncludes)]
 
 Вы можете объединить все эти вызовы, чтобы включить связанные данные из нескольких уровней и нескольких корней в один и тот же запрос.
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs#IncludeTree)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#IncludeTree)]
 
 Может потребоваться включить несколько связанных сущностей для одной включенной сущности. Например, при запросе `Blogs` вы включаете `Posts`, а затем хотите включить `Author` и `Tags` из `Posts`. Для включения обеих сущностей вам нужно указать каждый путь включения, начиная с корня. Например, `Blog -> Posts -> Author` и `Blog -> Posts -> Tags`. Это не означает, что вы получите избыточные соединения, в большинстве случаев EF будет комбинировать соединения при создании SQL.
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs#MultipleLeafIncludes)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#MultipleLeafIncludes)]
 
 ## <a name="single-and-split-queries"></a>Отдельные и разделенные запросы
 
@@ -66,7 +66,7 @@ ORDER BY [b].[BlogId], [p].[PostId]
 
 EF позволяет вам указать, что конкретный запрос LINQ нужно *разделить* на несколько SQL-запросов. Вместо запросов JOIN разделенные запросы выполняют дополнительный SQL-запрос для каждого включенного перехода "один ко многим":
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs?name=AsSplitQuery&highlight=5)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs?name=AsSplitQuery&highlight=5)]
 
 Будет создан следующий SQL-запрос:
 
@@ -92,7 +92,7 @@ ORDER BY [b].[BlogId]
 
 Если разделение запросов настроено по умолчанию, можно по-прежнему настроить определенные запросы для выполнения в виде отдельных запросов.
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs?name=AsSingleQuery&highlight=5)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs?name=AsSingleQuery&highlight=5)]
 
 Если режим разделения запроса не указан явно (ни глобально, ни в запросе) и EF Core обнаруживает, что в отдельном запросе загружается несколько коллекций, то выдается предупреждение, чтобы привлечь внимание к потенциальным проблемам с производительностью. Если установить режим запроса в значение SingleQuery, то предупреждение выдаваться не будет.
 
@@ -117,15 +117,15 @@ ORDER BY [b].[BlogId]
 
 Такие операции должны применяться к навигации коллекции в лямбда-выражении, переданном в метод Include, как показано в примере ниже:
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs#FilteredInclude)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#FilteredInclude)]
 
 Каждая включаемая навигация позволяет выполнять только один уникальный набор операций фильтра. В тех случаях, когда для данной навигации по коллекции применяются несколько операций Include (`blog.Posts` в приведенных ниже примерах), операции фильтрации можно указывать только в одном из них:
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs#MultipleLeafIncludesFiltered1)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#MultipleLeafIncludesFiltered1)]
 
 Вместо этого можно применить идентичные операции для каждой навигации, которая включается несколько раз:
 
-[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Sample.cs#MultipleLeafIncludesFiltered2)]
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#MultipleLeafIncludesFiltered2)]
 
 > [!CAUTION]
 > При отслеживании запросов результаты включения с фильтрацией могут быть неожиданными из-за [исправления навигации](xref:core/querying/tracking). Все связанные сущности, которые были запрошены ранее и сохранены в средстве отслеживания изменений, будут представлены в результатах запроса включения с фильтрацией, даже если они не соответствуют требованиям фильтра. При использовании в таких ситуациях включения с фильтрацией рассмотрите возможность работы с запросами `NoTracking` или повторного создания DbContext.
@@ -196,4 +196,3 @@ public class School
   ```csharp
   context.People.Include("School").ToList()
   ```
-  
