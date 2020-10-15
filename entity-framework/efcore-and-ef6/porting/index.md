@@ -1,15 +1,15 @@
 ---
 title: Перенос приложений из EF6 в EF Core — EF
 description: Общие сведения о переносе приложения с Entity Framework 6 в Entity Framework Core
-author: rowanmiller
+author: ajcvickers
 ms.date: 10/27/2016
 uid: efcore-and-ef6/porting/index
-ms.openlocfilehash: 62360dda92d951fe9a4f43a2b742a7457ad8692f
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 0dfb4cc5f7c65aa081d0175708a0db95b0688e50
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073595"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064215"
 ---
 # <a name="porting-from-ef6-to-ef-core"></a>Перенос приложений из EF6 в EF Core
 

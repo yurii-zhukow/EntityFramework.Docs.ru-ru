@@ -1,15 +1,15 @@
 ---
 title: Запросы и поиск сущностей — EF6
 description: Запрашивание и поиск сущностей в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/querying/index
-ms.openlocfilehash: d55c88280bcf164457da89ec58c180e9aa1ad12d
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: ec0239ed54099226d009031af79388f5ae00cdc4
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072997"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065903"
 ---
 # <a name="querying-and-finding-entities"></a>Запросы и поиск сущностей
 В этом разделе рассматриваются различные способы запроса данных с помощью Entity Framework, включая LINQ и метод Find. Методы, представленные в этом разделе, также применимы к моделям, созданным с помощью Code First и конструктора EF.  

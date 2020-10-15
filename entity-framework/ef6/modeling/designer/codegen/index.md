@@ -1,15 +1,15 @@
 ---
 title: Шаблоны создания кода конструктора в EF6
 description: Шаблоны создания кода конструктора в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/designer/codegen/index
-ms.openlocfilehash: 4a8225d0186174ea2e2effbc1241389afcbe3921
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 9eb0a930d7b283e449f6b08c090c8483453de452
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070202"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92066490"
 ---
 # <a name="designer-code-generation-templates"></a>Шаблоны создания кода конструктора
 При создании модели с помощью Entity Framework Designer классы и производный контекст создаются автоматически. Помимо создания кода по умолчанию, вам доступны несколько шаблонов, которые можно использовать для настройки генерируемого кода. Эти шаблоны представляют собой текстовые шаблоны T4, позволяющие при необходимости настраивать шаблоны.

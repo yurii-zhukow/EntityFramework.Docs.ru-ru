@@ -1,15 +1,15 @@
 ---
 title: Новые возможности в Entity Framework Core 3.х — EF Core
 description: Изменения и улучшения в Entity Framework Core 3.x
-author: divega
+author: ajcvickers
 ms.date: 09/05/2020
 uid: core/what-is-new/ef-core-3.x/index
-ms.openlocfilehash: d2c887640a9e24cef49fb469ef435d6b08937876
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: b987ca1fdbe46105162c1c7623822e15bd01ef25
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072217"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065632"
 ---
 # <a name="new-features-in-entity-framework-core-3x"></a>Новые возможности в Entity Framework Core 3.х
 
@@ -34,7 +34,7 @@ LINQ позволяет писать запросы к базам данных �
 
 Например, если системе EF Core 2.2 не удавалось преобразовать предикат в вызов `Where()`, она выполняла инструкцию SQL без фильтра, передавала все строки из базы данных, а затем фильтровала их в памяти:
 
-``` csharp
+```csharp
 var specialCustomers = context.Customers
     .Where(c => c.Name.StartsWith(n) && IsSpecialCustomer(c));
 ```
@@ -46,7 +46,7 @@ var specialCustomers = context.Customers
 
 Чтобы оценить условие предиката в клиенте (как в предыдущем примере), разработчикам теперь нужно явно переключить вычисление запроса на LINQ to Objects:
 
-``` csharp
+```csharp
 var specialCustomers = context.Customers
     .Where(c => c.Name.StartsWith(n))
     .AsEnumerable() // switches to LINQ to Objects
@@ -75,7 +75,7 @@ var specialCustomers = context.Customers
 
 Асинхронные результаты запросов теперь предоставляются с помощью нового стандартного интерфейса `IAsyncEnumerable<T>` и могут использоваться с помощью `await foreach`.
 
-``` csharp
+```csharp
 var orders =
     from o in context.Orders
     where o.Status == OrderStatus.Pending
@@ -95,7 +95,7 @@ await foreach(var o in orders.AsAsyncEnumerable())
 
 Например, в указанном ниже классе свойства типа `string?` будут настроены как необязательные, а типа `string` — как обязательные:
 
-``` csharp
+```csharp
 public class Customer
 {
     public int Id { get; set; }
@@ -115,7 +115,7 @@ public class Customer
 
 Например, для управления текстом команды можно создать `DbCommandInterceptor`:
 
-``` csharp
+```csharp
 public class HintCommandInterceptor : DbCommandInterceptor
 {
     public override InterceptionResult<DbDataReader> ReaderExecuting(
@@ -132,7 +132,7 @@ public class HintCommandInterceptor : DbCommandInterceptor
 
 Зарегистрировать перехватчик можно с помощью  `DbContext`:
 
-``` csharp
+```csharp
 services.AddDbContext(b => b
     .UseSqlServer(connectionString)
     .AddInterceptors(new HintCommandInterceptor()));
@@ -151,7 +151,7 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 
 Теперь средство автоматически формирует типы шаблонов для представлений и таблиц без ключей:
 
-``` csharp
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity<Names>(entity =>
@@ -173,7 +173,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 При отправке запроса EF Core задаст `OrderDetails` значение `null`, если какому-либо его обязательному свойству не задано значение или если отсутствуют необходимые свойства, помимо первичного ключа, и все свойства имеют значение `null`.
 
-``` csharp
+```csharp
 public class Order
 {
     public int Id { get; set; }

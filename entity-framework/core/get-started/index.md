@@ -4,12 +4,12 @@ description: Руководство. Начало работы с Entity Framewo
 author: rick-anderson
 ms.date: 09/17/2019
 uid: core/get-started/index
-ms.openlocfilehash: 9f0bb1eb99cb7f4cb7542c444ad86480917bdd0f
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 132586aa41916d94ebef156330cc553a789ed5a7
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071983"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062117"
 ---
 # <a name="getting-started-with-ef-core"></a>Начало работы с EF Core
 
@@ -67,7 +67,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 * Последовательно выберите пункты **Средства > Диспетчер пакетов NuGet > Консоль диспетчера пакетов**.
 * Выполните следующие команды:
 
-  ``` PowerShell
+  ```powershell
   Install-Package Microsoft.EntityFrameworkCore.Sqlite
   ```
 
@@ -118,7 +118,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
 * В **консоли диспетчера пакетов (PMC)** выполните следующие команды:
 
-  ``` PowerShell
+  ```powershell
   Install-Package Microsoft.EntityFrameworkCore.Tools
   Add-Migration InitialCreate
   Update-Database
@@ -149,7 +149,7 @@ dotnet run
 * Щелкните проект правой кнопкой мыши и выберите **Изменить файл проекта**.
 * Непосредственно под свойством *TargetFramework* добавьте следующее:
 
-  ``` XML
+  ```xml
   <StartWorkingDirectory>$(MSBuildProjectDirectory)</StartWorkingDirectory>
   ```
 
