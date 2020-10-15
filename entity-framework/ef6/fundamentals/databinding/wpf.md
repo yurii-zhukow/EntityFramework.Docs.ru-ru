@@ -1,15 +1,15 @@
 ---
 title: Привязка данных с помощью WPF-EF6
 description: Привязка данных с помощью WPF в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 05/19/2020
 uid: ef6/fundamentals/databinding/wpf
-ms.openlocfilehash: 85aea308d89241f1da9633ef60f4bc8c3997561d
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: b6dc484d09340671dfcd841e34234d55e9808af2
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072984"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065658"
 ---
 # <a name="databinding-with-wpf"></a>Привязка данных с помощью WPF
 
@@ -257,7 +257,7 @@ EF дает возможность автоматически загружать
 - Окно Источники данных открывается рядом с окном MainWindow. XAML *, если окно Источники данных не отображается, выберите **вид — &gt; другие &gt; Источники данных Windows** * .
 - Нажмите значок закрепить, чтобы окно Источники данных не скрывалось автоматически. Если окно уже видимо, может потребоваться нажать кнопку Обновить.
 
-    ![обозревателе решений](~/ef6/media/datasources.png)
+    ![Data Sources](~/ef6/media/datasources.png)
 
 - Выберите источник данных **Категория** и перетащите его в форму.
 

@@ -1,17 +1,17 @@
 ---
-title: Функции с табличным значением (возвращающие табличное) — EF6
-description: Функции с табличным значением (возвращающие табличное) в Entity Framework 6
-author: divega
+title: Функции Table-Valued (возвращающие табличное) — EF6
+description: Функции Table-Valued (возвращающие табличное) в Entity Framework 6
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/designer/advanced/tvfs
-ms.openlocfilehash: 727c6c7ff5947e78bf8eb489194e355e2fd157c9
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 2c699cad3ace253842d17aca4eca4df2318c4795
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070165"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92066204"
 ---
-# <a name="table-valued-functions-tvfs"></a>Функции с табличным значением (возвращающие табличное)
+# <a name="table-valued-functions-tvfs"></a>Функции Table-Valued (возвращающие табличное)
 > [!NOTE]
 > **Только EF5** — функции, API и т. д., обсуждаемые на этой странице, появились в Entity Framework 5. При использовании более ранней версии могут быть неприменимы некоторые или все сведения.
 
@@ -125,6 +125,6 @@ Couse: Microeconomics, Student: Arturo Anand
 Couse: Microeconomics, Student: Carson Bryant
 ```
 
-## <a name="summary"></a>Сводка
+## <a name="summary"></a>Итоги
 
 В этом пошаговом руководстве мы рассмотрели, как сопоставлять функции с табличным значением (возвращающие табличное) с помощью Entity Framework Designer. Также показано, как вызвать ТАБЛИЧную функцию из запроса LINQ.

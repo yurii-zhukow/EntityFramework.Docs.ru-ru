@@ -1,15 +1,15 @@
 ---
 title: Предыдущие выпуски Entity Framework-EF6
 description: Предыдущие выпуски Entity Framework
-author: divega
+author: ajcvickers
 ms.date: 09/12/2019
 uid: ef6/what-is-new/past-releases
-ms.openlocfilehash: 97ad8015f5302adbe98a63132f1b34009aa68468
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 990b543b2baff0a70e32bf3d5ce624b419c925b8
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073647"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064319"
 ---
 # <a name="past-releases-of-entity-framework"></a>Предыдущие выпуски Entity Framework
 
@@ -228,7 +228,7 @@ ms.locfileid: "90073647"
 
 Ниже приведен список содержимого, которое мы собрали для выпуска EF 4,3. большая часть содержимого, предоставляемого для EF 4,1, по-прежнему применима к EF 4,3.
 -   [Публикация EF 4,3, выпуск](https://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-released.aspx)
--   [Пошаговое руководство по переносу на основе кода EF 4,3](https://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-code-based-migrations-walkthrough.aspx)
+-   [Пошаговое руководство по Code-Based EF 4,3](https://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-code-based-migrations-walkthrough.aspx)
 -   [Пошаговое руководство по автоматической миграции EF 4,3](https://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-automatic-migrations-walkthrough.aspx)
 
 ## <a name="ef-42"></a>EF 4,2

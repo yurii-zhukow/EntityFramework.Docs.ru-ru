@@ -1,15 +1,15 @@
 ---
 title: Ведение журнала и перехват операций базы данных — EF6
 description: Ведение журнала и перехват операций базы данных в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/fundamentals/logging-and-interception
-ms.openlocfilehash: 858e96a781933da52725efa56087bc27db06257d
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 97248af9953de4372503aa7340712f3eff19b6b8
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072672"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065437"
 ---
 # <a name="logging-and-intercepting-database-operations"></a>Ведение журнала и перехват операций базы данных
 > [!NOTE]
@@ -101,7 +101,7 @@ WHERE @@ROWCOUNT > 0 AND [Id] = scope_identity()
 
 Если для свойства Log задано значение, будут занесены в журнал следующие данные:  
 
-- SQL для всех различных типов команд. Пример:  
+- SQL для всех различных типов команд. Например.  
     - Запросы, включая обычные запросы LINQ, запросы eSQL и необработанные запросы из таких методов, как SqlQuery  
     - Операции вставки, обновления и удаления, созданные как часть SaveChanges  
     - Запросы на загрузку связей, например, созданные отложенной загрузкой  
@@ -228,7 +228,7 @@ public class OneLineFormatter : DatabaseLogFormatter
 
 ### <a name="setting-the-databaselogformatter"></a>Настройка Датабаселогформаттер  
 
-После создания нового класса Датабаселогформаттер его необходимо зарегистрировать с помощью EF. Это выполняется с помощью конфигурации на основе кода. В двух словах это означает создание нового класса, производного от DbConfiguration в той же сборке, что и класс DbContext, а затем вызов Сетдатабаселогформаттер в конструкторе этого нового класса. Пример:  
+После создания нового класса Датабаселогформаттер его необходимо зарегистрировать с помощью EF. Это выполняется с помощью конфигурации на основе кода. В двух словах это означает создание нового класса, производного от DbConfiguration в той же сборке, что и класс DbContext, а затем вызов Сетдатабаселогформаттер в конструкторе этого нового класса. Например.  
 
 ``` csharp
 public class MyDbConfiguration : DbConfiguration
@@ -290,7 +290,7 @@ Context 'BlogContext' is executing command 'insert [dbo].[Posts]([Title], [BlogI
 
 ### <a name="registering-interceptors"></a>Регистрация перехватчиков  
 
-После создания класса, реализующего один или несколько интерфейсов перехвата, его можно зарегистрировать в EF с помощью класса Дбинтерцептион. Пример:  
+После создания класса, реализующего один или несколько интерфейсов перехвата, его можно зарегистрировать в EF с помощью класса Дбинтерцептион. Например.  
 
 ``` csharp
 DbInterception.Add(new NLogCommandInterceptor());

@@ -1,14 +1,14 @@
 ---
 title: Entity Framework Designer сочетаний клавиш — EF6
 description: Entity Framework Designer сочетаний клавиш в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
-ms.openlocfilehash: 3552f2b9bfc499654bc1dce4a81d37cacc8b7996
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 90589419a52a198747eadee740775e2761bc757c
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073387"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064891"
 ---
 # <a name="entity-framework-designer-keyboard-shortcuts"></a>Entity Framework Designer сочетаний клавиш
 На этой странице представлен список сочетаний клавиш шоркутс, доступных на различных экранах Entity Framework Tools для Visual Studio.
@@ -96,7 +96,7 @@ ms.locfileid: "90073387"
 | **Ctrl + &lt;**                                                                         | Ascend (фокус)              | То же, что и команда Ascend, но перемещает фокус без выделения.                                                                                                                                                                          |
 | **Ctrl + &gt;**                                                                         | По убыванию (фокус)             | То же, что и команда «по убыванию», но перемещает фокус без выделения.                                                                                                                                                                         |
 | **Shift + End**                                                                         | После подключения         | Из сущности перемещается в сущность, к которой подключена эта сущность.                                                                                                                                                               |
-| **Delete**                                                                                 | Удалить                      | Удалите объект или соединитель из схемы.                                                                                                                                                                                     |
+| **Delete**                                                                                 | DELETE                      | Удалите объект или соединитель из схемы.                                                                                                                                                                                     |
 | **Подключаем**                                                                                 | Вставить                      | Добавляет новое свойство в сущность при выборе заголовка секции "скалярные свойства" или самого свойства.                                                                                                           |
 | **Стр. вверх**                                                                               | Прокрутить диаграмму вверх           | Прокручивает область конструктора вверх, с шагом, равным 75% от высоты видимой в данный момент области конструктора.                                                                                                                    |
 | **Стр. вниз**                                                                             | Прокрутить диаграмму вниз         | Прокручивает область конструктора вниз.                                                                                                                                                                                                    |

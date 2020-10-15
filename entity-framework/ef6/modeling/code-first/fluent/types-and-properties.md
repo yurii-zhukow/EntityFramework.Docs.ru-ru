@@ -1,15 +1,15 @@
 ---
 title: API-интерфейс Fluent — Настройка и сопоставление свойств и типов — EF6
 description: API-интерфейс Fluent — Настройка и сопоставление свойств и типов в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/code-first/fluent/types-and-properties
-ms.openlocfilehash: ddd56ff280b72adbfd2247a4f1a85e37bf2f4879
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 821672bcb797314c96189443ace7f875a79c8582
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072594"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065151"
 ---
 # <a name="fluent-api---configuring-and-mapping-properties-and-types"></a>API-интерфейс Fluent — Настройка и сопоставление свойств и типов
 При работе с Entity Framework Code First поведением по умолчанию является привязка классов POCO к таблицам с помощью набора соглашений, помогут в EF. Однако иногда вы не можете следовать этим соглашениям и не хотите сопоставлять сущности с другими условиями.  
@@ -18,7 +18,7 @@ ms.locfileid: "90072594"
 
 Наиболее часто доступ к интерфейсу API для первого интерфейса Fluent, переопределяя метод [OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating.aspx) на производном [DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext.aspx). Следующие примеры предназначены для демонстрации выполнения различных задач с помощью API-интерфейса Fluent и позволяют скопировать код и настроить его в соответствии с моделью. Если вы хотите увидеть модель, которую можно использовать с параметром "как есть", она указана в конце этой статьи.  
 
-## <a name="model-wide-settings"></a>Параметры уровня модели  
+## <a name="model-wide-settings"></a>Параметры Model-Wide  
 
 ### <a name="default-schema-ef6-onwards"></a>Схема по умолчанию (EF6)  
 

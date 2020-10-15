@@ -1,15 +1,15 @@
 ---
 title: Возврат к ObjectContext в Entity Framework Designer-EF6
 description: Возврат к ObjectContext в Entity Framework Designer в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/designer/codegen/legacy-objectcontext
-ms.openlocfilehash: 9ceb8ef43e4df083fe3cc5e63862ba2eb338f659
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 563c1defd12a72836a158d9c2398202c421dd6f3
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069968"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064943"
 ---
 # <a name="reverting-to-objectcontext-in-entity-framework-designer"></a>Возврат к ObjectContext в Entity Framework Designer
 В предыдущей версии Entity Framework модель, созданная с помощью конструктора EF, создаст контекст, производный от ObjectContext и классов сущностей, производных от EntityObject.
@@ -30,7 +30,7 @@ ms.locfileid: "90069968"
 
 ![Показать все файлы](~/ef6/media/showallfiles.png)
 
-### <a name="2-re-enable-objectcontext-code-generation"></a>2. Повторное включение создания кода ObjectContext
+### <a name="2-re-enable-objectcontext-code-generation"></a>2. Re-Enable создание кода ObjectContext
 
 Откройте модель в конструкторе EF, щелкните правой кнопкой мыши пустую секцию в области конструктора и выберите пункт **Свойства**.
 

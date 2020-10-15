@@ -1,14 +1,14 @@
 ---
 title: Примеры использования для Entity Framework-EF6
 description: Примеры использования для Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
-ms.openlocfilehash: 342929f70aa09704c934bd1d89e177f6953bfc43
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: ca2315ac8aad8d28240f4bef6c962de0f63ac0df
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073825"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064670"
 ---
 # <a name="microsoft-case-studies-for-entity-framework"></a>Примеры использования Microsoft для Entity Framework
 Примеры использования на этой странице выделяют несколько реальных производственных проектов, работающих Entity Framework.
@@ -17,7 +17,7 @@ ms.locfileid: "90073825"
 
 ## <a name="epicor"></a>История
 "История" — это обширная глобальная компания (с более чем 400 разработчиками), которая разрабатывает решения для планирования ресурсов предприятия (ERP) для компаний в более чем 150 странах.
-Их флагманскоеный продукт, ситуация 9, основана на архитектуре, ориентированной на службы (SOA), с помощью .NET Framework.
+Их флагманскоеный продукт, обоснованный 9, основаны на архитектуре Service-Oriented (SOA), использующей .NET Framework.
 Если у вас возникли многочисленные запросы клиентов на предоставление поддержки LINQ, а также требуется уменьшить нагрузку на серверные серверы SQL Server, группа решила выполнить обновление до Visual Studio 2010 и .NET Framework 4,0.
 С помощью Entity Framework 4,0 они смогли достичь этих целей, а также значительно упростить разработку и обслуживание.
 В частности, расширенная поддержка T4 Entity Framework позволяла им получить полный контроль над созданным кодом и автоматически создавать функции сохранения производительности, такие как предварительно скомпилированные запросы и кэширование.

@@ -1,15 +1,15 @@
 ---
 title: Поддержка перечисления — конструктор EF-EF6
 description: Поддержка перечисления-конструктор EF в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/designer/data-types/enums
-ms.openlocfilehash: f3dff2c71cfdeb32183865265144a938eff087c0
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 42508b533249bf01c76939f864a23adc86a08822
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073127"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064930"
 ---
 # <a name="enum-support---ef-designer"></a>Поддержка перечисления-конструктор EF
 > [!NOTE]
@@ -134,6 +134,6 @@ DepartmentID: 1 Name: English
 
 Чтобы просмотреть данные в базе данных, щелкните правой кнопкой мыши имя базы данных в обозреватель объектов SQL Server и выберите **Обновить**. Затем щелкните правой кнопкой мыши таблицу и выберите **Просмотр данных**.
 
-## <a name="summary"></a>Сводка
+## <a name="summary"></a>Итоги
 
 В этом пошаговом руководстве мы рассмотрели, как сопоставлять перечисляемые типы с помощью Entity Framework Designer и как использовать перечисления в коде. 

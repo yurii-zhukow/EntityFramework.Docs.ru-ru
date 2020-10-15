@@ -1,15 +1,15 @@
 ---
 title: Привязка данных с помощью WinForms-EF6
 description: Привязка данных с помощью WinForms в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/fundamentals/databinding/winforms
-ms.openlocfilehash: b316aea0a36edc8586a81427825ed4ee11fc9ef3
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: ef2f19831cd5ce8b1faefeb51f23faef4e167529
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073231"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065684"
 ---
 # <a name="databinding-with-winforms"></a>Привязка данных с помощью WinForms
 В этом пошаговом руководстве показано, как привязать типы POCO к элементам управления Window Forms (WinForms) в форме "основной/подробности". Приложение использует Entity Framework для заполнения объектов данными из базы данных, трассировки изменений и сохранения данных в базе данных.
@@ -279,7 +279,7 @@ EF дает возможность автоматически загружать
 -   В окне Выбор типа источника данных выберите **объект** и нажмите кнопку **Далее** .
 -   В диалоговом окне Выбор объектов данных unfold **винформсвисефсампле** два раза и выберите пункт **Категория** нет необходимости выбирать источник данных продукта, так как мы будем получать его через свойство продукта в источнике данных категории.
 
-    ![Источник данных](~/ef6/media/datasource.png)
+    ![источника данных](~/ef6/media/datasource.png)
 
 -   Нажмите кнопку **Готово**.
     Если окно Источники данных не отображается, выберите **вид — &gt; другие &gt; Источники данных Windows** .

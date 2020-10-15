@@ -1,22 +1,22 @@
 ---
 title: Получение Entity Framework EF6
 description: Получение Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/fundamentals/install
-ms.openlocfilehash: 9254f835f5007a213c49557165f6830c30711f1f
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 7dc4c560cc4eb24a1c5d5dac0c9e28883de471b0
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072789"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065463"
 ---
 # <a name="get-entity-framework"></a>Установка Entity Framework
 Entity Framework состоит из средств EF для Visual Studio и среды выполнения EF.
 
 ## <a name="ef-tools-for-visual-studio"></a>Средства EF для Visual Studio
 
-Entity Framework Tools для Visual Studio включает конструктор EF и мастер модели EF и необходимы для первой базы данных и моделирования первых рабочих процессов. Средства EF включены во все последние версии Visual Studio. При выполнении выборочной установки Visual Studio необходимо убедиться, что выбран пункт "Entity Framework 6 инструментов", выбрав рабочую нагрузку, содержащую ее, или выбрав ее в качестве отдельного компонента.
+[Entity Framework Tools для Visual Studio](/visualstudio/data-tools/entity-data-model-tools-in-visual-studio) включает конструктор EF и мастер модели EF и необходимы для первой базы данных и моделирования первых рабочих процессов. Средства EF включены во все последние версии Visual Studio. При выполнении выборочной установки Visual Studio необходимо убедиться, что выбран пункт "Entity Framework 6 инструментов", выбрав рабочую нагрузку, содержащую ее, или выбрав ее в качестве отдельного компонента.
 
 В некоторых прошлых версиях Visual Studio обновленные средства EF доступны для загрузки. Сведения о том, как получить последнюю версию средств EF, доступных для вашей версии Visual Studio, см. в статье [версии Visual Studio](xref:ef6/what-is-new/visual-studio) .
 

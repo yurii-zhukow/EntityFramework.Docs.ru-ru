@@ -1,15 +1,15 @@
 ---
 title: Code First в новую базу данных — EF6
 description: Code First в новую базу данных в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/code-first/workflows/new-database
-ms.openlocfilehash: 96d76162383149c045178954196e1294331918a8
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 9d0082ac5226fff066d3e18c9164e2230c84b285
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070371"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065023"
 ---
 # <a name="code-first-to-a-new-database"></a>Создание базы данных с помощью Code First
 В этом видео и пошаговом руководстве представлены общие сведения о Code First разработке, предназначенной для новой базы данных. Этот сценарий включает в себя целевую базу данных, которая не существует и Code First создаст, или пустую базу данных, в которую Code First добавит новые таблицы. Code First позволяет определить модель с помощью \# классов C или VB.NET. Дополнительную конфигурацию можно также выполнить с помощью атрибутов в классах и свойствах или с помощью API Fluent.
@@ -263,7 +263,7 @@ namespace CodeFirstNewDatabaseSample.Migrations
 ```
 
 -   Выполните команду **обновления базы данных** в консоли диспетчера пакетов. Эта команда применит все незавершенные миграции к базе данных. Наша InitialCreate миграция уже применена, поэтому миграция будет просто применена к нашей новой Аддурл миграции.
-    Совет. при вызове Update-Database можно использовать параметр **– verbose** для просмотра SQL, выполняемого в базе данных.
+    Совет. при вызове Update-Database можно использовать параметр **– verbose** , чтобы увидеть SQL, выполняемый в базе данных.
 
 Новый столбец URL-адреса теперь добавляется в таблицу блоги базы данных:
 
@@ -368,6 +368,6 @@ public class BloggingContext : DbContext
 
 ![Схема с переименованным отображаемым именем](~/ef6/media/schemawithdisplaynamerenamed.png)
 
-## <a name="summary"></a>Сводка
+## <a name="summary"></a>Итоги
 
 В этом пошаговом руководстве мы рассматривали Code Firstную разработку с помощью новой базы данных. Мы определили модель, используя классы, которые затем использовали эту модель для создания базы данных, хранения и извлечения данных. После создания базы данных мы использовали Code First Migrations, чтобы изменить схему по мере развития нашей модели. Мы также увидели, как настроить модель с помощью заметок к данным и API Fluent.

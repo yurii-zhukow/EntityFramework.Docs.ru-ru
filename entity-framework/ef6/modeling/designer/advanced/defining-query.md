@@ -1,15 +1,15 @@
 ---
 title: Определение конструктора запросов EF — EF6
 description: Определение конструктора запросов EF в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/designer/advanced/defining-query
-ms.openlocfilehash: b5d24b9f6c047eb8681a0343c768d1ffa70ca6b8
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 3640156a2ce97dccab563a18d3236aad3dc72ee0
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070345"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92066386"
 ---
 # <a name="defining-query---ef-designer"></a>Определение конструктора запросов EF
 В этом пошаговом руководстве показано, как добавить определяющий запрос и соответствующий тип сущности в модель с помощью конструктора EF. Определяющий запрос обычно используется для предоставления функциональных возможностей, аналогичных представленному в представлении базы данных, но представление определяется в модели, а не в базе данных. Определяющий запрос позволяет выполнить инструкцию SQL, указанную в элементе **DefiningQuery**   EDMX-файла. Дополнительные сведения см. в разделе **DefiningQuery** в [спецификации SSDL](xref:ef6/modeling/designer/advanced/edmx/ssdl-spec).
@@ -24,7 +24,7 @@ ms.locfileid: "90070345"
 -   Добавление типа сущности в модель
 -   Сопоставьте определяющий запрос с типом сущности
 
-## <a name="prerequisites"></a>Предварительные условия
+## <a name="prerequisites"></a>Предварительные требования
 
 Для выполнения данного пошагового руководства требуется:
 

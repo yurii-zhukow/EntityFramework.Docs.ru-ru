@@ -1,25 +1,25 @@
 ---
 title: Хранимые процедуры запросов конструктора — EF6
 description: Хранимые процедуры запроса конструктора в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/designer/stored-procedures/query
-ms.openlocfilehash: 4976c7d4f788e6e9524055a508f9c906b47c9ebb
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: d88bf70e232f5245023ab6683290503822d07463
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073205"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92066022"
 ---
 # <a name="designer-query-stored-procedures"></a>Хранимые процедуры запроса конструктора
 В этом пошаговом руководстве показано, как использовать Entity Framework Designer (конструктор EF) для импорта хранимых процедур в модель, а затем вызывать импортированные хранимые процедуры для получения результатов. 
 
-Обратите внимание, что Code First не поддерживает сопоставление с хранимыми процедурами или функциями. Однако можно вызывать хранимые процедуры или функции с помощью метода System. Data. Entity. DbSet. SqlQuery. Пример:
+Обратите внимание, что Code First не поддерживает сопоставление с хранимыми процедурами или функциями. Однако можно вызывать хранимые процедуры или функции с помощью метода System. Data. Entity. DbSet. SqlQuery. Например.
 ``` csharp
 var query = context.Products.SqlQuery("EXECUTE [dbo].[GetAllProducts]")`;
 ```
 
-## <a name="prerequisites"></a>Предварительные условия
+## <a name="prerequisites"></a>Предварительные требования
 
 Для выполнения данного пошагового руководства требуется:
 

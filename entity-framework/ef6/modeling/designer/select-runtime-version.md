@@ -1,14 +1,14 @@
 ---
 title: Выбор версии среды выполнения Entity Framework для моделей конструктора EF — EF6
 description: Выбор версии среды выполнения Entity Framework для моделей конструктора EF в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
-ms.openlocfilehash: 2025ca5e46c7d9a38ba596d57c023a2c1b224129
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: dcd06ed9585028b3a318d867b03980254979a32f
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073270"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92066100"
 ---
 # <a name="selecting-entity-framework-runtime-version-for-ef-designer-models"></a>Выбор версии среды выполнения Entity Framework для моделей конструктора EF
 > [!NOTE]
@@ -27,7 +27,7 @@ EF6 будет отключен, если уже установлена боле
 1.  Щелкните проект правой кнопкой мыши в обозреватель решений и выберите пункт **Управление пакетами NuGet...**
 2.  Выбор **обновлений**
 3.  Выберите **EntityFramework** (убедитесь, что он будет обновлен до нужной версии).
-4.  Нажмите кнопку **Обновить** .
+4.  Нажмите кнопку **Update** (Обновить).
 
  
 

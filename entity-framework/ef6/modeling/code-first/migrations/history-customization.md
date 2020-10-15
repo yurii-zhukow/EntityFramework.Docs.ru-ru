@@ -1,15 +1,15 @@
 ---
 title: Настройка таблицы журналов миграции — EF6
 description: Настройка таблицы журнала миграции в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/code-first/migrations/history-customization
-ms.openlocfilehash: b71ac7635d6804af2db9bf00acf7e8f4b2a11033
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: f0f474507659d5fbe43ecf2ed7216fb5d1a86779
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073465"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92066399"
 ---
 # <a name="customizing-the-migrations-history-table"></a>Настройка таблицы журнала миграции
 > [!NOTE]
@@ -88,6 +88,6 @@ ms.locfileid: "90073465"
     }
 ```
 
-Это довольно много. Теперь можно переходить к консоли диспетчера пакетов, включить и перенести, добавить-миграцию и, наконец, обновить базу данных. Это должно привести к добавлению таблицы журнала миграции базы данных, настроенной в соответствии со сведениями, указанными в классе, производном от Хисториконтекст.
+Это довольно много. Теперь можно открыть консоль диспетчера пакетов, включить или перенести, Add-Migration и, наконец, обновить базу данных. Это должно привести к добавлению таблицы журнала миграции базы данных, настроенной в соответствии со сведениями, указанными в классе, производном от Хисториконтекст.
 
 ![Таблица журнала миграции](~/ef6/media/database.png)

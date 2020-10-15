@@ -1,15 +1,15 @@
 ---
 title: Обновление до Entity Framework 6 — EF6
 description: Обновление до Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/what-is-new/upgrading-to-ef6
-ms.openlocfilehash: 118853ad9b53fe2157f50b329bddc31d3135d75a
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 14cd0e259832377332f77a199502699d75982bb4
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90074046"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064254"
 ---
 # <a name="upgrading-to-entity-framework-6"></a>Обновление до Entity Framework 6
 
@@ -65,13 +65,13 @@ Install-Package EntityFramework
 
 Такие типы, как ObjectContext, ранее находились в System.Data.Entity.dll, были перемещены в новые пространства имен. Это означает, что может потребоваться обновить директивы *using* или *Import* для создания EF6.
 
-Общее правило изменения пространства имен заключается в том, что любой тип в System. Data. * перемещается в System. Data. Entity. Core. *. Иными словами, просто вставьте **Entity. Core.** После System. Data. Пример:
+Общее правило изменения пространства имен заключается в том, что любой тип в System. Data. * перемещается в System. Data. Entity. Core. *. Иными словами, просто вставьте **Entity. Core.** После System. Data. Например.
 
 - System. Data. Ентитексцептион => System. Data. **Entity. Core**. ентитексцептион  
 - System. Data. objects. ObjectContext => System. Data. **Entity. Core**. Objects. ObjectContext  
 - Класс System. Data. objects. RelationshipManager => System. Data. **Entity. Core**. Objects. coclass. RelationshipManager  
 
-Эти типы находятся в *основных* пространствах имен, так как они не используются напрямую для большинства приложений на основе DbContext. Некоторые типы, которые были частью System.Data.Entity.dll, по-прежнему используются как обычно, так и напрямую для приложений на основе DbContext и поэтому не были перемещены в *основные* пространства имен. А именно:
+Эти типы находятся в *основных* пространствах имен, так как они не используются напрямую для большинства приложений на основе DbContext. Некоторые типы, которые были частью System.Data.Entity.dll, по-прежнему используются как обычно, так и напрямую для приложений на основе DbContext и поэтому не были перемещены в *основные* пространства имен. Эти особые значения приведены ниже.
 
 - System. Data. EntityState => System. Data. **Сущность**. EntityState  
 - Класс System. Data. objects. Едмфунктионаттрибуте => System. Data. **Entity. дбфунктионаттрибуте**  

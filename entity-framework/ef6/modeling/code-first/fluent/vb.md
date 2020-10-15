@@ -1,15 +1,15 @@
 ---
 title: API Fluent с VB.NET-EF6
 description: API Fluent с VB.NET в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/code-first/fluent/vb
-ms.openlocfilehash: d59e685578fb151aea2ae0b41a933f3e13de6c50
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 22c56285a0d2ae761931d62e07bd18c66ac474be
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072581"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065138"
 ---
 # <a name="fluent-api-with-vbnet"></a>API Fluent с VB.NET
 Code First позволяет определить модель с помощью \# классов C или VB.NET. Дополнительную конфигурацию можно также выполнить с помощью атрибутов в классах и свойствах или с помощью API Fluent. В этом пошаговом руководстве показано, как выполнить настройку API Fluent с помощью VB.NET.

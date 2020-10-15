@@ -1,15 +1,15 @@
 ---
 title: Перенос из EF6 в EF Core — перенос модели на основе кода — EF
 description: Конкретные сведения о переносе приложения модели на основе кода Entity Framework 6 в Entity Framework Core
-author: rowanmiller
+author: ajcvickers
 ms.date: 10/27/2016
 uid: efcore-and-ef6/porting/port-code
-ms.openlocfilehash: a5bbdc2ee95ea6bea96e24bee4588b524e0ffc58
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 819c3bc0eba140c023cdcd5038a4cd63c300ed4c
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073582"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064228"
 ---
 # <a name="porting-an-ef6-code-based-model-to-ef-core"></a>Перенос модели на основе кода EF6 в EF Core
 
@@ -33,7 +33,7 @@ ms.locfileid: "90073582"
 
 Большинство приложений EF6 хранят строку подключения в файле `App/Web.config` приложения. В EF Core для считывания этой строки подключения используется API `ConfigurationManager`. Чтобы использовать этот API, может потребоваться добавить ссылку на сборку платформы `System.Configuration`.
 
-``` csharp
+```csharp
 public class BloggingContext : DbContext
 {
     public DbSet<Blog> Blogs { get; set; }

@@ -1,15 +1,15 @@
 ---
 title: Работа с транзакциями — EF6
 description: Работа с транзакциями в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/saving/transactions
-ms.openlocfilehash: 15cc2171338defe482767114c58afe16cc1ffe21
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 525b5cf605c1b61225ee2b9f1e0559a8e13f3052
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073721"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064436"
 ---
 # <a name="working-with-transactions"></a>Работа с транзакциями
 > [!NOTE]
@@ -112,7 +112,7 @@ using (var conn = new SqlConnection("..."))
 
 Кроме того, необходимо вручную запустить транзакцию (включая IsolationLevel, если вы хотите избежать настройки по умолчанию) и разрешить Entity Framework знать о том, что в подключении уже запущена существующая транзакция (см. строку 33 ниже).  
 
-Затем вы можете выполнять операции с базой данных непосредственно в самом объекте SqlConnection или в DbContext. Все такие операции выполняются в рамках одной транзакции. Вы несете ответственность за фиксацию или откат транзакции и вызов метода Dispose (), а также для закрытия и уничтожения подключения к базе данных. Пример:  
+Затем вы можете выполнять операции с базой данных непосредственно в самом объекте SqlConnection или в DbContext. Все такие операции выполняются в рамках одной транзакции. Вы несете ответственность за фиксацию или откат транзакции и вызов метода Dispose (), а также для закрытия и уничтожения подключения к базе данных. Например.  
 
 ``` csharp
 using System;
