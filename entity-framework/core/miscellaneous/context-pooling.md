@@ -5,12 +5,12 @@ author: rick-anderson
 ms.author: riande
 ms.date: 9/19/2020
 uid: core/miscellaneous/context-pooling
-ms.openlocfilehash: fd5f53ff97a73895f0c4239439730dd8cb3ecc29
-ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
+ms.openlocfilehash: 8638c838511be85bd994751b9911b107974dfe2f
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91215588"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92061961"
 ---
 # <a name="dbcontext-pooling"></a>Создание пулов DbContext
 
@@ -20,7 +20,7 @@ ms.locfileid: "91215588"
 
 <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContextPool%2A> включает пул экземпляров контекста для повторного использования. Чтобы использовать пулы контекста, используйте `AddDbContextPool` метод вместо `AddDbContext` во время регистрации службы:
 
-``` csharp
+```csharp
 services.AddDbContextPool<BloggingContext>(
     options => options.UseSqlServer(connectionString));
 ```
@@ -37,7 +37,7 @@ services.AddDbContextPool<BloggingContext>(
 
 `AddDbContextPool` имеет несколько ограничений на то, что может быть сделано в `OnConfiguring` методе контекста.
 
-> [!WARNING]  
+> [!WARNING]
 > Избегайте использования контекстного пула в приложениях, которые поддерживают состояние. Например, закрытые поля в контексте, которые не должны совместно использоваться в запросах. EF Core только сбрасывает состояние, о котором оно известно, перед добавлением экземпляра контекста в пул.
 
 Пул контекста работает путем повторного использования одного и того же экземпляра контекста в запросах. Это означает, что оно эффективно регистрируется как [Singleton](/aspnet/core/fundamentals/dependency-injection#service-lifetimes) в терминах самого экземпляра, чтобы его можно было сохранить.

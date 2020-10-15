@@ -1,15 +1,15 @@
 ---
 title: Связи, свойства навигации и внешние ключи — EF6
 description: Связи, свойства навигации и внешние ключи в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/fundamentals/relationships
-ms.openlocfilehash: 65caacfbd860b5b896695c208b55b9c66d11255d
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 956a24051c89d410e052ab02f073e693e1934a74
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072256"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062975"
 ---
 # <a name="relationships-navigation-properties-and-foreign-keys"></a>Связи, свойства навигации и внешние ключи
 
@@ -95,7 +95,7 @@ public class Department
   course.Department = department;
   ```
 
-- Чтобы удалить связь, задайте для свойства навигации значение `null` . При работе с Entity Framework, основанной на .NET 4,0, необходимо загрузить связанный элемент, прежде чем присвоить ему значение null. Пример:   
+- Чтобы удалить связь, задайте для свойства навигации значение `null` . При работе с Entity Framework, основанной на .NET 4,0, необходимо загрузить связанный элемент, прежде чем присвоить ему значение null. Например.   
   ``` csharp
   context.Entry(course).Reference(c => c.Department).Load();
   course.Department = null;

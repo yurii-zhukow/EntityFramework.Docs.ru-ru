@@ -1,15 +1,15 @@
 ---
 title: Настройка DbContext-EF Core
 description: Стратегии настройки DbContext с помощью Entity Framework Core
-author: rowanmiller
+author: ajcvickers
 ms.date: 10/27/2016
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: 95b855c01b4b0b721eb91d53e0257295527ea44e
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 3afad8d220acecbb01b15bbb855b52a895e6eb66
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071697"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062026"
 ---
 # <a name="configuring-a-dbcontext"></a>Настройка DbContext
 
@@ -32,13 +32,13 @@ EF Core средства разработки, такие как [Миграци
 
 В следующем примере выполняется настройка `DbContextOptions` для использования поставщика SQL Server, соединения, содержащегося в `connectionString` переменной, времени ожидания команды на уровне поставщика, и селектора поведения EF Core, который по умолчанию выполняет все запросы, выполняемые в `DbContext` [неотслеживаемом](xref:core/querying/tracking#no-tracking-queries) виде:
 
-``` csharp
+```csharp
 optionsBuilder
     .UseSqlServer(connectionString, providerOptions=>providerOptions.CommandTimeout(60))
     .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > Методы выбора поставщика и другие методы выбора поведения, упомянутые выше, являются методами расширения для `DbContextOptions` классов параметров или, зависящих от поставщика. Чтобы получить доступ к этим методам расширения, вам может потребоваться пространство имен (обычно `Microsoft.EntityFrameworkCore` ) в области и включить в проект дополнительные зависимости пакетов.
 
 `DbContextOptions`Можно передать в, `DbContext` переопределив `OnConfiguring` метод или извне с помощью аргумента конструктора.
@@ -49,7 +49,7 @@ optionsBuilder
 
 Конструктор может просто принять, `DbContextOptions` как показано ниже.
 
-``` csharp
+```csharp
 public class BloggingContext : DbContext
 {
     public BloggingContext(DbContextOptions<BloggingContext> options)
@@ -60,12 +60,12 @@ public class BloggingContext : DbContext
 }
 ```
 
-> [!TIP]  
+> [!TIP]
 > Базовый конструктор DbContext также принимает не универсальную версию `DbContextOptions` , но использование неуниверсальной версии не рекомендуется для приложений с несколькими типами контекста.
 
 Теперь приложение может передавать `DbContextOptions` при создании экземпляра контекста следующим образом:
 
-``` csharp
+```csharp
 var optionsBuilder = new DbContextOptionsBuilder<BloggingContext>();
 optionsBuilder.UseSqlite("Data Source=blog.db");
 
@@ -81,7 +81,7 @@ using (var context = new BloggingContext(optionsBuilder.Options))
 
 Для инициализации `DbContextOptions` в контексте Переопределите `OnConfiguring` метод и вызовите методы для предоставленного `DbContextOptionsBuilder` :
 
-``` csharp
+```csharp
 public class BloggingContext : DbContext
 {
     public DbSet<Blog> Blogs { get; set; }
@@ -95,7 +95,7 @@ public class BloggingContext : DbContext
 
 Приложение может просто создать экземпляр такого контекста, не передавая что-либо в свой конструктор:
 
-``` csharp
+```csharp
 using (var context = new BloggingContext())
 {
   // do stuff
@@ -115,7 +115,7 @@ EF Core поддерживает использование `DbContext` с ко�
 
 Добавление в `DbContext` встраивание зависимостей:
 
-``` csharp
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddDbContext<BloggingContext>(options => options.UseSqlite("Data Source=blog.db"));
@@ -126,7 +126,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Код контекста:
 
-``` csharp
+```csharp
 public class BloggingContext : DbContext
 {
     public BloggingContext(DbContextOptions<BloggingContext> options)
@@ -139,7 +139,7 @@ public class BloggingContext : DbContext
 
 Код приложения (в ASP.NET Core):
 
-``` csharp
+```csharp
 public class MyController
 {
     private readonly BloggingContext _context;
@@ -155,7 +155,7 @@ public class MyController
 
 Код приложения (с использованием метода ServiceProvider напрямую, менее распространенный):
 
-``` csharp
+```csharp
 using (var context = serviceProvider.GetService<BloggingContext>())
 {
   // do stuff
@@ -180,7 +180,7 @@ Entity Framework Core не поддерживает выполнение нес�
 
 Асинхронные методы позволяют EF Core инициировать операции, обращающиеся к базе данных без блокировки. Но если вызывающий объект не ожидает завершения одного из этих методов и переходит к выполнению других операций в `DbContext` , состояние `DbContext` может быть (и, скорее всего, будет) повреждено.
 
-Всегда ожидайте EF Core асинхронных методов немедленно.  
+Всегда ожидайте EF Core асинхронных методов немедленно.
 
 ### <a name="implicitly-sharing-dbcontext-instances-across-multiple-threads-via-dependency-injection"></a>Неявное совместное использование экземпляров DbContext в нескольких потоках с помощью внедрения зависимостей
 

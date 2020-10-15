@@ -2,21 +2,20 @@
 title: Разбиение таблицы — EF Core
 description: Настройка разделения таблиц с помощью Entity Framework Core
 author: AndriySvyryd
-ms.author: ansvyryd
 ms.date: 01/03/2020
 uid: core/modeling/table-splitting
-ms.openlocfilehash: e7428bc516a69310b6a6f521acc49aee0ba9f802
-ms.sourcegitcommit: 949faaba02e07e44359e77d7935f540af5c32093
+ms.openlocfilehash: 71d332ec3f500f48e12863c71ac44ce4d60699f0
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87526503"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063040"
 ---
 # <a name="table-splitting"></a>Разделение таблиц
 
 EF Core позволяет сопоставлять две или более сущностей с одной строкой. Это называется _разбиением таблицы_ или _совместно используемой таблицей_.
 
-## <a name="configuration"></a>Конфигурация
+## <a name="configuration"></a>Параметр Configuration
 
 Чтобы использовать разделение таблиц, типы сущностей должны быть сопоставлены с одной и той же таблицей, иметь первичные ключи, сопоставленные с теми же столбцами и по крайней мере одну связь между первичным ключом одного типа сущности и другой в той же таблице.
 

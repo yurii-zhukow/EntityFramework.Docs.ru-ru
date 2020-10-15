@@ -2,15 +2,14 @@
 title: Заполнение данных — EF Core
 description: Использование заполнения данных для заполнения базы данных начальным набором данных с помощью Entity Framework Core
 author: AndriySvyryd
-ms.author: ansvyryd
 ms.date: 11/02/2018
 uid: core/modeling/data-seeding
-ms.openlocfilehash: 1d7adbe45c4cbc64a39485c76d8f516e32ffeba5
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: f8284d7473c6fbcafde25d01ec0709c2d50b666f
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071606"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063703"
 ---
 # <a name="data-seeding"></a>Присвоение начальных значений данных
 
@@ -23,9 +22,6 @@ ms.locfileid: "90071606"
 * Пользовательская логика инициализации
 
 ## <a name="model-seed-data"></a>Начальные данные модели
-
-> [!NOTE]
-> Это новая возможность в EF Core 2.1.
 
 В отличие от EF6, в EF Core данные заполнения могут быть связаны с типом сущности как часть конфигурации модели. Затем EF Core [миграции](xref:core/managing-schemas/migrations/index) могут автоматически вычислять, какие операции вставки, обновления или удаления должны быть применены при обновлении базы данных до новой версии модели.
 

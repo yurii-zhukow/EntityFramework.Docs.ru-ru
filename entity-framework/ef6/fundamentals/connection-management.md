@@ -1,15 +1,15 @@
 ---
 title: Управление подключениями — EF6
 description: Управление подключениями в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/fundamentals/connection-management
-ms.openlocfilehash: e2097f5ed0471d309292625990cc5f9a598c5b2a
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: e8c5c3615b4019be4c1915d3acaa91d60a55c85d
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070566"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063300"
 ---
 # <a name="connection-management"></a>Управление соединениями
 На этой странице описывается поведение Entity Framework с точки зрения передачи подключений к контексту и функциональных возможностей API **базы данных. Connection. Open ()** .  

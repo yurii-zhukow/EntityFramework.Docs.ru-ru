@@ -2,15 +2,14 @@
 title: Справочник по средствам EF Core (консоль диспетчера пакетов) — EF Core
 description: Справочное руководство по консоли диспетчера пакетов Visual Studio Entity Framework Core
 author: bricelam
-ms.author: bricelam
-ms.date: 09/09/2020
+ms.date: 10/13/2020
 uid: core/miscellaneous/cli/powershell
-ms.openlocfilehash: 5dca397978c60c12610d9080caba972a66b079b6
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 3a9599288d74013bf4da910c64bc858539c0c32c
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071866"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062390"
 ---
 # <a name="entity-framework-core-tools-reference---package-manager-console-in-visual-studio"></a>Справочник по средствам Entity Framework Core. консоль диспетчера пакетов в Visual Studio
 
@@ -20,50 +19,15 @@ ms.locfileid: "90071866"
 
 ## <a name="installing-the-tools"></a>Установка инструментов
 
-Процедуры установки и обновления инструментов отличаются от ASP.NET Core 2.1 + и более ранних версий или других типов проектов.
-
-### <a name="aspnet-core-version-21-and-later"></a>ASP.NET Core версии 2,1 и более поздних
-
-Эти средства автоматически включаются в проект ASP.NET Core 2.1 +, так как `Microsoft.EntityFrameworkCore.Tools` пакет входит в состав [метапакет Microsoft. AspNetCore. app](/aspnet/core/fundamentals/metapackage-app).
-
-Поэтому вам не нужно ничего делать для установки средств, но вам нужно:
-
-* Восстановите пакеты перед использованием средств в новом проекте.
-* Установите пакет, чтобы обновить средства до более новой версии.
-
-Чтобы убедиться, что вы получаете последнюю версию средств, мы рекомендуем также выполнить следующие действия.
-
-* Измените *CSPROJ* -файл и добавьте строку, указывающую последнюю версию пакета [Microsoft. EntityFrameworkCore. Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/) . Например, файл *. csproj* может включать в себя следующий `ItemGroup` вид:
-
-  ```xml
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
-  </ItemGroup>
-  ```
-
-Обновите средства при получении сообщения, как в следующем примере:
-
-> Версия инструментов EF Core "короче-RTM-30846" старше, чем версия среды выполнения "2.1.3-RTM-32065". Обновите средства для получения последних компонентов и исправлений ошибок.
-
-Чтобы обновить средства, выполните следующие действия.
-
-* Установите пакет SDK для .NET Core последней версии.
-* Обновите Visual Studio до последней версии.
-* Измените *CSPROJ* -файл, чтобы он включал ссылку на пакет для последней версии пакета инструментов, как показано выше.
-
-### <a name="other-versions-and-project-types"></a>Другие версии и типы проектов
-
 Установите средства консоли диспетчера пакетов, выполнив следующую команду в **консоли диспетчера пакетов**:
 
-``` powershell
+```powershell
 Install-Package Microsoft.EntityFrameworkCore.Tools
 ```
 
 Обновите средства, выполнив следующую команду в **консоли диспетчера пакетов**.
 
-``` powershell
+```powershell
 Update-Package Microsoft.EntityFrameworkCore.Tools
 ```
 
@@ -71,13 +35,13 @@ Update-Package Microsoft.EntityFrameworkCore.Tools
 
 Убедитесь, что средства установлены, выполнив следующую команду:
 
-``` powershell
+```powershell
 Get-Help about_EntityFrameworkCore
 ```
 
 Выходные данные выглядят следующим образом (он не указывает, какую версию инструментов вы используете):
 
-```console
+```output
 
                      _/\__
                ---==/    \\
@@ -145,7 +109,7 @@ SHORT DESCRIPTION
 > [!TIP]
 > Параметры Context, Project и Стартуппрожект поддерживают расширение Tab.
 
-## <a name="add-migration"></a>Добавление и миграция
+## <a name="add-migration"></a>Add-Migration
 
 Добавляет новый перенос.
 
@@ -159,7 +123,7 @@ SHORT DESCRIPTION
 
 [Общие параметры](#common-parameters) перечислены выше.
 
-## <a name="drop-database"></a>Удалить базу данных
+## <a name="drop-database"></a>Drop-Database
 
 Удаляет базу данных.
 
@@ -177,7 +141,7 @@ SHORT DESCRIPTION
 
 [Общие параметры](#common-parameters) перечислены выше.
 
-## <a name="get-migration"></a>Получение и миграция
+## <a name="get-migration"></a>Get-Migration
 
 Список доступных миграций. Добавлено в EF Core 5,0.
 
@@ -202,7 +166,7 @@ SHORT DESCRIPTION
 
 [Общие параметры](#common-parameters) перечислены выше.
 
-## <a name="scaffold-dbcontext"></a>Формирование шаблонов — DbContext
+## <a name="scaffold-dbcontext"></a>Scaffold-DbContext
 
 Создает код для `DbContext` типов сущностей и для базы данных. `Scaffold-DbContext`Чтобы создать тип сущности, таблица базы данных должна иметь первичный ключ.
 
@@ -227,7 +191,7 @@ SHORT DESCRIPTION
 
 [Общие параметры](#common-parameters) перечислены выше.
 
-Пример:
+Пример
 
 ```powershell
 Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
@@ -239,7 +203,7 @@ Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Conn
 Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Tables "Blog","Post" -ContextDir Context -Context BlogContext -ContextNamespace New.Namespace
 ```
 
-## <a name="script-dbcontext"></a>Сценарий — DbContext
+## <a name="script-dbcontext"></a>Script-DbContext
 
 Создает скрипт SQL из DbContext. Обход всех миграций. Добавлено в EF Core 3,0.
 
@@ -251,7 +215,7 @@ Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Conn
 
 [Общие параметры](#common-parameters) перечислены выше.
 
-## <a name="script-migration"></a>Скрипт — миграция
+## <a name="script-migration"></a>Script-Migration
 
 Создает скрипт SQL, который применяет все изменения из одной выбранной миграции в другую выбранную миграцию.
 
@@ -282,7 +246,7 @@ Script-Migration -To InitialCreate
 Script-Migration -From 20180904195021_InitialCreate
 ```
 
-## <a name="update-database"></a>Обновление базы данных
+## <a name="update-database"></a>Update-Database
 
 Обновляет базу данных до последней миграции или до указанной миграции.
 

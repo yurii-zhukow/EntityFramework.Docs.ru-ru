@@ -1,17 +1,17 @@
 ---
-title: Свойства тени — EF Core
-description: Настройка теневых свойств в модели Entity Framework Core
+title: Свойства теневой копии и индексатора — EF Core
+description: Настройка свойств тени и индексатора в модели Entity Framework Core
 author: AndriySvyryd
-ms.date: 01/03/2020
+ms.date: 10/09/2020
 uid: core/modeling/shadow-properties
-ms.openlocfilehash: 735659a1a8523e63afa908d4fe3904e62f46cbd0
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 417ab57a4a77ecf626e54eeca900744d84e3fe08
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071385"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063898"
 ---
-# <a name="shadow-properties"></a>Свойства тени
+# <a name="shadow-and-indexer-properties"></a>Свойства теневой копии и индексатора
 
 Теневые свойства — это свойства, которые не определены в классе сущности .NET, но определены для этого типа сущности в модели EF Core. Значения и состояния этих свойств хранятся исключительно в средстве отслеживания изменений. Теневые свойства полезны при наличии в базе данных данных, которые не должны быть представлены в сопоставленных типах сущностей.
 
@@ -37,15 +37,24 @@ ms.locfileid: "90071385"
 
 Значения теневых свойств можно получить и изменить с помощью `ChangeTracker` API:
 
-``` csharp
+```csharp
 context.Entry(myBlog).Property("LastUpdated").CurrentValue = DateTime.Now;
 ```
 
 На теневые свойства можно ссылаться в запросах LINQ с помощью `EF.Property` статического метода:
 
-``` csharp
+```csharp
 var blogs = context.Blogs
     .OrderBy(b => EF.Property<DateTime>(b, "LastUpdated"));
 ```
 
 Доступ к теневым свойствам после неотслеживаемого запроса невозможен, так как отслеживание изменений не отслеживает возвращаемые сущности.
+
+## <a name="property-bag-entity-types"></a>Типы сущностей контейнера свойств
+
+> [!NOTE]
+> В EF Core 5,0 добавлена поддержка типов сущностей контейнера свойств.
+
+Типы сущностей, которые содержат только свойства индексатора, называются типами сущностей контейнера свойств. Эти типы сущностей не имеют теневых свойств. Сейчас `Dictionary<string, object>` поддерживается только в качестве типа сущности контейнера свойств. Это означает, что он должен быть настроен в качестве общего типа сущности с уникальным именем, а соответствующее `DbSet` свойство должно быть реализовано с помощью `Set` вызова.
+
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/SharedType.cs?name=SharedType&highlight=3,7)]

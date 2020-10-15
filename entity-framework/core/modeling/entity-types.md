@@ -2,14 +2,14 @@
 title: Типы сущностей — EF Core
 description: Как настроить и сопоставлять типы сущностей с помощью Entity Framework Core
 author: roji
-ms.date: 12/03/2019
+ms.date: 10/06/2020
 uid: core/modeling/entity-types
-ms.openlocfilehash: fead7f9e37efb7f674f429acbfd16c2ca78480d4
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: bfefa29c08679a1524c00769b3495d75a301e2d3
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071515"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062234"
 ---
 # <a name="entity-types"></a>Типы сущностей
 
@@ -40,6 +40,19 @@ ms.locfileid: "90071515"
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/IgnoreType.cs?name=IgnoreType&highlight=3)]
 
 ***
+
+### <a name="excluding-from-migrations"></a>Исключение из миграции
+
+> [!NOTE]
+> Возможность исключения таблиц из миграции была добавлена в EF Core 5,0.
+
+Иногда бывает полезно иметь один и тот же тип сущности, сопоставленный в нескольких `DbContext` типах. Это особенно справедливо при использовании [ограниченных](https://www.martinfowler.com/bliki/BoundedContext.html)контекстов, для которых обычно используется отдельный `DbContext` тип для каждого ограниченного контекста.
+
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableExcludeFromMigrations.cs?name=TableExcludeFromMigrations&highlight=4)]
+
+При такой миграции конфигурации таблица не создается `blogs` , но `Blog` по-прежнему включается в модель и может использоваться в обычном режиме.
+
+Если необходимо приступить к управлению таблицей с помощью миграции, то следует создать новую миграцию, если `blogs` она не исключена. Следующая миграция теперь будет содержать все изменения, внесенные в таблицу.
 
 ## <a name="table-name"></a>Имя таблицы
 
@@ -78,3 +91,14 @@ ms.locfileid: "90071515"
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/DefaultSchema.cs?name=DefaultSchema&highlight=3)]
 
 Обратите внимание, что установка схемы по умолчанию также влияет на другие объекты базы данных, например последовательности.
+
+## <a name="view-mapping"></a>Просмотр сопоставления
+
+Типы сущностей можно сопоставлять с представлениями базы данных с помощью API Fluent.
+
+> [!Note]
+> EF предполагает, что представление, на которое имеется ссылка, уже существует в базе данных, оно не будет автоматически создаваться при миграции.
+
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ViewNameAndSchema.cs?name=ViewNameAndSchema&highlight=1)]
+
+ Сопоставление с представлением приведет к удалению сопоставления таблицы по умолчанию, но тип сущности также можно сопоставить с таблицей явным образом. В этом случае для запросов будет использоваться сопоставление запросов, а для обновлений будут использоваться сопоставления таблиц.

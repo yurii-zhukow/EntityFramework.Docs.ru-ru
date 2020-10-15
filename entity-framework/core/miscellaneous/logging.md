@@ -1,20 +1,37 @@
 ---
 title: Ведение журнала — EF Core
 description: Настройка ведения журнала с помощью Entity Framework Core
-author: rowanmiller
-ms.date: 10/27/2016
+author: ajcvickers
+ms.date: 10/06/2020
 uid: core/miscellaneous/logging
-ms.openlocfilehash: 0fd1c83f01989095a813727390179db2327b610d
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 389834b3822aeeaefb8c085538bc6359ccfa7094
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071671"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063014"
 ---
 # <a name="logging"></a>Ведение журнала
 
-> [!TIP]  
+> [!TIP]
 > Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Logging) из репозитория GitHub.
+
+## <a name="simple-logging"></a>Простое ведение журнала
+
+> [!NOTE]
+> Эта функция была добавлена в EF Core 5,0.
+
+Entity Framework Core (EF Core) создает сообщения журнала для таких операций, как выполнение запроса или сохранение изменений в базе данных. Доступ к ним можно получить из любого типа приложений с помощью [логто](https://github.com/dotnet/efcore/blob/ec3df8fd7e4ea4ebeebfa747619cef37b23ab2c6/src/EFCore/DbContextOptionsBuilder.cs#L135) <!-- Issue #2748 <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.LogTo%2A> --> При [настройке экземпляра DbContext](xref:core/miscellaneous/configuring-dbcontext). Эта конфигурация обычно выполняется при переопределении <xref:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring%2A?displayProperty=nameWithType> . Например.
+
+<!--
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.LogTo(Console.WriteLine);
+-->
+[!code-csharp[LogToConsole](../../../samples/core/Miscellaneous/Logging/SimpleLogging/Program.cs?name=LogToConsole)]
+
+Эта концепция аналогична <xref:System.Data.Entity.Database.Log?displayProperty=nameWithType> в EF6.
+
+Дополнительные сведения см. в разделе [Простое ведение журнала](xref:core/miscellaneous/events/simple-logging) .
 
 ## <a name="aspnet-core-applications"></a>ASP.NET Core приложения
 
@@ -42,14 +59,14 @@ EF Core автоматически интегрируется с механиз�
 > [!NOTE]
 > В следующем примере кода используется `ConsoleLoggerProvider` конструктор, который является устаревшим в версии 2,2 и заменен в 3,0. Можно спокойно пропускать и подавлять предупреждения при использовании 2,2.
 
-``` csharp
+```csharp
 public static readonly LoggerFactory MyLoggerFactory
     = new LoggerFactory(new[] { new ConsoleLoggerProvider((_, __) => true, true) });
 ```
 
 ***
 
-Этот одноэлементный или глобальный экземпляр затем должен быть зарегистрирован в EF Core в `DbContextOptionsBuilder` . Пример:
+Этот одноэлементный или глобальный экземпляр затем должен быть зарегистрирован в EF Core в `DbContextOptionsBuilder` . Например.
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContext.cs#RegisterLoggerFactory)]
 
@@ -58,7 +75,7 @@ public static readonly LoggerFactory MyLoggerFactory
 
 ## <a name="filtering-what-is-logged"></a>Фильтрация регистрируемых
 
-Приложение может контролировать, что регистрируется, настроив фильтр на Илогжерпровидер. Пример:
+Приложение может контролировать, что регистрируется, настроив фильтр на Илогжерпровидер. Например.
 
 ### <a name="version-3x"></a>[Версия 3. x](#tab/v3)
 
@@ -69,7 +86,7 @@ public static readonly LoggerFactory MyLoggerFactory
 > [!NOTE]
 > В следующем примере кода используется `ConsoleLoggerProvider` конструктор, который является устаревшим в версии 2,2 и заменен в 3,0. Можно спокойно пропускать и подавлять предупреждения при использовании 2,2.
 
-``` csharp
+```csharp
 public static readonly LoggerFactory MyLoggerFactory
     = new LoggerFactory(new[]
     {

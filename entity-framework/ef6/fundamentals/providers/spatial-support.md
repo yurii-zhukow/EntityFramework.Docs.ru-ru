@@ -1,15 +1,15 @@
 ---
 title: Поддержка пространственных типов в поставщике — EF6
 description: Поддержка пространственных типов в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/fundamentals/providers/spatial-support
-ms.openlocfilehash: d6214ec503af8ea02b586cfddfd958ec7b47e42f
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: e2a543bc309001b14fb770d747a0dea22bcc91ca
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070449"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062910"
 ---
 # <a name="provider-support-for-spatial-types"></a>Поддержка пространственных типов в поставщике
 Entity Framework поддерживает работу с пространственными данными с помощью классов заданное DbGeography или заданное DbGeometry. Эти классы полагаются на функциональность базы данных, предлагаемую поставщиком Entity Framework. Не все поставщики поддерживают пространственные данные и могут иметь дополнительные предварительные требования, например установку сборок пространственных типов. Ниже приведены дополнительные сведения о поддержке пространственных типов для поставщиков.  

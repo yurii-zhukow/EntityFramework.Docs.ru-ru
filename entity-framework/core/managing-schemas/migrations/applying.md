@@ -2,15 +2,14 @@
 title: Применение миграций — EF Core
 description: Стратегии применения миграций схемы к базам данных в рабочей среде и разработке с помощью Entity Framework Core
 author: bricelam
-ms.author: bricelam
 ms.date: 05/06/2020
 uid: core/managing-schemas/migrations/applying
-ms.openlocfilehash: cde83a944e1e698a7f8a00c4692c0ce08a87b5ab
-ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
+ms.openlocfilehash: 68d482a34e5f5c7acf968acdfd8825e1d21ecb13
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91210410"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062351"
 ---
 # <a name="applying-migrations"></a>Применение миграций
 
@@ -65,7 +64,7 @@ dotnet ef migrations script AddNewTables AddAuditTable
 
 Следующая строка создает скрипт SQL из пустой базы данных в последнюю миграцию:
 
-``` powershell
+```powershell
 Script-Migration
 ```
 
@@ -107,13 +106,13 @@ dotnet ef migrations script --idempotent
 
 #### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
-``` powershell
+```powershell
 Script-Migration -Idempotent
 ```
 
 ***
 
-## <a name="command-line-tools"></a>Средства командной строки
+## <a name="command-line-tools"></a>Программы командной строки
 
 Программы командной строки EF можно использовать для применения миграций к базе данных. При работе с локальной средой разработки и тестирования миграций этот подход не идеально подходит для управления производственными базами данных.
 
@@ -143,13 +142,13 @@ dotnet ef database update AddNewTables
 
 В следующем примере база данных обновляется до последней миграции:
 
-``` powershell
+```powershell
 Update-Database
 ```
 
 Следующий пример обновляет базу данных на заданную миграцию:
 
-``` powershell
+```powershell
 Update-Database AddNewTables
 ```
 
@@ -174,7 +173,7 @@ Update-Database AddNewTables
 
 Чтобы программно применить миграции, вызовите `context.Database.Migrate()` . Например, типичное приложение ASP.NET может выполнять следующие действия:
 
-```c#
+```csharp
 public static void Main(string[] args)
 {
     var host = CreateHostBuilder(args).Build();

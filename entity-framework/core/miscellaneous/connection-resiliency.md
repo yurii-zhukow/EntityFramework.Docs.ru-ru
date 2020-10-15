@@ -1,15 +1,15 @@
 ---
 title: Устойчивость подключения — EF Core
 description: Использование устойчивости подключений для автоматического повторного выполнения невыполненных команд с Entity Framework Core
-author: rowanmiller
+author: AndriySvyryd
 ms.date: 11/15/2016
 uid: core/miscellaneous/connection-resiliency
-ms.openlocfilehash: 25b754334edd15532780cb4e40682bc211620c76
-ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
+ms.openlocfilehash: db0666a49cbd41ef3eacf447eaeed1fb54ffcbf4
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91210297"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92061922"
 ---
 # <a name="connection-resiliency"></a>Устойчивость подключений
 
@@ -23,7 +23,7 @@ ms.locfileid: "91210297"
 
 или в `Startup.cs` для приложения ASP.NET Core:
 
-``` csharp
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddDbContext<PicnicContext>(
@@ -37,7 +37,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Существует механизм регистрации пользовательской стратегии выполнения, если вы хотите изменить какие-либо значения по умолчанию.
 
-``` csharp
+```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 {
     optionsBuilder
@@ -65,7 +65,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 ## <a name="transaction-commit-failure-and-the-idempotency-issue"></a>Сбой фиксации транзакции и проблема идемпотентности
 
-Как правило, при сбое соединения выполняется откат текущей транзакции. Однако, если соединение разорвано во время фиксации транзакции, результирующее состояние транзакции неизвестно. 
+Как правило, при сбое соединения выполняется откат текущей транзакции. Однако, если соединение разорвано во время фиксации транзакции, результирующее состояние транзакции неизвестно.
 
 По умолчанию стратегия выполнения повторяет операцию, как если бы был выполнен откат транзакции, но если это не так, это приведет к возникновению исключения, если новое состояние базы данных несовместимо или может привести к **повреждению данных** , если операция не зависит от определенного состояния, например при вставке новой строки с автоматически созданными значениями ключа.
 

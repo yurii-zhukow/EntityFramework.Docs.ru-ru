@@ -2,15 +2,14 @@
 title: Управление миграцией — EF Core
 description: Добавление, удаление и иным образом управление миграцией схемы базы данных с помощью Entity Framework Core
 author: bricelam
-ms.author: bricelam
 ms.date: 05/06/2020
 uid: core/managing-schemas/migrations/managing
-ms.openlocfilehash: 366824cecab57a0f1744fa58cc12e5d3f6675723
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: fdfda6f3dea306fbbc343c1be3f4d5754d1f65c4
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89617962"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062065"
 ---
 # <a name="managing-migrations"></a>Управление миграцией
 
@@ -31,7 +30,7 @@ dotnet ef migrations add AddBlogCreatedTimestamp
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
-``` powershell
+```powershell
 Add-Migration AddBlogCreatedTimestamp
 ```
 
@@ -59,7 +58,7 @@ dotnet ef migrations add InitialCreate --namespace Your.Namespace
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
-``` powershell
+```powershell
 Add-Migration InitialCreate -Namespace Your.Namespace
 ```
 
@@ -73,7 +72,7 @@ Add-Migration InitialCreate -Namespace Your.Namespace
 
 Одним из важных примеров, где требуется настройка миграции, является переименование свойства. Например, если переименовать свойство из `Name` в `FullName` , EF Core создаст следующую миграцию:
 
-```c#
+```csharp
 migrationBuilder.DropColumn(
     name: "Name",
     table: "Customers");
@@ -86,7 +85,7 @@ migrationBuilder.AddColumn<string>(
 
 EF Core, как правило, не может быть уверенным в том, что нужно удалить столбец и создать новый (два отдельных изменения) и когда столбец должен быть переименован. Если приведенная выше миграция применяется "как есть", все имена клиентов будут потеряны. Чтобы переименовать столбец, замените созданную выше миграцию следующей:
 
-```c#
+```csharp
 migrationBuilder.RenameColumn(
     name: "Name",
     table: "Customers",
@@ -100,7 +99,7 @@ migrationBuilder.RenameColumn(
 
 В то время как переименование столбца может быть выполнено через встроенный API, во многих случаях это невозможно. Например, может потребоваться заменить существующие `FirstName` `LastName` Свойства и одним новым `FullName` свойством. Процесс миграции, создаваемый EF Core, будет следующим:
 
-``` csharp
+```csharp
 migrationBuilder.DropColumn(
     name: "FirstName",
     table: "Customer");
@@ -117,7 +116,7 @@ migrationBuilder.AddColumn<string>(
 
 Как и раньше, это вызовет нежелательные потери данных. Чтобы перенести данные из старых столбцов, мы переупорядочиваем миграцию и представляем необработанную операцию SQL следующим образом:
 
-``` csharp
+```csharp
 migrationBuilder.AddColumn<string>(
     name: "FullName",
     table: "Customer",
@@ -144,7 +143,7 @@ migrationBuilder.DropColumn(
 
 Например, следующая миграция создает SQL Server хранимую процедуру:
 
-```c#
+```csharp
 migrationBuilder.Sql(
 @"
     EXEC ('CREATE PROCEDURE getFullName
@@ -178,7 +177,7 @@ dotnet ef migrations remove
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
-``` powershell
+```powershell
 Remove-Migration
 ```
 
@@ -206,4 +205,7 @@ dotnet ef migrations list
 * Удаление папки **миграций**
 * Создать новую миграцию и создать для нее скрипт SQL
 * В базе данных удалите все строки из таблицы журнала миграции.
-* Вставка одной строки в журнал миграции для записи того, что первая миграция уже применена, так как таблицы уже есть. СЕКЛ вставки — это последняя операция в созданном выше скрипте SQL.
+* Вставка одной строки в журнал миграции для записи того, что первая миграция уже применена, так как таблицы уже есть. Инструкция INSERT SQL — это последняя операция в скрипте SQL, созданном выше.
+
+> [!WARNING]
+> При удалении папки **миграции** любой [Пользовательский код миграции](#customize-migration-code) будет потерян.  Все настройки должны быть применены к новой первоначальной миграции вручную, чтобы сохранить их.

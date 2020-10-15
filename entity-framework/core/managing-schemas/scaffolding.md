@@ -2,15 +2,14 @@
 title: Реконструирование — EF Core
 description: Реконструирование модели из существующей базы данных с помощью Entity Framework Core
 author: bricelam
-ms.author: bricelam
 ms.date: 11/13/2018
 uid: core/managing-schemas/scaffolding
-ms.openlocfilehash: 86aa6d22ebe8e5c1d654c83d4c292a1ed5842ddd
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: e1b4ed8d5209688fbe5c89ae60cf0d981136305f
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071918"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92061974"
 ---
 # <a name="reverse-engineering"></a> Реконструирование
 
@@ -36,7 +35,7 @@ dotnet ef dbcontext scaffold "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
-``` powershell
+```powershell
 Scaffold-DbContext 'Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Chinook' Microsoft.EntityFrameworkCore.SqlServer
 ```
 
@@ -77,7 +76,7 @@ dotnet ef dbcontext scaffold ... --table Artist --table Album
 
 Чтобы включить несколько таблиц, используйте массив:
 
-``` powershell
+```powershell
 Scaffold-DbContext ... -Tables Artist, Album
 ```
 
@@ -93,7 +92,7 @@ Scaffold-DbContext ... -Tables Artist, Album
 
 Например, с помощью API Fluent будет сформирован шаблон:
 
-``` csharp
+```csharp
 entity.Property(e => e.Title)
     .IsRequired()
     .HasMaxLength(160);
@@ -101,7 +100,7 @@ entity.Property(e => e.Title)
 
 При использовании заметок к данным будет сформировано следующее:
 
-``` csharp
+```csharp
 [Required]
 [StringLength(160)]
 public string Title { get; set; }
@@ -133,13 +132,13 @@ dotnet ef dbcontext scaffold ... --namespace Your.Namespace --context-namespace 
 
 Можно указать каталог, в котором разрабатываются классы с помощью `-OutputDir` , и `-ContextDir` можно использовать для формирования шаблона класса DbContext в отдельный каталог из классов типов сущностей:
 
-``` powershell
+```powershell
 Scaffold-DbContext ... -ContextDir Data -OutputDir Models
 ```
 
 По умолчанию пространством имен будет корневое пространство имен и имена всех подкаталогов в корневом каталоге проекта. Однако из Ефкоре 5,0 можно переопределить пространство имен для всех выходных классов с помощью `-Namespace` . Также можно переопределить пространство имен только для класса DbContext с помощью `-ContextNamespace` .
 
-``` powershell
+```powershell
 Scaffold-DbContext ... -Namespace Your.Namespace -ContextNamespace Your.DbContext.Namespace
 ```
 

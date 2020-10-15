@@ -1,15 +1,15 @@
 ---
 title: Строки подключения и модели — EF6
 description: Строки подключения и модели в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/fundamentals/configuring/connection-strings
-ms.openlocfilehash: 45db461b18cde3bc1f1fccadec3c8ece6dd16832
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: c60acb965b7062f3cd35dab94ee8dfe48394969a
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070787"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063391"
 ---
 # <a name="connection-strings-and-models"></a>Строки подключения и модели
 В этом разделе описано, как Entity Framework обнаруживает, какое подключение к базе данных следует использовать, и как его можно изменить. В этом разделе рассматриваются модели, созданные с помощью Code First и конструктора EF.  
@@ -24,7 +24,7 @@ ms.locfileid: "90070787"
 
 ## <a name="use-code-first-with-connection-by-convention"></a>Использование Code First с подключением по соглашению  
 
-Если вы еще не выполнили какие-либо другие настройки в приложении, то вызов конструктора без параметров в DbContext приведет к запуску DbContext в режиме Code First с подключением к базе данных, созданным по соглашению. Пример:  
+Если вы еще не выполнили какие-либо другие настройки в приложении, то вызов конструктора без параметров в DbContext приведет к запуску DbContext в режиме Code First с подключением к базе данных, созданным по соглашению. Например.  
 
 ``` csharp  
 namespace Demo.EF
@@ -45,7 +45,7 @@ Visual Studio 2010 включает SQL Express по умолчанию, а Visu
 
 ## <a name="use-code-first-with-connection-by-convention-and-specified-database-name"></a>Использование Code First с подключением по соглашению и указанным именем базы данных  
 
-Если вы не выполнили какие-либо другие настройки в приложении, то вызов конструктора строк для DbContext с именем базы данных, которое вы хотите использовать, приведет к запуску DbContext в режиме Code First с подключением к базе данных, созданным по соглашению с базой данных этого имени. Пример:  
+Если вы не выполнили какие-либо другие настройки в приложении, то вызов конструктора строк для DbContext с именем базы данных, которое вы хотите использовать, приведет к запуску DbContext в режиме Code First с подключением к базе данных, созданным по соглашению с базой данных этого имени. Например.  
 
 ``` csharp  
 public class BloggingContext : DbContext
@@ -59,9 +59,9 @@ public class BloggingContext : DbContext
 
 В этом примере DbContext использует "Блоггингдатабасе" в качестве имени базы данных и создает строку подключения для этой базы данных с помощью SQL Express (устанавливается вместе с Visual Studio 2010) или LocalDB (устанавливается вместе с Visual Studio 2012). Если установлены оба варианта, будет использоваться SQL Express.  
 
-## <a name="use-code-first-with-connection-string-in-appconfigwebconfig-file"></a>Использование Code First со строкой подключения в файле app.config или web.config  
+## <a name="use-code-first-with-connection-string-in-appconfigwebconfig-file"></a>Использование Code First со строкой подключения в файле app.configили web.config  
 
-Вы можете указать строку подключения в app.config или web.config файле. Пример:  
+Вы можете указать строку подключения в app.config или web.config файле. Например.  
 
 ``` xml  
 <configuration>
@@ -75,7 +75,7 @@ public class BloggingContext : DbContext
 
 Это простой способ указать DbContext использовать сервер базы данных, отличный от SQL Express или LocalDB. в приведенном выше примере указывается база данных SQL Server Compact Edition.  
 
-Если имя строки подключения совпадает с именем контекста (с квалификатором пространства имен или без него), то при использовании конструктора без параметров он будет найден с помощью DbContext. Если имя строки подключения отличается от имени контекста, можно указать DbContext использовать это соединение в режиме Code First, передав имя строки подключения конструктору DbContext. Пример:  
+Если имя строки подключения совпадает с именем контекста (с квалификатором пространства имен или без него), то при использовании конструктора без параметров он будет найден с помощью DbContext. Если имя строки подключения отличается от имени контекста, можно указать DbContext использовать это соединение в режиме Code First, передав имя строки подключения конструктору DbContext. Например.  
 
 ``` csharp  
 public class BloggingContext : DbContext
@@ -87,7 +87,7 @@ public class BloggingContext : DbContext
 }
 ```  
 
-Кроме того, можно использовать форму "Name = \<connection string name\> " для строки, передаваемой конструктору DbContext. Пример:  
+Кроме того, можно использовать форму "Name = \<connection string name\> " для строки, передаваемой конструктору DbContext. Например.  
 
 ``` csharp  
 public class BloggingContext : DbContext
@@ -101,11 +101,11 @@ public class BloggingContext : DbContext
 
 Эта форма явно делает то, что строка подключения будет найдена в файле конфигурации. Если строка подключения с данным именем не найдена, будет выдано исключение.  
 
-## <a name="databasemodel-first-with-connection-string-in-appconfigwebconfig-file"></a>База данных/Model First со строкой подключения в файле app.config или web.config  
+## <a name="databasemodel-first-with-connection-string-in-appconfigwebconfig-file"></a>База данных/Model First со строкой подключения в файле app.configили web.config  
 
 Модели, созданные с помощью конструктора EF, отличаются от Code First тем, что модель уже существует и не создается из кода при запуске приложения. Модель обычно существует в файле EDMX в проекте.  
 
-Конструктор добавит строку подключения EF в app.config или web.config файл. Эта строка подключения является особой в том, что она содержит сведения о том, как найти информацию в файле EDMX. Пример:  
+Конструктор добавит строку подключения EF в app.config или web.config файл. Эта строка подключения является особой в том, что она содержит сведения о том, как найти информацию в файле EDMX. Например.  
 
 ``` xml  
 <configuration>  
@@ -125,7 +125,7 @@ public class BloggingContext : DbContext
 </configuration>
 ```  
 
-Конструктор EF также создаст код, который сообщает DbContext использовать это соединение, передав имя строки подключения конструктору DbContext. Пример:  
+Конструктор EF также создаст код, который сообщает DbContext использовать это соединение, передав имя строки подключения конструктору DbContext. Например.  
 
 ``` csharp  
 public class NorthwindContext : DbContext

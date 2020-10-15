@@ -1,15 +1,15 @@
 ---
 title: Async Query и Save-EF6
 description: Асинхронный запрос и сохранение в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/fundamentals/async
-ms.openlocfilehash: 576da2d2eaa292e46a8d0a913851ba93e6f72587
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 2b5f6f868cbf2e0699a943cf68c8568550f4ba36
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070813"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063404"
 ---
 # <a name="async-query-and-save"></a>Асинхронный запрос и сохранение
 > [!NOTE]

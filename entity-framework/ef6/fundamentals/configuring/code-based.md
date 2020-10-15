@@ -1,15 +1,15 @@
 ---
 title: Конфигурация на основе кода — EF6
 description: Конфигурация на основе кода в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/fundamentals/configuring/code-based
-ms.openlocfilehash: 67bb7ebd620c90ebe80983cc5baa6cab032907f8
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: ff86b542dead260190bbb0b0788a231f720fbeaf
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070735"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063286"
 ---
 # <a name="code-based-configuration"></a>Конфигурация на основе кода
 > [!NOTE]
@@ -58,7 +58,7 @@ namespace MyNamespace
 
 Бывают случаи, когда класс DbConfiguration не может быть размещен в той же сборке, что и класс DbContext. Например, у вас может быть два класса DbContext в разных сборках. Существует два способа обработки этого.  
 
-Первый вариант — использовать файл конфигурации, чтобы указать используемый экземпляр DbConfiguration. Для этого задайте атрибут Кодеконфигуратионтипе раздела entityFramework. Пример:  
+Первый вариант — использовать файл конфигурации, чтобы указать используемый экземпляр DbConfiguration. Для этого задайте атрибут Кодеконфигуратионтипе раздела entityFramework. Например.  
 
 ``` xml
 <entityFramework codeConfigurationType="MyNamespace.MyDbConfiguration, MyAssembly">
@@ -68,7 +68,7 @@ namespace MyNamespace
 
 Значение Кодеконфигуратионтипе должно быть именем сборки и пространством имен класса DbConfiguration.  
 
-Второй вариант — поместить Дбконфигуратионтипеаттрибуте в класс контекста. Пример:  
+Второй вариант — поместить Дбконфигуратионтипеаттрибуте в класс контекста. Например.  
 
 ``` csharp  
 [DbConfigurationType(typeof(MyDbConfiguration))]
@@ -77,7 +77,7 @@ public class MyContextContext : DbContext
 }
 ```  
 
-Значение, передаваемое в атрибут, может быть либо типом DbConfiguration, как показано выше, либо строкой с полным именем типа сборки и пространства имен. Пример:  
+Значение, передаваемое в атрибут, может быть либо типом DbConfiguration, как показано выше, либо строкой с полным именем типа сборки и пространства имен. Например.  
 
 ``` csharp
 [DbConfigurationType("MyNamespace.MyDbConfiguration, MyAssembly")]

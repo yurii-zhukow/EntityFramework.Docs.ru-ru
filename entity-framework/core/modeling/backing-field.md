@@ -1,15 +1,15 @@
 ---
 title: Резервные поля — EF Core
 description: Настройка резервных полей для свойств в модели Entity Framework Core
-author: rowanmiller
+author: ajcvickers
 ms.date: 10/27/2016
 uid: core/modeling/backing-field
-ms.openlocfilehash: 48ef28e7b880fee571cb1857601fb2cead535fbf
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 4f5680b14c7f0e1fa5128d366f2960c4ae9b3735
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071632"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063690"
 ---
 # <a name="backing-fields"></a>Резервные поля
 
@@ -17,7 +17,7 @@ ms.locfileid: "90071632"
 
 ## <a name="basic-configuration"></a>Базовая конфигурация
 
-В соответствии с соглашением следующие поля будут обнаружены как резервные поля для заданного свойства (в порядке приоритета). 
+В соответствии с соглашением следующие поля будут обнаружены как резервные поля для заданного свойства (в порядке приоритета).
 
 * `_<camel-cased property name>`
 * `_<property name>`
@@ -63,6 +63,6 @@ EF будет пытаться найти свойство CLR с заданны
 
 Может потребоваться ссылка на свойство, доступное только для полей, из запросов LINQ, но такие поля обычно являются частными. `EF.Property(...)`Метод в запросе LINQ можно использовать для ссылки на поле:
 
-``` csharp
+```csharp
 var blogs = db.blogs.OrderBy(b => EF.Property<string>(b, "_validatedUrl"));
 ```

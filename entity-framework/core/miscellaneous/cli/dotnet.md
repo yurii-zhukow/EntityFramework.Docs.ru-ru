@@ -2,15 +2,14 @@
 title: Справочник по средствам EF Core (.NET CLI) — EF Core
 description: Справочное руководство по средствам .NET Core CLI Entity Framework Core
 author: bricelam
-ms.author: bricelam
-ms.date: 09/17/2020
+ms.date: 10/13/2020
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: ee1caebcda93f627d285878f8594688a0f08c194
-ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
+ms.openlocfilehash: 4056fb99659ee3390d16b18eca9b12cfc8a2dd03
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91210397"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062520"
 ---
 # <a name="entity-framework-core-tools-reference---net-core-cli"></a>Справочник по инструментам Entity Framework Core — .NET Core CLI
 
@@ -24,59 +23,37 @@ ms.locfileid: "91210397"
 
 ## <a name="installing-the-tools"></a>Установка инструментов
 
-Процедура установки зависит от типа и версии проекта.
+`dotnet ef` можно установить в качестве глобального или локального средства. Большинство разработчиков предпочитают устанавливать `dotnet ef` в качестве глобального средства, используя следующую команду:
 
-* EF Core 3. x и 5. x
-* ASP.NET Core версии 2,1 и более поздних
-* EF Core 2. x
+```dotnetcli
+dotnet tool install --global dotnet-ef
+```
 
-### <a name="ef-core-3x-and-5x"></a>EF Core 3. x и 5. x
+Чтобы использовать его в качестве локального средства, восстановите зависимости проекта, объявляющие его как зависимость инструментария, с помощью [файла манифеста средства](/dotnet/core/tools/global-tools#install-a-local-tool).
 
-* `dotnet ef` должен быть установлен в качестве глобального или локального средства. Большинство разработчиков предпочитают устанавливать `dotnet ef` в качестве глобального средства, используя следующую команду:
+Обновите средство с помощью следующей команды:
 
-  ```dotnetcli
-  dotnet tool install --global dotnet-ef
-  ```
+```dotnetcli
+dotnet tool update --global dotnet-ef
+```
 
-  `dotnet ef` также может использоваться в качестве локального средства. Чтобы использовать его в качестве локального средства, восстановите зависимости проекта, объявляющие его как зависимость инструментария, с помощью [файла манифеста средства](/dotnet/core/tools/global-tools#install-a-local-tool).
+Прежде чем можно будет использовать средства в конкретном проекте, необходимо добавить в `Microsoft.EntityFrameworkCore.Design` него пакет.
 
-* Установите [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core).
-* Установите последнюю версию `Microsoft.EntityFrameworkCore.Design` пакета.
-
-  ```dotnetcli
-  dotnet add package Microsoft.EntityFrameworkCore.Design
-  ```
-
-### <a name="aspnet-core-21"></a>ASP.NET Core 2.1 +
-
-* Установите текущую [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core). Пакет SDK должен быть установлен, даже если у вас установлена последняя версия Visual Studio.
-
-  Это все, что необходимо для ASP.NET Core 2.1 +, так как `Microsoft.EntityFrameworkCore.Design` пакет включен в [метапакет Microsoft. AspNetCore. app](/aspnet/core/fundamentals/metapackage-app).
-
-### <a name="ef-core-2x-not-aspnet-core"></a>EF Core 2. x (не ASP.NET Core)
-
-`dotnet ef`Команды включены в пакет SDK для .NET Core, но для включения команд, позволяющих установить `Microsoft.EntityFrameworkCore.Design` пакет.
-
-* Установите текущую [пакет SDK для .NET Core](https://www.microsoft.com/net/download/core). Пакет SDK должен быть установлен, даже если у вас установлена последняя версия Visual Studio.
-
-* Установите последний стабильный `Microsoft.EntityFrameworkCore.Design` пакет.
-
-  ```dotnetcli
-  dotnet add package Microsoft.EntityFrameworkCore.Design
-  ```
+```dotnetcli
+dotnet add package Microsoft.EntityFrameworkCore.Design
+```
 
 ### <a name="verify-installation"></a>Проверка установки
 
 Выполните следующие команды, чтобы убедиться, что средства EF Core CLI установлены правильно:
 
   ```dotnetcli
-  dotnet restore
   dotnet ef
   ```
 
 Выходные данные команды определяют версию используемых средств:
 
-```console
+```output
 
                      _/\__
                ---==/    \\

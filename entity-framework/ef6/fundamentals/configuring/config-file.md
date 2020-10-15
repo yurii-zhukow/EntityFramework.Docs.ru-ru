@@ -1,20 +1,20 @@
 ---
 title: Параметры файла конфигурации — EF6
 description: Параметры файла конфигурации в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/fundamentals/configuring/config-file
-ms.openlocfilehash: b407ae7d64df18f6a8d80aa13703a8c243c6f3a2
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: fc991810e93840c27e6631dfb5bc1796c1328d37
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070722"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063326"
 ---
 # <a name="configuration-file-settings"></a>Параметры файла конфигурации
 Entity Framework позволяет указать несколько параметров из файла конфигурации. В целом EF соответствует принципу "соглашение над конфигурацией". все параметры, обсуждаемые в этой записи, имеют поведение по умолчанию. вам нужно только изменить параметр, когда значение по умолчанию больше не соответствует вашим требованиям.  
 
-## <a name="a-code-based-alternative"></a>Альтернатива на основе кода  
+## <a name="a-code-based-alternative"></a>Code-Based альтернативу  
 
 Все эти параметры также можно применить с помощью кода. Начиная с EF6 мы предоставили [конфигурацию на основе кода](xref:ef6/fundamentals/configuring/code-based), которая предоставляет централизованный способ применения конфигурации из кода. До EF6 конфигурация по-прежнему может быть применена из кода, но для настройки различных областей необходимо использовать различные интерфейсы API. Параметр файла конфигурации позволяет легко изменять эти параметры во время развертывания без обновления кода.
 
@@ -41,7 +41,7 @@ Entity Framework позволяет указать несколько парам
 
 Строки подключения попадают в стандартный элемент **ConnectionString** и не нуждаются в разделе **entityFramework** .  
 
-Модели на основе Code First используют обычные строки подключения ADO.NET. Пример:  
+Модели на основе Code First используют обычные строки подключения ADO.NET. Например.  
 
 ``` xml
 <connectionStrings>
@@ -51,7 +51,7 @@ Entity Framework позволяет указать несколько парам
 </connectionStrings>
 ```  
 
-Модели на основе конструктора EF используют специальные строки подключения EF. Пример:  
+Модели на основе конструктора EF используют специальные строки подключения EF. Например.  
 
 ``` xml  
 <connectionStrings>
@@ -71,7 +71,7 @@ Entity Framework позволяет указать несколько парам
 </connectionStrings>
 ```
 
-## <a name="code-based-configuration-type-ef6-onwards"></a>Тип конфигурации на основе кода (EF6)  
+## <a name="code-based-configuration-type-ef6-onwards"></a>Тип конфигурации Code-Based (EF6)  
 
 Начиная с EF6, можно указать DbConfiguration для EF для использования в [конфигурации на основе кода](xref:ef6/fundamentals/configuring/code-based) в приложении. В большинстве случаев не нужно указывать этот параметр, так как EF автоматически обнаружит ваш DbConfiguration. Дополнительные сведения о том, когда может потребоваться указать DbConfiguration в файле конфигурации, см. в разделе **Перемещение DbConfiguration** в [конфигурации на основе кода](xref:ef6/fundamentals/configuring/code-based).  
 

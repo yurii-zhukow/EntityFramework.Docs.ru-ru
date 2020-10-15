@@ -2,15 +2,14 @@
 title: Миграция в средах групп — EF Core
 description: Рекомендации по управлению миграцией и устранению конфликтов в средах групп с помощью Entity Framework Core
 author: bricelam
-ms.author: bricelam
 ms.date: 10/30/2017
 uid: core/managing-schemas/migrations/teams
-ms.openlocfilehash: 1fbb7173a52218a4d00780ebc76e33600f3558c1
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 90549b369624301bc183e5a8a3cc1d6a92bb7008
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89619206"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062507"
 ---
 # <a name="migrations-in-team-environments"></a>Миграция в командных средах
 
@@ -20,7 +19,7 @@ ms.locfileid: "89619206"
 
 При слиянии миграций из ваших коллег может возникнуть конфликт в файле моментального снимка модели. Если оба изменения не связаны, объединение является тривиальным и две миграции могут сосуществовать. Например, вы можете получить конфликт слияния в конфигурации типа сущности Customer, которая выглядит следующим образом:
 
-``` output
+```output
 <<<<<<< Mine
 b.Property<bool>("Deactivated");
 =======
@@ -30,7 +29,7 @@ b.Property<int>("LoyaltyPoints");
 
 Так как оба свойства должны существовать в окончательной модели, завершите слияние, добавив оба свойства. Во многих случаях система управления версиями может автоматически объединять такие изменения.
 
-``` csharp
+```csharp
 b.Property<bool>("Deactivated");
 b.Property<int>("LoyaltyPoints");
 ```
@@ -41,7 +40,7 @@ b.Property<int>("LoyaltyPoints");
 
 Иногда возникает истинный конфликт при объединении модели моментальных снимков модели. Например, вы и ваши коллеги могут переименовать одно и то же свойство.
 
-``` output
+```output
 <<<<<<< Mine
 b.Property<string>("Username");
 =======
