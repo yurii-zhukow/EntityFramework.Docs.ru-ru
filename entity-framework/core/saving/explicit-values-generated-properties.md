@@ -1,95 +1,92 @@
 ---
 title: Установка явных значений для создаваемых свойств — EF Core
 description: Сведения о явном задании значений для свойств, настроенных как созданные с помощью Entity Framework Core
-author: rowanmiller
+author: ajcvickers
 ms.date: 10/27/2016
 uid: core/saving/explicit-values-generated-properties
-ms.openlocfilehash: efaa87356a78c4ec7e11d57c1effad776bd01cba
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: b3a31d8139b244bec72347cf20600b6c2b65c7d2
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072490"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063001"
 ---
-# <a name="setting-explicit-values-for-generated-properties"></a><span data-ttu-id="b3512-103">Установка явных значений для создаваемых свойств</span><span class="sxs-lookup"><span data-stu-id="b3512-103">Setting Explicit Values for Generated Properties</span></span>
+# <a name="setting-explicit-values-for-generated-properties"></a><span data-ttu-id="3280f-103">Установка явных значений для создаваемых свойств</span><span class="sxs-lookup"><span data-stu-id="3280f-103">Setting Explicit Values for Generated Properties</span></span>
 
-<span data-ttu-id="b3512-104">Создаваемое свойство — это свойство, значение которого создается (либо EF, либо базой данных), когда сущность добавляется или обновляется.</span><span class="sxs-lookup"><span data-stu-id="b3512-104">A generated property is a property whose value is generated (either by EF or the database) when the entity is added and/or updated.</span></span> <span data-ttu-id="b3512-105">Дополнительные сведения о создаваемых свойствах см. в [этой статье](xref:core/modeling/generated-properties).</span><span class="sxs-lookup"><span data-stu-id="b3512-105">See [Generated Properties](xref:core/modeling/generated-properties) for more information.</span></span>
+<span data-ttu-id="3280f-104">Создаваемое свойство — это свойство, значение которого создается (либо EF, либо базой данных), когда сущность добавляется или обновляется.</span><span class="sxs-lookup"><span data-stu-id="3280f-104">A generated property is a property whose value is generated (either by EF or the database) when the entity is added and/or updated.</span></span> <span data-ttu-id="3280f-105">Дополнительные сведения о создаваемых свойствах см. в [этой статье](xref:core/modeling/generated-properties).</span><span class="sxs-lookup"><span data-stu-id="3280f-105">See [Generated Properties](xref:core/modeling/generated-properties) for more information.</span></span>
 
-<span data-ttu-id="b3512-106">Могут возникать ситуации, когда вы хотите установить явное значение для создаваемого свойства, вместо того чтобы оно было генерировано.</span><span class="sxs-lookup"><span data-stu-id="b3512-106">There may be situations where you want to set an explicit value for a generated property, rather than having one generated.</span></span>
+<span data-ttu-id="3280f-106">Могут возникать ситуации, когда вы хотите установить явное значение для создаваемого свойства, вместо того чтобы оно было генерировано.</span><span class="sxs-lookup"><span data-stu-id="3280f-106">There may be situations where you want to set an explicit value for a generated property, rather than having one generated.</span></span>
 
-> [!TIP]  
-> <span data-ttu-id="b3512-107">Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/) из репозитория GitHub.</span><span class="sxs-lookup"><span data-stu-id="b3512-107">You can view this article's [sample](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/) on GitHub.</span></span>
+> [!TIP]
+> <span data-ttu-id="3280f-107">Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/) из репозитория GitHub.</span><span class="sxs-lookup"><span data-stu-id="3280f-107">You can view this article's [sample](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/) on GitHub.</span></span>
 
-## <a name="the-model"></a><span data-ttu-id="b3512-108">Модель</span><span class="sxs-lookup"><span data-stu-id="b3512-108">The model</span></span>
+## <a name="the-model"></a><span data-ttu-id="3280f-108">Модель</span><span class="sxs-lookup"><span data-stu-id="3280f-108">The model</span></span>
 
-<span data-ttu-id="b3512-109">Модель, используемая в этой статье, содержит единственную сущность`Employee`.</span><span class="sxs-lookup"><span data-stu-id="b3512-109">The model used in this article contains a single `Employee` entity.</span></span>
+<span data-ttu-id="3280f-109">Модель, используемая в этой статье, содержит единственную сущность`Employee`.</span><span class="sxs-lookup"><span data-stu-id="3280f-109">The model used in this article contains a single `Employee` entity.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Employee.cs#Sample)]
 
-## <a name="saving-an-explicit-value-during-add"></a><span data-ttu-id="b3512-110">Сохранение явного значения во время добавления</span><span class="sxs-lookup"><span data-stu-id="b3512-110">Saving an explicit value during add</span></span>
+## <a name="saving-an-explicit-value-during-add"></a><span data-ttu-id="3280f-110">Сохранение явного значения во время добавления</span><span class="sxs-lookup"><span data-stu-id="3280f-110">Saving an explicit value during add</span></span>
 
-<span data-ttu-id="b3512-111">Свойство `Employee.EmploymentStarted` настроено принимать значения, сгенерированные базой данных для новых сущностей (с использованием значения по умолчанию).</span><span class="sxs-lookup"><span data-stu-id="b3512-111">The `Employee.EmploymentStarted` property is configured to have values generated by the database for new entities (using a default value).</span></span>
+<span data-ttu-id="3280f-111">Свойство `Employee.EmploymentStarted` настроено принимать значения, сгенерированные базой данных для новых сущностей (с использованием значения по умолчанию).</span><span class="sxs-lookup"><span data-stu-id="3280f-111">The `Employee.EmploymentStarted` property is configured to have values generated by the database for new entities (using a default value).</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#EmploymentStarted)]
 
-<span data-ttu-id="b3512-112">Следующий код вставляет записи о двух сотрудниках в базу данных.</span><span class="sxs-lookup"><span data-stu-id="b3512-112">The following code inserts two employees into the database.</span></span>
+<span data-ttu-id="3280f-112">Следующий код вставляет записи о двух сотрудниках в базу данных.</span><span class="sxs-lookup"><span data-stu-id="3280f-112">The following code inserts two employees into the database.</span></span>
 
-* <span data-ttu-id="b3512-113">Для первого сотрудника значение свойству `Employee.EmploymentStarted` не присваивается, поэтому для `DateTime` остается установленным значение CLR по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="b3512-113">For the first, no value is assigned to `Employee.EmploymentStarted` property, so it remains set to the CLR default value for `DateTime`.</span></span>
-* <span data-ttu-id="b3512-114">Для второго сотрудника мы установили явное значение `1-Jan-2000`.</span><span class="sxs-lookup"><span data-stu-id="b3512-114">For the second, we have set an explicit value of `1-Jan-2000`.</span></span>
+* <span data-ttu-id="3280f-113">Для первого сотрудника значение свойству `Employee.EmploymentStarted` не присваивается, поэтому для `DateTime` остается установленным значение CLR по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="3280f-113">For the first, no value is assigned to `Employee.EmploymentStarted` property, so it remains set to the CLR default value for `DateTime`.</span></span>
+* <span data-ttu-id="3280f-114">Для второго сотрудника мы установили явное значение `1-Jan-2000`.</span><span class="sxs-lookup"><span data-stu-id="3280f-114">For the second, we have set an explicit value of `1-Jan-2000`.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmploymentStarted)]
 
-<span data-ttu-id="b3512-115">В выходных данных показано, что база данных создала значение для первого сотрудника, а наше явное значение использовалось для второго.</span><span class="sxs-lookup"><span data-stu-id="b3512-115">Output shows that the database generated a value for the first employee and our explicit value was used for the second.</span></span>
+<span data-ttu-id="3280f-115">В выходных данных показано, что база данных создала значение для первого сотрудника, а наше явное значение использовалось для второго.</span><span class="sxs-lookup"><span data-stu-id="3280f-115">Output shows that the database generated a value for the first employee and our explicit value was used for the second.</span></span>
 
-``` Console
+```output
 1: John Doe, 1/26/2017 12:00:00 AM
 2: Jane Doe, 1/1/2000 12:00:00 AM
 ```
 
-### <a name="explicit-values-into-sql-server-identity-columns"></a><span data-ttu-id="b3512-116">Явные значения в столбцах IDENTITY SQL Server</span><span class="sxs-lookup"><span data-stu-id="b3512-116">Explicit values into SQL Server IDENTITY columns</span></span>
+### <a name="explicit-values-into-sql-server-identity-columns"></a><span data-ttu-id="3280f-116">Явные значения в столбцах IDENTITY SQL Server</span><span class="sxs-lookup"><span data-stu-id="3280f-116">Explicit values into SQL Server IDENTITY columns</span></span>
 
-<span data-ttu-id="b3512-117">По соглашению свойство `Employee.EmployeeId` — это столбец `IDENTITY`, сгенерированный хранилищем.</span><span class="sxs-lookup"><span data-stu-id="b3512-117">By convention the `Employee.EmployeeId` property is a store generated `IDENTITY` column.</span></span>
+<span data-ttu-id="3280f-117">По соглашению свойство `Employee.EmployeeId` — это столбец `IDENTITY`, сгенерированный хранилищем.</span><span class="sxs-lookup"><span data-stu-id="3280f-117">By convention the `Employee.EmployeeId` property is a store generated `IDENTITY` column.</span></span>
 
-<span data-ttu-id="b3512-118">Для большинства ситуаций описанный выше подход будет работать для ключевых свойств.</span><span class="sxs-lookup"><span data-stu-id="b3512-118">For most situations, the approach shown above will work for key properties.</span></span> <span data-ttu-id="b3512-119">Однако, чтобы вставить явные значения в столбец SQL Server `IDENTITY`, вам необходимо вручную включить `IDENTITY_INSERT` перед вызовом `SaveChanges()`.</span><span class="sxs-lookup"><span data-stu-id="b3512-119">However, to insert explicit values into a SQL Server `IDENTITY` column, you need to manually enable `IDENTITY_INSERT` before calling `SaveChanges()`.</span></span>
+<span data-ttu-id="3280f-118">Для большинства ситуаций описанный выше подход будет работать для ключевых свойств.</span><span class="sxs-lookup"><span data-stu-id="3280f-118">For most situations, the approach shown above will work for key properties.</span></span> <span data-ttu-id="3280f-119">Однако, чтобы вставить явные значения в столбец SQL Server `IDENTITY`, вам необходимо вручную включить `IDENTITY_INSERT` перед вызовом `SaveChanges()`.</span><span class="sxs-lookup"><span data-stu-id="3280f-119">However, to insert explicit values into a SQL Server `IDENTITY` column, you need to manually enable `IDENTITY_INSERT` before calling `SaveChanges()`.</span></span>
 
-> [!NOTE]  
-> <span data-ttu-id="b3512-120">В нашем журнале заказов есть [запрос на функцию](https://github.com/aspnet/EntityFramework/issues/703), которая позволяет сделать это автоматически в пределах поставщика SQL Server.</span><span class="sxs-lookup"><span data-stu-id="b3512-120">We have a [feature request](https://github.com/aspnet/EntityFramework/issues/703) on our backlog to do this automatically within the SQL Server provider.</span></span>
+> [!NOTE]
+> <span data-ttu-id="3280f-120">В нашем журнале заказов есть [запрос на функцию](https://github.com/aspnet/EntityFramework/issues/703), которая позволяет сделать это автоматически в пределах поставщика SQL Server.</span><span class="sxs-lookup"><span data-stu-id="3280f-120">We have a [feature request](https://github.com/aspnet/EntityFramework/issues/703) on our backlog to do this automatically within the SQL Server provider.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmployeeId)]
 
-<span data-ttu-id="b3512-121">Выходные данные показывают, что предоставленные идентификаторы были сохранены в базе данных.</span><span class="sxs-lookup"><span data-stu-id="b3512-121">Output shows that the supplied ids were saved to the database.</span></span>
+<span data-ttu-id="3280f-121">Выходные данные показывают, что предоставленные идентификаторы были сохранены в базе данных.</span><span class="sxs-lookup"><span data-stu-id="3280f-121">Output shows that the supplied ids were saved to the database.</span></span>
 
-``` Console
+```output
 100: John Doe
 101: Jane Doe
 ```
 
-## <a name="setting-an-explicit-value-during-update"></a><span data-ttu-id="b3512-122">Установка явного значения во время обновления</span><span class="sxs-lookup"><span data-stu-id="b3512-122">Setting an explicit value during update</span></span>
+## <a name="setting-an-explicit-value-during-update"></a><span data-ttu-id="3280f-122">Установка явного значения во время обновления</span><span class="sxs-lookup"><span data-stu-id="3280f-122">Setting an explicit value during update</span></span>
 
-<span data-ttu-id="b3512-123">Свойство `Employee.LastPayRaise` настроено принимать значения, сгенерированные базой данных во время обновления.</span><span class="sxs-lookup"><span data-stu-id="b3512-123">The `Employee.LastPayRaise` property is configured to have values generated by the database during updates.</span></span>
+<span data-ttu-id="3280f-123">Свойство `Employee.LastPayRaise` настроено принимать значения, сгенерированные базой данных во время обновления.</span><span class="sxs-lookup"><span data-stu-id="3280f-123">The `Employee.LastPayRaise` property is configured to have values generated by the database during updates.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#LastPayRaise)]
 
-> [!NOTE]  
-> <span data-ttu-id="b3512-124">По умолчанию EF Core создаст исключение, если вы попытаетесь сохранить явное значение для свойства, для которого настроено создание во время обновления.</span><span class="sxs-lookup"><span data-stu-id="b3512-124">By default, EF Core will throw an exception if you try to save an explicit value for a property that is configured to be generated during update.</span></span> <span data-ttu-id="b3512-125">Чтобы этого избежать, вам нужно перейти к API метаданных нижнего уровня и установить `AfterSaveBehavior` (как показано выше).</span><span class="sxs-lookup"><span data-stu-id="b3512-125">To avoid this, you need to drop down to the lower level metadata API and set the `AfterSaveBehavior` (as shown above).</span></span>
+> [!NOTE]
+> <span data-ttu-id="3280f-124">По умолчанию EF Core создаст исключение, если вы попытаетесь сохранить явное значение для свойства, для которого настроено создание во время обновления.</span><span class="sxs-lookup"><span data-stu-id="3280f-124">By default, EF Core will throw an exception if you try to save an explicit value for a property that is configured to be generated during update.</span></span> <span data-ttu-id="3280f-125">Чтобы этого избежать, вам нужно перейти к API метаданных нижнего уровня и установить `AfterSaveBehavior` (как показано выше).</span><span class="sxs-lookup"><span data-stu-id="3280f-125">To avoid this, you need to drop down to the lower level metadata API and set the `AfterSaveBehavior` (as shown above).</span></span>
 
-> [!NOTE]  
-> <span data-ttu-id="b3512-126">**Изменения в EF Core 2.0**. В предыдущих версиях поведение после сохранения контролировалось с помощью флага `IsReadOnlyAfterSave`.</span><span class="sxs-lookup"><span data-stu-id="b3512-126">**Changes in EF Core 2.0:** In previous releases the after-save behavior was controlled through the `IsReadOnlyAfterSave` flag.</span></span> <span data-ttu-id="b3512-127">Этот флаг устарел и заменен `AfterSaveBehavior`.</span><span class="sxs-lookup"><span data-stu-id="b3512-127">This flag has been obsoleted and replaced by `AfterSaveBehavior`.</span></span>
-
-<span data-ttu-id="b3512-128">Существует также триггер базы данных для генерации значений столбца `LastPayRaise` во время операций `UPDATE`.</span><span class="sxs-lookup"><span data-stu-id="b3512-128">There is also a trigger in the database to generate values for the `LastPayRaise` column during `UPDATE` operations.</span></span>
+<span data-ttu-id="3280f-126">Существует также триггер базы данных для генерации значений столбца `LastPayRaise` во время операций `UPDATE`.</span><span class="sxs-lookup"><span data-stu-id="3280f-126">There is also a trigger in the database to generate values for the `LastPayRaise` column during `UPDATE` operations.</span></span>
 
 [!code-sql[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/employee_UPDATE.sql)]
 
-<span data-ttu-id="b3512-129">Следующий код увеличивает зарплату двух сотрудников в базе данных.</span><span class="sxs-lookup"><span data-stu-id="b3512-129">The following code increases the salary of two employees in the database.</span></span>
+<span data-ttu-id="3280f-127">Следующий код увеличивает зарплату двух сотрудников в базе данных.</span><span class="sxs-lookup"><span data-stu-id="3280f-127">The following code increases the salary of two employees in the database.</span></span>
 
-* <span data-ttu-id="b3512-130">Для первого сотрудника значение свойству `Employee.LastPayRaise` не присваивается, поэтому оно остается нулевым.</span><span class="sxs-lookup"><span data-stu-id="b3512-130">For the first, no value is assigned to `Employee.LastPayRaise` property, so it remains set to null.</span></span>
-* <span data-ttu-id="b3512-131">Для второго сотрудника мы установили явное значение "неделя назад" (до повышения зарплаты).</span><span class="sxs-lookup"><span data-stu-id="b3512-131">For the second, we have set an explicit value of one week ago (back dating the pay raise).</span></span>
+* <span data-ttu-id="3280f-128">Для первого сотрудника значение свойству `Employee.LastPayRaise` не присваивается, поэтому оно остается нулевым.</span><span class="sxs-lookup"><span data-stu-id="3280f-128">For the first, no value is assigned to `Employee.LastPayRaise` property, so it remains set to null.</span></span>
+* <span data-ttu-id="3280f-129">Для второго сотрудника мы установили явное значение "неделя назад" (до повышения зарплаты).</span><span class="sxs-lookup"><span data-stu-id="3280f-129">For the second, we have set an explicit value of one week ago (back dating the pay raise).</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#LastPayRaise)]
 
-<span data-ttu-id="b3512-132">В выходных данных показано, что база данных создала значение для первого сотрудника, а наше явное значение использовалось для второго.</span><span class="sxs-lookup"><span data-stu-id="b3512-132">Output shows that the database generated a value for the first employee and our explicit value was used for the second.</span></span>
+<span data-ttu-id="3280f-130">В выходных данных показано, что база данных создала значение для первого сотрудника, а наше явное значение использовалось для второго.</span><span class="sxs-lookup"><span data-stu-id="3280f-130">Output shows that the database generated a value for the first employee and our explicit value was used for the second.</span></span>
 
-``` Console
+```output
 1: John Doe, 1/26/2017 12:00:00 AM
 2: Jane Doe, 1/19/2017 12:00:00 AM
 ```
