@@ -1,15 +1,15 @@
 ---
 title: Соглашения Code First — EF6
 description: Соглашения Code First в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/code-first/conventions/built-in
-ms.openlocfilehash: 71e865d674d6bef7aaf65d95abe1b1add96d890f
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: d5b7419258a9e45af5437fae5084a78ebc05f115
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90072609"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92066451"
 ---
 # <a name="code-first-conventions"></a>Соглашения Code First
 Code First позволяет описать модель с помощью C# или Visual Basic классов .NET. Базовая форма модели определяется с помощью соглашений. Соглашения — это наборы правил, которые используются для автоматической настройки концептуальной модели на основе определений классов при работе с Code First. Соглашения определяются в пространстве имен System. Data. Entity. Моделконфигуратион. Conventions.  

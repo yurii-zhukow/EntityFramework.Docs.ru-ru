@@ -1,17 +1,17 @@
 ---
-title: Соглашения на основе модели — EF6
-description: Соглашения на основе моделей в Entity Framework 6
-author: divega
+title: Соглашения Model-Based — EF6
+description: Соглашения Model-Based в Entity Framework 6
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/code-first/conventions/model
-ms.openlocfilehash: bcb7a88f4d9fc994b51300ac30ec58671be370c8
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: c4978277ced72cc5c017af5f69b8760f316087d5
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90074007"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92066438"
 ---
-# <a name="model-based-conventions"></a>Соглашения на основе модели
+# <a name="model-based-conventions"></a>Соглашения Model-Based
 > [!NOTE]
 > **Только в EF6 и более поздних версиях**. Функции, API и другие возможности, описанные на этой странице, появились в Entity Framework 6. При использовании более ранней версии могут быть неприменимы некоторые или все сведения.  
 

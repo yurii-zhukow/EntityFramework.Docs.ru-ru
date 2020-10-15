@@ -1,15 +1,15 @@
 ---
 title: Соглашения о настраиваемых Code Firstах — EF6
 description: Пользовательские соглашения Code First в Entity Framework 6
-author: divega
+author: ajcvickers
 ms.date: 10/23/2016
 uid: ef6/modeling/code-first/conventions/custom
-ms.openlocfilehash: 19f22d311438b8c7d3ac9d270017f3ea4907efda
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 5142f58d229dd7743fd4d5c7f0004c080e22c9e4
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90074033"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92066464"
 ---
 # <a name="custom-code-first-conventions"></a>Пользовательские соглашения Code First
 > [!NOTE]
@@ -20,7 +20,7 @@ ms.locfileid: "90074033"
 Иногда эти соглашения по умолчанию не идеально подходят для вашей модели, и их необходимо обойти, настроив множество отдельных сущностей с помощью заметок к данным или API-интерфейса Fluent. Настраиваемые соглашения о Code First позволяют определять собственные соглашения, предоставляющие параметры конфигурации по умолчанию для вашей модели. В этом пошаговом руководстве будут рассмотрены различные типы пользовательских соглашений и способы их создания.
 
 
-## <a name="model-based-conventions"></a>Соглашения на основе модели
+## <a name="model-based-conventions"></a>Соглашения Model-Based
 
 На этой странице рассматривается API Дбмоделбуилдер для пользовательских соглашений. Этот API должен быть достаточным для создания наиболее настраиваемых соглашений. Однако существует также возможность создавать соглашения на основе модели, которые управляют завершающей моделью после ее создания — для обработки сложных сценариев. Дополнительные сведения см. в разделе [соглашения на основе модели](xref:ef6/modeling/code-first/conventions/model).
 
@@ -213,7 +213,7 @@ ms.locfileid: "90074033"
 
 ``` csharp
     modelBuilder.Properties()
-                .Having(x =>x.GetCustomAttributes(false).OfType<IsUnicode>().FirstOrDefault())
+                .Having(x => x.GetCustomAttributes(false).OfType<IsUnicode>().FirstOrDefault())
                 .Configure((config, att) => config.IsUnicode(att.Unicode));
 ```
 
