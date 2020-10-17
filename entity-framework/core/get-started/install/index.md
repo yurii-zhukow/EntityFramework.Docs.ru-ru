@@ -1,15 +1,15 @@
 ---
 title: Установка Entity Framework Core — EF Core
 description: Инструкции по установке для Entity Framework Core
-author: divega
+author: bricelam
 ms.date: 08/06/2017
 uid: core/get-started/install/index
-ms.openlocfilehash: 9cf264ea5c6b45a374c16fa6eac7f4f4bca9c825
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 3aae80998768d8d1bfbad7a872abc3648b792ad5
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90071944"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062104"
 ---
 # <a name="installing-entity-framework-core"></a>Установка Entity Framework Core
 
@@ -29,7 +29,7 @@ ms.locfileid: "90071944"
 
 Чтобы добавить EF Core в приложение, установите пакет NuGet для поставщика базы данных, который вы хотите использовать.
 
-Если вы создаете приложение ASP.NET Core, устанавливать поставщики в памяти и поставщики SQL Server не нужно. Эти поставщики включены в текущие версии ASP.NET Core, а также в среду выполнения EF Core.  
+Если вы создаете приложение ASP.NET Core, устанавливать поставщики в памяти и поставщики SQL Server не нужно. Эти поставщики включены в текущие версии ASP.NET Core, а также в среду выполнения EF Core.
 
 Установить или обновить пакеты NuGet можно в интерфейсе командной строки (CLI) .NET Core, а также в диалоговом окне или консоли диспетчера пакетов Visual Studio.
 
@@ -61,7 +61,7 @@ ms.locfileid: "90071944"
 
 * Чтобы установить поставщик SQL Server, в консоли диспетчера пакетов выполните следующую команду:
 
-  ``` PowerShell  
+  ```powershell
   Install-Package Microsoft.EntityFrameworkCore.SqlServer
   ```
 
@@ -83,7 +83,7 @@ ms.locfileid: "90071944"
 
 Хотя вы можете использовать команды `dotnet ef` в консоли диспетчера пакетов, в Visual Studio рекомендуется использовать инструменты консоли диспетчера пакетов:
 
-* Они автоматически работают для выбранного в PMC проекта в Visual Studio без переключения каталогов вручную.  
+* Они автоматически работают для выбранного в PMC проекта в Visual Studio без переключения каталогов вручную.
 
 * Они автоматически открывают файлы, созданные командами в Visual Studio, после завершения соответствующей команды.
 
@@ -93,11 +93,21 @@ ms.locfileid: "90071944"
 
 Для инструментов CLI .NET Core требуется пакет SDK для .NET Core, указанный ранее в разделе [Необходимые компоненты](#prerequisites).
 
-Команды `dotnet ef` входят в текущие версии пакета SDK для .NET Core, но, чтобы включить их для конкретного проекта, нужно установить пакет `Microsoft.EntityFrameworkCore.Design`:
+* Средство `dotnet ef` должно быть установлено в качестве глобального или локального средства. Большинство разработчиков предпочитают устанавливать средство `dotnet ef` в качестве глобального средства, используя следующую команду:
 
-```dotnetcli
-dotnet add package Microsoft.EntityFrameworkCore.Design
-```
+  ```dotnetcli
+  dotnet tool install --global dotnet-ef
+  ```
+
+  Средство `dotnet ef` также может использоваться в качестве локального средства. Чтобы использовать его в качестве локального средства, восстановите зависимости проекта, в котором оно объявляется в качестве соответствующей зависимости, с помощью [файла манифеста средства](/dotnet/core/tools/global-tools#install-a-local-tool).
+
+* Чтобы обновить средства, используйте команду `dotnet tool update`.
+
+* Установите последнюю версию пакета `Microsoft.EntityFrameworkCore.Design`.
+
+  ```dotnetcli
+  dotnet add package Microsoft.EntityFrameworkCore.Design
+  ```
 
 > [!IMPORTANT]
 > Всегда используйте версии пакетов инструментов, которые соответствуют основному номеру версии для пакетов среды выполнения.
@@ -106,7 +116,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 
 Чтобы получить инструменты консоли диспетчера пакетов для EF Core, установите пакет `Microsoft.EntityFrameworkCore.Tools`. Например, в Visual Studio:
 
-``` PowerShell
+```powershell
 Install-Package Microsoft.EntityFrameworkCore.Tools
 ```
 
@@ -118,16 +128,6 @@ Install-Package Microsoft.EntityFrameworkCore.Tools
 
 * EF Core вместе с поставщиками SQL Server и поставщиками в памяти включены в текущие версии ASP.NET Core. Чтобы обновить существующее приложение до более новой версии EF Core, всегда обновляйте версию ASP.NET Core.
 
-* Если требуется обновить приложение, использующее сторонний поставщик базы данных, всегда ищите обновление поставщика, совместимое с нужной вам версией EF Core. Например, поставщики баз данных для предыдущих версий несовместимы с версией 2.0 среды выполнения EF Core.
+* Если требуется обновить приложение, использующее сторонний поставщик базы данных, всегда ищите обновление поставщика, совместимое с нужной вам версией EF Core. Например, поставщики баз данных для версии 1.0 не совместимы с версией 2.0 среды выполнения EF Core.
 
 * Сторонние поставщики EF Core обычно не выпускают исправления вместе со средой выполнения EF Core. Чтобы обновить приложение, использующее сторонний поставщик, до версии исправления EF Core, может потребоваться добавить прямую ссылку на отдельные компоненты EF Core, такие как Microsoft.EntityFrameworkCore и Microsoft.EntityFrameworkCore.Relational.
-
-* При обновлении существующего приложения до последней версии EF Core некоторые ссылки на более старые пакеты EF Core, возможно, потребуется удалить вручную:
-
-  * Пакеты поставщиков баз данных, используемые во время разработки, например `Microsoft.EntityFrameworkCore.SqlServer.Design`, больше не требуются и не поддерживаются в EF Core 2.0 и более поздних версиях, но они не удаляются автоматически при обновлении других пакетов.
-
-  * Инструменты .NET CLI включены в пакет SDK для .NET версии 2.1, поэтому ссылку на этот пакет можно удалить из файла проекта:
-
-    ``` xml
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
-    ```

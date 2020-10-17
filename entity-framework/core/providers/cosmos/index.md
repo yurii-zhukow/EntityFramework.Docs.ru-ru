@@ -2,14 +2,14 @@
 title: Поставщик EF Core для Azure Cosmos DB
 description: Документация для поставщика базы данных, которая позволяет использовать Entity Framework Core с API SQL Azure Cosmos DB
 author: AndriySvyryd
-ms.date: 09/14/2020
+ms.date: 10/09/2020
 uid: core/providers/cosmos/index
-ms.openlocfilehash: 94ba29f3f2643e8f563a460e17dce9d15cb7c2df
-ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
+ms.openlocfilehash: 26be2b604453aa2d5b21ae45f590b294639db887
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91210345"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92064054"
 ---
 # <a name="ef-core-azure-cosmos-db-provider"></a>Поставщик EF Core для Azure Cosmos DB
 
@@ -35,7 +35,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Cosmos
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
-``` powershell
+```powershell
 Install-Package Microsoft.EntityFrameworkCore.Cosmos
 ```
 
@@ -43,7 +43,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 
 ## <a name="get-started"></a>Начало работы
 
-> [!TIP]  
+> [!TIP]
 > Вы можете скачать используемый в этой статье [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Cosmos) из репозитория GitHub.
 
 Как и для других поставщиков, сначала нужно вызвать [UseCosmos](/dotnet/api/Microsoft.EntityFrameworkCore.CosmosDbContextOptionsExtensions.UseCosmos).
@@ -115,7 +115,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 
 В такой конфигурации порядок из приведенного выше примера сохраняется так:
 
-``` json
+```json
 {
     "Id": 1,
     "PartitionKey": "1",
@@ -143,7 +143,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 
 Они будут сохранены так:
 
-``` json
+```json
 {
     "Id": 1,
     "Discriminator": "Distributor",
@@ -183,7 +183,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 
 В результате мы получим такой файл JSON:
 
-``` json
+```json
 {
     "Id": 1,
     "Discriminator": "Distributor",
@@ -201,3 +201,16 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
     "_ts": 1572917100
 }
 ```
+
+## <a name="optimistic-concurrency-with-etags"></a>Оптимистический параллелизм с тегами ETag
+
+> [!NOTE]
+> В EF Core 5.0 добавлена поддержка параллелизма eTag.
+
+Чтобы настроить тип сущности для использования [оптимистического параллелизма](xref:core/modeling/concurrency), вызовите `UseETagConcurrency`. Этот вызов создает свойство `_etag` в [теневом состоянии](xref:core/modeling/shadow-properties) и устанавливает его в качестве маркера параллелизма.
+
+[!code-csharp[Main](../../../../samples/core/Cosmos/ModelBuilding/OrderContext.cs?name=ETag)]
+
+Чтобы упростить устранение ошибок параллелизма, можно сопоставить eTag со свойством CLR, используя `IsETagConcurrency`.
+
+[!code-csharp[Main](../../../../samples/core/Cosmos/ModelBuilding/OrderContext.cs?name=ETagProperty)]
