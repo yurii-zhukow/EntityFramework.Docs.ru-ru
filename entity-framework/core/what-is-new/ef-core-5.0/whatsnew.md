@@ -4,12 +4,12 @@ description: Обзор новых возможностей в EF Core 5.0
 author: ajcvickers
 ms.date: 09/10/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew
-ms.openlocfilehash: 0605d021b46066c6af7b631c99e86c0e53caa8db
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 8fa45bf31cb5f1a7e35134f9513a40469719f8c2
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070761"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065619"
 ---
 # <a name="whats-new-in-ef-core-50"></a>Новые возможности EF Core 5.0
 
@@ -25,7 +25,7 @@ ms.locfileid: "90070761"
 
 Например, рассмотрим такие типы сущностей:
 
-```C#
+```csharp
 public class Post
 {
     public int Id { get; set; }
@@ -43,7 +43,7 @@ public class Tag
 
 Обратите внимание, что `Post` содержит коллекцию `Tags`, а `Tag` содержит коллекцию `Posts`. В соответствии с соглашением в EF Core 5.0 это распознается как отношение "многие ко многим". Поэтому код в `OnModelCreating` не требуется:
 
-```C#
+```csharp
 public class BlogContext : DbContext
 {
     public DbSet<Post> Posts { get; set; }
@@ -79,7 +79,7 @@ CREATE INDEX [IX_PostTag_TagsId] ON [PostTag] ([TagsId]);
 
 Создание и связывание сущностей `Blog` и `Post` приводит к автоматическому обновлению таблицы соединения. Пример:
 
-```C#
+```csharp
 var beginnerTag = new Tag {Text = "Beginner"};
 var advancedTag = new Tag {Text = "Advanced"};
 var efCoreTag = new Tag {Text = "EF Core"};
@@ -107,7 +107,7 @@ VALUES (@p6, @p7),
 
 Включение и другие операции запросов выполняются так же, как для любой другой связи. Пример:
 
-```C#
+```csharp
 foreach (var post in context.Posts.Include(e => e.Tags))
 {
     Console.Write($"Post \"{post.Name}\" has tags");
@@ -134,17 +134,27 @@ ORDER BY [p].[Id], [t0].[PostsId], [t0].[TagsId], [t0].[Id]
 
 В отличие от EF6, EF Core позволяет полностью настраивать таблицу соединения. Например, приведенный ниже код настраивает связь "многие ко многим", которая также содержит навигацию на сущность соединения и в которой сущность соединения содержит свойство полезной нагрузки.
 
-```c#
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder
-        .Entity<Community>()
-        .HasMany(e => e.Members)
-        .WithMany(e => e.Memberships)
-        .UsingEntity<PersonCommunity>(
-            b => b.HasOne(e => e.Member).WithMany().HasForeignKey(e => e.MembersId),
-            b => b.HasOne(e => e.Membership).WithMany().HasForeignKey(e => e.MembershipsId))
-        .Property(e => e.MemberSince).HasDefaultValueSql("CURRENT_TIMESTAMP");
+        .Entity<Post>()
+        .HasMany(p => p.Tags)
+        .WithMany(p => p.Posts)
+        .UsingEntity<PostTag>(
+            j => j
+                .HasOne(pt => pt.Tag)
+                .WithMany()
+                .HasForeignKey(pt => pt.TagId),
+            j => j
+                .HasOne(pt => pt.Post)
+                .WithMany()
+                .HasForeignKey(pt => pt.PostId),
+            j =>
+            {
+                j.Property(pt => pt.PublicationDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
+                j.HasKey(t => new { t.PostId, t.TagId });
+            });
 }
 ```
 
@@ -154,7 +164,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Например, рассмотрим две таблицы: одна с актуальными записями, а другая — с устаревшими. Таблица с актуальными записями содержит ряд дополнительных столбцов, но для приложения необходимо объединить актуальные и устаревшие записи и сопоставить их с типом сущности со всеми необходимыми свойствами:
 
-```c#
+```csharp
 public class Post
 {
     public int Id { get; set; }
@@ -167,7 +177,7 @@ public class Post
 
 В EF Core 5.0 можно использовать `ToSqlQuery`, чтобы сопоставить этот тип сущности с запросом, который извлекает и объединяет строки из обеих таблиц:
 
-```c#
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity<Post>().ToSqlQuery(
@@ -181,7 +191,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Затем этот тип сущности можно использовать обычным образом для запросов LINQ. Например, если выбран диапазон 10.0.0.0/20 для виртуальной сети, для пространства клиентских адресов можно выбрать 10.1.0.0/24. Запрос LINQ:
 
-```c#
+```csharp
 var posts = context.Posts.Where(e => e.Blog.Name.Contains("Unicorn")).ToList();
 ```
 
@@ -230,7 +240,7 @@ dotnet counters monitor Microsoft.EntityFrameworkCore -p 49496
 
 Например, в приведенном ниже DbContext тип BCL `Dictionary<string, object>` настраивается как общий тип сущности для продуктов и категорий.
 
-```c#
+```csharp
 public class ProductsContext : DbContext
 {
     public DbSet<Dictionary<string, object>> Products => Set<Dictionary<string, object>>("Product");
@@ -261,7 +271,7 @@ public class ProductsContext : DbContext
 
 Объекты словаря ("контейнеры свойств") теперь можно добавлять в контекст как экземпляры сущности и сохранять. Пример:
 
-```c#
+```csharp
 var beverages = new Dictionary<string, object>
 {
     ["Name"] = "Beverages",
@@ -275,7 +285,7 @@ context.SaveChanges();
 
 Затем эти сущности можно запрашивать и обновлять обычным образом:
 
-```c#
+```csharp
 var foods = context.Categories.Single(e => e["Name"] == "Foods");
 var marmite = context.Products.Single(e => e["Name"] == "Marmite");
 
@@ -291,7 +301,7 @@ context.SaveChanges();
 
 События просты в использовании, например:
 
-```c#
+```csharp
 context.SavingChanges += (sender, args) =>
 {
     Console.WriteLine($"Saving changes for {((DbContext)sender).Database.GetConnectionString()}");
@@ -309,7 +319,7 @@ context.SavedChanges += (sender, args) =>
 
 Перехватчик определяется `ISaveChangesInterceptor`, но часто удобнее наследовать его от `SaveChangesInterceptor`, чтобы не приходилось реализовывать каждый метод. Пример:
 
-```c#
+```csharp
 public class MySaveChangesInterceptor : SaveChangesInterceptor
 {
     public override InterceptionResult<int> SavingChanges(
@@ -339,11 +349,11 @@ public class MySaveChangesInterceptor : SaveChangesInterceptor
 
 Недостаток перехватчиков заключается в том, что они должны регистрироваться в объекте DbContext при его создании. Пример:
 
-```c#
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder
-            .AddInterceptors(new MySaveChangesInterceptor())
-            .UseSqlite("Data Source = test.db");
+```csharp
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder
+        .AddInterceptors(new MySaveChangesInterceptor())
+        .UseSqlite("Data Source = test.db");
 ```
 
 События же, напротив, могут регистрироваться в экземпляре DbContext в любое время.
@@ -356,7 +366,7 @@ public class MySaveChangesInterceptor : SaveChangesInterceptor
 
 В приведенном ниже коде `AuthorizationContext` создает миграции для изменений в таблице `Users`, а `ReportingContext` не создает, благодаря чему предотвращаются конфликты миграций.
 
-```C#
+```csharp
 public class AuthorizationContext : DbContext
 {
     public DbSet<User> Users { get; set; }
@@ -377,7 +387,7 @@ public class ReportingContext : DbContext
 
 В EF Core 3.1 зависимая сторона связи "один к одному" всегда считалась необязательной. Это было особенно очевидно при использовании принадлежащих сущностей. Например, рассмотрим следующую модель и конфигурацию:
 
-```c#
+```csharp
 public class Person
 {
     public int Id { get; set; }
@@ -398,7 +408,7 @@ public class Address
 }
 ```
 
-```c#
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity<Person>(b =>
@@ -442,7 +452,7 @@ CREATE TABLE "People" (
 
 В EF Core 5.0 навигацию `HomeAddress` теперь можно настроить как обязательную зависимость. Пример:
 
-```c#
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity<Person>(b =>
@@ -570,7 +580,7 @@ ajcvickers@avickers420u:~/AllTogetherNow/Daily$
 
 В EF Core для правильного обнаружения изменений свойств пользовательских изменяемых типов [требуется функция сравнения значений](xref:core/modeling/value-comparers). Теперь ее можно указать в процессе настройки преобразования значения для типа. Пример:
 
-```c#
+```csharp
 modelBuilder
     .Entity<EntityType>()
     .Property(e => e.MyProperty)
@@ -589,7 +599,7 @@ modelBuilder
 
 Метод `TryGetValue` был добавлен в `EntityEntry.CurrentValues` и `EntityEntry.OriginalValues`. Это позволяет запрашивать значение свойства, не проверяя предварительно, сопоставлено ли свойство в модели EF. Пример:
 
-```c#
+```csharp
 if (entry.CurrentValues.TryGetValue(propertyName, out var value))
 {
     Console.WriteLine(value);
@@ -621,7 +631,7 @@ if (entry.CurrentValues.TryGetValue(propertyName, out var value))
 
 Наконец, в EF Core RC1 теперь можно использовать лямбда-методы в ModelBuilder как для полей, так и для свойств. Например, если свойства вам по какой-либо причине не нравятся и вы хотите использовать открытые поля, теперь такие поля можно сопоставить с помощью построителей лямбда-выражений:
 
-```c#
+```csharp
 public class Post
 {
     public int Id;
@@ -639,7 +649,7 @@ public class Blog
 }
 ```
 
-```c#
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity<Blog>(b =>
@@ -669,7 +679,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Например, возьмем следующую модель с сопоставленной иерархией.
 
-```c#
+```csharp
 public class Animal
 {
     public int Id { get; set; }
@@ -743,7 +753,7 @@ CREATE TABLE [Dogs] (
 
 Типы сущностей можно сопоставлять с отдельными таблицами с помощью атрибутов сопоставления:
 
-```c#
+```csharp
 [Table("Animals")]
 public class Animal
 {
@@ -772,7 +782,7 @@ public class Dog : Pet
 
 Или с помощью конфигурации `ModelBuilder`:
 
-```c#
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity<Animal>().ToTable("Animals");
@@ -790,7 +800,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Например, представьте, что имеется таблица `Unicorns`, созданная для типа сущности `Unicorn`.
 
-```c#
+```csharp
 public class Unicorn
 {
     public int Id { get; set; }
@@ -877,7 +887,7 @@ END
 * тип `Employee`, который сопоставляется с таблицей Employees обычным образом;
 * тип `Report`, который соответствует форме, возвращаемой функцией с табличным значением.
 
-```c#
+```csharp
 public class Employee
 {
     public int Id { get; set; }
@@ -889,7 +899,7 @@ public class Employee
 }
 ```
 
-```c#
+```csharp
 public class Report
 {
     public string Name { get; set; }
@@ -899,7 +909,7 @@ public class Report
 
 Эти типы должны быть включены в модель EF Core.
 
-```c#
+```csharp
 modelBuilder.Entity<Employee>();
 modelBuilder.Entity(typeof(Report)).HasNoKey();
 ```
@@ -908,14 +918,14 @@ modelBuilder.Entity(typeof(Report)).HasNoKey();
 
 Наконец, метод .NET должен быть сопоставлен с функцией с табличным значением в базе данных. Этот метод можно определить в DbContext с помощью нового метода `FromExpression`.
 
-```c#
+```csharp
 public IQueryable<Report> GetReports(int managerId)
     => FromExpression(() => GetReports(managerId));
 ```
 
 Этот метод использует параметр и возвращаемый тип, которые соответствуют приведенной выше функции с табличным значением. Затем метод добавляется в модель EF Core в OnModelCreating.
 
-```c#
+```csharp
 modelBuilder.HasDbFunction(() => GetReports(default));
 ```
 
@@ -923,7 +933,7 @@ modelBuilder.HasDbFunction(() => GetReports(default));
 
 Теперь можно создавать запросы, которые вызывают `GetReports` и составляются по результатам. Пример:
 
-```c#
+```csharp
 from e in context.Employees
 from rc in context.GetReports(e.Id)
 where rc.IsDeveloper == true
@@ -951,7 +961,7 @@ EF Core 5.0 позволяет сопоставлять один и тот ж�
 
 Например, тип сущности может быть сопоставлен как с представлением базы данных, так и с таблицей базы данных.
 
-```c#
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder
@@ -963,7 +973,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 По умолчанию в таком случае EF Core будет запрашивать данные из представления и отправлять обновления в таблицу. Например, выполнение следующего кода:
 
-```c#
+```csharp
 var blog = context.Set<Blog>().Single(e => e.Name == "One Unicorn");
 
 blog.Name = "1unicorn2";
@@ -988,7 +998,7 @@ SELECT @@ROWCOUNT;
 
 Разделение запросов (см. ниже) теперь можно настроить по умолчанию для любого запроса, выполняемого DbContext. Эта конфигурация доступна только для реляционных поставщиков и поэтому должна указываться в конфигурации `UseProvider`. Пример:
 
-```c#
+```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder
         .UseSqlServer(
@@ -1158,7 +1168,7 @@ context.Database.CreateSavepoint("MySavePoint");
 
 Рассмотрим запрос, который извлекает два уровня связанных коллекций с помощью `Include`:
 
-```CSharp
+```csharp
 var artists = context.Artists
     .Include(e => e.Albums).ThenInclude(e => e.Tags)
     .ToList();
@@ -1179,7 +1189,7 @@ ORDER BY "a"."Id", "t0"."Id", "t0"."Id0"
 
 Для изменения этого поведения можно использовать новый API `AsSplitQuery`. Пример:
 
-```CSharp
+```csharp
 var artists = context.Artists
     .AsSplitQuery()
     .Include(e => e.Albums).ThenInclude(e => e.Tags)
@@ -1213,7 +1223,7 @@ ORDER BY "a"."Id", "a0"."Id"
 
 `AsSplitQuery` можно также использовать при загрузке коллекций в проекции. Пример:
 
-```CSharp
+```csharp
 context.Artists
     .AsSplitQuery()
     .Select(e => new
@@ -1242,7 +1252,7 @@ ORDER BY "a"."Id"
 
 Новый IndexAttribute можно поместить в тип сущности, чтобы указать индекс для одного столбца. Пример:
 
-```CSharp
+```csharp
 [Index(nameof(FullName), IsUnique = true)]
 public class User
 {
@@ -1263,7 +1273,7 @@ CREATE UNIQUE INDEX [IX_Users_FullName]
 
 IndexAttribute можно также использовать для указания индекса, охватывающего несколько столбцов. Пример:
 
-```CSharp
+```csharp
 [Index(nameof(FirstName), nameof(LastName), IsUnique = true)]
 public class User
 {
@@ -1291,7 +1301,7 @@ CREATE UNIQUE INDEX [IX_Users_FirstName_LastName]
 
 Мы продолжаем улучшать сообщения об исключениях, создаваемые при сбое преобразования запроса. Например, в этом запросе используется несопоставленное свойство `IsSigned`:
 
-```CSharp
+```csharp
 var artists = context.Artists.Where(e => e.IsSigned).ToList();
 ```
 
@@ -1301,7 +1311,7 @@ EF Core выдаст следующее исключение, указывающ
 
 Аналогично, при попытке преобразовать сравнения строк с семантикой, зависящей от языка и региональных параметров, теперь создаются более понятные сообщения об исключениях. Например, этот запрос пытается использовать `StringComparison.CurrentCulture`:
 
-```CSharp
+```csharp
 var artists = context.Artists
     .Where(e => e.Name.Equals("The Unicorns", StringComparison.CurrentCulture))
     .ToList();
@@ -1317,7 +1327,7 @@ var artists = context.Artists
 
 EF Core предоставляет идентификатор транзакции для корреляции транзакций между вызовами. Этот идентификатор обычно задается в EF Core при запуске транзакции. Если транзакцию запускает приложение, эта функция позволяет приложению явно задать идентификатор транзакции для его правильной корреляции везде, где она используется. Пример:
 
-```CSharp
+```csharp
 using (context.Database.UseTransaction(myTransaction, myId))
 {
    ...
@@ -1330,7 +1340,7 @@ using (context.Database.UseTransaction(myTransaction, myId))
 
 Стандартный класс [IPAddress](/dotnet/api/system.net.ipaddress) .NET теперь автоматически сопоставляется со строковым столбцом для баз данных, у которых пока нет собственной поддержки. Например, рассмотрим сопоставление этого типа сущности:
 
-```CSharp
+```csharp
 public class Host
 {
     public int Id { get; set; }
@@ -1349,7 +1359,7 @@ CREATE TABLE [Host] (
 
 Затем можно добавить сущности обычным образом:
 
-```CSharp
+```csharp
 context.AddRange(
     new Host { Address = IPAddress.Parse("127.0.0.1")},
     new Host { Address = IPAddress.Parse("0000:0000:0000:0000:0000:0000:0000:0001")});
@@ -1388,7 +1398,7 @@ Scaffold-DbContext 'Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Chinook' 
 
 FirstOrDefault и аналогичные операторы для символов в строках теперь можно преобразовывать. Например, следующий LINQ-запрос:
 
-```CSharp
+```csharp
 context.Customers.Where(c => c.ContactName.FirstOrDefault() == 'A').ToList();
 ```
 
@@ -1404,7 +1414,7 @@ WHERE SUBSTRING([c].[ContactName], 1, 1) = N'A'
 
 Теперь EF Core создает улучшенные запросы с блоками case. Например, следующий LINQ-запрос:
 
-```CSharp
+```csharp
 context.Weapons
     .OrderBy(w => w.Name.CompareTo("Marcus' Lancer") == 0)
     .ThenBy(w => w.Id)
@@ -1446,7 +1456,7 @@ END, [w].[Id]");
 
 Модель EF теперь позволяет указывать параметры сортировки по умолчанию для базы данных. Это будет передаваться в создаваемые миграции для задания параметров сортировки при создании базы данных. Пример:
 
-```CSharp
+```csharp
 modelBuilder.UseCollation("German_PhoneBook_CI_AS");
 ```
 
@@ -1459,18 +1469,18 @@ COLLATE German_PhoneBook_CI_AS;
 
 Можно также указать параметры сортировки, которые будут использоваться для конкретных столбцов. Пример:
 
-```CSharp
- modelBuilder
-     .Entity<User>()
-     .Property(e => e.Name)
-     .UseCollation("German_PhoneBook_CI_AS");
+```csharp
+modelBuilder
+    .Entity<User>()
+    .Property(e => e.Name)
+    .UseCollation("German_PhoneBook_CI_AS");
 ```
 
 Если функция миграции не используется, параметры сортировки реконструируются из базы данных при формировании шаблонов DbContext.
 
 Наконец, `EF.Functions.Collate()` позволяет использовать различные параметры сортировки для нерегламентированных запросов. Пример:
 
-```CSharp
+```csharp
 context.Users.Single(e => EF.Functions.Collate(e.Name, "French_CI_AS") == "Jean-Michel Jarre");
 ```
 
@@ -1496,7 +1506,7 @@ dotnet ef migrations add two --verbose --dev
 
 Затем этот аргумент будет передан в фабрику, где его можно использовать для управления созданием и инициализацией контекста. Пример:
 
-```CSharp
+```csharp
 public class MyDbContextFactory : IDesignTimeDbContextFactory<SomeDbContext>
 {
     public SomeDbContext CreateDbContext(string[] args)
@@ -1510,13 +1520,13 @@ public class MyDbContextFactory : IDesignTimeDbContextFactory<SomeDbContext>
 
 Теперь можно настроить запросы без отслеживания на выполнение разрешения идентификаторов. Например, следующий запрос будет создавать новый экземпляр Blog для каждого объекта Post, даже если у каждого Blog один и тот же первичный ключ.
 
-```CSharp
+```csharp
 context.Posts.AsNoTracking().Include(e => e.Blog).ToList();
 ```
 
 Однако за счет того, что этот запрос обычно выполняется немного медленнее и всегда использует больше памяти, его можно изменить так, чтобы создавался только один экземпляр Blog:
 
-```CSharp
+```csharp
 context.Posts.AsNoTracking().PerformIdentityResolution().Include(e => e.Blog).ToList();
 ```
 
@@ -1530,7 +1540,7 @@ context.Posts.AsNoTracking().PerformIdentityResolution().Include(e => e.Blog).To
 
 EF Core 5.0 поддерживает настройку вычисляемых столбцов как сохраняемых. Пример:
 
-```CSharp
+```csharp
 modelBuilder
     .Entity<User>()
     .Property(e => e.SomethingComputed)
@@ -1547,7 +1557,7 @@ EF Core теперь поддерживает вычисляемые столб
 
 Теперь можно указать точность и масштаб для свойства с помощью построителя модели. Пример:
 
-```CSharp
+```csharp
 modelBuilder
     .Entity<Blog>()
     .Property(b => b.Numeric)
@@ -1562,7 +1572,7 @@ modelBuilder
 
 Теперь при создании индекса в SQL Server можно указать коэффициент заполнения. Пример:
 
-```CSharp
+```csharp
 modelBuilder
     .Entity<Customer>()
     .HasIndex(e => e.Name)
@@ -1575,7 +1585,7 @@ modelBuilder
 
 Метод Include теперь поддерживает фильтрацию включенных сущностей. Пример:
 
-```CSharp
+```csharp
 var blogs = context.Blogs
     .Include(e => e.Posts.Where(p => p.Title.Contains("Cheese")))
     .ToList();
@@ -1585,7 +1595,7 @@ var blogs = context.Blogs
 
 Для сокращения числа включаемых сущностей также можно использовать методы Skip и Take. Пример:
 
-```CSharp
+```csharp
 var blogs = context.Blogs
     .Include(e => e.Posts.OrderByDescending(post => post.Title).Take(5)))
     .ToList();
@@ -1598,7 +1608,7 @@ var blogs = context.Blogs
 
 Свойства навигации главным образом настраиваются при [определении связей](xref:core/modeling/relationships). Однако новый метод `Navigation` можно использовать в случаях, когда свойства навигации требуют дополнительной настройки. Например, чтобы задать резервное поле для навигации, если не удалось найти поле по соглашению:
 
-```CSharp
+```csharp
 modelBuilder.Entity<Blog>().Navigation(e => e.Posts).HasField("_myposts");
 ```
 
@@ -1635,7 +1645,7 @@ dotnet ef database update --connection "connection string"
 
 Пример:
 
-```CSharp
+```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder
         .EnableDetailedErrors()
@@ -1649,7 +1659,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 Теперь можно указать в запросе ключ секции, используемый для данного запроса. Пример:
 
-```CSharp
+```csharp
 await context.Set<Customer>()
              .WithPartitionKey(myPartitionKey)
              .FirstAsync();
@@ -1661,7 +1671,7 @@ await context.Set<Customer>()
 
 К ней можно обратиться с помощью нового метода `EF.Functions.DataLength`. Пример:
 
-```CSharp
+```csharp
 var count = context.Orders.Count(c => 100 < EF.Functions.DataLength(c.OrderDate));
 ```
 
@@ -1671,7 +1681,7 @@ var count = context.Orders.Count(c => 100 < EF.Functions.DataLength(c.OrderDate)
 
 Теперь атрибут C# можно использовать для указания резервного поля для свойства. Этот атрибут позволяет EF Core в обычном порядке выполнять запись и чтение из резервного поля, даже если резервное поле не может быть найдено автоматически. Пример:
 
-```CSharp
+```csharp
 public class Blog
 {
     private string _mainTitle;
@@ -1741,7 +1751,7 @@ FROM [Animal] AS [a]
 
 Теперь можно настроить тип сущности, не имеющей ключа, используя новый атрибут `KeylessAttribute`. Пример:
 
-```CSharp
+```csharp
 [Keyless]
 public class Address
 {
@@ -1789,7 +1799,7 @@ EF Core 5.0 поддерживает сопоставление свойств
 
 Функция миграции в EF Core 5.0 теперь может создавать ограничения CHECK для сопоставлений свойств перечисления. Пример:
 
-```SQL
+```sql
 MyEnumColumn VARCHAR(10) NOT NULL CHECK (MyEnumColumn IN ('Useful', 'Useless', 'Unknown'))
 ```
 
@@ -1799,7 +1809,7 @@ MyEnumColumn VARCHAR(10) NOT NULL CHECK (MyEnumColumn IN ('Useful', 'Useless', '
 
 В дополнение к существующим методам `IsSqlServer`, `IsSqlite` и `IsInMemory` был добавлен новый метод `IsRelational`. Этот метод можно использовать для проверки того, использует ли DbContext какой-либо поставщик реляционной базы данных. Пример:
 
-```CSharp
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     if (Database.IsRelational())
@@ -1815,7 +1825,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 Поставщик базы данных Azure Cosmos DB теперь поддерживает оптимистичный параллелизм с использованием тегов ETag. Используйте построитель моделей в OnModelCreating для настройки ETag:
 
-```CSharp
+```csharp
 builder.Entity<Customer>().Property(c => c.ETag).IsEtagConcurrency();
 ```
 
@@ -1834,7 +1844,7 @@ builder.Entity<Customer>().Property(c => c.ETag).IsEtagConcurrency();
 
 Пример:
 
-```CSharp
+```csharp
 var count = context.Orders.Count(c => date > EF.Functions.DateFromParts(DateTime.Now.Year, 12, 25));
 
 ```
@@ -1853,7 +1863,7 @@ var count = context.Orders.Count(c => date > EF.Functions.DateFromParts(DateTime
 
 Теперь можно преобразовывать запросы, использующие `Reverse`. Пример:
 
-```CSharp
+```csharp
 context.Employees.OrderBy(e => e.EmployeeID).Reverse()
 ```
 
@@ -1863,7 +1873,7 @@ context.Employees.OrderBy(e => e.EmployeeID).Reverse()
 
 Запросы, использующие побитовые операторы, теперь преобразуются в ряде дополнительных случаев, например:
 
-```CSharp
+```csharp
 context.Orders.Where(o => ~o.OrderID == negatedId)
 ```
 

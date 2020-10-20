@@ -1,50 +1,47 @@
 ---
 title: Глобальные фильтры запросов — EF Core
 description: Использование глобальных фильтров запросов для фильтрации результатов в Entity Framework Core
-author: anpete
+author: maumar
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: d5793760ea2e61111416284db8d5a8102dd51a41
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 8a9eabd7e86864c9ebb4b1dc4a06bf7fc207d496
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89616391"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062611"
 ---
 # <a name="global-query-filters"></a>Глобальные фильтры запросов
 
-> [!NOTE]
-> Эта возможность появилась в EF Core 2.0.
+Глобальные фильтры запросов являются предикатами запросов LINQ, которые применяются непосредственно в типах сущностей в модели метаданных (обычно в `OnModelCreating`). Предикат запроса — это логическое выражение, которое обычно передается в оператор запроса LINQ `Where`.  EF Core автоматически применяет такие фильтры ко всем запросам LINQ, включающим эти типы сущностей.  EF Core также применяет их к типам сущностей, на которые косвенно ссылаются посредством использования Include или свойства навигации. Ниже приведены некоторые типичные способы применения этой функции.
 
-Глобальные фильтры запросов являются предикатами запросов LINQ, которые применяются непосредственно в типах сущностей в модели метаданных (обычно в *OnModelCreating*). Предикат запроса — это логическое выражение, которое обычно передается в оператор запроса LINQ *Where*.  EF Core автоматически применяет такие фильтры ко всем запросам LINQ, включающим эти типы сущностей.  EF Core также применяет их к типам сущностей, на которые косвенно ссылаются посредством использования Include или свойства навигации. Ниже приведены некоторые типичные способы применения этой функции.
-
-* **Обратимое удаление**. Тип сущности определяет свойство *IsDeleted*.
-* **Мультитенантность**. Тип сущности определяет свойство *TenantId*.
+* **Обратимое удаление**. Тип сущности определяет свойство `IsDeleted`.
+* **Мультитенантность**. Тип сущности определяет свойство `TenantId`.
 
 ## <a name="example"></a>Пример
 
 В следующем примере показано, как использовать глобальные фильтры запросов для реализации такого поведения запроса, как мультитенантность и обратимое удаление, в простой модели ведения блогов.
 
 > [!TIP]
-> Вы можете посмотреть [пример мультитенантности](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/QueryFilters) и [примеры использования свойств навигации](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/QueryFiltersNavigations) на GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying/QueryFilters) из репозитория GitHub.
 
 Сначала определите сущности:
 
-[!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#Entities)]
+[!code-csharp[Main](../../../samples/core/Querying/QueryFilters/Entities.cs#Entities)]
 
-Запишите объявление поля _tenantId_ в сущности _Blog_. Это поле будет использоваться для связывания каждого экземпляра блога с конкретным клиентом. Также определено свойство _IsDeleted_ в типе сущности _Post_. Это свойство используется, чтобы проверять, был ли экземпляр _Post_ удален "обратимо". То есть экземпляр помечен как удаленный без физического удаления базовых данных.
+Запишите объявление поля `_tenantId` в сущности `Blog`. Это поле будет использоваться для связывания каждого экземпляра блога с конкретным клиентом. Также определено свойство `IsDeleted` в типе сущности `Post`. Это свойство используется, чтобы проверять, был ли экземпляр записи удален обратимо. То есть экземпляр помечен как удаленный без физического удаления базовых данных.
 
-Затем настройте фильтры запросов в _OnModelCreating_, используя API `HasQueryFilter`.
+Затем настройте фильтры запросов в `OnModelCreating`, используя API `HasQueryFilter`.
 
-[!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#Configuration)]
+[!code-csharp[Main](../../../samples/core/Querying/QueryFilters/BloggingContext.cs#FilterConfiguration)]
 
-Выражения предиката, поступающие в вызовы _HasQueryFilter_, будут автоматически применяться ко всем запросам LINQ для этих типов.
+Выражения предиката, поступающие в вызовы `HasQueryFilter`, будут автоматически применяться ко всем запросам LINQ для этих типов.
 
 > [!TIP]
 > Обратите внимание на использование поля уровня экземпляра DbContext. `_tenantId` используется для установки текущего клиента. Фильтры на уровне модели будут использовать значение из правильного экземпляра контекста (то есть экземпляра, выполняющего запрос).
 
 > [!NOTE]
-> Сейчас невозможно определить несколько фильтров запросов для одной и той же сущности. Будет применен только последний из них. Однако с помощью логического оператора _AND_ ([`&&` в C#](/dotnet/csharp/language-reference/operators/boolean-logical-operators#conditional-logical-and-operator-)) можно определить один фильтр с несколькими условиями.
+> Сейчас невозможно определить несколько фильтров запросов для одной и той же сущности. Будет применен только последний из них. Однако с помощью логического оператора `AND` ([`&&` в C#](/dotnet/csharp/language-reference/operators/boolean-logical-operators#conditional-logical-and-operator-)) можно определить один фильтр с несколькими условиями.
 
 ## <a name="use-of-navigations"></a>Использование свойств навигации
 
@@ -60,33 +57,27 @@ ms.locfileid: "89616391"
 
 Для обязательной навигации всегда ожидается наличие связанной сущности. Если исключить обязательную связанную сущность с помощью фильтра запросов, родительская сущность также будет отсутствовать в результате. Так что результат может содержать меньше элементов, чем вы ожидали.
 
-Чтобы продемонстрировать эту проблему, можно использовать указанные выше сущности `Blog` и `Post` и следующий метод _OnModelCreating_:
+Чтобы продемонстрировать эту проблему, можно использовать указанные выше сущности `Blog` и `Post` и следующий метод `OnModelCreating`:
 
-```csharp
-protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
-    modelBuilder.Entity<Blog>().HasMany(b => b.Posts).WithOne(p => p.Blog).IsRequired();
-    modelBuilder.Entity<Blog>().HasQueryFilter(b => b.Url.Contains("fish"));
-}
-```
+[!code-csharp[Main](../../../samples/core/Querying/QueryFilters/FilteredBloggingContextRequired.cs#IncorrectFilter)]
 
 Модели можно присвоить начальные значения с помощью следующих данных:
 
-[!code-csharp[Main](../../../samples/core/QueryFiltersNavigations/Program.cs#SeedData)]
+[!code-csharp[Main](../../../samples/core/Querying/QueryFilters/Program.cs#SeedData)]
 
 Проблема возникает при выполнении двух запросов:
 
-[!code-csharp[Main](../../../samples/core/QueryFiltersNavigations/Program.cs#Queries)]
+[!code-csharp[Main](../../../samples/core/Querying/QueryFilters/Program.cs#Queries)]
 
-При указанной выше настройке первый запрос возвращает все шесть сущностей `Post`, однако второй запрос возвращает только три сущности. Несоответствие происходит потому, что метод _Include_ во втором запросе загружает связанные сущности `Blog`. Поскольку навигация между `Blog` и `Post` является обязательной, при создании запроса EF Core использует `INNER JOIN`:
+При указанной выше настройке первый запрос возвращает все шесть сущностей `Post`, однако второй запрос возвращает только три сущности. Несоответствие происходит потому, что метод `Include` во втором запросе загружает связанные сущности `Blog`. Поскольку навигация между `Blog` и `Post` является обязательной, при создании запроса EF Core использует `INNER JOIN`:
 
-```SQL
+```sql
 SELECT [p].[PostId], [p].[BlogId], [p].[Content], [p].[IsDeleted], [p].[Title], [t].[BlogId], [t].[Name], [t].[Url]
-FROM [Post] AS [p]
+FROM [Posts] AS [p]
 INNER JOIN (
     SELECT [b].[BlogId], [b].[Name], [b].[Url]
     FROM [Blogs] AS [b]
-    WHERE CHARINDEX(N'fish', [b].[Url]) > 0
+    WHERE [b].[Url] LIKE N'%fish%'
 ) AS [t] ON [p].[BlogId] = [t].[BlogId]
 ```
 
@@ -95,31 +86,18 @@ INNER JOIN (
 Для решения этой проблемы можно вместо обязательной навигации использовать необязательную.
 В этом случае первый запрос остается прежним, но второй запрос будет создавать `LEFT JOIN` и возвращать шесть результатов.
 
-```csharp
-protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
-    modelBuilder.Entity<Blog>().HasMany(b => b.Posts).WithOne(p => p.Blog).IsRequired(false);
-    modelBuilder.Entity<Blog>().HasQueryFilter(b => b.Url.Contains("fish"));
-}
-```
+[!code-csharp[Main](../../../samples/core/Querying/QueryFilters/FilteredBloggingContextRequired.cs#OptionalNavigation)]
 
 В качестве альтернативного подхода можно указать согласованные фильтры для обеих сущностей `Blog` и `Post`.
 В этом случае к `Blog` и `Post` будут применяться совпадающие фильтры. Сущности `Post`, которые могут оказаться в непредвиденном состоянии, удаляются, и оба запроса возвращают три результата.
 
-```csharp
-protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
-    modelBuilder.Entity<Blog>().HasMany(b => b.Posts).WithOne(p => p.Blog).IsRequired();
-    modelBuilder.Entity<Blog>().HasQueryFilter(b => b.Url.Contains("fish"));
-    modelBuilder.Entity<Post>().HasQueryFilter(p => p.Blog.Url.Contains("fish"));
-}
-```
+[!code-csharp[Main](../../../samples/core/Querying/QueryFilters/FilteredBloggingContextRequired.cs#MatchingFilters)]
 
 ## <a name="disabling-filters"></a>Отключение фильтров
 
-Фильтры можно отключить для отдельных запросов LINQ, используя оператор `IgnoreQueryFilters()`.
+Фильтры можно отключить для отдельных запросов LINQ, используя оператор <xref:Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.IgnoreQueryFilters%2A>.
 
-[!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#IgnoreFilters)]
+[!code-csharp[Main](../../../samples/core/Querying/QueryFilters/Program.cs#IgnoreFilters)]
 
 ## <a name="limitations"></a>Ограничения
 

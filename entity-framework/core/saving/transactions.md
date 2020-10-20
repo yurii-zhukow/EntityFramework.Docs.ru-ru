@@ -1,38 +1,46 @@
 ---
 title: Транзакции — EF Core
 description: Управление транзакциями для атомарности при сохранении данных с помощью Entity Framework Core
-author: rowanmiller
-ms.date: 10/27/2016
+author: roji
+ms.date: 9/26/2020
 uid: core/saving/transactions
-ms.openlocfilehash: d824db6a4d6e1fc0fc385f007ccfc2c6cbbcae79
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 2cefe23068a40122b7a37c21536213456eef7b66
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90070839"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92063625"
 ---
 # <a name="using-transactions"></a>Использование транзакций
 
 Транзакции позволяют обрабатывать несколько операций с базой данных атомарным способом. Если транзакция зафиксирована, все операции успешно применяются к базе данных. Если транзакция отменяется, ни одна из операций не применяется к базе данных.
 
-> [!TIP]  
+> [!TIP]
 > Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/Transactions/) из репозитория GitHub.
 
 ## <a name="default-transaction-behavior"></a>Поведение транзакции по умолчанию
 
-По умолчанию, если поставщик базы данных поддерживает транзакции, все изменения в одном вызове `SaveChanges()` применяются в транзакции. Если какое-либо из изменений завершается ошибкой, транзакция откатывается и ни одно из изменений не применяется к базе данных. Это означает, что операция `SaveChanges()` гарантированно либо будет выполнена, либо оставит базу данных без изменений, если возникла ошибка.
+По умолчанию, если поставщик базы данных поддерживает транзакции, все изменения в одном вызове `SaveChanges` применяются в транзакции. Если какое-либо из изменений завершается ошибкой, транзакция откатывается и ни одно из изменений не применяется к базе данных. Это означает, что операция `SaveChanges` гарантированно либо будет выполнена, либо оставит базу данных без изменений, если возникла ошибка.
 
 Для большинства приложений это поведение по умолчанию является достаточным. Транзакциями нужно управлять вручную только в том случае, если этого требует приложение.
 
 ## <a name="controlling-transactions"></a>Управление транзакциями
 
-Вы можете использовать API `DbContext.Database` для начала, фиксации и отката транзакций. В следующем примере показаны две операции `SaveChanges()` и запрос LINQ, выполняемый в одной транзакции.
+Вы можете использовать API `DbContext.Database` для начала, фиксации и отката транзакций. В следующем примере показаны две операции `SaveChanges` и запрос LINQ, выполняемый в одной транзакции.
 
-Не все поставщики баз данных поддерживают транзакции. Некоторые поставщики могут вызывать исключение или не работать при вызове API транзакций.
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/ControllingTransaction.cs?name=Transaction&highlight=2,16-18)]
 
-[!code-csharp[Main](../../../samples/core/Saving/Transactions/ControllingTransaction/Sample.cs?name=Transaction&highlight=3,17,18,19)]
+Все поставщики реляционных баз данных поддерживают транзакции. Поставщики других типов могут создавать исключения или выполнять пустые операции при вызове API транзакций.
 
-## <a name="cross-context-transaction-relational-databases-only"></a>Межконтекстная транзакция (только для реляционных баз данных)
+## <a name="savepoints"></a>Точки сохранения
+
+Если при вызове `SaveChanges` транзакция уже выполняется в этом контексте, EF автоматически создает *точку сохранения* перед сохранением любых данных. Точки сохранения — это позиции в пределах транзакции базы данных, до которых можно выполнить откат в случае возникновения ошибок. Если `SaveChanges` встречает любую ошибку, выполняется автоматический откат транзакции до точки сохранения, то есть транзакция возвращается в такое состояние, как если бы она не запускалась. Это позволяет исправить возникшие проблемы и повторно сохранить данные, что особенно важно для проблем [оптимистической блокировки](xref:core/saving/concurrency).
+
+Вы также можете вручную управлять точками сохранения, как и транзакциями. Следующий пример создает точку сохранения в пределах транзакции и выполняет откат к ней в случае сбоя:
+
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/ManagingSavepoints.cs?name=Savepoints&highlight=9,19-20)]
+
+## <a name="cross-context-transaction"></a>Транзакция в нескольких контекстах
 
 Вы можете использовать транзакцию в нескольких экземплярах контекста. Эта функция доступна только при использовании поставщика реляционной базы данных, так как для этого требуется использование транзакции `DbTransaction` и подключения `DbConnection`, которые относятся к реляционным базам данных.
 
@@ -44,14 +52,14 @@ ms.locfileid: "90070839"
 
 Самый простой способ разрешить предоставление `DbConnection` извне — это прекратить использование метода `DbContext.OnConfiguring`, чтобы настроить контекст и создать параметры `DbContextOptions` извне и передать их конструктору контекста.
 
-> [!TIP]  
+> [!TIP]
 > `DbContextOptionsBuilder` — это API, который вы использовали в `DbContext.OnConfiguring` для настройки контекста. Теперь вы будете использовать его извне для создания параметров `DbContextOptions`.
 
-[!code-csharp[Main](../../../samples/core/Saving/Transactions/SharingTransaction/Sample.cs?name=Context&highlight=3,4,5)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/SharingTransaction.cs?name=Context&highlight=3,4,5)]
 
 Как вариант, можно использовать `DbContext.OnConfiguring`, но принимать подключение `DbConnection`, которое сохраняется, а затем используется в `DbContext.OnConfiguring`.
 
-``` csharp
+```csharp
 public class BloggingContext : DbContext
 {
     private DbConnection _connection;
@@ -74,7 +82,7 @@ public class BloggingContext : DbContext
 
 Теперь вы можете создать несколько экземпляров контекста, которые используют одно и то же подключение. Затем используйте API `DbContext.Database.UseTransaction(DbTransaction)`, чтобы включить оба контекста в одну транзакцию.
 
-[!code-csharp[Main](../../../samples/core/Saving/Transactions/SharingTransaction/Sample.cs?name=Transaction&highlight=1,2,3,7,16,23,24,25)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/SharingTransaction.cs?name=Transaction&highlight=1-3,6,14,21-23)]
 
 ## <a name="using-external-dbtransactions-relational-databases-only"></a>Использование внешних транзакций базы данных (только для реляционных баз данных)
 
@@ -82,26 +90,23 @@ public class BloggingContext : DbContext
 
 В следующем примере показано, как выполнить операцию ADO.NET SqlClient и операцию Entity Framework Core в одной транзакции.
 
-[!code-csharp[Main](../../../samples/core/Saving/Transactions/ExternalDbTransaction/Sample.cs?name=Transaction&highlight=4,10,21,26,27,28)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/ExternalDbTransaction.cs?name=Transaction&highlight=4,9,20,25-27)]
 
 ## <a name="using-systemtransactions"></a>Использование System.Transactions
 
-> [!NOTE]  
-> Это новая возможность в EF Core 2.1.
-
 Можно использовать внешние транзакции, если вам нужно координировать действия в более широком диапазоне.
 
-[!code-csharp[Main](../../../samples/core/Saving/Transactions/AmbientTransaction/Sample.cs?name=Transaction&highlight=1,2,3,26,27,28)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/AmbientTransaction.cs?name=Transaction&highlight=1,2,3,26-28)]
 
 Также можно использовать явную транзакцию.
 
-[!code-csharp[Main](../../../samples/core/Saving/Transactions/CommitableTransaction/Sample.cs?name=Transaction&highlight=1,15,28,29,30)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/CommitableTransaction.cs?name=Transaction&highlight=1-2,15,28-30)]
 
-### <a name="limitations-of-systemtransactions"></a>Ограничения System.Transactions  
+### <a name="limitations-of-systemtransactions"></a>Ограничения System.Transactions
 
-1. Реализация поддержки System.Transactions в EF Core зависит от поставщиков баз данных. Хотя поддержка распространена среди поставщиков ADO.NET для .NET Framework, API только недавно был добавлен в .NET Core, поэтому на этой платформе поддержка не столь распространена. Если поставщик не реализует поддержку System.Transactions, вызовы этих API могут полностью игнорироваться. SqlClient для .NET Core поддерживает эту функцию, начиная с версии 2.1. SqlClient для .NET Core 2.0 вызовет исключение, если вы попытаетесь использовать эту функцию.
+1. Реализация поддержки System.Transactions в EF Core зависит от поставщиков баз данных. Если поставщик не реализует поддержку System.Transactions, вызовы этих API могут полностью игнорироваться. SqlClient поддерживает этот вариант.
 
-   > [!IMPORTANT]  
+   > [!IMPORTANT]
    > Рекомендуется проверить, что API правильно работает с поставщиком, прежде чем использовать его для управления транзакциями. Если он работает неправильно, рекомендуется связаться с представителем поставщика базы данных.
 
-2. Начиная с версии 2.1, реализация System.Transactions в .NET Core не включает в себя поддержку распределенных транзакций, поэтому вы не можете использовать `TransactionScope` или `CommittableTransaction` для координации транзакций в нескольких диспетчерах ресурсов.
+2. Начиная с .NET Core 2.1, реализация System.Transactions не включает в себя поддержку распределенных транзакций, поэтому вы не можете использовать `TransactionScope` или `CommittableTransaction` для координации транзакций в нескольких диспетчерах ресурсов.

@@ -5,12 +5,12 @@ author: codemillmatt
 ms.date: 07/07/2020
 ms.author: masoucou
 uid: core/get-started/xamarin
-ms.openlocfilehash: b4a7e2260337d74329d309e9db32fe97a2131d73
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: 0552038d471e294834bed9e3bf1f05fd74c39192
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89619296"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92062546"
 ---
 # <a name="getting-started-with-ef-core-and-xamarin"></a>Начало работы с EF Core и Xamarin
 
@@ -72,6 +72,14 @@ ms.locfileid: "89619296"
 В следующих разделах последовательно разбирается код из образца проекта, который считывает, создает, обновляет и удаляет данные в базе данных SQLite с помощью EF Core с Xamarin.Forms.
 
 Предполагается, что вы знаете как [отображать данные](/xamarin/xamarin-forms/app-fundamentals/data-binding/) и [переходить между страницами](/xamarin/xamarin-forms/app-fundamentals/navigation/) с помощью Xamarin.Forms.
+
+> [!IMPORTANT]
+> Entity Framework Core применяет отражение для вызова функций, которые компоновщик Xamarin.iOS может исключить, если используются конфигурации режима **Выпуск**. Предотвратить это можно одним из двух способов.
+> 
+> * Первый способ: добавьте `--linkskip System.Core` в поле **Дополнительные аргументы mtouch** в параметрах **сборки iOS**.
+> * Второй способ: в параметрах **сборки iOS** задайте для параметра **Поведение компоновщика** Xamarin.iOS значение `Don't Link`.
+> Дополнительные сведения о компоновщике Xamarin.iOS, включая настройку его поведения для Xamarin.iOS, приведены в [этой статье](/xamarin/ios/deploy-test/linker).
+> 
 
 ## <a name="entity-framework-core-nuget-packages"></a>Пакеты Entity Framework Core NuGet
 

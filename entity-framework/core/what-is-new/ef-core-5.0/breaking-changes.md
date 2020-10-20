@@ -2,14 +2,14 @@
 title: Критические изменения в EF Core 5.0 — EF Core
 description: Полный список критических изменений, появившихся в Entity Framework Core 5.0
 author: bricelam
-ms.date: 09/09/2020
+ms.date: 09/24/2020
 uid: core/what-is-new/ef-core-5.0/breaking-changes
-ms.openlocfilehash: 8e9df4e2ff81e20cf5a36855247c5aff89ea2394
-ms.sourcegitcommit: c0e6a00b64c2dcd8acdc0fe6d1b47703405cdf09
+ms.openlocfilehash: e64f2b387d236e96d0451f3d55b3241daaba32d8
+ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/24/2020
-ms.locfileid: "91210371"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92065645"
 ---
 # <a name="breaking-changes-in-ef-core-50"></a>Критические изменения в EF Core 5.0
 
@@ -30,6 +30,8 @@ ms.locfileid: "91210371"
 | [IMigrationsModelDiffer теперь использует IRelationalModel](#relational-model)                                                                 | Низкий        |
 | [Дискриминаторы доступны только для чтения](#read-only-discriminators)                                                                             | Низкий        |
 | [Относящиеся к поставщику методы EF.Functions вызываются для поставщика InMemory](#no-client-methods)                                              | Низкий        |
+| [IndexBuilder.HasName считается устаревшим](#index-obsolete)                                                                               | Низкий        |
+| [Добавлено средство для преобразования во множественное число для формирования шаблонов реконструированных моделей](#pluralizer)                                                 | Низкий        |
 
 <a name="geometric-sqlite"></a>
 
@@ -53,7 +55,7 @@ ms.locfileid: "91210371"
 
 Чтобы указать измерение, используйте `HasColumnType`:
 
-```cs
+```csharp
 modelBuilder.Entity<GeoEntity>(
     x =>
     {
@@ -81,7 +83,7 @@ modelBuilder.Entity<GeoEntity>(
 
 Вызов `IsRequired` перед указанием зависимого элемента теперь неоднозначен.
 
-```cs
+```csharp
 modelBuilder.Entity<Blog>()
     .HasOne(b => b.BlogImage)
     .WithOne(i => i.Blog)
@@ -97,7 +99,7 @@ modelBuilder.Entity<Blog>()
 
 Удалите атрибут `RequiredAttribute` из навигации в зависимый объект и поместите его вместо этого в навигацию к основному объекту или настройте связь в `OnModelCreating`.
 
-```cs
+```csharp
 modelBuilder.Entity<Blog>()
     .HasOne(b => b.BlogImage)
     .WithOne(i => i.Blog)
@@ -127,7 +129,7 @@ modelBuilder.Entity<Blog>()
 
 Чтобы предотвратить добавление свойства ключа секции в первичный ключ, настройте его в `OnModelCreating`.
 
-```cs
+```csharp
 modelBuilder.Entity<Blog>()
     .HasKey(b => b.Id);
 ```
@@ -154,7 +156,7 @@ modelBuilder.Entity<Blog>()
 
 Чтобы вернуться к поведению, принятому в версии 3.x, настройте свойство `id` в `OnModelCreating`.
 
-```cs
+```csharp
 modelBuilder.Entity<Blog>()
     .Property<string>("id")
     .ToJsonProperty("id");
@@ -248,7 +250,7 @@ API `IMigrationsModelDiffer` определялся с помощью `IModel`.
 
 Используйте следующий код для сравнения модели из `snapshot` с моделью из `context`.
 
-```cs
+```csharp
 var dependencies = context.GetService<ProviderConventionSetBuilderDependencies>();
 var relationalDependencies = context.GetService<RelationalConventionSetBuilderDependencies>();
 
@@ -288,7 +290,7 @@ EF не ожидает изменения типа сущности, пока о
 
 Если необходимо изменить значение дискриминатора и контекст будет удален сразу после вызова `SaveChanges`, дискриминатор можно сделать изменяемым.
 
-```cs
+```csharp
 modelBuilder.Entity<BaseEntity>()
     .Property<string>("Discriminator")
     .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save);
@@ -343,3 +345,49 @@ modelBuilder.Entity<BaseEntity>()
 **Решение проблемы**
 
 Так как точно воссоздать поведение функций базы данных невозможно, содержащие их запросы следует тестировать на основе базы данных того же типа, что и рабочая база данных.
+
+<a name="index-obsolete"></a>
+
+### <a name="indexbuilderhasname-is-now-obsolete"></a>IndexBuilder.HasName считается устаревшим
+
+[Отслеживание проблемы № 21089](https://github.com/dotnet/efcore/issues/21089)
+
+**Старое поведение**
+
+Ранее допускалось определение только одного индекса для конкретного набора свойств. Имя для базы данных индекса настраивалось с использованием IndexBuilder.HasName.
+
+**Новое поведение**
+
+Теперь допускается несколько индексов для одного набора свойств. Эти индексы отличаются именами в пределах модели. По соглашению имя модели используется в качестве имени базы данных, но его также можно указать независимо с использованием HasDatabaseName.
+
+**Причина**
+
+В будущем мы хотим включить для набора свойств параллельные индексы с сортировкой по возрастанию и убыванию, а также индексы с разными параметрами сортировки. Это изменение продвигает нас в этом направлении.
+
+**Решение проблемы**
+
+Любой код, который ранее вызывал IndexBuilder.HasName, необходимо изменить для вызова HasDatabaseName.
+
+Если в проекте есть миграции, созданные до версии EF Core 2.0.0, вы можете игнорировать предупреждения для этих файлов, подавив их с помощью `#pragma warning disable 612, 618`.
+
+<a name="pluralizer"></a>
+
+### <a name="a-pluarlizer-is-now-included-for-scaffolding-reverse-engineered-models"></a>Добавлено средство для преобразования во множественное число для формирования шаблонов реконструированных моделей
+
+[Отслеживание проблемы № 11160](https://github.com/dotnet/efcore/issues/11160)
+
+**Старое поведение**
+
+Ранее нужно было устанавливать отдельный пакет, чтобы преобразовывать имена DbSet и коллекций во множественное число и имена таблиц в единственное число при создании шаблонов DbContext и типов сущностей путем реконструирования из схемы базы данных.
+
+**Новое поведение**
+
+Теперь EF Core содержит собственное средство для преобразования во множественное число на основе библиотеки [Humanizer](https://github.com/Humanizr/Humanizer). Именно эту библиотеку использует Visual Studio, рекомендуя имена переменных.
+
+**Причина**
+
+Использование форм множественного числа для свойств коллекций и единственного числа для типов и ссылочных свойств считается идиоматичным в .NET.
+
+**Решение проблемы**
+
+Чтобы отключить средство для преобразования во множественное число, укажите параметр `--no-pluralize` для `dotnet ef dbcontext scaffold` или `-NoPluralize` для `Scaffold-DbContext`.
