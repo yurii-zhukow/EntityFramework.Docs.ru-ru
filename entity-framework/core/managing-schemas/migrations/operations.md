@@ -2,14 +2,14 @@
 title: Операции с настраиваемыми миграциями — EF Core
 description: Управление пользовательскими и необработанными миграциями SQL для управления схемой базы данных с помощью Entity Framework Core
 author: bricelam
-ms.date: 11/07/2017
+ms.date: 10/27/2020
 uid: core/managing-schemas/migrations/operations
-ms.openlocfilehash: d1d29b7789eea5e887490364a7ce3abfdc903545
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 2abde4d5eac977a746863dcfd77bc85a34e2166c
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92062039"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429836"
 ---
 # <a name="custom-migrations-operations"></a>Операции пользовательской миграции
 
@@ -25,36 +25,14 @@ migrationBuilder.CreateUser("SQLUser1", "Password");
 
 Самый простой способ реализовать пользовательскую операцию — определить метод расширения, который вызывает `MigrationBuilder.Sql()` . Ниже приведен пример, в котором создается соответствующий Transact-SQL.
 
-```csharp
-static MigrationBuilder CreateUser(
-    this MigrationBuilder migrationBuilder,
-    string name,
-    string password)
-    => migrationBuilder.Sql($"CREATE USER {name} WITH PASSWORD '{password}';");
-```
+[!code-csharp[](../../../../samples/core/Schemas/Migrations/CustomOperationSql.cs#snippet_CustomOperationSql)]
+
+> [!TIP]
+> Используйте `EXEC` функцию, если инструкция должна быть первой или единственной в пакете SQL. Также может потребоваться обойти ошибки синтаксического анализатора в сценариях миграции идемпотентными, которые могут возникать, если в таблице не существует столбцов, на которые имеются ссылки.
 
 Если для миграции требуется поддержка нескольких поставщиков баз данных, можно использовать `MigrationBuilder.ActiveProvider` свойство. Ниже приведен пример, поддерживающий как Microsoft SQL Server, так и PostgreSQL.
 
-```csharp
-static MigrationBuilder CreateUser(
-    this MigrationBuilder migrationBuilder,
-    string name,
-    string password)
-{
-    switch (migrationBuilder.ActiveProvider)
-    {
-        case "Npgsql.EntityFrameworkCore.PostgreSQL":
-            return migrationBuilder
-                .Sql($"CREATE USER {name} WITH PASSWORD '{password}';");
-
-        case "Microsoft.EntityFrameworkCore.SqlServer":
-            return migrationBuilder
-                .Sql($"CREATE USER {name} WITH PASSWORD = '{password}';");
-    }
-
-    return migrationBuilder;
-}
-```
+[!code-csharp[](../../../../samples/core/Schemas/Migrations/CustomOperationMultiSql.cs#snippet_CustomOperationMultiSql)]
 
 Этот подход работает только в том случае, если вы знакомы с каждым поставщиком, к которому будет применена пользовательская операция.
 
@@ -62,83 +40,16 @@ static MigrationBuilder CreateUser(
 
 Чтобы отделить пользовательскую операцию от SQL, можно определить собственную `MigrationOperation` для ее представления. Затем операция передается поставщику, чтобы он мог определить соответствующий SQL.
 
-```csharp
-class CreateUserOperation : MigrationOperation
-{
-    public string Name { get; set; }
-    public string Password { get; set; }
-}
-```
+[!code-csharp[](../../../../samples/core/Schemas/Migrations/CustomOperation.cs#snippet_CreateUserOperation)]
 
 При таком подходе методу расширения просто нужно добавить одну из этих операций в `MigrationBuilder.Operations` .
 
-```csharp
-static MigrationBuilder CreateUser(
-    this MigrationBuilder migrationBuilder,
-    string name,
-    string password)
-{
-    migrationBuilder.Operations.Add(
-        new CreateUserOperation
-        {
-            Name = name,
-            Password = password
-        });
-
-    return migrationBuilder;
-}
-```
+[!code-csharp[](../../../../samples/core/Schemas/Migrations/CustomOperation.cs#snippet_MigrationBuilderExtension)]
 
 Этот подход требует, чтобы каждый поставщик знал, как создать SQL для этой операции в своей `IMigrationsSqlGenerator` службе. Ниже приведен пример переопределения генератора SQL Server для управления новой операцией.
 
-```csharp
-class MyMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator
-{
-    public MyMigrationsSqlGenerator(
-        MigrationsSqlGeneratorDependencies dependencies,
-        IMigrationsAnnotationProvider migrationsAnnotations)
-        : base(dependencies, migrationsAnnotations)
-    {
-    }
-
-    protected override void Generate(
-        MigrationOperation operation,
-        IModel model,
-        MigrationCommandListBuilder builder)
-    {
-        if (operation is CreateUserOperation createUserOperation)
-        {
-            Generate(createUserOperation, builder);
-        }
-        else
-        {
-            base.Generate(operation, model, builder);
-        }
-    }
-
-    private void Generate(
-        CreateUserOperation operation,
-        MigrationCommandListBuilder builder)
-    {
-        var sqlHelper = Dependencies.SqlGenerationHelper;
-        var stringMapping = Dependencies.TypeMappingSource.FindMapping(typeof(string));
-
-        builder
-            .Append("CREATE USER ")
-            .Append(sqlHelper.DelimitIdentifier(operation.Name))
-            .Append(" WITH PASSWORD = ")
-            .Append(stringMapping.GenerateSqlLiteral(operation.Password))
-            .AppendLine(sqlHelper.StatementTerminator)
-            .EndCommand();
-    }
-}
-```
+[!code-csharp[](../../../../samples/core/Schemas/Migrations/CustomOperation.cs#snippet_MigrationsSqlGenerator)]
 
 Замените службу генератора SQL по умолчанию новой.
 
-```csharp
-protected override void OnConfiguring(DbContextOptionsBuilder options)
-    => options
-        .UseSqlServer(connectionString)
-        .ReplaceService<IMigrationsSqlGenerator, MyMigrationsSqlGenerator>();
-```
+[!code-csharp[](../../../../samples/core/Schemas/Migrations/CustomOperation.cs#snippet_OnConfiguring)]

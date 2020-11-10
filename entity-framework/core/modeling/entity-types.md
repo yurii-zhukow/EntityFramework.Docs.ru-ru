@@ -4,12 +4,12 @@ description: Как настроить и сопоставлять типы су
 author: roji
 ms.date: 10/06/2020
 uid: core/modeling/entity-types
-ms.openlocfilehash: bfefa29c08679a1524c00769b3495d75a301e2d3
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 9094193640e7cab6db3fed7ae0ab818a455156ca
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92062234"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429590"
 ---
 # <a name="entity-types"></a>Типы сущностей
 
@@ -50,9 +50,9 @@ ms.locfileid: "92062234"
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableExcludeFromMigrations.cs?name=TableExcludeFromMigrations&highlight=4)]
 
-При такой миграции конфигурации таблица не создается `blogs` , но `Blog` по-прежнему включается в модель и может использоваться в обычном режиме.
+При такой миграции конфигурации таблица не создается `AspNetUsers` , но `IdentityUser` по-прежнему включается в модель и может использоваться в обычном режиме.
 
-Если необходимо приступить к управлению таблицей с помощью миграции, то следует создать новую миграцию, если `blogs` она не исключена. Следующая миграция теперь будет содержать все изменения, внесенные в таблицу.
+Если необходимо приступить к управлению таблицей с помощью миграции, то следует создать новую миграцию, если `AspNetUsers` она не исключена. Следующая миграция теперь будет содержать все изменения, внесенные в таблицу.
 
 ## <a name="table-name"></a>Имя таблицы
 
@@ -68,7 +68,7 @@ ms.locfileid: "92062234"
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableName.cs?Name=TableName&highlight=3-4)]
 
-***
+**_
 
 ## <a name="table-schema"></a>Схема таблицы
 
@@ -84,7 +84,7 @@ ms.locfileid: "92062234"
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableNameAndSchema.cs?name=TableNameAndSchema&highlight=3-4)]
 
-***
+_**
 
 Вместо того чтобы указывать схему для каждой таблицы, можно также определить схему по умолчанию на уровне модели с помощью API-интерфейса Fluent:
 
@@ -101,4 +101,7 @@ ms.locfileid: "92062234"
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ViewNameAndSchema.cs?name=ViewNameAndSchema&highlight=1)]
 
- Сопоставление с представлением приведет к удалению сопоставления таблицы по умолчанию, но тип сущности также можно сопоставить с таблицей явным образом. В этом случае для запросов будет использоваться сопоставление запросов, а для обновлений будут использоваться сопоставления таблиц.
+ Сопоставление с представлением приведет к удалению сопоставления таблицы по умолчанию, но начиная с EF 5,0 тип сущности также можно сопоставить с таблицей явным образом. В этом случае для запросов будет использоваться сопоставление запросов, а для обновлений будут использоваться сопоставления таблиц.
+
+> [!TIP]
+> Чтобы проверить типы сущностей, сопоставленные с представлениями с помощью поставщика в памяти, сопоставьте их с запросом через `ToInMemoryQuery` . Дополнительные сведения см. в разделе [готовый к запуску пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/ItemsWebApi/) с использованием этого метода.

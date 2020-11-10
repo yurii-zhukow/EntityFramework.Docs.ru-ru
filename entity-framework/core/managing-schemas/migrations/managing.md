@@ -2,21 +2,21 @@
 title: Управление миграцией — EF Core
 description: Добавление, удаление и иным образом управление миграцией схемы базы данных с помощью Entity Framework Core
 author: bricelam
-ms.date: 05/06/2020
+ms.date: 10/27/2020
 uid: core/managing-schemas/migrations/managing
-ms.openlocfilehash: fdfda6f3dea306fbbc343c1be3f4d5754d1f65c4
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 81f7cec54510d95b1e2432d56ff95110224fd9bf
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92062065"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429860"
 ---
 # <a name="managing-migrations"></a>Управление миграцией
 
-При изменении модели миграция добавляется и удаляется в рамках обычной разработки, а файлы миграции возвращаются в систему управления версиями проекта. Для управления миграцией необходимо сначала установить [EF Core программ командной строки](xref:core/miscellaneous/cli/index).
+При изменении модели миграция добавляется и удаляется в рамках обычной разработки, а файлы миграции возвращаются в систему управления версиями проекта. Для управления миграцией необходимо сначала установить [EF Core программ командной строки](xref:core/cli/index).
 
 > [!TIP]
-> Если `DbContext` находится не в той же сборке, что и начальный проект, можно явным образом указать целевой и начальный проекты в [средствах консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell#target-and-startup-project) или в [средствах .NET Core CLI](xref:core/miscellaneous/cli/dotnet#target-project-and-startup-project).
+> Если `DbContext` находится не в той же сборке, что и начальный проект, можно явным образом указать целевой и начальный проекты в [средствах консоли диспетчера пакетов](xref:core/cli/powershell#target-and-startup-project) или в [средствах .NET Core CLI](xref:core/cli/dotnet#target-project-and-startup-project).
 
 ## <a name="add-a-migration"></a>Добавление миграции
 
@@ -40,29 +40,35 @@ Add-Migration AddBlogCreatedTimestamp
 
 В каталог **Migrations** проекта добавляются три файла.
 
-* **XXXXXXXXXXXXXX_AddCreatedTimestamp. CS**— основной файл миграции. Содержит операции, необходимые для применения миграции (в `Up`) и ее отмены (в `Down`).
-* **XXXXXXXXXXXXXX_AddCreatedTimestamp. Designer. CS**— файл метаданных миграции. Содержит сведения, используемые EF.
-* **MyContextModelSnapshot.cs** — моментальный снимок текущей модели. Используется для определения появившихся изменений при добавлении следующей миграции.
+* **XXXXXXXXXXXXXX_AddCreatedTimestamp. CS** — основной файл миграции. Содержит операции, необходимые для применения миграции (в `Up`) и ее отмены (в `Down`).
+* **XXXXXXXXXXXXXX_AddCreatedTimestamp. Designer. CS** — файл метаданных миграции. Содержит сведения, используемые EF.
+* **MyContextModelSnapshot.cs**  — моментальный снимок текущей модели. Используется для определения появившихся изменений при добавлении следующей миграции.
 
 Метка времени в именах файлов позволяет расположить их в хронологическом порядке, чтобы вы могли отслеживать ход изменений.
 
 ### <a name="namespaces"></a>Пространства имен
 
-Вы можете свободно перемещать файлы миграций и изменять их пространство имен вручную. Новые миграции создаются в виде элементов того же уровня, что и последняя миграция. Кроме того, можно указать пространство имен во время формирования следующим образом:
+Вы можете свободно перемещать файлы миграций и изменять их пространство имен вручную. Новые миграции создаются в виде элементов того же уровня, что и последняя миграция. Кроме того, можно указать каталог во время создания следующим образом:
 
-### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+#### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ```dotnetcli
-dotnet ef migrations add InitialCreate --namespace Your.Namespace
+dotnet ef migrations add InitialCreate --output-dir Your/Directory
 ```
 
-### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
+> [!NOTE]
+> В EF Core 5,0 можно также изменить пространство имен независимо от каталога с помощью `--namespace` .
+
+#### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
 ```powershell
-Add-Migration InitialCreate -Namespace Your.Namespace
+Add-Migration InitialCreate -OutputDir Your\Directory
 ```
 
-***
+> [!NOTE]
+> В EF Core 5,0 можно также изменить пространство имен независимо от каталога с помощью `-Namespace` .
+
+**_
 
 ## <a name="customize-migration-code"></a>Настройка кода миграции
 
@@ -153,9 +159,12 @@ migrationBuilder.Sql(
         RETURN @LastName + @FirstName;')");
 ```
 
+> [!TIP]
+> `EXEC` используется, если инструкция должна быть первой или единственной в пакете SQL. Его также можно использовать для обхода ошибок синтаксического анализатора в сценариях миграции идемпотентными, которые могут возникать, если в таблице не существует столбцов, на которые имеются ссылки.
+
 Это можно использовать для управления любым аспектом базы данных, в том числе:
 
-* Хранимые процедуры
+_ Хранимые процедуры
 * Полнотекстовый поиск
 * Функции
 * Триггеры
@@ -163,7 +172,7 @@ migrationBuilder.Sql(
 
 В большинстве случаев EF Core будет автоматически переносить каждую миграцию в собственную транзакцию при применении миграции. К сожалению, некоторые операции миграции не могут быть выполнены внутри транзакции в некоторых базах данных. в таких случаях вы можете отказаться от транзакции, передав ее `suppressTransaction: true` `migrationBuilder.Sql` .
 
-Если `DbContext` находится не в той же сборке, что и начальный проект, можно явным образом указать целевой и начальный проекты в [средствах консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell#target-and-startup-project) или в [средствах .NET Core CLI](xref:core/miscellaneous/cli/dotnet#target-project-and-startup-project).
+Если `DbContext` находится не в той же сборке, что и начальный проект, можно явным образом указать целевой и начальный проекты в [средствах консоли диспетчера пакетов](xref:core/cli/powershell#target-and-startup-project) или в [средствах .NET Core CLI](xref:core/cli/dotnet#target-project-and-startup-project).
 
 ## <a name="remove-a-migration"></a>Удаление миграции
 
@@ -192,13 +201,26 @@ Remove-Migration
 
 Список всех существующих миграций можно просмотреть следующим образом:
 
+### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+
 ```dotnetcli
 dotnet ef migrations list
 ```
 
+### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
+
+> [!NOTE]
+> Эта команда была добавлена в EF Core 5,0.
+
+```powershell
+Get-Migration
+```
+
+**_
+
 ## <a name="resetting-all-migrations"></a>Сброс всех миграций
 
-В некоторых крайних случаях может потребоваться удалить все миграции и начать заново. Это можно легко сделать, удалив папку **миграций** и удалив базу данных. на этом этапе можно создать новую начальную миграцию, которая будет содержать всю текущую схему.
+В некоторых крайних случаях может потребоваться удалить все миграции и начать заново. Это можно легко сделать, удалив папку _ *migrations* * и удалив базу данных. на этом этапе можно создать новую начальную миграцию, которая будет содержать всю текущую схему.
 
 Кроме того, можно сбросить все миграции и создать одну из них без потери данных. Это иногда называется "использование параметра squash" и требует выполнения некоторых действий вручную:
 

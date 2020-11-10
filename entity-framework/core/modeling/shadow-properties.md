@@ -4,12 +4,12 @@ description: Настройка свойств тени и индексатор�
 author: AndriySvyryd
 ms.date: 10/09/2020
 uid: core/modeling/shadow-properties
-ms.openlocfilehash: 417ab57a4a77ecf626e54eeca900744d84e3fe08
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: f03dc000bb111253ae74c05a668703f2e6237a57
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92063898"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430421"
 ---
 # <a name="shadow-and-indexer-properties"></a>Свойства теневой копии и индексатора
 

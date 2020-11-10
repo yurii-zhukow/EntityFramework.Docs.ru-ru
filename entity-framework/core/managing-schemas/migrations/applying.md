@@ -4,12 +4,12 @@ description: Стратегии применения миграций схемы
 author: bricelam
 ms.date: 05/06/2020
 uid: core/managing-schemas/migrations/applying
-ms.openlocfilehash: 68d482a34e5f5c7acf968acdfd8825e1d21ecb13
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 7ff84636fb0999941b832c6a2d65d77b0ad368c5
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92062351"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429859"
 ---
 # <a name="applying-migrations"></a>Применение миграций
 
@@ -83,6 +83,7 @@ Script-Migration AddNewTables
 ```powershell
 Script-Migration AddNewTables AddAuditTable
 ```
+
 Для создания скрипта отката можно использовать значение `from`, более новое, чем `to`. *Обязательно учитывайте возможные сценарии потери данных.*
 
 ***
@@ -98,25 +99,25 @@ Script-Migration AddNewTables AddAuditTable
 
 Ниже приводится пример идемпотентными миграций.
 
-#### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
+### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef migrations script --idempotent
 ```
 
-#### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
+### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
 ```powershell
 Script-Migration -Idempotent
 ```
 
-***
+**_
 
 ## <a name="command-line-tools"></a>Программы командной строки
 
 Программы командной строки EF можно использовать для применения миграций к базе данных. При работе с локальной средой разработки и тестирования миграций этот подход не идеально подходит для управления производственными базами данных.
 
-* Команды SQL применяются непосредственно средством, не давая разработчику возможность их исследовать или изменять. Это может быть опасно в рабочей среде.
+_ Команды SQL применяются непосредственно средством, не давая разработчику возможность их исследовать или изменять. Это может быть опасно в рабочей среде.
 * Пакет SDK для .NET и средство EF должны быть установлены на рабочих серверах.
 
 ### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
@@ -159,7 +160,7 @@ Update-Database AddNewTables
 
 ***
 
-Дополнительные сведения о применении миграций с помощью программ командной строки см. в [справочнике по инструментам EF Core](xref:core/miscellaneous/cli/index).
+Дополнительные сведения о применении миграций с помощью программ командной строки см. в [справочнике по инструментам EF Core](xref:core/cli/index).
 
 ## <a name="apply-migrations-at-runtime"></a>Применение миграции во время выполнения
 

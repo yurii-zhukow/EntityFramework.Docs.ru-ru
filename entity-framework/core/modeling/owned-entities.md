@@ -4,12 +4,12 @@ description: Настройка собственных типов сущност
 author: AndriySvyryd
 ms.date: 11/06/2019
 uid: core/modeling/owned-entities
-ms.openlocfilehash: a49d9aab735232dfd5a3db456410d527f94f3c18
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 36f756b70c9ad1727c48b5c789fd324c9dc6cd29
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92063781"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429457"
 ---
 # <a name="owned-entity-types"></a>Принадлежащие типы сущностей
 
@@ -36,6 +36,10 @@ EF Core позволяет моделировать типы сущностей,
 Если `ShippingAddress` свойство является частным в `Order` типе, можно использовать строковую версию `OwnsOne` метода:
 
 [!code-csharp[OwnsOneString](../../../samples/core/Modeling/OwnedEntities/OwnedEntityContext.cs?name=OwnsOneString)]
+
+Приведенная выше модель сопоставлена со следующей схемой базы данных:
+
+![Сцееншот модели базы данных для сущности, содержащей собственную ссылку](_static/owned-entities-ownsone.png)
 
 См. [полный пример проекта](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Modeling/OwnedEntities) для получения дополнительных контекстов.
 
@@ -69,11 +73,15 @@ EF Core позволяет моделировать типы сущностей,
 
 [!code-csharp[OwnsMany](../../../samples/core/Modeling/OwnedEntities/OwnedEntityContext.cs?name=OwnsMany)]
 
+Приведенная выше модель сопоставлена со следующей схемой базы данных:
+
+![Сцееншот модели базы данных для сущности, содержащей собственную коллекцию](_static/owned-entities-ownsmany.png)
+
 ## <a name="mapping-owned-types-with-table-splitting"></a>Сопоставление принадлежащих типов с разделением таблицы
 
 При использовании реляционных баз данных ссылочные типы, принадлежащие по умолчанию, сопоставляются с той же таблицей, что и владелец. Для этого требуется разделение таблицы двумя столбцами: некоторые столбцы будут использоваться для хранения данных владельца, а некоторые столбцы будут использоваться для хранения данных собственной сущности. Это обычная функция, известная как [Разбиение таблицы](xref:core/modeling/table-splitting).
 
-По умолчанию EF Core будет наименовать столбцы базы данных для свойств собственного типа сущности после _Navigation_OwnedEntityProperty_шаблона. Поэтому `StreetAddress` свойства будут отображаться в таблице "Orders" с именами "ShippingAddress_Street" и "ShippingAddress_City".
+По умолчанию EF Core будет наименовать столбцы базы данных для свойств собственного типа сущности после _Navigation_OwnedEntityProperty_ шаблона. Поэтому `StreetAddress` свойства будут отображаться в таблице "Orders" с именами "ShippingAddress_Street" и "ShippingAddress_City".
 
 `HasColumnName`Для переименования этих столбцов можно использовать метод.
 
@@ -119,6 +127,10 @@ EF Core позволяет моделировать типы сущностей,
 Этот результат также можно достичь с помощью `OwnedAttribute` как для, так `OrderDetails` и для `StreetAddress` .
 
 Кроме того, обратите внимание на `Navigation` вызов. В Ефкоре 5,0 свойства навигации для собственных типов можно настроить [так же, как для несобственных свойств навигации](xref:core/modeling/relationships#configuring-navigation-properties).
+
+Приведенная выше модель сопоставлена со следующей схемой базы данных:
+
+![Сцееншот модели базы данных для сущности, содержащей вложенные собственные ссылки](_static/owned-entities-nested.png)
 
 ## <a name="storing-owned-types-in-separate-tables"></a>Хранение принадлежащих типов в отдельных таблицах
 
