@@ -4,12 +4,12 @@ description: Использование Диагностиклистенер д�
 author: ajcvickers
 ms.date: 10/16/2020
 uid: core/logging-events-diagnostics/diagnostic-listeners
-ms.openlocfilehash: dba82a910e2b551e692f37d721d41968981849cf
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: a2a962ac714cf80c42c269cee3770699aaa4c0c9
+ms.sourcegitcommit: 42bbf7f68e92c364c5fff63092d3eb02229f568d
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431298"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94503232"
 ---
 # <a name="using-diagnostic-listeners-in-ef-core"></a>Использование прослушивателей диагностики в EF Core
 
@@ -95,7 +95,7 @@ public class KeyValueObserver : IObserver<KeyValuePair<string, object>>
 Например, приведенный выше код обрабатывает <xref:Microsoft.EntityFrameworkCore.Diagnostics.CoreEventId.ContextInitialized> <xref:Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.ConnectionOpening> события и. Для первого из них полезная нагрузка: <xref:Microsoft.EntityFrameworkCore.Diagnostics.ContextInitializedEventData> . Во-вторых, это <xref:Microsoft.EntityFrameworkCore.Diagnostics.ConnectionEventData> .
 
 > [!TIP]
-> ToString переопределяется в каждом классе данных EF Core событий для создания эквивалентного сообщения журнала для события. Например, вызов `ContextInitializedEventData.ToString` создает "Entity Framework Core 5.0.0-RC. 2.20475.6 Initialized" блогсконтекст "с помощью поставщика" Microsoft. EntityFrameworkCore. SQLite "с параметрами: None".
+> ToString переопределяется в каждом классе данных EF Core событий для создания эквивалентного сообщения журнала для события. Например, при вызове метода `ContextInitializedEventData.ToString` создается "Entity Framework Core 5.0.0 Initialized" блогсконтекст "с помощью поставщика" Microsoft. EntityFrameworkCore. SQLite "с параметрами: None".
 
 [Пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/DiagnosticListeners) содержит простое консольное приложение, которое вносит изменения в базу данных блогов и выводит обнаруженные диагностические события.
 
