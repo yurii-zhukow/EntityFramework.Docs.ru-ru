@@ -4,19 +4,19 @@ description: Изменения и улучшения в Entity Framework Core 
 author: ajcvickers
 ms.date: 02/20/2018
 uid: core/what-is-new/ef-core-2.0
-ms.openlocfilehash: 7438d8ad1a5ade971af71186a20ec57fd83713de
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: a670cba56c9ba4ebc45c81c1185faa114b78c146
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92063456"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429381"
 ---
 # <a name="new-features-in-ef-core-20"></a>Новые возможности в EF Core 2.0
 
 ## <a name="net-standard-20"></a>.NET Standard 2.0
 
 Сейчас компонент EF Core ориентирован на .NET Standard 2.0, что означает, что он может работать с .NET Core 2.0, .NET Framework 4.6.1 и другими библиотеками, реализующими .NET Standard 2.0.
-Дополнительные сведения о поддерживаемых компонентах см. в разделе [Поддерживаемые реализации .NET](xref:core/platforms/index) .
+Дополнительные сведения о поддерживаемых компонентах см. в разделе [Поддерживаемые реализации .NET](xref:core/miscellaneous/platforms) .
 
 ## <a name="modeling"></a>Моделирование
 
@@ -272,7 +272,7 @@ var aCustomers =
 
 ### <a name="pluralization-hook-for-dbcontext-scaffolding"></a>Обработчик преобразования во множественную форму для формирования шаблонов DbContext
 
-В EF Core 2.0 появилась новая служба *IPluralizer*, используемая для преобразования имен типов сущности в единственное число и имен DbSet — во множественное. Реализация по умолчанию является холостой, то есть это просто обработчик, куда можно подключить свой собственный преобразователь во множественное число.
+В EF Core 2.0 появилась новая служба *IPluralizer* , используемая для преобразования имен типов сущности в единственное число и имен DbSet — во множественное. Реализация по умолчанию является холостой, то есть это просто обработчик, куда можно подключить свой собственный преобразователь во множественное число.
 
 Вот как разработчик может подключить свой собственный преобразователь во множественное число.
 

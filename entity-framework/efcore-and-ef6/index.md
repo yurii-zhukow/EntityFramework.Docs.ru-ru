@@ -4,12 +4,12 @@ description: Руководство по выбору между EF6 и EF Core
 author: ajcvickers
 ms.date: 01/23/2019
 uid: efcore-and-ef6/index
-ms.openlocfilehash: 02e5e20d270d1966154e9f564256c9afa9b2d5b4
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: e95bc572ac723dd22daa10117f5704f29ba97738
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90073621"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430460"
 ---
 # <a name="compare-ef-core--ef6"></a>Сравнение EF Core и EF6
 
@@ -140,7 +140,7 @@ EF Core предлагает новые функции, которые не б�
 
 ### <a name="supported-platforms"></a>Поддерживаемые платформы
 
-EF Core 3.1 работает на .NET Core и .NET Framework с помощью .NET Standard 2.0. Однако, EF Core 5.0 не будет работать в .NET Framework. Дополнительные сведения см. в разделе [Реализации .NET, поддерживаемые EF Core](xref:core/platforms/index).
+EF Core 3.1 работает на .NET Core и .NET Framework с помощью .NET Standard 2.0. Однако, EF Core 5.0 не будет работать в .NET Framework. Дополнительные сведения см. в разделе [Реализации .NET, поддерживаемые EF Core](xref:core/miscellaneous/platforms).
 
 EF6.4 выполняется в .NET Core и .NET Framework с помощью многоплатформенного нацеливания.
 

@@ -4,16 +4,16 @@ description: Документация для поставщика базы да�
 author: AndriySvyryd
 ms.date: 11/05/2019
 uid: core/providers/sql-server/index
-ms.openlocfilehash: 344bf243577d39d2d5a03cf321f8d84c275d10d3
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 4118cd5737ece1ad084bb85d409523d217065353
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92065333"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430328"
 ---
 # <a name="microsoft-sql-server-ef-core-database-provider"></a>Поставщик базы данных Microsoft SQL Server EF Core
 
-Этот поставщик базы данных позволяет использовать Entity Framework Core с Microsoft SQL Server (включая базу данных SQL Azure). Работы над этим поставщиком ведутся в рамках [проекта Entity Framework Core](https://github.com/aspnet/EntityFrameworkCore).
+Этот поставщик базы данных позволяет использовать Entity Framework Core с Microsoft SQL Server (включая базу данных SQL Azure). Работы над этим поставщиком ведутся в рамках [проекта Entity Framework Core](https://github.com/dotnet/efcore).
 
 ## <a name="install"></a>Установка
 
