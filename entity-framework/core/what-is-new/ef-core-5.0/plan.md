@@ -4,12 +4,12 @@ description: Функции, запланированные в Entity Framework 
 author: ajcvickers
 ms.date: 08/22/2020
 uid: core/what-is-new/ef-core-5.0/plan
-ms.openlocfilehash: 5ac7a48a70959b625b7c602ee48dc08a360bee73
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: f2639e41499f3bfca5942d613922fd97212fc2b9
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89618668"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429238"
 ---
 # <a name="plan-for-entity-framework-core-50"></a>Планирование для Entity Framework Core 5.0
 
@@ -44,18 +44,18 @@ EF Core 5.0 будет содержать некоторые [критичес
 
 Ведущие разработчики: @smitpatel, @AndriySvyryd и @lajones
 
-Отслеживается по проблеме [#10508](https://github.com/aspnet/EntityFrameworkCore/issues/10508)
+Отслеживается по проблеме [#10508](https://github.com/dotnet/efcore/issues/10508)
 
 Размер футболки: L
 
 Состояние: Готово
 
-Функция "многие ко многим" является [наиболее востребованной](https://github.com/aspnet/EntityFrameworkCore/issues/1368) (около 506 голосов) в журнале невыполненной работы GitHub.
+Функция "многие ко многим" является [наиболее востребованной](https://github.com/dotnet/efcore/issues/1368) (около 506 голосов) в журнале невыполненной работы GitHub.
 
 Поддержку связей "многие ко многим" можно разбить на три основные области:
 
 * Пропуск свойств навигации — рассматривается в следующей теме.
-* Типы сущностей контейнера свойств. Они позволяют использовать стандартный тип CLR (например, `Dictionary`) для экземпляров сущностей таким образом, чтобы для каждого типа сущности не требовался явный тип CLR. Отслеживается по проблеме [#9914](https://github.com/aspnet/EntityFrameworkCore/issues/9914).
+* Типы сущностей контейнера свойств. Они позволяют использовать стандартный тип CLR (например, `Dictionary`) для экземпляров сущностей таким образом, чтобы для каждого типа сущности не требовался явный тип CLR. Отслеживается по проблеме [#9914](https://github.com/dotnet/efcore/issues/9914).
 * Средства для простоты настройки связей "многие ко многим".
 
 Помимо поддержки пропуска навигации, эти возможности связи "многие ко многим" перемещаются в EF Core 5.0 для обеспечения эффективной работы.
@@ -64,7 +64,7 @@ EF Core 5.0 будет содержать некоторые [критичес
 
 Ведущие разработчики: @smitpatel и @AndriySvyryd
 
-Отслеживание с помощью [#19003](https://github.com/aspnet/EntityFrameworkCore/issues/19003)
+Отслеживание с помощью [#19003](https://github.com/dotnet/efcore/issues/19003)
 
 Размер футболки: L
 
@@ -79,7 +79,7 @@ EF Core 5.0 будет содержать некоторые [критичес
 
 Ведущий разработчик: @AndriySvyryd и @smitpatel
 
-Отслеживание с помощью [#2266](https://github.com/aspnet/EntityFrameworkCore/issues/2266)
+Отслеживание с помощью [#2266](https://github.com/dotnet/efcore/issues/2266)
 
 Размер футболки: XL
 
@@ -91,7 +91,7 @@ EF Core 5.0 будет содержать некоторые [критичес
 
 Ведущий разработчик: @maumar
 
-Отслеживание с помощью [#1833](https://github.com/aspnet/EntityFrameworkCore/issues/1833)
+Отслеживание с помощью [#1833](https://github.com/dotnet/efcore/issues/1833)
 
 Размер футболки: M
 
@@ -131,7 +131,7 @@ EF Core 5.0 будет содержать некоторые [критичес
 
 Ведущие разработчики: @AndriySvyryd и @smitpatel
 
-Отслеживание с помощью [#17270](https://github.com/aspnet/EntityFrameworkCore/issues/17270)
+Отслеживание с помощью [#17270](https://github.com/dotnet/efcore/issues/17270)
 
 Размер футболки: L
 
@@ -302,7 +302,7 @@ EF Core 5.0 будет содержать некоторые [критичес
 
 ## <a name="below-the-line"></a>Выход за пределы плана
 
-Отслеживание с помощью [вопроса, отмеченного `consider-for-next-release`](https://github.com/aspnet/EntityFrameworkCore/issues?q=is%3Aopen+is%3Aissue+label%3Aconsider-for-next-release)
+Отслеживание с помощью [вопроса, отмеченного `consider-for-next-release`](https://github.com/dotnet/efcore/issues?q=is%3Aopen+is%3Aissue+label%3Aconsider-for-next-release)
 
 Это исправления ошибок и усовершенствования, которые пока **не** запланированы для выпуска 5.0, но мы постараемся включить их в зависимости от того, как будет продвигаться описанная выше работа.
 

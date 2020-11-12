@@ -5,12 +5,12 @@ author: codemillmatt
 ms.date: 07/07/2020
 ms.author: masoucou
 uid: core/get-started/xamarin
-ms.openlocfilehash: 0552038d471e294834bed9e3bf1f05fd74c39192
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: a08c5582b063f4a7748a43811c2bf28e8f3e5c14
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92062546"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429914"
 ---
 # <a name="getting-started-with-ef-core-and-xamarin"></a>Начало работы с EF Core и Xamarin
 
@@ -75,11 +75,11 @@ ms.locfileid: "92062546"
 
 > [!IMPORTANT]
 > Entity Framework Core применяет отражение для вызова функций, которые компоновщик Xamarin.iOS может исключить, если используются конфигурации режима **Выпуск**. Предотвратить это можно одним из двух способов.
-> 
+>
 > * Первый способ: добавьте `--linkskip System.Core` в поле **Дополнительные аргументы mtouch** в параметрах **сборки iOS**.
 > * Второй способ: в параметрах **сборки iOS** задайте для параметра **Поведение компоновщика** Xamarin.iOS значение `Don't Link`.
 > Дополнительные сведения о компоновщике Xamarin.iOS, включая настройку его поведения для Xamarin.iOS, приведены в [этой статье](/xamarin/ios/deploy-test/linker).
-> 
+>
 
 ## <a name="entity-framework-core-nuget-packages"></a>Пакеты Entity Framework Core NuGet
 
@@ -206,6 +206,6 @@ using (var blogContext = new BloggingContext())
 
 Другие разделы по Entity Framework Core, которые могут представлять интерес для разработчиков Xamarin:
 
-* [Настройка `DbContext`](xref:core/miscellaneous/configuring-dbcontext)
+* [Настройка `DbContext`](xref:core/dbcontext-configuration/index)
 * См. сведения о [выражениях запросов LINQ](/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations).
 * [Настройте модель](xref:core/modeling/index), указав [требуемую](xref:core/modeling/entity-properties#required-and-optional-properties) и [максимальную длину](xref:core/modeling/entity-properties#maximum-length).

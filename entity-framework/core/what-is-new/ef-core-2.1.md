@@ -4,12 +4,12 @@ description: Изменения и улучшения в Entity Framework Core 
 author: ajcvickers
 ms.date: 02/20/2018
 uid: core/what-is-new/ef-core-2.1
-ms.openlocfilehash: c98a44f9bc06447bb41f0278c59b412f770c5bd4
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: f235c310cbd336da65cd05d25e1338d87534eb2a
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92065710"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429342"
 ---
 # <a name="new-features-in-ef-core-21"></a>Новые возможности в EF Core 2.1
 
@@ -154,7 +154,7 @@ public class Order
 
 Теперь команды _dotnet-ef_ входят в пакет SDK для .NET Core, поэтому необязательно использовать DotNetCliToolReference в проекте, чтобы выполнять перенос или формировать DbContext из существующей базы данных.
 
-Дополнительные сведения о включении программ командной строки для разных версий пакета SDK для .NET Core и EF Core см. в разделе об [установке средств](xref:core/miscellaneous/cli/dotnet#installing-the-tools).
+Дополнительные сведения о включении программ командной строки для разных версий пакета SDK для .NET Core и EF Core см. в разделе об [установке средств](xref:core/cli/dotnet#installing-the-tools).
 
 ## <a name="microsoftentityframeworkcoreabstractions-package"></a>Пакет Microsoft.EntityFrameworkCore.Abstractions
 
@@ -178,4 +178,4 @@ var query = context.People.FromSql(sql);
 Рекомендуется использовать EF Core 2.1 с поставщиками, которые были обновлены и по меньшей мере протестированы для работы с EF Core 2.1.
 
 > [!TIP]
-> Если вы столкнулись с неожиданными проблемами с совместимостью или другими ошибками в новых возможностях, сообщите нам об этом с помощью [средства отслеживания проблем](https://github.com/aspnet/EntityFrameworkCore/issues/new).
+> Если вы столкнулись с неожиданными проблемами с совместимостью или другими ошибками в новых возможностях, сообщите нам об этом с помощью [средства отслеживания проблем](https://github.com/dotnet/efcore/issues/new).
