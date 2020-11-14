@@ -17,8 +17,26 @@
           href: efcore-and-ef6/side-by-side.md
     - name: Entity Framework Core
       items:
-        - name: Обзор
+        - name: Добро пожаловать!
           href: core/index.md
+        - name: "Принять участие в опросе по EF Core 6\_>>"
+          href: 'https://www.surveymonkey.com/r/XRL3JBL'
+        - name: Начало работы
+          items:
+            - name: Обзор EF Core
+              items:
+                - name: Установка EF Core
+                  href: core/get-started/overview/install.md
+                - name: "Первое приложение EF\_Core"
+                  href: core/get-started/overview/first-app.md
+            - name: Руководство по ASP.NET Core >>
+              href: /aspnet/core/data/ef-rp/intro
+            - name: Руководство по использованию Blazor Server с EF Core >>
+              href: /aspnet/core/blazor/blazor-server-ef-core
+            - name: Руководство по .NET Core WPF
+              href: core/get-started/wpf.md
+            - name: Учебник по Xamarin
+              href: core/get-started/xamarin.md
         - name: Выпуски и планирование (дорожная карта)
           items:
             - name: Текущие и запланированные выпуски
@@ -33,7 +51,7 @@
                   href: core/what-is-new/ef-core-5.0/whatsnew.md
                 - name: Критические изменения
                   href: core/what-is-new/ef-core-5.0/breaking-changes.md
-            - name: "EF\_Core\_3.x"
+            - name: "EF\_Core\_3.1"
               items:
                 - name: Новые функции
                   href: core/what-is-new/ef-core-3.x/index.md
@@ -43,6 +61,8 @@
               href: core/what-is-new/ef-core-2.1.md
             - name: Не поддерживается
               items:
+                - name: "EF Core\_3.0"
+                  href: core/what-is-new/ef-core-3.0.md
                 - name: "EF Core\_2.2"
                   href: core/what-is-new/ef-core-2.2.md
                 - name: EF Core 2.0
@@ -55,50 +75,10 @@
                   href: core/what-is-new/ef-core-1.1.md
                 - name: EF Core 1.0
                   href: core/what-is-new/ef-core-1.0.md
-        - name: Начало работы
+        - name: Настройка и инициализация DbContext
           items:
-            - name: Руководство по EF Core
-              href: core/get-started/index.md
-            - name: Установка EF Core
-              href: core/get-started/install/index.md
-            - name: Руководство по ASP.NET Core >>
-              href: /aspnet/core/data/ef-rp/intro
-            - name: Руководство по использованию Blazor Server с EF Core >>
-              href: /aspnet/core/blazor/blazor-server-ef-core
-            - name: Руководство по .NET Core WPF
-              href: core/get-started/wpf.md
-            - name: Учебник по Xamarin
-              href: core/get-started/xamarin.md
-        - name: Основы
-          items:
-            - name: Строки подключения
-              href: core/miscellaneous/connection-strings.md
-            - name: Асинхронное программирование
-              href: core/miscellaneous/async.md
-            - name: Ведение журнала
-              href: core/miscellaneous/logging.md
-            - name: Создание пулов контекста
-              href: core/miscellaneous/context-pooling.md
-            - name: Устойчивость подключений
-              href: core/miscellaneous/connection-resiliency.md
-            - name: Тестирование
-              items:
-                - name: "Тестирование кода, использующего EF\_Core"
-                  href: core/miscellaneous/testing/index.md
-                - name: "Пример тестирования EF\_Core"
-                  href: core/miscellaneous/testing/testing-sample.md
-                - name: Совместное использование баз данных в тестах
-                  href: core/miscellaneous/testing/sharing-databases.md
-                - name: Работа с SQLite
-                  href: core/miscellaneous/testing/sqlite.md
-                - name: Тестирование с помощью InMemory
-                  href: core/miscellaneous/testing/in-memory.md
-            - name: Настройка DbContext
-              href: core/miscellaneous/configuring-dbcontext.md
-            - name: 'Ссылочные типы, допускающие значение null'
-              href: core/miscellaneous/nullable-reference-types.md
-            - name: Параметры сортировки и учет регистра
-              href: core/miscellaneous/collations-and-case-sensitivity.md
+            - name: Обзор
+              href: core/dbcontext-configuration/index.md
         - name: Создание модели
           items:
             - name: Обзор
@@ -190,6 +170,8 @@
               href: core/querying/client-eval.md
             - name: Отслеживаемые и неотслеживаемые запросы
               href: core/querying/tracking.md
+            - name: Разделенные запросы
+              href: core/querying/single-split-queries.md
             - name: Сложные операторы запросов
               href: core/querying/complex-query-operators.md
             - name: Необработанные SQL-запросы
@@ -218,8 +200,48 @@
               href: core/saving/disconnected-entities.md
             - name: Явные значения для создаваемых свойств
               href: core/saving/explicit-values-generated-properties.md
-        - name: Поддерживаемые реализации .NET
-          href: core/platforms/index.md
+        - name: 'Ведение журналов, регистрация событий и диагностика'
+          items:
+            - name: Обзор
+              href: core/logging-events-diagnostics/index.md
+            - name: Простое ведение журнала
+              href: core/logging-events-diagnostics/simple-logging.md
+            - name: Microsoft.Extensions.Logging
+              href: core/logging-events-diagnostics/extensions-logging.md
+            - name: События
+              href: core/logging-events-diagnostics/events.md
+            - name: Перехватчики
+              href: core/logging-events-diagnostics/interceptors.md
+            - name: Прослушиватели диагностики
+              href: core/logging-events-diagnostics/diagnostic-listeners.md
+        - name: Тестирование
+          items:
+            - name: "Тестирование кода, использующего EF\_Core"
+              href: core/testing/index.md
+            - name: "Пример тестирования EF\_Core"
+              href: core/testing/testing-sample.md
+            - name: Совместное использование баз данных в тестах
+              href: core/testing/sharing-databases.md
+            - name: Работа с SQLite
+              href: core/testing/sqlite.md
+            - name: Тестирование с помощью InMemory
+              href: core/testing/in-memory.md
+        - name: Прочее
+          items:
+            - name: Поддерживаемые реализации .NET
+              href: core/miscellaneous/platforms.md
+            - name: Асинхронное программирование
+              href: core/miscellaneous/async.md
+            - name: 'Ссылочные типы, допускающие значение null'
+              href: core/miscellaneous/nullable-reference-types.md
+            - name: Параметры сортировки и учет регистра
+              href: core/miscellaneous/collations-and-case-sensitivity.md
+            - name: Устойчивость подключения
+              href: core/miscellaneous/connection-resiliency.md
+            - name: Строки подключения
+              href: core/miscellaneous/connection-strings.md
+            - name: Создание пулов контекста
+              href: core/miscellaneous/context-pooling.md
         - name: Поставщики баз данных
           items:
             - name: Обзор
@@ -273,15 +295,15 @@
         - name: Справочник по командной строке
           items:
             - name: Обзор
-              href: core/miscellaneous/cli/index.md
+              href: core/cli/index.md
             - name: Консоль диспетчера пакетов (Visual Studio)
-              href: core/miscellaneous/cli/powershell.md
+              href: core/cli/powershell.md
             - name: Интерфейс командной строки .NET Core
-              href: core/miscellaneous/cli/dotnet.md
+              href: core/cli/dotnet.md
             - name: Создание DbContext во время разработки
-              href: core/miscellaneous/cli/dbcontext-creation.md
+              href: core/cli/dbcontext-creation.md
             - name: Службы времени разработки
-              href: core/miscellaneous/cli/services.md
+              href: core/cli/services.md
         - name: "Справочник по API\_EF\_Core >>"
           href: /dotnet/api/?view=efcore-3.1
     - name: Entity Framework 6
