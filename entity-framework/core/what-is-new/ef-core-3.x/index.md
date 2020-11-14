@@ -4,12 +4,12 @@ description: Изменения и улучшения в Entity Framework Core 
 author: ajcvickers
 ms.date: 09/05/2020
 uid: core/what-is-new/ef-core-3.x/index
-ms.openlocfilehash: b987ca1fdbe46105162c1c7623822e15bd01ef25
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 0c005345505c1c2f3712e489ab69ec4a20564293
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92065632"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429264"
 ---
 # <a name="new-features-in-entity-framework-core-3x"></a>Новые возможности в Entity Framework Core 3.х
 
@@ -130,7 +130,7 @@ public class HintCommandInterceptor : DbCommandInterceptor
 }
 ```
 
-Зарегистрировать перехватчик можно с помощью  `DbContext`:
+Зарегистрировать перехватчик можно с помощью `DbContext`:
 
 ```csharp
 services.AddDbContext(b => b
@@ -143,7 +143,7 @@ services.AddDbContext(b => b
 Типы запросов, представляющие данные, которые можно считать из базы данных, но нельзя обновить, переименованы в [типы сущностей без ключей](xref:core/modeling/keyless-entity-types).
 Так как в большинстве случаев они отлично подходят для сопоставления представлений базы данных, EF Core теперь автоматически создает типы сущностей без ключей при реконструировании представлений баз данных.
 
-Например, с помощью [программы командной строки dotnet для EF](xref:core/miscellaneous/cli/dotnet) можно ввести:
+Например, с помощью [программы командной строки dotnet для EF](xref:core/cli/dotnet) можно ввести:
 
 ```dotnetcli
 dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer
@@ -202,5 +202,5 @@ public class OrderDetails
 
 Некоторые функции, первоначально запланированные в EF Core 3.х, будут реализованы в будущих выпусках:
 
-- Возможность пропускать части модели при миграции (вопрос [№ 2725](https://github.com/aspnet/EntityFrameworkCore/issues/2725)).
-- Сущности контейнера свойств, которым посвящены два отдельных вопроса: [№ 9914](https://github.com/aspnet/EntityFrameworkCore/issues/9914) об общих сущностях и [№ 13610](https://github.com/aspnet/EntityFrameworkCore/issues/13610) о поддержке сопоставления индексированных свойств.
+- Возможность пропускать части модели при миграции (вопрос [№ 2725](https://github.com/dotnet/efcore/issues/2725)).
+- Сущности контейнера свойств, которым посвящены два отдельных вопроса: [№ 9914](https://github.com/dotnet/efcore/issues/9914) об общих сущностях и [№ 13610](https://github.com/dotnet/efcore/issues/13610) о поддержке сопоставления индексированных свойств.

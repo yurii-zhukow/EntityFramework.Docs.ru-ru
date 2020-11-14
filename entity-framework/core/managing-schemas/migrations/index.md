@@ -2,14 +2,14 @@
 title: Обзор миграций — EF Core
 description: Общие сведения об использовании миграций для управления схемами базы данных с помощью Entity Framework Core
 author: bricelam
-ms.date: 05/06/2020
+ms.date: 10/28/2020
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: eea2c32cccbb678cacaa63760c4f7d36d2d19bb1
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 9f1c9e266d60b7ed4aed783bb8e01864c93867ea
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92062286"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429823"
 ---
 # <a name="migrations-overview"></a>Обзор миграций
 
@@ -38,14 +38,14 @@ public class Blog
 
 ### <a name="install-the-tools"></a>Установка инструментов
 
-Во-первых, необходимо установить [средства командной строки EF Core](xref:core/miscellaneous/cli/index):
+Во-первых, необходимо установить [средства командной строки EF Core](xref:core/cli/index):
 
-* Обычно рекомендуется использовать [средства интерфейса командной строки .NET](xref:core/miscellaneous/cli/dotnet), которые работают на всех платформах.
-* Если вы привыкли работать в Visual Studio или знакомы с миграциями EF6, можно также использовать [средства консоли диспетчера пакетов](xref:core/miscellaneous/cli/powershell).
+* Обычно рекомендуется использовать [средства интерфейса командной строки .NET](xref:core/cli/dotnet), которые работают на всех платформах.
+* Если вы привыкли работать в Visual Studio или знакомы с миграциями EF6, можно также использовать [средства консоли диспетчера пакетов](xref:core/cli/powershell).
 
 ### <a name="create-your-first-migration"></a>Создание первой миграции
 
-Теперь все готово к добавлению первой миграции. Укажите EF Core создать миграцию с именем **InitialCreate**:
+Теперь все готово к добавлению первой миграции. Укажите EF Core создать миграцию с именем **InitialCreate** :
 
 #### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
@@ -59,9 +59,9 @@ dotnet ef migrations add InitialCreate
 Add-Migration InitialCreate
 ```
 
-***
+**_
 
-EF Core создаст в проекте каталог с именем **Migrations** и добавит несколько файлов. Рекомендуется проверить, какие именно файлы созданы в EF Core, и, возможно, исправить их, но сейчас мы это делать не будем.
+EF Core создаст в проекте каталог с именем _ *Migrations* * и добавит несколько файлов. Рекомендуется проверить, какие именно файлы созданы в EF Core, и, возможно, исправить их, но сейчас мы это делать не будем.
 
 ### <a name="create-your-database-and-schema"></a>Создание базы данных и схемы
 
@@ -72,13 +72,14 @@ EF Core создаст в проекте каталог с именем **Migrat
 ```dotnetcli
 dotnet ef database update
 ```
+
 #### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
 ```powershell
 Update-Database
 ```
 
-***
+**_
 
 Вот и все — ваше приложение готово к работе в новой базе данных, и вам не пришлось писать ни одной строки кода SQL. Обратите внимание, что такой способ применения миграций идеально подходит для локальной разработки и хуже подходит для рабочих сред. Дополнительные сведения см. на странице [применения миграций](xref:core/managing-schemas/migrations/applying).
 
@@ -109,7 +110,7 @@ dotnet ef migrations add AddBlogCreatedTimestamp
 Add-Migration AddBlogCreatedTimestamp
 ```
 
-***
+_*_
 
 Обратите внимание, что миграциям задается описательное имя, чтобы в дальнейшем упростить чтение и понимание журнала проекта.
 
@@ -117,21 +118,39 @@ Add-Migration AddBlogCreatedTimestamp
 
 Теперь можно применить миграцию, как и раньше:
 
+<!--markdownlint-disable MD024-->
+
 #### <a name="net-core-cli"></a>[Интерфейс командной строки .NET Core](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet ef database update
 ```
+
 #### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
 ```powershell
 Update-Database
 ```
 
-***
+<!--markdownlint-enable MD024-->
+
+_*_
 
 Обратите внимание, что на этот раз EF обнаруживает, что база данных уже существует. Кроме того, когда была применена первая миграция, этот факт был записан в специальную таблицу журнала миграций в базе данных, что позволяет EF автоматически применять только новую миграцию.
 
+### <a name="excluding-parts-of-your-model"></a>Исключение частей модели
+
+> [!NOTE]
+> Эта функция была добавлена в EF Core 5.0.
+
+Иногда может потребоваться создать ссылки на типы из другого экземпляра DbContext. Это может привести к конфликтам миграции. Чтобы избежать этого, исключите тип из миграций одного из экземпляров DbContext.
+
+[!code-csharp[](../../../../samples/core/Modeling/FluentAPI/TableExcludeFromMigrations.cs#TableExcludeFromMigrations)]
+
 ### <a name="next-steps"></a>Следующие шаги
 
-Приведенные выше сведения были лишь кратким описанием миграций. Дополнительную информацию об [управлении миграциями](xref:core/managing-schemas/migrations/managing), [применении миграций](xref:core/managing-schemas/migrations/applying) и т. д. можно найти на других страницах документации. В [справочнике по инструментам .NET Core CLI](xref:core/miscellaneous/cli/index) также содержатся полезные сведения о различных командах.
+Приведенные выше сведения были лишь кратким описанием миграций. Дополнительную информацию об [управлении миграциями](xref:core/managing-schemas/migrations/managing), [применении миграций](xref:core/managing-schemas/migrations/applying) и т. д. можно найти на других страницах документации. В [справочнике по инструментам .NET Core CLI](xref:core/cli/index) также содержатся полезные сведения о различных командах.
+
+## <a name="additional-resources"></a>Дополнительные ресурсы
+
+_ [Рабочее совещание сообщества EF Core](https://www.youtube.com/watch?v=mSsGERmrhnE&list=PLdo4fOcmZ0oX-DBuRG4u58ZTAJgBAeQ-t&index=20), посвященное новым функциями миграции в EF Core 5.0.

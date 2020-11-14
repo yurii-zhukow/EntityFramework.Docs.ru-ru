@@ -10,17 +10,17 @@ metadata:
   author: WadePickett
   ms.author: wpickett
   ms.date: 04/15/2020
-  ms.openlocfilehash: a97ca698d4fcd2cf26066e6088a0f88ebc5cf187
-  ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+  ms.openlocfilehash: 6d10d0c8487114548ed70d5ad9b152010ccfbf69
+  ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
   ms.translationtype: HT
   ms.contentlocale: ru-RU
-  ms.lasthandoff: 09/14/2020
-  ms.locfileid: "90070358"
+  ms.lasthandoff: 11/10/2020
+  ms.locfileid: "94429199"
 highlightedContent:
   items:
   - title: Entity Framework Core
     itemType: get-started
-    url: core/get-started/index.md
+    url: core/get-started/overview/first-app.md
   - title: Хранение и извлечение реляционных данных с помощью Entity Framework Core
     itemType: learn
     url: /learn/modules/persist-data-ef-core/
@@ -36,13 +36,16 @@ highlightedContent:
   - title: Обозреватель справки по API
     itemType: reference
     url: /dotnet/api/?view=efcore-3.1
+  - title: Принять участие в опросе по EF Core 6
+    itemType: reference
+    url: https://www.surveymonkey.com/r/XRL3JBL
 additionalContent:
   sections:
   - title: Разработка с использованием Entity Framework Core
     items:
     - title: Создание первого приложения
       links:
-      - url: core/get-started/index.md
+      - url: core/get-started/overview/first-app.md
         text: Консольное приложение .NET Core для доступа через EF Core к SQLite
       - url: /aspnet/core/data/ef-rp/
         text: Веб приложение Razor Pages на базе ASP.NET Core для доступа через EF Core к SQL Server LocalDB или SQLite
@@ -70,7 +73,7 @@ additionalContent:
         text: Все текущие поставщики баз данных
     - title: Платформы
       links:
-      - url: core/platforms/index.md
+      - url: core/miscellaneous/platforms.md
         text: Все поддерживаемые платформы
       - url: /aspnet/core/data/ef-rp/intro
         text: Razor Pages в ASP.NET Core
@@ -88,13 +91,13 @@ additionalContent:
       links:
       - url: core/miscellaneous/connection-strings.md
         text: Строки подключения
-      - url: core/miscellaneous/logging.md
+      - url: core/logging-events-diagnostics/index.md
         text: Ведение журнала
       - url: core/miscellaneous/connection-resiliency.md
         text: Устойчивость подключений
-      - url: core/miscellaneous/testing/index.md
+      - url: core/testing/index.md
         text: Тестирование
-      - url: core/miscellaneous/configuring-dbcontext.md
+      - url: core/dbcontext-configuration/index.md
         text: Настройка DbContext
       - url: core/miscellaneous/nullable-reference-types.md
         text: Ссылочные типы, допускающие значение null
@@ -178,15 +181,15 @@ additionalContent:
         text: Отключенные сущности
     - title: Справочник по командной строке
       links:
-      - url: core/miscellaneous/cli/index.md
+      - url: core/cli/index.md
         text: Обзор
-      - url: core/miscellaneous/cli/powershell.md
+      - url: core/cli/powershell.md
         text: Консоль диспетчера пакетов (Visual Studio)
-      - url: core/miscellaneous/cli/dotnet.md
+      - url: core/cli/dotnet.md
         text: Интерфейс командной строки .NET Core
-      - url: core/miscellaneous/cli/dbcontext-creation.md
+      - url: core/cli/dbcontext-creation.md
         text: Создание DbContext во время разработки
-      - url: core/miscellaneous/cli/services.md
+      - url: core/cli/services.md
         text: Службы времени разработки
     - title: Предыдущие версии
       links:
