@@ -5,12 +5,12 @@ author: ajcvickers
 ms.date: 04/22/2020
 uid: core/testing/testing-sample
 no-loc:
-- ':::no-loc(Item):::'
-- ':::no-loc(Tag):::'
-- ':::no-loc(Items):::'
-- ':::no-loc(Tags):::'
-- ':::no-loc(items):::'
-- ':::no-loc(tags):::'
+- 'Item'
+- 'Tag'
+- 'Items'
+- 'Tags'
+- 'items'
+- 'tags'
 ms.openlocfilehash: 9666bbde8ae9608dcebbea3ad37c51883960a942
 ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: MT
@@ -21,87 +21,87 @@ ms.locfileid: "94431371"
 # <a name="ef-core-testing-sample"></a><span data-ttu-id="9c81d-103">Пример тестирования EF Core</span><span class="sxs-lookup"><span data-stu-id="9c81d-103">EF Core testing sample</span></span>
 
 > [!TIP]
-> <span data-ttu-id="9c81d-104">Код в этом документе можно найти на сайте GitHub в качестве [готового к запуску примера](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/).</span><span class="sxs-lookup"><span data-stu-id="9c81d-104">The code in this document can be found on GitHub as a [runnable sample](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/).</span></span>
+> <span data-ttu-id="9c81d-104">Код в этом документе можно найти на сайте GitHub в качестве [готового к запуску примера](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/ItemsWebApi/).</span><span class="sxs-lookup"><span data-stu-id="9c81d-104">The code in this document can be found on GitHub as a [runnable sample](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/ItemsWebApi/).</span></span>
 > <span data-ttu-id="9c81d-105">Обратите внимание, что некоторые из этих тестов должны **завершаться ошибкой**.</span><span class="sxs-lookup"><span data-stu-id="9c81d-105">Note that some of these tests **are expected to fail**.</span></span> <span data-ttu-id="9c81d-106">Причины этого описаны ниже.</span><span class="sxs-lookup"><span data-stu-id="9c81d-106">The reasons for this are explained below.</span></span>
 
 <span data-ttu-id="9c81d-107">В этом документе рассматривается пример для тестирования кода, который использует EF Core.</span><span class="sxs-lookup"><span data-stu-id="9c81d-107">This doc walks through a sample for testing code that uses EF Core.</span></span>
 
 ## <a name="the-application"></a><span data-ttu-id="9c81d-108">Приложение</span><span class="sxs-lookup"><span data-stu-id="9c81d-108">The application</span></span>
 
-<span data-ttu-id="9c81d-109">[Пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/) содержит два проекта:</span><span class="sxs-lookup"><span data-stu-id="9c81d-109">The [sample](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/) contains two projects:</span></span>
+<span data-ttu-id="9c81d-109">[Пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/ItemsWebApi/) содержит два проекта:</span><span class="sxs-lookup"><span data-stu-id="9c81d-109">The [sample](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/ItemsWebApi/) contains two projects:</span></span>
 
-- <span data-ttu-id="9c81d-110">:::no-loc(Items):::WebApi: очень простой [веб-API, поддерживаемый ASP.NET Core](/aspnet/core/tutorials/first-web-api) с одним контроллером</span><span class="sxs-lookup"><span data-stu-id="9c81d-110">:::no-loc(Items):::WebApi: A very simple [Web API backed by ASP.NET Core](/aspnet/core/tutorials/first-web-api) with a single controller</span></span>
+- <span data-ttu-id="9c81d-110">ItemsWebApi: очень простой [веб-API, поддерживаемый ASP.NET Core](/aspnet/core/tutorials/first-web-api) с одним контроллером</span><span class="sxs-lookup"><span data-stu-id="9c81d-110">ItemsWebApi: A very simple [Web API backed by ASP.NET Core](/aspnet/core/tutorials/first-web-api) with a single controller</span></span>
 - <span data-ttu-id="9c81d-111">Тесты: тестовый проект [xUnit](https://xunit.net/) для тестирования контроллера</span><span class="sxs-lookup"><span data-stu-id="9c81d-111">Tests: An [XUnit](https://xunit.net/) test project to test the controller</span></span>
 
 ### <a name="the-model-and-business-rules"></a><span data-ttu-id="9c81d-112">Модель и бизнес-правила</span><span class="sxs-lookup"><span data-stu-id="9c81d-112">The model and business rules</span></span>
 
-<span data-ttu-id="9c81d-113">Модель, которая включает этот API, имеет два типа сущностей: :::no-loc(Items)::: и :::no-loc(Tags)::: .</span><span class="sxs-lookup"><span data-stu-id="9c81d-113">The model backing this API has two entity types: :::no-loc(Items)::: and :::no-loc(Tags):::.</span></span>
+<span data-ttu-id="9c81d-113">Модель, которая включает этот API, имеет два типа сущностей: Items и Tags .</span><span class="sxs-lookup"><span data-stu-id="9c81d-113">The model backing this API has two entity types: Items and Tags.</span></span>
 
-- <span data-ttu-id="9c81d-114">:::no-loc(Items)::: зависят от регистра имя и коллекцию :::no-loc(Tags)::: .</span><span class="sxs-lookup"><span data-stu-id="9c81d-114">:::no-loc(Items)::: have a case-sensitive name and a collection of :::no-loc(Tags):::.</span></span>
-- <span data-ttu-id="9c81d-115">Каждый :::no-loc(Tag)::: имеет метку и число, представляющее количество применений к :::no-loc(Item)::: .</span><span class="sxs-lookup"><span data-stu-id="9c81d-115">Each :::no-loc(Tag)::: has a label and a count representing the number of times it has been applied to the :::no-loc(Item):::.</span></span>
-- <span data-ttu-id="9c81d-116">Каждый :::no-loc(Item)::: должен иметь только один :::no-loc(Tag)::: с заданной меткой.</span><span class="sxs-lookup"><span data-stu-id="9c81d-116">Each :::no-loc(Item)::: should only have one :::no-loc(Tag)::: with a given label.</span></span>
+- <span data-ttu-id="9c81d-114">Items зависят от регистра имя и коллекцию Tags .</span><span class="sxs-lookup"><span data-stu-id="9c81d-114">Items have a case-sensitive name and a collection of Tags.</span></span>
+- <span data-ttu-id="9c81d-115">Каждый Tag имеет метку и число, представляющее количество применений к Item .</span><span class="sxs-lookup"><span data-stu-id="9c81d-115">Each Tag has a label and a count representing the number of times it has been applied to the Item.</span></span>
+- <span data-ttu-id="9c81d-116">Каждый Item должен иметь только один Tag с заданной меткой.</span><span class="sxs-lookup"><span data-stu-id="9c81d-116">Each Item should only have one Tag with a given label.</span></span>
   - <span data-ttu-id="9c81d-117">Если элемент помечен одной и той же меткой более одного раза, то число в существующем теге с этой меткой увеличивается вместо создания нового тега.</span><span class="sxs-lookup"><span data-stu-id="9c81d-117">If an item is tagged with the same label more than once, then the count on the existing tag with that label is incremented instead of a new tag being created.</span></span>
-- <span data-ttu-id="9c81d-118">Удаление :::no-loc(Item)::: должно удалить все связанные :::no-loc(Tags)::: .</span><span class="sxs-lookup"><span data-stu-id="9c81d-118">Deleting an :::no-loc(Item)::: should delete all associated :::no-loc(Tags):::.</span></span>
+- <span data-ttu-id="9c81d-118">Удаление Item должно удалить все связанные Tags .</span><span class="sxs-lookup"><span data-stu-id="9c81d-118">Deleting an Item should delete all associated Tags.</span></span>
 
-#### <a name="the-no-locitem-entity-type"></a><span data-ttu-id="9c81d-119">:::no-loc(Item):::Тип сущности</span><span class="sxs-lookup"><span data-stu-id="9c81d-119">The :::no-loc(Item)::: entity type</span></span>
+#### <a name="the-no-locitem-entity-type"></a><span data-ttu-id="9c81d-119">ItemТип сущности</span><span class="sxs-lookup"><span data-stu-id="9c81d-119">The Item entity type</span></span>
 
-<span data-ttu-id="9c81d-120">`:::no-loc(Item):::`Тип сущности:</span><span class="sxs-lookup"><span data-stu-id="9c81d-120">The `:::no-loc(Item):::` entity type:</span></span>
+<span data-ttu-id="9c81d-120">`Item`Тип сущности:</span><span class="sxs-lookup"><span data-stu-id="9c81d-120">The `Item` entity type:</span></span>
 
-[!code-csharp[:::no-loc(Item):::EntityType](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/:::no-loc(Items):::WebApi/:::no-loc(Item):::.cs?name=:::no-loc(Item):::EntityType)]
+[!code-csharp[ItemEntityType](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/ItemsWebApi/Item.cs?name=ItemEntityType)]
 
 <span data-ttu-id="9c81d-121">И его конфигурация в `DbContext.OnModelCreating` :</span><span class="sxs-lookup"><span data-stu-id="9c81d-121">And its configuration in `DbContext.OnModelCreating`:</span></span>
 
-[!code-csharp[Configure:::no-loc(Item):::](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/:::no-loc(Items):::WebApi/:::no-loc(Items):::Context.cs?name=Configure:::no-loc(Item):::)]
+[!code-csharp[ConfigureItem](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/ItemsWebApi/ItemsContext.cs?name=ConfigureItem)]
 
 <span data-ttu-id="9c81d-122">Обратите внимание, что тип сущности ограничивается способом, который можно использовать для отражения модели предметной области и бизнес-правил.</span><span class="sxs-lookup"><span data-stu-id="9c81d-122">Notice that entity type constrains the way it can be used to reflect the domain model and business rules.</span></span> <span data-ttu-id="9c81d-123">В частности:</span><span class="sxs-lookup"><span data-stu-id="9c81d-123">In particular:</span></span>
 
 - <span data-ttu-id="9c81d-124">Первичный ключ сопоставляется непосредственно с `_id` полем и не предоставляется публично</span><span class="sxs-lookup"><span data-stu-id="9c81d-124">The primary key is mapped directly to the `_id` field and not exposed publicly</span></span>
   - <span data-ttu-id="9c81d-125">EF обнаруживает и использует закрытый конструктор, принимающий значение и имя первичного ключа.</span><span class="sxs-lookup"><span data-stu-id="9c81d-125">EF detects and uses the private constructor accepting the primary key value and name.</span></span>
 - <span data-ttu-id="9c81d-126">`Name`Свойство доступно только для чтения и задается только в конструкторе.</span><span class="sxs-lookup"><span data-stu-id="9c81d-126">The `Name` property is read-only and set only in the constructor.</span></span>
-- <span data-ttu-id="9c81d-127">:::no-loc(Tags)::: предоставляются в виде, `IReadOnlyList<:::no-loc(Tag):::>` чтобы предотвратить произвольное изменение.</span><span class="sxs-lookup"><span data-stu-id="9c81d-127">:::no-loc(Tags)::: are exposed as a `IReadOnlyList<:::no-loc(Tag):::>` to prevent arbitrary modification.</span></span>
-  - <span data-ttu-id="9c81d-128">EF связывает `:::no-loc(Tags):::` свойство с `_:::no-loc(tags):::` резервным полем, сопоставляя их имена.</span><span class="sxs-lookup"><span data-stu-id="9c81d-128">EF associates the `:::no-loc(Tags):::` property with the `_:::no-loc(tags):::` backing field by matching their names.</span></span>
-  - <span data-ttu-id="9c81d-129">`Add:::no-loc(Tag):::`Метод принимает метку тега и реализует бизнес-правило, описанное выше.</span><span class="sxs-lookup"><span data-stu-id="9c81d-129">The `Add:::no-loc(Tag):::` method takes a tag label and implements the business rule described above.</span></span>
+- <span data-ttu-id="9c81d-127">Tags предоставляются в виде, `IReadOnlyList<Tag>` чтобы предотвратить произвольное изменение.</span><span class="sxs-lookup"><span data-stu-id="9c81d-127">Tags are exposed as a `IReadOnlyList<Tag>` to prevent arbitrary modification.</span></span>
+  - <span data-ttu-id="9c81d-128">EF связывает `Tags` свойство с `_tags` резервным полем, сопоставляя их имена.</span><span class="sxs-lookup"><span data-stu-id="9c81d-128">EF associates the `Tags` property with the `_tags` backing field by matching their names.</span></span>
+  - <span data-ttu-id="9c81d-129">`AddTag`Метод принимает метку тега и реализует бизнес-правило, описанное выше.</span><span class="sxs-lookup"><span data-stu-id="9c81d-129">The `AddTag` method takes a tag label and implements the business rule described above.</span></span>
     <span data-ttu-id="9c81d-130">То есть, тег добавляется только для новых меток.</span><span class="sxs-lookup"><span data-stu-id="9c81d-130">That is, a tag is only added for new labels.</span></span>
     <span data-ttu-id="9c81d-131">В противном случае значение счетчика в существующей метке увеличивается.</span><span class="sxs-lookup"><span data-stu-id="9c81d-131">Otherwise the count on an existing label is incremented.</span></span>
-- <span data-ttu-id="9c81d-132">`:::no-loc(Tags):::`Свойство навигации настроено для связи "многие к одному"</span><span class="sxs-lookup"><span data-stu-id="9c81d-132">The `:::no-loc(Tags):::` navigation property is configured for a many-to-one relationship</span></span>
-  - <span data-ttu-id="9c81d-133">Нет необходимости в свойстве навигации из :::no-loc(Tag)::: :::no-loc(Item)::: , поэтому оно не включено.</span><span class="sxs-lookup"><span data-stu-id="9c81d-133">There is no need for a navigation property from :::no-loc(Tag)::: to :::no-loc(Item):::, so it is not included.</span></span>
-  - <span data-ttu-id="9c81d-134">Кроме того, не :::no-loc(Tag)::: определяет свойство внешнего ключа.</span><span class="sxs-lookup"><span data-stu-id="9c81d-134">Also, :::no-loc(Tag)::: does not define a foreign key property.</span></span>
+- <span data-ttu-id="9c81d-132">`Tags`Свойство навигации настроено для связи "многие к одному"</span><span class="sxs-lookup"><span data-stu-id="9c81d-132">The `Tags` navigation property is configured for a many-to-one relationship</span></span>
+  - <span data-ttu-id="9c81d-133">Нет необходимости в свойстве навигации из Tag Item , поэтому оно не включено.</span><span class="sxs-lookup"><span data-stu-id="9c81d-133">There is no need for a navigation property from Tag to Item, so it is not included.</span></span>
+  - <span data-ttu-id="9c81d-134">Кроме того, не Tag определяет свойство внешнего ключа.</span><span class="sxs-lookup"><span data-stu-id="9c81d-134">Also, Tag does not define a foreign key property.</span></span>
     <span data-ttu-id="9c81d-135">Вместо этого EF будет создавать свойство в теневом состоянии и управлять им.</span><span class="sxs-lookup"><span data-stu-id="9c81d-135">Instead, EF will create and manage a property in shadow-state.</span></span>
 
-#### <a name="the-no-loctag-entity-type"></a><span data-ttu-id="9c81d-136">:::no-loc(Tag):::Тип сущности</span><span class="sxs-lookup"><span data-stu-id="9c81d-136">The :::no-loc(Tag)::: entity type</span></span>
+#### <a name="the-no-loctag-entity-type"></a><span data-ttu-id="9c81d-136">TagТип сущности</span><span class="sxs-lookup"><span data-stu-id="9c81d-136">The Tag entity type</span></span>
 
-<span data-ttu-id="9c81d-137">`:::no-loc(Tag):::`Тип сущности:</span><span class="sxs-lookup"><span data-stu-id="9c81d-137">The `:::no-loc(Tag):::` entity type:</span></span>
+<span data-ttu-id="9c81d-137">`Tag`Тип сущности:</span><span class="sxs-lookup"><span data-stu-id="9c81d-137">The `Tag` entity type:</span></span>
 
-[!code-csharp[:::no-loc(Tag):::EntityType](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/:::no-loc(Items):::WebApi/:::no-loc(Tag):::.cs?name=:::no-loc(Tag):::EntityType)]
+[!code-csharp[TagEntityType](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/ItemsWebApi/Tag.cs?name=TagEntityType)]
 
 <span data-ttu-id="9c81d-138">И его конфигурация в `DbContext.OnModelCreating` :</span><span class="sxs-lookup"><span data-stu-id="9c81d-138">And its configuration in `DbContext.OnModelCreating`:</span></span>
 
-[!code-csharp[Configure:::no-loc(Tag):::](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/:::no-loc(Items):::WebApi/:::no-loc(Items):::Context.cs?name=Configure:::no-loc(Tag):::)]
+[!code-csharp[ConfigureTag](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/ItemsWebApi/ItemsContext.cs?name=ConfigureTag)]
 
-<span data-ttu-id="9c81d-139">Аналогично :::no-loc(Item)::: :::no-loc(Tag)::: скрывает его первичный ключ и делает `Label` свойство доступным только для чтения.</span><span class="sxs-lookup"><span data-stu-id="9c81d-139">Similarly to :::no-loc(Item):::, :::no-loc(Tag)::: hides its primary key and makes the `Label` property read-only.</span></span>
+<span data-ttu-id="9c81d-139">Аналогично Item Tag скрывает его первичный ключ и делает `Label` свойство доступным только для чтения.</span><span class="sxs-lookup"><span data-stu-id="9c81d-139">Similarly to Item, Tag hides its primary key and makes the `Label` property read-only.</span></span>
 
-### <a name="the-no-locitemscontroller"></a><span data-ttu-id="9c81d-140">:::no-loc(Items):::Контроллер</span><span class="sxs-lookup"><span data-stu-id="9c81d-140">The :::no-loc(Items):::Controller</span></span>
+### <a name="the-no-locitemscontroller"></a><span data-ttu-id="9c81d-140">ItemsКонтроллер</span><span class="sxs-lookup"><span data-stu-id="9c81d-140">The ItemsController</span></span>
 
 <span data-ttu-id="9c81d-141">Контроллер веб-API довольно прост.</span><span class="sxs-lookup"><span data-stu-id="9c81d-141">The Web API controller is pretty basic.</span></span>
 <span data-ttu-id="9c81d-142">Он получает `DbContext` из контейнера внедрения зависимостей посредством внедрения конструктора:</span><span class="sxs-lookup"><span data-stu-id="9c81d-142">It gets a `DbContext` from the dependency injection container through constructor injection:</span></span>
 
-[!code-csharp[Constructor](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/:::no-loc(Items):::WebApi/Controllers/:::no-loc(Items):::Controller.cs?name=Constructor)]
+[!code-csharp[Constructor](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/ItemsWebApi/Controllers/ItemsController.cs?name=Constructor)]
 
-<span data-ttu-id="9c81d-143">Он имеет методы для получения всех :::no-loc(Items)::: или :::no-loc(Item)::: с заданным именем:</span><span class="sxs-lookup"><span data-stu-id="9c81d-143">It has methods to get all :::no-loc(Items)::: or an :::no-loc(Item)::: with a given name:</span></span>
+<span data-ttu-id="9c81d-143">Он имеет методы для получения всех Items или Item с заданным именем:</span><span class="sxs-lookup"><span data-stu-id="9c81d-143">It has methods to get all Items or an Item with a given name:</span></span>
 
-[!code-csharp[Get](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/:::no-loc(Items):::WebApi/Controllers/:::no-loc(Items):::Controller.cs?name=Get)]
+[!code-csharp[Get](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/ItemsWebApi/Controllers/ItemsController.cs?name=Get)]
 
-<span data-ttu-id="9c81d-144">В нем имеется метод для добавления нового :::no-loc(Item)::: :</span><span class="sxs-lookup"><span data-stu-id="9c81d-144">It has a method to add a new :::no-loc(Item)::::</span></span>
+<span data-ttu-id="9c81d-144">В нем имеется метод для добавления нового Item :</span><span class="sxs-lookup"><span data-stu-id="9c81d-144">It has a method to add a new Item:</span></span>
 
-[!code-csharp[Post:::no-loc(Item):::](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/:::no-loc(Items):::WebApi/Controllers/:::no-loc(Items):::Controller.cs?name=Post:::no-loc(Item):::)]
+[!code-csharp[PostItem](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/ItemsWebApi/Controllers/ItemsController.cs?name=PostItem)]
 
-<span data-ttu-id="9c81d-145">Метод для добавления метки к тегу :::no-loc(Item)::: с меткой:</span><span class="sxs-lookup"><span data-stu-id="9c81d-145">A method to tag an :::no-loc(Item)::: with a label:</span></span>
+<span data-ttu-id="9c81d-145">Метод для добавления метки к тегу Item с меткой:</span><span class="sxs-lookup"><span data-stu-id="9c81d-145">A method to tag an Item with a label:</span></span>
 
-[!code-csharp[Post:::no-loc(Tag):::](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/:::no-loc(Items):::WebApi/Controllers/:::no-loc(Items):::Controller.cs?name=Post:::no-loc(Tag):::)]
+[!code-csharp[PostTag](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/ItemsWebApi/Controllers/ItemsController.cs?name=PostTag)]
 
-<span data-ttu-id="9c81d-146">И метод для удаления :::no-loc(Item)::: и все связанные :::no-loc(Tags)::: :</span><span class="sxs-lookup"><span data-stu-id="9c81d-146">And a method to delete an :::no-loc(Item)::: and all associated :::no-loc(Tags)::::</span></span>
+<span data-ttu-id="9c81d-146">И метод для удаления Item и все связанные Tags :</span><span class="sxs-lookup"><span data-stu-id="9c81d-146">And a method to delete an Item and all associated Tags:</span></span>
 
-[!code-csharp[Delete:::no-loc(Item):::](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/:::no-loc(Items):::WebApi/Controllers/:::no-loc(Items):::Controller.cs?name=Delete:::no-loc(Item):::)]
+[!code-csharp[DeleteItem](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/ItemsWebApi/Controllers/ItemsController.cs?name=DeleteItem)]
 
 <span data-ttu-id="9c81d-147">Большинство проверок и обработка ошибок были удалены для уменьшения перегруженности.</span><span class="sxs-lookup"><span data-stu-id="9c81d-147">Most validation and error handling have been removed to reduce clutter.</span></span>
 
@@ -122,7 +122,7 @@ ms.locfileid: "94431371"
 
 <span data-ttu-id="9c81d-157">Ожидается, что следующие два теста завершаются ошибкой:</span><span class="sxs-lookup"><span data-stu-id="9c81d-157">The following two tests are expected to fail:</span></span>
 
-- <span data-ttu-id="9c81d-158">`Can_remove_item_and_all_associated_:::no-loc(tags):::` При работе с поставщиком базы данных EF в памяти</span><span class="sxs-lookup"><span data-stu-id="9c81d-158">`Can_remove_item_and_all_associated_:::no-loc(tags):::` when running with the EF in-memory database provider</span></span>
+- <span data-ttu-id="9c81d-158">`Can_remove_item_and_all_associated_tags` При работе с поставщиком базы данных EF в памяти</span><span class="sxs-lookup"><span data-stu-id="9c81d-158">`Can_remove_item_and_all_associated_tags` when running with the EF in-memory database provider</span></span>
 - <span data-ttu-id="9c81d-159">`Can_add_item_differing_only_by_case` При работе с поставщиком SQL Server</span><span class="sxs-lookup"><span data-stu-id="9c81d-159">`Can_add_item_differing_only_by_case` when running with the SQL Server provider</span></span>
 
 <span data-ttu-id="9c81d-160">Более подробно эти сведения рассматриваются ниже.</span><span class="sxs-lookup"><span data-stu-id="9c81d-160">This is covered in more detail below.</span></span>
@@ -146,12 +146,12 @@ ms.locfileid: "94431371"
   - <span data-ttu-id="9c81d-172">Метод SEED гарантирует, что база данных будет очищена, удалив ее, а затем повторно создав ее.</span><span class="sxs-lookup"><span data-stu-id="9c81d-172">The Seed method ensures the database is clean by deleting it and then re-creating it</span></span>
   - <span data-ttu-id="9c81d-173">Некоторые хорошо известные тестовые сущности создаются и сохраняются в базе данных.</span><span class="sxs-lookup"><span data-stu-id="9c81d-173">Some well-known test entities are created and saved to the database</span></span>
 
-[!code-csharp[Seeding](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/Tests/:::no-loc(Items):::ControllerTest.cs?name=Seeding)]
+[!code-csharp[Seeding](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/Tests/ItemsControllerTest.cs?name=Seeding)]
 
 <span data-ttu-id="9c81d-174">Затем каждый конкретный тестовый класс наследуется от этого.</span><span class="sxs-lookup"><span data-stu-id="9c81d-174">Each concrete test class then inherits from this.</span></span>
 <span data-ttu-id="9c81d-175">Пример:</span><span class="sxs-lookup"><span data-stu-id="9c81d-175">For example:</span></span>
 
-[!code-csharp[Sqlite:::no-loc(Items):::ControllerTest](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/Tests/Sqlite:::no-loc(Items):::ControllerTest.cs?name=Sqlite:::no-loc(Items):::ControllerTest)]
+[!code-csharp[SqliteItemsControllerTest](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/Tests/SqliteItemsControllerTest.cs?name=SqliteItemsControllerTest)]
 
 ### <a name="test-structure"></a><span data-ttu-id="9c81d-176">Структура теста</span><span class="sxs-lookup"><span data-stu-id="9c81d-176">Test structure</span></span>
 
@@ -162,7 +162,7 @@ ms.locfileid: "94431371"
 <span data-ttu-id="9c81d-180">Затем каждый тест выполняет тестируемый метод на контроллере и утверждает результаты ожидаемым образом.</span><span class="sxs-lookup"><span data-stu-id="9c81d-180">Each test then executes the method under test on the controller and asserts the results are as expected.</span></span>
 <span data-ttu-id="9c81d-181">Пример:</span><span class="sxs-lookup"><span data-stu-id="9c81d-181">For example:</span></span>
 
-[!code-csharp[CanGet:::no-loc(Items):::](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/Tests/:::no-loc(Items):::ControllerTest.cs?name=CanGet:::no-loc(Items):::)]
+[!code-csharp[CanGetItems](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/Tests/ItemsControllerTest.cs?name=CanGetItems)]
 
 <span data-ttu-id="9c81d-182">Обратите внимание, что для заполнения базы данных и выполнения тестов используются различные экземпляры DbContext.</span><span class="sxs-lookup"><span data-stu-id="9c81d-182">Notice that different DbContext instances are used to seed the database and run the tests.</span></span>
 <span data-ttu-id="9c81d-183">Это гарантирует, что тест не использует (или не переходит) сущности, которые отслеживает контекст при заполнении.</span><span class="sxs-lookup"><span data-stu-id="9c81d-183">This ensures that the test is not using (or tripping over) entities tracked by the context when seeding.</span></span>
@@ -172,13 +172,13 @@ ms.locfileid: "94431371"
 <span data-ttu-id="9c81d-186">То есть создание нового, чистого и последующего контекста, а затем чтение из базы данных, чтобы убедиться, что изменения были сохранены в базе данных.</span><span class="sxs-lookup"><span data-stu-id="9c81d-186">That is, creating a new, clean, context and then reading into it from the database to ensure that the changes were saved to the database.</span></span>
 <span data-ttu-id="9c81d-187">Пример:</span><span class="sxs-lookup"><span data-stu-id="9c81d-187">For example:</span></span>
 
-[!code-csharp[CanAdd:::no-loc(Item):::](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/Tests/:::no-loc(Items):::ControllerTest.cs?name=CanAdd:::no-loc(Item):::)]
+[!code-csharp[CanAddItem](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/Tests/ItemsControllerTest.cs?name=CanAddItem)]
 
-<span data-ttu-id="9c81d-188">Два еще более важных тестирования охватывают бизнес-логику, связанную с добавлением :::no-loc(tags)::: .</span><span class="sxs-lookup"><span data-stu-id="9c81d-188">Two slightly more involved tests cover the business logic around adding :::no-loc(tags):::.</span></span>
+<span data-ttu-id="9c81d-188">Два еще более важных тестирования охватывают бизнес-логику, связанную с добавлением tags .</span><span class="sxs-lookup"><span data-stu-id="9c81d-188">Two slightly more involved tests cover the business logic around adding tags.</span></span>
 
-[!code-csharp[CanAdd:::no-loc(Tag):::](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/Tests/:::no-loc(Items):::ControllerTest.cs?name=CanAdd:::no-loc(Tag):::)]
+[!code-csharp[CanAddTag](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/Tests/ItemsControllerTest.cs?name=CanAddTag)]
 
-[!code-csharp[CanUp:::no-loc(Tag):::Count](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/Tests/:::no-loc(Items):::ControllerTest.cs?name=CanUp:::no-loc(Tag):::Count)]
+[!code-csharp[CanUpTagCount](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/Tests/ItemsControllerTest.cs?name=CanUpTagCount)]
 
 ## <a name="issues-using-different-database-providers"></a><span data-ttu-id="9c81d-189">Проблемы с использованием разных поставщиков баз данных</span><span class="sxs-lookup"><span data-stu-id="9c81d-189">Issues using different database providers</span></span>
 
@@ -188,10 +188,10 @@ ms.locfileid: "94431371"
 
 ### <a name="test-passes-when-the-application-is-broken"></a><span data-ttu-id="9c81d-193">Тест проходит успешно при нарушении приложения</span><span class="sxs-lookup"><span data-stu-id="9c81d-193">Test passes when the application is broken</span></span>
 
-<span data-ttu-id="9c81d-194">Одно из требований для нашего приложения заключается в том, что для этого используется :::no-loc(Items)::: имя с учетом регистра и коллекция :::no-loc(Tags)::: .</span><span class="sxs-lookup"><span data-stu-id="9c81d-194">One of the requirements for our application is that ":::no-loc(Items)::: have a case-sensitive name and a collection of :::no-loc(Tags):::."</span></span>
+<span data-ttu-id="9c81d-194">Одно из требований для нашего приложения заключается в том, что для этого используется Items имя с учетом регистра и коллекция Tags .</span><span class="sxs-lookup"><span data-stu-id="9c81d-194">One of the requirements for our application is that "Items have a case-sensitive name and a collection of Tags."</span></span>
 <span data-ttu-id="9c81d-195">Это довольно просто для тестирования:</span><span class="sxs-lookup"><span data-stu-id="9c81d-195">This is pretty simple to test:</span></span>
 
-[!code-csharp[CanAdd:::no-loc(Item):::CaseInsensitive](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/Tests/:::no-loc(Items):::ControllerTest.cs?name=CanAdd:::no-loc(Item):::CaseInsensitive)]
+[!code-csharp[CanAddItemCaseInsensitive](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/Tests/ItemsControllerTest.cs?name=CanAddItemCaseInsensitive)]
 
 <span data-ttu-id="9c81d-196">Выполнение этого теста для базы данных EF в памяти означает, что все правильно.</span><span class="sxs-lookup"><span data-stu-id="9c81d-196">Running this test against the EF in-memory database indicates that everything is fine.</span></span>
 <span data-ttu-id="9c81d-197">При использовании SQLite все еще выглядит нормально.</span><span class="sxs-lookup"><span data-stu-id="9c81d-197">Everything still looks fine when using SQLite.</span></span>
@@ -204,7 +204,7 @@ System.InvalidOperationException : Sequence contains more than one element
    at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.Execute[TResult](Expression query)
    at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.Execute[TResult](Expression expression)
    at System.Linq.Queryable.Single[TSource](IQueryable`1 source, Expression`1 predicate)
-   at Tests.:::no-loc(Items):::ControllerTest.Can_add_item_differing_only_by_case()
+   at Tests.ItemsControllerTest.Can_add_item_differing_only_by_case()
 ```
 
 <span data-ttu-id="9c81d-199">Это происходит потому, что по умолчанию учитывается регистр в базе данных EF в памяти и в базе данных SQLite.</span><span class="sxs-lookup"><span data-stu-id="9c81d-199">This is because both the EF in-memory database and the SQLite database are case-sensitive by default.</span></span>
@@ -217,10 +217,10 @@ System.InvalidOperationException : Sequence contains more than one element
 
 ### <a name="test-fails-when-the-application-is-correct"></a><span data-ttu-id="9c81d-204">Проверка завершается ошибкой, если приложение является правильным</span><span class="sxs-lookup"><span data-stu-id="9c81d-204">Test fails when the application is correct</span></span>
 
-<span data-ttu-id="9c81d-205">Другим требованием для нашего приложения является то, что "Удаление :::no-loc(Item)::: должно удалить все связанные :::no-loc(Tags)::: ".</span><span class="sxs-lookup"><span data-stu-id="9c81d-205">Another of the requirements for our application is that "deleting an :::no-loc(Item)::: should delete all associated :::no-loc(Tags):::."</span></span>
+<span data-ttu-id="9c81d-205">Другим требованием для нашего приложения является то, что "Удаление Item должно удалить все связанные Tags ".</span><span class="sxs-lookup"><span data-stu-id="9c81d-205">Another of the requirements for our application is that "deleting an Item should delete all associated Tags."</span></span>
 <span data-ttu-id="9c81d-206">Опять же, легко тестировать:</span><span class="sxs-lookup"><span data-stu-id="9c81d-206">Again, easy to test:</span></span>
 
-[!code-csharp[Delete:::no-loc(Item):::](../../../samples/core/Miscellaneous/Testing/:::no-loc(Items):::WebApi/Tests/:::no-loc(Items):::ControllerTest.cs?name=Delete:::no-loc(Item):::)]
+[!code-csharp[DeleteItem](../../../samples/core/Miscellaneous/Testing/ItemsWebApi/Tests/ItemsControllerTest.cs?name=DeleteItem)]
 
 <span data-ttu-id="9c81d-207">Этот тест передается в SQL Server и SQLite, но завершается сбоем с базой данных EF в памяти!</span><span class="sxs-lookup"><span data-stu-id="9c81d-207">This test passes on SQL Server and SQLite, but fails with the EF in-memory database!</span></span>
 
@@ -228,7 +228,7 @@ System.InvalidOperationException : Sequence contains more than one element
 Assert.False() Failure
 Expected: False
 Actual:   True
-   at Tests.:::no-loc(Items):::ControllerTest.Can_remove_item_and_all_associated_:::no-loc(tags):::()
+   at Tests.ItemsControllerTest.Can_remove_item_and_all_associated_tags()
 ```
 
 <span data-ttu-id="9c81d-208">В этом случае приложение работает правильно, так как SQL Server поддерживает [каскадное удаление](xref:core/saving/cascade-delete).</span><span class="sxs-lookup"><span data-stu-id="9c81d-208">In this case, the application is working correctly because SQL Server supports [cascade deletes](xref:core/saving/cascade-delete).</span></span>
