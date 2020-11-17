@@ -1,12 +1,12 @@
-## <a name="entity-framework-docs"></a>Документация по Entity Framework
+# <a name="entity-framework-docs"></a>Документация по Entity Framework
 
-Этот проект содержит исходный код для документации по EF Core и EF6, расположенной в [docs.microsoft.com/ef](https://docs.microsoft.com/ef/). 
+Этот проект содержит исходный код для документации по EF Core и EF6, расположенной в [docs.microsoft.com/ef](https://docs.microsoft.com/ef/).
 
 О проблемах с документацией по EF Core и EF6 следует сообщать в этом репозитории. О проблемах с продуктом (ошибках) следует сообщать в [репозитории EF Core](https://github.com/dotnet/efcore) или [репозитории EF6](https://github.com/dotnet/ef6), соответственно.
 
 **Мы принимаем запросы на вытягивание!**
 
-## <a name="fixing-typosspellinggrammaretc"></a>Исправление опечаток, орфографии, грамматики и т. п.
+## <a name="fixing-typosspellinggrammaretc"></a>Исправление опечаток, орфографических ошибок, грамматических ошибок и т. п.
 
 Рекомендуется отправить запрос на вытягивание вместо того, чтобы сообщать об ошибке. Это можно сделать прямо из Интернета:
 

@@ -4,12 +4,12 @@ description: Использование глобальных фильтров з
 author: maumar
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: 8a9eabd7e86864c9ebb4b1dc4a06bf7fc207d496
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 6436f9f8e2e09d44ef9528fd2022720d40095fe0
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92062611"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430135"
 ---
 # <a name="global-query-filters"></a>Глобальные фильтры запросов
 
@@ -46,6 +46,21 @@ ms.locfileid: "92062611"
 ## <a name="use-of-navigations"></a>Использование свойств навигации
 
 Свойства навигации можно также использовать при определении глобальных фильтров запросов. Использование свойств навигации в фильтре запросов приведет к рекурсивному применению фильтров запросов. Когда EF Core разворачивает свойства навигации, используемые в фильтрах запросов, он также применяет фильтры запросов, определенные для ссылочных сущностей.
+
+Чтобы понять это на примере, настройте фильтры запросов в `OnModelCreating` следующим образом: [!code-csharp[Main](../../../samples/core/Querying/QueryFilters/FilteredBloggingContextRequired.cs#NavigationInFilter)]
+
+Затем запросите все сущности `Blog`: [!code-csharp[Main](../../../samples/core/Querying/QueryFilters/FilteredBloggingContextRequired.cs#QueriesNavigation)]
+
+Этот запрос возвращает следующий SQL-код, который применяет фильтры, определенные для сущностей `Blog` и `Post`.
+
+```sql
+SELECT [b].[BlogId], [b].[Name], [b].[Url]
+FROM [Blogs] AS [b]
+WHERE (
+    SELECT COUNT(*)
+    FROM [Posts] AS [p]
+    WHERE ([p].[Title] LIKE N'%fish%') AND ([b].[BlogId] = [p].[BlogId])) > 0
+```
 
 > [!NOTE]
 > EF Core сейчас не обнаруживает циклы в определениях глобальных фильтров запросов, поэтому при определении циклов следует соблюдать особую осторожность. Их некорректное указание может делать циклы бесконечными при преобразовании запроса.

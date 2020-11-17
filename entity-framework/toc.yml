@@ -154,6 +154,10 @@
           items:
             - name: Обзор
               href: core/querying/index.md
+            - name: Вычисление на клиенте и сервере
+              href: core/querying/client-eval.md
+            - name: Отслеживаемые и неотслеживаемые запросы
+              href: core/querying/tracking.md
             - name: Загрузка связанных данных
               items:
                 - name: Обзор
@@ -166,16 +170,14 @@
                   href: core/querying/related-data/lazy.md
                 - name: Связанные данные и сериализация
                   href: core/querying/related-data/serialization.md
-            - name: Вычисление на клиенте и сервере
-              href: core/querying/client-eval.md
-            - name: Отслеживаемые и неотслеживаемые запросы
-              href: core/querying/tracking.md
             - name: Разделенные запросы
               href: core/querying/single-split-queries.md
             - name: Сложные операторы запросов
               href: core/querying/complex-query-operators.md
             - name: Необработанные SQL-запросы
               href: core/querying/raw-sql.md
+            - name: Функции базы данных
+              href: core/querying/database-functions.md
             - name: Глобальные фильтры запросов
               href: core/querying/filters.md
             - name: Теги запросов

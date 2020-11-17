@@ -4,12 +4,12 @@ description: Подробные сведения о более сложных о
 author: smitpatel
 ms.date: 10/03/2019
 uid: core/querying/complex-query-operators
-ms.openlocfilehash: 03375e6c46a68a719df82572333f0a57e7de6262
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 84c2518972355d31cf5a6a7bafc57b44162412c8
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92062624"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94430486"
 ---
 # <a name="complex-query-operators"></a>Сложные операторы запросов
 
@@ -20,7 +20,7 @@ ms.locfileid: "92062624"
 
 ## <a name="join"></a>Join
 
-Оператор Join в LINQ позволяет соединять два источника данных на основе селектора ключа для каждого источника, создавая кортеж значений при совпадении ключей. В реляционных базах данных он естественным образом преобразуется в `INNER JOIN`. Если оператор Join в LINQ имеет внешний и внутренний селекторы ключей, база данных требует одного условия соединения. Таким образом, EF Core создает условие соединения, сравнивая внешний и внутренний селекторы ключей на равенство. Кроме того, если селекторы ключей являются анонимными типами, EF Core создает условие соединения для покомпонентного сравнения на равенство.
+Оператор Join в LINQ позволяет соединять два источника данных на основе селектора ключа для каждого источника, создавая кортеж значений при совпадении ключей. В реляционных базах данных он естественным образом преобразуется в `INNER JOIN`. Если оператор Join в LINQ имеет внешний и внутренний селекторы ключей, база данных требует одного условия соединения. Таким образом, EF Core создает условие соединения, сравнивая внешний и внутренний селекторы ключей на равенство.
 
 [!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#Join)]
 
@@ -28,6 +28,16 @@ ms.locfileid: "92062624"
 SELECT [p].[PersonId], [p].[Name], [p].[PhotoId], [p0].[PersonPhotoId], [p0].[Caption], [p0].[Photo]
 FROM [PersonPhoto] AS [p0]
 INNER JOIN [Person] AS [p] ON [p0].[PersonPhotoId] = [p].[PhotoId]
+```
+
+Кроме того, если селекторы ключей являются анонимными типами, EF Core создает условие соединения для покомпонентного сравнения на равенство.
+
+[!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Program.cs#JoinComposite)]
+
+```sql
+SELECT [p].[PersonId], [p].[Name], [p].[PhotoId], [p0].[PersonPhotoId], [p0].[Caption], [p0].[Photo]
+FROM [PersonPhoto] AS [p0]
+INNER JOIN [Person] AS [p] ON ([p0].[PersonPhotoId] = [p].[PhotoId] AND ([p0].[Caption] = N'SN'))
 ```
 
 ## <a name="groupjoin"></a>GroupJoin

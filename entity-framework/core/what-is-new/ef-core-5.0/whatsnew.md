@@ -4,12 +4,12 @@ description: Обзор новых возможностей в EF Core 5.0
 author: ajcvickers
 ms.date: 09/10/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew
-ms.openlocfilehash: 8fa45bf31cb5f1a7e35134f9513a40469719f8c2
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 3efa883cdfac1ecd412112ef06c7763f1a7e12f1
+ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92065619"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94429251"
 ---
 # <a name="whats-new-in-ef-core-50"></a>Новые возможности EF Core 5.0
 
@@ -47,7 +47,7 @@ public class Tag
 public class BlogContext : DbContext
 {
     public DbSet<Post> Posts { get; set; }
-    public DbSet<Blog> Blogs { get; set; }
+    public DbSet<Tag> Tags { get; set; }
 }
 ```
 
@@ -77,7 +77,7 @@ CREATE TABLE [PostTag] (
 CREATE INDEX [IX_PostTag_TagsId] ON [PostTag] ([TagsId]);
 ```
 
-Создание и связывание сущностей `Blog` и `Post` приводит к автоматическому обновлению таблицы соединения. Пример:
+Создание и связывание сущностей `Tag` и `Post` приводит к автоматическому обновлению таблицы соединения. Пример:
 
 ```csharp
 var beginnerTag = new Tag {Text = "Beginner"};
@@ -158,6 +158,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
+> [!NOTE]
+> Поддержка формирования шаблонов для связей "многие ко многим" из базы данных еще не добавлена. Отслеживайте решение этого вопроса [здесь](https://github.com/dotnet/efcore/issues/22475).
+
 ### <a name="map-entity-types-to-queries"></a>Сопоставление типов сущностей с запросами
 
 Типы сущностей обычно сопоставляются с таблицами или представлениями так, что EF Core будет извлекать содержимое таблицы или представления при запросе соответствующего типа. EF Core 5.0 позволяет сопоставить тип сущности с "определяющим запросом". (Эта возможность частично поддерживалось в предыдущих версиях, но была значительно улучшена и имеет другой синтаксис в EF Core 5.0.)
@@ -214,13 +217,13 @@ WHERE ('Unicorn' = '') OR (instr("b"."Name", 'Unicorn') > 0)
 
 [Счетчики событий .NET](https://devblogs.microsoft.com/dotnet/introducing-diagnostics-improvements-in-net-core-3-0/) позволяют эффективно предоставлять метрики производительности из приложения. В EF Core 5.0 счетчики событий включены в категорию `Microsoft.EntityFrameworkCore`. Пример:
 
-```
+```console
 dotnet counters monitor Microsoft.EntityFrameworkCore -p 49496
 ```
 
 Эта команда предписывает счетчикам dotnet начать сбор событий EF Core для процесса 49496. В консоли будут выведены выходные данные следующего вида:
 
-```
+```console
 [Microsoft.EntityFrameworkCore]
     Active DbContexts                                               1
     Execution Strategy Operation Failures (Count / 1 sec)           0
@@ -314,6 +317,7 @@ context.SavedChanges += (sender, args) =>
 ```
 
 Обратите внимание на указанные ниже моменты.
+
 * Отправителем события является экземпляр `DbContext`.
 * Аргументы события `SavedChanges` содержат число сущностей, сохраненных в базе данных.
 
@@ -344,6 +348,7 @@ public class MySaveChangesInterceptor : SaveChangesInterceptor
 ```
 
 Обратите внимание на указанные ниже моменты.
+
 * Перехватчик имеет как синхронные, так и асинхронные методы. Это может быть полезно, если требуется выполнить асинхронный ввод-вывод, например запись на сервер аудита.
 * Перехватчик позволяет пропустить метод SaveChanges, используя механизм `InterceptionResult`, общий для всех перехватчиков.
 
@@ -564,7 +569,7 @@ COMMIT;
 
 Команда `dotnet ef migrations list` теперь показывает, какие миграции еще не были применены к базе данных. Пример:
 
-```
+```console
 ajcvickers@avickers420u:~/AllTogetherNow/Daily$ dotnet ef migrations list
 Build started...
 Build succeeded.
@@ -839,6 +844,7 @@ PRAGMA foreign_keys = 1;
 ```
 
 Обратите внимание на указанные ниже моменты.
+
 * Для новой таблицы создается временная таблица с требуемой схемой.
 * Данные копируются из текущей таблицы во временную.
 * Принудительное применение внешнего ключа отключается.
@@ -884,6 +890,7 @@ END
 ```
 
 Для использования этой функции в модели EF Core требуются два типа сущностей:
+
 * тип `Employee`, который сопоставляется с таблицей Employees обычным образом;
 * тип `Report`, который соответствует форме, возвращаемой функцией с табличным значением.
 
@@ -1307,7 +1314,10 @@ var artists = context.Artists.Where(e => e.IsSigned).ToList();
 
 EF Core выдаст следующее исключение, указывающее на сбой преобразования из-за несопоставленного `IsSigned`:
 
-> Необработанное исключение. "System.InvalidOperationException: не удалось преобразовать выражение LINQ "DbSet<Artist>() .Where(a => a.IsSigned)". Дополнительные сведения: не удалось преобразовать член "IsSigned" для типа сущности "Artist". Возможно, указанный элемент не сопоставлен. Перепишите запрос в поддерживающей преобразование форме или явно переключитесь на оценку клиента, вставив вызов либо AsEnumerable(), AsAsyncEnumerable(), ToList(), либо ToListAsync(). Дополнительные сведения см. в разделе https://go.microsoft.com/fwlink/?linkid=2101038.
+```exception
+Unhandled exception. System.InvalidOperationException: The LINQ expression 'DbSet<Artist>()
+   .Where(a => a.IsSigned)' could not be translated. Additional information: Translation of member 'IsSigned' on entity type 'Artist' failed. Possibly the specified member is not mapped. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to either AsEnumerable(), AsAsyncEnumerable(), ToList(), or ToListAsync(). See <https://go.microsoft.com/fwlink/?linkid=2101038> for more information.
+```
 
 Аналогично, при попытке преобразовать сравнения строк с семантикой, зависящей от языка и региональных параметров, теперь создаются более понятные сообщения об исключениях. Например, этот запрос пытается использовать `StringComparison.CurrentCulture`:
 
@@ -1319,7 +1329,12 @@ var artists = context.Artists
 
 Теперь EF Core выдаст следующее исключение:
 
-> Необработанное исключение. "System.InvalidOperationException: не удается преобразовать выражение LINQ "DbSet<Artist>() .Where(a => a.Name.Equals( value: "The Unicorns", comparisonType: CurrentCulture))". Дополнительные сведения: преобразование метода "string.Equals", принимающего аргумент "StringComparison", не поддерживается. Дополнительные сведения см. в разделе https://go.microsoft.com/fwlink/?linkid=2129535. Перепишите запрос в поддерживающей преобразование форме или явно переключитесь на оценку клиента, вставив вызов либо AsEnumerable(), AsAsyncEnumerable(), ToList(), либо ToListAsync(). Дополнительные сведения см. в разделе https://go.microsoft.com/fwlink/?linkid=2101038.
+```exception
+Unhandled exception. System.InvalidOperationException: The LINQ expression 'DbSet<Artist>()
+     .Where(a => a.Name.Equals(
+         value: "The Unicorns",
+         comparisonType: CurrentCulture))' could not be translated. Additional information: Translation of 'string.Equals' method which takes 'StringComparison' argument is not supported. See <https://go.microsoft.com/fwlink/?linkid=2129535> for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to either AsEnumerable(), AsAsyncEnumerable(), ToList(), or ToListAsync(). See <https://go.microsoft.com/fwlink/?linkid=2101038> for more information.
+```
 
 ### <a name="specify-transaction-id"></a>Указание идентификатора транзакции
 
@@ -1380,13 +1395,13 @@ Executed DbCommand (14ms) [Parameters=[@p0='1', @p1='127.0.0.1' (Size = 45), @p2
 
 Теперь командам формирования шаблонов можно указать пропустить создание OnConfiguring. Пример:
 
-```
+```console
 dotnet ef dbcontext scaffold "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Chinook" Microsoft.EntityFrameworkCore.SqlServer --no-onconfiguring
 ```
 
 Или в консоли диспетчера пакетов:
 
-```
+```console
 Scaffold-DbContext 'Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Chinook' Microsoft.EntityFrameworkCore.SqlServer -NoOnConfiguring
 ```
 
@@ -1500,7 +1515,7 @@ WHERE [u].[Name] COLLATE French_CI_AS = N'Jean-Michel Jarre'
 
 Теперь можно передавать аргументы из командной строки в метод `CreateDbContext` интерфейса [IDesignTimeDbContextFactory](/dotnet/api/microsoft.entityframeworkcore.design.idesigntimedbcontextfactory-1). Например, чтобы указать, что используется сборка для разработки, можно передать в командной строке настраиваемый аргумент, например `dev`:
 
-```
+```console
 dotnet ef migrations add two --verbose --dev
 ```
 
@@ -1600,6 +1615,7 @@ var blogs = context.Blogs
     .Include(e => e.Posts.OrderByDescending(post => post.Title).Take(5)))
     .ToList();
 ```
+
 Этот запрос возвратит блоги, включив не более пяти записей для каждого блога.
 
 Подробные сведения см. в [документации по методу Include](xref:core/querying/related-data#filtered-include).
@@ -1633,7 +1649,7 @@ dotnet ef dbcontext scaffold "connection string" Microsoft.EntityFrameworkCore.S
 dotnet ef database update --connection "connection string"
 ```
 
-Подробные сведения см. в [документации по средствам](xref:core/miscellaneous/cli/dotnet#dotnet-ef-database-update).
+Подробные сведения см. в [документации по средствам](xref:core/cli/dotnet#dotnet-ef-database-update).
 
 Аналогичные параметры также были добавлены в команды PowerShell, используемые в консоли диспетчера пакетов VS.
 
