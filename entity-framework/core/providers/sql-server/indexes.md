@@ -4,12 +4,12 @@ description: Функции индекса, относящиеся к поста
 author: roji
 ms.date: 9/1/2020
 uid: core/providers/sql-server/indexes
-ms.openlocfilehash: a01ab3d12f5bf5f05f0925c93d90c0ee40fe977c
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 66b4e3ce5ab1d4da855c106a6a2d2e75c43081f7
+ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92061870"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95003164"
 ---
 # <a name="index-features-specific-to-the-entity-framework-core-sql-server-provider"></a>Функции индекса, относящиеся к поставщику Entity Framework Core SQL Server
 
@@ -28,7 +28,7 @@ ms.locfileid: "92061870"
 ## <a name="fill-factor"></a>Коэффициент заполнения.
 
 > [!NOTE]
-> Эта возможность появилась в EF Core 5.0.
+> Эта функция появилась в EF Core 5,0.
 
 Для точной настройки хранения и производительности индексированных данных используется параметр индексный коэффициент заполнения. Дополнительные сведения см. [в SQL Server документации по коэффициенту заполнения](/sql/relational-databases/indexes/specify-fill-factor-for-an-index).
 

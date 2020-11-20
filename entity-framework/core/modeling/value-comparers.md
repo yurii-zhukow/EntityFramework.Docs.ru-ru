@@ -4,17 +4,17 @@ description: Использование компараторов значени�
 author: ajcvickers
 ms.date: 03/20/2020
 uid: core/modeling/value-comparers
-ms.openlocfilehash: d07aee866a542f55c4e1074c5782e67cb4035a89
-ms.sourcegitcommit: 7c3939504bb9da3f46bea3443638b808c04227c2
+ms.openlocfilehash: d59ab093c7e9d251aac80420972d3e35edabae0b
+ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89616684"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95003618"
 ---
 # <a name="value-comparers"></a>Компараторы значений
 
 > [!NOTE]  
-> Эта функция впервые реализована в EF Core 3,0.
+> Эта функция появилась в EF Core 3,0.
 
 > [!TIP]  
 > Код в этом документе можно найти на сайте GitHub в качестве [готового к запуску примера](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Modeling/ValueConversions/).
