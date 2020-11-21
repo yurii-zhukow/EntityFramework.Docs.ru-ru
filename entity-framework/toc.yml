@@ -19,8 +19,6 @@
       items:
         - name: Добро пожаловать!
           href: core/index.md
-        - name: "Принять участие в опросе по EF Core 6\_>>"
-          href: 'https://www.surveymonkey.com/r/XRL3JBL'
         - name: Начало работы
           items:
             - name: Обзор EF Core
@@ -216,6 +214,8 @@
               href: core/logging-events-diagnostics/interceptors.md
             - name: Прослушиватели диагностики
               href: core/logging-events-diagnostics/diagnostic-listeners.md
+            - name: Счетчики событий
+              href: core/logging-events-diagnostics/event-counters.md
         - name: Тестирование
           items:
             - name: "Тестирование кода, использующего EF\_Core"
