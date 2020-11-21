@@ -4,12 +4,12 @@ description: Как настроить и сопоставлять типы су
 author: roji
 ms.date: 10/06/2020
 uid: core/modeling/entity-types
-ms.openlocfilehash: 9094193640e7cab6db3fed7ae0ab818a455156ca
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: 9d86b959b5e0360df6d782d8d1c1c2f9393fdf8b
+ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94429590"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95003501"
 ---
 # <a name="entity-types"></a>Типы сущностей
 
@@ -44,7 +44,7 @@ ms.locfileid: "94429590"
 ### <a name="excluding-from-migrations"></a>Исключение из миграции
 
 > [!NOTE]
-> Возможность исключения таблиц из миграции была добавлена в EF Core 5,0.
+> Возможность исключения таблиц из миграции была введена в EF Core 5,0.
 
 Иногда бывает полезно иметь один и тот же тип сущности, сопоставленный в нескольких `DbContext` типах. Это особенно справедливо при использовании [ограниченных](https://www.martinfowler.com/bliki/BoundedContext.html)контекстов, для которых обычно используется отдельный `DbContext` тип для каждого ограниченного контекста.
 

@@ -4,17 +4,17 @@ description: Ведение журнала EF Core DbContext с помощью �
 author: ajcvickers
 ms.date: 10/03/2020
 uid: core/logging-events-diagnostics/simple-logging
-ms.openlocfilehash: 49619cc10ea098e39e71dde347e00bbc3c39b13a
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: 274fca39c45c4e2ccfd47f3c4eeb0834e00d18aa
+ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431286"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95003514"
 ---
 # <a name="simple-logging"></a>Простое ведение журнала
 
 > [!NOTE]
-> Эта функция была добавлена в EF Core 5.0.
+> Эта функция появилась в EF Core 5,0.
 
 > [!TIP]  
 > Вы можете [скачать пример этой статьи](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/SimpleLogging) с сайта GitHub.
@@ -26,7 +26,7 @@ Entity Framework Core (EF Core) простое ведение журнала м�
 
 ## <a name="configuration"></a>Параметр Configuration
 
-Доступ к EF Core журналам можно получить из любого типа приложений с помощью [логто](https://github.com/dotnet/efcore/blob/ec3df8fd7e4ea4ebeebfa747619cef37b23ab2c6/src/EFCore/DbContextOptionsBuilder.cs#L135) <!-- Issue #2748 <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.LogTo%2A> --> при [настройке экземпляра DbContext](xref:core/dbcontext-configuration/index). Такая конфигурация обычно выполняется при переопределении <xref:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring%2A?displayProperty=nameWithType>. Пример:
+Доступ к журналам EF Core можно получить из любого типа приложений с помощью метода [LogTo](https://github.com/dotnet/efcore/blob/ec3df8fd7e4ea4ebeebfa747619cef37b23ab2c6/src/EFCore/DbContextOptionsBuilder.cs#L135) <!-- Issue #2748 <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.LogTo%2A> --> при [настройке экземпляра DbContext](xref:core/dbcontext-configuration/index). Такая конфигурация обычно выполняется при переопределении <xref:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring%2A?displayProperty=nameWithType>. Пример:
 
 <!--
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
