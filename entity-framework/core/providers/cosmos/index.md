@@ -4,17 +4,17 @@ description: Документация для поставщика базы да�
 author: AndriySvyryd
 ms.date: 10/09/2020
 uid: core/providers/cosmos/index
-ms.openlocfilehash: 825517e79891378a61f9564c90dbf4522459e9d0
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: b167f53515799efdaead232f44ad5eab37fb0b14
+ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430323"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95003605"
 ---
 # <a name="ef-core-azure-cosmos-db-provider"></a>Поставщик EF Core для Azure Cosmos DB
 
 > [!NOTE]
-> Этот поставщик является новым в EF Core 3.0.
+> Этот поставщик появился в EF Core 3.0.
 
 Этот поставщик базы данных позволяет использовать Entity Framework Core с Azure Cosmos DB. Работы над этим поставщиком ведутся в рамках [проекта Entity Framework Core](https://github.com/dotnet/efcore).
 
@@ -73,7 +73,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 [!code-csharp[Configuration](../../../../samples/core/Cosmos/ModelBuilding/OptionsContext.cs?name=Configuration)]
 
 > [!NOTE]
-> Большинство из этих параметров являются новыми в EF Core Cosmos 5.0.
+> Большинство этих параметров появились в EF Core 5.0.
 
 > [!TIP]
 > Подробное описание каждого из указанных выше параметров см. в [документации по параметрам Azure Cosmos DB](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions).
@@ -108,7 +108,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 [!code-csharp[PartitionKey](../../../../samples/core/Cosmos/ModelBuilding/Sample.cs?name=PartitionKey&highlight=15)]
 
 > [!NOTE]
-> Метод `WithPartitionKey` был добавлен в EF Core 5.0.
+> `WithPartitionKey` появился в EF Core 5.0.
 
 Обычно рекомендуется добавить ключ секции в первичный ключ, так как это наилучшим образом отражает семантику сервера и позволяет выполнять некоторые оптимизации, например в `FindAsync`.
 
@@ -210,7 +210,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 ## <a name="optimistic-concurrency-with-etags"></a>Оптимистический параллелизм с тегами ETag
 
 > [!NOTE]
-> В EF Core 5.0 добавлена поддержка параллелизма eTag.
+> Поддержка параллелизма eTag появилась в EF Core 5.0.
 
 Чтобы настроить тип сущности для использования [оптимистического параллелизма](xref:core/modeling/concurrency), вызовите `UseETagConcurrency`. Этот вызов создает свойство `_etag` в [теневом состоянии](xref:core/modeling/shadow-properties) и устанавливает его в качестве маркера параллелизма.
 
