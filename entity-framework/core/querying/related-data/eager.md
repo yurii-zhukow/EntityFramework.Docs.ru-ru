@@ -4,12 +4,12 @@ description: Безотложная загрузка связанных данн
 author: roji
 ms.date: 9/8/2020
 uid: core/querying/related-data/eager
-ms.openlocfilehash: bd9c9045c1c2707d69ee4070bea59ad8066789f3
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: 66956fcd85bb21a08c69fa93b93c12382bbfc8eb
+ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430109"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95003579"
 ---
 # <a name="eager-loading-of-related-data"></a>Безотложная загрузка связанных данных
 
@@ -47,10 +47,15 @@ ms.locfileid: "94430109"
 
 [!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#MultipleLeafIncludes)]
 
+> [!TIP]
+> Можно также загрузить несколько объектов навигации с помощью одного метода `Include`. Это возможно для "цепочек" навигации, где все объекты являются ссылками или объединяются в одну коллекцию.
+
+[!code-csharp[Main](../../../../samples/core/Querying/RelatedData/Program.cs#IncludeMultipleNavigationsWithSingleInclude)]
+
 ## <a name="filtered-include"></a>Включение с фильтрацией
 
 > [!NOTE]
-> Эта возможность появилась в EF Core 5.0.
+> Эта возможность появилась в EF Core 5.0.
 
 При применении метода Include для загрузки связанных данных можно добавить определенные перечислимые операции к включенной навигации по коллекции, что позволяет фильтровать и сортировать результаты.
 
