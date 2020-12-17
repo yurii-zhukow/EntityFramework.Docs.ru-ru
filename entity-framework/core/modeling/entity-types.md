@@ -4,12 +4,12 @@ description: Как настроить и сопоставлять типы су
 author: roji
 ms.date: 10/06/2020
 uid: core/modeling/entity-types
-ms.openlocfilehash: 9d86b959b5e0360df6d782d8d1c1c2f9393fdf8b
-ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
+ms.openlocfilehash: ca8cb8560afe374218e763bc0476839187a40ece
+ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95003501"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97635774"
 ---
 # <a name="entity-types"></a>Типы сущностей
 
@@ -84,7 +84,7 @@ ms.locfileid: "95003501"
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableNameAndSchema.cs?name=TableNameAndSchema&highlight=3-4)]
 
-_**
+_*_
 
 Вместо того чтобы указывать схему для каждой таблицы, можно также определить схему по умолчанию на уровне модели с помощью API-интерфейса Fluent:
 
@@ -105,3 +105,63 @@ _**
 
 > [!TIP]
 > Чтобы проверить типы сущностей, сопоставленные с представлениями с помощью поставщика в памяти, сопоставьте их с запросом через `ToInMemoryQuery` . Дополнительные сведения см. в разделе [готовый к запуску пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/ItemsWebApi/) с использованием этого метода.
+
+## <a name="table-valued-function-mapping"></a>Сопоставление функций, возвращающих табличное значение
+
+Можно сопоставлять тип сущности с возвращающей табличное значение функцией вместо таблицы в базе данных. Чтобы проиллюстрировать это, давайте определим другую сущность, которая представляет блог с несколькими записями. В этом примере сущность [не имеет смысла, но](xref:core/modeling/keyless-entity-types)она не должна быть.
+
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/EntityTypes.cs#BlogWithMultiplePostsEntity)]
+
+Затем создайте в базе данных следующую функцию с табличным значением, которая возвращает только блоги с несколькими записями, а также число записей, связанных с каждым из этих блогов:
+
+```sql
+CREATE FUNCTION dbo.BlogsWithMultiplePosts()
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT b.Url, COUNT(p.BlogId) AS PostCount
+    FROM Blogs AS b
+    JOIN Posts AS p ON b.BlogId = p.BlogId
+    GROUP BY b.BlogId, b.Url
+    HAVING COUNT(p.BlogId) > 1
+)
+```
+
+Теперь сущность `BlogWithMultiplePost` может быть сопоставлена с этой функцией следующим образом:
+
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/EntityTypes.cs#QueryableFunctionConfigurationToFunction)]
+
+> [!NOTE]
+> Чтобы связать сущность с возвращающей табличное значение функцией, функция должна быть без параметров.
+
+Согласно соглашению, свойства сущности будут сопоставляться с соответствующими столбцами, возвращаемыми функцией. Если столбцы, возвращаемые функцией "функция", имеют разные имена, чем свойство сущности, то их можно настроить с помощью `HasColumnName` метода, как и при сопоставлении с обычной таблицей.
+
+Если тип сущности сопоставляется с функцией, возвращающей табличное значение, запрос:
+
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Program.cs#ToFunctionQuery)]
+
+Преобразуется в следующий запрос SQL:
+
+```sql
+SELECT [b].[Url], [b].[PostCount]
+FROM [dbo].[BlogsWithMultiplePosts]() AS [b]
+WHERE [b].[PostCount] > 3
+```
+
+## <a name="table-comments"></a>Комментарии к таблице
+
+Можно задать произвольный текстовый комментарий, заданный для таблицы базы данных, что позволит документировать схему в базе данных:
+
+### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
+
+> [!NOTE]
+> Установка комментариев с помощью заметок к данным была представлена в EF Core 5,0.
+
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/TableComment.cs?name=TableComment&highlight=1)]
+
+### <a name="fluent-api"></a>[Текучий API](#tab/fluent-api)
+
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableComment.cs?name=TableComment&highlight=4)]
+
+_**

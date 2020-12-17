@@ -4,12 +4,12 @@ description: Перехват для операций базы данных и �
 author: ajcvickers
 ms.date: 10/08/2020
 uid: core/logging-events-diagnostics/interceptors
-ms.openlocfilehash: 22d860a083c5ece9be109be630c3ce01dd742bf2
-ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
+ms.openlocfilehash: fba9f3d02b8cf504c2cadca8eb844cd3e818e915
+ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95003421"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97635813"
 ---
 # <a name="interceptors"></a>Перехватчики
 
@@ -401,7 +401,7 @@ Free beer for unicorns
 > [!TIP]  
 > Вы можете [скачать пример перехватчика SaveChanges](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/SaveChangesInterception) из GitHub.
 
-<xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A><xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>точки перехвата определяются`ISaveChangesInterceptor` <!-- Issue #2748 --> . Как и для других перехватчиков, `SaveChangesInterceptor` <!-- Issue #2748 --> базовый класс с методами без операций предоставляется для удобства.
+<xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A><xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>точки перехвата определяются <xref:Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor> интерфейсом. Как и для других перехватчиков, в <xref:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor> качестве удобства предоставляется базовый класс с методами, не имеющими Op.
 
 > [!TIP]
 > Перехватчики являются мощными. Однако во многих случаях может быть проще переопределить метод SaveChanges или использовать [события .NET для SaveChanges](xref:core/logging-events-diagnostics/events) , предоставляемых в DbContext.
@@ -502,7 +502,7 @@ public class EntityAudit
 * Если SaveChanges завершается успешно, сообщение аудита обновляется и указывает на успешное выполнение.
 * Если происходит сбой команды SaveChanges, то сообщение аудита обновляется, чтобы указать на ошибку.
 
-Первый этап обрабатывается перед отправкой изменений в базу данных с помощью переопределений `ISaveChangesInterceptor.SavingChanges` <!-- Issue #2748 -->  и `ISaveChangesInterceptor.SavingChangesAsync`<!-- Issue #2748 -->.
+Первый этап обрабатывается перед отправкой изменений в базу данных с помощью переопределений <xref:Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor.SavingChanges%2A?displayProperty=nameWithType> и <xref:Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor.SavingChangesAsync%2A?displayProperty=nameWithType> .
 
 <!--
     public async ValueTask<InterceptionResult<int>> SavingChangesAsync(
@@ -538,7 +538,7 @@ public class EntityAudit
 -->
 [!code-csharp[SavingChanges](../../../samples/core/Miscellaneous/SaveChangesInterception/AuditingInterceptor.cs?name=SavingChanges)]
 
-Переопределение методов Sync и Async гарантирует, что аудит будет выполняться независимо от того, вызваны ли методы SaveChanges или SaveChangesAsync. Также обратите внимание, что асинхронная перегрузка сама по себе может выполнять неблокирующие асинхронные операции ввода-вывода в базе данных аудита. Можно создать исключение из метода Sync Савингчанжес, чтобы гарантировать, что все операции ввода-вывода базы данных будут асинхронными. Это требует, чтобы приложение всегда вызывало SaveChangesAsync, а не SaveChanges.
+Переопределение методов Sync и Async гарантирует, что аудит будет выполняться независимо от того, `SaveChanges` вызывается ли метод или `SaveChangesAsync` . Также обратите внимание, что асинхронная перегрузка сама по себе может выполнять неблокирующие асинхронные операции ввода-вывода в базе данных аудита. Можно создать исключение из `SavingChanges` метода Sync, чтобы гарантировать, что все операции ввода-вывода базы данных будут асинхронными. Это требует, чтобы приложение всегда вызывало `SaveChangesAsync` и никогда `SaveChanges` .
 
 #### <a name="the-audit-message"></a>Сообщение аудита
 
@@ -598,7 +598,7 @@ public class EntityAudit
 
 #### <a name="detecting-success"></a>Обнаружение успеха
 
-Сущность Audit хранится на перехватчике, поэтому к нему можно получить доступ снова после того, как SaveChanges завершится успешно или неудачно. В случае успеха `ISaveChangesInterceptor.SavedChanges` <!-- Issue #2748 --> или `ISaveChangesInterceptor.SavedChangesAsync` <!-- Issue #2748 --> вызывается метод ;
+Сущность Audit хранится на перехватчике, поэтому к нему можно получить доступ снова после того, как SaveChanges завершится успешно или неудачно. Для успешного выполнения <xref:Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor.SavedChanges%2A?displayProperty=nameWithType> или <xref:Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor.SavedChangesAsync%2A?displayProperty=nameWithType> вызывается.
 
 <!--
     public int SavedChanges(SaveChangesCompletedEventData eventData, int result)
@@ -638,7 +638,7 @@ public class EntityAudit
 
 #### <a name="detecting-failure"></a>Обнаружение сбоя
 
-Сбой обрабатывается во многом так же, как и успешно, но в `ISaveChangesInterceptor.SaveChangesFailed` <!-- Issue #2748 --> или `ISaveChangesInterceptor.SaveChangesFailedAsync` <!-- Issue #2748 --> метод. Данные события содержат созданное исключение.
+Сбой обрабатывается во многом так же, как и успешно, но <xref:Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor.SaveChangesFailed%2A?displayProperty=nameWithType> в <xref:Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor.SaveChangesFailedAsync%2A?displayProperty=nameWithType> методе или. Данные события содержат созданное исключение.
 
 <!--
     public void SaveChangesFailed(DbContextErrorEventData eventData)

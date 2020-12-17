@@ -4,12 +4,12 @@ description: События .NET, определяемые EF Core
 author: ajcvickers
 ms.date: 10/15/2020
 uid: core/logging-events-diagnostics/events
-ms.openlocfilehash: 21ee65b7a2c5155c4d5b45350f3f47bdcee22921
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: 51c0bba5cf25e1d9ddd1fd9aebea50b9a03481a3
+ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431292"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97635696"
 ---
 # <a name="net-events-in-ef-core"></a>События .NET в EF Core
 
@@ -18,7 +18,7 @@ ms.locfileid: "94431292"
 
 Entity Framework Core (EF Core) предоставляет [события .NET](/dotnet/standard/events/) для выполнения в качестве обратных вызовов при возникновении определенных моментов в коде EF Core. События проще, чем [перехватчики](xref:core/logging-events-diagnostics/interceptors) , и обеспечивают более гибкую регистрацию. Однако они только синхронизируются и поэтому не могут выполнять неблокирующие асинхронные операции ввода-вывода.
 
-События регистрируются для каждого `DbContext` экземпляра. Используйте [прослушиватель диагностики](xref:core/logging-events-diagnostics/diagnostic-listeners) для получения одних и тех же сведений, но для всех экземпляров DbContext в процессе.
+События регистрируются для каждого `DbContext` экземпляра. С помощью [прослушивателя диагностики](xref:core/logging-events-diagnostics/diagnostic-listeners) можно получить ту же информацию, но для всех экземпляров DbContext в процессе.
 
 ## <a name="events-raised-by-ef-core"></a>События, вызванные EF Core
 
@@ -26,9 +26,9 @@ EF Core вызывает следующие события:
 
 | Событие | Представленная версия | При возникновении
 |:------|--------------------|-------
-| `DbContext.SavingChanges` <!-- Issue #2748 -->| 5,0 | В начале <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A> или <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>
-| `DbContext.SavedChanges`  <!-- Issue #2748 -->| 5,0 | В конце успешного <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A> или <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>
-| `DbContext.SaveChangesFailed`  <!-- Issue #2748 -->| 5,0 | В конце сбоя <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A> или <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>
+| <xref:Microsoft.EntityFrameworkCore.DbContext.SavingChanges?displayProperty=nameWithType> | 5,0 | В начале <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A> или <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>
+| <xref:Microsoft.EntityFrameworkCore.DbContext.SavedChanges?displayProperty=nameWithType> | 5,0 | В конце успешного <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A> или <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>
+| <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesFailed?displayProperty=nameWithType> | 5,0 | В конце сбоя <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A> или <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>
 | <xref:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.Tracked?displayProperty=nameWithType> | 2.1 | При отслеживании сущности в контексте
 | <xref:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.StateChanged?displayProperty=nameWithType> | 2.1 | Изменение состояния отслеживающей сущности
 

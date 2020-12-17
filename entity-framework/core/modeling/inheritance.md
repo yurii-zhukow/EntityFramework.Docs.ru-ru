@@ -4,12 +4,12 @@ description: Настройка наследования типов сущнос
 author: AndriySvyryd
 ms.date: 10/01/2020
 uid: core/modeling/inheritance
-ms.openlocfilehash: 33429bbc4a9941ff8ea98a8f99cc652c8ea26455
-ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
+ms.openlocfilehash: 11bd653a53767aa732790b1222da1beff8ad26a9
+ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95003631"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97635761"
 ---
 # <a name="inheritance"></a>Наследование
 
@@ -90,6 +90,9 @@ CREATE TABLE [RssBlogs] (
 > [!NOTE]
 > При переименовании ограничения PRIMARY KEY новое имя будет применено ко всем таблицам, сопоставленным с иерархией, а будущие версии EF будут разрешать Переименование ограничения только для конкретной таблицы, если [проблема 19970](https://github.com/dotnet/efcore/issues/19970) исправлена.
 
-При использовании групповой конфигурации можно получить имя столбца для определенной таблицы, вызвав метод <xref:Microsoft.EntityFrameworkCore.RelationalPropertyExtensions.GetColumnName%2A> .
+При использовании групповой конфигурации можно получить имя столбца для определенной таблицы, вызвав метод <xref:Microsoft.EntityFrameworkCore.RelationalPropertyExtensions.GetColumnName(Microsoft.EntityFrameworkCore.Metadata.IProperty,Microsoft.EntityFrameworkCore.Metadata.StoreObjectIdentifier@)> .
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TPTConfiguration.cs?name=Metadata&highlight=10)]
+
+> [!WARNING]
+> Во многих случаях TPT отображает неограниченную производительность по сравнению с подиерархией. [Дополнительные сведения см. в документации по производительности](xref:core/performance/modeling-for-performance#inheritance-mapping).

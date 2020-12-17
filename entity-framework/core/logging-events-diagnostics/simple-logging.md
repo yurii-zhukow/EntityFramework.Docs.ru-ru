@@ -4,17 +4,17 @@ description: Ведение журнала EF Core DbContext с помощью �
 author: ajcvickers
 ms.date: 10/03/2020
 uid: core/logging-events-diagnostics/simple-logging
-ms.openlocfilehash: 274fca39c45c4e2ccfd47f3c4eeb0834e00d18aa
-ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
+ms.openlocfilehash: 076c4b12aa033b51a2b839686c520a76520ee415
+ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95003514"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97635618"
 ---
 # <a name="simple-logging"></a>Простое ведение журнала
 
 > [!NOTE]
-> Эта функция появилась в EF Core 5,0.
+> Эта возможность появилась в EF Core 5.0.
 
 > [!TIP]  
 > Вы можете [скачать пример этой статьи](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/SimpleLogging) с сайта GitHub.
@@ -24,9 +24,9 @@ Entity Framework Core (EF Core) простое ведение журнала м�
 > [!TIP]
 > EF Core также интегрируется с [Microsoft. Extensions. Logging](xref:core/logging-events-diagnostics/extensions-logging), что требует дополнительной настройки, но часто более подходит для ведения журналов в рабочих приложениях.
 
-## <a name="configuration"></a>Параметр Configuration
+## <a name="configuration"></a>Конфигурация
 
-Доступ к журналам EF Core можно получить из любого типа приложений с помощью метода [LogTo](https://github.com/dotnet/efcore/blob/ec3df8fd7e4ea4ebeebfa747619cef37b23ab2c6/src/EFCore/DbContextOptionsBuilder.cs#L135) <!-- Issue #2748 <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.LogTo%2A> --> при [настройке экземпляра DbContext](xref:core/dbcontext-configuration/index). Такая конфигурация обычно выполняется при переопределении <xref:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring%2A?displayProperty=nameWithType>. Пример:
+Доступ к EF Coreным журналам можно получить из любого типа приложения, используя <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.LogTo%2A> при [настройке экземпляра DbContext](xref:core/dbcontext-configuration/index). Такая конфигурация обычно выполняется при переопределении <xref:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring%2A?displayProperty=nameWithType>. Пример:
 
 <!--
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -188,7 +188,7 @@ Entity Framework Core (EF Core) простое ведение журнала м�
 [!code-csharp[CustomFilter](../../../samples/core/Miscellaneous/Logging/SimpleLogging/Program.cs?name=CustomFilter)]
 
 > [!TIP]
-> Фильтрация с помощью настраиваемых фильтров или любого из других показанных здесь способов более эффективна, чем фильтрация в делегате Логто. Это происходит потому, что если фильтр определяет, что сообщение не должно регистрироваться, сообщение журнала не создается даже.
+> Фильтрация с помощью настраиваемых фильтров или любого из других показанных здесь способов более эффективна, чем фильтрация в `LogTo` делегате. Это происходит потому, что если фильтр определяет, что сообщение не должно регистрироваться, сообщение журнала не создается даже.
 
 ## <a name="configuration-for-specific-messages"></a>Конфигурация для конкретных сообщений
 
@@ -260,14 +260,14 @@ dbug: 10/6/2020 10:52:45.585 RelationalEventId.TransactionCommitted[20202] (Micr
       Committed transaction.
 ```
 
-Это содержимое можно настроить, передав значения из [дбконтекстлогжероптионс](https://github.com/dotnet/efcore/blob/ec3df8fd7e4ea4ebeebfa747619cef37b23ab2c6/src/EFCore/Diagnostics/DbContextLoggerOptions.cs#L15) . <!-- Issue #2748 <xref:Microsoft.EntityFrameworkCore.Diagnostics.DbContextLoggerOptions> -->, как показано в следующих разделах.
+Это содержимое можно настроить путем передачи значений из <xref:Microsoft.EntityFrameworkCore.Diagnostics.DbContextLoggerOptions> , как показано в следующих разделах.
 
 > [!TIP]
 > Рассмотрите возможность использования [Microsoft. Extensions. Logging](/aspnet/core/fundamentals/logging) для более контроля над форматированием журнала.
 
 ### <a name="using-utc-time"></a>Использование времени в формате UTC
 
-По умолчанию тиместамнпс предназначены для локального использования во время отладки. Используйте `DbContextLoggerOptions.DefaultWithUtcTime` , чтобы вместо этого использовать отметку времени UTC независимо от языка и региональных параметров, но хранить все остальное. Пример:
+По умолчанию метки времени предназначены для локального использования во время отладки. Используйте <xref:Microsoft.EntityFrameworkCore.Diagnostics.DbContextLoggerOptions.DefaultWithUtcTime?displayProperty=nameWithType> , чтобы вместо этого использовать отметку времени UTC независимо от языка и региональных параметров, но хранить все остальное. Пример:
 
 <!--
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -295,7 +295,7 @@ dbug: 2020-10-06T17:55:39.0351684Z RelationalEventId.TransactionCommitted[20202]
 
 ### <a name="single-line-logging"></a>Ведение журнала в одной строке
 
-Иногда бывает полезно получить ровно одну строку для каждого сообщения журнала. Это можно включить с помощью `DbContextLoggerOptions.SingleLine` . Пример:
+Иногда бывает полезно получить ровно одну строку для каждого сообщения журнала. Это можно включить с помощью <xref:Microsoft.EntityFrameworkCore.Diagnostics.DbContextLoggerOptions.SingleLine?displayProperty=nameWithType> . Пример:
 
 <!--
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -316,7 +316,7 @@ dbug: 10/6/2020 10:52:45.725 RelationalEventId.TransactionCommitted[20202] (Micr
 
 ### <a name="other-content-options"></a>Другие параметры содержимого
 
-Другие флаги в [дбконтекстлогжероптионс](https://github.com/dotnet/efcore/blob/ec3df8fd7e4ea4ebeebfa747619cef37b23ab2c6/src/EFCore/Diagnostics/DbContextLoggerOptions.cs#L15) <!-- Issue #2748 <xref:Microsoft.EntityFrameworkCore.Diagnostics.DbContextLoggerOptions> --> можно использовать для сокращения количества метаданных, содержащихся в журнале. Это может быть полезно в сочетании с однострочным ведением журнала. Пример:
+Другие флаги в <xref:Microsoft.EntityFrameworkCore.Diagnostics.DbContextLoggerOptions> можно использовать для сокращения количества метаданных, содержащихся в журнале. Это может быть полезно в сочетании с однострочным ведением журнала. Пример:
 
 <!--
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

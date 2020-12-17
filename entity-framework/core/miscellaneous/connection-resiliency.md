@@ -4,12 +4,12 @@ description: Использование устойчивости подключ�
 author: AndriySvyryd
 ms.date: 11/15/2016
 uid: core/miscellaneous/connection-resiliency
-ms.openlocfilehash: db0666a49cbd41ef3eacf447eaeed1fb54ffcbf4
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: bcafdf5de26ecfd7539d426388154550a39332ab
+ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92061922"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97635787"
 ---
 # <a name="connection-resiliency"></a>Устойчивость подключений
 
@@ -32,6 +32,9 @@ public void ConfigureServices(IServiceCollection services)
             providerOptions => providerOptions.EnableRetryOnFailure()));
 }
 ```
+
+> [!NOTE]
+> Включение повтора в случае сбоя приводит к тому, что EF внутренним образом замещает результирующий набор, что может значительно увеличить требования к памяти для запросов, возвращающих большие результирующие наборы. Дополнительные сведения см. в разделе [буферизация и потоковая передача](xref:core/performance/efficient-querying#buffering-and-streaming) .
 
 ## <a name="custom-execution-strategy"></a>Настраиваемая стратегия выполнения
 
