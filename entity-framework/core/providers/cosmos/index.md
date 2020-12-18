@@ -4,12 +4,12 @@ description: Документация для поставщика базы да�
 author: AndriySvyryd
 ms.date: 10/09/2020
 uid: core/providers/cosmos/index
-ms.openlocfilehash: b167f53515799efdaead232f44ad5eab37fb0b14
-ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
+ms.openlocfilehash: 8bfce78465e8194544562c3ecac4d3398ca91265
+ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95003605"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97635592"
 ---
 # <a name="ef-core-azure-cosmos-db-provider"></a>Поставщик EF Core для Azure Cosmos DB
 
@@ -103,12 +103,12 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 > [!NOTE]
 >Свойство ключа секции может иметь любой тип, если он [преобразован в строку](xref:core/modeling/value-conversions).
 
-После настройки свойство ключа секции всегда должно иметь значение, отличное от NULL. Запрос можно ограничить одной секцией, добавив вызов `WithPartitionKey`.
+После настройки свойство ключа секции всегда должно иметь значение, отличное от NULL. Запрос можно ограничить одной секцией, добавив вызов <xref:Microsoft.EntityFrameworkCore.CosmosQueryableExtensions.WithPartitionKey%2A>.
 
 [!code-csharp[PartitionKey](../../../../samples/core/Cosmos/ModelBuilding/Sample.cs?name=PartitionKey&highlight=15)]
 
 > [!NOTE]
-> `WithPartitionKey` появился в EF Core 5.0.
+> <xref:Microsoft.EntityFrameworkCore.CosmosQueryableExtensions.WithPartitionKey%2A> появился в EF Core 5.0.
 
 Обычно рекомендуется добавить ключ секции в первичный ключ, так как это наилучшим образом отражает семантику сервера и позволяет выполнять некоторые оптимизации, например в `FindAsync`.
 
@@ -212,10 +212,10 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 > [!NOTE]
 > Поддержка параллелизма eTag появилась в EF Core 5.0.
 
-Чтобы настроить тип сущности для использования [оптимистического параллелизма](xref:core/modeling/concurrency), вызовите `UseETagConcurrency`. Этот вызов создает свойство `_etag` в [теневом состоянии](xref:core/modeling/shadow-properties) и устанавливает его в качестве маркера параллелизма.
+Чтобы настроить тип сущности для использования [оптимистического параллелизма](xref:core/modeling/concurrency), вызовите <xref:Microsoft.EntityFrameworkCore.CosmosEntityTypeBuilderExtensions.UseETagConcurrency%2A>. Этот вызов создает свойство `_etag` в [теневом состоянии](xref:core/modeling/shadow-properties) и устанавливает его в качестве маркера параллелизма.
 
 [!code-csharp[Main](../../../../samples/core/Cosmos/ModelBuilding/OrderContext.cs?name=ETag)]
 
-Чтобы упростить устранение ошибок параллелизма, можно сопоставить eTag со свойством CLR, используя `IsETagConcurrency`.
+Чтобы упростить устранение ошибок параллелизма, можно сопоставить eTag со свойством CLR, используя <xref:Microsoft.EntityFrameworkCore.CosmosPropertyBuilderExtensions.IsETagConcurrency%2A>.
 
 [!code-csharp[Main](../../../../samples/core/Cosmos/ModelBuilding/OrderContext.cs?name=ETagProperty)]

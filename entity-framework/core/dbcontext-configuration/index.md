@@ -4,12 +4,12 @@ description: Шаблоны для создания экземпляров DbCon
 author: ajcvickers
 ms.date: 11/07/2020
 uid: core/dbcontext-configuration/index
-ms.openlocfilehash: f4d51e10555844b5a14000a464f86d3440d5749e
-ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
+ms.openlocfilehash: 93d5942fbc81ee0ae9aeff0c5c8b9e20b160d512
+ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95003293"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97635396"
 ---
 # <a name="dbcontext-lifetime-configuration-and-initialization"></a>Время существования, настройка и инициализация DbContext
 
@@ -42,7 +42,7 @@ ms.locfileid: "95003293"
 
 Во многих веб-приложениях каждый HTTP-запрос соответствует одной единице работы. По этой причине в веб-приложениях время существования контекста по умолчанию привязывается ко времени существования запроса.
 
-Приложения ASP.NET Core [настраиваются с использованием внедрения зависимостей](/aspnet/core/fundamentals/startup). Вы можете добавить EF Core в такую конфигурацию с помощью <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> в методе [`ConfigurureServices`](/aspnet/core/fundamentals/startup#the-configureservices-method) файла `Startup.cs`. Пример:
+Приложения ASP.NET Core [настраиваются с использованием внедрения зависимостей](/aspnet/core/fundamentals/startup). Вы можете добавить EF Core в такую конфигурацию с помощью <xref:Microsoft.Extensions.DependencyInjection.EntityFrameworkServiceCollectionExtensions.AddDbContext%2A> в методе [`ConfigureServices`](/aspnet/core/fundamentals/startup#the-configureservices-method) файла `Startup.cs`. Пример:
 
 <!--
         public void ConfigureServices(IServiceCollection services)
