@@ -176,6 +176,8 @@
               href: core/querying/raw-sql.md
             - name: Функции базы данных
               href: core/querying/database-functions.md
+            - name: Сопоставление определяемых пользователем функций
+              href: core/querying/user-defined-function-mapping.md
             - name: Глобальные фильтры запросов
               href: core/querying/filters.md
             - name: Теги запросов
@@ -228,6 +230,20 @@
               href: core/testing/sqlite.md
             - name: Тестирование с помощью InMemory
               href: core/testing/in-memory.md
+        - name: Производительность
+          items:
+            - name: Введение
+              href: core/performance/index.md
+            - name: Диагностика производительности
+              href: core/performance/performance-diagnosis.md
+            - name: Эффективное выполнение запросов
+              href: core/performance/efficient-querying.md
+            - name: Эффективное обновление
+              href: core/performance/efficient-updating.md
+            - name: Моделирование производительности
+              href: core/performance/modeling-for-performance.md
+            - name: Дополнительные разделы о производительности
+              href: core/performance/advanced-performance-topics.md
         - name: Прочее
           items:
             - name: Поддерживаемые реализации .NET
@@ -307,7 +323,7 @@
             - name: Службы времени разработки
               href: core/cli/services.md
         - name: "Справочник по API\_EF\_Core >>"
-          href: /dotnet/api/?view=efcore-3.1
+          href: /dotnet/api/?view=efcore-5.0
     - name: Entity Framework 6
       items:
         - name: Обзор
