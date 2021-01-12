@@ -4,12 +4,12 @@ description: Отложенная загрузка связанных данны
 author: roji
 ms.date: 9/8/2020
 uid: core/querying/related-data/lazy
-ms.openlocfilehash: c42cde469e2be38d53a46cb6c5c252a088978e5c
-ms.sourcegitcommit: abda0872f86eefeca191a9a11bfca976bc14468b
+ms.openlocfilehash: 55622b9c5a8f70ef4e7246d6eb14678036948f18
+ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90078893"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97635462"
 ---
 # <a name="lazy-loading-of-related-data"></a>Отложенная загрузка связанных данных
 
@@ -52,6 +52,9 @@ public class Post
     public virtual Blog Blog { get; set; }
 }
 ```
+
+> [!WARNING]
+> Отложенная загрузка может приводить к излишним циклическим обращениям к базе данных (так называемая проблема N+1). Соблюдайте осторожность, чтобы избежать этого. Дополнительные сведения см. в разделе, посвященном [производительности](xref:core/performance/efficient-querying#beware-of-lazy-loading).
 
 ## <a name="lazy-loading-without-proxies"></a>Отложенная загрузка без прокси-серверов
 
