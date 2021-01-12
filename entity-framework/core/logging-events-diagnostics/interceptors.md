@@ -4,12 +4,12 @@ description: Перехват для операций базы данных и �
 author: ajcvickers
 ms.date: 10/08/2020
 uid: core/logging-events-diagnostics/interceptors
-ms.openlocfilehash: fba9f3d02b8cf504c2cadca8eb844cd3e818e915
-ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
+ms.openlocfilehash: e3b2f1a0f1a97d211bcaba0633955a7fe9c0aa91
+ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97635813"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98128593"
 ---
 # <a name="interceptors"></a>Перехватчики
 
@@ -26,7 +26,7 @@ ms.locfileid: "97635813"
 <!--
 public class ExampleContext : BlogsContext
 {
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.AddInterceptors(new TaggedQueryCommandInterceptor());
 }
 -->
@@ -42,10 +42,10 @@ public class ExampleContext : BlogsContext
 <!--
 public class TaggedQueryCommandInterceptorContext : BlogsContext
 {
-    private static readonly TaggedQueryCommandInterceptor _interceptor 
+    private static readonly TaggedQueryCommandInterceptor _interceptor
         = new TaggedQueryCommandInterceptor();
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.AddInterceptors(_interceptor);
 }
 -->
@@ -75,7 +75,7 @@ public class TaggedQueryCommandInterceptorContext : BlogsContext
 
 ### <a name="example-command-interception-to-add-query-hints"></a>Пример: перехват команд для добавления указания запроса
 
-> [!TIP]  
+> [!TIP]
 > [Пример перехватчика команд можно скачать](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/CommandInterception) с сайта GitHub.
 
 <xref:Microsoft.EntityFrameworkCore.Diagnostics.IDbCommandInterceptor>Можно использовать для изменения SQL перед его отправкой в базу данных. В этом примере показано, как изменить SQL, включив в него указание запроса.
@@ -148,7 +148,7 @@ FROM [Blogs] AS [b]
 
 ### <a name="example-connection-interception-for-sql-azure-authentication-using-add"></a>Пример. перехват подключения для проверки подлинности SQL Azure с помощью ADD
 
-> [!TIP]  
+> [!TIP]
 > [Пример перехватчика подключения можно скачать](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/ConnectionInterception) с сайта GitHub.
 
 <xref:Microsoft.EntityFrameworkCore.Diagnostics.IDbConnectionInterceptor>Можно использовать для управления до того, <xref:System.Data.Common.DbConnection> как он будет использоваться для подключения к базе данных. Это можно использовать для получения маркера доступа Azure Active Directory (AAD). Пример:
@@ -182,7 +182,7 @@ public class AadAuthenticationInterceptor : DbConnectionInterceptor
 [!code-csharp[AadAuthenticationInterceptor](../../../samples/core/Miscellaneous/ConnectionInterception/AadAuthenticationInterceptor.cs?name=AadAuthenticationInterceptor)]
 
 > [!TIP]
-> [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/) теперь поддерживает проверку подлинности AAD через строку подключения. Дополнительные сведения см. в разделе <xref:Microsoft.Data.SqlClient.SqlAuthenticationMethod>.
+> [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/) теперь поддерживает проверку подлинности AAD через строку подключения. Подробнее см. в разделе <xref:Microsoft.Data.SqlClient.SqlAuthenticationMethod>.
 
 > [!WARNING]
 > Обратите внимание, что перехватчик создает исключение при вызове синхронизации для открытия соединения. Это обусловлено тем, что для получения маркера доступа нет метода, не являющегося асинхронным, и нет [универсального и простого способа вызова асинхронного метода из контекста, не являющегося асинхронным, без риска взаимоблокировки](https://devblogs.microsoft.com/dotnet/configureawait-faq/).
@@ -192,7 +192,7 @@ public class AadAuthenticationInterceptor : DbConnectionInterceptor
 
 ### <a name="example-advanced-command-interception-for-caching"></a>Пример. Расширенное перехват команд для кэширования
 
-> [!TIP]  
+> [!TIP]
 > [Пример расширенного перехватчика команд можно скачать](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/CachingInterception) с сайта GitHub.
 
 Перехватчики EF Core могут:
@@ -343,7 +343,7 @@ public class AadAuthenticationInterceptor : DbConnectionInterceptor
         {
             Console.WriteLine(await GetDailyMessage(context));
         }
-        
+
         #region GetDailyMessage
         async Task<string> GetDailyMessage(DailyMessageContext context)
             => (await context.DailyMessages.TagWith("Get_Daily_Message").OrderBy(e => e.Id).LastAsync()).Message;
@@ -398,7 +398,7 @@ Free beer for unicorns
 > [!NOTE]
 > Перехват SaveChanges появился в EF Core 5,0.
 
-> [!TIP]  
+> [!TIP]
 > Вы можете [скачать пример перехватчика SaveChanges](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/SaveChangesInterception) из GitHub.
 
 <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A><xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>точки перехвата определяются <xref:Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor> интерфейсом. Как и для других перехватчиков, в <xref:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor> качестве удобства предоставляется базовый класс с методами, не имеющими Op.

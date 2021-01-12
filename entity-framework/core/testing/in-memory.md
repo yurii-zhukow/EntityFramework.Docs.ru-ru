@@ -4,18 +4,18 @@ description: Использование базы данных EF в памяти
 author: ajcvickers
 ms.date: 10/27/2016
 uid: core/testing/in-memory
-ms.openlocfilehash: db91570dc9d5a4b95d513df509867e9bca406356
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: 78dcac3d0fd69110986c99a097a864104caa1951
+ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431274"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98128814"
 ---
 # <a name="testing-with-the-ef-in-memory-database"></a>Тестирование с помощью базы данных EF In-Memory
 
 > [!WARNING]
 > База данных EF в памяти часто ведет себя иначе, чем в реляционных базах данных.
-> Используйте только базу данных EF в памяти после полного понимания проблем и связанных с ними компромиссов, как описано в разделе [тестирование кода, использующего EF Core](xref:core/testing/index).  
+> Используйте только базу данных EF в памяти после полного понимания проблем и связанных с ними компромиссов, как описано в разделе [тестирование кода, использующего EF Core](xref:core/testing/index).
 
 > [!TIP]
 > SQLite — это реляционный поставщик, который также может использовать базы данных в памяти.

@@ -4,12 +4,12 @@ description: Функции индекса, относящиеся к поста
 author: roji
 ms.date: 9/1/2020
 uid: core/providers/sql-server/indexes
-ms.openlocfilehash: 66b4e3ce5ab1d4da855c106a6a2d2e75c43081f7
-ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
+ms.openlocfilehash: 42411a562b4741ba39b4eb855bb84c66e100456b
+ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95003164"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98129165"
 ---
 # <a name="index-features-specific-to-the-entity-framework-core-sql-server-provider"></a>Функции индекса, относящиеся к поставщику Entity Framework Core SQL Server
 
@@ -25,10 +25,13 @@ ms.locfileid: "95003164"
 
 [!code-csharp[ClusteredIndex](../../../../samples/core/SqlServer/Indexes/ClusteredIndexContext.cs?name=ClusteredIndex)]
 
+> [!NOTE]
+> SQL Server поддерживает только один кластеризованный индекс на таблицу, а первичный ключ по умолчанию — Clustered. Если вы хотите иметь кластеризованный индекс для неключевого столбца, необходимо явно сделать ключ некластеризованным.
+
 ## <a name="fill-factor"></a>Коэффициент заполнения.
 
 > [!NOTE]
-> Эта функция появилась в EF Core 5,0.
+> Эта возможность появилась в EF Core 5.0.
 
 Для точной настройки хранения и производительности индексированных данных используется параметр индексный коэффициент заполнения. Дополнительные сведения см. [в SQL Server документации по коэффициенту заполнения](/sql/relational-databases/indexes/specify-fill-factor-for-an-index).
 

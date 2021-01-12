@@ -4,20 +4,20 @@ description: Ведение журнала EF Core DbContext с помощью �
 author: ajcvickers
 ms.date: 10/03/2020
 uid: core/logging-events-diagnostics/simple-logging
-ms.openlocfilehash: 076c4b12aa033b51a2b839686c520a76520ee415
-ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
+ms.openlocfilehash: 5c2dc41122dfa3919d1e6a26b0760883d77ee1a0
+ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97635618"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98129217"
 ---
 # <a name="simple-logging"></a>Простое ведение журнала
 
 > [!NOTE]
 > Эта возможность появилась в EF Core 5.0.
 
-> [!TIP]  
-> Вы можете [скачать пример этой статьи](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/SimpleLogging) с сайта GitHub.
+> [!TIP]
+> Вы можете [скачать пример этой статьи](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Logging/SimpleLogging) с сайта GitHub.
 
 Entity Framework Core (EF Core) простое ведение журнала можно использовать для простого получения журналов при разработке и отладке приложений. Для этой формы ведения журнала требуется минимальная конфигурация и отсутствие дополнительных пакетов NuGet.
 
@@ -26,7 +26,7 @@ Entity Framework Core (EF Core) простое ведение журнала м�
 
 ## <a name="configuration"></a>Конфигурация
 
-Доступ к EF Coreным журналам можно получить из любого типа приложения, используя <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.LogTo%2A> при [настройке экземпляра DbContext](xref:core/dbcontext-configuration/index). Такая конфигурация обычно выполняется при переопределении <xref:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring%2A?displayProperty=nameWithType>. Пример:
+Доступ к журналам EF Core можно получить из любого типа приложений с помощью метода <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.LogTo%2A> при [настройке экземпляра DbContext](xref:core/dbcontext-configuration/index). Такая конфигурация обычно выполняется при переопределении <xref:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring%2A?displayProperty=nameWithType>. Пример:
 
 <!--
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -62,7 +62,7 @@ Entity Framework Core (EF Core) простое ведение журнала м�
 Для записи в файл необходимо создать <xref:System.IO.StreamWriter> или аналогичный файл. <xref:System.IO.StreamWriter.WriteLine%2A>Затем метод можно использовать, как в других примерах выше. Не забудьте убедиться, что файл закрыт в чистом виде путем удаления модуля записи при удалении контекста. Пример:
 
 <!--
-    private readonly StreamWriter _logStream = new StreamWriter("mylog.txt", append: true); 
+    private readonly StreamWriter _logStream = new StreamWriter("mylog.txt", append: true);
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.LogTo(_logStream.WriteLine);
@@ -72,7 +72,7 @@ Entity Framework Core (EF Core) простое ведение журнала м�
         base.Dispose();
         _logStream.Dispose();
     }
-    
+
     public override async ValueTask DisposeAsync()
     {
         await base.DisposeAsync();
@@ -130,7 +130,7 @@ Entity Framework Core (EF Core) простое ведение журнала м�
 
 Каждому сообщению журнала присваивается <xref:Microsoft.Extensions.Logging.EventId> . Доступ к этим идентификаторам можно получить из <xref:Microsoft.EntityFrameworkCore.Diagnostics.CoreEventId> класса или <xref:Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId> класса для связанных с ним сообщений. Поставщик базы данных также может иметь идентификаторы, зависящие от поставщика, в аналогичном классе. Например, <xref:Microsoft.EntityFrameworkCore.Diagnostics.SqlServerEventId> для поставщика SQL Server.
 
-`LogTo` можно настроить для записи только в журнал сообщений, связанных с одним или несколькими идентификаторами событий. Например, чтобы заносить в журнал только сообщения для контекста, который инициализируется или удаляется:  
+`LogTo` можно настроить для записи только в журнал сообщений, связанных с одним или несколькими идентификаторами событий. Например, чтобы заносить в журнал только сообщения для контекста, который инициализируется или удаляется:
 
 <!--
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

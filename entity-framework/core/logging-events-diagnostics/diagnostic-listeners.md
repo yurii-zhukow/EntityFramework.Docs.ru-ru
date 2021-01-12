@@ -4,19 +4,19 @@ description: Использование Диагностиклистенер д�
 author: ajcvickers
 ms.date: 10/16/2020
 uid: core/logging-events-diagnostics/diagnostic-listeners
-ms.openlocfilehash: a2a962ac714cf80c42c269cee3770699aaa4c0c9
-ms.sourcegitcommit: 42bbf7f68e92c364c5fff63092d3eb02229f568d
+ms.openlocfilehash: afb80aa8f05f70761e423f58653f681938079858
+ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94503232"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98129269"
 ---
 # <a name="using-diagnostic-listeners-in-ef-core"></a>Использование прослушивателей диагностики в EF Core
 
-> [!TIP]  
+> [!TIP]
 > Вы можете [скачать пример этой статьи](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/DiagnosticListeners) с сайта GitHub.
 
-Прослушиватели диагностики допускают прослушивание любого EF Core события, возникающего в текущем процессе .NET. <xref:System.Diagnostics.DiagnosticListener>Класс является частью [общего механизма в .NET](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) для получения диагностических сведений от выполняющихся приложений.
+Прослушиватели диагностики позволяют прослушивать любое событие EF Core, возникающее в текущем процессе .NET. <xref:System.Diagnostics.DiagnosticListener>Класс является частью [общего механизма в .NET](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) для получения диагностических сведений от выполняющихся приложений.
 
 Прослушиватели диагностики не подходят для получения событий из одного экземпляра DbContext. [Перехватчики](xref:core/logging-events-diagnostics/interceptors) EF Core предоставляют доступ к одним и тем же событиям с регистрацией по контексту.
 
@@ -29,10 +29,10 @@ ms.locfileid: "94503232"
 <!--
 public class DiagnosticObserver : IObserver<DiagnosticListener>
 {
-    public void OnCompleted() 
+    public void OnCompleted()
         => throw new NotImplementedException();
-    
-    public void OnError(Exception error) 
+
+    public void OnError(Exception error)
         => throw new NotImplementedException();
 
     public void OnNext(DiagnosticListener value)
@@ -60,10 +60,10 @@ public class DiagnosticObserver : IObserver<DiagnosticListener>
 <!--
 public class KeyValueObserver : IObserver<KeyValuePair<string, object>>
 {
-    public void OnCompleted() 
+    public void OnCompleted()
         => throw new NotImplementedException();
-    
-    public void OnError(Exception error) 
+
+    public void OnError(Exception error)
         => throw new NotImplementedException();
 
     public void OnNext(KeyValuePair<string, object> value)
@@ -105,12 +105,12 @@ public class KeyValueObserver : IObserver<KeyValuePair<string, object>>
         #region RegisterDiagnosticListener
         DiagnosticListener.AllListeners.Subscribe(new DiagnosticObserver());
         #endregion
-        
+
         using (var context = new BlogsContext())
         {
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
-            
+
             context.Add(
                 new Blog
                 {
