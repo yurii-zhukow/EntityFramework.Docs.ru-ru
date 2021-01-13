@@ -4,12 +4,12 @@ description: Шаблоны для создания экземпляров DbCon
 author: ajcvickers
 ms.date: 11/07/2020
 uid: core/dbcontext-configuration/index
-ms.openlocfilehash: 93d5942fbc81ee0ae9aeff0c5c8b9e20b160d512
-ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
+ms.openlocfilehash: 10ed474df2c4c52e61083d9d671909be02cd8cef
+ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97635396"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98129035"
 ---
 # <a name="dbcontext-lifetime-configuration-and-initialization"></a>Время существования, настройка и инициализация DbContext
 
@@ -48,7 +48,7 @@ ms.locfileid: "97635396"
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
         }
@@ -303,7 +303,7 @@ ms.locfileid: "97635396"
 |:-------------------------------------------------------------------------------------------|-------------------------------------------------------------|--------------
 | <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseQueryTrackingBehavior%2A>   | Задает поведение отслеживания по умолчанию для запросов.              | [Поведение отслеживания запросов](xref:core/querying/tracking)
 | <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.LogTo%2A>                      | Простой способ для получения журналов EF Core (для EF Core 5.0 и более поздних версий).    | [Ведение журналов, регистрация событий и диагностика](xref:core/logging-events-diagnostics/index)
-| <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseLoggerFactory%2A>           | Регистрирует фабрику `Micrsofot.Extensions.Logging`.         | [Ведение журналов, регистрация событий и диагностика](xref:core/logging-events-diagnostics/index)
+| <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseLoggerFactory%2A>           | Регистрирует фабрику `Microsoft.Extensions.Logging`.         | [Ведение журналов, регистрация событий и диагностика](xref:core/logging-events-diagnostics/index)
 | <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableSensitiveDataLogging%2A> | Отвечает за включение данных приложения в исключениях и ведение журналов.         | [Ведение журналов, регистрация событий и диагностика](xref:core/logging-events-diagnostics/index)
 | <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.EnableDetailedErrors%2A>       | Подробные ошибки запросов (в ущерб производительности).  | [Ведение журналов, регистрация событий и диагностика](xref:core/logging-events-diagnostics/index)
 | <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.ConfigureWarnings%2A>          | Позволяет игнорировать или генерировать предупреждения и другие события.               | [Ведение журналов, регистрация событий и диагностика](xref:core/logging-events-diagnostics/index)
