@@ -4,18 +4,18 @@ description: Сведения о сохранении графов связан�
 author: ajcvickers
 ms.date: 10/27/2016
 uid: core/saving/related-data
-ms.openlocfilehash: 25b4e265f19e658097be7332f9cba6fec3b560db
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: f1cc752587e6a3eb58d070f5f573450b51986f70
+ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92062949"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98129100"
 ---
 # <a name="saving-related-data"></a>Сохранение связанных данных
 
 В дополнение к изолированным сущностям вы также можете использовать связи, определенные в вашей модели.
 
-> [!TIP]  
+> [!TIP]
 > Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/RelatedData/) из репозитория GitHub.
 
 ## <a name="adding-a-graph-of-new-entities"></a>Добавление графа новых сущностей
@@ -26,7 +26,7 @@ ms.locfileid: "92062949"
 
 [!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#AddingGraphOfEntities)]
 
-> [!TIP]  
+> [!TIP]
 > Используйте свойство EntityEntry.State, чтобы установить состояние только одной сущности. Например, `context.Entry(blog).State = EntityState.Modified`.
 
 ## <a name="adding-a-related-entity"></a>Добавление связанной сущности
