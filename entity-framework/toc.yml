@@ -19,6 +19,8 @@
       items:
         - name: Добро пожаловать!
           href: core/index.md
+        - name: "Новые возможности EF\_Core\_5.0"
+          href: /ef/core/what-is-new/ef-core-5.0/whatsnew
         - name: Начало работы
           items:
             - name: Обзор EF Core
@@ -41,6 +43,14 @@
               href: core/what-is-new/index.md
             - name: Процесс планирования выпусков
               href: core/what-is-new/release-planning.md
+            - name: "EF Core\_6.0"
+              items:
+                - name: Общий план
+                  href: core/what-is-new/ef-core-6.0/plan.md
+                - name: Новые возможности
+                  href: core/what-is-new/ef-core-6.0/whatsnew.md
+                - name: Критические изменения
+                  href: core/what-is-new/ef-core-6.0/breaking-changes.md
             - name: EF Core 5.0
               items:
                 - name: Общий план
@@ -182,6 +192,8 @@
               href: core/querying/filters.md
             - name: Теги запросов
               href: core/querying/tags.md
+            - name: Сравнения со значениями NULL в запросах
+              href: core/querying/null-comparisons.md
             - name: Как работают запросы
               href: core/querying/how-query-works.md
         - name: Сохранение данных
@@ -202,6 +214,24 @@
               href: core/saving/disconnected-entities.md
             - name: Явные значения для создаваемых свойств
               href: core/saving/explicit-values-generated-properties.md
+        - name: Change tracking
+          items:
+            - name: Обзор
+              href: core/change-tracking/index.md
+            - name: Сущности с явным отслеживанием
+              href: core/change-tracking/explicit-tracking.md
+            - name: Доступ к отслеживаемым сущностям
+              href: core/change-tracking/entity-entries.md
+            - name: Изменение внешних ключей и свойств навигации
+              href: core/change-tracking/relationship-changes.md
+            - name: Обнаружение изменений и уведомление о них
+              href: core/change-tracking/change-detection.md
+            - name: Разрешение идентификатора
+              href: core/change-tracking/identity-resolution.md
+            - name: Дополнительные функции для отслеживания изменений
+              href: core/change-tracking/miscellaneous.md
+            - name: Отладка средства записи изменений
+              href: core/change-tracking/debug-views.md
         - name: 'Ведение журналов, регистрация событий и диагностика'
           items:
             - name: Обзор
