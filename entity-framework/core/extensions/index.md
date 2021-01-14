@@ -2,20 +2,20 @@
 title: Инструменты и расширения — EF Core
 description: Внешние средства и расширения для Entity Framework Core
 author: ErikEJ
-ms.date: 11/22/2020
+ms.date: 01/06/2021
 uid: core/extensions/index
-ms.openlocfilehash: 4136710567d0f6b088a0dd5ad9895d8b93313e5e
-ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
+ms.openlocfilehash: 1198cd586902cd6222a94225056d076c847c9197
+ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97635410"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98129022"
 ---
 # <a name="ef-core-tools--extensions"></a>Инструменты и расширения EF Core
 
 Эти инструменты и расширения предоставляют дополнительные возможности для Entity Framework Core 2.1 и более поздних версий.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Расширения создаются с помощью различных источников и не поддерживаются в рамках проекта Entity Framework Core. Выбирая стороннее расширение, обязательно оцените его качество, лицензирование, совместимость, поддержку и другие показатели на соответствие вашим требованиям. В частности, для расширения, созданного для более ранней версии EF Core, может потребоваться обновление, прежде чем это расширение будет работать с последними версиями.
 
 ## <a name="tools"></a>Инструменты
@@ -36,7 +36,7 @@ Entity Developer — мощный конструктор O/RM для ADO.NET En
 
 O/RM создает строго типизированные расширяемые классы для Entity Framework. Созданный код представляет собой Entity Framework Core. Различий при этом нет. Это не замена EF или пользовательского O/RM. Это визуальный слой моделирования, который позволяет команде управлять сложными схемами баз данных. Он поддерживает программное обеспечение SCM, например Git, обеспечивая доступ многих пользователей к модели с минимальными конфликтами. Установщик отслеживает изменения модели и создает скрипты обновления. Для EF Core: 3.
 
-[Сайт GitHub](https://github.com/nHydrate/nHydrate)
+[Репозиторий GitHub](https://github.com/nHydrate/nHydrate)
 
 ### <a name="ef-core-power-tools"></a>EF Core Power Tools
 
@@ -119,11 +119,23 @@ NeinLinq расширяет возможности поставщиков LINQ, 
 
 [Репозиторий GitHub](https://github.com/jsakamoto/EntityFrameworkCore.IndexAttribute)
 
-### <a name="efcoreinmemoryhelpers"></a>EfCore.InMemoryHelpers
+### <a name="verifyentityframework"></a>Verify.EntityFramework
 
-Предоставляет оболочку для поставщика базы данных в памяти EF Core. Позволяет сделать так, чтобы эта оболочка напоминала поставщик реляционных баз данных. Для EF Core: 2.
+Расширяет возможности [Verify](https://github.com/VerifyTests/Verify), чтобы разрешить тестирование моментальных снимков с помощью Entity Framework. Для EF Core: 3, 5.
 
-[Репозиторий GitHub](https://github.com/SimonCropp/EfCore.InMemoryHelpers)
+[Репозиторий GitHub](https://github.com/VerifyTests/Verify.EntityFramework)
+
+### <a name="localdb"></a>LocalDB
+
+Предоставляет оболочку для [SQL Server Express LocalDB](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-express-localdb), позволяющую упростить выполнение тестов в Entity Framework. Для EF Core: 3, 5.
+
+[Репозиторий GitHub](https://github.com/SimonCropp/LocalDb)
+
+### <a name="effluentvalidation"></a>EfFluentValidation
+
+Добавляет поддержку [FluentValidation](https://fluentvalidation.net/) в Entity Framework. Для EF Core: 3, 5.
+
+[Репозиторий GitHub](https://github.com/SimonCropp/EfFluentValidation)
 
 ### <a name="efcoretemporalsupport"></a>EFCore.TemporalSupport
 
@@ -170,7 +182,7 @@ NeinLinq расширяет возможности поставщиков LINQ, 
 
 ### <a name="entity-framework-extensions"></a>Расширения Entity Framework
 
-Расширены возможности DbContext за счет таких высокопроизводительных пакетных операций, как BulkSaveChanges, BulkInsert, BulkUpdate, BulkDelete, BulkMerge и других. Для EF Core: 2, 3.
+Расширены возможности DbContext за счет таких высокопроизводительных пакетных операций, как BulkSaveChanges, BulkInsert, BulkUpdate, BulkDelete, BulkMerge и других. Для EF Core: 2, 3, 5.
 
 [Веб-сайт](https://entityframework-extensions.net/)
 
@@ -246,3 +258,21 @@ LINQ-расширения Entity Framework Core 3.1 для поддержки �
 Средство сопоставления DTO-Entity с обработкой композиции/агрегирования (аналогично GraphDiff). Для EF Core: 3, 5.
 
 [NuGet](https://www.nuget.org/packages/Detached.Mappers.EntityFramework)
+
+### <a name="entityframeworkcoresqlitenodatime"></a>EntityFrameworkCore.Sqlite.NodaTime
+
+Добавляет поддержку типов [NodaTime](https://nodatime.org) при использовании [SQLite](https://sqlite.org). Для EF Core: 5.
+
+[Репозиторий GitHub](https://github.com/khellang/EFCore.Sqlite.NodaTime)
+
+### <a name="erikejentityframeworkcoresqlserverdacpac"></a>ErikEJ.EntityFrameworkCore.SqlServer.Dacpac
+
+Обеспечивает реконструирование модели EF Core из пакета приложения уровня данных SQL Server (.dacpac). Для EF Core: 3, 5.
+
+[Вики-сайт GitHub](https://github.com/ErikEJ/EFCorePowerTools/wiki/ErikEJ.EntityFrameworkCore.SqlServer.Dacpac)
+
+### <a name="erikejentityframeworkcoredgmlbuilder"></a>ErikEJ.EntityFrameworkCore.DgmlBuilder
+
+Создает содержимое DGML (граф), которое визуализирует DbContext. Добавляет метод расширения AsDgml() в класс DbContext. Для EF Core: 3, 5.
+
+[Вики-сайт GitHub](https://github.com/ErikEJ/EFCorePowerTools/wiki/Inspect-your-DbContext-model)
