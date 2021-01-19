@@ -3,13 +3,13 @@ title: Сопоставление пользовательских функци�
 description: Сопоставление пользовательских функций с функциями базы данных
 author: maumar
 ms.date: 11/23/2020
-uid: core/user-defined-function-mapping
-ms.openlocfilehash: ba60abdc9c81b34b8f4ed8f501cf2f7e52ba9d7d
-ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
+uid: core/querying/user-defined-function-mapping
+ms.openlocfilehash: 3e49ed9c49b38b98430128ffdc7ceef0b844b9df
+ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657702"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98129126"
 ---
 # <a name="user-defined-function-mapping"></a>Сопоставление определяемых пользователем функций
 
@@ -94,6 +94,52 @@ WHERE [dbo].[CommentedPostCountForBlog]([b].[BlogId]) > 1
 SELECT 100 * (ABS(CAST([p].[BlogId] AS float) - 3) / ((CAST([p].[BlogId] AS float) + 3) / 2))
 FROM [Posts] AS [p]
 ```
+
+## <a name="configuring-nullability-of-user-defined-function-based-on-its-arguments"></a>Настройка допустимости значений NULL для определяемой пользователем функции на основе ее аргументов
+
+Если определяемая пользователем функция может возвращать `null` только в том случае, когда один ее аргумент или несколько имеют значения `null`, EF Core позволяет указать это, что дает возможность повысить производительность SQL. Для этого можно добавить вызов `PropagatesNullability()` в соответствующую конфигурацию модели параметров функции.
+
+В качестве примера определите пользовательскую функцию `ConcatStrings`
+
+```sql
+CREATE FUNCTION [dbo].[ConcatStrings] (@prm1 nvarchar(max), @prm2 nvarchar(max))
+RETURNS nvarchar(max)
+AS
+BEGIN
+    RETURN @prm1 + @prm2;
+END
+```
+
+и два метода CLR, которые сопоставляются с ней.
+
+[!code-csharp[Main](../../../samples/core/Querying/UserDefinedFunctionMapping/Model.cs#NullabilityPropagationFunctionDefinition)]
+
+Конфигурация модели (в методе `OnModelCreating`) будет выглядеть следующим образом.
+
+[!code-csharp[Main](../../../samples/core/Querying/UserDefinedFunctionMapping/Model.cs#NullabilityPropagationModelConfiguration)]
+
+Первая функция имеет стандартную конфигурацию. Конфигурация второй функции позволяет использовать преимущества оптимизации распространения значений NULL, предоставляя дополнительные сведения о том, как эта функция работает с параметрами, имеющими значения NULL.
+
+При выполнении представленных ниже запросов:
+
+[!code-csharp[Main](../../../samples/core/Querying/UserDefinedFunctionMapping/Program.cs#NullabilityPropagationExamples)]
+
+Мы получаем следующий SQL.
+
+```sql
+SELECT [b].[BlogId], [b].[Rating], [b].[Url]
+FROM [Blogs] AS [b]
+WHERE ([dbo].[ConcatStrings]([b].[Url], CONVERT(VARCHAR(11), [b].[Rating])) <> N'Lorem ipsum...') OR [dbo].[ConcatStrings]([b].[Url], CONVERT(VARCHAR(11), [b].[Rating])) IS NULL
+
+SELECT [b].[BlogId], [b].[Rating], [b].[Url]
+FROM [Blogs] AS [b]
+WHERE ([dbo].[ConcatStrings]([b].[Url], CONVERT(VARCHAR(11), [b].[Rating])) <> N'Lorem ipsum...') OR ([b].[Url] IS NULL OR [b].[Rating] IS NULL)
+```
+
+Второй запрос не требует повторного вычисления самой функции для проверки ее на допустимость значений NULL.
+
+> [!NOTE]
+> Подобную оптимизацию следует использовать исключительно в тех случаях, когда функция может возвращать `null`, только если ее параметры имеют значения `null`.
 
 ## <a name="mapping-a-queryable-function-to-a-table-valued-function"></a>Сопоставление функции, поддерживающей запросы, с функцией с табличным значением
 
