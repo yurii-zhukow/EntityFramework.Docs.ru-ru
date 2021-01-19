@@ -4,12 +4,12 @@ description: Полный список критических изменений
 author: bricelam
 ms.date: 11/07/2020
 uid: core/what-is-new/ef-core-5.0/breaking-changes
-ms.openlocfilehash: 7a13c9a6f6bd299991c379ec490480e1fbb4ba46
-ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
+ms.openlocfilehash: 4a463e785edaceaf5dd96164c39e2cc9b5f86de4
+ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97635475"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98128749"
 ---
 # <a name="breaking-changes-in-ef-core-50"></a>Критические изменения в EF Core 5.0
 
@@ -19,9 +19,14 @@ ms.locfileid: "97635475"
 
 | **Критическое изменение**                                                                                                                   | **Влияние** |
 |:--------------------------------------------------------------------------------------------------------------------------------------|------------|
+| [EF Core 5.0 не поддерживает платформу .NET Framework](#netstandard21)                                                                         | Средний     |
+| [IProperty.GetColumnName() считается устаревшим](#getcolumnname-obsolete)                                                                  | Средний     |
+| [Для десятичных значений требуется указывать значения точности и масштаба](#decimals)                                                                            | Средний     |
 | [Атрибут обязательного поля имеет разную семантику для навигации к основной сущности и навигации к зависимой сущности](#required-dependent)                                 | Средний     |
 | [Определение запроса заменено методами, зависящими от поставщика](#defining-query)                                                          | Средний     |
 | [Навигации по ссылке, которая не является пустой, не переопределяются запросами](#nonnullreferences)                                                   | Средний     |
+| [ToView() по-разному обрабатывается миграциями](#toview)                                                                              | Средний     |
+| [ToTable(null) помечает тип сущности как не сопоставленный с таблицей](#totable)                                                              | Средний     |
 | [Из расширения NTS для SQLite удален метод HasGeometricDimension.](#geometric-sqlite)                                                   | Низкий        |
 | [Cosmos: ключ секции теперь добавляется в первичный ключ](#cosmos-partition-key)                                                        | Низкий        |
 | [Cosmos: свойство `id` переименовано в `__id`](#cosmos-id)                                                                                 | Низкий        |
@@ -29,11 +34,8 @@ ms.locfileid: "97635475"
 | [Cosmos: GetPropertyName и SetPropertyName переименованы](#cosmos-metadata)                                                          | Низкий        |
 | [Генераторы значений вызываются, когда состояние сущности меняется с "отсоединено" на "не изменено", "обновлено" или "удалено"](#non-added-generation) | Низкий        |
 | [IMigrationsModelDiffer теперь использует IRelationalModel](#relational-model)                                                                 | Низкий        |
-| [ToView() по-разному обрабатывается миграциями](#toview)                                                                              | Низкий        |
-| [ToTable(null) помечает тип сущности как не сопоставленный с таблицей](#totable)                                                              | Низкий        |
 | [Дискриминаторы доступны только для чтения](#read-only-discriminators)                                                                             | Низкий        |
 | [Относящиеся к поставщику методы EF.Functions вызываются для поставщика InMemory](#no-client-methods)                                              | Низкий        |
-| [IProperty.GetColumnName() считается устаревшим](#getcolumnname-obsolete)                                                                  | Низкий        |
 | [IndexBuilder.HasName считается устаревшим](#index-obsolete)                                                                               | Низкий        |
 | [Добавлено средство преобразования во множественное число для формирования шаблонов реконструированных моделей](#pluralizer)                                                 | Низкий        |
 | [INavigationBase заменяет INavigation в некоторых API, чтобы поддерживать пропуск навигации](#inavigationbase)                                     | Низкий        |
@@ -41,6 +43,95 @@ ms.locfileid: "97635475"
 | [Использование коллекции запрашиваемого типа в проекции не поддерживается](#queryable-projection)                                          | Низкий        |
 
 ## <a name="medium-impact-changes"></a>Изменения средней степени влияния
+
+<a name="netstandard21"></a>
+
+### <a name="ef-core-50-does-not-support-net-framework"></a>EF Core 5.0 не поддерживает платформу .NET Framework
+
+[Отслеживание вопроса № 15498](https://github.com/dotnet/efcore/issues/15498)
+
+#### <a name="old-behavior"></a>Старое поведение
+
+EF Core 3.1 предназначается для платформы .NET Standard 2.0, которая поддерживается платформой .NET Framework.
+
+#### <a name="new-behavior"></a>Новое поведение
+
+EF Core 5.0 предназначается для платформы .NET Standard 2.1, которая не поддерживается платформой .NET Framework. Это означает, что EF Core 5.0 нельзя использовать с приложениями .NET Framework.
+
+#### <a name="why"></a>Почему
+
+Это часть масштабного процесса между группами .NET, направленного на унификацию на базе единой целевой платформы .NET. Дополнительные сведения см. в разделе [Перспективы .NET Standard](https://devblogs.microsoft.com/dotnet/the-future-of-net-standard/).
+
+#### <a name="mitigations"></a>Устранение проблем
+
+В приложениях .NET Framework по-прежнему возможно использование выпуска EF Core 3.1, который рассчитан на [долгосрочную поддержку (LTS)](https://dotnet.microsoft.com/platform/support/policy/dotnet-core). Кроме того, можно обновить приложения для работы с .NET Core 2.1, .NET Core 3.1 или .NET 5, которые поддерживают .NET Standard 2.1.
+
+<a name="getcolumnname-obsolete"></a>
+
+### <a name="ipropertygetcolumnname-is-now-obsolete"></a>IProperty.GetColumnName() считается устаревшим
+
+[Отслеживание проблемы № 2266](https://github.com/dotnet/efcore/issues/2266)
+
+#### <a name="old-behavior"></a>Старое поведение
+
+`GetColumnName()` возвращал имя столбца, с которым сопоставлено свойство.
+
+#### <a name="new-behavior"></a>Новое поведение
+
+`GetColumnName()` по-прежнему возвращает имя столбца, с которым сопоставлено свойство, но это поведение стало неоднозначным, так как EF Core 5 поддерживает TPT и одновременное сопоставление с представлением или функцией, где эти сопоставления могут использовать разные имена столбцов для одного и того же свойства.
+
+#### <a name="why"></a>Почему
+
+Мы пометили этот метод как устаревший, чтобы помочь пользователям более точно перегружать <xref:Microsoft.EntityFrameworkCore.RelationalPropertyExtensions.GetColumnName(Microsoft.EntityFrameworkCore.Metadata.IProperty,Microsoft.EntityFrameworkCore.Metadata.StoreObjectIdentifier@)>.
+
+#### <a name="mitigations"></a>Устранение проблем
+
+Используйте следующий код, чтобы получить имя столбца для определенной таблицы:
+
+```csharp
+var columnName = property.GetColumnName(StoreObjectIdentifier.Table("Users", null)));
+```
+
+<a name="decimals"></a>
+
+### <a name="precision-and-scale-are-required-for-decimals"></a>Для десятичных значений требуется указывать значения точности и масштаба
+
+[Отслеживание проблемы № 19293](https://github.com/dotnet/efcore/issues/19293)
+
+#### <a name="old-behavior"></a>Старое поведение
+
+В EF Core, как правило, не устанавливались значения точности и масштаба для объектов <xref:Microsoft.Data.SqlClient.SqlParameter>. Это означает, что полные значения точности и масштаба отправлялись в SQL Server, где на этом этапе выполнялось округление в зависимости от значений точности и масштаба, заданных для столбца базы данных.
+
+#### <a name="new-behavior"></a>Новое поведение
+
+Теперь EF Core устанавливает значения точности и масштаба для параметров, используя значения, которые заданы в свойствах модели EF Core. Таким образом, округление выполняется в SqlClient. Следовательно, если заданные значения точности и масштаба не совпадают с аналогичными в базе данных, округление может выполняться иначе.
+
+#### <a name="why"></a>Почему
+
+Для новых возможностей SQL Server, включая функцию Always Encrypted, требуется полностью указывать аспекты параметров. Кроме того, в результате внесенных в SqlClient изменений вместо усечения десятичных значений выполняется округление, что согласуется с поведением SQL Server. Благодаря этому EF Core может задавать эти аспекты для корректной настройки десятичных значений без изменения поведения.
+
+#### <a name="mitigations"></a>Устранение проблем
+
+Сопоставьте свойства десятичного значения с использованием имени типа, которое включает в себя значения точности и масштаба. Пример:
+
+```csharp
+public class Blog
+{
+    public int Id { get; set; }
+
+    [Column(TypeName = "decimal(16, 5")]
+    public decimal Score { get; set; }
+}
+```
+
+Также можно использовать `HasPrecision` в API построения модели. Пример:
+
+```csharp
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Blog>().Property(e => e.Score).HasPrecision(16, 5);
+    }
+```
 
 <a name="required-dependent"></a>
 
@@ -140,11 +231,69 @@ public class Blog
 
 Обычно запрос блогов и авторов сначала создает экземпляры `Blog`, а затем задает соответствующие экземпляры `Author` на основе данных, возвращаемых из базы данных. Однако в этом случае каждое свойство `Blog.Author` будет уже инициализировано для пустого свойства `Author`. Кроме EF Core, не существует способа выяснить, является ли этот экземпляр "пустым". Таким образом, перезапись этого экземпляра может без уведомления привести к выводу допустимого `Author`. Таким образом, EF Core 5.0 теперь не перезаписывает уже инициализированную навигацию.
 
-Это новое поведение также соответствует обычному поведению EF6, хотя при исследовании мы также обнаружили некоторые случаи несогласованности в EF6.  
+Это новое поведение также соответствует обычному поведению EF6, хотя при исследовании мы также обнаружили некоторые случаи несогласованности в EF6.
 
 #### <a name="mitigations"></a>Устранение проблем
 
 В случае обнаружения такого прерывания исправление будет способствовать остановке активной инициализации свойств навигации по ссылкам.
+
+<a name="toview"></a>
+
+### <a name="toview-is-treated-differently-by-migrations"></a>ToView() по-разному обрабатывается миграциями
+
+[Отслеживание проблемы № 2725](https://github.com/dotnet/efcore/issues/2725)
+
+#### <a name="old-behavior"></a>Старое поведение
+
+Вызов `ToView(string)` заставляет миграции игнорировать тип сущности в дополнение к сопоставлению его с представлением.
+
+#### <a name="new-behavior"></a>Новое поведение
+
+Теперь `ToView(string)` помечает тип сущности как не сопоставленный с таблицей в дополнение к сопоставлению его с представлением. Это приводит к тому, что при первой миграции после обновления до EF Core 5 предпринимается попытка удаления таблицы по умолчанию для этого типа сущности, так как он больше не игнорируется.
+
+#### <a name="why"></a>Почему
+
+EF Core теперь позволяет сопоставлять тип сущности и с таблицей, и с представлением одновременно, поэтому `ToView` больше нельзя использовать для указания, что тип сущности следует игнорировать при миграции.
+
+#### <a name="mitigations"></a>Устранение проблем
+
+Используйте следующий код, чтобы пометить сопоставленную таблицу как исключенную из миграции:
+
+```csharp
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<User>().ToTable("UserView", t => t.ExcludeFromMigrations());
+}
+```
+
+<a name="totable"></a>
+
+### <a name="totablenull-marks-the-entity-type-as-not-mapped-to-a-table"></a>ToTable(null) помечает тип сущности как не сопоставленный с таблицей
+
+[Отслеживание проблемы № 21172](https://github.com/dotnet/efcore/issues/21172)
+
+#### <a name="old-behavior"></a>Старое поведение
+
+`ToTable(null)` сбрасывает имя таблицы в значение по умолчанию.
+
+#### <a name="new-behavior"></a>Новое поведение
+
+`ToTable(null)` теперь помечает тип сущности как не сопоставленный с какой-либо таблицей.
+
+#### <a name="why"></a>Почему
+
+EF Core теперь позволяет сопоставлять тип сущности и с таблицей, и с представлением одновременно, поэтому `ToTable(null)` используется для указания, что тип сущности не сопоставлен ни с какой таблицей.
+
+#### <a name="mitigations"></a>Устранение проблем
+
+Используйте следующий код, чтобы сбрасывать имя таблицы в значение по умолчанию, если отсутствует сопоставление с представлением или DbFunction:
+
+```csharp
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<User>().Metadata.RemoveAnnotation(RelationalAnnotationNames.TableName);
+}
+```
 
 ## <a name="low-impact-changes"></a>Изменения низкой степени влияния
 
@@ -343,64 +492,6 @@ var hasDifferences = modelDiffer.HasDifferences(
 
 Мы планируем улучшить этот процесс в версии 6.0 ([см. #22031](https://github.com/dotnet/efcore/issues/22031)).
 
-<a name="toview"></a>
-
-### <a name="toview-is-treated-differently-by-migrations"></a>ToView() по-разному обрабатывается миграциями
-
-[Отслеживание проблемы № 2725](https://github.com/dotnet/efcore/issues/2725)
-
-#### <a name="old-behavior"></a>Старое поведение
-
-Вызов `ToView(string)` заставляет миграции игнорировать тип сущности в дополнение к сопоставлению его с представлением.
-
-#### <a name="new-behavior"></a>Новое поведение
-
-Теперь `ToView(string)` помечает тип сущности как не сопоставленный с таблицей в дополнение к сопоставлению его с представлением. Это приводит к тому, что при первой миграции после обновления до EF Core 5 предпринимается попытка удаления таблицы по умолчанию для этого типа сущности, так как он больше не игнорируется.
-
-#### <a name="why"></a>Почему
-
-EF Core теперь позволяет сопоставлять тип сущности и с таблицей, и с представлением одновременно, поэтому `ToView` больше нельзя использовать для указания, что тип сущности следует игнорировать при миграции.
-
-#### <a name="mitigations"></a>Устранение проблем
-
-Используйте следующий код, чтобы пометить сопоставленную таблицу как исключенную из миграции:
-
-```csharp
-protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
-    modelBuilder.Entity<User>().ToTable("UserView", t => t.ExcludeFromMigrations());
-}
-```
-
-<a name="totable"></a>
-
-### <a name="totablenull-marks-the-entity-type-as-not-mapped-to-a-table"></a>ToTable(null) помечает тип сущности как не сопоставленный с таблицей
-
-[Отслеживание проблемы № 21172](https://github.com/dotnet/efcore/issues/21172)
-
-#### <a name="old-behavior"></a>Старое поведение
-
-`ToTable(null)` сбрасывает имя таблицы в значение по умолчанию.
-
-#### <a name="new-behavior"></a>Новое поведение
-
-`ToTable(null)` теперь помечает тип сущности как не сопоставленный с какой-либо таблицей.
-
-#### <a name="why"></a>Почему
-
-EF Core теперь позволяет сопоставлять тип сущности и с таблицей, и с представлением одновременно, поэтому `ToTable(null)` используется для указания, что тип сущности не сопоставлен ни с какой таблицей.
-
-#### <a name="mitigations"></a>Устранение проблем
-
-Используйте следующий код, чтобы сбрасывать имя таблицы в значение по умолчанию, если отсутствует сопоставление с представлением или DbFunction:
-
-```csharp
-protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
-    modelBuilder.Entity<User>().Metadata.RemoveAnnotation(RelationalAnnotationNames.TableName);
-}
-```
-
 <a name="read-only-discriminators"></a>
 
 ### <a name="discriminators-are-read-only"></a>Дискриминаторы доступны только для чтения
@@ -450,32 +541,6 @@ modelBuilder.Entity<BaseEntity>()
 #### <a name="mitigations"></a>Устранение проблем
 
 Так как точно воссоздать поведение функций базы данных невозможно, содержащие их запросы следует тестировать на основе базы данных того же типа, что и рабочая база данных.
-
-<a name="getcolumnname-obsolete"></a>
-
-### <a name="ipropertygetcolumnname-is-now-obsolete"></a>IProperty.GetColumnName() считается устаревшим
-
-[Отслеживание проблемы № 2266](https://github.com/dotnet/efcore/issues/2266)
-
-#### <a name="old-behavior"></a>Старое поведение
-
-`GetColumnName()` возвращал имя столбца, с которым сопоставлено свойство.
-
-#### <a name="new-behavior"></a>Новое поведение
-
-`GetColumnName()` по-прежнему возвращает имя столбца, с которым сопоставлено свойство, но это поведение стало неоднозначным, так как EF Core 5 поддерживает TPT и одновременное сопоставление с представлением или функцией, где эти сопоставления могут использовать разные имена столбцов для одного и того же свойства.
-
-#### <a name="why"></a>Почему
-
-Мы пометили этот метод как устаревший, чтобы помочь пользователям более точно перегружать <xref:Microsoft.EntityFrameworkCore.RelationalPropertyExtensions.GetColumnName(Microsoft.EntityFrameworkCore.Metadata.IProperty,Microsoft.EntityFrameworkCore.Metadata.StoreObjectIdentifier@)>.
-
-#### <a name="mitigations"></a>Устранение проблем
-
-Используйте следующий код, чтобы получить имя столбца для определенной таблицы:
-
-```csharp
-var columnName = property.GetColumnName(StoreObjectIdentifier.Table("Users", null)));
-```
 
 <a name="index-obsolete"></a>
 
