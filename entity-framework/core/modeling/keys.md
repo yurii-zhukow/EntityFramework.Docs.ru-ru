@@ -2,18 +2,20 @@
 title: Ключи — EF Core
 description: Настройка ключей для типов сущностей при использовании Entity Framework Core
 author: AndriySvyryd
-ms.date: 11/06/2019
+ms.date: 1/10/2021
 uid: core/modeling/keys
-ms.openlocfilehash: 805396a13227aa62ed86ac17c742d055d7a22bbf
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: c79ab0445e80b0b6f4a8b49ef0d4c063bf938851
+ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98129191"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98983537"
 ---
 # <a name="keys"></a>Ключи
 
 Ключ служит уникальным идентификатором для каждого экземпляра сущности. Большинство сущностей в EF имеют один ключ, который сопоставляется с понятием *первичного ключа* в реляционных базах данных (для сущностей без ключей см. раздел несвязные [сущности](xref:core/modeling/keyless-entity-types)). Сущности могут иметь дополнительные ключи за пределами первичного ключа (Дополнительные сведения см. в разделе [альтернативные ключи](#alternate-keys) ).
+
+## <a name="configuring-a-primary-key"></a>Настройка первичного ключа
 
 По соглашению свойство с именем `Id` или `<type name>Id` будет настроено в качестве первичного ключа сущности.
 
@@ -24,11 +26,11 @@ ms.locfileid: "98129191"
 
 Вы можете настроить одно свойство в качестве первичного ключа сущности следующим образом:
 
-## <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
+### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/KeySingle.cs?name=KeySingle&highlight=3)]
 
-## <a name="fluent-api"></a>[Текучий API](#tab/fluent-api)
+### <a name="fluent-api"></a>[Текучий API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/KeySingle.cs?name=KeySingle&highlight=4)]
 
@@ -37,6 +39,10 @@ ms.locfileid: "98129191"
 Можно также настроить несколько свойств в качестве ключа сущности. это называется составным ключом. Составные ключи можно настроить только с помощью API Fluent. соглашения никогда не настраивают составной ключ и не могут использовать заметки к данным для его настройки.
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/KeyComposite.cs?name=KeyComposite&highlight=4)]
+
+## <a name="value-generation"></a>Создание ценностей
+
+Для несоставных числовых и первичных ключей GUID EF Core настраивает создание значений по соглашению. Например, числовой первичный ключ в SQL Server автоматически настраивается как столбец ИДЕНТИФИКАТОРов. Дополнительные сведения см. [в документации по созданию значения](xref:core/modeling/generated-properties).
 
 ## <a name="primary-key-name"></a>Имя первичного ключа
 
@@ -51,7 +57,7 @@ ms.locfileid: "98129191"
 Ключевые свойства всегда должны иметь значение, отличное от значения по умолчанию, при добавлении новой сущности в контекст, но некоторые типы будут [созданы базой данных](xref:core/modeling/generated-properties). В этом случае EF попытается создать временное значение при добавлении сущности в целях отслеживания. После вызова команды [SaveChanges](/dotnet/api/Microsoft.EntityFrameworkCore.DbContext.SaveChanges) временное значение будет заменено значением, созданным базой данных.
 
 > [!Important]
-> Если ключевое свойство имеет значение, сформированное базой данных, и при добавлении сущности указано значение, отличное от значения по умолчанию, то EF предполагает, что сущность уже существует в базе данных и попытается обновить ее вместо вставки новой. Чтобы избежать этого, не отключайте создание значений или Узнайте, [как указать явные значения для создаваемых свойств](xref:core/saving/explicit-values-generated-properties).
+> Если ключевое свойство имеет значение, сформированное базой данных, и при добавлении сущности указано значение, отличное от значения по умолчанию, то EF предполагает, что сущность уже существует в базе данных и попытается обновить ее вместо вставки новой. Чтобы избежать этого, отключите создание значений или Узнайте, [как указать явные значения для создаваемых свойств](xref:core/modeling/generated-properties#overriding-value-generation).
 
 ## <a name="alternate-keys"></a>Альтернативные ключи
 

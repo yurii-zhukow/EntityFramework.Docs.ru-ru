@@ -4,12 +4,12 @@ description: Справочное руководство по средствам
 author: bricelam
 ms.date: 10/27/2020
 uid: core/cli/dotnet
-ms.openlocfilehash: 83989b8690236dbec3466cda78c204ab67fd10c4
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: 60655c03a7fc29137ccb8d9304c94dac6b803cb2
+ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431359"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98983590"
 ---
 # <a name="entity-framework-core-tools-reference---net-core-cli"></a>Справочник по инструментам Entity Framework Core — .NET Core CLI
 
@@ -92,9 +92,9 @@ Entity Framework Core .NET Command-line Tools 2.1.3-rtm-32065
 
 ### <a name="other-target-frameworks"></a>Другие целевые платформы
 
-Средства CLI работают с проектами .NET Core и .NET Framework проектами. Приложения с моделью EF Core в библиотеке классов .NET Standard могут не иметь проекта .NET Core или .NET Framework. Например, это справедливо для приложений Xamarin и универсальная платформа Windows. В таких случаях можно создать проект консольного приложения .NET Core, предназначенное только для запуска в качестве запускаемого проекта для инструментов. Проект может быть фиктивным проектом без реального кода, &mdash; поэтому он необходим только для предоставления целей для инструментов.
+Средства CLI работают с проектами .NET Core и платформа .NET Framework проектами. Приложения с моделью EF Core в библиотеке классов .NET Standard могут не иметь проекта .NET Core или платформа .NET Framework. Например, это справедливо для приложений Xamarin и универсальная платформа Windows. В таких случаях можно создать проект консольного приложения .NET Core, предназначенное только для запуска в качестве запускаемого проекта для инструментов. Проект может быть фиктивным проектом без реального кода, &mdash; поэтому он необходим только для предоставления целей для инструментов.
 
-Зачем нужен фиктивный проект? Как упоминалось ранее, средства должны выполнять код приложения во время разработки. Для этого им нужно использовать среду выполнения .NET Core. Если EF Coreная модель находится в проекте, ориентированном на .NET Core или .NET Framework, EF Core средства позаимствованы среду выполнения из проекта. Они не могут сделать это, если модель EF Core находится в библиотеке классов .NET Standard. .NET Standard не является реальной реализацией .NET; это спецификация набора интерфейсов API, которые должны поддерживаться реализациями .NET. Поэтому .NET Standard недостаточно для того, чтобы средства EF Core выполняли код приложения. Фиктивный проект, который создается для использования в качестве запускаемого проекта, предоставляет конкретную целевую платформу, в которую средства могут загрузить библиотеку классов .NET Standard.
+Зачем нужен фиктивный проект? Как упоминалось ранее, средства должны выполнять код приложения во время разработки. Для этого им нужно использовать среду выполнения .NET Core. Если EF Coreная модель находится в проекте, ориентированном на .NET Core или платформа .NET Framework, EF Core средства позаимствованы среду выполнения из проекта. Они не могут сделать это, если модель EF Core находится в библиотеке классов .NET Standard. .NET Standard не является реальной реализацией .NET; это спецификация набора интерфейсов API, которые должны поддерживаться реализациями .NET. Поэтому .NET Standard недостаточно для того, чтобы средства EF Core выполняли код приложения. Фиктивный проект, который создается для использования в качестве запускаемого проекта, предоставляет конкретную целевую платформу, в которую средства могут загрузить библиотеку классов .NET Standard.
 
 ### <a name="aspnet-core-environment"></a>Среда ASP.NET Core
 
@@ -223,8 +223,8 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 В следующем примере считывается строка подключения из набора конфигурации проекта с помощью [средства диспетчера секретов](/aspnet/core/security/app-secrets#secret-manager).
 
 ```dotnetcli
-dotnet user-secrets set ConnectionStrings.Blogging "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Blogging"
-dotnet ef dbcontext scaffold Name=ConnectionStrings.Blogging Microsoft.EntityFrameworkCore.SqlServer
+dotnet user-secrets set ConnectionStrings:Blogging "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Blogging"
+dotnet ef dbcontext scaffold Name=ConnectionStrings:Blogging Microsoft.EntityFrameworkCore.SqlServer
 ```
 
 ## <a name="dotnet-ef-dbcontext-script"></a>Скрипт DotNet EF DbContext
