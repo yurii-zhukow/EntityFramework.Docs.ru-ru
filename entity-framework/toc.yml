@@ -212,8 +212,6 @@
               href: core/saving/transactions.md
             - name: Отключенные сущности
               href: core/saving/disconnected-entities.md
-            - name: Явные значения для создаваемых свойств
-              href: core/saving/explicit-values-generated-properties.md
         - name: Change tracking
           items:
             - name: Обзор
@@ -298,6 +296,8 @@
               items:
                 - name: Обзор
                   href: core/providers/sql-server/index.md
+                - name: Создание ценностей
+                  href: core/providers/sql-server/value-generation.md
                 - name: Сопоставления функций
                   href: core/providers/sql-server/functions.md
                 - name: Индексы
