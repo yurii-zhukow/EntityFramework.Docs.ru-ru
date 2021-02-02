@@ -4,12 +4,12 @@ description: Шаблоны для создания экземпляров DbCon
 author: ajcvickers
 ms.date: 11/07/2020
 uid: core/dbcontext-configuration/index
-ms.openlocfilehash: 10ed474df2c4c52e61083d9d671909be02cd8cef
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: 5b3143edbcfb82312b8026fb09c96dac85427831
+ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98129035"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98983525"
 ---
 # <a name="dbcontext-lifetime-configuration-and-initialization"></a>Время существования, настройка и инициализация DbContext
 
@@ -314,7 +314,7 @@ ms.locfileid: "98129035"
 > [!NOTE]
 > <xref:Microsoft.EntityFrameworkCore.ProxiesExtensions.UseLazyLoadingProxies%2A> и <xref:Microsoft.EntityFrameworkCore.ProxiesExtensions.UseChangeTrackingProxies%2A> — это методы расширения из пакета NuGet [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/). Такой тип вызова ".UseSomething()" рекомендуется для настройки и (или) использования расширений EF Core в других пакетах.
 
-### <a name="dbcontextoptions-verses-dbcontextoptionstcontext"></a>`DbContextOptions` и `DbContextOptions<TContext>`
+### <a name="dbcontextoptions-versus-dbcontextoptionstcontext"></a>`DbContextOptions` и `DbContextOptions<TContext>`
 
 Большинство подклассов `DbContext`, которые принимают `DbContextOptions`, должны использовать [универсальный](/dotnet/csharp/programming-guide/generics/) вариант `DbContextOptions<TContext>`. Пример:
 

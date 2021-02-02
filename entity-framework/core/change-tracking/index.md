@@ -4,12 +4,12 @@ description: Общие сведения об отслеживании изме�
 author: ajcvickers
 ms.date: 12/30/2020
 uid: core/change-tracking/index
-ms.openlocfilehash: 52223e5472b09271d19ac9449a3989b4a0e277f7
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: 8cfa4590af07ec1715eb48ec0c7acb3426b6a6b4
+ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98129524"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98983265"
 ---
 # <a name="change-tracking-in-ef-core"></a>Отслеживание изменений в EF Core
 
@@ -50,7 +50,7 @@ DbContext используется для представления кратк�
 
 ## <a name="entity-states"></a>Состояния сущностей
 
-Каждая сущность связана с заданным состоянием <xref:Microsoft.EntityFrameworkCore.EntityState>:
+Каждая сущность связана с заданным состоянием <xref:Microsoft.EntityFrameworkCore.EntityState>:
 
 - Сущности `Detached` не отслеживаются <xref:Microsoft.EntityFrameworkCore.DbContext>.
 - Сущности `Added` являются новыми и еще не вставлены в базу данных. Это означает, что они будут вставлены при вызове <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A>.
