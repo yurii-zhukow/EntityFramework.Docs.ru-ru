@@ -5,10 +5,10 @@ author: bricelam
 ms.date: 10/28/2020
 uid: core/managing-schemas/migrations/index
 ms.openlocfilehash: b9547298714af59453aeae6d05742a03c067708b
-ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
+ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 02/05/2021
 ms.locfileid: "95003399"
 ---
 # <a name="migrations-overview"></a>Обзор миграций
@@ -59,9 +59,9 @@ dotnet ef migrations add InitialCreate
 Add-Migration InitialCreate
 ```
 
-**_
+***
 
-EF Core создаст в проекте каталог с именем _ *Migrations** и добавит несколько файлов. Рекомендуется проверить, какие именно файлы созданы в EF Core, и, возможно, исправить их, но сейчас мы это делать не будем.
+EF Core создаст в проекте каталог с именем **Migrations** и добавит несколько файлов. Рекомендуется проверить, какие именно файлы созданы в EF Core, и, возможно, исправить их, но сейчас мы это делать не будем.
 
 ### <a name="create-your-database-and-schema"></a>Создание базы данных и схемы
 
@@ -79,7 +79,7 @@ dotnet ef database update
 Update-Database
 ```
 
-**_
+***
 
 Вот и все — ваше приложение готово к работе в новой базе данных, и вам не пришлось писать ни одной строки кода SQL. Обратите внимание, что такой способ применения миграций идеально подходит для локальной разработки и хуже подходит для рабочих сред. Дополнительные сведения см. на странице [применения миграций](xref:core/managing-schemas/migrations/applying).
 
@@ -110,7 +110,7 @@ dotnet ef migrations add AddBlogCreatedTimestamp
 Add-Migration AddBlogCreatedTimestamp
 ```
 
-_*_
+***
 
 Обратите внимание, что миграциям задается описательное имя, чтобы в дальнейшем упростить чтение и понимание журнала проекта.
 
@@ -134,7 +134,7 @@ Update-Database
 
 <!--markdownlint-enable MD024-->
 
-_*_
+***
 
 Обратите внимание, что на этот раз EF обнаруживает, что база данных уже существует. Кроме того, когда была применена первая миграция, этот факт был записан в специальную таблицу журнала миграций в базе данных, что позволяет EF автоматически применять только новую миграцию.
 
@@ -153,4 +153,4 @@ _*_
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-_ [Рабочее совещание сообщества EF Core](https://www.youtube.com/watch?v=mSsGERmrhnE&list=PLdo4fOcmZ0oX-DBuRG4u58ZTAJgBAeQ-t&index=20), посвященное новым функциями миграции в EF Core 5.0.
+* [Рабочее совещание сообщества EF Core](https://www.youtube.com/watch?v=mSsGERmrhnE&list=PLdo4fOcmZ0oX-DBuRG4u58ZTAJgBAeQ-t&index=20), посвященное новым функциями миграции в EF Core 5.0.
