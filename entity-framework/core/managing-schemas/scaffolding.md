@@ -8,7 +8,7 @@ ms.openlocfilehash: 4cad43f4b1300e1ef3cb31e60d3e9890826d974d
 ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 02/05/2021
 ms.locfileid: "98983577"
 ---
 # <a name="reverse-engineering"></a> Реконструирование
@@ -80,7 +80,7 @@ dotnet ef dbcontext scaffold ... --table Artist --table Album
 Scaffold-DbContext ... -Tables Artist, Album
 ```
 
-**_
+***
 
 ## <a name="preserving-names"></a>Сохранение имен
 
@@ -108,7 +108,7 @@ public string Title { get; set; }
 
 ## <a name="dbcontext-name"></a>Имя DbContext
 
-Шаблонное имя класса DbContext будет содержать имя базы данных с суффиксом _Context * по умолчанию. Чтобы указать другую, используйте `-Context` в PMC и `--context` в .NET Core CLI.
+Шаблонное имя класса DbContext по умолчанию будет именем базы данных с суффиксом *context* . Чтобы указать другую, используйте `-Context` в PMC и `--context` в .NET Core CLI.
 
 ## <a name="directories-and-namespaces"></a>Каталоги и пространства имен
 

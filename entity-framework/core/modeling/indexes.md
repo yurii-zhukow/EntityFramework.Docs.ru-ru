@@ -5,10 +5,10 @@ author: roji
 ms.date: 12/16/2019
 uid: core/modeling/indexes
 ms.openlocfilehash: ab81b108c4ff518cf98b7e835da3553c0c41efed
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 02/05/2021
 ms.locfileid: "98128541"
 ---
 # <a name="indexes"></a>Индексы
@@ -47,9 +47,9 @@ ms.locfileid: "98128541"
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/IndexComposite.cs?name=Composite&highlight=4)]
 
-**_
+***
 
-Индексы по нескольким столбцам, также известным как _composite индексы *, ускоряют запросы, которые фильтруются по столбцам индекса, но также запросы, которые фильтруют только по *первым* столбцам, охватываемым индексом. Дополнительные сведения см. в документации по [производительности](xref:core/performance/efficient-querying#use-indexes-properly) .
+Индексы над несколькими столбцами, также известные как *Составные индексы*, ускоряют запросы, которые фильтруются по столбцам индекса, но также запросы, которые фильтруют только по *первым* столбцам, охватываемым индексом. Дополнительные сведения см. в документации по [производительности](xref:core/performance/efficient-querying#use-indexes-properly) .
 
 ## <a name="index-uniqueness"></a>Уникальность индекса
 
