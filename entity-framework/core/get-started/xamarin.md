@@ -5,126 +5,125 @@ author: codemillmatt
 ms.date: 07/07/2020
 ms.author: masoucou
 uid: core/get-started/xamarin
-ms.openlocfilehash: c19c70903926c2c8ff4b51cca7781859af7e3567
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: e4a26d7a0c6909002be0974ee9fe1c5db7c1046a
+ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98128788"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98983603"
 ---
-# <a name="getting-started-with-ef-core-and-xamarin"></a><span data-ttu-id="9e842-103">Начало работы с EF Core и Xamarin</span><span class="sxs-lookup"><span data-stu-id="9e842-103">Getting Started with EF Core and Xamarin</span></span>
+# <a name="getting-started-with-ef-core-and-xamarin"></a><span data-ttu-id="efd8c-103">Начало работы с EF Core и Xamarin</span><span class="sxs-lookup"><span data-stu-id="efd8c-103">Getting Started with EF Core and Xamarin</span></span>
 
-<span data-ttu-id="9e842-104">В этом руководстве вы создадите приложение [Xamarin.Forms](/xamarin/get-started/what-is-xamarin-forms), которое осуществляет доступ к базе данных SQLite с помощью Entity Framework Core.</span><span class="sxs-lookup"><span data-stu-id="9e842-104">In this tutorial, you create a [Xamarin.Forms](/xamarin/get-started/what-is-xamarin-forms) application that performs data access against a SQLite database using Entity Framework Core.</span></span>
+<span data-ttu-id="efd8c-104">В этом руководстве вы создадите приложение [Xamarin.Forms](/xamarin/get-started/what-is-xamarin-forms), которое осуществляет доступ к базе данных SQLite с помощью Entity Framework Core.</span><span class="sxs-lookup"><span data-stu-id="efd8c-104">In this tutorial, you create a [Xamarin.Forms](/xamarin/get-started/what-is-xamarin-forms) application that performs data access against a SQLite database using Entity Framework Core.</span></span>
 
-<span data-ttu-id="9e842-105">Инструкции из этого руководства можно выполнять с помощью Visual Studio в Windows или Visual Studio для Mac.</span><span class="sxs-lookup"><span data-stu-id="9e842-105">You can follow the tutorial by using Visual Studio on Windows or Visual Studio for Mac.</span></span>
+<span data-ttu-id="efd8c-105">Инструкции из этого руководства можно выполнять с помощью Visual Studio в Windows или Visual Studio для Mac.</span><span class="sxs-lookup"><span data-stu-id="efd8c-105">You can follow the tutorial by using Visual Studio on Windows or Visual Studio for Mac.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="9e842-106">Вы можете скачать используемый в этой статье [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Xamarin) из репозитория GitHub.</span><span class="sxs-lookup"><span data-stu-id="9e842-106">You can view this article's [sample on GitHub](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Xamarin).</span></span>
+> <span data-ttu-id="efd8c-106">Вы можете скачать используемый в этой статье [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Xamarin) из репозитория GitHub.</span><span class="sxs-lookup"><span data-stu-id="efd8c-106">You can view this article's [sample on GitHub](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Xamarin).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="9e842-107">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="9e842-107">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="efd8c-107">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="efd8c-107">Prerequisites</span></span>
 
-<span data-ttu-id="9e842-108">Установите одно из следующих приложений:</span><span class="sxs-lookup"><span data-stu-id="9e842-108">Install one of the below:</span></span>
+<span data-ttu-id="efd8c-108">Установите одно из следующих приложений:</span><span class="sxs-lookup"><span data-stu-id="efd8c-108">Install one of the below:</span></span>
 
-* <span data-ttu-id="9e842-109">[Visual Studio 2019 версии 16.3 или более поздней](https://www.visualstudio.com/downloads/) с этой рабочей нагрузкой:</span><span class="sxs-lookup"><span data-stu-id="9e842-109">[Visual Studio 2019 version 16.3 or later](https://www.visualstudio.com/downloads/) with this workload:</span></span>
-  * <span data-ttu-id="9e842-110">**Разработка мобильных приложений на .NET**</span><span class="sxs-lookup"><span data-stu-id="9e842-110">**Mobile Development with .NET**</span></span>
-* [<span data-ttu-id="9e842-111">Visual Studio для Mac</span><span class="sxs-lookup"><span data-stu-id="9e842-111">Visual Studio for Mac</span></span>](https://visualstudio.microsoft.com/vs/mac/)
+* <span data-ttu-id="efd8c-109">[Visual Studio 2019 версии 16.3 или более поздней](https://www.visualstudio.com/downloads/) с этой рабочей нагрузкой:</span><span class="sxs-lookup"><span data-stu-id="efd8c-109">[Visual Studio 2019 version 16.3 or later](https://www.visualstudio.com/downloads/) with this workload:</span></span>
+  * <span data-ttu-id="efd8c-110">**Разработка мобильных приложений на .NET**</span><span class="sxs-lookup"><span data-stu-id="efd8c-110">**Mobile Development with .NET**</span></span>
+* [<span data-ttu-id="efd8c-111">Visual Studio для Mac</span><span class="sxs-lookup"><span data-stu-id="efd8c-111">Visual Studio for Mac</span></span>](https://visualstudio.microsoft.com/vs/mac/)
 
-<span data-ttu-id="9e842-112">В этой [документации содержатся подробные пошаговые инструкции по установке](/xamarin/get-started/installation) для каждой платформы.</span><span class="sxs-lookup"><span data-stu-id="9e842-112">This [documentation provides detailed step-by-step installation instructions](/xamarin/get-started/installation) for each platform.</span></span>
+<span data-ttu-id="efd8c-112">В этой [документации содержатся подробные пошаговые инструкции по установке](/xamarin/get-started/installation) для каждой платформы.</span><span class="sxs-lookup"><span data-stu-id="efd8c-112">This [documentation provides detailed step-by-step installation instructions](/xamarin/get-started/installation) for each platform.</span></span>
 
-## <a name="download-and-run-the-sample-project"></a><span data-ttu-id="9e842-113">Скачивание и запуск примера проекта</span><span class="sxs-lookup"><span data-stu-id="9e842-113">Download and run the sample project</span></span>
+## <a name="download-and-run-the-sample-project"></a><span data-ttu-id="efd8c-113">Скачивание и запуск примера проекта</span><span class="sxs-lookup"><span data-stu-id="efd8c-113">Download and run the sample project</span></span>
 
-<span data-ttu-id="9e842-114">Чтобы запустить и изучить этот пример приложения, скачайте код на сайте GitHub.</span><span class="sxs-lookup"><span data-stu-id="9e842-114">To run and explore this sample application, download the code on GitHub.</span></span>
+<span data-ttu-id="efd8c-114">Чтобы запустить и изучить этот пример приложения, скачайте код на сайте GitHub.</span><span class="sxs-lookup"><span data-stu-id="efd8c-114">To run and explore this sample application, download the code on GitHub.</span></span>
 
-<span data-ttu-id="9e842-115">После скачивания откройте файл решения `EFGettingStarted.sln` в Visual Studio или Visual Studio для Mac и запустите приложение на выбранной платформе.</span><span class="sxs-lookup"><span data-stu-id="9e842-115">Once downloaded, open the solution file `EFGettingStarted.sln` in Visual Studio or Visual Studio for Mac and run the application on the platform of your choice.</span></span>
+<span data-ttu-id="efd8c-115">После скачивания откройте файл решения `EFGettingStarted.sln` в Visual Studio или Visual Studio для Mac и запустите приложение на выбранной платформе.</span><span class="sxs-lookup"><span data-stu-id="efd8c-115">Once downloaded, open the solution file `EFGettingStarted.sln` in Visual Studio or Visual Studio for Mac and run the application on the platform of your choice.</span></span>
 
-<span data-ttu-id="9e842-116">При первом запуске приложения локальная база данных SQLite будет заполнена двумя записями, представляющими блоги.</span><span class="sxs-lookup"><span data-stu-id="9e842-116">When the app first starts, it will populate the local SQLite database with two entries representing blogs.</span></span>
+<span data-ttu-id="efd8c-116">При первом запуске приложения локальная база данных SQLite будет заполнена двумя записями, представляющими блоги.</span><span class="sxs-lookup"><span data-stu-id="efd8c-116">When the app first starts, it will populate the local SQLite database with two entries representing blogs.</span></span>
 
 ![Снимок экрана: страница со списком всех блогов](_static/xamarin-tutorial-1.png)
 
-<span data-ttu-id="9e842-118">На панели инструментов нажмите кнопку **Add** (Добавить).</span><span class="sxs-lookup"><span data-stu-id="9e842-118">Click the **Add** button in the toolbar.</span></span>
+<span data-ttu-id="efd8c-118">На панели инструментов нажмите кнопку **Add** (Добавить).</span><span class="sxs-lookup"><span data-stu-id="efd8c-118">Click the **Add** button in the toolbar.</span></span>
 
-<span data-ttu-id="9e842-119">Появится новая страница, на которой можно ввести сведения о новом блоге.</span><span class="sxs-lookup"><span data-stu-id="9e842-119">A new page will appear that allows you to enter information about a new blog.</span></span>
+<span data-ttu-id="efd8c-119">Появится новая страница, на которой можно ввести сведения о новом блоге.</span><span class="sxs-lookup"><span data-stu-id="efd8c-119">A new page will appear that allows you to enter information about a new blog.</span></span>
 
 ![Снимок экрана: страница изменения сведений о новом блоге](_static/xamarin-tutorial-2.png)
 
-<span data-ttu-id="9e842-121">Введите все сведения и на панели инструментов нажмите кнопку **Save** (Сохранить).</span><span class="sxs-lookup"><span data-stu-id="9e842-121">Fill out all the info and click **Save** from the toolbar.</span></span> <span data-ttu-id="9e842-122">Новый блог сохранится в базе данных SQLite приложения и появится в списке.</span><span class="sxs-lookup"><span data-stu-id="9e842-122">The new blog will save to the app's SQLite database and will show in the list.</span></span>
+<span data-ttu-id="efd8c-121">Введите все сведения и на панели инструментов нажмите кнопку **Save** (Сохранить).</span><span class="sxs-lookup"><span data-stu-id="efd8c-121">Fill out all the info and click **Save** from the toolbar.</span></span> <span data-ttu-id="efd8c-122">Новый блог сохранится в базе данных SQLite приложения и появится в списке.</span><span class="sxs-lookup"><span data-stu-id="efd8c-122">The new blog will save to the app's SQLite database and will show in the list.</span></span>
 
-<span data-ttu-id="9e842-123">Вы можете щелкнуть одну из записей блога в списке и просмотреть все записи в этом блоге.</span><span class="sxs-lookup"><span data-stu-id="9e842-123">You can click on one of the blog entries in the list and see any posts for that blog.</span></span>
+<span data-ttu-id="efd8c-123">Вы можете щелкнуть одну из записей блога в списке и просмотреть все записи в этом блоге.</span><span class="sxs-lookup"><span data-stu-id="efd8c-123">You can click on one of the blog entries in the list and see any posts for that blog.</span></span>
 
 ![Снимок экрана: страница со списком записей в блоге](_static/xamarin-tutorial-3.png)
 
-<span data-ttu-id="9e842-125">На панели инструментов нажмите кнопку **Add** (Добавить).</span><span class="sxs-lookup"><span data-stu-id="9e842-125">Click **Add** in the toolbar.</span></span>
+<span data-ttu-id="efd8c-125">На панели инструментов нажмите кнопку **Add** (Добавить).</span><span class="sxs-lookup"><span data-stu-id="efd8c-125">Click **Add** in the toolbar.</span></span>
 
-<span data-ttu-id="9e842-126">Появится страница, на которой можно ввести сведения о новой записи блога.</span><span class="sxs-lookup"><span data-stu-id="9e842-126">A page then appears that allows you to fill out information about a new blog post.</span></span>
+<span data-ttu-id="efd8c-126">Появится страница, на которой можно ввести сведения о новой записи блога.</span><span class="sxs-lookup"><span data-stu-id="efd8c-126">A page then appears that allows you to fill out information about a new blog post.</span></span>
 
 ![Снимок экрана: страница добавления новой записи](_static/xamarin-tutorial-4.png)
 
-<span data-ttu-id="9e842-128">Введите все сведения и на панели инструментов нажмите кнопку **Save** (Сохранить).</span><span class="sxs-lookup"><span data-stu-id="9e842-128">Fill out all the information and click **Save** in the toolbar.</span></span>
+<span data-ttu-id="efd8c-128">Введите все сведения и на панели инструментов нажмите кнопку **Save** (Сохранить).</span><span class="sxs-lookup"><span data-stu-id="efd8c-128">Fill out all the information and click **Save** in the toolbar.</span></span>
 
-<span data-ttu-id="9e842-129">Новая запись будет связана с записью блога, которую вы выбрали на предыдущем шаге, сохранится в базе данных SQLite приложения и появится в списке.</span><span class="sxs-lookup"><span data-stu-id="9e842-129">The new post will be associated to the blog post you clicked on in a previous step and will save to the app's SQLite database and show in the list.</span></span>
+<span data-ttu-id="efd8c-129">Новая запись будет связана с записью блога, которую вы выбрали на предыдущем шаге, сохранится в базе данных SQLite приложения и появится в списке.</span><span class="sxs-lookup"><span data-stu-id="efd8c-129">The new post will be associated to the blog post you clicked on in a previous step and will save to the app's SQLite database and show in the list.</span></span>
 
-<span data-ttu-id="9e842-130">Вернитесь на страницу со списком блогов.</span><span class="sxs-lookup"><span data-stu-id="9e842-130">Go back to the blog list page.</span></span> <span data-ttu-id="9e842-131">На панели инструментов нажмите кнопку **Delete All** (Удалить все).</span><span class="sxs-lookup"><span data-stu-id="9e842-131">And click **Delete All** in the toolbar.</span></span> <span data-ttu-id="9e842-132">Все блоги и соответствующие записи будут удалены из базы данных SQLite приложения.</span><span class="sxs-lookup"><span data-stu-id="9e842-132">All blogs and their corresponding posts will then be deleted from the app's SQLite database.</span></span>
+<span data-ttu-id="efd8c-130">Вернитесь на страницу со списком блогов.</span><span class="sxs-lookup"><span data-stu-id="efd8c-130">Go back to the blog list page.</span></span> <span data-ttu-id="efd8c-131">На панели инструментов нажмите кнопку **Delete All** (Удалить все).</span><span class="sxs-lookup"><span data-stu-id="efd8c-131">And click **Delete All** in the toolbar.</span></span> <span data-ttu-id="efd8c-132">Все блоги и соответствующие записи будут удалены из базы данных SQLite приложения.</span><span class="sxs-lookup"><span data-stu-id="efd8c-132">All blogs and their corresponding posts will then be deleted from the app's SQLite database.</span></span>
 
 ![Снимок экрана приложения после удаления всех блогов](_static/xamarin-tutorial-5.png)
 
-## <a name="explore-the-code"></a><span data-ttu-id="9e842-134">Обзор кода</span><span class="sxs-lookup"><span data-stu-id="9e842-134">Explore the code</span></span>
+## <a name="explore-the-code"></a><span data-ttu-id="efd8c-134">Обзор кода</span><span class="sxs-lookup"><span data-stu-id="efd8c-134">Explore the code</span></span>
 
-<span data-ttu-id="9e842-135">В следующих разделах последовательно разбирается код из образца проекта, который считывает, создает, обновляет и удаляет данные в базе данных SQLite с помощью EF Core с Xamarin.Forms.</span><span class="sxs-lookup"><span data-stu-id="9e842-135">The following sections will walk you through the code in the sample project that reads, creates, updates, and deletes data from a SQLite database using EF Core with Xamarin.Forms.</span></span>
+<span data-ttu-id="efd8c-135">В следующих разделах последовательно разбирается код из образца проекта, который считывает, создает, обновляет и удаляет данные в базе данных SQLite с помощью EF Core с Xamarin.Forms.</span><span class="sxs-lookup"><span data-stu-id="efd8c-135">The following sections will walk you through the code in the sample project that reads, creates, updates, and deletes data from a SQLite database using EF Core with Xamarin.Forms.</span></span>
 
-<span data-ttu-id="9e842-136">Предполагается, что вы знаете как [отображать данные](/xamarin/xamarin-forms/app-fundamentals/data-binding/) и [переходить между страницами](/xamarin/xamarin-forms/app-fundamentals/navigation/) с помощью Xamarin.Forms.</span><span class="sxs-lookup"><span data-stu-id="9e842-136">It is assumed that you are familiar with the Xamarin.Forms topics of [displaying data](/xamarin/xamarin-forms/app-fundamentals/data-binding/) and [navigating between pages](/xamarin/xamarin-forms/app-fundamentals/navigation/).</span></span>
+<span data-ttu-id="efd8c-136">Предполагается, что вы знаете как [отображать данные](/xamarin/xamarin-forms/app-fundamentals/data-binding/) и [переходить между страницами](/xamarin/xamarin-forms/app-fundamentals/navigation/) с помощью Xamarin.Forms.</span><span class="sxs-lookup"><span data-stu-id="efd8c-136">It is assumed that you are familiar with the Xamarin.Forms topics of [displaying data](/xamarin/xamarin-forms/app-fundamentals/data-binding/) and [navigating between pages](/xamarin/xamarin-forms/app-fundamentals/navigation/).</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="9e842-137">Entity Framework Core применяет отражение для вызова функций, которые компоновщик Xamarin.iOS может исключить, если используются конфигурации режима **Выпуск**.</span><span class="sxs-lookup"><span data-stu-id="9e842-137">Entity Framework Core uses reflection to invoke functions which the Xamarin.iOS linker may strip out while in **Release** mode configurations.</span></span> <span data-ttu-id="9e842-138">Предотвратить это можно одним из двух способов.</span><span class="sxs-lookup"><span data-stu-id="9e842-138">You can avoid that in one of two ways.</span></span>
+> <span data-ttu-id="efd8c-137">Entity Framework Core применяет отражение для вызова функций, которые компоновщик Xamarin.iOS может исключить, если используются конфигурации режима **Выпуск**.</span><span class="sxs-lookup"><span data-stu-id="efd8c-137">Entity Framework Core uses reflection to invoke functions which the Xamarin.iOS linker may strip out while in **Release** mode configurations.</span></span> <span data-ttu-id="efd8c-138">Предотвратить это можно одним из двух способов.</span><span class="sxs-lookup"><span data-stu-id="efd8c-138">You can avoid that in one of two ways.</span></span>
 >
-> * <span data-ttu-id="9e842-139">Первый способ: добавьте `--linkskip System.Core` в поле **Дополнительные аргументы mtouch** в параметрах **сборки iOS**.</span><span class="sxs-lookup"><span data-stu-id="9e842-139">The first is to add `--linkskip System.Core` to the **Additional mtouch arguments** in the **iOS Build** options.</span></span>
-> * <span data-ttu-id="9e842-140">Второй способ: в параметрах **сборки iOS** задайте для параметра **Поведение компоновщика** Xamarin.iOS значение `Don't Link`.</span><span class="sxs-lookup"><span data-stu-id="9e842-140">Alternatively set the Xamarin.iOS **Linker behavior** to `Don't Link` in the **iOS Build** options.</span></span>
-> <span data-ttu-id="9e842-141">Дополнительные сведения о компоновщике Xamarin.iOS, включая настройку его поведения для Xamarin.iOS, приведены в [этой статье](/xamarin/ios/deploy-test/linker).</span><span class="sxs-lookup"><span data-stu-id="9e842-141">[This article explains more about the Xamarin.iOS linker](/xamarin/ios/deploy-test/linker) including how to set the behavior on Xamarin.iOS.</span></span>
->
+> * <span data-ttu-id="efd8c-139">Первый способ: добавьте `--linkskip System.Core` в поле **Дополнительные аргументы mtouch** в параметрах **сборки iOS**.</span><span class="sxs-lookup"><span data-stu-id="efd8c-139">The first is to add `--linkskip System.Core` to the **Additional mtouch arguments** in the **iOS Build** options.</span></span>
+> * <span data-ttu-id="efd8c-140">Второй способ: в параметрах **сборки iOS** задайте для параметра **Поведение компоновщика** Xamarin.iOS значение `Don't Link`.</span><span class="sxs-lookup"><span data-stu-id="efd8c-140">Alternatively set the Xamarin.iOS **Linker behavior** to `Don't Link` in the **iOS Build** options.</span></span>
+> <span data-ttu-id="efd8c-141">Дополнительные сведения о компоновщике Xamarin.iOS, включая настройку его поведения для Xamarin.iOS, приведены в [этой статье](/xamarin/ios/deploy-test/linker).</span><span class="sxs-lookup"><span data-stu-id="efd8c-141">[This article explains more about the Xamarin.iOS linker](/xamarin/ios/deploy-test/linker) including how to set the behavior on Xamarin.iOS.</span></span> <span data-ttu-id="efd8c-142">Такой подход не идеален, так как он может стать причиной отклонения в магазине.</span><span class="sxs-lookup"><span data-stu-id="efd8c-142">(This approach isn't ideal as it may result in rejection from the store).</span></span>
 
-## <a name="entity-framework-core-nuget-packages"></a><span data-ttu-id="9e842-142">Пакеты Entity Framework Core NuGet</span><span class="sxs-lookup"><span data-stu-id="9e842-142">Entity Framework Core NuGet packages</span></span>
+## <a name="entity-framework-core-nuget-packages"></a><span data-ttu-id="efd8c-143">Пакеты Entity Framework Core NuGet</span><span class="sxs-lookup"><span data-stu-id="efd8c-143">Entity Framework Core NuGet packages</span></span>
 
-<span data-ttu-id="9e842-143">Чтобы создавать приложения Xamarin.Forms с помощью EF Core, установите пакеты целевых поставщиков базы данных EF Core, с которыми вы будете работать, во все проекты в решении Xamarin.Forms.</span><span class="sxs-lookup"><span data-stu-id="9e842-143">To create Xamarin.Forms apps with EF Core, you install the package for the EF Core database provider(s) you want to target into all of the projects in the Xamarin.Forms solution.</span></span> <span data-ttu-id="9e842-144">В этом руководстве используется поставщик SQLite.</span><span class="sxs-lookup"><span data-stu-id="9e842-144">This tutorial uses the SQLite provider.</span></span>
+<span data-ttu-id="efd8c-144">Чтобы создавать приложения Xamarin.Forms с помощью EF Core, установите пакеты целевых поставщиков базы данных EF Core, с которыми вы будете работать, во все проекты в решении Xamarin.Forms.</span><span class="sxs-lookup"><span data-stu-id="efd8c-144">To create Xamarin.Forms apps with EF Core, you install the package for the EF Core database provider(s) you want to target into all of the projects in the Xamarin.Forms solution.</span></span> <span data-ttu-id="efd8c-145">В этом руководстве используется поставщик SQLite.</span><span class="sxs-lookup"><span data-stu-id="efd8c-145">This tutorial uses the SQLite provider.</span></span>
 
-<span data-ttu-id="9e842-145">В каждом из проектов решения Xamarin.Forms требуется указанный ниже пакет NuGet.</span><span class="sxs-lookup"><span data-stu-id="9e842-145">The following NuGet package is needed in each of the projects in the Xamarin.Forms solution.</span></span>
+<span data-ttu-id="efd8c-146">В каждом из проектов решения Xamarin.Forms требуется указанный ниже пакет NuGet.</span><span class="sxs-lookup"><span data-stu-id="efd8c-146">The following NuGet package is needed in each of the projects in the Xamarin.Forms solution.</span></span>
 
 * `Microsoft.EntityFrameworkCore.Sqlite`
 
-## <a name="model-classes"></a><span data-ttu-id="9e842-146">Классы модели</span><span class="sxs-lookup"><span data-stu-id="9e842-146">Model classes</span></span>
+## <a name="model-classes"></a><span data-ttu-id="efd8c-147">Классы модели</span><span class="sxs-lookup"><span data-stu-id="efd8c-147">Model classes</span></span>
 
-<span data-ttu-id="9e842-147">Каждая таблица в базе данных SQLite, доступ к которой осуществляется через EF Core, моделируется в классе.</span><span class="sxs-lookup"><span data-stu-id="9e842-147">Each table in the SQLite database accessed through EF Core is modeled in a class.</span></span> <span data-ttu-id="9e842-148">В этом примере используются два класса: `Blog` и `Post`. Они находятся в папке `Models`.</span><span class="sxs-lookup"><span data-stu-id="9e842-148">In this sample, two classes are used: `Blog` and `Post` which can be found in the `Models` folder.</span></span>
+<span data-ttu-id="efd8c-148">Каждая таблица в базе данных SQLite, доступ к которой осуществляется через EF Core, моделируется в классе.</span><span class="sxs-lookup"><span data-stu-id="efd8c-148">Each table in the SQLite database accessed through EF Core is modeled in a class.</span></span> <span data-ttu-id="efd8c-149">В этом примере используются два класса: `Blog` и `Post`. Они находятся в папке `Models`.</span><span class="sxs-lookup"><span data-stu-id="efd8c-149">In this sample, two classes are used: `Blog` and `Post` which can be found in the `Models` folder.</span></span>
 
-<span data-ttu-id="9e842-149">Классы модели состоят только из свойств, которые моделируют столбцы в базе данных.</span><span class="sxs-lookup"><span data-stu-id="9e842-149">The model classes are composed only of properties, which model columns in the database.</span></span>
+<span data-ttu-id="efd8c-150">Классы модели состоят только из свойств, которые моделируют столбцы в базе данных.</span><span class="sxs-lookup"><span data-stu-id="efd8c-150">The model classes are composed only of properties, which model columns in the database.</span></span>
 
-* <span data-ttu-id="9e842-150">**Blog.cs**</span><span class="sxs-lookup"><span data-stu-id="9e842-150">**Blog.cs**</span></span>
+* <span data-ttu-id="efd8c-151">**Blog.cs**</span><span class="sxs-lookup"><span data-stu-id="efd8c-151">**Blog.cs**</span></span>
 
   [!code-csharp[](../../../samples/core/Xamarin/EFGetStarted/Models/Blog.cs)]
 
-* <span data-ttu-id="9e842-151">Свойство `Posts` определяет связь "родитель-потомок" между `Blog` и `Post`.</span><span class="sxs-lookup"><span data-stu-id="9e842-151">The `Posts` property defines a parent-child relationship between `Blog` and `Post`.</span></span>
+* <span data-ttu-id="efd8c-152">Свойство `Posts` определяет связь "родитель-потомок" между `Blog` и `Post`.</span><span class="sxs-lookup"><span data-stu-id="efd8c-152">The `Posts` property defines a parent-child relationship between `Blog` and `Post`.</span></span>
 
-* <span data-ttu-id="9e842-152">**Post.cs**</span><span class="sxs-lookup"><span data-stu-id="9e842-152">**Post.cs**</span></span>
+* <span data-ttu-id="efd8c-153">**Post.cs**</span><span class="sxs-lookup"><span data-stu-id="efd8c-153">**Post.cs**</span></span>
 
   [!code-csharp[](../../../samples/core/Xamarin/EFGetStarted/Models/Post.cs)]
 
-* <span data-ttu-id="9e842-153">Свойства `BlogId` и `Blog` определяют обратные связи с родительским объектом `Blog` для экземпляра `Post`.</span><span class="sxs-lookup"><span data-stu-id="9e842-153">The `BlogId` and `Blog` properties relate back to the parent `Blog` object for the instance of the `Post`.</span></span>
+* <span data-ttu-id="efd8c-154">Свойства `BlogId` и `Blog` определяют обратные связи с родительским объектом `Blog` для экземпляра `Post`.</span><span class="sxs-lookup"><span data-stu-id="efd8c-154">The `BlogId` and `Blog` properties relate back to the parent `Blog` object for the instance of the `Post`.</span></span>
 
-## <a name="data-context"></a><span data-ttu-id="9e842-154">Контекст данных</span><span class="sxs-lookup"><span data-stu-id="9e842-154">Data context</span></span>
+## <a name="data-context"></a><span data-ttu-id="efd8c-155">Контекст данных</span><span class="sxs-lookup"><span data-stu-id="efd8c-155">Data context</span></span>
 
-<span data-ttu-id="9e842-155">Класс `BloggingContext` находится в папке `Services` и наследуется от класса EF Core `DbContext`.</span><span class="sxs-lookup"><span data-stu-id="9e842-155">The `BloggingContext` class is located in the `Services` folder and inherits from the EF Core `DbContext` class.</span></span> <span data-ttu-id="9e842-156">`DbContext` используется для группирования запросов к базе данных и изменений.</span><span class="sxs-lookup"><span data-stu-id="9e842-156">A `DbContext` is used to group together database queries and changes.</span></span>
+<span data-ttu-id="efd8c-156">Класс `BloggingContext` находится в папке `Services` и наследуется от класса EF Core `DbContext`.</span><span class="sxs-lookup"><span data-stu-id="efd8c-156">The `BloggingContext` class is located in the `Services` folder and inherits from the EF Core `DbContext` class.</span></span> <span data-ttu-id="efd8c-157">`DbContext` используется для группирования запросов к базе данных и изменений.</span><span class="sxs-lookup"><span data-stu-id="efd8c-157">A `DbContext` is used to group together database queries and changes.</span></span>
 
   [!code-csharp[](../../../samples/core/Xamarin/EFGetStarted/Services/BloggingContext.cs)]
 
-* <span data-ttu-id="9e842-157">Оба свойства в этом классе типа `DbSet` служат для работы с базовыми таблицами, представляющими блоги и записи.</span><span class="sxs-lookup"><span data-stu-id="9e842-157">Both properties in this class of type `DbSet` are used to operate on the underlying tables representing Blogs and Posts.</span></span>
-* <span data-ttu-id="9e842-158">`SQLitePCL.Batteries_V2.Init()` требуется в конструкторе для инициации SQLite в iOS.</span><span class="sxs-lookup"><span data-stu-id="9e842-158">The `SQLitePCL.Batteries_V2.Init()` is needed in the constructor to initiate SQLite on iOS.</span></span>
-* <span data-ttu-id="9e842-159">Функция `OnConfiguring` задает расположение базы данных SQLite на физическом устройстве.</span><span class="sxs-lookup"><span data-stu-id="9e842-159">The `OnConfiguring` function sets up the location of the SQLite database on the physical device.</span></span>
+* <span data-ttu-id="efd8c-158">Оба свойства в этом классе типа `DbSet` служат для работы с базовыми таблицами, представляющими блоги и записи.</span><span class="sxs-lookup"><span data-stu-id="efd8c-158">Both properties in this class of type `DbSet` are used to operate on the underlying tables representing Blogs and Posts.</span></span>
+* <span data-ttu-id="efd8c-159">`SQLitePCL.Batteries_V2.Init()` требуется в конструкторе для инициации SQLite в iOS.</span><span class="sxs-lookup"><span data-stu-id="efd8c-159">The `SQLitePCL.Batteries_V2.Init()` is needed in the constructor to initiate SQLite on iOS.</span></span>
+* <span data-ttu-id="efd8c-160">Функция `OnConfiguring` задает расположение базы данных SQLite на физическом устройстве.</span><span class="sxs-lookup"><span data-stu-id="efd8c-160">The `OnConfiguring` function sets up the location of the SQLite database on the physical device.</span></span>
 
-## <a name="create-read-update--delete"></a><span data-ttu-id="9e842-160">Создание, чтение, обновление и удаление</span><span class="sxs-lookup"><span data-stu-id="9e842-160">Create, read, update & delete</span></span>
+## <a name="create-read-update--delete"></a><span data-ttu-id="efd8c-161">Создание, чтение, обновление и удаление</span><span class="sxs-lookup"><span data-stu-id="efd8c-161">Create, read, update & delete</span></span>
 
-<span data-ttu-id="9e842-161">Ниже приведены некоторые места в приложении, где EF Core используется для доступа к SQLite.</span><span class="sxs-lookup"><span data-stu-id="9e842-161">The following are some instances in the app where EF Core is used to access SQLite.</span></span>
+<span data-ttu-id="efd8c-162">Ниже приведены некоторые места в приложении, где EF Core используется для доступа к SQLite.</span><span class="sxs-lookup"><span data-stu-id="efd8c-162">The following are some instances in the app where EF Core is used to access SQLite.</span></span>
 
-### <a name="read"></a><span data-ttu-id="9e842-162">Чтение</span><span class="sxs-lookup"><span data-stu-id="9e842-162">Read</span></span>
+### <a name="read"></a><span data-ttu-id="efd8c-163">Чтение</span><span class="sxs-lookup"><span data-stu-id="efd8c-163">Read</span></span>
 
-* <span data-ttu-id="9e842-163">Возврат всех записей.</span><span class="sxs-lookup"><span data-stu-id="9e842-163">Return all records.</span></span>
-  * <span data-ttu-id="9e842-164">Функция `OnAppearing` в `BlogsPage.xaml.cs` возвращает все записи `Blog` и сохраняет их в переменной `List`.</span><span class="sxs-lookup"><span data-stu-id="9e842-164">The `OnAppearing` function of `BlogsPage.xaml.cs` returns all `Blog` records and stores them into a `List` variable.</span></span>
+* <span data-ttu-id="efd8c-164">Возврат всех записей.</span><span class="sxs-lookup"><span data-stu-id="efd8c-164">Return all records.</span></span>
+  * <span data-ttu-id="efd8c-165">Функция `OnAppearing` в `BlogsPage.xaml.cs` возвращает все записи `Blog` и сохраняет их в переменной `List`.</span><span class="sxs-lookup"><span data-stu-id="efd8c-165">The `OnAppearing` function of `BlogsPage.xaml.cs` returns all `Blog` records and stores them into a `List` variable.</span></span>
 
 ```csharp
 using (var blogContext = new BloggingContext())
@@ -133,8 +132,8 @@ using (var blogContext = new BloggingContext())
 }
 ```
 
-* <span data-ttu-id="9e842-165">Возврат определенных записей.</span><span class="sxs-lookup"><span data-stu-id="9e842-165">Return specific records.</span></span>
-  * <span data-ttu-id="9e842-166">Функция `OnAppearing` в `PostsPage.xaml.cs` возвращает записи `Post`, содержащие определенное значение `BlogId`.</span><span class="sxs-lookup"><span data-stu-id="9e842-166">The `OnAppearing` function of `PostsPage.xaml.cs` returns `Post` records that contain a specific `BlogId`.</span></span>
+* <span data-ttu-id="efd8c-166">Возврат определенных записей.</span><span class="sxs-lookup"><span data-stu-id="efd8c-166">Return specific records.</span></span>
+  * <span data-ttu-id="efd8c-167">Функция `OnAppearing` в `PostsPage.xaml.cs` возвращает записи `Post`, содержащие определенное значение `BlogId`.</span><span class="sxs-lookup"><span data-stu-id="efd8c-167">The `OnAppearing` function of `PostsPage.xaml.cs` returns `Post` records that contain a specific `BlogId`.</span></span>
 
 ```csharp
 using (var blogContext = new BloggingContext())
@@ -145,10 +144,10 @@ using (var blogContext = new BloggingContext())
 }
 ```
 
-### <a name="create"></a><span data-ttu-id="9e842-167">Создать</span><span class="sxs-lookup"><span data-stu-id="9e842-167">Create</span></span>
+### <a name="create"></a><span data-ttu-id="efd8c-168">Создать</span><span class="sxs-lookup"><span data-stu-id="efd8c-168">Create</span></span>
 
-* <span data-ttu-id="9e842-168">Вставка новой записи.</span><span class="sxs-lookup"><span data-stu-id="9e842-168">Insert a new record.</span></span>
-  * <span data-ttu-id="9e842-169">Функция `Save_Clicked` в `AddBlogPage.xaml.cs` вставляет новый объект `Blog` в базу данных SQLite.</span><span class="sxs-lookup"><span data-stu-id="9e842-169">The `Save_Clicked` function of `AddBlogPage.xaml.cs` inserts a new `Blog` object into the SQLite database.</span></span>
+* <span data-ttu-id="efd8c-169">Вставка новой записи.</span><span class="sxs-lookup"><span data-stu-id="efd8c-169">Insert a new record.</span></span>
+  * <span data-ttu-id="efd8c-170">Функция `Save_Clicked` в `AddBlogPage.xaml.cs` вставляет новый объект `Blog` в базу данных SQLite.</span><span class="sxs-lookup"><span data-stu-id="efd8c-170">The `Save_Clicked` function of `AddBlogPage.xaml.cs` inserts a new `Blog` object into the SQLite database.</span></span>
 
 ```csharp
 var blog = new Blog { Url = blogUrl.Text };
@@ -161,10 +160,10 @@ using (var blogContext = new BloggingContext())
 }
 ```
 
-### <a name="update"></a><span data-ttu-id="9e842-170">Обновление</span><span class="sxs-lookup"><span data-stu-id="9e842-170">Update</span></span>
+### <a name="update"></a><span data-ttu-id="efd8c-171">Обновление</span><span class="sxs-lookup"><span data-stu-id="efd8c-171">Update</span></span>
 
-* <span data-ttu-id="9e842-171">Изменение существующей записи.</span><span class="sxs-lookup"><span data-stu-id="9e842-171">Update an existing record.</span></span>
-  * <span data-ttu-id="9e842-172">Функция `Save_Clicked` в `AddPostPage.xaml.cs` изменяет существующий объект `Blog`, используя новый объект `Post`.</span><span class="sxs-lookup"><span data-stu-id="9e842-172">The `Save_Clicked` function of `AddPostPage.xaml.cs` updates an existing `Blog` object with a new `Post`.</span></span>
+* <span data-ttu-id="efd8c-172">Изменение существующей записи.</span><span class="sxs-lookup"><span data-stu-id="efd8c-172">Update an existing record.</span></span>
+  * <span data-ttu-id="efd8c-173">Функция `Save_Clicked` в `AddPostPage.xaml.cs` изменяет существующий объект `Blog`, используя новый объект `Post`.</span><span class="sxs-lookup"><span data-stu-id="efd8c-173">The `Save_Clicked` function of `AddPostPage.xaml.cs` updates an existing `Blog` object with a new `Post`.</span></span>
 
 ```csharp
 var newPost = new Post
@@ -186,10 +185,10 @@ using (var blogContext = new BloggingContext())
 }
 ```
 
-### <a name="delete"></a><span data-ttu-id="9e842-173">Удаление</span><span class="sxs-lookup"><span data-stu-id="9e842-173">Delete</span></span>
+### <a name="delete"></a><span data-ttu-id="efd8c-174">Удаление</span><span class="sxs-lookup"><span data-stu-id="efd8c-174">Delete</span></span>
 
-* <span data-ttu-id="9e842-174">Удаление всех записей, включая дочерние.</span><span class="sxs-lookup"><span data-stu-id="9e842-174">Delete all records with cascade to child records.</span></span>
-  * <span data-ttu-id="9e842-175">Функция `DeleteAll_Clicked` в `BlogsPage.xaml.cs` удаляет все записи `Blog` в базе данных SQLite, распространяя удаление на все дочерние записи `Post` объекта `Blog`.</span><span class="sxs-lookup"><span data-stu-id="9e842-175">The `DeleteAll_Clicked` function of `BlogsPage.xaml.cs` deletes all the `Blog` records in the SQLite database and cascades the deletes to all of the `Blog` child `Post` records.</span></span>
+* <span data-ttu-id="efd8c-175">Удаление всех записей, включая дочерние.</span><span class="sxs-lookup"><span data-stu-id="efd8c-175">Delete all records with cascade to child records.</span></span>
+  * <span data-ttu-id="efd8c-176">Функция `DeleteAll_Clicked` в `BlogsPage.xaml.cs` удаляет все записи `Blog` в базе данных SQLite, распространяя удаление на все дочерние записи `Post` объекта `Blog`.</span><span class="sxs-lookup"><span data-stu-id="efd8c-176">The `DeleteAll_Clicked` function of `BlogsPage.xaml.cs` deletes all the `Blog` records in the SQLite database and cascades the deletes to all of the `Blog` child `Post` records.</span></span>
 
 ```csharp
 using (var blogContext = new BloggingContext())
@@ -200,12 +199,12 @@ using (var blogContext = new BloggingContext())
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="9e842-176">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="9e842-176">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="efd8c-177">Следующие шаги</span><span class="sxs-lookup"><span data-stu-id="efd8c-177">Next steps</span></span>
 
-<span data-ttu-id="9e842-177">В этом кратком руководстве вы узнали, как использовать приложение Xamarin.Forms для доступа к базе данных SQLite с помощью Entity Framework Core.</span><span class="sxs-lookup"><span data-stu-id="9e842-177">In this getting started you have learned how to use a Xamarin.Forms application to access a SQLite database using Entity Framework Core.</span></span>
+<span data-ttu-id="efd8c-178">В этом кратком руководстве вы узнали, как использовать приложение Xamarin.Forms для доступа к базе данных SQLite с помощью Entity Framework Core.</span><span class="sxs-lookup"><span data-stu-id="efd8c-178">In this getting started you have learned how to use a Xamarin.Forms application to access a SQLite database using Entity Framework Core.</span></span>
 
-<span data-ttu-id="9e842-178">Другие разделы по Entity Framework Core, которые могут представлять интерес для разработчиков Xamarin:</span><span class="sxs-lookup"><span data-stu-id="9e842-178">Other Entity Framework Core topics of interest to Xamarin developers:</span></span>
+<span data-ttu-id="efd8c-179">Другие разделы по Entity Framework Core, которые могут представлять интерес для разработчиков Xamarin:</span><span class="sxs-lookup"><span data-stu-id="efd8c-179">Other Entity Framework Core topics of interest to Xamarin developers:</span></span>
 
-* [<span data-ttu-id="9e842-179">Настройка `DbContext`</span><span class="sxs-lookup"><span data-stu-id="9e842-179">Configuring a `DbContext`</span></span>](xref:core/dbcontext-configuration/index)
-* <span data-ttu-id="9e842-180">См. сведения о [выражениях запросов LINQ](/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations).</span><span class="sxs-lookup"><span data-stu-id="9e842-180">Learn more about [LINQ query expressions](/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations)</span></span>
-* <span data-ttu-id="9e842-181">[Настройте модель](xref:core/modeling/index), указав [требуемую](xref:core/modeling/entity-properties#required-and-optional-properties) и [максимальную длину](xref:core/modeling/entity-properties#maximum-length).</span><span class="sxs-lookup"><span data-stu-id="9e842-181">[Configure your model](xref:core/modeling/index) to specify things like [required](xref:core/modeling/entity-properties#required-and-optional-properties) and [maximum length](xref:core/modeling/entity-properties#maximum-length)</span></span>
+* [<span data-ttu-id="efd8c-180">Настройка `DbContext`</span><span class="sxs-lookup"><span data-stu-id="efd8c-180">Configuring a `DbContext`</span></span>](xref:core/dbcontext-configuration/index)
+* <span data-ttu-id="efd8c-181">См. сведения о [выражениях запросов LINQ](/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations).</span><span class="sxs-lookup"><span data-stu-id="efd8c-181">Learn more about [LINQ query expressions](/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations)</span></span>
+* <span data-ttu-id="efd8c-182">[Настройте модель](xref:core/modeling/index), указав [требуемую](xref:core/modeling/entity-properties#required-and-optional-properties) и [максимальную длину](xref:core/modeling/entity-properties#maximum-length).</span><span class="sxs-lookup"><span data-stu-id="efd8c-182">[Configure your model](xref:core/modeling/index) to specify things like [required](xref:core/modeling/entity-properties#required-and-optional-properties) and [maximum length](xref:core/modeling/entity-properties#maximum-length)</span></span>
