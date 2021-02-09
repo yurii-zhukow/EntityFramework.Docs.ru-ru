@@ -5,12 +5,12 @@ author: codemillmatt
 ms.date: 07/07/2020
 ms.author: masoucou
 uid: core/get-started/xamarin
-ms.openlocfilehash: c19c70903926c2c8ff4b51cca7781859af7e3567
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: e4a26d7a0c6909002be0974ee9fe1c5db7c1046a
+ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98128788"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98983603"
 ---
 # <a name="getting-started-with-ef-core-and-xamarin"></a>Начало работы с EF Core и Xamarin
 
@@ -78,8 +78,7 @@ ms.locfileid: "98128788"
 >
 > * Первый способ: добавьте `--linkskip System.Core` в поле **Дополнительные аргументы mtouch** в параметрах **сборки iOS**.
 > * Второй способ: в параметрах **сборки iOS** задайте для параметра **Поведение компоновщика** Xamarin.iOS значение `Don't Link`.
-> Дополнительные сведения о компоновщике Xamarin.iOS, включая настройку его поведения для Xamarin.iOS, приведены в [этой статье](/xamarin/ios/deploy-test/linker).
->
+> Дополнительные сведения о компоновщике Xamarin.iOS, включая настройку его поведения для Xamarin.iOS, приведены в [этой статье](/xamarin/ios/deploy-test/linker). Такой подход не идеален, так как он может стать причиной отклонения в магазине.
 
 ## <a name="entity-framework-core-nuget-packages"></a>Пакеты Entity Framework Core NuGet
 
