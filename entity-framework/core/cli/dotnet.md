@@ -4,12 +4,12 @@ description: Справочное руководство по средствам
 author: bricelam
 ms.date: 10/27/2020
 uid: core/cli/dotnet
-ms.openlocfilehash: 60655c03a7fc29137ccb8d9304c94dac6b803cb2
-ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
+ms.openlocfilehash: 5f25ad67060e59507285af6e78269baa784c5288
+ms.sourcegitcommit: 704240349e18b6404e5a809f5b7c9d365b152e2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98983590"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100543397"
 ---
 # <a name="entity-framework-core-tools-reference---net-core-cli"></a>Справочник по инструментам Entity Framework Core — .NET Core CLI
 
@@ -128,7 +128,7 @@ dotnet ef database update -- --environment Production
 
 Начиная с EF Core 5,0, в приложение передаются дополнительные аргументы.
 
-## <a name="dotnet-ef-database-drop"></a>Удаление базы данных DotNet EF
+## `dotnet ef database drop`
 
 Удаляет базу данных.
 
@@ -141,7 +141,7 @@ dotnet ef database update -- --environment Production
 
 [Общие параметры](#common-options) перечислены выше.
 
-## <a name="dotnet-ef-database-update"></a>Обновление базы данных DotNet EF
+## `dotnet ef database update`
 
 Обновляет базу данных до последней миграции или до указанной миграции.
 
@@ -166,19 +166,19 @@ dotnet ef database update InitialCreate
 dotnet ef database update 20180904195021_InitialCreate --connection your_connection_string
 ```
 
-## <a name="dotnet-ef-dbcontext-info"></a>сведения о dbcontextе DotNet EF
+## `dotnet ef dbcontext info`
 
 Возвращает сведения о `DbContext` типе.
 
 [Общие параметры](#common-options) перечислены выше.
 
-## <a name="dotnet-ef-dbcontext-list"></a>Список dbcontextов DotNet EF
+## `dotnet ef dbcontext list`
 
 Перечисляет доступные `DbContext` типы.
 
 [Общие параметры](#common-options) перечислены выше.
 
-## <a name="dotnet-ef-dbcontext-scaffold"></a>формирование шаблона DotNet EF DbContext
+## `dotnet ef dbcontext scaffold`
 
 Создает код для `DbContext` типов сущностей и для базы данных. Чтобы эта команда создавала тип сущности, таблица базы данных должна иметь первичный ключ.
 
@@ -227,7 +227,7 @@ dotnet user-secrets set ConnectionStrings:Blogging "Data Source=(localdb)\MSSQLL
 dotnet ef dbcontext scaffold Name=ConnectionStrings:Blogging Microsoft.EntityFrameworkCore.SqlServer
 ```
 
-## <a name="dotnet-ef-dbcontext-script"></a>Скрипт DotNet EF DbContext
+## `dotnet ef dbcontext script`
 
 Создает скрипт SQL из DbContext. Обход всех миграций. Добавлено в EF Core 3,0.
 
@@ -239,7 +239,7 @@ dotnet ef dbcontext scaffold Name=ConnectionStrings:Blogging Microsoft.EntityFra
 
 [Общие параметры](#common-options) перечислены выше.
 
-## <a name="dotnet-ef-migrations-add"></a>Добавление миграций DotNet EF
+## `dotnet ef migrations add`
 
 Добавляет новый перенос.
 
@@ -258,7 +258,7 @@ dotnet ef dbcontext scaffold Name=ConnectionStrings:Blogging Microsoft.EntityFra
 
 [Общие параметры](#common-options) перечислены выше.
 
-## <a name="dotnet-ef-migrations-list"></a>Список миграций DotNet EF
+## `dotnet ef migrations list`
 
 Список доступных миграций.
 
@@ -271,7 +271,7 @@ dotnet ef dbcontext scaffold Name=ConnectionStrings:Blogging Microsoft.EntityFra
 
 [Общие параметры](#common-options) перечислены выше.
 
-## <a name="dotnet-ef-migrations-remove"></a>Удаление для миграций DotNet EF
+## `dotnet ef migrations remove`
 
 Удаляет последнюю миграцию (выполняет откат изменений кода, выполненных для миграции).
 
@@ -283,7 +283,7 @@ dotnet ef dbcontext scaffold Name=ConnectionStrings:Blogging Microsoft.EntityFra
 
 [Общие параметры](#common-options) перечислены выше.
 
-## <a name="dotnet-ef-migrations-script"></a>Скрипт миграции DotNet EF
+## `dotnet ef migrations script`
 
 Создает скрипт SQL из миграции.
 

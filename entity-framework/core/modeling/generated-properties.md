@@ -4,12 +4,12 @@ description: Настройка создания значений для сво�
 author: AndriySvyryd
 ms.date: 1/10/2021
 uid: core/modeling/generated-properties
-ms.openlocfilehash: 76fa4454c88a5ef7afb9864c2a4b1063ac75e37e
-ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
+ms.openlocfilehash: a9e43f3b755bf028bc76581135988e831a42d0d1
+ms.sourcegitcommit: 704240349e18b6404e5a809f5b7c9d365b152e2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98983551"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100543345"
 ---
 # <a name="generated-values"></a>Созданные значения
 
@@ -52,7 +52,7 @@ ms.locfileid: "98983551"
 
 ### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ValueGeneratedOnAdd.cs?name=ValueGeneratedOnAdd&highlight=5)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ValueGeneratedOnAdd.cs?name=ValueGeneratedOnAdd&highlight=6)]
 
 ### <a name="fluent-api"></a>[Текучий API](#tab/fluent-api)
 
@@ -64,16 +64,16 @@ ms.locfileid: "98983551"
 
 ### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ValueGeneratedOnAddOrUpdate.cs?name=ValueGeneratedOnAddOrUpdate&highlight=5)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ValueGeneratedOnAddOrUpdate.cs?name=ValueGeneratedOnAddOrUpdate&highlight=6)]
 
 ### <a name="fluent-api"></a>[Текучий API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ValueGeneratedOnAddOrUpdate.cs?name=ValueGeneratedOnAddOrUpdate&highlight=5)]
 
-**_
+***
 
 > [!WARNING]
-> В отличие от значений по умолчанию или от вычисленных столбцов, не указывается _how * значения, которые должны быть созданы. Это зависит от используемого поставщика базы данных. Поставщики баз данных могут автоматически настроить создание значений для некоторых типов свойств, но для других может потребоваться вручную настроить способ создания значения.
+> В отличие от значений по умолчанию или от вычисленных столбцов, не указывается *способ* создания значений. Это зависит от используемого поставщика базы данных. Поставщики баз данных могут автоматически настроить создание значений для некоторых типов свойств, но для других может потребоваться вручную настроить способ создания значения.
 >
 > Например, на SQL Server, когда свойство GUID настроено в качестве значения, созданного при добавлении, поставщик автоматически выполняет клиентское создание значений, используя алгоритм для создания оптимальных последовательных значений GUID. Однако указание `ValueGeneratedOnAdd()` свойства DateTime не будет действовать ([см. раздел ниже для создания значения DateTime](#datetime-value-generation)).
 >

@@ -2,14 +2,14 @@
 title: Сопоставления функций — поставщик базы данных Microsoft SQL Server — EF Core
 description: Сопоставления функций поставщика Microsoft SQL Server базы данных
 author: bricelam
-ms.date: 10/07/2020
+ms.date: 1/26/2021
 uid: core/providers/sql-server/functions
-ms.openlocfilehash: 8eb66521b00f2f4879a098200239849c7219a095
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: c39e81fca52854e7fa7d5b2e81b80511e8184b90
+ms.sourcegitcommit: 704240349e18b6404e5a809f5b7c9d365b152e2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92066562"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100543228"
 ---
 # <a name="function-mappings-of-the-microsoft-sql-server-provider"></a>Сопоставления функций поставщика Microsoft SQL Server
 
@@ -20,8 +20,10 @@ ms.locfileid: "92066562"
 .NET                         | SQL                           | Добавлено в
 ---------------------------- | ----------------------------- | --------
 байт. Contains (значение)        | CHARINDEX ( @value , @bytes ) > 0 | EF Core 5.0
+байт. First ()                | Подстрока ( @bytes , 1, 1)       | EF Core 6.0
 байт. Недопустим                 | DATALENGTH ( @bytes )            | EF Core 5.0
 байт. SequenceEqual (секунда)  | @bytes = @second              | EF Core 5.0
+байт [i]                     | Подстрока ( @bytes , @i + 1, 1)  | EF Core 6.0
 #. Функции. DATALENGTH (ARG) | DATALENGTH ( @arg )              | EF Core 5.0
 
 ## <a name="conversion-functions"></a>Функции преобразования
@@ -121,8 +123,9 @@ timeSpan. Seconds                                            | DATEPART (сек�
 
 ## <a name="numeric-functions"></a>Числовые функции
 
-.NET                    | SQL
------------------------ | ---
+.NET                    | SQL                  | Добавлено в
+----------------------- | -------------------- | --------
+#. Functions. Random ()   | RAND ()               | EF Core 6.0
 Math. ABS (значение)         | ABS ( @value )
 Math. ACOS (d)            | ACOS ( @d )
 Math. ASIN (d)            | ASIN ( @d )
@@ -153,11 +156,12 @@ Math. truncate (d)        | ROUND ( @d , 0, 1)
 #. Функции. Contains (propertyReference, Сеарчкондитион, Лангуажетерм) | СОДЕРЖИТ ( @propertyReference , @searchCondition , Language @languageTerm ) | EF Core 2.2
 #. Functions. FreeText (propertyReference, freeText)                      | FREETEXT ( @propertyReference , @freeText )
 #. Functions. FreeText (propertyReference, freeText, Лангуажетерм)        | FREETEXT ( @propertyReference , @freeText , язык @languageTerm )
+#. Функции. ISNUMERIC (выражение)                                      | ISNUMERIC ( @expression )                                                 | EF Core 6.0
 #. Функции. like (matchExpression, шаблон)                             | @matchExpression Например @pattern
 #. Функции. like (matchExpression, pattern, Ескапечарактер)            | @matchExpression КАК в @pattern escape-последовательности @escapeCharacter
 String. Compare (strA, strB)                                              | CASE if @strA = @strB then 0... КОНЦЕ
 Строка. Concat (Str0, str1)                                               | @str0 + @str1
-Строка. IsNullOrEmpty (значение)                                             | @value ИМЕЕТ значение NULL или @value = N ' '
+Строка. IsNullOrEmpty (значение)                                             | @value ИМЕЕТ значение NULL или @value Like N ""
 Строка. IsNullOrWhiteSpace (значение)                                        | @value ИМЕЕТ значение NULL или LTRIM (RTRIM ( @value )) = N ' '
 stringValue. CompareTo (strB)                                             | CASE if @stringValue = @strB then 0... КОНЦЕ
 stringValue. Contains (значение)                                             | @stringValue LIKE N '% ' + @value + N '% '
@@ -188,6 +192,6 @@ Guid.NewGuid()                           | NEWID()
 > [!NOTE]
 > Некоторые SQL были упрощены для иллюстрации целей. Фактический SQL более сложен для работы с более широким диапазоном значений.
 
-## <a name="see-also"></a>См. также статью
+## <a name="see-also"></a>См. также
 
 * [Сопоставления пространственных функций](xref:core/providers/sql-server/spatial#spatial-function-mappings)

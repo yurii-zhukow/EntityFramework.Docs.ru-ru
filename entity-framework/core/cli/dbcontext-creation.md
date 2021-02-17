@@ -4,12 +4,12 @@ description: Стратегии создания DbContext времени раз
 author: bricelam
 ms.date: 10/27/2020
 uid: core/cli/dbcontext-creation
-ms.openlocfilehash: 144ed26dcf605dc29d53519ad2ea9cea58fb4e44
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: 1a2c0e853047cf4ab54a320d0bef413a114e90bc
+ms.sourcegitcommit: 704240349e18b6404e5a809f5b7c9d365b152e2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431360"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100543410"
 ---
 # <a name="design-time-dbcontext-creation"></a>Создание DbContext во время разработки
 
@@ -44,11 +44,11 @@ ms.locfileid: "94431360"
 > До Ефкоре 5,0 `args` параметр был неиспользован (см. [эту ошибку][8]).
 > Это исправлено в Ефкоре 5,0, а все дополнительные аргументы времени разработки передаются в приложение через этот параметр.
 
-Фабрика времени разработки может быть особенно полезной, если необходимо настроить DbContext по-разному для времени разработки, чем во время выполнения, если `DbContext` конструктор принимает дополнительные параметры, не зарегистрированные в di, если вы не используете функцию Onon или по какой-либо причине не хотите использовать `CreateHostBuilder` метод в классе ASP.NET Core приложения `Main` .
+Фабрика времени разработки может быть особенно полезной, если необходимо настроить `DbContext` разное время разработки, чем во время выполнения, если `DbContext` конструктор принимает дополнительные параметры, не зарегистрированные на сайте di, если вы не используете функцию Onon или по какой-либо причине не хотите использовать `CreateHostBuilder` метод в классе ASP.NET Core приложения `Main` .
 
 ## <a name="args"></a>Args
 
-И Идесигнтимедбконтекстфактори. Креатедбконтекст, и Program. Креатехостбуилдер принимают аргументы командной строки.
+Оба <xref:Microsoft.EntityFrameworkCore.Design.IDesignTimeDbContextFactory%601.CreateDbContext%2A?displayProperty=nameWithType> `Program.CreateHostBuilder` аргумента и принимают аргументы командной строки.
 
 Начиная с EF Core 5,0, можно указать следующие аргументы в средствах:
 

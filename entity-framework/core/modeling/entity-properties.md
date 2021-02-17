@@ -4,12 +4,12 @@ description: Настройка и сопоставьте свойства су�
 author: roji
 ms.date: 05/27/2020
 uid: core/modeling/entity-properties
-ms.openlocfilehash: fe6dd2c24b8f8ffffa8e0101f69966b7b7c74036
-ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
+ms.openlocfilehash: 3c64f5ac1c86a83b6456df9e29472dc0b22d8524
+ms.sourcegitcommit: 704240349e18b6404e5a809f5b7c9d365b152e2e
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "97635553"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100543371"
 ---
 # <a name="entity-properties"></a>Свойства сущности
 
@@ -57,11 +57,11 @@ ms.locfileid: "97635553"
 
 ### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ColumnDataType.cs?name=ColumnDataType&highlight=4,6)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ColumnDataType.cs?name=ColumnDataType&highlight=5,8)]
 
 ### <a name="fluent-api"></a>[Текучий API](#tab/fluent-api)
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ColumnDataType.cs?name=ColumnDataType&highlight=5-6)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ColumnDataType.cs?name=ColumnDataType&highlight=6-7)]
 
 ***
 
@@ -76,7 +76,7 @@ ms.locfileid: "97635553"
 
 #### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/MaxLength.cs?name=MaxLength&highlight=4)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/MaxLength.cs?name=MaxLength&highlight=5)]
 
 #### <a name="fluent-api"></a>[Текучий API](#tab/fluent-api)
 
@@ -125,7 +125,7 @@ ms.locfileid: "97635553"
 
 #### <a name="without-nrt-default"></a>[Без ПРЕВЕНТИВНОЙ (по умолчанию)](#tab/without-nrt)
 
-[!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/CustomerWithoutNullableReferenceTypes.cs?name=Customer&highlight=4-8)]
+[!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/CustomerWithoutNullableReferenceTypes.cs?name=Customer&highlight=5,8)]
 
 #### <a name="with-nrt"></a>[С ПРЕВЕНТИВНОЙ](#tab/with-nrt)
 
@@ -146,7 +146,7 @@ ms.locfileid: "97635553"
 
 #### <a name="data-annotations"></a>[Заметки к данным](#tab/data-annotations)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Required.cs?name=Required&highlight=4)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Required.cs?name=Required&highlight=5)]
 
 #### <a name="fluent-api"></a>[Текучий API](#tab/fluent-api)
 
@@ -161,7 +161,7 @@ ms.locfileid: "97635553"
 
 Параметры сортировки могут быть определены для текстовых столбцов, определяя, как они сравниваются и упорядочиваются. Например, следующий фрагмент кода настраивает SQL Server столбца, в котором регистр не учитывается:
 
-[!code-csharp[Main](../../../samples/core/Miscellaneous/Collations/Program.cs?range=42-43)]
+[!code-csharp[Main](../../../samples/core/Miscellaneous/Collations/Program.cs?name=ColumnCollation)]
 
 Если всем столбцам в базе данных необходимо использовать определенные параметры сортировки, то вместо этого определите параметры сортировки на уровне базы данных.
 
@@ -176,7 +176,7 @@ ms.locfileid: "97635553"
 > [!NOTE]
 > Установка комментариев с помощью заметок к данным была представлена в EF Core 5,0.
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ColumnComment.cs?name=ColumnComment&highlight=4)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ColumnComment.cs?name=ColumnComment&highlight=5)]
 
 ### <a name="fluent-api"></a>[Текучий API](#tab/fluent-api)
 
