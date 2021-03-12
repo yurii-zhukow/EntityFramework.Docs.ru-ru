@@ -4,12 +4,12 @@ description: Разрешение нескольких экземпляров с
 author: ajcvickers
 ms.date: 12/30/2020
 uid: core/change-tracking/identity-resolution
-ms.openlocfilehash: d4c8f935c8d0ab92eaecd8fc7a4156bd824713d4
-ms.sourcegitcommit: 704240349e18b6404e5a809f5b7c9d365b152e2e
+ms.openlocfilehash: 24b2fbeea5f740dd2830676bfe8a49720c2b86a9
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100543618"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024463"
 ---
 # <a name="identity-resolution-in-ef-core"></a>Разрешение идентификаторов в EF Core
 
@@ -19,7 +19,7 @@ ms.locfileid: "100543618"
 > В этом документе предполагается, что состояния сущностей и основы отслеживания изменений EF Core понятны. Дополнительные сведения по этим темам см. [в разделе Отслеживание изменений в EF Core](xref:core/change-tracking/index) .
 
 > [!TIP]
-> Вы можете запустить и отладить весь код, используемый в этой документации, [скачав пример кода из GitHub](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/ChangeTracking/IdentityResolutionInEFCore).
+> Вы можете запустить и отладить весь код, используемый в этой документации, [скачав пример кода из GitHub](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/ChangeTracking/IdentityResolutionInEFCore).
 
 ## <a name="introduction"></a>Введение
 

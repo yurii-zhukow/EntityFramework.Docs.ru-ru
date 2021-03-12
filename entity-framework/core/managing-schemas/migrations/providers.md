@@ -4,12 +4,12 @@ description: Использование миграций для управлен
 author: bricelam
 ms.date: 10/29/2020
 uid: core/managing-schemas/migrations/providers
-ms.openlocfilehash: fb8c6121a4baccf573e57b52ebeb3fcd29fe2cba
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: feed19abb188eebc473386b67fac62848e682d96
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94429784"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024099"
 ---
 # <a name="migrations-with-multiple-providers"></a>Миграция с несколькими поставщиками
 
@@ -53,7 +53,7 @@ Add-Migration InitialCreate -Context SqliteBlogContext -OutputDir Migrations\Sql
 Также можно использовать один тип DbContext. В настоящее время миграцию необходимо переместить в отдельную сборку. Инструкции по настройке проектов см. в [разделе Использование отдельного проекта миграции](xref:core/managing-schemas/migrations/projects) .
 
 > [!TIP]
-> Вы можете скачать используемый в этой статье [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Schemas/TwoProjectMigrations) из репозитория GitHub.
+> Вы можете скачать используемый в этой статье [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Schemas/TwoProjectMigrations) из репозитория GitHub.
 
 Начиная с EF Core 5,0 можно передавать аргументы в приложение из средств. Это может обеспечить более рациональный рабочий процесс, который позволяет избежать внесения изменений в проект вручную при запуске инструментов.
 

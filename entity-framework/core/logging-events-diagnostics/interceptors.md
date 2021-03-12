@@ -4,12 +4,12 @@ description: Перехват для операций базы данных и �
 author: ajcvickers
 ms.date: 10/08/2020
 uid: core/logging-events-diagnostics/interceptors
-ms.openlocfilehash: e3b2f1a0f1a97d211bcaba0633955a7fe9c0aa91
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: 459c0495e9a2f81e2e84388988f04ca9787080cc
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98128593"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024229"
 ---
 # <a name="interceptors"></a>Перехватчики
 
@@ -21,7 +21,7 @@ ms.locfileid: "98128593"
 
 ## <a name="registering-interceptors"></a>Регистрация перехватчиков
 
-Перехватчики регистрируются с помощью <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.AddInterceptors%2A> при [настройке экземпляра DbContext](xref:core/dbcontext-configuration/index). Обычно это делается при переопределении <xref:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring%2A?displayProperty=nameWithType> . Пример:
+Перехватчики регистрируются с помощью <xref:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.AddInterceptors%2A> при [настройке экземпляра DbContext](xref:core/dbcontext-configuration/index). Обычно это делается при переопределении <xref:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring%2A?displayProperty=nameWithType> . Например:
 
 <!--
 public class ExampleContext : BlogsContext
@@ -37,7 +37,7 @@ public class ExampleContext : BlogsContext
 > [!TIP]
 > Onconfiguring по-прежнему вызывается при использовании AddDbContext или при передаче экземпляра DbContextOptions в конструктор DbContext. Это делает его идеальным местом для применения конфигурации контекста независимо от того, как создается DbContext.
 
-Перехватчики часто не имеют состояния. Это означает, что один экземпляр перехватчика можно использовать для всех экземпляров DbContext. Пример:
+Перехватчики часто не имеют состояния. Это означает, что один экземпляр перехватчика можно использовать для всех экземпляров DbContext. Например:
 
 <!--
 public class TaggedQueryCommandInterceptorContext : BlogsContext
@@ -76,11 +76,11 @@ public class TaggedQueryCommandInterceptorContext : BlogsContext
 ### <a name="example-command-interception-to-add-query-hints"></a>Пример: перехват команд для добавления указания запроса
 
 > [!TIP]
-> [Пример перехватчика команд можно скачать](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/CommandInterception) с сайта GitHub.
+> [Пример перехватчика команд можно скачать](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/CommandInterception) с сайта GitHub.
 
 <xref:Microsoft.EntityFrameworkCore.Diagnostics.IDbCommandInterceptor>Можно использовать для изменения SQL перед его отправкой в базу данных. В этом примере показано, как изменить SQL, включив в него указание запроса.
 
-Часто сложную часть перехвата определяет, соответствует ли команда запросу, который необходимо изменить. Анализ SQL является одним из вариантов, но он, как правило, является ненадежным. Кроме того, можно использовать [Теги запроса EF Core](xref:core/querying/tags) , чтобы пометить каждый запрос, который необходимо изменить. Пример:
+Часто сложную часть перехвата определяет, соответствует ли команда запросу, который необходимо изменить. Анализ SQL является одним из вариантов, но он, как правило, является ненадежным. Кроме того, можно использовать [Теги запроса EF Core](xref:core/querying/tags) , чтобы пометить каждый запрос, который необходимо изменить. Например:
 
 <!--
             var blogs1 = context.Blogs.TagWith("Use hint: robust plan").ToList();
@@ -149,9 +149,9 @@ FROM [Blogs] AS [b]
 ### <a name="example-connection-interception-for-sql-azure-authentication-using-add"></a>Пример. перехват подключения для проверки подлинности SQL Azure с помощью ADD
 
 > [!TIP]
-> [Пример перехватчика подключения можно скачать](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/ConnectionInterception) с сайта GitHub.
+> [Пример перехватчика подключения можно скачать](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/ConnectionInterception) с сайта GitHub.
 
-<xref:Microsoft.EntityFrameworkCore.Diagnostics.IDbConnectionInterceptor>Можно использовать для управления до того, <xref:System.Data.Common.DbConnection> как он будет использоваться для подключения к базе данных. Это можно использовать для получения маркера доступа Azure Active Directory (AAD). Пример:
+<xref:Microsoft.EntityFrameworkCore.Diagnostics.IDbConnectionInterceptor>Можно использовать для управления до того, <xref:System.Data.Common.DbConnection> как он будет использоваться для подключения к базе данных. Это можно использовать для получения маркера доступа Azure Active Directory (AAD). Например:
 
 <!--
 public class AadAuthenticationInterceptor : DbConnectionInterceptor
@@ -182,7 +182,7 @@ public class AadAuthenticationInterceptor : DbConnectionInterceptor
 [!code-csharp[AadAuthenticationInterceptor](../../../samples/core/Miscellaneous/ConnectionInterception/AadAuthenticationInterceptor.cs?name=AadAuthenticationInterceptor)]
 
 > [!TIP]
-> [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/) теперь поддерживает проверку подлинности AAD через строку подключения. Подробнее см. в разделе <xref:Microsoft.Data.SqlClient.SqlAuthenticationMethod>.
+> [Microsoft. Data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/) теперь поддерживает проверку подлинности AAD через строку подключения. Дополнительные сведения см. в разделе <xref:Microsoft.Data.SqlClient.SqlAuthenticationMethod>.
 
 > [!WARNING]
 > Обратите внимание, что перехватчик создает исключение при вызове синхронизации для открытия соединения. Это обусловлено тем, что для получения маркера доступа нет метода, не являющегося асинхронным, и нет [универсального и простого способа вызова асинхронного метода из контекста, не являющегося асинхронным, без риска взаимоблокировки](https://devblogs.microsoft.com/dotnet/configureawait-faq/).
@@ -193,7 +193,7 @@ public class AadAuthenticationInterceptor : DbConnectionInterceptor
 ### <a name="example-advanced-command-interception-for-caching"></a>Пример. Расширенное перехват команд для кэширования
 
 > [!TIP]
-> [Пример расширенного перехватчика команд можно скачать](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/CachingInterception) с сайта GitHub.
+> [Пример расширенного перехватчика команд можно скачать](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/CachingInterception) с сайта GitHub.
 
 Перехватчики EF Core могут:
 
@@ -299,7 +299,7 @@ public class AadAuthenticationInterceptor : DbConnectionInterceptor
 
 #### <a name="demonstration"></a>Демонстрация
 
-[Пример перехватчика кэширования](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/CachingInterception) содержит простое консольное приложение, которое запрашивает ежедневные сообщения для тестирования кэширования:
+[Пример перехватчика кэширования](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/CachingInterception) содержит простое консольное приложение, которое запрашивает ежедневные сообщения для тестирования кэширования:
 
 <!--
         // 1. Initialize the database with some daily messages.
@@ -399,7 +399,7 @@ Free beer for unicorns
 > Перехват SaveChanges появился в EF Core 5,0.
 
 > [!TIP]
-> Вы можете [скачать пример перехватчика SaveChanges](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/SaveChangesInterception) из GitHub.
+> Вы можете [скачать пример перехватчика SaveChanges](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/SaveChangesInterception) из GitHub.
 
 <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A><xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>точки перехвата определяются <xref:Microsoft.EntityFrameworkCore.Diagnostics.ISaveChangesInterceptor> интерфейсом. Как и для других перехватчиков, в <xref:Microsoft.EntityFrameworkCore.Diagnostics.SaveChangesInterceptor> качестве удобства предоставляется базовый класс с методами, не имеющими Op.
 
@@ -415,7 +415,7 @@ SaveChanges можно перехватывать, чтобы создать н�
 
 #### <a name="the-application-context"></a>Контекст приложения
 
-В [примере для аудита](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/SaveChangesInterception) используется простая DbContext с блогами и записями.
+В [примере для аудита](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/SaveChangesInterception) используется простая DbContext с блогами и записями.
 
 <!--
 public class BlogsContext : DbContext
@@ -673,7 +673,7 @@ public class EntityAudit
 
 #### <a name="demonstration"></a>Демонстрация
 
-[Образец аудита](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/SaveChangesInterception) содержит простое консольное приложение, которое вносит изменения в базу данных блогов, а затем отображает созданный аудит.
+[Образец аудита](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/SaveChangesInterception) содержит простое консольное приложение, которое вносит изменения в базу данных блогов, а затем отображает созданный аудит.
 
 <!--
         // Insert, update, and delete some entities

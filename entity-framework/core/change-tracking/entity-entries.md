@@ -4,12 +4,12 @@ description: Использование Ентитентри, DbContext. зап�
 author: ajcvickers
 ms.date: 12/30/2020
 uid: core/change-tracking/entity-entries
-ms.openlocfilehash: f385016aba61535f33e34c622dd43ce6dc823fc5
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: 758d21f44dfeb8b1de2702165df0d705edfb91b6
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98129642"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024515"
 ---
 # <a name="accessing-tracked-entities"></a>Доступ к отслеживающим сущностям
 
@@ -26,7 +26,7 @@ ms.locfileid: "98129642"
 > В этом документе предполагается, что состояния сущностей и основы отслеживания изменений EF Core понятны. Дополнительные сведения по этим темам см. [в разделе Отслеживание изменений в EF Core](xref:core/change-tracking/index) .
 
 > [!TIP]
-> Вы можете запустить и отладить весь код в этом документе, [загрузив пример кода из GitHub](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/ChangeTracking/AccessingTrackedEntities).
+> Вы можете запустить и отладить весь код, используемый в этой документации, [скачав пример кода из GitHub](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/ChangeTracking/AccessingTrackedEntities).
 
 ## <a name="using-dbcontextentry-and-entityentry-instances"></a>Использование DbContext. Entry и экземпляров Ентитентри
 
@@ -39,7 +39,7 @@ ms.locfileid: "98129642"
 - Значения свойств, которые были изменены с момента запроса.
 - Другие сведения о значениях свойств, например о том, является ли значение [временным](xref:core/change-tracking/miscellaneous#temporary-values).
 
-Передача экземпляра сущности в <xref:System.Data.Entity.DbContext.Entry%2A?displayProperty=nameWithType> результате <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry%601> предоставления доступа к этим сведениям для данной сущности. Пример:
+Передача экземпляра сущности в <xref:System.Data.Entity.DbContext.Entry%2A?displayProperty=nameWithType> результате <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry%601> предоставления доступа к этим сведениям для данной сущности. Например:
 
 <!--
         using var context = new BlogsContext();
@@ -54,7 +54,7 @@ ms.locfileid: "98129642"
 
 ### <a name="working-with-the-entity"></a>Работа с сущностью
 
-Наиболее часто используется <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry%601> для доступа к текущей <xref:Microsoft.EntityFrameworkCore.EntityState> сущности. Пример:
+Наиболее часто используется <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry%601> для доступа к текущей <xref:Microsoft.EntityFrameworkCore.EntityState> сущности. Например:
 
 <!--
         var currentState = context.Entry(blog).State;
@@ -100,7 +100,7 @@ ms.locfileid: "98129642"
 -->
 [!code-csharp[Work_with_a_single_property_1a](../../../samples/core/ChangeTracking/AccessingTrackedEntities/Samples.cs?name=Work_with_a_single_property_1a)]
 
-Вместо этого имя свойства можно передать в виде строки. Пример:
+Вместо этого имя свойства можно передать в виде строки. Например:
 
 <!--
             PropertyEntry<Blog, string> propertyEntry = context.Entry(blog).Property<string>("Name");
@@ -122,7 +122,7 @@ ms.locfileid: "98129642"
 -->
 [!code-csharp[Work_with_a_single_property_1c](../../../samples/core/ChangeTracking/AccessingTrackedEntities/Samples.cs?name=Work_with_a_single_property_1c)]
 
-Это позволяет получить доступ к сведениям о свойствах для любого свойства, независимо от его типа, за счет использования типов значений упаковки. Пример:
+Это позволяет получить доступ к сведениям о свойствах для любого свойства, независимо от его типа, за счет использования типов значений упаковки. Например:
 
 <!--
             object blog = context.Blogs.Single(e => e.Id == 1);
@@ -153,7 +153,7 @@ ms.locfileid: "98129642"
 
 Несколько перегрузок <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry%601.Reference%2A?displayProperty=nameWithType> , <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry%601.Collection%2A?displayProperty=nameWithType> и <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.Navigation%2A?displayProperty=nameWithType> предоставляют доступ к сведениям об отдельных переходах.
 
-Доступ к ссылочным переходам к одной связанной сущности осуществляется с помощью <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry%601.Reference%2A> методов. Навигационные ссылки указывают на сторону «один» связей «один ко многим» и обе стороны связей «один к одному». Пример:
+Доступ к ссылочным переходам к одной связанной сущности осуществляется с помощью <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry%601.Reference%2A> методов. Навигационные ссылки указывают на сторону «один» связей «один ко многим» и обе стороны связей «один к одному». Например:
 
 <!--
         ReferenceEntry<Post, Blog> referenceEntry1 = context.Entry(post).Reference(e => e.Blog);
@@ -162,7 +162,7 @@ ms.locfileid: "98129642"
 -->
 [!code-csharp[Work_with_a_single_navigation_1](../../../samples/core/ChangeTracking/AccessingTrackedEntities/Samples.cs?name=Work_with_a_single_navigation_1)]
 
-Переходы также могут быть коллекциями связанных сущностей при использовании для связей "многие" между "один ко многим" и "многие ко многим". <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry%601.Collection%2A>Методы используются для доступа к навигации по коллекциям. Пример:
+Переходы также могут быть коллекциями связанных сущностей при использовании для связей "многие" между "один ко многим" и "многие ко многим". <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry%601.Collection%2A>Методы используются для доступа к навигации по коллекциям. Например:
 
 <!--
         CollectionEntry<Blog, Post> collectionEntry1 = context.Entry(blog).Collection(e => e.Posts);
@@ -171,7 +171,7 @@ ms.locfileid: "98129642"
 -->
 [!code-csharp[Work_with_a_single_navigation_2a](../../../samples/core/ChangeTracking/AccessingTrackedEntities/Samples.cs?name=Work_with_a_single_navigation_2a)]
 
-Некоторые операции являются общими для всех переходов. Они доступны для навигации по ссылке и коллекции с помощью <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.Navigation%2A?displayProperty=nameWithType> метода. Обратите внимание, что при доступе ко всем переходам доступны только неуниверсальный доступ. Пример:
+Некоторые операции являются общими для всех переходов. Они доступны для навигации по ссылке и коллекции с помощью <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.Navigation%2A?displayProperty=nameWithType> метода. Обратите внимание, что при доступе ко всем переходам доступны только неуниверсальный доступ. Например:
 
 <!--
         NavigationEntry navigationEntry = context.Entry(blog).Navigation("Posts");
@@ -203,7 +203,7 @@ ms.locfileid: "98129642"
 -->
 [!code-csharp[Work_with_all_properties_of_an_entity_1](../../../samples/core/ChangeTracking/AccessingTrackedEntities/Samples.cs?name=Work_with_all_properties_of_an_entity_1)]
 
-Кроме того, Ентитентри содержит несколько методов для получения и установки всех значений свойств одновременно. Эти методы используют <xref:Microsoft.EntityFrameworkCore.ChangeTracking.PropertyValues> класс, представляющий коллекцию свойств и их значений. Пропертивалуес можно получить для текущих или исходных значений или для значений, хранимых в настоящее время в базе данных. Пример:
+Кроме того, Ентитентри содержит несколько методов для получения и установки всех значений свойств одновременно. Эти методы используют <xref:Microsoft.EntityFrameworkCore.ChangeTracking.PropertyValues> класс, представляющий коллекцию свойств и их значений. Пропертивалуес можно получить для текущих или исходных значений или для значений, хранимых в настоящее время в базе данных. Например:
 
 <!--
         var currentValues = context.Entry(blog).CurrentValues;
@@ -242,7 +242,7 @@ public class BlogDto
 
 #### <a name="setting-current-or-original-values-from-a-dictionary"></a>Установка текущих или исходных значений из словаря
 
-В предыдущем примере задаются значения из экземпляра сущности или объекта DTO. Такое же поведение доступно, когда значения свойств хранятся в словаре как пары "имя-значение". Пример:
+В предыдущем примере задаются значения из экземпляра сущности или объекта DTO. Такое же поведение доступно, когда значения свойств хранятся в словаре как пары "имя-значение". Например:
 
 <!--
         var blogDictionary = new Dictionary<string, object>
@@ -257,7 +257,7 @@ public class BlogDto
 
 #### <a name="setting-current-or-original-values-from-the-database"></a>Установка текущих или исходных значений из базы данных
 
-Текущие или исходные значения сущности могут быть обновлены с использованием последних значений из базы данных путем вызова метода <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.GetDatabaseValues> или <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.GetDatabaseValuesAsync%2A> и использования возвращенного объекта для задания текущих или исходных значений или и того, и другого. Пример:
+Текущие или исходные значения сущности могут быть обновлены с использованием последних значений из базы данных путем вызова метода <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.GetDatabaseValues> или <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.GetDatabaseValuesAsync%2A> и использования возвращенного объекта для задания текущих или исходных значений или и того, и другого. Например:
 
 <!--
         var databaseValues = context.Entry(blog).GetDatabaseValues();
@@ -268,7 +268,7 @@ public class BlogDto
 
 #### <a name="creating-a-cloned-object-containing-current-original-or-database-values"></a>Создание клонированного объекта, содержащего текущие, исходные значения или базы данных
 
-Объект Пропертивалуес, возвращаемый из Куррентвалуес, Оригиналвалуес или Жетдатабасевалуес, можно использовать для создания клона сущности с помощью <xref:Microsoft.EntityFrameworkCore.ChangeTracking.PropertyValues.ToObject?displayProperty=nameWithType> . Пример:
+Объект Пропертивалуес, возвращаемый из Куррентвалуес, Оригиналвалуес или Жетдатабасевалуес, можно использовать для создания клона сущности с помощью <xref:Microsoft.EntityFrameworkCore.ChangeTracking.PropertyValues.ToObject?displayProperty=nameWithType> . Например:
 
 <!--
 var clonedBlog = context.Entry(blog).GetDatabaseValues().ToObject();
@@ -293,7 +293,7 @@ var clonedBlog = context.Entry(blog).GetDatabaseValues().ToObject();
 
 ### <a name="working-with-all-members-of-an-entity"></a>Работа со всеми членами сущности
 
-Обычные свойства и свойства навигации имеют разное состояние и поведение. Таким образом, обычно обработка переходов и несамостоятельных переходов выполняется отдельно, как показано в приведенных выше разделах. Однако иногда может оказаться полезным сделать что-то с любым членом сущности, независимо от того, является ли он обычным свойством или навигацией. <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.Member%2A?displayProperty=nameWithType> и <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.Members?displayProperty=nameWithType> предоставляются для этой цели. Пример:
+Обычные свойства и свойства навигации имеют разное состояние и поведение. Таким образом, обычно обработка переходов и несамостоятельных переходов выполняется отдельно, как показано в приведенных выше разделах. Однако иногда может оказаться полезным сделать что-то с любым членом сущности, независимо от того, является ли он обычным свойством или навигацией. <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.Member%2A?displayProperty=nameWithType> и <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry.Members?displayProperty=nameWithType> предоставляются для этой цели. Например:
 
 <!--
         foreach (var memberEntry in context.Entry(blog).Members)
@@ -371,7 +371,7 @@ public class OrderLine
 -->
 [!code-csharp[OrderLine](../../../samples/core/ChangeTracking/AccessingTrackedEntities/Samples.cs?name=OrderLine)]
 
-Составной ключ должен быть настроен в <xref:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating%2A?displayProperty=nameWithType> для определения ключевых частей _и их порядка_. Пример:
+Составной ключ должен быть настроен в <xref:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating%2A?displayProperty=nameWithType> для определения ключевых частей _и их порядка_. Например:
 
 <!--
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -383,7 +383,7 @@ public class OrderLine
 -->
 [!code-csharp[OnModelCreating](../../../samples/core/ChangeTracking/AccessingTrackedEntities/Samples.cs?name=OnModelCreating)]
 
-Обратите внимание, что `OrderId` является первой частью ключа и `ProductId` является второй частью ключа. Этот порядок следует использовать при передаче ключевых значений для поиска. Пример:
+Обратите внимание, что `OrderId` является первой частью ключа и `ProductId` является второй частью ключа. Этот порядок следует использовать при передаче ключевых значений для поиска. Например:
 
 <!--
         var orderline = context.OrderLines.Find(orderId, productId);
@@ -392,7 +392,7 @@ public class OrderLine
 
 ## <a name="using-changetrackerentries-to-access-all-tracked-entities"></a>Использование ChangeTracker. записи для доступа ко всем отслеживающим сущностям
 
-Пока мы получили доступ только к одному объекту <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry> за раз. <xref:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.Entries?displayProperty=nameWithType> Возвращает Ентитентри для каждой сущности, которая в настоящее время отслеживании DbContext. Пример:
+Пока мы получили доступ только к одному объекту <xref:Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry> за раз. <xref:Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.Entries?displayProperty=nameWithType> Возвращает Ентитентри для каждой сущности, которая в настоящее время отслеживании DbContext. Например:
 
 <!--
         using var context = new BlogsContext();
@@ -443,7 +443,7 @@ public interface IEntityWithKey
 -->
 [!code-csharp[IEntityWithKey](../../../samples/core/ChangeTracking/AccessingTrackedEntities/Samples.cs?name=IEntityWithKey)]
 
-Затем этот интерфейс можно использовать для работы с ключом любой отслеживающей сущности строго типизированным способом. Пример:
+Затем этот интерфейс можно использовать для работы с ключом любой отслеживающей сущности строго типизированным способом. Например:
 
 <!--
         foreach (var entityEntry in context.ChangeTracker.Entries<IEntityWithKey>())
@@ -541,7 +541,7 @@ Local view after adding and deleting posts:
 
 <xref:Microsoft.EntityFrameworkCore.DbSet%601.Local?displayProperty=nameWithType> возвращает экземпляр <xref:Microsoft.EntityFrameworkCore.ChangeTracking.LocalView%601>. Это реализация <xref:System.Collections.Generic.ICollection%601> , которая создает и реагирует на уведомления при добавлении и удалении сущностей из коллекции. (Это та же концепция, что <xref:System.Collections.ObjectModel.ObservableCollection%601> и, но реализованная как проекция поверх существующих EF Core записей отслеживания изменений, а не как независимая коллекция.)
 
-Уведомления локального представления подключаются к DbContext отслеживания изменений, так что локальное представление остается синхронизированным с DbContext. В частности:
+Уведомления локального представления подключаются к DbContext отслеживания изменений, так что локальное представление остается синхронизированным с DbContext. В частности, внесены следующие изменения.
 
 - Добавление новой сущности приводит к `DbSet.Local` тому, что она будет относиться к DbContext, обычно в `Added` состоянии. (Если сущность уже имеет созданное значение ключа, он будет записан как `Unchanged` .)
 - Удаление сущности из `DbSet.Local` приводит к тому, что она будет помечена как `Deleted` .
@@ -589,7 +589,7 @@ Local view after adding and deleting posts:
 - <xref:Microsoft.EntityFrameworkCore.ChangeTracking.LocalView%601.ToObservableCollection?displayProperty=nameWithType> Возвращает <xref:System.Collections.ObjectModel.ObservableCollection%601> для привязки данных WPF.
 - <xref:Microsoft.EntityFrameworkCore.ChangeTracking.LocalView%601.ToBindingList?displayProperty=nameWithType> Возвращает <xref:System.ComponentModel.BindingList%601> для Windows Forms привязки данных.
 
-Пример:
+Например:
 
 <!--
         ObservableCollection<Post> observableCollection = context.Posts.Local.ToObservableCollection();

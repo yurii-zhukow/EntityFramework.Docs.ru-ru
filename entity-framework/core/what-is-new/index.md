@@ -4,12 +4,12 @@ description: Сведения о текущих выпусках EF Core, а т
 author: ajcvickers
 ms.date: 01/12/2021
 uid: core/what-is-new/index
-ms.openlocfilehash: 18d8055840b5a38dc62d20e7e18c440b7360c9e4
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: 15e0f50bfe27e52c8c545c56c3ee5b4b141152c1
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98128333"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023566"
 ---
 # <a name="ef-core-releases-and-planning"></a>Выпуски и планирование EF Core
 
@@ -38,7 +38,7 @@ ms.locfileid: "98128333"
 
 ## <a name="release-planning-and-schedules"></a>Процесс планирования выпусков
 
-Выпуски EF Core согласованы с [расписанием поставки .NET Core](https://github.com/dotnet/core/blob/master/roadmap.md).
+Выпуски EF Core согласованы с [расписанием поставки .NET Core](https://github.com/dotnet/core/blob/main/roadmap.md).
 
 Выпуски исправлений обычно предоставляются ежемесячно, но имеют долгое время выполнения.
 Мы работаем над улучшением этой ситуации.

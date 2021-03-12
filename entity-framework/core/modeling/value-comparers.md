@@ -4,12 +4,12 @@ description: Использование компараторов значени�
 author: ajcvickers
 ms.date: 01/16/2021
 uid: core/modeling/value-comparers
-ms.openlocfilehash: 5c5e5beee72230a331a8e1c88a2020dc5ad88ecf
-ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
+ms.openlocfilehash: 9318b41479b43b327c76a11cc99b4f7695fa88d3
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98983486"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023904"
 ---
 # <a name="value-comparers"></a>Компараторы значений
 
@@ -17,7 +17,7 @@ ms.locfileid: "98983486"
 > Эта возможность появилась в EF Core 3.0.
 
 > [!TIP]
-> Код в этом документе можно найти на сайте GitHub в качестве [готового к запуску примера](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Modeling/ValueConversions/).
+> Код в этом документе можно найти на сайте GitHub в качестве [готового к запуску примера](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Modeling/ValueConversions/).
 
 ## <a name="background"></a>Фон
 
@@ -118,7 +118,7 @@ EF Core имеет встроенную поддержку создания ск
 Используйте <xref:Microsoft.EntityFrameworkCore.MutablePropertyExtensions.SetKeyValueComparer%2A> в редких случаях, когда для одного свойства требуется другая семантика.
 
 > [!NOTE]
-> <xref:Microsoft.EntityFrameworkCore.MutablePropertyExtensions.SetStructuralValueComparer%2A> является устаревшим в EF Core 5,0. Взамен рекомендуется использовать <xref:Microsoft.EntityFrameworkCore.MutablePropertyExtensions.SetKeyValueComparer%2A>.
+> <xref:Microsoft.EntityFrameworkCore.MutablePropertyExtensions.SetStructuralValueComparer%2A> является устаревшим в EF Core 5,0. Используйте вместо этого <xref:Microsoft.EntityFrameworkCore.MutablePropertyExtensions.SetKeyValueComparer%2A>.
 
 ## <a name="overriding-the-default-comparer"></a>Переопределение компаратора по умолчанию
 

@@ -4,12 +4,12 @@ description: Явная отслеживание сущностей с помо�
 author: ajcvickers
 ms.date: 12/30/2020
 uid: core/change-tracking/explicit-tracking
-ms.openlocfilehash: 3d9142cecf272c635c3a041fe6c5d9c49a26c33d
-ms.sourcegitcommit: 704240349e18b6404e5a809f5b7c9d365b152e2e
+ms.openlocfilehash: a0e51db4a70338e725ed40caa57a7f02245f0707
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100543189"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024476"
 ---
 # <a name="explicitly-tracking-entities"></a>Явная отслеживание сущностей
 
@@ -21,10 +21,10 @@ ms.locfileid: "100543189"
 > В этом документе предполагается, что состояния сущностей и основы отслеживания изменений EF Core понятны. Дополнительные сведения по этим темам см. [в разделе Отслеживание изменений в EF Core](xref:core/change-tracking/index) .
 
 > [!TIP]
-> Вы можете запустить и отладить весь код, используемый в этой документации, [скачав пример кода из GitHub](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/ChangeTracking/ChangeTrackingInEFCore).
+> Вы можете запустить и отладить весь код, используемый в этой документации, [скачав пример кода из GitHub](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/ChangeTracking/ChangeTrackingInEFCore).
 
 > [!TIP]
-> Для простоты в этой документации используются и описываются синхронные методы, такие как <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A>, а не их асинхронные эквиваленты, такие как <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>. Вызов и ожидание асинхронного метода можно заменить, если не указано иное.
+> Для простоты в этом документе используются и ссылаются на синхронные методы, такие как, <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A> а не на их асинхронные эквиваленты, такие как <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A> . Вызов и ожидание асинхронного метода можно заменить, если не указано иное.
 
 ## <a name="introduction"></a>Введение
 

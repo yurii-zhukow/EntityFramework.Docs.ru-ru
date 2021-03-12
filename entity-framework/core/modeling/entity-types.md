@@ -4,12 +4,12 @@ description: Как настроить и сопоставлять типы су
 author: roji
 ms.date: 10/06/2020
 uid: core/modeling/entity-types
-ms.openlocfilehash: ca8cb8560afe374218e763bc0476839187a40ece
-ms.sourcegitcommit: 4860d036ea0fb392c28799907bcc924c987d2d7b
+ms.openlocfilehash: 6c8029b64210dd9bc69fd53d9a3b4aa06bf519e0
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97635774"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023995"
 ---
 # <a name="entity-types"></a>Типы сущностей
 
@@ -68,7 +68,7 @@ ms.locfileid: "97635774"
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableName.cs?Name=TableName&highlight=3-4)]
 
-**_
+***
 
 ## <a name="table-schema"></a>Схема таблицы
 
@@ -84,7 +84,7 @@ ms.locfileid: "97635774"
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableNameAndSchema.cs?name=TableNameAndSchema&highlight=3-4)]
 
-_*_
+***
 
 Вместо того чтобы указывать схему для каждой таблицы, можно также определить схему по умолчанию на уровне модели с помощью API-интерфейса Fluent:
 
@@ -104,7 +104,7 @@ _*_
  Сопоставление с представлением приведет к удалению сопоставления таблицы по умолчанию, но начиная с EF 5,0 тип сущности также можно сопоставить с таблицей явным образом. В этом случае для запросов будет использоваться сопоставление запросов, а для обновлений будут использоваться сопоставления таблиц.
 
 > [!TIP]
-> Чтобы проверить типы сущностей, сопоставленные с представлениями с помощью поставщика в памяти, сопоставьте их с запросом через `ToInMemoryQuery` . Дополнительные сведения см. в разделе [готовый к запуску пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing/ItemsWebApi/) с использованием этого метода.
+> Чтобы проверить типы сущностей, сопоставленные с представлениями с помощью поставщика в памяти, сопоставьте их с запросом через `ToInMemoryQuery` . Дополнительные сведения см. в разделе [готовый к запуску пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/Testing/ItemsWebApi/) с использованием этого метода.
 
 ## <a name="table-valued-function-mapping"></a>Сопоставление функций, возвращающих табличное значение
 
@@ -164,4 +164,4 @@ WHERE [b].[PostCount] > 3
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableComment.cs?name=TableComment&highlight=4)]
 
-_**
+***

@@ -4,17 +4,17 @@ description: Использование Диагностиклистенер д�
 author: ajcvickers
 ms.date: 10/16/2020
 uid: core/logging-events-diagnostics/diagnostic-listeners
-ms.openlocfilehash: afb80aa8f05f70761e423f58653f681938079858
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: 7035acaa6d306e73a0a2c071532ece0d8e9a0a1d
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98129269"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024255"
 ---
 # <a name="using-diagnostic-listeners-in-ef-core"></a>Использование прослушивателей диагностики в EF Core
 
 > [!TIP]
-> Вы можете [скачать пример этой статьи](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/DiagnosticListeners) с сайта GitHub.
+> Вы можете [скачать пример этой статьи](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/DiagnosticListeners) с сайта GitHub.
 
 Прослушиватели диагностики позволяют прослушивать любое событие EF Core, возникающее в текущем процессе .NET. <xref:System.Diagnostics.DiagnosticListener>Класс является частью [общего механизма в .NET](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) для получения диагностических сведений от выполняющихся приложений.
 
@@ -55,7 +55,7 @@ public class DiagnosticObserver : IObserver<DiagnosticListener>
 -->
 [!code-csharp[RegisterDiagnosticListener](../../../samples/core/Miscellaneous/DiagnosticListeners/Program.cs?name=RegisterDiagnosticListener)]
 
-Во-вторых, после обнаружения EF Core Диагностиклистенер создается новый наблюдатель "ключ — значение", который подписывается на фактические события EF Core. Пример:
+Во-вторых, после обнаружения EF Core Диагностиклистенер создается новый наблюдатель "ключ — значение", который подписывается на фактические события EF Core. Например:
 
 <!--
 public class KeyValueObserver : IObserver<KeyValuePair<string, object>>
@@ -97,7 +97,7 @@ public class KeyValueObserver : IObserver<KeyValuePair<string, object>>
 > [!TIP]
 > ToString переопределяется в каждом классе данных EF Core событий для создания эквивалентного сообщения журнала для события. Например, при вызове метода `ContextInitializedEventData.ToString` создается "Entity Framework Core 5.0.0 Initialized" блогсконтекст "с помощью поставщика" Microsoft. EntityFrameworkCore. SQLite "с параметрами: None".
 
-[Пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/DiagnosticListeners) содержит простое консольное приложение, которое вносит изменения в базу данных блогов и выводит обнаруженные диагностические события.
+[Пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/DiagnosticListeners) содержит простое консольное приложение, которое вносит изменения в базу данных блогов и выводит обнаруженные диагностические события.
 
 <!--
     public static void Main()

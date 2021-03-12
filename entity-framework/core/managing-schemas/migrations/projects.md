@@ -4,19 +4,19 @@ description: Использование отдельного проекта ми
 author: bricelam
 ms.date: 11/06/2020
 uid: core/managing-schemas/migrations/projects
-ms.openlocfilehash: 2d1c093e0bb307584e2bf19cb93deec98aa10692
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: 9a6b8977f9d7bcdae0fb9aea6966a7eb43e9e7db
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94429810"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024151"
 ---
 # <a name="using-a-separate-migrations-project"></a>Использование отдельного проекта миграции
 
 Возможно, вы захотите сохранить миграцию в проекте, отличном от того, который содержит ваш `DbContext` . Эту стратегию также можно использовать для поддержки нескольких наборов миграций, например одной для разработки и другой для обновлений выпуска в выпуске.
 
 > [!TIP]
-> Вы можете скачать используемый в этой статье [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Schemas/ThreeProjectMigrations) из репозитория GitHub.
+> Вы можете скачать используемый в этой статье [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Schemas/ThreeProjectMigrations) из репозитория GitHub.
 
 ## <a name="steps"></a>Шаги
 

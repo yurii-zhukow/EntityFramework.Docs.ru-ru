@@ -4,12 +4,12 @@ description: Справочное руководство по средствам
 author: bricelam
 ms.date: 10/27/2020
 uid: core/cli/dotnet
-ms.openlocfilehash: 5f25ad67060e59507285af6e78269baa784c5288
-ms.sourcegitcommit: 704240349e18b6404e5a809f5b7c9d365b152e2e
+ms.openlocfilehash: f33d598c444eb9cb9aba754d629934b7b2240919
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100543397"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024424"
 ---
 # <a name="entity-framework-core-tools-reference---net-core-cli"></a>Справочник по инструментам Entity Framework Core — .NET Core CLI
 
@@ -273,13 +273,13 @@ dotnet ef dbcontext scaffold Name=ConnectionStrings:Blogging Microsoft.EntityFra
 
 ## `dotnet ef migrations remove`
 
-Удаляет последнюю миграцию (выполняет откат изменений кода, выполненных для миграции).
+Удаляет последнюю миграцию, вызывая `Down` метод последней миграции. Команда выполняет откат изменений кода, выполненных для последней миграции.
 
 Параметры:
 
 | Параметр                 | Short             | Описание                                                                     |
 |:-----------------------|:------------------|:--------------------------------------------------------------------------------|
-| <nobr>`--force`</nobr> | <nobr>`-f`</nobr> | Отмените миграцию (выполните откат изменений, примененных к базе данных). |
+| <nobr>`--force`</nobr> | <nobr>`-f`</nobr> | Отменить последнюю миграцию и откатить изменения, которые были применены к базе данных во время последней миграции. |
 
 [Общие параметры](#common-options) перечислены выше.
 

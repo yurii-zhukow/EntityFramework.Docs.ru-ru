@@ -4,17 +4,17 @@ description: События .NET, определяемые EF Core
 author: ajcvickers
 ms.date: 10/15/2020
 uid: core/logging-events-diagnostics/events
-ms.openlocfilehash: 0888009af0bedfb63690e72c4a0e08979a9e9cf3
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: c26032d19d7bc05d30d4576534c7425da4472072
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98129256"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024242"
 ---
 # <a name="net-events-in-ef-core"></a>События .NET в EF Core
 
 > [!TIP]
-> [Пример событий можно загрузить](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Events) с сайта GitHub.
+> [Пример событий можно загрузить](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/Events) с сайта GitHub.
 
 Entity Framework Core (EF Core) предоставляет [события .NET](/dotnet/standard/events/) для выполнения в качестве обратных вызовов при возникновении определенных моментов в коде EF Core. События проще, чем [перехватчики](xref:core/logging-events-diagnostics/interceptors) , и обеспечивают более гибкую регистрацию. Однако они только синхронизируются и поэтому не могут выполнять неблокирующие асинхронные операции ввода-вывода.
 
@@ -90,7 +90,7 @@ public interface IHasTimestamps
 
 Оба события необходимы, так как новые сущности инициируют `Tracked` события при первой отслеживании. `StateChanged` события срабатывают только для сущностей, которые изменяют состояние, пока они _уже_ отслеживается.
 
-[Пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Events) для этого примера содержит простое консольное приложение, которое вносит изменения в базу данных блогов:
+[Пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Miscellaneous/Events) для этого примера содержит простое консольное приложение, которое вносит изменения в базу данных блогов:
 
 <!--
         using (var context = new BlogsContext())
