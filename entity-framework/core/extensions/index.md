@@ -2,14 +2,14 @@
 title: Инструменты и расширения — EF Core
 description: Внешние средства и расширения для Entity Framework Core
 author: ErikEJ
-ms.date: 01/06/2021
+ms.date: 02/21/2021
 uid: core/extensions/index
-ms.openlocfilehash: 1198cd586902cd6222a94225056d076c847c9197
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: 67d078250d8bfdb845cf98949ee1412a8fe842bd
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98129022"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024385"
 ---
 # <a name="ef-core-tools--extensions"></a>Инструменты и расширения EF Core
 
@@ -276,3 +276,13 @@ LINQ-расширения Entity Framework Core 3.1 для поддержки �
 Создает содержимое DGML (граф), которое визуализирует DbContext. Добавляет метод расширения AsDgml() в класс DbContext. Для EF Core: 3, 5.
 
 [Вики-сайт GitHub](https://github.com/ErikEJ/EFCorePowerTools/wiki/Inspect-your-DbContext-model)
+
+### <a name="entityframeworkexceptions"></a>EntityFramework.Exceptions
+
+В Entity Framework Core все исключения базы данных упаковываются в DbUpdateException. EntityFramework.Exceptions обрабатывает все сведения о базе данных, чтобы определить нарушенное ограничение, и позволяет применять типизированные исключения, например `UniqueConstraintException`, `CannotInsertNullException`, `MaxLengthExceededException`, `NumericOverflowException`, `ReferenceConstraintException`, если запрос нарушает ограничения базы данных.
+
+Поддерживает SQL Server, Postgres, MySql, SQLite и Oracle.
+
+Для EF Core: 3, 5.
+
+[Репозиторий GitHub](https://github.com/Giorgi/EntityFramework.Exceptions)

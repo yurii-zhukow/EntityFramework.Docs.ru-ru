@@ -4,12 +4,12 @@ description: Общие сведения об отслеживании изме�
 author: ajcvickers
 ms.date: 12/30/2020
 uid: core/change-tracking/index
-ms.openlocfilehash: 8cfa4590af07ec1715eb48ec0c7acb3426b6a6b4
-ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
+ms.openlocfilehash: ccd14947cf53e3f8a38d2e0ddf2601b29e845775
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98983265"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024450"
 ---
 # <a name="change-tracking-in-ef-core"></a>Отслеживание изменений в EF Core
 
@@ -18,7 +18,7 @@ ms.locfileid: "98983265"
 В этом документе представлены общие сведения об отслеживании изменений Entity Framework Core (EF Core) и о том, как это связано с запросами и обновлениями.
 
 > [!TIP]
-> Вы можете запустить и отладить весь код, используемый в этой документации, [скачав пример кода из GitHub](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/ChangeTracking/ChangeTrackingInEFCore).
+> Вы можете запустить и отладить весь код, используемый в этой документации, [скачав пример кода из GitHub](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/ChangeTracking/ChangeTrackingInEFCore).
 
 > [!TIP]
 > Для простоты в этой документации используются и описываются синхронные методы, такие как <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChanges%2A>, а не их асинхронные эквиваленты, такие как <xref:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync%2A>. Вызов и ожидание асинхронного метода можно заменить, если не указано иное.

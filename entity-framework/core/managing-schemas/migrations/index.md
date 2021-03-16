@@ -4,12 +4,12 @@ description: Общие сведения об использовании миг�
 author: bricelam
 ms.date: 10/28/2020
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: b9547298714af59453aeae6d05742a03c067708b
-ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
+ms.openlocfilehash: 27f94ad24e0255f023025d16b0ae1950d0ed4cc7
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "95003399"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024190"
 ---
 # <a name="migrations-overview"></a>Обзор миграций
 
@@ -153,4 +153,6 @@ Update-Database
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
+* [Справочник по инструментам Entity Framework Core: .NET Core CLI](xref:core/cli/dotnet) — включает команды для обновления, удаления, добавления, отмены изменений и т. д.
+* [Справочник по инструментам Entity Framework Core. Консоль диспетчера пакетов в Visual Studio](xref:core/cli/powershell) — включает команды для обновления, удаления, добавления, отмены изменений и т. д.
 * [Рабочее совещание сообщества EF Core](https://www.youtube.com/watch?v=mSsGERmrhnE&list=PLdo4fOcmZ0oX-DBuRG4u58ZTAJgBAeQ-t&index=20), посвященное новым функциями миграции в EF Core 5.0.
