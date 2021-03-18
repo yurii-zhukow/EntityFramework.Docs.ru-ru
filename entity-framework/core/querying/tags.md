@@ -4,12 +4,12 @@ description: Использование тегов запросов для вы�
 author: smitpatel
 ms.date: 11/14/2018
 uid: core/querying/tags
-ms.openlocfilehash: f7cd3558682b1c19e03fc6d04957c7112e870734
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: bd71b8ce1cdb33aae417a90e84861de92224daa3
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92065736"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023774"
 ---
 # <a name="query-tags"></a>Теги запросов
 
@@ -17,7 +17,7 @@ ms.locfileid: "92065736"
 Мы можете пометить запрос LINQ с помощью нового метода `TagWith()`:
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying/Tags) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Querying/Tags) из репозитория GitHub.
 
 [!code-csharp[Main](../../../samples/core/Querying/Tags/Program.cs#BasicQueryTag)]
 

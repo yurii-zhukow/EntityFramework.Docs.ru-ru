@@ -4,12 +4,12 @@ description: Работа с отключенными, неотслеживае�
 author: ajcvickers
 ms.date: 10/27/2016
 uid: core/saving/disconnected-entities
-ms.openlocfilehash: 4ddae08b68aa99fb81de77fed8a195c60927e0bb
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: 1a86c28257449252a9cf7d3e1e65cd54bd5aa461
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98128853"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023506"
 ---
 # <a name="disconnected-entities"></a>Отключенные сущности
 
@@ -19,7 +19,7 @@ ms.locfileid: "98128853"
 
 <!-- markdownlint-disable MD028 -->
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/Disconnected/) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Saving/Disconnected/) из репозитория GitHub.
 
 > [!TIP]
 > EF Core может отслеживать только один экземпляр любой сущности с использованием указанного значения первичного ключа. Наилучший способ избежать этой проблемы — использовать кратковременный контекст для каждой единицы работы, чтобы контекст был пустым при запуске, имел связанные с ним сущности, сохранял эти сущности, а затем удалялся и отклонялся.

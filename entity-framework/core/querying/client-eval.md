@@ -4,12 +4,12 @@ description: Оценка клиентских и серверных запро�
 author: smitpatel
 ms.date: 11/09/2020
 uid: core/querying/client-eval
-ms.openlocfilehash: a1ddfb625be36cb05f01da08eb3be29512c54ab5
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: a1f37cb4f9c10f825d7dcbe54e9eecf75fa109a3
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430148"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023787"
 ---
 # <a name="client-vs-server-evaluation"></a>Выполнение в клиенте и на сервере
 
@@ -19,7 +19,7 @@ ms.locfileid: "94430148"
 > До версии 3.0 платформа Entity Framework Core поддерживала вычисление любой части запроса на стороне клиента. Дополнительные сведения см. в разделе [Предыдущие версии](#previous-versions).
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying/ClientEvaluation) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Querying/ClientEvaluation) из репозитория GitHub.
 
 ## <a name="client-evaluation-in-the-top-level-projection"></a>Вычисление на стороне клиента в проекции верхнего уровня
 

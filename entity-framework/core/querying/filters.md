@@ -4,12 +4,12 @@ description: Использование глобальных фильтров з
 author: maumar
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: 6436f9f8e2e09d44ef9528fd2022720d40095fe0
-ms.sourcegitcommit: f3512e3a98e685a3ba409c1d0157ce85cc390cf4
+ms.openlocfilehash: d28f34cd3846203675b5a03343e0211460797b0a
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94430135"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023748"
 ---
 # <a name="global-query-filters"></a>Глобальные фильтры запросов
 
@@ -23,7 +23,7 @@ ms.locfileid: "94430135"
 В следующем примере показано, как использовать глобальные фильтры запросов для реализации такого поведения запроса, как мультитенантность и обратимое удаление, в простой модели ведения блогов.
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying/QueryFilters) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Querying/QueryFilters) из репозитория GitHub.
 
 Сначала определите сущности:
 

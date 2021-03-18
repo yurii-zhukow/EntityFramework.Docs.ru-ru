@@ -4,19 +4,19 @@ description: Сведения о сохранении графов связан�
 author: ajcvickers
 ms.date: 10/27/2016
 uid: core/saving/related-data
-ms.openlocfilehash: f1cc752587e6a3eb58d070f5f573450b51986f70
-ms.sourcegitcommit: 032a1767d7a6e42052a005f660b80372c6521e7e
+ms.openlocfilehash: abb8c0ddd146f38935753a5883dbbf3c1c40e3c9
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98129100"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023475"
 ---
 # <a name="saving-related-data"></a>Сохранение связанных данных
 
 В дополнение к изолированным сущностям вы также можете использовать связи, определенные в вашей модели.
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/RelatedData/) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Saving/RelatedData/) из репозитория GitHub.
 
 ## <a name="adding-a-graph-of-new-entities"></a>Добавление графа новых сущностей
 

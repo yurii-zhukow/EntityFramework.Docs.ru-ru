@@ -4,12 +4,12 @@ description: Сведения о запросах с отслеживанием 
 author: smitpatel
 ms.date: 11/09/2020
 uid: core/querying/tracking
-ms.openlocfilehash: cb18125fb3453bb533981afb36480b12727cd6f2
-ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
+ms.openlocfilehash: a96ed4ebe12446d5d69fdf58046cade0aec6294d
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98983421"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023631"
 ---
 # <a name="tracking-vs-no-tracking-queries"></a>Сравнение запросов с отслеживанием и без отслеживания
 
@@ -19,7 +19,7 @@ ms.locfileid: "98983421"
 > [Типы сущностей без ключей](xref:core/modeling/keyless-entity-types) не отслеживаются. Каждый раз, когда в этой статье упоминаются типы сущностей, имеются ввиду типы сущностей, для которых определен ключ.
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying/Tracking) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Querying/Tracking) из репозитория GitHub.
 
 ## <a name="tracking-queries"></a>Отслеживания запросов
 

@@ -4,12 +4,12 @@ description: Управление конфликтами при одноврем
 author: ajcvickers
 ms.date: 03/03/2018
 uid: core/saving/concurrency
-ms.openlocfilehash: b596a99db431331bb12a28fc6ddc06f1c941b67c
-ms.sourcegitcommit: 0a25c03fa65ae6e0e0e3f66bac48d59eceb96a5a
+ms.openlocfilehash: 290fc3f68e71e4112891a4963f361506e95db17c
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92063027"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023553"
 ---
 # <a name="handling-concurrency-conflicts"></a>Обработка конфликтов параллелизма
 
@@ -17,7 +17,7 @@ ms.locfileid: "92063027"
 > На этой странице описывается, как работает параллелизм в EF Core и как обрабатывать конфликты параллелизма в вашем приложении. Подробнее о том, как настроить маркеры параллелизма в вашей модели, см. в [этой статье](xref:core/modeling/concurrency).
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/Concurrency/) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Saving/Concurrency/) из репозитория GitHub.
 
 _Параллелизм базы данных_ относится к ситуациям, в которых несколько процессов или пользователей получают доступ или одновременно изменяют одни и те же данные в базе данных. _Управление параллелизмом_ относится к конкретным механизмам, используемым для обеспечения согласованности данных при наличии одновременных изменений.
 

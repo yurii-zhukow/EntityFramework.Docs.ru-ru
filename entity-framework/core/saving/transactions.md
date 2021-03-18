@@ -4,19 +4,19 @@ description: Управление транзакциями для атомарн
 author: roji
 ms.date: 9/26/2020
 uid: core/saving/transactions
-ms.openlocfilehash: b5e1fa2a0bcc466f22f03fee7ecaef9dcea1efaf
-ms.sourcegitcommit: 788a56c2248523967b846bcca0e98c2ed7ef0d6b
+ms.openlocfilehash: 25bf615cffa36384de9fe04fe2b84d4a6bca98d0
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95003553"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103023540"
 ---
 # <a name="using-transactions"></a>Использование транзакций
 
 Транзакции позволяют обрабатывать несколько операций с базой данных атомарным способом. Если транзакция зафиксирована, все операции успешно применяются к базе данных. Если транзакция отменяется, ни одна из операций не применяется к базе данных.
 
 > [!TIP]
-> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/Transactions/) из репозитория GitHub.
+> Для этой статьи вы можете скачать [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Saving/Transactions/) из репозитория GitHub.
 
 ## <a name="default-transaction-behavior"></a>Поведение транзакции по умолчанию
 

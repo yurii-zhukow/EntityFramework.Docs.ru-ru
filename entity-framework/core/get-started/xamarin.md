@@ -5,12 +5,12 @@ author: codemillmatt
 ms.date: 07/07/2020
 ms.author: masoucou
 uid: core/get-started/xamarin
-ms.openlocfilehash: e4a26d7a0c6909002be0974ee9fe1c5db7c1046a
-ms.sourcegitcommit: 7700840119b1639275f3b64836e7abb59103f2e7
+ms.openlocfilehash: edec7dfec3d6ac8313f9fc07af8844e4a19c3bb2
+ms.sourcegitcommit: 4798ab8d04c1fdbe6dd204d94d770fcbf309d09b
 ms.translationtype: HT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98983603"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103024281"
 ---
 # <a name="getting-started-with-ef-core-and-xamarin"></a>Начало работы с EF Core и Xamarin
 
@@ -19,7 +19,7 @@ ms.locfileid: "98983603"
 Инструкции из этого руководства можно выполнять с помощью Visual Studio в Windows или Visual Studio для Mac.
 
 > [!TIP]
-> Вы можете скачать используемый в этой статье [пример](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Xamarin) из репозитория GitHub.
+> Вы можете скачать используемый в этой статье [пример](https://github.com/dotnet/EntityFramework.Docs/tree/main/samples/core/Xamarin) из репозитория GitHub.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
