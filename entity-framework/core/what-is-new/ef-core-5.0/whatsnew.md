@@ -346,7 +346,7 @@ modelBuilder
 * Оптимизировано преобразование запросов, связанных с семантикой значений NULL, что позволяет получить более строгие и эффективные запросы.
 * Сопоставленные пользователем функции теперь можно аннотировать для управления распространением значений NULL, что также позволяет получить более строгие и эффективные запросы.
 * Значительно сокращен код SQL, содержащий блоки CASE.
-* Функцию SQL Server [`DATELENGTH`](https://docs.microsoft.com/sql/t-sql/functions/datalength-transact-sql) теперь можно вызывать в запросах с помощью нового метода [`EF.Functions.DataLength`](xref:Microsoft.EntityFrameworkCore.SqlServerDbFunctionsExtensions.DataLength%2A).
+* Функцию SQL Server [`DATALENGTH`](https://docs.microsoft.com/sql/t-sql/functions/datalength-transact-sql) теперь можно вызывать в запросах с помощью нового метода [`EF.Functions.DataLength`](xref:Microsoft.EntityFrameworkCore.SqlServerDbFunctionsExtensions.DataLength%2A).
 * `EnableDetailedErrors` добавляет [дополнительные сведения в исключения](xref:core/logging-events-diagnostics/simple-logging#detailed-query-exceptions).
 
 ### <a name="saving"></a>Сохранение
